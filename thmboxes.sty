@@ -1,0 +1,116 @@
+% inspired by
+% https://texblog.org/2015/09/30/fancy-boxes-for-theorem-lemma-and-proof-with-mdframed/
+% https://tex.stackexchange.com/questions/391443/new-theorem-environment-with-manual-theorem-number
+
+% ============= %
+%    THEOREM    %
+% ============= %
+
+% new counter (idk what this does ngl but it's needed)
+\newcounter{thm}[section]\setcounter{thm}{0}
+
+% set up new environment theorem with 3 arguments
+\newenvironment{thm}[3][]{%
+% newcommand thethm outputs argument 3 (Theorem Number)
+\renewcommand{\thethm}{#3}
+% step counter for reference(?)
+\refstepcounter{thm}%
+% Set up bounding boxes in tikz
+% if there is no argument 1 (Title), then box
+\ifstrempty{#1}%
+    {\mdfsetup{%
+    frametitle={%
+    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+    \node[anchor=east,rectangle,fill=blue!20]
+    {\strut Theorem~\thethm};}}
+    }%
+% if there is argument 1 (Title), then add title
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=blue!20]
+{\strut Theorem~\thethm:~#1};}}%
+}%
+% set bounds of box
+\mdfsetup{innertopmargin=5pt,linecolor=blue!20,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+% start environment with label as argument 2
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+
+% ================ %
+%    DEFINITION    %
+% ================ %
+
+% new counter (idk what this does ngl but it's needed)
+\newcounter{dfn}[section]\setcounter{dfn}{0}
+% set up new environment theorem with 3 arguments
+\newenvironment{dfn}[3][]{%
+% newcommand thedef outputs argument 3 (Theorem Number)
+\renewcommand{\thedfn}{#3}
+% step counter for reference(?)
+\refstepcounter{dfn}%
+% Set up bounding boxes in tikz
+% if there is no argument 1 (Title), then box
+\ifstrempty{#1}%
+    {\mdfsetup{%
+    frametitle={%
+    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+    \node[anchor=east,rectangle,fill=green!20]
+    {\strut Definition~\thedfn};}}
+    }%
+% if there is argument 1 (Title), then add title
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=green!20]
+{\strut Definition~\thedfn~#1};}}%
+}%
+% set bounds of box
+\mdfsetup{innertopmargin=5pt,linecolor=green!20,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+% start environment with label as argument 2
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+
+% ============ %
+%    REMARK    %
+% ============ %
+
+% new counter (idk what this does ngl but it's needed)
+\newcounter{rem}[section]\setcounter{rem}{0}
+
+% set up new environment theorem with 3 arguments
+\newenvironment{rem}[3][]{%
+% newcommand therem outputs argument 3 (Theorem Number)
+\renewcommand{\therem}{#3}
+% step counter for reference(?)
+\refstepcounter{rem}%
+% Set up bounding boxes in tikz
+% if there is no argument 1 (Title), then box
+\ifstrempty{#1}%
+    {\mdfsetup{%
+    frametitle={%
+    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+    \node[anchor=east,rectangle,fill=purple!20]
+    {\strut Remark~\therem};}}
+    }%
+% if there is argument 1 (Title), then add title
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=purple!20]
+{\strut Remark~\therem:~#1};}}%
+}%
+% set bounds of box
+\mdfsetup{innertopmargin=5pt,linecolor=purple!20,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+% start environment with label as argument 2
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
