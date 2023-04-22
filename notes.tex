@@ -140,12 +140,52 @@ A function $f:X\to Y$ is called
     Let $X$ be a set, and $R$ a subset of $X\times X$; thus $R$ consists of some ordered pairs $(s,t)$ with $s,t\in X$. If $(s,t) \in R$ we write $s \sim t$ and say "$s$ is related to $t$". We call $\sim$ a \textbf{relation} on $X$.
 \end{dfn}
 
-% \begin{dfn}[Equivalence Relation]{def:equiv-relation}{2.3.2}
-%     A relation $\sim$ is called an \textbf{equivalence relation} on X if it satisfies the following three axioms:
-%     > - \textbf{Reflexive:} $x\sim x$ for all $x\in X$
-%     > - \textbf{Symmetric:} $x\sim y$ implies that $y\sim x$ for all $x,y\in X$
-%     > - \textbf{Transitive:} $x\sim y$ and $y\sim z$ implies that $x\sim z$ for all $x,y,z\in X$
-% \end{dfn}
+\newpage
+
+\begin{dfn}[Equivalence Relation]{def:equiv-relation}{2.3.2}
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item \textbf{Reflexive:} $x\sim x$ for all $x\in X$
+        \item \textbf{Symmetric:} $x\sim y$ implies that $y\sim x$ for all $x,y\in X$
+        \item \textbf{Transitive:} $x\sim y$ and $y\sim z$ implies that $x\sim z$ for all $x,y,z\in X$
+    \end{itemize}
+    A relation $\sim$ is called an \textbf{equivalence relation} on X if it satisfies the following three axioms:  
+\end{dfn}
+
+\begin{dfn}[Coset]{def:coset}{2.3.4}
+    Let $H\le G$ and let $g\in G$. Then a \textit{left coset} of  $H$ in $G$ is a subset of $G$ of the form $gH$, for some $g\in G$.
+    We denote the set of left cosets of $H$ in $G$ by $G/H$
+\end{dfn}
+
+\begin{thm}[Coset Rules]{thm:coset-rules}{2.3.8}
+Let $H\le G$
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item For all $h\in H$, $hH = H$. In particular $eH = H$
+    \item For $g_{1}, g_{2}\in G$, the following are equivalent
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item $g_{1}H = g_{2}H$
+        \item there exists $h\in H$ such that $g_{2} = g_{1}H$
+        \item $g_{2}\in g_{1}H$
+    \end{itemize}
+    \item For $g_{1},\,g_{2}\in G$, define $g_{1}\sim g_{2}$ if and only if $g_{1}H=g_{2}H$. Then $\sim$ defines an equivalence relation on $G$.
+\end{itemize}
+\end{thm}
+
+\begin{thm}[Lagrange's Theorem]{thm:lagrange}{2.4.2}
+Suppose that $G$ is a finite group.
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item If $H\le G$, then $\lvert  H\rvert $ divides $\lvert G\rvert $
+    \item Let $g\in G$. Then $o(g)$ divides $\lvert  G\rvert $
+    \item For all $g\in G$, we have that $g^{\lvert G\rvert } = e$
+\end{itemize}
+\end{thm}
 
 % \item \textbf{2.4.6:} Suppose that $G$ is a group with $\lvert G \rvert=p$, where $p$ is prime. Then $G$ is a cyclic group TODO: This is a lagrange consequence
 
