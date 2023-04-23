@@ -1,0 +1,566 @@
+global
+function math(context) {
+    return context.scopes.some(s => s.startsWith("meta.math"));
+}
+endglobal
+
+
+snippet dm "Latex" iA
+\$\$$0\$\$
+endsnippet
+
+snippet mk "LatexInline" iA
+\$$1\$
+endsnippet
+
+snippet add;fig "Add a figure" iAb
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{${1:url}}
+    \caption{${2:Caption}}
+    \label{${3:Label}}
+\end{figure}
+$0
+endsnippet
+
+snippet add;img "Add an image" iAb
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{${1:url}}
+\end{figure}
+endsnippet
+
+snippet add;pac "Add a package" iAb
+\usepackage{$1}
+endsnippet
+
+snippet add;hr "Add a hyperlink" iA
+\href{${1:url}}{${2:display name}}$0
+endsnippet
+
+snippet add;mc "Add a multicolumn" iA
+\begin{multicols}{${1:2}}
+[
+$0
+]
+\end{multicols}
+endsnippet
+
+snippet add;thm "Add a Theorem" iA
+\begin{thm}[${1:Name}]{thm:${2:Label}}{${3:Number}}
+$0
+\end{thm}
+endsnippet
+
+snippet add;def "Add a Definition" iA
+\begin{dfn}[${1:Name}]{def:${2:Label}}{${3:Number}}
+$0
+\end{dfn}
+endsnippet
+
+snippet add;rem "Add a Remark" iA
+\begin{rem}[${1:Name}]{rem:${2:Label}}{${3:Number}}
+$0
+\end{rem}
+endsnippet
+
+snippet add;item "Add an itemized list" iA
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item $0
+\end{itemize}
+endsnippet
+
+# context itemize(context)
+# snippet `\n` "Add an item to an itemized list" iAM
+# testting
+# endsnippet
+
+
+snippet tii "Italic" iA
+\textit{$1}$0
+endsnippet
+
+snippet `(\*{1,2})(.*)(\*{1,2})toit` "Turn 2 Asterisk into Italic" iA
+``rv = "\\textit{" + m[0].replaceAll("*", "").slice(0, -4) + "}"``
+endsnippet
+
+snippet tbb "Bold" iA
+\textbf{$1}$0
+endsnippet
+
+snippet `(\*{1,2})(.*)(\*{1,2})tobf` "Turn 2 Asterisk into Italic" iA
+``rv = "\\textbf{" + m[0].replaceAll("*", "").slice(0, -4) + "}"``
+endsnippet
+
+snippet `\[\[(.*)\|(.*)\]\]wltt` "Turn wikilink to text" iA
+``rv = m[0].split('|')[1].slice(0, -6)``
+endsnippet
+
+snippet tuu "Underline" iA
+\underline{$1}$0
+endsnippet
+
+
+# =============== #
+#    Math Mode    #
+# =============== #
+
+
+# == Quality of Life ==
+snippet dss "displaystyle on" iAM
+\\displaystyle
+endsnippet
+
+context math(context)
+snippet text "text field" iA
+\\text{$1}
+endsnippet
+
+# == Fraction Match ==
+snippet // "altfrac" iA
+\\frac{$1}{$2}$0
+endsnippet
+
+context math(context)
+snippet `((\d+)|(\d*)(\\)?([A-Za-z!]+)((\^|_)(\{\d+\}|\d))*)/` "Fraction no ()" iAm
+\frac{``rv = m[1]``}{$1}$0
+endsnippet
+
+context math(context)
+priority 200
+snippet `(?<=\s)(\\mu|\\alpha|\\sigma|\\rho|\\beta|\\gamma|\\delta|\\zeta|\\eta|\\varepsilon|\\theta|\\iota|\\kappa|\\vartheta|\\lambda|\\nu|\\pi|\\rho|\\tau|\\upsilon|\\phi|\\chi|\\psi|\\omega|\\Gamma|\\Delta|\\Theta|\\Lambda|\\Xi|\\Pi|\\Sigma|\\Upsilon|\\Phi|\\Psi|\\Omega|[A-Za-z]{1,2})?(_[A-Za-z0-9]|_\{[^}]+\})?(\^[A-Za-z0-9]|\^\{[^}]+\})?(_[A-Za-z0-9]|_\{[^}]+\})?(\([^)]+\))(_[A-Za-z0-9]|_\{[^}]+\})?(\^[A-Za-z0-9]|\^\{[^}]+\})?(_[A-Za-z0-9]|_\{[^}]+\})?\/` "Fraction with ()" iAm
+``rv = "\\frac{" + m.slice(1, m.length).join('') + "}{$1}$2"``
+endsnippet
+
+
+# == Powers ==
+
+snippet invs "inverse" iA
+^{-1}
+endsnippet
+
+context math(context)
+snippet rd "power" iA
+^{$1}
+endsnippet
+
+context math(context)
+snippet sr "square" iA
+^{2}
+endsnippet
+
+context math(context)
+snippet cb "cube" iA
+^{3}
+endsnippet
+
+context math(context)
+snippet sq "square root" iA
+\\sqrt{$1}$0
+endsnippet
+
+
+# == Subscript ==
+
+context math(context)
+snippet `([^\d\s\$\{\}\[\]\(\)]+)\d` "Subscript any symbol if digit after" iA
+``rv = m[0].slice(0, -1) + "_{" + m[0].slice(-1) + "}"``
+endsnippet
+
+context math(context)
+snippet _ "Subscript" iA
+_{$1}
+endsnippet
+
+
+# == Sets and Brackets ==
+
+context math(context)
+snippet set "set" iA
+\\{$1\\}$S0
+endsnippet
+
+context math(context)
+snippet norm "|a|" iA
+\\lvert $1\\rvert $S0
+endsnippet
+
+context math(context)
+snippet avg "<a>" iA
+\\langle $1\\rangle $S0
+endsnippet
+
+snippet lr() "left right brackets" iA
+\\left( $1 \\right) $0
+endsnippet
+
+snippet lr| "left right pip" iA
+\\left| $1 \\right| $0
+endsnippet
+
+snippet lr[] "left right square bracket" iA
+\\left[ $1 \\right] $0
+endsnippet
+
+
+# == Integrals ==
+
+context math(context)
+snippet int "no lim integral" iA
+\\int $0
+endsnippet
+
+snippet iint "no lim double integral" iA
+\\iint $0
+endsnippet
+
+snippet iiint "no lim triple integral" iA
+\\iiint $0
+endsnippet
+
+snippet 0int "no lim circle integral" iA
+\\oint $0
+endsnippet
+
+snippet cint "choose bounds integral" iA
+\\int_{${1:0}}^{${2:\infty}} $0
+endsnippet
+
+snippet intzi "zero to infinity integral" iA
+\\int_{0}^{\infty} $0
+endsnippet
+
+snippet intii "infinity to infinity integral" iA
+\\int_{-\infty}^{\infty} $0
+endsnippet
+
+
+# == Sums and Limits ==
+
+snippet csum "choose bounds sum" iA
+\\sum_{${1:n}=${2:1}}^{${3:\infty}} $0
+endsnippet
+
+snippet sumoi "n = 1 to infinity sum" iA
+\\sum_{n=1}^{\infty} $0
+endsnippet
+
+snippet sumzi "n = 0 to infinity sum" iA
+\\sum_{n=0}^{\infty} $0
+endsnippet
+
+context math(context)
+snippet clim "choose bounds limit" iA
+\\lim_{${1:x}\\to ${2:\infty}} $0
+endsnippet
+
+snippet limoi "choose bounds limit" iA
+\\lim_{1\\to \infty} $0
+endsnippet
+
+
+# == Environments ==
+
+snippet env "LaTeX environment" iA
+\\begin{$1}
+    $2
+\\end{$1}
+$0
+endsnippet
+
+# wip
+# priority 1
+# snippet `(\\begin\{(.*)\})(\s*)cev(\n.*)+\\end\{(.*)\}` "Change environment" iAM
+# test
+# endsnippet
+
+
+context math(context)
+snippet case "case environment" iA
+\\begin{cases}
+    $1
+\\end{cases}
+endsnippet
+
+context math(context)
+snippet align "align environment" iA
+\\begin{align}
+    $1
+\\end{align}
+endsnippet
+
+context math(context)
+snippet matrix "matrix environment" iA
+\\begin{matrix}
+    $1
+\\end{matrix}
+endsnippet
+
+priority 1
+snippet pmatrix "parenthesis matrix environment" iA
+\\begin{pmatrix}
+    $1
+\\end{pmatrix}
+endsnippet
+
+priority 1
+snippet bmatrix "square bracket matrix environment" iA
+\\begin{bmatrix}
+    $1
+\\end{bmatrix}
+endsnippet
+
+priority 1
+snippet Bmatrix "curly bracket matrix environment" iA
+\\begin{matrix}
+    $1
+\\end{matrix}
+endsnippet
+
+priority 1
+snippet vmatrix "pipe matrix environment" iA
+\\begin{vmatrix}
+    $1
+\\end{vmatrix}
+endsnippet
+
+priority 1
+snippet Vmatrix "double pipe matrix environment" iA
+\\begin{Vmatrix}
+    $1
+\\end{Vmatrix}
+endsnippet
+
+# Whitespace
+snippet ews "enspace" iA
+\\enspace
+endsnippet
+
+snippet quws "quad space" iA
+\\quad
+endsnippet
+
+snippet qquws "double quad space" iA
+\\qquad
+endsnippet
+
+snippet ,, iA
+``rv = ",\\,"``
+endsnippet
+
+
+# == Operations ==
+context math(context)
+snippet ... "dots" iA
+\\dots
+endsnippet
+
+snippet c.. "centered dots" iA
+\\cdots
+endsnippet
+
+snippet `\*\*` "centered dot" iA
+\\cdot
+endsnippet
+
+# == Random stuff ==
+snippet opn "operation X : Y -> Z" iA
+${1:f}:${2:G}\\to ${3:H}$0
+endsnippet
+
+
+# == Greek Alphabet ==
+snippet @a iA
+\\alpha
+endsnippet
+
+snippet @A iA
+\\Alpha
+endsnippet
+
+snippet @b iA
+\\beta
+endsnippet
+
+snippet @B iA
+\\Beta
+endsnippet
+
+snippet @g iA
+\\gamma
+endsnippet
+
+snippet @G iA
+\\Gamma
+endsnippet
+
+snippet @d iA
+\\delta
+endsnippet
+
+snippet @D iA
+\\Delta
+endsnippet
+
+snippet @e iA
+\\epsilon
+endsnippet
+
+snippet @E iA
+\\Epsilon
+endsnippet
+
+snippet :e iA
+\\varepsilon
+endsnippet
+
+snippet :E iA
+\\Varepsilon
+endsnippet
+
+snippet @t iA
+\\theta
+endsnippet
+
+snippet @T iA
+\\Theta
+endsnippet
+
+snippet @k iA
+\\kappa
+endsnippet
+
+snippet @K iA
+\\Kappa
+endsnippet
+
+snippet @l iA
+\\lambda
+endsnippet
+
+snippet @L iA
+\\Lambda
+endsnippet
+
+snippet @s iA
+\\sigma
+endsnippet
+
+snippet @S iA
+\\Sigma
+endsnippet
+
+snippet @t iA
+\\tau
+endsnippet
+
+snippet @T iA
+\\Tau
+endsnippet
+
+snippet @p iA
+\\phi
+endsnippet
+
+snippet @P iA
+\\Phi
+endsnippet
+
+snippet :p iA
+\\varphi
+endsnippet
+
+snippet :P iA
+\\Varphi
+endsnippet
+
+snippet @y iA
+\\psi
+endsnippet
+
+snippet @Y iA
+\\Psi
+endsnippet
+
+snippet @w iA
+\\omega
+endsnippet
+
+snippet @W iA
+\\Omega
+endsnippet
+
+
+# == Set and proof notation ==
+snippet sset "subset" iA
+\\subset
+endsnippet
+
+snippet eqsset "equal subset" iA
+\\subseteq
+endsnippet
+
+snippet inn iA
+\\in
+endsnippet
+
+context math(context)
+snippet and iA
+\\cup
+endsnippet
+
+snippet orr iA
+\\cap
+endsnippet
+
+snippet !> "maps to |->" iA
+\\mapto
+endsnippet
+
+snippet -> iA
+\\to
+endsnippet
+
+priority 1
+snippet <-> iA
+\\leftrightarrow
+endsnippet
+
+snippet => iA
+\\implies
+endsnippet
+
+snippet =< iA
+\\impliedby
+endsnippet
+
+context math(context)
+snippet iff iA
+\\iff
+endsnippet
+
+snippet fAll iA
+\\forall
+endsnippet
+
+snippet Exts iA
+\\exists
+endsnippet
+
+snippet nExts iA
+\\nexists
+endsnippet
+
+snippet === iA
+\\equiv
+endsnippet
+
+snippet ~~ iA
+\\sim
+endsnippet
+
+snippet `\\sim ~` iA
+\\approx
+endsnippet

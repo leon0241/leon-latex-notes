@@ -25,6 +25,7 @@
 \DeclareMathOperator{\Fix}{Fix}
 \DeclareMathOperator{\Orb}{Orb}
 \DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\send}{send}
 
 \begin{document}
 
@@ -346,6 +347,8 @@ is a subgroup of $G$, and is called the \textbf{kernel} of the action. If $N = \
     \vspace{0pt}\newline
     For every $g$ in $G$, the \textbf{fix} of $g$ is defined by
     \[\Fix (g) = \{x\in X\mid g\cdot x=x\}\]
+    Let $G$ act on $X$, let $x\in X$ and set $H:=\Stab_{G}(x)$. If $y=g\cdot x$ for some $g\in G$, then
+    \[\send_{x}(y)=gH\]
 \end{dfn}
 \vspace{-5pt}
 
@@ -361,6 +364,16 @@ Suppose $G$ is a finite group acting on a set$X$, and let $x\in X$. Then $\lvert
 \[\text{size of orbit } \times \text{ size of stabilizer } = \text{order of group}\]
 \end{thm}
 \vspace{-5pt}
+
+% TODO: wtf is this?
+\begin{thm}[Orbit Send Theorem]{thm:orbit-send}{4.3.4}
+Let $G$ act on $X$, let $x \in X$, and let set $H:= \Stab_{G}(x)$. Then the map
+$$\send_{x}: \Orb_{G}(x)\to G/H \text{ which sends } y\mapsto \send_{x}(y)$$
+\end{thm}
+
+\begin{thm}[Cauchy's Theorem]{thm:cauchy}{4.4.2}
+Let $G$ be a group, $p$ be prime. If $p$ divides $\lvert G\rvert $, then $G$ contains an element of order $p$
+\end{thm}
 
 \lipsum[1-12]
 \end{multicols}
