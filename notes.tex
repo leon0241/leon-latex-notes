@@ -1,10 +1,10 @@
-\documentclass[8pt]{extarticle}
+\documentclass[landscape, 8pt]{extarticle}
 \usepackage{geometry}
 % \usepackage{showframe}
 
 \geometry{
     a4paper, 
-    margin=0.3in
+    margin=0.2in
 }
 
 \usepackage{graphicx} % Required for inserting images
@@ -21,16 +21,21 @@
 
 % \setlength{\parskip}{0pt}
 
+\DeclareMathOperator{\Ima}{im}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\Stab}{Stab}
+
 \begin{document}
 
-\setlength{\abovedisplayskip}{5pt}
-\setlength{\belowdisplayskip}{5pt}
-\setlength{\abovedisplayshortskip}{5pt}
-\setlength{\belowdisplayshortskip}{5pt}
+\setlength{\abovedisplayskip}{4pt}
+\setlength{\belowdisplayskip}{4pt}
+\setlength{\abovedisplayshortskip}{4pt}
+\setlength{\belowdisplayshortskip}{4pt}
 
-\section{\huge Algebra}
-\begin{multicols}{2}
+\begin{multicols}{3}
 \raggedcolumns
+\section{\huge Algebra}
 \subsection*{Functions and Symmetries}
 
 \begin{dfn}[Functions]{def:functions}{0.1.1}
@@ -190,6 +195,18 @@ A function $f:X\to Y$ is called
 \end{dfn}
 \vspace{-5pt}
 
+\begin{thm}[Lagrange's Theorem]{thm:lagrange}{2.4.2}
+    Suppose that $G$ is a finite group.
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item If $H\le G$, then $\lvert  H\rvert $ divides $\lvert G\rvert $
+        \item Let $g\in G$. Then $o(g)$ divides $\lvert  G\rvert $
+        \item For all $g\in G$, we have that $g^{\lvert G\rvert } = e$
+    \end{itemize}
+\end{thm}
+\vspace{-5pt}
+
 \newpage
 
 % -------------------------------------
@@ -215,19 +232,135 @@ Let $H\le G$
 \end{thm}
 \vspace{-5pt}
 
-\begin{thm}[Lagrange's Theorem]{thm:lagrange}{2.4.2}
-Suppose that $G$ is a finite group.
+\begin{thm}[Index of a Subgroup]{thm:subgroup-index}{2.4.4}
+The \textbf{index} of $H\le G$ is defined as the number of \textit{distinct} left cosets of $H$ in $G$, which by Lagrange's is $\lvert G / H\rvert = \frac{\lvert G\rvert}{\lvert H\rvert }$
+\end{thm}
+\vspace{-5pt}
+
+\begin{rem}[Consequences of Lagrange]{rem:lagrange-consequences}{2.4.6 - 8}
 \renewcommand\labelitemi{\tiny$\bullet$}
 \begin{itemize}
     \setlength\itemsep{0em}
-    \item If $H\le G$, then $\lvert  H\rvert $ divides $\lvert G\rvert $
-    \item Let $g\in G$. Then $o(g)$ divides $\lvert  G\rvert $
-    \item For all $g\in G$, we have that $g^{\lvert G\rvert } = e$
+    \item \textbf{2.4.6:} Suppose that $G$ is a group with $\lvert G \rvert=p$, where $p$ is prime. Then $G$ is a cyclic group
+    \item \textbf{2.4.7:} Suppose that $G$ is a group with $\lvert G \rvert < 6$. Then $G$ is abelian
+    \item \textbf{2.4.8:} If $p$ is a prime and $a\in \Z$, then $a^{p} \equiv a \mod{p}$
+\end{itemize}
+\end{rem}
+\vspace{-5pt}
+
+\subsection*{Homomorphisms and Isomorphisms}
+\begin{dfn}[Group Homomorphism]{def:homomorphism}{3.1.1}
+    Let $(G,*),(H,\circ)$ be groups. A map $\phi:G\to H$ is called a \textbf{homomorphism} if
+    $$\phi(x*y)=\phi(x)\circ\phi(y)\quad \text{for all } x,y\in G$$
+    Note that the product on the left is formed using $\ast$, while the product on the right is formed using $\circ$
+\end{dfn}
+\vspace{-5pt}
+
+\begin{dfn}[Group Isomorphism]{def:group-iso}{3.1.2}
+    A group homomorphism $\phi:G\to H$ that is also a bijection is called an \textbf{isomorphism} of groups. In this case we say that $G$ and $H$ are \textit{isomorphic} and we write $G\cong H$. 
+    An isomorphism $G\to G$ is called an \textbf{automorphism} of $G$.
+\end{dfn}
+\vspace{-5pt}
+
+\begin{thm}[Cyclic Isomorphisms]{thm:cyclic-isos}{3.1.L}
+All finite cyclic groups of the same order are \textit{isomorphic} to each other. Therefore, cyclic groups of order $n$ are isomorphic to $(\Z_{n}, +)$
+\vspace{0pt}\newline
+All infinite cyclic groups are \textit{isomorphic} to each other. Therefore, each cyclic group of infinite order is isomorphic to $(\Z, +)$
+\end{thm}
+\vspace{-5pt}
+
+\begin{rem}[Consequences of Homomorphisms]{rem:homo-consequences}{3.1.5}
+Let $\phi:G\to H$ be a group homomorphism. Then
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item $\phi(e_{G})=e_{H}$
+    \item $\phi(g^k)=(\phi(g))^{k}$ and $\phi(g^{-1})=(\phi(g))^{-1}$ for all $g\in G$
+    \item If $\phi$ is injective, the order of $g\in G$ equals the order of $\phi(g)\in H$.
+\end{itemize}
+\end{rem}
+\vspace{-5pt}
+
+\begin{dfn}[Normal Subgroup]{def:normal-subgroup}{3.1.7}
+    A subgroup $N\le G$ is \textbf{normal} if the left and right cosets of $N$ are equal, i.e. $gN = Ng$ for all $g\in G$. If $N$ is a normal subgroup of $G$, we write $N\triangleleft G$. Kernels of homomorphisms are always normal subgroups
+\end{dfn}
+\vspace{-5pt}
+
+\begin{dfn}[Image and Kernel of a Group]{def:img-ker}{3.1.6}
+    Let $\phi:G\to H$ be a group homomorphism.
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item The \textbf{image} of $\phi$ is defined to be
+        \[\Ima{\phi} := \{h\in H\,|\,h=\phi(g)\text{ for some } g\in G\}\]
+        \item The \textbf{kernel} of $\phi$ is defined to be
+        \[\ker{\phi}:= \{g\in G\,|\,\phi(g) = e_{H}\}\]
+    \end{itemize}
+    Note: $\Ima{\phi}$ is a subgroup of $H$ and $\ker{\phi}$ is a subgroup of $G$
+\end{dfn}
+\vspace{-5pt}
+
+\begin{thm}[Product Isomorphisms]{thm:prod-isos}{3.2.1}
+Let $H,K\le G$ be subgroups with $H\cup K = \{e\}$.
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item The map $\phi:H\times K\to HK$ given by $\phi:(h,k)\to hk$ is bijective
+    \item If every element of $H$ commutes with every element of $K$ when multiplied in $G$ (i.e. $hk=kh\quad \forall h\in H, k\in K$), then $HK$ is a subgroup of $G$, and it is isomorphic to $H\times K$ via $\phi$
 \end{itemize}
 \end{thm}
 \vspace{-5pt}
 
-% \item \textbf{2.4.6:} Suppose that $G$ is a group with $\lvert G \rvert=p$, where $p$ is prime. Then $G$ is a cyclic group TODO: This is a lagrange consequence
+\begin{thm}[Size of Product Group]{thm:prodgroup-size}{3.2.3}
+Let $H,K\le G$ be finite subgroups of a group $G$ such that $H\cup K = \{e\}$ Then $\lvert HK\rvert =\lvert H\rvert \times \lvert K\rvert $.
+\end{thm}
+\vspace{-5pt}
+
+
+\subsection*{Group Actions}
+
+\begin{dfn}[Group Action]{def:action}{4.1.1}
+    Let $(G,*)$ be a group, and let $X$ be a nonempty set. Then a (left) \textbf{action} of $G$ on $X$ is a map
+    \[G\times X\to X\]
+    written $(g,x)\mapsto g\cdot x$, such that
+    \[g_{1}\cdot(g_{2}\cdot x) = (g*h) \cdot x \qquad \text{and} \qquad e\cdot x = x \]
+    for all $g_{1},g_{2}\in G$ and all $x\in X$.
+\end{dfn}
+\vspace{-5pt}
+
+\begin{dfn}[Kernel of an Action, Faithful Action]{def:action-kernel-faith}{4.1.4}
+Suppsoe that $G$ acts on $X$. Then the set
+\[N := \{g\in G\mid g\cdot x=x \\forall x\in X\}\]
+is a subgroup of $G$, and is called the \textbf{kernel} of the action. If $N = \{e\}$, then we say the action is \textbf{faithful}
+\end{dfn}
+\vspace{-5pt}
+
+\begin{dfn}[Orbit, Stabilizer, and Fix]{def:orbit}{4.2.1}
+    For every $x$ in $X$, the \textbf{orbit} of $x$ is defined by
+    \[\text{Orb}_{G}(x)=\{g\cdot x \mid g\in G\}\]
+    This is a subset of $X$
+    \vspace{0pt}\newline
+    For every $x$ in $X$, the \textbf{stabilizer} of $x$ is defined by
+    \[\text{Stab}_{G}(x)=\{g\in G : g\cdot x = x\}\]
+    This is a subgroup of $G$
+    \vspace{0pt}\newline
+    For every $g$ in $G$, the \textbf{fix} of $g$ is defined by
+    \[\Fix (g) = \{x\in X\mid g\cdot x=x\}\]
+\end{dfn}
+\vspace{-5pt}
+
+\begin{thm}[Orbit Equivalence]{thm:orbit-equivalence}{4.2.5}
+Let $G$ act on $X$. Then
+\[x\sim y \iff y = g\cdot x \text{ for some } g\in G\]
+defines an equivalence relation on $X$. The equivalence classes are the orbits of $G$. Thus when $G$ acts on $X$, we obtain a partition of $X$ into orbits
+\end{thm}
+\vspace{-5pt}
+
+\begin{thm}[Orbit-Stabilizer Theorem]{thm:orbit-stab-thm}{4.3.1}
+Suppose $G$ is a finite group acting on a set$X$, and let $x\in X$. Then $\lvert \Orb_{G}(x)\rvert \times \lvert \Stab_{G}(x)\rvert = \lvert G\rvert$, or in words:
+\[\text{size of orbit } \times \text{ size of stabilizer } = \text{order of group}\]
+\end{thm}
+\vspace{-5pt}
 
 \lipsum[1-12]
 \end{multicols}

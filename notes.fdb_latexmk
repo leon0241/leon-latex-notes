@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1682214455 "c:/Users/Leon/OneDrive - University of Edinburgh/Year 2/Mathematics/Fundamentals of Pure Mathematics/leon-latex-notes/notes.tex" "notes.pdf" "notes" 1682214458 0
-  "c:/Users/Leon/OneDrive - University of Edinburgh/Year 2/Mathematics/Fundamentals of Pure Mathematics/leon-latex-notes/notes.tex" 1682214451 10172 9d6f8e8f59532977589b1c6f7a7f7a9f ""
+["pdflatex"] 1682219057 "c:/Users/Leon/OneDrive - University of Edinburgh/Year 2/Mathematics/Fundamentals of Pure Mathematics/leon-latex-notes/notes.tex" "notes.pdf" "notes" 1682219061 0
+  "c:/Users/Leon/OneDrive - University of Edinburgh/Year 2/Mathematics/Fundamentals of Pure Mathematics/leon-latex-notes/notes.tex" 1682219056 16321 2c65c10eac954ecd8a7786c091c296a3 ""
   "d:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1681025811 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "d:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1681023479 1004 54797486969f23fa377b128694d548df ""
   "d:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1681023479 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -152,8 +152,8 @@
   "d:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1681031271 7885492 7917f40c65890eaf9a8e3a6acc9d4d0c ""
   "d:/texlive/2023/texmf.cnf" 1681030851 713 e69b156964470283e0530f5060668171 ""
   "extarticle.cls" 1682209766 21244 3112294ba237d94ce4a1502cfef3594f ""
-  "notes.aux" 1682214458 1704 02f4f94d359adb7a674b6bbf25751608 "pdflatex"
-  "notes.tex" 1682214451 10172 9d6f8e8f59532977589b1c6f7a7f7a9f ""
+  "notes.aux" 1682219061 2973 98833965f393c592237d8e9f7720bf8f "pdflatex"
+  "notes.tex" 1682219056 16321 2c65c10eac954ecd8a7786c091c296a3 ""
   "preamble.sty" 1682209766 190 0a5f1af1699b23308b20c88bda958849 ""
   "size8.clo" 1682209766 6344 5062a8faf7cb200267aa33f36102c207 ""
   "thmboxes.sty" 1682210704 3657 e5d61602b7c37bf9f2652688f7a08ed2 ""
