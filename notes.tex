@@ -10,6 +10,7 @@
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{amssymb}
 \usepackage{preamble}
 \usepackage{multicol}
 \usepackage{lipsum}
@@ -370,12 +371,101 @@ Suppose $G$ is a finite group acting on a set$X$, and let $x\in X$. Then $\lvert
 Let $G$ act on $X$, let $x \in X$, and let set $H:= \Stab_{G}(x)$. Then the map
 $$\send_{x}: \Orb_{G}(x)\to G/H \text{ which sends } y\mapsto \send_{x}(y)$$
 \end{thm}
+\vspace{-5pt}
 
 \begin{thm}[Cauchy's Theorem]{thm:cauchy}{4.4.2}
 Let $G$ be a group, $p$ be prime. If $p$ divides $\lvert G\rvert $, then $G$ contains an element of order $p$
 \end{thm}
+\vspace{-5pt}
+\newpage
+
+% ========================== %
+%                            %
+%          ANALYSIS          %
+%                            %
+% ========================== %
+
+\section{\huge Analysis}
+\subsection*{Real Numbers and Bounds}
+\begin{dfn}[The Real Numbers]{def:reals}{1.1}
+$\R$ is defined as the set of real numbers. It has two operations $+$ and $\ast$, and it is a field, i.e. satisfies group axioms for both, in addition the Distributive law:
+\[a\cdot(b+c) = a\cdot b + a\cdot c\]
+\vspace{0pt}\newline
+The set of real numbers is also ordered, i.e. there is a relation $<$ which satisfies pretty much what you think it does
+\vspace{0pt}\newline
+Finally, the set of real numbers is complete, i.e. there are no gaps between any numbers.
+\end{dfn}
+\vspace{-5pt}
+
+\begin{dfn}[Suprema and Bounds]{def:suprema}{1.3.2}
+Let $E \subset \R$ be nonempty
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item The set $E$ is said to be bounded above if there is $M\in R$ such that $a\le M$ for all $a\in E$
+    \item A real number $M$ is called an upper bound of the set$E$ if $a\le M$ for all $a\in E$
+    \item A real number $s$ is called the \textbf{supremum} of the set $E$ if
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item $s$ is an upper bound of $E$
+        \item $s\le M$ for all upper bounds $M$ of the set $E$
+    \end{itemize}
+    If a number $s$ exists, we shall say that $E$ has a supremum and write $s=\sup E$
+\end{itemize}
+If the supremum $s$ exists, then $s$ is the least upper bound of the set $E$. The supremum is also unique if it exists.
+\end{dfn}
+\vspace{-5pt}
+
+\begin{dfn}[Infimum]{def:infimum}{1.3.10}
+If the same properties as a supremum apply but in the other direction, a number $s$ is instead called the \textbf{infimum} of the set $E$. Infimum and Supremum are related via the reflection principle:
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Set $E$ has a supremum if and only if the set $-E$ has an infimum. Also $\inf (-E) = -\sup(E)$
+    \item Set $E$ has an infimum if and only if the set $-E$ has a supremum. Also $\sup (-E) = -\inf(E)$
+\end{itemize}
+\end{dfn}
+
+\begin{thm}[Suprema Approximation Property]{thm:sup-approx-property}{1.3.5}
+If the set $E \subset \R$ has a supremum then for any positive number $\epsilon > 0$ there exists $a \in E$ such that
+\[\sup E - \epsilon < a \le \sup E\]
+\end{thm}
+\vspace{-5pt}
+
+%remark 1.3.6 : if e sset N has a supremum then supE in E
+
+\begin{thm}[Archimedean Principle]{thm:archi-principle}{1.3.7}
+Given positive real numbers $a,b\in \R$ there is an integer $n \in N$ such that $b<na$
+\end{thm}
+\vspace{-5pt}
+
+\begin{dfn}[Injection/Surjection Terminology]{def:inj-surj-notation}{1.5.1}
+Let $f$ be a function from a set $X$ into a set $Y$.
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item $f$ is said to be \textbf{one-to-one} on $X$ if and only if $f$ is injective
+    \item $f$ is said to take $X$ \textbf{onto} $Y$ if $f$ is surjective
+\end{itemize}
+\end{dfn}
+\vspace{-5pt}
+
+\begin{dfn}[Countability]{def:countability}{1.5.2}
+Let $E$ be a set
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item $E$ is said to be \textbf{finite} if either $E=\varnothing$, or there is an integer $n\in \N$ and a bijection $f : \{1,\, 2,\, 3,\, \dots ,\, n\} \to E$. We say that the set $E$ has $n$ elements
+    \item $E$ is said to be \textbf{countable} if there is a bijective function $f:\N\to E$
+    \item $E$ is said to be \textbf{at most countable} if $E$ is finite or countable
+    \item $E$ is said to be \textbf{uncountable} if $E$ is neither finite nor countable
+\end{itemize}
+Additionally, a nonempty set $E$ is at most countable if and only if there is a surjective function $f:\N\to E$
+\end{dfn}
+
 
 \lipsum[1-12]
 \end{multicols}
 
-\end{document}
+\ end{document}
