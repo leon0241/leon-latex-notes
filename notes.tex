@@ -4,7 +4,7 @@
 
 \geometry{
     a4paper, 
-    margin=0.2in
+    margin=0.17in
 }
 
 \usepackage{graphicx} % Required for inserting images
@@ -28,12 +28,14 @@
 \DeclareMathOperator{\Stab}{Stab}
 \DeclareMathOperator{\send}{send}
 
+\DeclareMathOperator{\dom}{dom}
+
 \begin{document}
 
-\setlength{\abovedisplayskip}{4pt}
-\setlength{\belowdisplayskip}{4pt}
-\setlength{\abovedisplayshortskip}{4pt}
-\setlength{\belowdisplayshortskip}{4pt}
+\setlength{\abovedisplayskip}{3.5pt}
+\setlength{\belowdisplayskip}{3.5pt}
+\setlength{\abovedisplayshortskip}{3.5pt}
+\setlength{\belowdisplayshortskip}{3.5pt}
 
 \begin{multicols}{3}
 \raggedcolumns
@@ -45,8 +47,8 @@ A function $f:X\to Y$ is called
 \renewcommand\labelitemi{\tiny$\bullet$}
 \begin{itemize}
     \setlength\itemsep{0em}
-    \item \textbf{injective} if $f(x_{1}) = f(x_{2}) \implies x_{1} = x_{{2}}$
-    \item \textbf{surjective} if for every $y\in Y,\, \exists x\in X$ s.t. $f(x) = y$
+    \item \textbf{injective} if $f(x_{1}) = f(x_{2}) \implies x_{1} = x_{{2}}$. $f$ is said to be \textbf{one-to-one} on $X$
+    \item \textbf{surjective} if for every $y\in Y,\, \exists x\in X$ s.t. $f(x) = y$. $f$ is said to take $X$ \textbf{onto} $Y$
     \item \textbf{bijective} if it is both injective and surjective
 \end{itemize}
 % \begin{figure}[H]
@@ -399,12 +401,14 @@ Finally, the set of real numbers is complete, i.e. there are no gaps between any
 
 \begin{dfn}[Suprema and Bounds]{def:suprema}{1.3.2}
 Let $E \subset \R$ be nonempty
+\vspace{-5pt}
 \renewcommand\labelitemi{\tiny$\bullet$}
 \begin{itemize}
     \setlength\itemsep{0em}
     \item The set $E$ is said to be bounded above if there is $M\in R$ such that $a\le M$ for all $a\in E$
     \item A real number $M$ is called an upper bound of the set$E$ if $a\le M$ for all $a\in E$
-    \item A real number $s$ is called the \textbf{supremum} of the set $E$ if
+    \item A real number $s$ is called the \textbf{supremum} of the set $E$ if 
+    \vspace{-5pt}
     \renewcommand\labelitemi{\tiny$\bullet$}
     \begin{itemize}
         \setlength\itemsep{0em}
@@ -440,26 +444,16 @@ Given positive real numbers $a,b\in \R$ there is an integer $n \in N$ such that 
 \end{thm}
 \vspace{-5pt}
 
-\begin{dfn}[Injection/Surjection Terminology]{def:inj-surj-notation}{1.5.1}
-Let $f$ be a function from a set $X$ into a set $Y$.
-\renewcommand\labelitemi{\tiny$\bullet$}
-\begin{itemize}
-    \setlength\itemsep{0em}
-    \item $f$ is said to be \textbf{one-to-one} on $X$ if and only if $f$ is injective
-    \item $f$ is said to take $X$ \textbf{onto} $Y$ if $f$ is surjective
-\end{itemize}
-\end{dfn}
-\vspace{-5pt}
-
 \begin{dfn}[Countability]{def:countability}{1.5.2}
-Let $E$ be a set
+Let $E$ be a set. $E$ is said to be:
+\vspace{-5pt}
 \renewcommand\labelitemi{\tiny$\bullet$}
 \begin{itemize}
     \setlength\itemsep{0em}
-    \item $E$ is said to be \textbf{finite} if either $E=\varnothing$, or there is an integer $n\in \N$ and a bijection $f : \{1,\, 2,\, 3,\, \dots ,\, n\} \to E$. We say that the set $E$ has $n$ elements
-    \item $E$ is said to be \textbf{countable} if there is a bijective function $f:\N\to E$
-    \item $E$ is said to be \textbf{at most countable} if $E$ is finite or countable
-    \item $E$ is said to be \textbf{uncountable} if $E$ is neither finite nor countable
+    \item \textbf{Finite} if either $E=\varnothing$, or there is an integer $n\in \N$ and a bijection $f : \{1,\, 2,\, 3,\, \dots ,\, n\} \to E$. We say that the set $E$ has $n$ elements
+    \item \textbf{Countable} if there is a bijective function $f:\N\to E$
+    \item \textbf{At most countable} if $E$ is finite or countable
+    \item \textbf{Uncountable} if $E$ is neither finite nor countable
 \end{itemize}
 Additionally, a nonempty set $E$ is at most countable if and only if there is a surjective function $f:\N\to E$
 \end{dfn}
@@ -475,6 +469,7 @@ A sequence of real numbers $(x_{n})$ is said to converge to a real number $a$ if
 
 \begin{dfn}[Bounds of Sequences]{def:sequence-bounds}{2.1.9}
 Let $(x_{n})$ be a sequence of real numbers.
+\vspace{-5pt}
 \renewcommand\labelitemi{\tiny$\bullet$}
 \begin{itemize}
     \setlength\itemsep{0em}
@@ -483,21 +478,279 @@ Let $(x_{n})$ be a sequence of real numbers.
     \item $(x_{n})_{n\in N}$ is said to be \textbf{bounded} if it is both bounded above and below
 \end{itemize}
 \end{dfn}
+\vspace{-5pt}
 
-\begin{thm}[WatchMojo - Top 10 Limit Theorems]{thm:Label}{Number}
+\begin{rem}[Limit Theorems]{rem:limit-thms}{2.2.1 - ?}
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item \textbf{Squeeze Theorem:} Suppose that $(x_{n})$, $(y_{n})$, and $(w_{n})$ are real sequences
+    \vspace{-5pt}
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item If both $x_{n}\to a$ and $y_{n} \to a$ as $n\to\infty$, and if $x_{n}\le w_{n}\le y_{n}$ for all $n\ge N_{0}$, then $w_{n}\to a$ as $n\to\infty$
+        \item If $x_{n}\to 0$ and $(y_{n})$ is bounded, $x_{n}y_{n}\to_{0}$ as $n\to\infty$
+    \end{itemize}
+    \item Let $E\subset \R$. If $E$ has a finite supremum then there is a sequence $(x_{n})$ with each $x_{n}\in E$ such that $x_{n}\to \sup E$ as $n\to \infty$. The same goes for a finite infimum
+\end{itemize}
+\end{rem}
+\vspace{-5pt}
+
+\begin{dfn}[Monotone Sequences]{def:monotone-seqs}{2.3.1}
+    Let $(s_{n})$ be a sequence of real numbers.
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item $(s_{n})$ is said to be increasing if $s_{1}\le s_{2}\le s_{3}\le\cdots$, and strictly increasing if $s_{1}<s_{2}<s_{3}<\cdots$
+        \item $(s_{n})$ is said to be decreasing if $s_{1}\ge s_{2}\ge s_{3}\ge\cdots$, and strictly decreasing if $s_{1}>s_{2}>s_{3}>\cdots$
+        \item $(s_{n})$ is said to be monotone if it is either increasing or decreasing
+    \end{itemize}
+\end{dfn}
+\vspace{-5pt}
+
+%TODO: maybe include definition of convergence for limits
+
+\begin{thm}[Top 10 Series Limit Theorems]{thm:limit-theorems}{lots}
 \renewcommand\labelitemi{\tiny$\bullet$}
 \begin{itemize}
     \setlength\itemsep{0em}
     \item \textbf{Divergence Test}
+    \vspace{-5pt}
     \renewcommand\labelitemi{\tiny$\bullet$}
     \begin{itemize}
         \setlength\itemsep{0em}
         \item If $(a_n)_{n\in\N}$ converges, then $a_n\to0$.
-        \item If $(a_n)_{n\in\N}$ doesn't converge to $0$, then $\sum_{n=1}^{\infty} a_n$ diverges.
-        \item The converse is not true! $a_n\to0$ does not imply $\sum_{n=1}^{\infty} a_n$ converges
+        \item If $(a_n)_{n\in\N}$ doesn't converge to $0$, then $\sum_{n=1}^{\infty} a_n$ diverges. Be careful that the converse isn't true.
     \end{itemize}
+    \vspace{-1pt}
+
+    \item \textbf{Bounded Theorem: } Let $(a_{n})_{n\in \N}$ be a sequence with non-negative terms. The following are equivalent:
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \vspace{-5pt}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item The series $\sum_{n=1}^{\infty} a_{n}$ converges
+        \item The sequence $(S_{n})_{n\in \N}$ of partial sums is bounded above
+    \end{itemize}
+    \vspace{-1pt}
+
+    \item \textbf{Comparison Test: } Let $(a_n)_{n\in\N}$ and $(b_n)_{n\in\N}$ be two sequences such that $0\leq a_n\leq b_n$ for all n.
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \vspace{-5pt}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item If $\sum_n b_n$ converges, then $\sum_n a_n$ converges as well.
+        \item If $\sum_n a_n$ diverges, then $\sum_n b_n$ diverges as well.
+    \end{itemize}
+    \vspace{-1pt}
+
+    \item \textbf{Limit Comparison Test:} Let $(a_n)_{n\in\N}$ and $(b_n)_{n\in\N}$ be two real sequences with $a_n\geq0$ and $b_n\geq0$ for all n. Assume that $a_n / b_n \to L$ for some $L\in(0,\infty)$. Then, $\sum_{n=1}^{\infty}  a_n$ converges iff $\sum_{n=1}^{\infty}  b_n$ converges. 
+    \item \textbf{Root Test:} Let $\sum_{n=0}^{\infty} a_n$ be a series with non-negative terms such that $\sqrt[n]{a_n} \to L$ where $0 \le L \le +\infty$.
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \vspace{-5pt}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item If $0\le L < 1$ then the series $\sum_{n=0}^{\infty}  a_n$ converges.
+        \item If $L > 1$ then the series $\sum_{n=0}^{\infty}  a_n$ diverges.
+        \item If $L = 1$, the series may or may not converge
+    \end{itemize}
+    \vspace{-1pt}
+
+    \item \textbf{Ratio Test:} Let $\sum_{n=0}^{\infty}  a_n$ be a series with positive terms such that $(a_{n+1}) / (a_n) \to L$, where $0\le L \le +\infty$.
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \vspace{-5pt}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item If $0\le L < 1$ then the series $\sum_{n=0}^{\infty}  a_n$ converges.
+        \item If $L > 1$ then the series $\sum_{n=0}^{\infty}  a_n$ diverges.
+        \item If $L = 1$ then compare to $p$ series
+    \end{itemize}
+    \vspace{-1pt}
+
+    \item \textbf{Cauchy's Condensation Test:} Let $(a_n)_{n\in\N}$ be a decreasing sequence with non-negative terms. Then the following are equivalent:
+    \vspace{-5pt}
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item The series $\sum_{n=1}^{\infty}  a_n$ converges
+        \item The series $\sum_{n=0}^{\infty}  2^na_{2^n}$ converges.
+    \end{itemize}
+    \vspace{-1pt}
+
+    \item \textbf{Alternating Series Test:} Let $(b_n)_{n\in\N}$ be a \textit{decreasing} sequence of non-negative real numbers that converges to zero. Then the series $\sum_{n=1}^{\infty} (-1)^{n-1}b_n$ converges.
+    \item \textbf{Monotone Convergence Theorem:} If a sequence of real numbers $(s_{n})$ is increasing and bounded above, or decreasing and bounded below, then $(s_{n})$ is convergent (and converges to the supremum/infinum of the set $\{x_{n}\,\vert\,n\in\N\}$ respectively).
+    \item \textbf{Geometric Series Test:} Assume $a,\,r\in\R, a,\,r\ne 0$. Then
+    \[\displaystyle\sum_{n=1}^{\infty} a\cdot r^k = \begin{cases}
+    \dfrac{a}{1-r} &\text{if } \lvert r \rvert < 1 \\
+    \text{diverges} &\text{if } \lvert r \rvert \ge 1
+    \end{cases}
+    \]
+    Notice that $a$ is always the first term in the series, and $r$ is the \textit{common ratio}
+    \vspace{-1pt}
 \end{itemize}
 \end{thm}
+\newpage
+
+\subsection*{Continuity and Functional Limits}
+
+\begin{dfn}[Continuity]{def:continuity-def}{3.1.1}
+    Let $f$ be a real-valued function whose domain is a subset of $\R$. The function $f$ is \textbf{continuous} at $x_{0}$ in $\dom{(f)}$ if, for every sequence $(x_{n})$ in $\dom{(f)}$ converging to $x_{0}$, we have 
+    \[\displaystyle\lim_{ n \to \infty }f(x_{n})=f(a)\]
+    If $f$ is continuous at each $a\in S \subseteq \dom{(f)}$ and then we say that $f$ is continuous on $S$. If $f$ is continuous on $\dom{(f)}$ then we say that $f$ is continuous
+\end{dfn}
+\vspace{-5pt}
+
+\begin{thm}[$\epsilon-\delta$ Definition of Continuity]{thm:e-d-continuity}{4.1.6}
+    A function $f$ is continuous if for all $\epsilon>0$, there exists some $\delta>0$ such that for all $x \in A$ for which $0<\lvert x-c \rvert <\delta$, we have 
+    \[\lvert f(x)-f(a) \rvert < \epsilon\]
+\end{thm}
+\vspace{-5pt}
+
+\begin{thm}[Evil $\epsilon-\delta$ definition of continuity]{thm:negated-e-d-continuty}{6.1.4}
+    A function $f$ is not continuous if there exists $\epsilon>0$ such that for all $\delta>0$ there exists some $x \in A$ satisfying $0<\lvert x-c \rvert<\delta$ for which $\lvert  f(x)-f(a) \rvert\ge \epsilon$
+\end{thm}
+\vspace{-5pt}
+
+\begin{dfn}[Bounds of a Function]{def:function-bounds}{4.2.1}
+Let $E\subseteq\R$ be nonempty. A function $f:E\to \R$ is said to be bounded on $E$ if
+\[\lvert f(x)\rvert \le M,\qquad \text{for all } x\in E\]
+where $M$ is some (large) real number.
+\end{dfn}
+\vspace{-5pt}
+
+% TODO: what is the point of this :D
+\begin{thm}[Extreme Value Theorem]{thm:ext-val-thm}{4.2.2}
+Let $I\subseteq \R$ be a closed and bounded interval. Let $f:I\to \R$ be continuous on $I$. Then $f$ is bounded on the interval $I$, denoted by
+\[m = \inf\{f(x)\mid x\in I\},\qquad M = \sup\{f(x)\mid x\in I\}\]
+Then there exist points $x_{m}, x_{M}\in I$ such that
+\[f(x_{m}) = m \quad \text{and} \quad f(x_{M}) = M\]
+\end{thm}
+\vspace{-5pt}
+
+\begin{thm}[$\epsilon-\delta$ Limit jr.]{thm:mini-e-d-limit}{4.2.4}
+Let $f: I\to \R$ where $I$ is an open nonempty interval. If $f$ is continuous at a point $a\in I$ and $f(a)> 0$ then for some $\delta,\,\epsilon> 0$ we have that
+\[f(x)>\epsilon,\quad \text{ for all } x\in (a-\delta, a+\delta)\]
+\end{thm}
+\vspace{-5pt}
+
+\begin{thm}[Intermediate Value Theorem]{thm:intermediate-value}{4.2.5}
+Let $I$ be a non-degenerate interval and let $f:I\to\R$ be a continuous function. If $a,b\in I,\,a<b$, then on the interval $(a,b)$, $f$ attains all values between $f(a)$ and $f(b)$. i.e. given $y_{0}$ between $f(a)$ and $f(b)$, there exists $x_{0}\in(a,b)$ such that $f(x_{0}) = y_{0}$
+\end{thm}
+\vspace{-5pt}
+
+\begin{thm}[Bolzano's Theorem]{thm:bolzano}{4.2.6}
+Let $f(x)$ be continuous on $[a,b]$ such that $f(a)f(b) < 0$, then there exists $c\in (a,b)$ such that $f(c)$ = 0
+\end{thm}
+\vspace{-5pt}
+
+\begin{thm}[$\epsilon-\delta$ definition of a limit]{thm:e-d-limit}{4.3.1}
+    Let $f:A\to\R$ and let $c$ be a limit point of $A$. Then we say that
+    \[\displaystyle\lim_{x \to c} f(x) = L\]
+    if for all $\epsilon>0$ there exists some $\delta>0$ such that for every $x\in A$ for which $0<\lvert x-c \rvert<\delta$, we have
+    \[\lvert f(x)-L \rvert<\epsilon \]
+    We also say $\displaystyle\lim_{x \to c}f(x)$ \textbf{converges} to L in such a situation
+\end{thm}
+\vspace{-5pt}
+
+% TODO: some more interval theorems that could be added
+
+\subsection*{Differentiation}
+\begin{dfn}[First Principle Differentiation]{def:first-principles}{5.1.1}
+A real function $f$ is said to be differentiable at a point $a\in \R$ if $f$ is defined at some open interval containing $a$, and
+\[f'(a) = \lim_{x\to a} \frac{f(x) - f(a)}{x - a}\]
+exists. $f'(a)$ is called the derivative of $f$ at the point $a$
+\end{dfn}
+\vspace{-5pt}
+
+% \begin{dfn}[Tangent to a graph]{def:tangent-diff}{5.1.?}
+%     If $f$ is differentiable at $x_{0}$ then the straight line given by
+%     \[y=f(x_{0}) + f'(x_{0})(x-x_{0})\]
+%     is called the tangent to the graph of $f$ at $(x_{0},f(x_{0}))$.
+% \end{dfn}
+% \vspace{-5pt}
+
+\begin{thm}[Differentiable implies Continuous]{thm:diff-to-conti}{5.1.3}
+    Let $I$ be an open interval, $x_{0}\in I$ and $f:I\to \R$ be differentiable at $x_{0}$. Then $f$ is continuous at $x_{0}$. The converse is not true, an example is $f(x)=\lvert x\rvert $ which isn't differentiable at $0$.
+\end{thm}
+\vspace{-5pt}
+
+\begin{thm}[Differentiable Intervals]{thm:diff-intervals}{5.1.4}
+    Let $f:I\to \R$ be a given fucntion, where $I$ is an open interval. We say that $f$ is differentiable in $I$ iff it is differentiable at every point in $I$.
+    At endpoints, derivatives only have to be one-sided
+\end{thm}
+\vspace{-5pt}
+
+\begin{thm}[Differentiation Rules]{thm:diff-rules}{5.2.1}
+    Let $f,g:(a,b)\to \R$ be differentiable on $(a,b)$. Then $f+g$ and $f\cdot g$ are differentiable on $(a,b)$. If $g(x)\ne 0$ for all $x \in (a,b)$, then $f/g$ is differentiable. Moreover,
+    \vspace{-5pt}
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item \textbf{Sum rule:} $(f+g)' = f' + g'$
+        \item \textbf{Product Rule:} $(fg)'=f'g + fg'$
+        \item \textbf{Quotient Rule:} $\left(f / g\right)' =(f'g - fg') /g^{2}$
+    \end{itemize}
+\end{thm}
+\vspace{-5pt}
+
+\begin{thm}[Inverse Function Theorem]{thm:invs-func}{5.4.6}
+    Let $f$ be injective and continuous on an open interval $I$. If $a\in f(I)$ and $f'$ at the point $f^{-1}(a)\ne 0$ exists and is nonzero, then $f^{-1}$ is differentiable at $a$ and
+    \[(f^{-1})'(a)= \frac{1}{f'(f^{-1}(a))}\]
+\end{thm}
+\vspace{-5pt}
+
+
+% \subsection*{The progressively more generalised Theorem ladder}
+
+\begin{thm}[Chain Rule]{thm:chain-rule}{5.2.2}
+    Let $f,\,g$ be real functions. If $f$ is differentiable at $a$ and $g$ is differentiable at $f(a)$ then $g\circ f$ is differentiable at $a$ and
+    \[(g\circ f)'(a) = g'(f(a))f'(a)\]
+\end{thm}
+\vspace{-8pt}
+
+\begin{thm}[Differentiation Theorem ladder]{thm:rolles}{5.3.1 - 3}
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item \textbf{Rolle's Theorem:} Let $a,b\in \R,\,a<b$. If $f:[a,b] \to \R$ is continuous in $[a,b]$, differentiable in $(a,b)$ and $f(a)=f(b)$, then there exists a point $c$ in $(a,b)$ such that $f'(c)=0$
+        \item \textbf{Mean Value Theorem:} If $f:[a,b]\to\R$, $a<b$ is continuous in $[a,b]$, differentiable in $(a,b)$ then $\exists c\in (a,b)$ s.t.
+        \[f'(c)=\frac{f(b)-f(a)}{b-a}\]
+        \item \textbf{Generalised MVT:} If $f,g:[a,b]\to\R$ is continuous in $[a,b]$ and differentiable in $(a,b)$, then $\exists c$ in $(a,b)$ such that
+        \[(f(b)-f(a))g'(c)=(g(b)-g(a))f'(c)\]
+        If $g(b)-g(a),\,g'(c)\ne 0$ then this can be written as
+        \[\frac{f(b)-f(a)}{g(b)-g(a)}= \frac{f'(c)}{g'(c)}\]
+    \end{itemize}
+    
+\end{thm}
+\vspace{-8pt}
+
+\begin{thm}[Monotone Functions]{thm:monotone-functions}{5.4.2}
+Let $a<b$ be real and $f$ be continuous on $[a,b]$ and differentiable on $(a,b)$.
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item If $f'(x) > 0\,\, \forall x\in (a,b)$, then $f$ is strictly increasing on $[a,b]$
+    \item If $f'(x) < 0\,\, \forall x\in (a,b)$, then $f$ is strictly decreasing on $[a,b]$
+    \item If $f'(x) = 0\,\, \forall x\in(a,b)$, then $f$ is constant on $[a,b]$
+\end{itemize}
+Additionally, if $f$ is injective and continuous on an interval $I$, Then $f$ and $f^{-1}$ is strictly monotone on $I$ and $f(I)$ respectively
+\end{thm}
+\vspace{-8pt}
+
+\begin{thm}[Taylor's Formula with Remainder]{thm:taylor-remainder}{5.5.1}
+    Let $f:I\to\R$ be $n+1$ times differentiable and $x_{0}\in I$, $I$ open interal. For every $x \in I$, there is a $c$ between $x_{0}$ and $x$ such that
+    \[f(x)=\sum_{k=0}^{n} \frac{f^{(k)}(x_{0})}{k!} (x-x_{0})^k + \frac{f^{(n+1)}(c)}{(n+1)!}(x-x_{0})^{n+1}\]
+    (c depends on $x$ and $n$)
+    \vspace{0pt}\newline
+    Now suppose that $f:(a,b)\to\R$ is infinitely differentiable and let $x_{0}\in (a,b)$. Fix $x$ in $(a,b)$. For every positive integer $N$ we have
+    \[f(x)=\sum_{k=0}^{N} \frac{f^{(k)}(x_{0})}{k!}(x-x_{0})^{k} + R_{N}(x)\]
+    If $R_{N}(x) \to 0$ as $n\to\infty$, we have
+    \[f(x) = \sum_{k=0}^{\infty} \frac{f^{(k)}(x_{0})}{k!}(x-x_{0})^{k}\]
+\end{thm}
+\vspace{-5pt}
+Made by Leon
+\newpage
 
 \lipsum[1-12]
 \end{multicols}
