@@ -837,9 +837,25 @@ The set of all symmetries of $\{1,\, 2,\,\dots,\,n\}$ is called the \textbf{symm
 \vspace{-5pt}
 
 \begin{xmp}[$\epsilon-\delta$ Continuity]{ex:e-d-continuity}{a}
-\textit{Using the expansion $(x-y)^{3} = (x-y)(x^{2}+ax+a^{2})$, Show that the function $f(x) = x^{3}$ is continuous}
+\textit{Using the expansion $(x-y)^{3} = (x-y)(x^{2}+ax+a^{2})$, show that the function $f(x) = x^{3}$ is continuous}
 \vspace{0pt}\newline
-Using the definition of continuity, we want to find a delta $\delta> 0$ s.t. $\forall 0 < \lvert x - a\rvert < \delta$, we have $\lvert f(x) - f(a)\rvert < \epsilon$
+Using the definition of continuity, we wcnt to find a $\delta$ such that for all $\epsilon> 0$, all $x\in\R$ where $0 < \lvert x-c\rvert  < \delta$ results in $\lvert f(x) - f(a)\rvert < \epsilon$
+\vspace{0pt}\newline
+Rough work: stcrt off with $\lvert f(x)-f(a)\rvert$
+\[\begin{aligned}
+    \lvert f(x) - f(c)\rvert &< \epsilon\\
+    \lvert x^{3} - c^{3} \rvert &< \epsilon\\
+    \lvert x-c\rvert \lvert x^{2}+ax+a^{2}\rvert &< \epsilon 
+\end{aligned}\]
+If we let $\delta < 1$, then using the triangle inequality,
+\[\lvert x - c\rvert < 1 \quad \implies \lvert x\rvert < 1 + \lvert a\rvert \]
+Now we ccn substitute this back into the equation:
+\[\begin{aligned}
+    \lvert x-c\rvert \lvert x^{2}+ax+a^{2}\rvert &< \lvert x-a\rvert \left( \lvert x \rvert^{2} + \lvert c\rvert \lvert x\rvert +\lvert c\rvert^{2} \right)\\
+    &<\lvert x-c\rvert (\lvert 1 + \lvert a\rvert \rvert^{2} + \lvert c\rvert \lvert 1 + c\rvert + c^{2} ) < \epsilon
+\end{aligned}\]
+Therefore, $\lvert x-c\rvert < \displaystyle \frac{\epsilon}{\lvert 1 + \lvert a\rvert \rvert^{2} + \lvert c\rvert \lvert 1 + c\rvert + c^{2}} = \delta$?
+idk
 \end{xmp}
 \vspace{-5pt}
 
