@@ -618,13 +618,13 @@ Let $(x_{n})$ be a sequence of real numbers.
 \vspace{-5pt}
 
 \begin{thm}[$\epsilon-\delta$ Definition of Continuity]{thm:e-d-continuity}{4.1.6}
-    A function $f$ is continuous if for all $\epsilon>0$, there exists some $\delta>0$ such that for all $x \in A$ for which $0<\lvert x-c \rvert <\delta$, we have 
-    \[\lvert f(x)-f(a) \rvert < \epsilon\]
+    A function $f:A\to\R$ is continuous if for all $\epsilon>0$, there exists some $\delta>0$ s.t. for all $x \in A$ for which $0<\lvert x-c \rvert <\delta$, we have 
+    \[\lvert f(x)-f(c) \rvert < \epsilon\]
 \end{thm}
 \vspace{-5pt}
 
 \begin{thm}[Evil $\epsilon-\delta$ definition of continuity]{thm:negated-e-d-continuty}{6.1.4}
-    A function $f$ is not continuous if there exists $\epsilon>0$ such that for all $\delta>0$ there exists some $x \in A$ satisfying $0<\lvert x-c \rvert<\delta$ for which $\lvert  f(x)-f(a) \rvert\ge \epsilon$
+    A function $f:A\to\R$ is not continuous if there exists $\epsilon>0$ such that for all $\delta>0$ there exists some $x \in A$ satisfying $0<\lvert x-c \rvert<\delta$ for which $\lvert  f(x)-f(c) \rvert\ge \epsilon$
 \end{thm}
 \vspace{-5pt}
 
@@ -737,7 +737,6 @@ exists. $f'(a)$ is called the derivative of $f$ at the point $a$
         If $g(b)-g(a),\,g'(c)\ne 0$ then this can be written as
         \[\frac{f(b)-f(a)}{g(b)-g(a)}= \frac{f'(c)}{g'(c)}\]
     \end{itemize}
-    
 \end{thm}
 \vspace{-8pt}
 
@@ -755,7 +754,7 @@ Additionally, if $f$ is injective and continuous on an interval $I$, Then $f$ an
 \vspace{-8pt}
 
 \begin{thm}[Taylor Series]{thm:taylor-remainder}{5.5.1}
-    Let $f:I\to\R$ be $n+1$ times differentiable and $x_{0}\in I$, $I$ open interal. For every $x \in I$, there is a $c$ between $x_{0}$ and $x$ such that
+    Let $f:I\to\R$ be $n+1$ times differentiable and $x_{0}\in I$, for an open interval $I$. For each $x \in I$, there is a $c$ between $x_{0}$ and $x$ such that
     \[f(x)=\sum_{k=0}^{n} \frac{f^{(k)}(x_{0})}{k!} (x-x_{0})^k + \frac{f^{(n+1)}(c)}{(n+1)!}(x-x_{0})^{n+1}\]
     (c depends on $x$ and $n$)
     \vspace{0pt}\newline
@@ -764,7 +763,7 @@ Additionally, if $f$ is injective and continuous on an interval $I$, Then $f$ an
     If $R_{N}(x) \to 0$ as $n\to\infty$, we have
     \[f(x) = \sum_{k=0}^{\infty} \frac{f^{(k)}(x_{0})}{k!}(x-x_{0})^{k}\]
 \end{thm}
-\vspace{-5pt}
+\vspace{-8pt}
 Made by Leon
 \newpage
 
@@ -792,6 +791,13 @@ From this, we see that
 The set of all symmetries of $\{1,\, 2,\,\dots,\,n\}$ is called the \textbf{symmetric group} $S_{n}$. It is a group under composition with order $\lvert S_{n}  \rvert = n!$ The symmetric group can be thought of as every permutation of the set $\{1,\, 2,\,\dots,\,n\}$, or can also be thought of as an $n$-gon where every edge is connected to each other. 
 \end{xmp}
 \vspace{-5pt}
+
+% examples of abelian group
+% cyclic group
+
+[0,1) 
+{a in Q | 0 < a < sqrt2}
+
 
 \begin{xmp}[Example of a Coset]{ex:coset-example}{?}
     Consider $\Z_{4}$ under addition, and let $H=\{0,2\}$ ($e=0$.) The cosets of $H$ in $G$ are:
@@ -827,6 +833,13 @@ The set of all symmetries of $\{1,\, 2,\,\dots,\,n\}$ is called the \textbf{symm
     \vspace{0pt}\newline 
     \textbf{Proof:} let $\epsilon>0$. Pick a positive integer $N$ such that $N>\frac{11}{9\epsilon}$. Then $\frac{11}{9N} < \epsilon$. For all $n$ with $n\ge N$, we have
     $$\lvert a_{n}-L \rvert = \left\lvert  \frac{2n+5}{3n+2} - \frac{2}{3}  \right\rvert =\frac{11}{9n+6} \le \frac{11}{9n} \le \frac{11}{9N}<\epsilon$$
+\end{xmp}
+\vspace{-5pt}
+
+\begin{xmp}[$\epsilon-\delta$ Continuity]{ex:e-d-continuity}{a}
+\textit{Using the expansion $(x-y)^{3} = (x-y)(x^{2}+ax+a^{2})$, Show that the function $f(x) = x^{3}$ is continuous}
+\vspace{0pt}\newline
+Using the definition of continuity, we want to find a delta $\delta> 0$ s.t. $\forall 0 < \lvert x - a\rvert < \delta$, we have $\lvert f(x) - f(a)\rvert < \epsilon$
 \end{xmp}
 \vspace{-5pt}
 
