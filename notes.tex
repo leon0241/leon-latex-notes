@@ -768,6 +768,68 @@ Additionally, if $f$ is injective and continuous on an interval $I$, Then $f$ an
 Made by Leon
 \newpage
 
+\section{Examples Catalogue}
+
+\subsection*{Geometric Examples of a Group}
+
+\begin{xmp}[Dihedral Group $D_{n}$]{ex:dihedral}{1.2.4}
+The set of symmetries of an $n$-gon forms a group under composition. We call this group the \textbf{Dihedral Group} $D_{n}$
+\vspace{0pt}\newline
+The Dihedral group of $n$ has precisely $\lvert D_{n} \rvert = 2n$ elements, namely
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item The identity $e$
+    \item $n- 1$ anticlockwise rotations of $\frac{2pi}{n}$. We denote this operation with $g$
+    \item $n$ reflections. If $n$ is odd, then there are $n$ reflections from a point to the opposite edge. If $n$ is even, there are $\frac{n}{2}$ reflections from point to point, and $\frac{n}{2}$ from edge to edge. We denote a vertical reflection with $h$, and rotated reflections as compositions of $h$ and $g$ 
+\end{itemize}
+From this, we see that
+\[D_{n} = \{e,\,g,\,g^{2},\,\dots,\,g^{n-1},\, h,\, gh,\, g^{2}h,\,\,\dots,\, g^{n-1}h \}\]
+\end{xmp}
+\vspace{-5pt}
+
+\begin{xmp}[Symmetric Group]{ex:symmetric-group}{1.3.2}
+The set of all symmetries of $\{1,\, 2,\,\dots,\,n\}$ is called the \textbf{symmetric group} $S_{n}$. It is a group under composition with order $\lvert S_{n}  \rvert = n!$ The symmetric group can be thought of as every permutation of the set $\{1,\, 2,\,\dots,\,n\}$, or can also be thought of as an $n$-gon where every edge is connected to each other. 
+\end{xmp}
+\vspace{-5pt}
+
+\begin{xmp}[Example of a Coset]{ex:coset-example}{?}
+    Consider $\Z_{4}$ under addition, and let $H=\{0,2\}$ ($e=0$.) The cosets of $H$ in $G$ are:
+    \begin{align}
+    eH = e * H = \{e * h\,|\,h\in H\} = \{0+h\,|\, h\in H\} = \{0,2\} \\
+    1H = 1 * H = \{1 * h\,|\,h\in H\} = \{1+h\,|\, h\in H\} = \{1,3\} \\
+    2H = 2 * H = \{2 * h\,|\,h\in H\} = \{2+h\,|\, h\in H\} = \{0,2\} \\
+    3H = 3 * H = \{3 * h\,|\,h\in H\} = \{3+h\,|\, h\in H\} = \{1,3\}
+    \end{align}
+    Hence there are two cosets, namely
+    \[0 * H=2 * H=\{0,2\} \quad\text{and}\quad 1 * H=3 * H=\{1,3\}\]
+    The above shows that $g_{1}H=g_{2}H$ is possible, even when $g_{1}\ne g_{2}$
+    We also have
+    \[G/H=\{eH=2H,1H=3H\} = \{\{0,2\}, \{1,3\}\}\]
+\end{xmp}
+\vspace{-5pt}
+
+
+\begin{xmp}[$\epsilon$-N Convergence]{ex:e-n-convergence}{10000}
+    \textit{Show that the sequence $\left( \frac{2n+1}{3n+2} \right)_{n\in\mathbb{N}}$ converges to $\frac{2}{3}$}
+    \vspace{0pt}\newline
+    We start with the rough work. Start with an arbitrary $\epsilon>0$ and find an $N_{\epsilon}$ s.t. $\left\lvert  \frac{2n+1}{3n+2} -\frac{2}{3}  \right\rvert < \epsilon$ for all $n>N_{\epsilon}$. Let's explore this.
+    \[\left\lvert  \frac{2n+1}{3n+2}-\frac{2}{3}  \right\rvert =\frac{11}{3(3n+2)} < \epsilon\quad\implies \quad n> \frac{1}{3}\left( \frac{11}{3\epsilon} -2\right)\]
+    \textbf{Proof:} Let $\epsilon>0$. Pick a positive integer $N$ such that
+    \[N>\frac{1}{3}\left( \frac{11}{3\epsilon}-2 \right)\]
+    Then,
+    \[\frac{11}{3(3N+2)} < \epsilon\]
+    For all $n$ with $n\ge N$ we have 
+    \[\lvert a_{n}-L \rvert = \left\lvert  \frac{2n+5}{3n+2} - \frac{2}{3}  \right\rvert =\frac{11}{3(3n+2)} \le \frac{11}{3(3N+2)}<\epsilon\]
+    another method of finding a limit is,
+    $$\left\lvert  \frac{2n+1}{3n+2}-\frac{2}{3}  \right\rvert =\frac{11}{3(3n+2)} = \frac{11}{9n+6} < \frac{11}{9n}< \epsilon$$
+    Since $9n+6>9n$, this means that the right fraction is larger than the left fraction in all cases. This means if we can find a right fraction that is smaller than $\epsilon$ then the left fraction must also.
+    \vspace{0pt}\newline 
+    \textbf{Proof:} let $\epsilon>0$. Pick a positive integer $N$ such that $N>\frac{11}{9\epsilon}$. Then $\frac{11}{9N} < \epsilon$. For all $n$ with $n\ge N$, we have
+    $$\lvert a_{n}-L \rvert = \left\lvert  \frac{2n+5}{3n+2} - \frac{2}{3}  \right\rvert =\frac{11}{9n+6} \le \frac{11}{9n} \le \frac{11}{9N}<\epsilon$$
+\end{xmp}
+\vspace{-5pt}
+
 \lipsum[1-12]
 \end{multicols}
 
