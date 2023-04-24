@@ -592,9 +592,11 @@ Let $(x_{n})$ be a sequence of real numbers.
     \vspace{-5pt}
 
     \item \textbf{Alternating Series Test:} Let $(b_n)_{n\in\N}$ be a \textit{decreasing} sequence of non-negative real numbers that converges to zero. Then the series $\sum_{n=1}^{\infty} (-1)^{n-1}b_n$ converges.
+    
     \item \textbf{Monotone Convergence Theorem:} If a sequence of real numbers $(s_{n})$ is increasing and bounded above, or decreasing and bounded below, then $(s_{n})$ is convergent (and converges to the supremum/infinum of the set $\{x_{n}\,\vert\,n\in\N\}$ respectively).
+    
     \item \textbf{Geometric Series Test:} Assume $a,\,r\in\R, a,\,r\ne 0$. Then
-    \[\displaystyle\sum_{n=1}^{\infty} a\cdot r^k = \begin{cases}
+    \[\displaystyle\sum_{n=1}^{\infty} a\cdot r^n = \begin{cases}
     \dfrac{a}{1-r} &\text{if } \lvert r \rvert < 1 \\
     \text{diverges} &\text{if } \lvert r \rvert \ge 1
     \end{cases}
@@ -609,7 +611,7 @@ Let $(x_{n})$ be a sequence of real numbers.
 
 \subsection*{Continuity and Functional Limits}
 
-\begin{dfn}[Continuity]{def:continuity-def}{3.1.1}
+\begin{dfn}[Continuity]{def:continuity-def}{4.1.1}
     Let $f$ be a real-valued function whose domain is a subset of $\R$. The function $f$ is \textbf{continuous} at $x_{0}$ in $\dom{(f)}$ if, for every sequence $(x_{n})$ in $\dom{(f)}$ converging to $x_{0}$, we have 
     \[\displaystyle\lim_{ n \to \infty }f(x_{n})=f(a)\]
     If $f$ is continuous at each $a\in S \subseteq \dom{(f)}$ and then we say that $f$ is continuous on $S$. If $f$ is continuous on $\dom{(f)}$ then we say that $f$ is continuous
@@ -754,7 +756,7 @@ Additionally, if $f$ is injective and continuous on an interval $I$, Then $f$ an
 \vspace{-8pt}
 
 \begin{thm}[Taylor Series]{thm:taylor-remainder}{5.5.1}
-    Let $f:I\to\R$ be $n+1$ times differentiable and $x_{0}\in I$, $I$ open interal. For every $x \in I$, there is a $c$ between $x_{0}$ and $x$ such that
+    Let $f:I\to\R$ be $n+1$ times differentiable and $x_{0}\in I$, $I$ open interval. For every $x \in I$, there is a $c$ between $x_{0}$ and $x$ such that
     \[f(x)=\sum_{k=0}^{n} \frac{f^{(k)}(x_{0})}{k!} (x-x_{0})^k + \frac{f^{(n+1)}(c)}{(n+1)!}(x-x_{0})^{n+1}\]
     (c depends on $x$ and $n$)
     \vspace{0pt}\newline
