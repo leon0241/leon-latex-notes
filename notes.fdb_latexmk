@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1682365272 "m:/Documents/GitHub/leon-latex-notes/notes.tex" "m:/Documents/GitHub/leon-latex-notes/notes.pdf" "notes" 1682365275
+["pdflatex"] 1682367703 "m:/Documents/GitHub/leon-latex-notes/notes.tex" "m:/Documents/GitHub/leon-latex-notes/notes.pdf" "notes" 1682367707
   "c:/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1630969921 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1630969654 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1630969654 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -155,16 +155,16 @@
   "c:/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1630970858 2724547 4628aabafbe8e2935de61e52bf49d7cd ""
   "c:/texlive/2021/texmf.cnf" 1630970725 713 e69b156964470283e0530f5060668171 ""
   "extarticle.cls" 1682199072 20602 3112294ba237d94ce4a1502cfef3594f ""
-  "m:/Documents/GitHub/leon-latex-notes/notes.aux" 1682365275 6262 2ed349c7268f0376ed6bb73c5aba3fd6 ""
-  "m:/Documents/GitHub/leon-latex-notes/notes.tex" 1682365268 41205 6680b34e29ba4c04b79e6b5bf49c45f5 ""
-  "notes.aux" 1682365275 6262 2ed349c7268f0376ed6bb73c5aba3fd6 "pdflatex"
-  "notes.tex" 1682365268 41205 6680b34e29ba4c04b79e6b5bf49c45f5 ""
+  "m:/Documents/GitHub/leon-latex-notes/notes.aux" 1682367707 6261 69d84ffff617347e5fea431c53085e62 ""
+  "m:/Documents/GitHub/leon-latex-notes/notes.tex" 1682367703 42168 d5be3c1147f2320f3ed3c8bb32930230 ""
+  "notes.aux" 1682367707 6261 69d84ffff617347e5fea431c53085e62 "pdflatex"
+  "notes.tex" 1682367703 42168 d5be3c1147f2320f3ed3c8bb32930230 ""
   "preamble.sty" 1682198165 190 0a5f1af1699b23308b20c88bda958849 ""
   "size8.clo" 1682199794 6172 5062a8faf7cb200267aa33f36102c207 ""
   "thmboxes.sty" 1682357940 4809 7460a63a2d23e0a7e6e9c048c5130350 ""
   (generated)
+  "m:/Documents/GitHub/leon-latex-notes/notes.pdf"
   "notes.aux"
   "notes.log"
-  "m:/Documents/GitHub/leon-latex-notes/notes.pdf"
-  "m:/Documents/GitHub/leon-latex-notes/notes.log"
   "notes.pdf"
+  "m:/Documents/GitHub/leon-latex-notes/notes.log"
