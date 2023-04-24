@@ -82,8 +82,8 @@ A function $f:X\to Y$ is called
         \setlength\itemsep{0em}
         \item \textbf{G1 - Closure:} $\ast$ is a binary operation on G, that is $a\ast b \in G$ for all $a,b\in G$.
         \item \textbf{G2 - Associativity:} $(a\ast b) \ast c =a\ast(b\ast c)$ for all $a,b,c\in G$
-        \item \textbf{G3 - Identity:} There exists an \textit{identity} element of $G$ such that $e\ast g = g\ast e = e$ for all $g\in G$.
-        \item \textbf{G4 - Inverse:} Every element $g\in G$ has an *inverse* $g^{-1}$ such that $g\ast g^{-1}=g^{-1}\ast g = e$
+        \item \textbf{G3 - Identity:} There exists an \textit{identity} element of $G$ such that $e\ast g = g\ast e = g$ for all $g\in G$.
+        \item \textbf{G4 - Inverse:} Every element $g\in G$ has an \textit{inverse} $g^{-1}$ such that $g\ast g^{-1}=g^{-1}\ast g = e$
     \end{itemize}
 \end{dfn}
 \vspace{-5pt}
@@ -214,7 +214,7 @@ A function $f:X\to Y$ is called
 \newpage
 
 % -------------------------------------
-% ==================================\equiv
+% =====================================
 % -------------------------------------
 
 \begin{thm}[Coset Rules]{thm:coset-rules}{2.3.8}
@@ -228,7 +228,7 @@ Let $H\le G$
     \begin{itemize}
         \setlength\itemsep{0em}
         \item $g_{1}H = g_{2}H$
-        \item there exists $h\in H$ such that $g_{2} = g_{1}H$
+        \item there exists $h\in H$ such that $g_{2} = g_{1}h$
         \item $g_{2}\in g_{1}H$
     \end{itemize}
     \item For $g_{1},\,g_{2}\in G$, define $g_{1}\sim g_{2}$ if and only if $g_{1}H=g_{2}H$. Then $\sim$ defines an equivalence relation on $G$.
@@ -327,14 +327,14 @@ Let $H,K\le G$ be finite subgroups of a group $G$ such that $H\cup K = \{e\}$ Th
     Let $(G,*)$ be a group, and let $X$ be a nonempty set. Then a (left) \textbf{action} of $G$ on $X$ is a map
     \[G\times X\to X\]
     written $(g,x)\mapsto g\cdot x$, such that
-    \[g_{1}\cdot(g_{2}\cdot x) = (g*h) \cdot x \qquad \text{and} \qquad e\cdot x = x \]
+    \[g_{1}\cdot(g_{2}\cdot x) = (g_{1} * g_{2}) \cdot x \qquad \text{and} \qquad e\cdot x = x \]
     for all $g_{1},g_{2}\in G$ and all $x\in X$.
 \end{dfn}
 \vspace{-5pt}
 
 \begin{dfn}[Kernel of an Action, Faithful Action]{def:action-kernel-faith}{4.1.4}
-Suppsoe that $G$ acts on $X$. Then the set
-\[N := \{g\in G\mid g\cdot x=x \\forall x\in X\}\]
+Suppose that $G$ acts on $X$. Then the set
+\[N := \{g\in G\mid g\cdot x=x \forall x\in X\}\]
 is a subgroup of $G$, and is called the \textbf{kernel} of the action. If $N = \{e\}$, then we say the action is \textbf{faithful}
 \end{dfn}
 \vspace{-5pt}
@@ -484,15 +484,8 @@ Let $(x_{n})$ be a sequence of real numbers.
 \renewcommand\labelitemi{\tiny$\bullet$}
 \begin{itemize}
     \setlength\itemsep{0em}
-    \item \textbf{Squeeze Theorem:} Suppose that $(x_{n})$, $(y_{n})$, and $(w_{n})$ are real sequences
-    \vspace{-5pt}
-    \renewcommand\labelitemi{\tiny$\bullet$}
-    \begin{itemize}
-        \setlength\itemsep{0em}
-        \item If both $x_{n}\to a$ and $y_{n} \to a$ as $n\to\infty$, and if $x_{n}\le w_{n}\le y_{n}$ for all $n\ge N_{0}$, then $w_{n}\to a$ as $n\to\infty$
-        \item If $x_{n}\to 0$ and $(y_{n})$ is bounded, $x_{n}y_{n}\to_{0}$ as $n\to\infty$
-    \end{itemize}
     \item Let $E\subset \R$. If $E$ has a finite supremum then there is a sequence $(x_{n})$ with each $x_{n}\in E$ such that $x_{n}\to \sup E$ as $n\to \infty$. The same goes for a finite infimum
+    \item \textbf{Comparison Theorem for sequences:} Suppose that $(x_{n})$, $(y_{n})$ are real sequences. If both $\lim_{n\to \infty} x_{n}$, $\lim_{y\to \infty} y_{n}$ exist and belong to $\R*$, and if $x_{n}\le y_{n}$ for all $n\ge N$ for some $N\in \N$, then $\lim_{n\to \infty} x_{n} \le \lim_{n\to \infty} y_{n}$
 \end{itemize}
 \end{rem}
 \vspace{-5pt}
@@ -511,31 +504,43 @@ Let $(x_{n})$ be a sequence of real numbers.
 
 %TODO: maybe include definition of convergence for limits
 
-\begin{thm}[Top 10 Series Limit Theorems]{thm:limit-theorems}{lots}
+\begin{thm}[Top 10 Limit Theorems]{thm:limit-theorems}{lots}
 \renewcommand\labelitemi{\tiny$\bullet$}
 \begin{itemize}
     \setlength\itemsep{0em}
-    \item \textbf{Divergence Test}
+    
+    \item \textbf{Squeeze Theorem (for sequences):} Suppose that $(x_{n})$, $(y_{n})$, and $(w_{n})$ are real sequences
     \vspace{-5pt}
     \renewcommand\labelitemi{\tiny$\bullet$}
     \begin{itemize}
         \setlength\itemsep{0em}
-        \item If $(a_n)_{n\in\N}$ converges, then $a_n\to0$.
+        \item If both $x_{n}\to a$ and $y_{n} \to a$ as $n\to\infty$, and if $x_{n}\le w_{n}\le y_{n}$ for all $n\ge N_{0}$, then $w_{n}\to a$ as $n\to\infty$
+        \item If $x_{n}\to 0$ and $(y_{n})$ is bounded, $x_{n}y_{n}\to_{0}$ as $n\to\infty$
+    \end{itemize}
+    \vspace{-5pt}
+    
+    \item \textbf{Divergence Test:}
+    \vspace{-5pt}
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item If $\sum^{\infty}_{n=1} a_n$ converges, then $a_n\to0$.
         \item If $(a_n)_{n\in\N}$ doesn't converge to $0$, then $\sum_{n=1}^{\infty} a_n$ diverges. Be careful that the converse isn't true.
     \end{itemize}
-    \vspace{-1pt}
-
-    \item \textbf{Bounded Theorem: } Let $(a_{n})_{n\in \N}$ be a sequence with non-negative terms. The following are equivalent:
-    \renewcommand\labelitemi{\tiny$\bullet$}
     \vspace{-5pt}
-    \begin{itemize}
-        \setlength\itemsep{0em}
-        \item The series $\sum_{n=1}^{\infty} a_{n}$ converges
-        \item The sequence $(S_{n})_{n\in \N}$ of partial sums is bounded above
-    \end{itemize}
-    \vspace{-1pt}
-
-    \item \textbf{Comparison Test: } Let $(a_n)_{n\in\N}$ and $(b_n)_{n\in\N}$ be two sequences such that $0\leq a_n\leq b_n$ for all n.
+    
+    % \item \textbf{Bounded Theorem:} Let $(a_{n})_{n\in \N}$ be a sequence with non-negative terms. The following are equivalent:
+    % \renewcommand\labelitemi{\tiny$\bullet$}
+    % \vspace{-5pt}
+    % \begin{itemize}
+    %     \setlength\itemsep{0em}
+    %     \item The series $\sum_{n=1}^{\infty} a_{n}$ converges
+    %     \item The sequence $(s_{n})_{n\in \N}$ of partial sums is bounded above
+    % \end{itemize}
+    % \vspace{-1pt}
+    
+    
+    \item \textbf{Comparison Test:} Let $(a_n)_{n\in\N}$ and $(b_n)_{n\in\N}$ be two sequences such that $0\leq a_n\leq b_n$ for all n.
     \renewcommand\labelitemi{\tiny$\bullet$}
     \vspace{-5pt}
     \begin{itemize}
@@ -543,9 +548,18 @@ Let $(x_{n})$ be a sequence of real numbers.
         \item If $\sum_n b_n$ converges, then $\sum_n a_n$ converges as well.
         \item If $\sum_n a_n$ diverges, then $\sum_n b_n$ diverges as well.
     \end{itemize}
-    \vspace{-1pt}
+    \vspace{-5pt}
 
-    \item \textbf{Limit Comparison Test:} Let $(a_n)_{n\in\N}$ and $(b_n)_{n\in\N}$ be two real sequences with $a_n\geq0$ and $b_n\geq0$ for all n. Assume that $a_n / b_n \to L$ for some $L\in(0,\infty)$. Then, $\sum_{n=1}^{\infty}  a_n$ converges iff $\sum_{n=1}^{\infty}  b_n$ converges. 
+    \item \textbf{Limit Comparison Test:} Let $(a_n)_{n\in\N}$ and $(b_n)_{n\in\N}$ be two real sequences with $a_n\geq0$ and $b_n > 0$ for all n. Assume that $a_n / b_n \to L$ for some $L\in(0,\infty)$. Then, $\sum_{n=1}^{\infty}  a_n$ converges iff $\sum_{n=1}^{\infty}  b_n$ converges. 
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \vspace{-5pt}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item If $L=0$ and $\sum_{n=1}^{\infty}b_{n}$ converges then $\sum_{n=1}^{\infty} a_{n}$ converges
+        \item If $L=\infty$ and $\sum_{n=1}^{\infty}a_{n}$ diverges then $\sum_{n=1}^{\infty} b_{n}$ diverges
+    \end{itemize}
+    \vspace{-5pt}
+    
     \item \textbf{Root Test:} Let $\sum_{n=0}^{\infty} a_n$ be a series with non-negative terms such that $\sqrt[n]{a_n} \to L$ where $0 \le L \le +\infty$.
     \renewcommand\labelitemi{\tiny$\bullet$}
     \vspace{-5pt}
@@ -555,7 +569,7 @@ Let $(x_{n})$ be a sequence of real numbers.
         \item If $L > 1$ then the series $\sum_{n=0}^{\infty}  a_n$ diverges.
         \item If $L = 1$, the series may or may not converge
     \end{itemize}
-    \vspace{-1pt}
+    \vspace{-5pt}
 
     \item \textbf{Ratio Test:} Let $\sum_{n=0}^{\infty}  a_n$ be a series with positive terms such that $(a_{n+1}) / (a_n) \to L$, where $0\le L \le +\infty$.
     \renewcommand\labelitemi{\tiny$\bullet$}
@@ -566,7 +580,7 @@ Let $(x_{n})$ be a sequence of real numbers.
         \item If $L > 1$ then the series $\sum_{n=0}^{\infty}  a_n$ diverges.
         \item If $L = 1$ then compare to $p$ series
     \end{itemize}
-    \vspace{-1pt}
+    \vspace{-5pt}
 
     \item \textbf{Cauchy's Condensation Test:} Let $(a_n)_{n\in\N}$ be a decreasing sequence with non-negative terms. Then the following are equivalent:
     \vspace{-5pt}
@@ -576,7 +590,7 @@ Let $(x_{n})$ be a sequence of real numbers.
         \item The series $\sum_{n=1}^{\infty}  a_n$ converges
         \item The series $\sum_{n=0}^{\infty}  2^na_{2^n}$ converges.
     \end{itemize}
-    \vspace{-1pt}
+    \vspace{-5pt}
 
     \item \textbf{Alternating Series Test:} Let $(b_n)_{n\in\N}$ be a \textit{decreasing} sequence of non-negative real numbers that converges to zero. Then the series $\sum_{n=1}^{\infty} (-1)^{n-1}b_n$ converges.
     \item \textbf{Monotone Convergence Theorem:} If a sequence of real numbers $(s_{n})$ is increasing and bounded above, or decreasing and bounded below, then $(s_{n})$ is convergent (and converges to the supremum/infinum of the set $\{x_{n}\,\vert\,n\in\N\}$ respectively).
@@ -590,6 +604,8 @@ Let $(x_{n})$ be a sequence of real numbers.
     \vspace{-1pt}
 \end{itemize}
 \end{thm}
+\vspace{-5pt}
+
 \newpage
 
 \subsection*{Continuity and Functional Limits}
