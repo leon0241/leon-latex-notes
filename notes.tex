@@ -848,15 +848,19 @@ Rough work: stcrt off with $\lvert f(x)-f(a)\rvert$
     \lvert x^{3} - c^{3} \rvert &< \epsilon\\
     \lvert x-c\rvert \lvert x^{2}+ax+a^{2}\rvert &< \epsilon 
 \end{aligned}\]
-If we let $\delta < 1$, then using the triangle inequality,
-\[\lvert x - c\rvert < 1 \quad \implies \lvert x\rvert < 1 + \lvert a\rvert \]
-Now we ccn substitute this back into the equation:
-\[\begin{aligned}
-    \lvert x-c\rvert \lvert x^{2}+ax+a^{2}\rvert &< \lvert x-a\rvert \left( \lvert x \rvert^{2} + \lvert c\rvert \lvert x\rvert +\lvert c\rvert^{2} \right)\\
-    &<\lvert x-c\rvert (\lvert 1 + \lvert a\rvert \rvert^{2} + \lvert c\rvert \lvert 1 + c\rvert + c^{2} ) < \epsilon
-\end{aligned}\]
-Therefore, $\lvert x-c\rvert < \displaystyle \frac{\epsilon}{\lvert 1 + \lvert a\rvert \rvert^{2} + \lvert c\rvert \lvert 1 + c\rvert + c^{2}} = \delta$?
-idk
+We have $\lvert x-2\rvert$, so we want to turn the RH fraction into a constant. If we let the neighbourhood around $\delta$ to be no less than $\frac{1}{10}$ (i.e. $x\in(1.9, 2.1)$) (this number can be anything, but smaller than $\frac{1}{5}$ since there is an asymptote at $\frac{9}{5}$), using the number with the largest value in that range we can get an upper bound for $\delta$.
+\[\left\lvert \frac{x-18}{5x-9}\right\rvert < \left\lvert \frac{1.9 - 18}{9.5 - 9}\right\rvert = \left\lvert \frac{-16.1}{0.5} \right\rvert = \left\lvert -32.2 \right\rvert \implies \left\lvert \frac{x-18}{5x-9}\right\rvert < 32.2\]
+Therefore
+\[\lvert x-2 \rvert \left\lvert  \frac{x-18}{5x-9}  \right\rvert < \lvert x-2 \rvert \cdot 32.2 < \epsilon\]
+Therefore, we can take $\delta = \max \{1/10, \epsilon / 32.2\}$
+\end{xmp}
+\vspace{-5pt}
+
+\begin{xmp}[$\epsilon-\delta$ Continuity Template]{ex:e-d-c-template}{a}
+\textbf{Solution:} Let $\epsilon > 0$ be given. Set $\delta = \text{\_\_\_}$. Then for all $x\in \R$ such that $\lvert x - \text{\_\_\_ }\rvert < \delta$ we have
+\vspace{0pt}\newline
+"Same steps as rough working"
+\[\text{\_\_\_ } \lvert x - \text{\_\_\_ }\rvert < \text{\_\_\_ }\delta = \epsilon\]
 \end{xmp}
 \vspace{-5pt}
 
