@@ -888,7 +888,7 @@ Therefore, we can take $\delta = \max \{1/10, \epsilon / 32.2\}$
 \vspace{-5pt}
 
 \begin{xmp}[$\epsilon-\delta$ Continuity Template]{ex:e-d-c-template}{a}
-\textbf{Solution:} Let $\epsilon > 0$ be given. Set $\delta = \text{\_\_\_}$. Then for all $x\in \R$ such that $\lvert x - \text{\_\_\_ }\rvert$ we have
+\textbf{Proof:} Let $\epsilon > 0$ be given. Set $\delta = \text{\_\_\_}$. Then for all $x\in \R$ such that $\lvert x - \text{\_\_\_ }\rvert$ we have
 \vspace{0pt}\newline
 "Same steps as rough working"
 \[\text{\_\_\_ } \lvert x - \text{\_\_\_ }\rvert < \text{\_\_\_ }\delta = \epsilon\]
@@ -906,13 +906,15 @@ Therefore, we can take $\delta = \max \{1/10, \epsilon / 32.2\}$
     \[\begin{aligned}
         \lvert x\rvert  &< \delta\\
         \left\lvert \frac{1}{\frac{\pi}{2}+2N\pi}\right\rvert &< \delta\\
-        \frac{1}{\frac{\pi}{2}+2N\pi} &< \delta \quad \text{(will always be positive since N will be a positive integer)}\\ 
+        \frac{1}{\frac{\pi}{2}+2N\pi} &< \delta \quad \text{(will always be positive since N positive int)}\\ 
         \frac{\pi}{2}+2N\pi &> \frac{1}{\delta}\\
         N &> \frac{1}{2\pi}\left( \frac{1}{\delta} - \frac{\pi}{2} \right)
         % \lvert x\rvert  < \delta\quad\implies \left\lvert \frac{1}{\frac{\pi}{2}+2N\pi}\right\rvert < \delta \quad\implies \frac{1}{\frac{\pi}{2}+2N\pi} < \delta\\
         % \implies\frac{\pi}{2}+2N\pi > \frac{1}{\delta} \quad\implies
         % N > \frac{1}{2\pi}\left( \frac{1}{\delta} - \frac{\pi}{2} \right)
     \end{aligned}\]
+    \textbf{Proof:} Let $\epsilon = \frac{1}{2}$. Let $\delta > 0$ be given. Pick a positive integer $N$ such that $N > \frac{1}{2\pi}\left( \frac{1}{\delta} - \frac{\pi}{2} \right)$ and set $x = \frac{1}{\frac{\pi}{2} + 2N\pi}$. Then for all $x\in \R$ such that $0 < x < \delta$, we have
+    \[\lvert f(x)\rvert = \left\lvert sin\left(\frac{1}{x}\right) \right\rvert = \left\lvert sin\left(\frac{\pi}{2} + 2N\pi\right) \right\rvert = 1 \ge \frac{1}{2} = \epsilon\]
 \end{xmp}
 \vspace{-5pt}
 
