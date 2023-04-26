@@ -273,6 +273,8 @@ All infinite cyclic groups are \textit{isomorphic} to each other. Therefore, eac
 \end{thm}
 \vspace{-5pt}
 
+
+
 \begin{rem}[Consequences of Homomorphisms]{rem:homo-consequences}{3.1.5}
 Let $\phi:G\to H$ be a group homomorphism. Then
 \renewcommand\labelitemi{\tiny$\bullet$}
@@ -888,12 +890,41 @@ Therefore, we can take $\delta = \max \{1/10, \epsilon / 32.2\}$
 \vspace{-5pt}
 
 \begin{xmp}[$\epsilon-\delta$ Continuity Template]{ex:e-d-c-template}{a}
-\textbf{Solution:} Let $\epsilon > 0$ be given. Set $\delta = \text{\_\_\_}$. Then for all $x\in \R$ such that $\lvert x - \text{\_\_\_ }\rvert < \delta$ we have
-\vspace{0pt}\newline
-"Same steps as rough working"
-\[\text{\_\_\_ } \lvert x - \text{\_\_\_ }\rvert < \text{\_\_\_ }\delta = \epsilon\]
+    \textbf{Proof:} Let $\epsilon > 0$ be given. Set $\delta = \text{\underline{\quad}}$. Then for all $x\in \R$ such that $\lvert x - \text{\underline{\quad}}\rvert < \delta$ we have
+    \vspace{0pt}\newline
+    \textit{Optional: preliminary step to determine an upper bound}
+    \vspace{0pt}\newline
+    Therefore, / Therefore since $\text{``\underline{x term}''} < \text{``\underline{constant}''}$,
+    \vspace{0pt}\newline
+    ``Same steps as rough working''
+    \[\text{\underline{\quad}} \cdot \lvert x - \text{\underline{\quad}}\rvert < \text{\underline{\quad}}\delta = \epsilon\]
+    \end{xmp}
+    \vspace{-5pt}
+
+\begin{xmp}[$\epsilon-\delta$ Discontinuity]{ex:discontinuity}{)}
+    From negation of $\epsilon-\delta$ continuity - A function $f:A\to\R$ is not continuous if there exists $\epsilon>0$ such that for all $\delta>0$ there exists some $x \in A$ satisfying $0<\lvert x-c \rvert<\delta$ for which $\lvert  f(x)-f(c) \rvert\ge \epsilon$
+    \[\lvert f(x) - f(a)\rvert < \epsilon \implies \left\lvert sin\left(\frac{1}{x}\right) - 0 \right\rvert < \epsilon \quad \implies \left\lvert sin\left(\frac{1}{x}\right)\right\rvert < \epsilon\]
+    So we want to show that we can find an $\epsilon$ such that for every $\delta > 0$, we can find an $x$ where $\lvert x\rvert < \delta$ and also $\lvert sin(\frac{1}{x})\rvert \ge \epsilon$.
+    \vspace{0pt}\newline
+    Since $sin(x)$ repeats, if we can find an $x$ such that $sin(\frac{1}{x})$ is an exact value then we can define $\epsilon$ as something lower than that. If we want a value where $sin(\frac{1}{x}) = 1$, this will be true if $x = 1 / (\frac{\pi}{2} + 2N\pi)$, where $N$ is a positive integer.
+    \vspace{0pt}\newline
+    Since $x$ has to be bounded by $\delta$, go from $\delta$
+    \[\begin{aligned}
+        \lvert x\rvert  &< \delta\\
+        \left\lvert \frac{1}{\frac{\pi}{2}+2N\pi}\right\rvert &< \delta\\
+        \frac{1}{\frac{\pi}{2}+2N\pi} &< \delta \quad \text{(will always be positive since N positive int)}\\ 
+        \frac{\pi}{2}+2N\pi &> \frac{1}{\delta}\\
+        N &> \frac{1}{2\pi}\left( \frac{1}{\delta} - \frac{\pi}{2} \right)
+        % \lvert x\rvert  < \delta\quad\implies \left\lvert \frac{1}{\frac{\pi}{2}+2N\pi}\right\rvert < \delta \quad\implies \frac{1}{\frac{\pi}{2}+2N\pi} < \delta\\
+        % \implies\frac{\pi}{2}+2N\pi > \frac{1}{\delta} \quad\implies
+        % N > \frac{1}{2\pi}\left( \frac{1}{\delta} - \frac{\pi}{2} \right)
+    \end{aligned}\]
+    \textbf{Proof:} Let $\epsilon = \frac{1}{2}$. Let $\delta > 0$ be given. Pick a positive integer $N$ such that $N > \frac{1}{2\pi}\left( \frac{1}{\delta} - \frac{\pi}{2} \right)$ and set $x = \frac{1}{\frac{\pi}{2} + 2N\pi}$. Then for all $x\in \R$ such that $0 < x < \delta$, we have
+    \[\lvert f(x)\rvert = \left\lvert sin\left(\frac{1}{x}\right) \right\rvert = \left\lvert sin\left(\frac{\pi}{2} + 2N\pi\right) \right\rvert = 1 \ge \frac{1}{2} = \epsilon\]
 \end{xmp}
 \vspace{-5pt}
+
+% absolute convergence
 
 \lipsum[1-12]
 
