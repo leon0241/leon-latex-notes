@@ -895,6 +895,29 @@ Therefore, we can take $\delta = \max \{1/10, \epsilon / 32.2\}$
 \end{xmp}
 \vspace{-5pt}
 
+\begin{xmp}[$\epsilon-\delta$ Discontinuity]{ex:discontinuity}{)}
+    From negation of $\epsilon-\delta$ continuity - A function $f:A\to\R$ is not continuous if there exists $\epsilon>0$ such that for all $\delta>0$ there exists some $x \in A$ satisfying $0<\lvert x-c \rvert<\delta$ for which $\lvert  f(x)-f(c) \rvert\ge \epsilon$
+    \[\lvert f(x) - f(a)\rvert < \epsilon \implies \left\lvert sin\left(\frac{1}{x}\right) - 0 \right\rvert < \epsilon \quad \implies \left\lvert sin\left(\frac{1}{x}\right)\right\rvert < \epsilon\]
+    So we want to show that we can find an $\epsilon$ such that for every $\delta > 0$, we can find an $x$ where $\lvert x\rvert < \delta$ and also $\lvert sin(\frac{1}{x})\rvert \ge \epsilon$.
+    \vspace{0pt}\newline
+    Since $sin(x)$ repeats, if we can find an $x$ such that $sin(\frac{1}{x})$ is an exact value then we can define $\epsilon$ as something lower than that. If we want a value where $sin(\frac{1}{x}) = 1$, this will be true if $x = 1 / (\frac{\pi}{2} + 2N\pi)$, where $N$ is a positive integer.
+    \vspace{0pt}\newline
+    Since $x$ has to be bounded by $\delta$, go from $\delta$
+    \[\begin{aligned}
+        \lvert x\rvert  &< \delta\\
+        \left\lvert \frac{1}{\frac{\pi}{2}+2N\pi}\right\rvert &< \delta\\
+        \frac{1}{\frac{\pi}{2}+2N\pi} &< \delta \quad \text{(will always be positive since N will be a positive integer)}\\ 
+        \frac{\pi}{2}+2N\pi &> \frac{1}{\delta}\\
+        N &> \frac{1}{2\pi}\left( \frac{1}{\delta} - \frac{\pi}{2} \right)
+        % \lvert x\rvert  < \delta\quad\implies \left\lvert \frac{1}{\frac{\pi}{2}+2N\pi}\right\rvert < \delta \quad\implies \frac{1}{\frac{\pi}{2}+2N\pi} < \delta\\
+        % \implies\frac{\pi}{2}+2N\pi > \frac{1}{\delta} \quad\implies
+        % N > \frac{1}{2\pi}\left( \frac{1}{\delta} - \frac{\pi}{2} \right)
+    \end{aligned}\]
+\end{xmp}
+\vspace{-5pt}
+
+% absolute convergence
+
 \lipsum[1-12]
 
 \end{multicols}
