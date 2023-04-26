@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1682519279 "/afs/inf.ed.ac.uk/user/s22/s2202694/Documents/leon-latex-notes/notes.tex" "/afs/inf.ed.ac.uk/user/s22/s2202694/Documents/leon-latex-notes/notes.pdf" "notes" 1682519281
-  "/afs/inf.ed.ac.uk/user/s22/s2202694/Documents/leon-latex-notes/notes.aux" 1682519281 6473 f1cd644385ecb51d38d9dd1221c8ffb3 ""
-  "/afs/inf.ed.ac.uk/user/s22/s2202694/Documents/leon-latex-notes/notes.tex" 1682519279 46015 7b4c43f43089816d9678e096fb473308 ""
+["pdflatex"] 1682519443 "/afs/inf.ed.ac.uk/user/s22/s2202694/Documents/leon-latex-notes/notes.tex" "/afs/inf.ed.ac.uk/user/s22/s2202694/Documents/leon-latex-notes/notes.pdf" "notes" 1682519445
+  "/afs/inf.ed.ac.uk/user/s22/s2202694/Documents/leon-latex-notes/notes.aux" 1682519445 6473 69932d9a8ed0623ae9033ca803a48b77 ""
+  "/afs/inf.ed.ac.uk/user/s22/s2202694/Documents/leon-latex-notes/notes.tex" 1682519441 46325 6bfb0839da8c1c4d292fd6c322c56c3e ""
   "/etc/texmf/web2c/texmf.cnf" 1629375389 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -157,14 +157,14 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1665017156 4770519 c7c5df4b26e31c9f5c327a0fe7a8ac48 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1665017168 8256057 4ec3e742ae34a4b7a0651dcb561d0741 ""
   "extarticle.cls" 1682260818 20602 3112294ba237d94ce4a1502cfef3594f ""
-  "notes.aux" 1682519281 6473 f1cd644385ecb51d38d9dd1221c8ffb3 "pdflatex"
-  "notes.tex" 1682519279 46015 7b4c43f43089816d9678e096fb473308 ""
+  "notes.aux" 1682519445 6473 69932d9a8ed0623ae9033ca803a48b77 "pdflatex"
+  "notes.tex" 1682519441 46325 6bfb0839da8c1c4d292fd6c322c56c3e ""
   "preamble.sty" 1682104391 184 0a5f1af1699b23308b20c88bda958849 ""
   "size8.clo" 1682260818 6172 5062a8faf7cb200267aa33f36102c207 ""
   "thmboxes.sty" 1682434063 4656 7460a63a2d23e0a7e6e9c048c5130350 ""
   (generated)
+  "/afs/inf.ed.ac.uk/user/s22/s2202694/Documents/leon-latex-notes/notes.log"
   "notes.log"
   "/afs/inf.ed.ac.uk/user/s22/s2202694/Documents/leon-latex-notes/notes.pdf"
-  "notes.aux"
-  "/afs/inf.ed.ac.uk/user/s22/s2202694/Documents/leon-latex-notes/notes.log"
   "notes.pdf"
+  "notes.aux"
