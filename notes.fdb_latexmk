@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1682527921 "/afs/inf.ed.ac.uk/user/s22/s2202694/Documents/leon-latex-notes/notes.tex" "/afs/inf.ed.ac.uk/user/s22/s2202694/Documents/leon-latex-notes/notes.pdf" "notes" 1682527922
+["pdflatex"] 1682527921 "/afs/inf.ed.ac.uk/user/s22/s2202694/Documents/leon-latex-notes/notes.tex" "/afs/inf.ed.ac.uk/user/s22/s2202694/Documents/leon-latex-notes/notes.pdf" "notes" 1682527940
   "/afs/inf.ed.ac.uk/user/s22/s2202694/Documents/leon-latex-notes/notes.aux" 1682527922 6393 e67e8ec0d4b6dd6f2a77ebc51bf97512 ""
   "/afs/inf.ed.ac.uk/user/s22/s2202694/Documents/leon-latex-notes/notes.tex" 1682527844 43939 a699807267d0e9cb5eac407825ac0baa ""
   "/etc/texmf/web2c/texmf.cnf" 1629375389 475 c0e671620eb5563b2130f56340a5fde8 ""
@@ -165,6 +165,6 @@
   (generated)
   "/afs/inf.ed.ac.uk/user/s22/s2202694/Documents/leon-latex-notes/notes.pdf"
   "notes.log"
+  "notes.pdf"
   "/afs/inf.ed.ac.uk/user/s22/s2202694/Documents/leon-latex-notes/notes.log"
   "notes.aux"
-  "notes.pdf"
