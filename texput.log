@@ -1,0 +1,21 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.9.7)  26 APR 2023 21:24
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**\\mull.sms.ed.ac.uk\home\s2202694\Documents\GitHub\leon-latex-notes\notes.tex
+! Emergency stop.
+<*> ...Documents\GitHub\leon-latex-notes\notes.tex
+                                                  
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 14 strings out of 478994
+ 494 string characters out of 5862208
+ 283038 words of memory out of 5000000
+ 17602 multiletter control sequences out of 15000+600000
+ 403430 words of font info for 27 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 12i,0n,15p,108b,14s stack positions out of 5000i,500n,10000p,200000b,80000s
+!  ==> Fatal error occurred, no output PDF file produced!
