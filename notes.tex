@@ -343,7 +343,7 @@ is a subgroup of $G$, and is called the \textbf{kernel} of the action. If $N = \
     This is a subset of $X$
     \vspace{0pt}\newline
     For every $x$ in $X$, the \textbf{stabilizer} of $x$ is defined by
-    \[\text{Stab}_{G}(x)=\{g\in G : g\cdot x = x\}\]
+    \[\text{Stab}_{G}(x)=\{g\in G \mid g\cdot x = x\}\]
     This is a subgroup of $G$
     \vspace{0pt}\newline
     For every $g$ in $G$, the \textbf{fix} of $g$ is defined by
@@ -359,6 +359,11 @@ Let $G$ act on $X$. Then
 defines an equivalence relation on $X$. The equivalence classes are the orbits of $G$. Thus when $G$ acts on $X$, we obtain a partition of $X$ into orbits
 \end{thm}
 \vspace{-5pt}
+
+\begin{dfn}[Transitive Actions]{def:transitive-actions}{4.2.7}
+    An action of $G$ on $X$ is \textbf{transitive} if for all $x,y\in X$ there exists $g\in G$ such that $y = g\cdot x$. Equivalently, $X$ is a single orbit under $G$
+    \end{dfn}
+    \vspace{-5pt}
 
 \begin{thm}[Orbit-Stabilizer Theorem]{thm:orbit-stab-thm}{4.3.1}
 Suppose $G$ is a finite group acting on a set $X$, and let $x\in X$. Then $\lvert \Orb_{G}(x)\rvert \times \lvert \Stab_{G}(x)\rvert = \lvert G\rvert$, or in words:
@@ -925,7 +930,30 @@ Therefore, since $\left\lvert \frac{x-18}{5x-9}\right\rvert < 32.2$,
 \vspace{-5pt}
 % absolute convergence
 
+\begin{xmp}[Name]{ex:Label}{Number}
+    Prove that the function
+    $$f:\mathbb{R}\to\mathbb{R},\quad f(x) = \frac{x-1}{x^{2}-2x+3}$$
+    is continuous at $x_{0}=1$
+
+    Rough working:
+    $$\begin{aligned}
+    \lvert f(x) - f(a)\rvert &< \epsilon \\
+    \left\lvert  \frac{x-1}{x^{2}-2x+3} - \frac{1-1}{1-2+3} \right\rvert &< \epsilon \\
+    \left\lvert  \frac{x-1}{x^{2}-2x+3} - 0 \right\rvert &< \epsilon \\
+    \lvert x-1 \rvert\left\lvert  \frac{1}{x^{2}-2x+3}  \right\rvert &< \epsilon \\
+    \end{aligned}$$
+    Set $\delta$-neighbourhood to be less than $1$ to find an upper bound. Therefore $x\in(0, 2)$
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item Value at $x = 0$: $\displaystyle\frac{1}{0 - 0 + 3} = \frac{1}{3}$
+        \item Value at $x = 2$: $\displaystyle\frac{1}{4 - 4 + 3} = \frac{1}{3}$
+    \end{itemize}
+    However, the value at $x=1$: $\displaystyle \frac{1}{1 - 2 + 3}=\frac{1}{2}$
+\end{xmp}
 \vspace{-5pt}
+
+
 
 \lipsum[1-12]
 
