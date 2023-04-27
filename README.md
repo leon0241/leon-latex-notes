@@ -10,3 +10,6 @@ If you want to import into overleaf or anything, you will need `preamble.sty` an
 Dependencies that are not in a barebones TinyTeX installation are listed in the dependencies file, if you are using Overleaf / a larger TeX package they should be preinstalled already
 
 If someone knows which package extarticle is included in then lmk :sob:, right now it's just sitting in the folder lol
+
+#### 
+ :coffee: [(Optional) Buy me a coffee :)](https://ko-fi.com/leon024)
