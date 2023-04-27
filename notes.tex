@@ -192,6 +192,9 @@ A function $f:X\to Y$ is called
 \begin{dfn}[Coset]{def:coset}{2.3.4}
     Let $H\le G$ and let $g\in G$. Then a \textit{left coset} of  $H$ in $G$ is a subset of $G$ of the form $gH$, for some $g\in G$.
     We denote the set of left cosets of $H$ in $G$ by $G/H$
+    \vspace{0pt}\newline
+    (Notation) Let $A, B$ be subgroups of a group $G$ and let $g\in G$. Then
+    \[AB:=\{ab\mid a\in A, b\in B\},\quad gA:=\{gA\mid a\in A\}\]
 \end{dfn}
 \vspace{-5pt}
 
@@ -217,9 +220,11 @@ A function $f:X\to Y$ is called
 Let $H\le G$
 \renewcommand\labelitemi{\tiny$\bullet$}
 \begin{itemize}
+    \vspace{-5pt}
     \setlength\itemsep{0em}
     \item For all $h\in H$, $hH = H$. In particular $eH = H$
     \item For $g_{1}, g_{2}\in G$, the following are equivalent
+    \vspace{-5pt}
     \renewcommand\labelitemi{\tiny$\bullet$}
     \begin{itemize}
         \setlength\itemsep{0em}
@@ -303,7 +308,7 @@ Let $\phi:G\to H$ be a group homomorphism. Then
 \vspace{-5pt}
 
 \begin{thm}[Product Isomorphisms]{thm:prod-isos}{3.2.1}
-Let $H,K\le G$ be subgroups with $H\cup K = \{e\}$.
+Let $H,K\le G$ be subgroups with $H\cap K = \{e\}$.
 \renewcommand\labelitemi{\tiny$\bullet$}
 \begin{itemize}
     \setlength\itemsep{0em}
@@ -314,7 +319,7 @@ Let $H,K\le G$ be subgroups with $H\cup K = \{e\}$.
 \vspace{-5pt}
 
 \begin{thm}[Size of Product Group]{thm:prodgroup-size}{3.2.3}
-Let $H,K\le G$ be finite subgroups of a group $G$ such that $H\cup K = \{e\}$ Then $\lvert HK\rvert =\lvert H\rvert \times \lvert K\rvert $.
+Let $H,K\le G$ be finite subgroups of a group $G$ such that $H\cap K = \{e\}$ Then $\lvert HK\rvert =\lvert H\rvert \times \lvert K\rvert $.
 \end{thm}
 \vspace{-5pt}
 
@@ -332,7 +337,7 @@ Let $H,K\le G$ be finite subgroups of a group $G$ such that $H\cup K = \{e\}$ Th
 
 \begin{dfn}[Kernel of an Action, Faithful Action]{def:action-kernel-faith}{4.1.4}
 Suppose that $G$ acts on $X$. Then the set
-\[N := \{g\in G\mid g\cdot x=x \forall x\in X\}\]
+\[N := \{g\in G\mid g\cdot x=x \quad\forall x\in X\}\]
 is a subgroup of $G$, and is called the \textbf{kernel} of the action. If $N = \{e\}$, then we say the action is \textbf{faithful}
 \end{dfn}
 \vspace{-5pt}
@@ -343,7 +348,7 @@ is a subgroup of $G$, and is called the \textbf{kernel} of the action. If $N = \
     This is a subset of $X$
     \vspace{0pt}\newline
     For every $x$ in $X$, the \textbf{stabilizer} of $x$ is defined by
-    \[\text{Stab}_{G}(x)=\{g\in G : g\cdot x = x\}\]
+    \[\text{Stab}_{G}(x)=\{g\in G \mid g\cdot x = x\}\]
     This is a subgroup of $G$
     \vspace{0pt}\newline
     For every $g$ in $G$, the \textbf{fix} of $g$ is defined by
@@ -359,6 +364,11 @@ Let $G$ act on $X$. Then
 defines an equivalence relation on $X$. The equivalence classes are the orbits of $G$. Thus when $G$ acts on $X$, we obtain a partition of $X$ into orbits
 \end{thm}
 \vspace{-5pt}
+
+\begin{dfn}[Transitive Actions]{def:transitive-actions}{4.2.7}
+    An action of $G$ on $X$ is \textbf{transitive} if for all $x,y\in X$ there exists $g\in G$ such that $y = g\cdot x$. Equivalently, $X$ is a single orbit under $G$
+    \end{dfn}
+    \vspace{-5pt}
 
 \begin{thm}[Orbit-Stabilizer Theorem]{thm:orbit-stab-thm}{4.3.1}
 Suppose $G$ is a finite group acting on a set $X$, and let $x\in X$. Then $\lvert \Orb_{G}(x)\rvert \times \lvert \Stab_{G}(x)\rvert = \lvert G\rvert$, or in words:
@@ -924,8 +934,6 @@ Therefore, since $\left\lvert \frac{x-18}{5x-9}\right\rvert < 32.2$,
 \end{xmp}
 \vspace{-5pt}
 % absolute convergence
-
-\vspace{-5pt}
 
 \lipsum[1-12]
 
