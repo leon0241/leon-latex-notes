@@ -1,4 +1,4 @@
- \documentclass[landscape, 8pt]{extarticle}
+\documentclass[landscape, 8pt]{extarticle}
 \usepackage{geometry}
 % \usepackage{showframe}
 
@@ -51,10 +51,6 @@ A function $f:X\to Y$ is called
     \item \textbf{surjective} if for every $y\in Y,\, \exists x\in X$ s.t. $f(x) = y$. $f$ is said to take $X$ \textbf{onto} $Y$
     \item \textbf{bijective} if it is both injective and surjective
 \end{itemize}
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=\linewidth]{images/functions.png}
-% \end{figure}
 \end{dfn}
 \vspace{-5pt}
 
@@ -365,7 +361,7 @@ defines an equivalence relation on $X$. The equivalence classes are the orbits o
 \vspace{-5pt}
 
 \begin{thm}[Orbit-Stabilizer Theorem]{thm:orbit-stab-thm}{4.3.1}
-Suppose $G$ is a finite group acting on a set$X$, and let $x\in X$. Then $\lvert \Orb_{G}(x)\rvert \times \lvert \Stab_{G}(x)\rvert = \lvert G\rvert$, or in words:
+Suppose $G$ is a finite group acting on a set $X$, and let $x\in X$. Then $\lvert \Orb_{G}(x)\rvert \times \lvert \Stab_{G}(x)\rvert = \lvert G\rvert$, or in words:
 \[\text{size of orbit } \times \text{ size of stabilizer } = \text{order of group}\]
 \end{thm}
 \vspace{-5pt}
@@ -615,7 +611,7 @@ Let $(x_{n})$ be a sequence of real numbers.
 
 \begin{dfn}[Continuity]{def:continuity-def}{4.1.1}
     Let $f$ be a real-valued function whose domain is a subset of $\R$. The function $f$ is \textbf{continuous} at $x_{0}$ in $\dom{(f)}$ if, for every sequence $(x_{n})$ in $\dom{(f)}$ converging to $x_{0}$, we have 
-    \[\displaystyle\lim_{ n \to \infty }f(x_{n})=f(a)\]
+    \[\displaystyle\lim_{ n \to \infty }f(x_{n})=f(x_{0})\]
     If $f$ is continuous at each $a\in S \subseteq \dom{(f)}$ and then we say that $f$ is continuous on $S$. If $f$ is continuous on $\dom{(f)}$ then we say that $f$ is continuous
 \end{dfn}
 \vspace{-5pt}
@@ -798,10 +794,6 @@ The set of all symmetries of $\{1,\, 2,\,\dots,\,n\}$ is called the \textbf{symm
 % examples of abelian group
 % cyclic group
 
-[0,1) 
-{a in Q | 0 < a < sqrt2}
-
-
 \begin{xmp}[Example of a Coset]{ex:coset-example}{?}
     Consider $\Z_{4}$ under addition, and let $H=\{0,2\}$ ($e=0$.) The cosets of $H$ in $G$ are:
     \[\begin{aligned}
@@ -826,7 +818,6 @@ To show divergence/convergence of a series, we can compare it to the p-series
 
 \end{xmp}
 \vspace{-5pt}
-
 
 \begin{xmp}[$\epsilon$-N Convergence]{ex:e-n-convergence}{10000}
     \textit{Show that the sequence $\left( \frac{2n+1}{3n+2} \right)_{n\in\mathbb{N}}$ converges to $\frac{2}{3}$}
@@ -871,6 +862,18 @@ To show divergence/convergence of a series, we can compare it to the p-series
 % \end{xmp}
 % \vspace{-5pt}
 
+\begin{xmp}[$\epsilon-\delta$ Continuity Template]{ex:e-d-c-template}{a}
+    \textbf{Proof:} Let $\epsilon > 0$ be given. Set $\delta \color{red}= \color{black}\text{\underline{\quad}}$(If there is a constant, then set as ``$\color{red}<$\color{black}'' e.g. $\delta\color{red}<\color{black}\min\{1,\epsilon\}$). Then for all $x\in \R$ such that $\lvert x - \text{\underline{\quad}}\rvert < \delta$ we have
+    \vspace{0pt}\newline
+    \textit{Optional: preliminary step to determine an upper bound}
+    \vspace{0pt}\newline
+    Therefore, / Therefore since $\text{``\underline{x term}''} < \text{``\underline{constant}''}$,
+    \vspace{0pt}\newline
+    ``Same steps as rough working''
+    \[\text{\underline{\quad}} \cdot \lvert x - \text{\underline{\quad}}\rvert < \text{\underline{\quad}}\delta \color{red}=\color{black} \epsilon \quad\text{(same rule applies about constants)}\]
+\end{xmp}
+\vspace{-5pt}
+
 \begin{xmp}[$\epsilon-\delta$ Continuity]{ex:e-d-continuity}{?}
 \textit{Using the definition of continuity, prove that the function $f: \R\backslash \{\frac{9}{5}\}\to \R$ defined by $f(x)=\frac{x^{2}}{5x-9}$ is continuous at $x_{0}= 2$}
 Since $x_{0} = 2$, our delta should end up as $\lvert x-2\rvert < \delta$. Start with $\lvert f(x) - f(a)\rvert  < \epsilon$
@@ -895,21 +898,8 @@ Therefore, since $\left\lvert \frac{x-18}{5x-9}\right\rvert < 32.2$,
 \]\[
     = \left\lvert \frac{(x-18)(x-2)}{5x-9}  \right\rvert = \lvert x-2 \rvert \left\lvert  \frac{x-18}{5x-9}  \right\rvert \le 32.2 \cdot \lvert x - 2\rvert < 32.2 \cdot \delta = \epsilon
 \]
-
 \end{xmp}
 \vspace{-5pt}
-
-\begin{xmp}[$\epsilon-\delta$ Continuity Template]{ex:e-d-c-template}{a}
-    \textbf{Proof:} Let $\epsilon > 0$ be given. Set $\delta = \text{\underline{\quad}}$. Then for all $x\in \R$ such that $\lvert x - \text{\underline{\quad}}\rvert < \delta$ we have
-    \vspace{0pt}\newline
-    \textit{Optional: preliminary step to determine an upper bound}
-    \vspace{0pt}\newline
-    Therefore, / Therefore since $\text{``\underline{x term}''} < \text{``\underline{constant}''}$,
-    \vspace{0pt}\newline
-    ``Same steps as rough working''
-    \[\text{\underline{\quad}} \cdot \lvert x - \text{\underline{\quad}}\rvert < \text{\underline{\quad}}\delta = \epsilon\]
-    \end{xmp}
-    \vspace{-5pt}
 
 \begin{xmp}[$\epsilon-\delta$ Discontinuity]{ex:discontinuity}{)}
     From negation of $\epsilon-\delta$ continuity - A function $f:A\to\R$ is not continuous if there exists $\epsilon>0$ such that for all $\delta>0$ there exists some $x \in A$ satisfying $0<\lvert x-c \rvert<\delta$ for which $\lvert  f(x)-f(c) \rvert\ge \epsilon$
@@ -933,8 +923,9 @@ Therefore, since $\left\lvert \frac{x-18}{5x-9}\right\rvert < 32.2$,
     \[\lvert f(x)\rvert = \left\lvert sin\left(\frac{1}{x}\right) \right\rvert = \left\lvert sin\left(\frac{\pi}{2} + 2N\pi\right) \right\rvert = 1 \ge \frac{1}{2} = \epsilon\]
 \end{xmp}
 \vspace{-5pt}
-
 % absolute convergence
+
+\vspace{-5pt}
 
 \lipsum[1-12]
 
