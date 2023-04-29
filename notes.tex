@@ -406,12 +406,17 @@ Let $G$ be a group, $p$ be prime. If $p$ divides $\lvert G\rvert $, then $G$ con
 \vspace{-5pt}
 \subsection*{Real Numbers and Bounds}
 \begin{dfn}[The Real Numbers]{def:reals}{1.1}
-$\R$ is defined as the set of real numbers. It has two operations $+$ and $\ast$, and it is a field, i.e. satisfies group axioms for both, in addition the Distributive law:
+$\R$ is defined as the set of real numbers. It has two operations $+$ and $\ast$, and it is a field, i.e. satisfies group axioms for both operations, in addition to the Distributive law:
 \[a\cdot(b+c) = a\cdot b + a\cdot c\]
-\vspace{0pt}\newline
 The set of real numbers is also ordered, i.e. there is a relation $<$ which satisfies pretty much what you think it does
 \vspace{0pt}\newline
 Finally, the set of real numbers is complete, i.e. there are no gaps between any numbers.
+\end{dfn}
+\vspace{-5pt}
+
+\begin{dfn}[Triangle Inequality]{def:infimum}{1.2.3}
+    The most important property of the absolute value $\lvert a\rvert $:
+    \[\lvert a+b\rvert \le \lvert a\rvert + \lvert b\rvert \quad\text{ and }\quad \lvert \lvert a\rvert - \lvert b\rvert \rvert \le \lvert a-b\rvert \]
 \end{dfn}
 \vspace{-5pt}
 
@@ -431,14 +436,13 @@ Let $E \subset \R$ be nonempty
         \item $s$ is an upper bound of $E$
         \item $s\le M$ for all upper bounds $M$ of the set $E$
     \end{itemize}
+    \vspace{-5pt}
     If a number $s$ exists, we shall say that $E$ has a supremum and write $s=\sup E$
+    \item If the supremum $s$ exists, then $s$ is the least upper bound of the set $E$. The supremum is also unique if it exists.
 \end{itemize}
-If the supremum $s$ exists, then $s$ is the least upper bound of the set $E$. The supremum is also unique if it exists.
-\end{dfn}
 \vspace{-5pt}
-
-\begin{dfn}[Infimum]{def:infimum}{1.3.10}
 If the same properties as a supremum apply but in the other direction, a number $s$ is instead called the \textbf{infimum} of the set $E$. Infimum and Supremum are related via the reflection principle:
+\vspace{-5pt}
 \renewcommand\labelitemi{\tiny$\bullet$}
 \begin{itemize}
     \setlength\itemsep{0em}
@@ -446,6 +450,7 @@ If the same properties as a supremum apply but in the other direction, a number 
     \item Set $E$ has an infimum if and only if the set $-E$ has a supremum. Also $\sup (-E) = -\inf(E)$
 \end{itemize}
 \end{dfn}
+\vspace{-5pt}
 
 \begin{thm}[Suprema Approximation Property]{thm:sup-approx-property}{1.3.5}
 If the set $E \subset \R$ has a supremum then for any positive number $\epsilon > 0$ there exists $a \in E$ such that
