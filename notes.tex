@@ -1,6 +1,11 @@
 \documentclass[landscape, 8pt]{extarticle}
 \usepackage{geometry}
 % \usepackage{showframe}
+\usepackage[dvipsnames]{xcolor}
+
+\colorlet{colour1}{BrickRed}
+\colorlet{colour2}{Green}
+\colorlet{colour3}{RoyalBlue}
 
 \geometry{
     a4paper, 
@@ -135,7 +140,7 @@ A function $f:X\to Y$ is called
     If $G$ is infinite we say that $\lvert G \rvert = \infty$, or the order of $G$ is infinite.
 \end{dfn}
 \vspace{-5pt}
-
+    web
 \begin{thm}[Order of a Finite Group]{thm:finite-order-thm}{2.2.6}
     In a finite group, every element has finite order.\newline
     If $g$ is an element of a finite group $G$, then there exists $k\in \N$ such that $g^{k} = g^{-1}$
@@ -270,7 +275,7 @@ The \textbf{index} of $H\le G$ is defined as the number of \textit{distinct} lef
 \vspace{-5pt}
 
 \begin{thm}[Cyclic Isomorphisms]{thm:cyclic-isos}{3.1.L}
-All finite cyclic groups of the same order are \textit{isomorphic} to each other. Therefore, cyclic groups of order $n$ are isomorphic to $(\Z_{n}, +)$
+All finite cyclic groups with the same order are \textit{isomorphic} to each other. Therefore, cyclic groups of order $n$ are isomorphic to $(\Z_{n}, +)$
 \vspace{0pt}\newline
 All infinite cyclic groups are \textit{isomorphic} to each other. Therefore, each cyclic group of infinite order is isomorphic to $(\Z, +)$
 \end{thm}
@@ -438,10 +443,12 @@ Let $E \subset \R$ be nonempty
     \end{itemize}
     \vspace{-5pt}
     If a number $s$ exists, we shall say that $E$ has a supremum and write $s=\sup E$
-    \item If the supremum $s$ exists, then $s$ is the least upper bound of the set $E$. The supremum is also unique if it exists.
 \end{itemize}
-\vspace{-5pt}
-If the same properties as a supremum apply but in the other direction, a number $s$ is instead called the \textbf{infimum} of the set $E$. Infimum and Supremum are related via the reflection principle:
+If the supremum $s$ exists, then $s$ is the least upper bound of the set $E$. The supremum is also unique if it exists.
+\vspace{3pt}
+\hrule
+\vspace{3pt}
+\noindent If the same properties as a supremum apply but in the other direction, a number $s$ is instead called the \textbf{infimum} of the set $E$. Infimum and Supremum are related via the reflection principle:
 \vspace{-5pt}
 \renewcommand\labelitemi{\tiny$\bullet$}
 \begin{itemize}
@@ -484,8 +491,10 @@ Additionally, a nonempty set $E$ is at most countable if and only if there is a 
 
 \begin{dfn}[Convergence of a Sequence]{def:sequence-convergence}{2.1.1}
 A sequence of real numbers $(x_{n})$ is said to converge to a real number $a$ if for every $\epsilon> 0$ there is a $N\in \N$ where for every $n\ge N$ we have that $\lvert x_{n}- a \rvert < \epsilon $
-\vspace{0pt}\newline
-For a sequence $(x_{n})$, we write $\lim x_{n}=+\infty$ if for each $M>0$ there is a number $N$ such that $n>N$ implies $x_{n} > M$. Reverse every inequality for $-\infty$ case.
+\vspace{2pt}
+\hrule
+\vspace{2pt}
+\noindent For a sequence $(x_{n})$, we write $\lim x_{n}=+\infty$ if for each $M>0$ there is a number $N$ such that $n>N$ implies $x_{n} > M$. Reverse every inequality for $-\infty$ case.
 %TODO diff ways of saying if there is space
 \end{dfn}
 \vspace{-5pt}
@@ -531,7 +540,7 @@ Let $(x_{n})$ be a sequence of real numbers.
 \renewcommand\labelitemi{\tiny$\bullet$}
 \begin{itemize}
     \setlength\itemsep{0em}
-    
+    \vspace{-2pt}
     \item \textbf{Squeeze Theorem (for sequences):} Suppose that $(x_{n})$, $(y_{n})$, and $(w_{n})$ are real sequences
     \vspace{-5pt}
     \renewcommand\labelitemi{\tiny$\bullet$}
@@ -856,16 +865,17 @@ To show divergence/convergence of a series, we can compare it to the p-series
 \vspace{-5pt}
 
 \begin{xmp}[$\epsilon-\delta$ and $\epsilon-N$ Continuity Template]{ex:e-d-c-template}{pain}
-    \textbf{Proof:} Let $\epsilon > 0$ be given. Set $\delta \color{red}= \color{black}\text{\underline{\quad}}$(If there is a constant, then set as ``$\color{red}<$\color{black}'' e.g. $\delta\color{red}<\color{black}\min\{1,\epsilon\}$). Then for all $x\in \R$ such that $\lvert x - \text{\underline{\quad}}\rvert < \delta$ we have
+    \textbf{Proof:} Let $\epsilon > 0$ be given. Set $\delta {\color{colour1}=}\text{\underline{\quad}}$ (If there is a constant, then set as ``${\color{colour1}<}$'' e.g. $\delta {\color{colour1}<}\min\{1,\epsilon\}$). Then for all $x\in \R$ such that $\lvert x - \text{\underline{\quad}}\rvert < \delta$ we have
     \vspace{0pt}\newline
     \textit{Optional: preliminary step to determine an upper bound}
     \vspace{0pt}\newline
     Therefore, / Therefore since $\text{``\underline{x term}''} < \text{``\underline{constant}''}$,
     \vspace{0pt}\newline
     ``Same steps as rough working''
-    \[\dots = \text{\underline{\quad}} \cdot \lvert x - \text{\underline{\quad}}\rvert < \text{\underline{\quad}}\delta \color{red}=\color{black} \epsilon \quad\text{(same rule applies about constants)}\]
-    \vspace{0pt}\newline
-    \textbf{Proof:} Let $\epsilon>0$ be given. Choose $N\in \N$ such that $N > \text{\underline{\quad}}$, for example $N=\text{\underline{\quad}}$. Then for all $n\ge N$ we have
+    \[\dots = \text{\underline{\quad}} \cdot \lvert x - \text{\underline{\quad}}\rvert < \text{\underline{\quad}}\delta {\color{colour1}=} \epsilon \quad\text{(same rule applies about constants)}\]
+    \hrule
+    \vspace{3pt}
+    \noindent\textbf{Proof:} Let $\epsilon>0$ be given. Choose $N\in \N$ such that $N > \text{\underline{\quad}}$, for example $N=\text{\underline{\quad}}$. Then for all $n\ge N$ we have
     \vspace{0pt}\newline
     "Same steps as rough working"
     \[\dots = \text{"equation in terms of n"} \le \text{"same thing in terms of N"} < \epsilon\]
@@ -877,17 +887,25 @@ To show divergence/convergence of a series, we can compare it to the p-series
     \vspace{0pt}\newline
     We start with the rough work. Start with an arbitrary $\epsilon>0$ and find an $N_{\epsilon}$ s.t. $\left\lvert  \frac{2n+1}{3n+2} -\frac{2}{3}  \right\rvert < \epsilon$ for all $n>N_{\epsilon}$. Let's explore this.
     \[\left\lvert  \frac{2n+1}{3n+2}-\frac{2}{3}  \right\rvert =\frac{11}{3(3n+2)} < \epsilon\quad\implies \quad n> \frac{1}{3}\left( \frac{11}{3\epsilon} -2\right)\]
-    \textbf{Proof:} Let $\epsilon>0$. Pick a positive integer $N$ such that
+    \vspace{3pt}
+    \hrule
+    \vspace{3pt}
+    \noindent\textbf{Proof:} Let $\epsilon>0$. Pick a positive integer $N$ such that
     \[N>\frac{1}{3}\left( \frac{11}{3\epsilon}-2 \right)\]
     Then,
     \[\frac{11}{3(3N+2)} < \epsilon\]
     For all $n$ with $n\ge N$ we have 
     \[\lvert a_{n}-L \rvert = \left\lvert  \frac{2n+5}{3n+2} - \frac{2}{3}  \right\rvert =\frac{11}{3(3n+2)} \le \frac{11}{3(3N+2)}<\epsilon\]
-    another method of finding a limit is,
+    \vspace{3pt}
+    \hrule
+    \vspace{3pt}
+    \noindent Another method of finding a limit is,
     $$\left\lvert  \frac{2n+1}{3n+2}-\frac{2}{3}  \right\rvert =\frac{11}{3(3n+2)} = \frac{11}{9n+6} < \frac{11}{9n}< \epsilon$$
     Since $9n+6>9n$, this means that the right fraction is larger than the left fraction in all cases. This means if we can find a right fraction that is smaller than $\epsilon$ then the left fraction must also.
-    \vspace{0pt}\newline 
-    \textbf{Proof:} let $\epsilon>0$. Pick a positive integer $N$ such that $N>\frac{11}{9\epsilon}$. Then $\frac{11}{9N} < \epsilon$. For all $n$ with $n\ge N$, we have
+    \vspace{3pt}
+    \hrule
+    \vspace{3pt}
+    \noindent\textbf{Proof:} let $\epsilon>0$. Pick a positive integer $N$ such that $N>\frac{11}{9\epsilon}$. Then $\frac{11}{9N} < \epsilon$. For all $n$ with $n\ge N$, we have
     $$\lvert a_{n}-L \rvert = \left\lvert  \frac{2n+5}{3n+2} - \frac{2}{3}  \right\rvert =\frac{11}{9n+6} \le \frac{11}{9n} \le \frac{11}{9N}<\epsilon$$
 \end{xmp}
 \vspace{-5pt}
@@ -908,8 +926,10 @@ We have $\lvert x-2\rvert$, so we want to turn the RH fraction into a constant. 
 Therefore
 \[\lvert x-2 \rvert \left\lvert  \frac{x-18}{5x-9}  \right\rvert < \lvert x-2 \rvert \cdot 32.2 < \epsilon\]
 Therefore, we can take $\delta = \max \{1/10, \epsilon / 32.2\}$
-\vspace{0pt}\newline
-\textbf{Proof:} Let $\epsilon > 0$ be given. set $\delta = \min\{\frac{1}{10}, \frac{\epsilon}{32.2}\}$. Then for all $x\in \R$ such that $\lvert x - 2\rvert < \delta$ we have
+\vspace{3pt}
+\hrule
+\vspace{3pt}
+\noindent\textbf{Proof:} Let $\epsilon > 0$ be given. set $\delta = \min\{\frac{1}{10}, \frac{\epsilon}{32.2}\}$. Then for all $x\in \R$ such that $\lvert x - 2\rvert < \delta$ we have
 \[\left\lvert \frac{x-18}{5x-9}\right\rvert < \left\lvert \frac{1.9 - 18}{9.5 - 9}\right\rvert = \left\lvert \frac{-16.1}{0.5} \right\rvert = \left\lvert -32.2 \right\rvert \implies \left\lvert \frac{x-18}{5x-9}\right\rvert < 32.2\]
 Therefore, since $\left\lvert \frac{x-18}{5x-9}\right\rvert < 32.2$,
 \[
@@ -937,7 +957,10 @@ Therefore, since $\left\lvert \frac{x-18}{5x-9}\right\rvert < 32.2$,
         \frac{\pi}{2}+2N\pi &> \frac{1}{\delta}\\
         N &> \frac{1}{2\pi}\left( \frac{1}{\delta} - \frac{\pi}{2} \right)
     \end{aligned}\]
-    \textbf{Proof:} Let $\epsilon = \frac{1}{2}$. Let $\delta > 0$ be given. Pick a positive integer $N$ such that $N > \frac{1}{2\pi}\left( \frac{1}{\delta} - \frac{\pi}{2} \right)$ and set $x = \frac{1}{\frac{\pi}{2} + 2N\pi}$. Then for all $x\in \R$ such that $0 < x < \delta$, we have
+    \vspace{3pt}
+    \hrule
+    \vspace{3pt}
+    \noindent\textbf{Proof:} Let $\epsilon = \frac{1}{2}$. Let $\delta > 0$ be given. Pick a positive integer $N$ such that $N > \frac{1}{2\pi}\left( \frac{1}{\delta} - \frac{\pi}{2} \right)$ and set $x = \frac{1}{\frac{\pi}{2} + 2N\pi}$. Then for all $x\in \R$ such that $0 < x < \delta$, we have
     \[\lvert f(x)\rvert = \left\lvert sin\left(\frac{1}{x}\right) \right\rvert = \left\lvert sin\left(\frac{\pi}{2} + 2N\pi\right) \right\rvert = 1 \ge \frac{1}{2} = \epsilon\]
 \end{xmp}
 \vspace{-5pt}
@@ -948,33 +971,35 @@ We want to try and turn the limit into compositions of other limits. From the as
 \renewcommand\labelitemi{\tiny$\bullet$}
 \begin{itemize}
     \setlength\itemsep{0em}
-    \item There exists a $\delta_{1}$ s.t. $\forall x$ where $0<\lvert x-1\rvert < \delta_{1}$, we have 
-    \begin{align}
+    \item There exists a $\delta_{1}$ s.t. $\forall x$ where $0<\lvert x-1\rvert < \delta_{1}$, we have
+    \begin{align}{\color{colour1}
         \lvert f(x) - 2\rvert < \epsilon \label{align:fx}
-    \end{align}
+    }\end{align}
     
     \item There exists a $\delta_{2}$ s.t. $\forall x$ where $0<\lvert x-1\rvert < \delta_{2}$, we have 
-    \begin{align}
+    \begin{align}{\color{colour2}
         \lvert g(x) - 3\rvert < \epsilon \label{align:gx}
-    \end{align}
+    }\end{align}
 \end{itemize}
 So, start with the main function. We want to show
 \[\lvert 4f(x) + g(x)^{2} - 17 \rvert < \epsilon\]
 We want to turn this into a composition of (\ref{align:fx}) and (\ref{align:gx}). By ``Trusting our professors won't be too mean'' this should be possible
 \[\begin{aligned}
-    \lvert 4f(x)+g(x)^{2} - 17 \rvert &= \lvert 4(f(x)-2) + g(x)^{2}-9\rvert \\
+    \lvert 4f(x)+g(x)^{2} - {\color{colour3}17} \rvert &= \lvert 4(f(x)-{\color{colour3}2}) + g(x)^{2}-{\color{colour3}9}\rvert \\
     &= \lvert 4(f(x)-2) + (g(x)-3)(g(x)+3)\rvert \\
-    \text{\textit{(via triangle ineq)}} &\le 4\lvert f(x)-2\rvert + \lvert g(x)-3\rvert \lvert g(x)+3\rvert \\
+    \text{\textit{(via triangle ineq)}} &\le 4{\color{colour1}\lvert f(x)-2\rvert} + {\color{colour2}\lvert g(x)-3\rvert} \lvert g(x)+3\rvert \\
 \end{aligned}\]
 To find an upper bound for $\lvert g(x) + 3\rvert$ we want to manipulate again
-\[\lvert g(x) + 3\rvert = \lvert g(x) - 3 + 6\rvert \quad\le \lvert g(x) - 3\rvert + 6 \quad< \epsilon + 6\]
+\[\lvert g(x) + 3\rvert = \lvert g(x) - 3 + 6\rvert \quad\le {\color{colour2}\lvert g(x) - 3\rvert} + 6 \quad< \epsilon + 6\]
 Therefore now we can substitute equations (\ref{align:fx}) and (\ref{align:gx}) into everything
-\[4\lvert f(x)-2\rvert + \lvert g(x)-3\rvert \lvert g(x)+3\rvert \quad< 4\epsilon + \epsilon \lvert g(x) + 3\rvert \quad< 4\epsilon + \epsilon(\epsilon+6)\]
+\[4{\color{colour1}\lvert f(x)-2\rvert} + {\color{colour2}\lvert g(x)-3\rvert} \lvert g(x)+3\rvert \quad< 4\epsilon + \epsilon \lvert g(x) + 3\rvert \quad< 4\epsilon + \epsilon(\epsilon+6)\]
 Let the epsilon boundary be less than $1$. Then $\epsilon + 6 < 7$, therefore
 \[4\epsilon + \epsilon(\epsilon + 6) < 4\epsilon + \epsilon(7) = 11\epsilon\]
 We want to finish with $\epsilon$ but since (\ref{align:fx}) and (\ref{align:gx}) work for any $\epsilon$ by definition, set those inequalities to $\frac{\epsilon}{11}$ instead and the final result will be $\epsilon$ on its own
-\vspace{0pt}\newline
-\textbf{Proof:} Let $\epsilon > 0$ be given. First assume $\epsilon\le 1$. By our assumptions, there exists a $\delta_{1}$ where $\forall x$ s.t. $0<\lvert x-1\rvert < \delta_{1}$, we have $\lvert f(x) - 2\rvert < \frac{\epsilon}{11}$, and a $\delta_{2}$ where $\forall x$ s.t. $0<\lvert x-1\rvert < \delta_{2}$, we have $\lvert g(x) - 3\rvert < \frac{\epsilon}{11}$. For all $x$ s.t. $0<\lvert x-1\rvert < \delta_{2}$, we have
+\vspace{3pt}
+\hrule
+\vspace{3pt}
+\noindent\textbf{Proof:} Let $\epsilon > 0$ be given. First assume $\epsilon\le 1$. By our assumptions, there exists a $\delta_{1}$ where $\forall x$ s.t. $0<\lvert x-1\rvert < \delta_{1}$, we have $\lvert f(x) - 2\rvert < {\epsilon}/{11}$, and a $\delta_{2}$ where $\forall x$ s.t. $0<\lvert x-1\rvert < \delta_{2}$, we have $\lvert g(x) - 3\rvert < {\epsilon}/{11}$. For all $x$ s.t. $0<\lvert x-1\rvert < \delta_{2}$, we have
 \[\lvert g(x) + 3\rvert = \lvert g(x) - 3 + 6\rvert \le \lvert g(x) - 3\rvert + 6 \le \frac{\epsilon}{11} + 6 \le \frac{1}{11} + 6 \le 7\]
 Let $\delta = \min\{\delta_{1}, \delta_{2}\}$ Therefore, since $\lvert g(x) + 3\rvert  \le 7,$
 \[\begin{aligned}
@@ -1034,7 +1059,7 @@ Therefore,
 \end{xmp}
 \vspace{-5pt}
 
-\lipsum[1-12]
+% \lipsum[1-12]
 
 \end{multicols}
 
