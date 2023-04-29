@@ -335,26 +335,27 @@ Let $H,K\le G$ be finite subgroups of a group $G$ such that $H\cap K = \{e\}$ Th
 \end{dfn}
 \vspace{-5pt}
 
-\begin{dfn}[Kernel of an Action, Faithful Action]{def:action-kernel-faith}{4.1.4}
-Suppose that $G$ acts on $X$. Then the set
-\[N := \{g\in G\mid g\cdot x=x \quad\forall x\in X\}\]
-is a subgroup of $G$, and is called the \textbf{kernel} of the action. If $N = \{e\}$, then we say the action is \textbf{faithful}
-\end{dfn}
-\vspace{-5pt}
-
 \begin{dfn}[Orbit, Stabilizer, and Fix]{def:orbit}{4.2.1}
-    For every $x$ in $X$, the \textbf{orbit} of $x$ is defined by
-    \[\text{Orb}_{G}(x)=\{g\cdot x \mid g\in G\}\]
-    This is a subset of $X$
-    \vspace{0pt}\newline
-    For every $x$ in $X$, the \textbf{stabilizer} of $x$ is defined by
-    \[\text{Stab}_{G}(x)=\{g\in G \mid g\cdot x = x\}\]
-    This is a subgroup of $G$
-    \vspace{0pt}\newline
-    For every $g$ in $G$, the \textbf{fix} of $g$ is defined by
-    \[\Fix (g) = \{x\in X\mid g\cdot x=x\}\]
-    Let $G$ act on $X$, let $x\in X$ and set $H:=\Stab_{G}(x)$. If $y=g\cdot x$ for some $g\in G$, then
-    \[\send_{x}(y)=gH\]
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item Suppose that $G$ acts on $X$. Then the set
+        \[N := \{g\in G\mid g\cdot x=x \quad\forall x\in X\}\]
+        is a subgroup of $G$, and is called the \textbf{kernel} of the action. If $N = \{e\}$, then we say the action is \textbf{faithful}
+        \item For every $x$ in $X$, the \textbf{orbit} of $x$ is defined by
+        \[\text{Orb}_{G}(x)=\{g\cdot x \mid g\in G\}\]
+        This is a subset of $X$
+        \item For every $x$ in $X$, the \textbf{stabilizer} of $x$ is defined by
+        \[\text{Stab}_{G}(x)=\{g\in G \mid g\cdot x = x\}\]
+        This is a subgroup of $G$
+        \item For every $g$ in $G$, the \textbf{fix} of $g$ is defined by
+        \[\Fix (g) = \{x\in X\mid g\cdot x=x\}\]
+        Let $G$ act on $X$, let $x\in X$ and set $H:=\Stab_{G}(x)$. If $y=g\cdot x$ for some $g\in G$, then
+        \[\send_{x}(y)=gH\]
+        \item Let $h\in H$ and $g\in G :=X$. The conjugate action is:
+        \[\{h\cdot g := hgh^{-1}\}\]
+        
+    \end{itemize}
 \end{dfn}
 \vspace{-5pt}
 
@@ -470,7 +471,7 @@ Additionally, a nonempty set $E$ is at most countable if and only if there is a 
 \subsection*{Sequences and Series}
 
 \begin{dfn}[Convergence of a Sequence]{def:sequence-convergence}{2.1.1}
-A sequence of real numbers $(x_{n})$ is said to converge to a real number $a$ if for every $\epsilon>_{0}$ there is a $N\in \N$ where for every $n\ge N$ we have that $\lvert x_{n}- a \rvert < \epsilon $
+A sequence of real numbers $(x_{n})$ is said to converge to a real number $a$ if for every $\epsilon> 0$ there is a $N\in \N$ where for every $n\ge N$ we have that $\lvert x_{n}- a \rvert < \epsilon $
 \vspace{0pt}\newline
 For a sequence $(x_{n})$, we write $\lim x_{n}=+\infty$ if for each $M>0$ there is a number $N$ such that $n>N$ implies $x_{n} > M$. Reverse every inequality for $-\infty$ case.
 %TODO diff ways of saying if there is space
@@ -684,9 +685,9 @@ Let $f(x)$ be continuous on $[a,b]$ such that $f(a)f(b) < 0$, then there exists 
 
 \subsection*{Differentiation}
 \begin{dfn}[First Principle Differentiation]{def:first-principles}{5.1.1}
-A real function $f$ is said to be differentiable at a point $a\in \R$ if $f$ is defined at some open interval containing $a$, and
-\[f'(a) = \lim_{x\to a} \frac{f(x) - f(a)}{x - a}\]
-exists. $f'(a)$ is called the derivative of $f$ at the point $a$
+A real function $f$ is said to be differentiable at a point $x\in \R$ if $f$ is defined at some open interval containing $x$, and
+\[f'(x) = \lim_{h\to 0} \frac{f(x+h) - f(x)}{h}\]
+exists. $f'(x)$ is called the derivative of $f$ at the point $x$
 \end{dfn}
 \vspace{-5pt}
 
