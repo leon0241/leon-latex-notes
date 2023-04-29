@@ -815,7 +815,7 @@ Made by Leon
 
 \section{Examples Catalogue}
 
-\subsection*{Geometric Examples of a Group}
+\subsection*{Examples of a Group}
 
 \begin{xmp}[Dihedral Group $D_{n}$]{ex:dihedral}{1.2.4}
 The set of symmetries of an $n$-gon forms a group under composition. We call this group the \textbf{Dihedral Group} $D_{n}$
@@ -838,10 +838,26 @@ The set of all symmetries of $\{1,\, 2,\,\dots,\,n\}$ is called the \textbf{symm
 \end{xmp}
 \vspace{-5pt}
 
+\begin{xmp}[Group Properties pick'n'mix]{ex:group-examples}{$\Z_{3} x \Z_{4}$}
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item Any group $\Z_{n}$ is \textbf{Abelian} and \textbf{Cyclic}
+        \item Any cross product of $\Z_{n} \times \Z_{m}$ where $n$ and $m$ are coprime is \textbf{Abelian} and \textbf{Cyclic}.
+        \item Any cross product of $\Z_{n} \times \Z_{m}$ where $n$ and $m$ are not coprime is \textbf{Abelian} but \textbf{Not Cyclic}.
+        \item Any dihedral group $D_{n}$ is \textbf{Not Abelian}, and \textbf{Not Cyclic}
+        \item The trivial action $g\cdot x = x$ of any group is \textbf{Not Faithful} and \textbf{Not Transitive}
+        \item The trivial action of any group acting on $\{1\}$ is \textbf{Not Faithful} and \textbf{Transitive}
+        \item $\Z_{an}$ acting on $\Z_{n}$, where $a\in \Z$ where $g\cdot x=g+x$ is \textbf{Not Faithful} and \textbf{Not Transitive}
+        \item A symmetry group of a graph with a middle point has at least two orbits (\textbf{Not Transitive})
+    \end{itemize}
+    \end{xmp}
+    \vspace{-5pt}
+
 % examples of abelian group
 % cyclic group
 
-\begin{xmp}[Example of a Coset]{ex:coset-example}{?}
+\begin{xmp}[Example of a Coset]{ex:coset-example}{0}
     Consider $\Z_{4}$ under addition, and let $H=\{0,2\}$ ($e=0$.) The cosets of $H$ in $G$ are:
     \[\begin{aligned}
     eH = e * H = \{e * h\,|\,h\in H\} = \{0+h\,|\, h\in H\} = \{0,2\} \\
@@ -864,7 +880,34 @@ To show divergence/convergence of a series, we can compare it to the p-series
 \end{xmp}
 \vspace{-5pt}
 
-\begin{xmp}[$\epsilon-\delta$ and $\epsilon-N$ Continuity Template]{ex:e-d-c-template}{pain}
+\begin{xmp}[Deciphering Taylor Series]{ex:taylor-examples}{$\sum^{\infty}_{n=0}$}
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item \textbf{Showing convergence of a Taylor Series:} An infinite Taylor series will converge to $f(x)$ iff we have $R_{N}(x) \to 0$ as $N\to\infty$ in the finite Taylor series
+        \[\displaystyle f(x) = \lim_{N\to \infty} \sum_{k=0}^{N} \frac{f^k(x_{0})}{k!}(x-x_{0})^k + R_{N}(x)\]
+        Therefore, showing that $(R_{N}(x))_{n\in \N}$ converges to $0$ is enough to show that the infinite Taylor Series converges to $f(x)$
+        \item \textbf{Simplifying series-like terms:} If you have a Taylor Series / function that is in the same equation as a bunch of series-like terms, then a good idea is to try to expand the Taylor series at $N$ for the $N$ amount of elements and then try and figure something out using the remainder term $R_{N}(x)$
+        \vspace{0pt}\newline
+        \textit{Example: extract of 2018 May A3}
+        \vspace{0pt}\newline
+        At some point we end up with an equation
+        \[0\le \ln(x + 1) - x + \frac{x^{2}}{2} - \frac{x^{3}}{3} + \frac{x^{4}}{4}\]
+        and a Taylor Series
+        \[\ln(x+1) = \sum_{n=0}^{\infty} \frac{(-1)^{n+1}}{n}x^n\]
+        Expand Taylor series with $N=4$
+        \[\begin{aligned}
+            0&\le \ln(x + 1) - x + \frac{x^{2}}{2} - \frac{x^{3}}{3} + \frac{x^{4}}{4}\\
+            &= x - \frac{x^{2}}{2} + \frac{x^{3}}{3} - \frac{x^{4}}{4} + R_{4}(x) - x + \frac{x^{2}}{2} - \frac{x^{3}}{3} + \frac{x^{4}}{4}\\
+            &= R_{4}(x)
+        \end{aligned}\]
+    \end{itemize}
+    \end{xmp}
+    \vspace{-5pt}
+
+\subsection*{The museum of $\epsilon-\delta$ limits}
+
+\begin{xmp}[$\epsilon-\delta$ and $\epsilon-N$ Template]{ex:e-d-c-template}{of rigour}
     \textbf{Proof:} Let $\epsilon > 0$ be given. Set $\delta {\color{colour1}=}\text{\underline{\quad}}$ (If there is a constant, then set as ``${\color{colour1}<}$'' e.g. $\delta {\color{colour1}<}\min\{1,\epsilon\}$). Then for all $x\in \R$ such that $\lvert x - \text{\underline{\quad}}\rvert < \delta$ we have
     \vspace{0pt}\newline
     \textit{Optional: preliminary step to determine an upper bound}
@@ -910,8 +953,9 @@ To show divergence/convergence of a series, we can compare it to the p-series
 \end{xmp}
 \vspace{-5pt}
 
+\newpage
 
-\begin{xmp}[$\epsilon-\delta$ Continuity]{ex:e-d-continuity}{?}
+\begin{xmp}[$\epsilon-\delta$ Continuity]{ex:e-d-continuity}{(}
 \textit{Using the definition of continuity, prove that the function $f: \R\backslash \{\frac{9}{5}\}\to \R$ defined by $f(x)=\frac{x^{2}}{5x-9}$ is continuous at $x_{0}= 2$}
 Since $x_{0} = 2$, our delta should end up as $\lvert x-2\rvert < \delta$. Start with $\lvert f(x) - f(a)\rvert  < \epsilon$
 \[\begin{aligned}
@@ -939,8 +983,6 @@ Therefore, since $\left\lvert \frac{x-18}{5x-9}\right\rvert < 32.2$,
 \]
 \end{xmp}
 \vspace{-5pt}
-
-\newpage
 
 \begin{xmp}[$\epsilon-\delta$ Discontinuity]{ex:discontinuity}{)}
     From negation of $\epsilon-\delta$ continuity - A function $f:A\to\R$ is not continuous if there exists $\epsilon>0$ such that for all $\delta>0$ there exists some $x \in A$ satisfying $0<\lvert x-c \rvert<\delta$ for which $\lvert  f(x)-f(c) \rvert\ge \epsilon$
@@ -1019,45 +1061,7 @@ Therefore,
 
 % absolute convergence
 
-\begin{xmp}[Group Examples pick'n'mix]{ex:group-examples}{number}
-\renewcommand\labelitemi{\tiny$\bullet$}
-\begin{itemize}
-    \setlength\itemsep{0em}
-    \item Any group $\Z_{n}$ is \textbf{Abelian} and \textbf{Cyclic}
-    \item Any cross product of $\Z_{n} \times \Z_{m}$ where $n$ and $m$ are coprime is \textbf{Abelian} and \textbf{Cyclic}.
-    \item Any cross product of $\Z_{n} \times \Z_{m}$ where $n$ and $m$ are not coprime is \textbf{Abelian} but \textbf{Not Cyclic}.
-    \item Any dihedral group $D_{n}$ is \textbf{Not Abelian}, and \textbf{Not Cyclic}
-    \item The trivial action $g\cdot x = x$ of any group is \textbf{Not Faithful} and \textbf{Not Transitive}
-    \item The trivial action of any group acting on $\{1\}$ is \textbf{Not Faithful} and \textbf{Transitive}
-    \item $\Z_{an}$ acting on $\Z_{n}$, where $a\in \Z$ where $g\cdot x=g+x$ is \textbf{Not Faithful} and \textbf{Not Transitive}
-\end{itemize}
-\end{xmp}
-\vspace{-5pt}
 
-\begin{xmp}[Deciphering Taylor Series]{ex:taylor-examples}{$\sum^{\infty}_{n=0}$}
-\renewcommand\labelitemi{\tiny$\bullet$}
-\begin{itemize}
-    \setlength\itemsep{0em}
-    \item \textbf{Showing convergence of a Taylor Series:} An infinite Taylor series will converge to $f(x)$ iff we have $R_{N}(x) \to 0$ as $N\to\infty$ in the finite Taylor series
-    \[\displaystyle f(x) = \lim_{N\to \infty} \sum_{k=0}^{N} \frac{f^k(x_{0})}{k!}(x-x_{0})^k + R_{N}(x)\]
-    Therefore, showing that $(R_{N}(x))_{n\in \N}$ converges to $0$ is enough to show that the infinite Taylor Series converges to $f(x)$
-    \item \textbf{Simplifying series-like terms:} If you have a Taylor Series / function that is in the same equation as a bunch of series-like terms, then a good idea is to try to expand the Taylor series at $N$ for the $N$ amount of elements and then try and figure something out using the remainder term $R_{N}(x)$
-    \vspace{0pt}\newline
-    \textit{Example: extract of 2018 May A3}
-    \vspace{0pt}\newline
-    At some point we end up with an equation
-    \[0\le \ln(x + 1) - x + \frac{x^{2}}{2} - \frac{x^{3}}{3} + \frac{x^{4}}{4}\]
-    and a Taylor Series
-    \[\ln(x+1) = \sum_{n=0}^{\infty} \frac{(-1)^{n+1}}{n}x^n\]
-    Expand Taylor series with $N=4$
-    \[\begin{aligned}
-        0&\le \ln(x + 1) - x + \frac{x^{2}}{2} - \frac{x^{3}}{3} + \frac{x^{4}}{4}\\
-        &= x - \frac{x^{2}}{2} + \frac{x^{3}}{3} - \frac{x^{4}}{4} + R_{4}(x) - x + \frac{x^{2}}{2} - \frac{x^{3}}{3} + \frac{x^{4}}{4}\\
-        &= R_{4}(x)
-    \end{aligned}\]
-\end{itemize}
-\end{xmp}
-\vspace{-5pt}
 
 % \lipsum[1-12]
 
