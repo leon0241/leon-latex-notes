@@ -2,6 +2,11 @@
 \usepackage{geometry}
 % \usepackage{showframe}
 \usepackage[dvipsnames]{xcolor}
+
+\colorlet{colour1}{BrickRed}
+\colorlet{colour2}{Green}
+\colorlet{colour3}{RoyalBlue}
+
 \geometry{
     a4paper, 
     margin=0.17in
@@ -135,7 +140,7 @@ A function $f:X\to Y$ is called
     If $G$ is infinite we say that $\lvert G \rvert = \infty$, or the order of $G$ is infinite.
 \end{dfn}
 \vspace{-5pt}
-
+    web
 \begin{thm}[Order of a Finite Group]{thm:finite-order-thm}{2.2.6}
     In a finite group, every element has finite order.\newline
     If $g$ is an element of a finite group $G$, then there exists $k\in \N$ such that $g^{k} = g^{-1}$
@@ -860,14 +865,14 @@ To show divergence/convergence of a series, we can compare it to the p-series
 \vspace{-5pt}
 
 \begin{xmp}[$\epsilon-\delta$ and $\epsilon-N$ Continuity Template]{ex:e-d-c-template}{pain}
-    \textbf{Proof:} Let $\epsilon > 0$ be given. Set $\delta \color{red}= \color{black}\text{\underline{\quad}}$ (If there is a constant, then set as ``$\color{red}<$\color{black}'' e.g. $\delta\color{red}<\color{black}\min\{1,\epsilon\}$). Then for all $x\in \R$ such that $\lvert x - \text{\underline{\quad}}\rvert < \delta$ we have
+    \textbf{Proof:} Let $\epsilon > 0$ be given. Set $\delta {\color{colour1}=}\text{\underline{\quad}}$ (If there is a constant, then set as ``${\color{colour1}<}$'' e.g. $\delta {\color{colour1}<}\min\{1,\epsilon\}$). Then for all $x\in \R$ such that $\lvert x - \text{\underline{\quad}}\rvert < \delta$ we have
     \vspace{0pt}\newline
     \textit{Optional: preliminary step to determine an upper bound}
     \vspace{0pt}\newline
     Therefore, / Therefore since $\text{``\underline{x term}''} < \text{``\underline{constant}''}$,
     \vspace{0pt}\newline
     ``Same steps as rough working''
-    \[\dots = \text{\underline{\quad}} \cdot \lvert x - \text{\underline{\quad}}\rvert < \text{\underline{\quad}}\delta \color{red}=\color{black} \epsilon \quad\text{(same rule applies about constants)}\]
+    \[\dots = \text{\underline{\quad}} \cdot \lvert x - \text{\underline{\quad}}\rvert < \text{\underline{\quad}}\delta {\color{colour1}=} \epsilon \quad\text{(same rule applies about constants)}\]
     \hrule
     \vspace{3pt}
     \noindent\textbf{Proof:} Let $\epsilon>0$ be given. Choose $N\in \N$ such that $N > \text{\underline{\quad}}$, for example $N=\text{\underline{\quad}}$. Then for all $n\ge N$ we have
@@ -966,28 +971,28 @@ We want to try and turn the limit into compositions of other limits. From the as
 \renewcommand\labelitemi{\tiny$\bullet$}
 \begin{itemize}
     \setlength\itemsep{0em}
-    \item There exists a $\delta_{1}$ s.t. $\forall x$ where $0<\lvert x-1\rvert < \delta_{1}$, we have 
-    \begin{align}\color{green}
+    \item There exists a $\delta_{1}$ s.t. $\forall x$ where $0<\lvert x-1\rvert < \delta_{1}$, we have
+    \begin{align}{\color{colour1}
         \lvert f(x) - 2\rvert < \epsilon \label{align:fx}
-    \end{align}\color{black}
+    }\end{align}
     
     \item There exists a $\delta_{2}$ s.t. $\forall x$ where $0<\lvert x-1\rvert < \delta_{2}$, we have 
-    \begin{align}
+    \begin{align}{\color{colour2}
         \lvert g(x) - 3\rvert < \epsilon \label{align:gx}
-    \end{align}
+    }\end{align}
 \end{itemize}
 So, start with the main function. We want to show
 \[\lvert 4f(x) + g(x)^{2} - 17 \rvert < \epsilon\]
 We want to turn this into a composition of (\ref{align:fx}) and (\ref{align:gx}). By ``Trusting our professors won't be too mean'' this should be possible
 \[\begin{aligned}
-    \lvert 4f(x)+g(x)^{2} - 17 \rvert &= \lvert 4(f(x)-2) + g(x)^{2}-9\rvert \\
+    \lvert 4f(x)+g(x)^{2} - {\color{colour3}17} \rvert &= \lvert 4(f(x)-{\color{colour3}2}) + g(x)^{2}-{\color{colour3}9}\rvert \\
     &= \lvert 4(f(x)-2) + (g(x)-3)(g(x)+3)\rvert \\
-    \text{\textit{(via triangle ineq)}} &\le 4\lvert f(x)-2\rvert + \lvert g(x)-3\rvert \lvert g(x)+3\rvert \\
+    \text{\textit{(via triangle ineq)}} &\le 4{\color{colour1}\lvert f(x)-2\rvert} + {\color{colour2}\lvert g(x)-3\rvert} \lvert g(x)+3\rvert \\
 \end{aligned}\]
 To find an upper bound for $\lvert g(x) + 3\rvert$ we want to manipulate again
-\[\lvert g(x) + 3\rvert = \lvert g(x) - 3 + 6\rvert \quad\le \lvert g(x) - 3\rvert + 6 \quad< \epsilon + 6\]
+\[\lvert g(x) + 3\rvert = \lvert g(x) - 3 + 6\rvert \quad\le {\color{colour2}\lvert g(x) - 3\rvert} + 6 \quad< \epsilon + 6\]
 Therefore now we can substitute equations (\ref{align:fx}) and (\ref{align:gx}) into everything
-\[4\lvert f(x)-2\rvert + \lvert g(x)-3\rvert \lvert g(x)+3\rvert \quad< 4\epsilon + \epsilon \lvert g(x) + 3\rvert \quad< 4\epsilon + \epsilon(\epsilon+6)\]
+\[4{\color{colour1}\lvert f(x)-2\rvert} + {\color{colour2}\lvert g(x)-3\rvert} \lvert g(x)+3\rvert \quad< 4\epsilon + \epsilon \lvert g(x) + 3\rvert \quad< 4\epsilon + \epsilon(\epsilon+6)\]
 Let the epsilon boundary be less than $1$. Then $\epsilon + 6 < 7$, therefore
 \[4\epsilon + \epsilon(\epsilon + 6) < 4\epsilon + \epsilon(7) = 11\epsilon\]
 We want to finish with $\epsilon$ but since (\ref{align:fx}) and (\ref{align:gx}) work for any $\epsilon$ by definition, set those inequalities to $\frac{\epsilon}{11}$ instead and the final result will be $\epsilon$ on its own
