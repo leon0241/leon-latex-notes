@@ -1,6 +1,7 @@
 # FPM LaTeX Notes
 
-# Link to PDF: [click here!](notes.pdf)
+# Link to PDF 1 (Coloured box edges): [click here!](notes_white.pdf)
+# Link to PDF 2 (Fully coloured boxes): [click here!](notes_colour.pdf)
 
 ## Info 
 Any theorem number is the closest theorem to the lecture notes (some are taken from other sources)
@@ -11,5 +12,5 @@ Dependencies that are not in a barebones TinyTeX installation are listed in the 
 
 If someone knows which package extarticle is included in then lmk :sob:, right now it's just sitting in the folder lol
 
-#### 
- :coffee: [(Optional) Buy me a coffee :)](https://ko-fi.com/leon024)
+
+:coffee: [(Optional) Buy me a coffee :)](https://ko-fi.com/leon024)
