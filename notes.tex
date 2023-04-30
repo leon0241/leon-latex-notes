@@ -20,8 +20,8 @@
 \usepackage{multicol}
 \usepackage{lipsum}
 \usepackage[framemethod=TikZ]{mdframed}
-\usepackage{thmboxes_white}
-% \usepackage{thmboxes_col}
+% \usepackage{thmboxes_white}
+\usepackage{thmboxes_col}
 \usepackage{float}
 % \usepackage{setspace}
 \usepackage[nodisplayskipstretch]{setspace}
@@ -924,7 +924,7 @@ To show divergence/convergence of a series, we can compare it to the p-series
     \[\dots = \text{\underline{\quad}} \cdot \lvert x - \text{\underline{\quad}}\rvert < \text{\underline{\quad}}\delta {\color{colour1}=} \epsilon \quad\text{(same rule applies about constants)}\]
     \hrule
     \vspace{3pt}
-    \noindent\textbf{Proof:} Let $\epsilon>0$ be given. Choose $N\in \N$ such that $N > \text{\underline{\quad}}$, for example $N=\text{\underline{\quad}}$. Then for all $n\ge N$ we have
+    \noindent\textbf{Proof:} Let $\epsilon>0$ be given. Choose $N\in \N$ such that $N > \text{\underline{\quad}}$, (optional(?) for example $N=\text{\underline{\quad}}$). Then we have $\text{\underline{\quad}}<\epsilon$. Then for all $n\ge N$ we have
     \vspace{0pt}\newline
     "Same steps as rough working"
     \[\dots = \text{"equation in terms of n"} \le \text{"same thing in terms of N"} < \epsilon\]
@@ -955,7 +955,7 @@ To show divergence/convergence of a series, we can compare it to the p-series
     \hrule
     \vspace{3pt}
     \noindent\textbf{Proof:} let $\epsilon>0$. Pick a positive integer $N$ such that $N>\frac{11}{9\epsilon}$. Then $\frac{11}{9N} < \epsilon$. For all $n$ with $n\ge N$, we have
-    $$\lvert a_{n}-L \rvert = \left\lvert  \frac{2n+5}{3n+2} - \frac{2}{3}  \right\rvert =\frac{11}{9n+6} \le \frac{11}{9n} \le \frac{11}{9N}<\epsilon$$
+    $$\lvert a_{n}-L \rvert = \left\lvert  \frac{2n+5}{3n+2} - \frac{2}{3}  \right\rvert =\frac{11}{9n+6} < \frac{11}{9n} \le \frac{11}{9N}<\epsilon$$
 \end{xmp}
 \vspace{-5pt}
 
