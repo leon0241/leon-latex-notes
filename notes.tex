@@ -20,8 +20,8 @@
 \usepackage{multicol}
 \usepackage{lipsum}
 \usepackage[framemethod=TikZ]{mdframed}
-% \usepackage{thmboxes_white}
-\usepackage{thmboxes_col}
+\usepackage{thmboxes_white}
+% \usepackage{thmboxes_col}
 \usepackage{float}
 % \usepackage{setspace}
 \usepackage[nodisplayskipstretch]{setspace}
@@ -839,7 +839,7 @@ The set of all symmetries of $\{1,\, 2,\,\dots,\,n\}$ is called the \textbf{symm
 \end{xmp}
 \vspace{-5pt}
 
-\begin{xmp}[Group Properties pick'n'mix]{ex:group-examples}{$\Z_{3} x \Z_{4}$}
+\begin{xmp}[Group Properties pick'n'mix]{ex:group-examples}{$\Z_{3} \times \Z_{4}$}
     \renewcommand\labelitemi{\tiny$\bullet$}
     \begin{itemize}
         \setlength\itemsep{0em}
@@ -850,7 +850,12 @@ The set of all symmetries of $\{1,\, 2,\,\dots,\,n\}$ is called the \textbf{symm
         \item The trivial action $g\cdot x = x$ of any group is \textbf{Not Faithful} and \textbf{Not Transitive}
         \item The trivial action of any group acting on $\{1\}$ is \textbf{Not Faithful} and \textbf{Transitive}
         \item $\Z_{an}$ acting on $\Z_{n}$, where $a\in \Z$ where $g\cdot x=g+x$ is \textbf{Not Faithful} and \textbf{Not Transitive}
-        \item A symmetry group of a graph with a middle point has at least two orbits (\textbf{Not Transitive})
+        \item A symmetry group of a graph with a middle point has at least two orbits (\textbf{Not Transitive}) e.g.
+        \vspace{-5pt}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\linewidth]{images/orbit.png}
+        \end{figure}
     \end{itemize}
     \end{xmp}
     \vspace{-5pt}
