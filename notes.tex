@@ -20,8 +20,8 @@
 \usepackage{multicol}
 \usepackage{lipsum}
 \usepackage[framemethod=TikZ]{mdframed}
-% \usepackage{thmboxes_white}
-\usepackage{thmboxes_col}
+\usepackage{thmboxes_white}
+% \usepackage{thmboxes_col}
 \usepackage{float}
 % \usepackage{setspace}
 \usepackage[nodisplayskipstretch]{setspace}
@@ -990,6 +990,58 @@ Therefore, since $\left\lvert \frac{x-18}{5x-9}\right\rvert < 32.2$,
 \end{xmp}
 \vspace{-5pt}
 
+\begin{xmp}[$\epsilon-\delta$ using other limits]{ex:limits-of-limits}{Dumb Assumptions}
+    \textit{If $f,g:\R\backslash\{1\}\to \R$ are two functions such that $\lim_{x\to 1} f(x)=2,\, \lim_{x\to 1} g(x)=3$, show that $\lim_{x\to 1} (4f(x)+g(x)^{2}) = 17$}
+    We want to try and turn the limit into compositions of other limits. From the assumptions, we know that
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item There exists a $\delta_{1}$ s.t. $\forall x$ where $0<\lvert x-1\rvert < \delta_{1}$, we have
+        \begin{align}{\color{colour1}
+            \lvert f(x) - 2\rvert < \epsilon \label{align:fx}
+        }\end{align}
+        
+        \item There exists a $\delta_{2}$ s.t. $\forall x$ where $0<\lvert x-1\rvert < \delta_{2}$, we have 
+        \begin{align}{\color{colour2}
+            \lvert g(x) - 3\rvert < \epsilon \label{align:gx}
+        }\end{align}
+    \end{itemize}
+    So, start with the main function. We want to show
+    \[\lvert 4f(x) + g(x)^{2} - 17 \rvert < \epsilon\]
+    We want to turn this into a composition of (\ref{align:fx}) and (\ref{align:gx}). By ``Trusting our professors won't be too mean'' this should be possible
+    \[\begin{aligned}
+        \lvert 4f(x)+g(x)^{2} - {\color{colour3}17} \rvert &= \lvert 4(f(x)-{\color{colour3}2}) + g(x)^{2}-{\color{colour3}9}\rvert \\
+        &= \lvert 4(f(x)-2) + (g(x)-3)(g(x)+3)\rvert \\
+        \text{\textit{(via triangle ineq)}} &\le 4{\color{colour1}\lvert f(x)-2\rvert} + {\color{colour2}\lvert g(x)-3\rvert} \lvert g(x)+3\rvert \\
+    \end{aligned}\]
+    To find an upper bound for $\lvert g(x) + 3\rvert$ we want to manipulate again
+    \[\lvert g(x) + 3\rvert = \lvert g(x) - 3 + 6\rvert \quad\le {\color{colour2}\lvert g(x) - 3\rvert} + 6 \quad< \epsilon + 6\]
+    Therefore now we can substitute equations (\ref{align:fx}) and (\ref{align:gx}) into everything
+    \[4{\color{colour1}\lvert f(x)-2\rvert} + {\color{colour2}\lvert g(x)-3\rvert} \lvert g(x)+3\rvert \quad< 4\epsilon + \epsilon \lvert g(x) + 3\rvert \quad< 4\epsilon + \epsilon(\epsilon+6)\]
+    Let the epsilon boundary be less than $1$. Then $\epsilon + 6 < 7$, therefore
+    \[4\epsilon + \epsilon(\epsilon + 6) < 4\epsilon + \epsilon(7) = 11\epsilon\]
+    We want to finish with $\epsilon$ but since (\ref{align:fx}) and (\ref{align:gx}) work for any $\epsilon$ by definition, set those inequalities to $\frac{\epsilon}{11}$ instead and the final result will be $\epsilon$ on its own
+    \vspace{3pt}
+    \hrule
+    \vspace{3pt}
+    \noindent\textbf{Proof:} Let $\epsilon > 0$ be given. First assume $\epsilon\le 1$. By our assumptions, there exists a $\delta_{1}$ where $\forall x$ s.t. $0<\lvert x-1\rvert < \delta_{1}$, we have $\lvert f(x) - 2\rvert < {\epsilon}/{11}$, and a $\delta_{2}$ where $\forall x$ s.t. $0<\lvert x-1\rvert < \delta_{2}$, we have $\lvert g(x) - 3\rvert < {\epsilon}/{11}$. For all $x$ s.t. $0<\lvert x-1\rvert < \delta_{2}$, we have
+    \[\lvert g(x) + 3\rvert = \lvert g(x) - 3 + 6\rvert \le \lvert g(x) - 3\rvert + 6 \le \frac{\epsilon}{11} + 6 \le \frac{1}{11} + 6 \le 7\]
+    Let $\delta = \min\{\delta_{1}, \delta_{2}\}$ Therefore, since $\lvert g(x) + 3\rvert  \le 7,$
+    \[\begin{aligned}
+        \lvert 4f(x)+g(x)^{2} - 17 \rvert &= \lvert 4(f(x)-2) + g(x)^{2}-9\rvert \\
+        &= \lvert 4(f(x)-2) + (g(x)-3)(g(x)+3)\rvert \\
+        \text{\textit{(via triangle ineq)}} &\le 4\lvert f(x)-2\rvert + \lvert g(x)-3\rvert \lvert g(x)+3\rvert \\
+        &< 4\frac{\epsilon}{11} + 7 \frac{\epsilon}{11}
+        = \epsilon
+    \end{aligned}\]
+    Assume now that $\epsilon > 1$. By what we have shown above there exists a $\epsilon>0$ such that for all $x$ such that $0<\lvert x-1\rvert <\epsilon$,
+    \[\lvert 4f(x) + g(x)^{2} - 17  \rvert < 1\]
+    Therefore,
+    \[\lvert 4f(x) + g(x)^{2} - 17  \rvert < \epsilon\]
+\end{xmp}
+\vspace{-5pt}
+
+
 \begin{xmp}[$\epsilon-\delta$ Discontinuity]{ex:discontinuity}{)}
     From negation of $\epsilon-\delta$ continuity - A function $f:A\to\R$ is not continuous if there exists $\epsilon>0$ such that for all $\delta>0$ there exists some $x \in A$ satisfying $0<\lvert x-c \rvert<\delta$ for which $\lvert  f(x)-f(c) \rvert\ge \epsilon$
     \[\lvert f(x) - f(a)\rvert < \epsilon \implies \left\lvert sin\left(\frac{1}{x}\right) - 0 \right\rvert < \epsilon \quad \implies \left\lvert sin\left(\frac{1}{x}\right)\right\rvert < \epsilon\]
@@ -1013,60 +1065,24 @@ Therefore, since $\left\lvert \frac{x-18}{5x-9}\right\rvert < 32.2$,
 \end{xmp}
 \vspace{-5pt}
 
-\begin{xmp}[$\epsilon-\delta$ using other limits]{ex:limits-of-limits}{Dumb Assumptions}
-\textit{If $f,g:\R\backslash\{1\}\to \R$ are two functions such that $\lim_{x\to 1} f(x)=2,\, \lim_{x\to 1} g(x)=3$, show that $\lim_{x\to 1} (4f(x)+g(x)^{2}) = 17$}
-We want to try and turn the limit into compositions of other limits. From the assumptions, we know that
-\renewcommand\labelitemi{\tiny$\bullet$}
-\begin{itemize}
-    \setlength\itemsep{0em}
-    \item There exists a $\delta_{1}$ s.t. $\forall x$ where $0<\lvert x-1\rvert < \delta_{1}$, we have
-    \begin{align}{\color{colour1}
-        \lvert f(x) - 2\rvert < \epsilon \label{align:fx}
-    }\end{align}
-    
-    \item There exists a $\delta_{2}$ s.t. $\forall x$ where $0<\lvert x-1\rvert < \delta_{2}$, we have 
-    \begin{align}{\color{colour2}
-        \lvert g(x) - 3\rvert < \epsilon \label{align:gx}
-    }\end{align}
-\end{itemize}
-So, start with the main function. We want to show
-\[\lvert 4f(x) + g(x)^{2} - 17 \rvert < \epsilon\]
-We want to turn this into a composition of (\ref{align:fx}) and (\ref{align:gx}). By ``Trusting our professors won't be too mean'' this should be possible
-\[\begin{aligned}
-    \lvert 4f(x)+g(x)^{2} - {\color{colour3}17} \rvert &= \lvert 4(f(x)-{\color{colour3}2}) + g(x)^{2}-{\color{colour3}9}\rvert \\
-    &= \lvert 4(f(x)-2) + (g(x)-3)(g(x)+3)\rvert \\
-    \text{\textit{(via triangle ineq)}} &\le 4{\color{colour1}\lvert f(x)-2\rvert} + {\color{colour2}\lvert g(x)-3\rvert} \lvert g(x)+3\rvert \\
-\end{aligned}\]
-To find an upper bound for $\lvert g(x) + 3\rvert$ we want to manipulate again
-\[\lvert g(x) + 3\rvert = \lvert g(x) - 3 + 6\rvert \quad\le {\color{colour2}\lvert g(x) - 3\rvert} + 6 \quad< \epsilon + 6\]
-Therefore now we can substitute equations (\ref{align:fx}) and (\ref{align:gx}) into everything
-\[4{\color{colour1}\lvert f(x)-2\rvert} + {\color{colour2}\lvert g(x)-3\rvert} \lvert g(x)+3\rvert \quad< 4\epsilon + \epsilon \lvert g(x) + 3\rvert \quad< 4\epsilon + \epsilon(\epsilon+6)\]
-Let the epsilon boundary be less than $1$. Then $\epsilon + 6 < 7$, therefore
-\[4\epsilon + \epsilon(\epsilon + 6) < 4\epsilon + \epsilon(7) = 11\epsilon\]
-We want to finish with $\epsilon$ but since (\ref{align:fx}) and (\ref{align:gx}) work for any $\epsilon$ by definition, set those inequalities to $\frac{\epsilon}{11}$ instead and the final result will be $\epsilon$ on its own
-\vspace{3pt}
-\hrule
-\vspace{3pt}
-\noindent\textbf{Proof:} Let $\epsilon > 0$ be given. First assume $\epsilon\le 1$. By our assumptions, there exists a $\delta_{1}$ where $\forall x$ s.t. $0<\lvert x-1\rvert < \delta_{1}$, we have $\lvert f(x) - 2\rvert < {\epsilon}/{11}$, and a $\delta_{2}$ where $\forall x$ s.t. $0<\lvert x-1\rvert < \delta_{2}$, we have $\lvert g(x) - 3\rvert < {\epsilon}/{11}$. For all $x$ s.t. $0<\lvert x-1\rvert < \delta_{2}$, we have
-\[\lvert g(x) + 3\rvert = \lvert g(x) - 3 + 6\rvert \le \lvert g(x) - 3\rvert + 6 \le \frac{\epsilon}{11} + 6 \le \frac{1}{11} + 6 \le 7\]
-Let $\delta = \min\{\delta_{1}, \delta_{2}\}$ Therefore, since $\lvert g(x) + 3\rvert  \le 7,$
-\[\begin{aligned}
-    \lvert 4f(x)+g(x)^{2} - 17 \rvert &= \lvert 4(f(x)-2) + g(x)^{2}-9\rvert \\
-    &= \lvert 4(f(x)-2) + (g(x)-3)(g(x)+3)\rvert \\
-    \text{\textit{(via triangle ineq)}} &\le 4\lvert f(x)-2\rvert + \lvert g(x)-3\rvert \lvert g(x)+3\rvert \\
-    &< 4\frac{\epsilon}{11} + 7 \frac{\epsilon}{11}
-    = \epsilon
-\end{aligned}\]
-Assume now that $\epsilon > 1$. By what we have shown above there exists a $\epsilon>0$ such that for all $x$ such that $0<\lvert x-1\rvert <\epsilon$,
-\[\lvert 4f(x) + g(x)^{2} - 17  \rvert < 1\]
-Therefore,
-\[\lvert 4f(x) + g(x)^{2} - 17  \rvert < \epsilon\]
-\end{xmp}
-\vspace{-5pt}
-
 
 % absolute convergence
-
+\begin{xmp}[Roots of a Function]{ex:function-roots}{Number}
+\textit{Prove that the equation
+\[f(x) = x^5+x^3+x+1\]
+has exactly one real root}
+\vspace{0pt}\newline
+\textbf{Part 1:} The function has \textit{at least} one real root. This is because as it is composed of three odd-power polynomials, so as $x\to\infty,\, f(x)>0$ and as $x\to-\infty,\, f(x)<0$ Therefore by the \underline{Intermediate Value Theorem}, there exists at least one point where $f(x) = 0$.
+\vspace{0pt}\newline
+\textbf{Part 2:} Differentiating the function, we get
+\[f(x)=x^5 + x^3 + x + 1\quad\implies f'(x)=5x^4+3x^2+1\]
+However, $x^4,x^2\ge 0$ for every $x\in \R$. Therefore $5x^4+3x^2+1$ is always positive, meaning there is no roots (critical points).
+\vspace{0pt}\newline
+\textbf{Part 3:} Therefore, by \underline{Rolle's Theorem}, since there exists no critical points, it means there is no points where $f(a) = f(b)$ which implies that $f(x)$ is strictly increasing/decreasing.
+\vspace{0pt}\newline
+This means there cannot be more than $1$ real root. Therefore, there is exactly one real root
+\end{xmp}
+\vspace{-5pt}
 
 
 % \lipsum[1-12]
