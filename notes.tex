@@ -20,7 +20,7 @@
 \usepackage{multicol}
 \usepackage{lipsum}
 \usepackage[framemethod=TikZ]{mdframed}
-\usepackage{thmboxes_white}
+\usepackage{thmboxes_col}
 \usepackage{float}
 % \usepackage{setspace}
 \usepackage[nodisplayskipstretch]{setspace}
@@ -794,7 +794,7 @@ Additionally, if $f$ is injective and continuous on an interval $I$, Then $f$ an
 \begin{thm}[Taylor Series]{thm:taylor-remainder}{5.5.1}
     Let $f:I\to\R$ be $n+1$ times differentiable and $x_{0}\in I$, for an open interval $I$. For each $x \in I$, there is a $c$ between $x_{0}$ and $x$ such that
     \[f(x)=\sum_{k=0}^{n} \frac{f^{(k)}(x_{0})}{k!} (x-x_{0})^k + \frac{f^{(n+1)}(c)}{(n+1)!}(x-x_{0})^{n+1}\]
-    (c depends on $x$ and $n$)
+    (c is a value between $x$ and $x_{0}$ (maybe))
     \vspace{0pt}\newline
     Now suppose that $f:(a,b)\to\R$ is infinitely differentiable and let $x_{0}\in (a,b)$. Fix $x$ in $(a,b)$. For every positive integer $N$ we have
     \[f(x)=\sum_{k=0}^{N} \frac{f^{(k)}(x_{0})}{k!}(x-x_{0})^{k} + R_{N}(x)\]
