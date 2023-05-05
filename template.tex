@@ -1,0 +1,92 @@
+\documentclass[landscape, 8pt]{extarticle}
+% \usepackage{showframe}
+
+% custom colour definitions
+\colorlet{colour1}{Red}
+\colorlet{colour2}{Green}
+\colorlet{colour3}{Cerulean}
+
+\usepackage{geometry}
+% margins
+\geometry{
+    a4paper, 
+    margin=0.17in
+}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{preamble}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage{float}
+\usepackage[nodisplayskipstretch]{setspace}
+
+
+% tikz and theorem boxes
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{thmboxes_white}
+% \usepackage{thmboxes_col}
+
+
+% Custom Definitions of operators
+\DeclareMathOperator{\Ima}{im}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\send}{send}
+\DeclareMathOperator{\dom}{dom}
+
+\begin{document}
+
+% vertical gap between full length math mode equations
+\setlength{\abovedisplayskip}{3.5pt}
+\setlength{\belowdisplayskip}{3.5pt}
+\setlength{\abovedisplayshortskip}{3.5pt}
+\setlength{\belowdisplayshortskip}{3.5pt}
+
+\begin{multicols}{3}
+\raggedcolumns % don't force squeeze width of columns
+\section{\huge Main Sections}
+\vspace{-5pt}
+
+\subsection*{Subsections}
+
+\begin{dfn}[Definition Example]{def:def_example}{1.1.1}
+This is a Definition :)
+\end{dfn}
+\vspace{-5pt}
+
+\begin{thm}[Theorem Example]{thm:thm_example}{2.2.2}
+This is a Theorem :)
+\end{thm}
+\vspace{-5pt}
+
+\begin{rem}[Remark Example]{rem:rem_example}{3.3.3}
+This is a Remark :)
+\end{rem}
+\vspace{-5pt}
+
+\begin{xmp}[Example Example]{rem:xmp_example}{4.4.4}
+This is an Example :)
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Example of list format
+    \item Item 2
+    \item Item 3
+\end{itemize}
+\end{xmp}
+\vspace{-5pt}
+
+% Add a new page if a box gets cut off 
+
+
+% blank filler text
+% \lipsum[1-12]
+
+\end{multicols}
+
+\end{document}
