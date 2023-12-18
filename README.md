@@ -2,8 +2,7 @@
 
 # Link to FPM Notes: [click here!](FPM/notes_colour.pdf)
 
-# Link to Geometry Notes:
-[click here!](Geometry/geometry_notes.pdf)
+# Link to Geometry Notes: [click here!](Geometry/geometry_notes.pdf)
 
 ## Info 
 Any theorem number is the closest theorem to the lecture notes (some are taken from other sources)
