@@ -6,11 +6,11 @@ endglobal
 
 
 snippet dm "Latex" iA
-\$\$$0\$\$
+\\[$0\\]
 endsnippet
 
 snippet mk "LatexInline" iA
-\$$1\$
+\\($1\\)
 endsnippet
 
 snippet add;fig "Add a figure" iAb
@@ -56,6 +56,12 @@ snippet add;def "Add a Definition" iA
 \begin{dfn}[${1:Name}]{def:${2:Label}}{${3:Number}}
 $0
 \end{dfn}
+endsnippet
+
+snippet add;xmp "Add an example" iA
+\begin{xmp}[${1:Name}]{def:${2:Label}}{${3:Number}}
+$0
+\end{xmp}
 endsnippet
 
 snippet add;rem "Add a Remark" iA
@@ -116,6 +122,10 @@ endsnippet
 context math(context)
 snippet text "text field" iA
 \\text{$1}
+endsnippet
+
+snippet tcol "text colour" iAM
+\\textcolor{$1}{$2}$0
 endsnippet
 
 # == Fraction Match ==
