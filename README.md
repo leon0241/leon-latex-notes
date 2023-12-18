@@ -1,7 +1,9 @@
-# FPM LaTeX Notes
+# UoE Math LaTeX Notes
 
-# Link to PDF 1 (Coloured box edges): [click here!](notes_white.pdf)
-# Link to PDF 2 (Fully coloured boxes): [click here!](notes_colour.pdf)
+# Link to FPM Notes: [click here!](FPM/notes_colour.pdf)
+
+# Link to Geometry Notes:
+[click here!](Geometry/geometry_notes.pdf)
 
 ## Info 
 Any theorem number is the closest theorem to the lecture notes (some are taken from other sources)
