@@ -95,7 +95,21 @@
 \end{dfn}
 \vspace{-5pt}
 
-\begin{thm}[Gauss Curvature on a Graph]{thm:thm_example}{2.2.2}
+\begin{dfn}[Taylor Series Expansion]{def:taylor}{D}
+\[f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^{2} + \frac{f^{(3)}(a)}{3!}(x-a)^{3}+ \cdots\]
+Bonus: quick unit form parameterised derivations of \(x\)
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item \(x'(s) = T(s)\) \\
+    \item \(x''(s) = T'(s) = \kappa(s)N(s)\) \\
+    \item \(x'''(s) = \frac{d\kappa}{ds}(s)N(s) - \kappa^{2}(s)T(s) + \kappa(s)\tau(s)B(s)\)
+\end{itemize}
+\end{dfn}
+
+
+
+\begin{dfn}[Gauss Curvature on a Graph]{thm:thm_example}{E}
 Random equation that was in 2022 PP sols, can't find it anywhere in the book. Presumably only works on a graph, i.e.
 \[x : (u,v) \mapsto \begin{pmatrix}
     u \\
@@ -104,24 +118,17 @@ Random equation that was in 2022 PP sols, can't find it anywhere in the book. Pr
 \end{pmatrix}\]
 Equation is as follows
 \[K = \frac{f_{uu} f_{vv} - f_{uv}^{2}}{(1 + f^{2}_{u} + f^{2}_{v})^{2}}\]
-\end{thm}
+\end{dfn}
 \vspace{-5pt}
 
-\begin{dfn}[Closed vs Exact Forms]{def:closed-exact}{D}
+\begin{dfn}[Closed vs Exact Forms]{def:closed-exact}{F}
 A form \(\alpha\in \Omega^{K}(D)\) is said to be \textbf{closed} if \(d\alpha = 0\) and is said to be \textbf{exact} if \(\alpha = d\beta\) for some \(\beta\in \Omega^{k-1}(D)\)\newline
 Every exact form is closed, since \(d^{2} = 0\). The converse is not neccesarily true\newline
 If \(\alpha\) is exact, and \(\beta\) is closed, then \(\alpha \wedge \beta\) is also exact
 
 \end{dfn}
 
-\begin{dfn}[Standard Orientation]{def:standard-orientation}{E}
-The \textbf{standard orientation} (which we always assume) is defined by
-\[dx^{1} \wedge dx^{2}\wedge \cdots \wedge dx^{n}\]
-Coordinates \((y^{1},\dots,y^{n})(\text{an ordered set})\) are said to be \textbf{oriented} on \(D\) iff \(dy^{1}\wedge \cdots \wedge dy^{n}\) is a positive multiple of \(dx^{1}\wedge \cdots \wedge dx^{n}\) for all \(x\in D \subseteq \mathbb{R}^{n}\)
-\end{dfn}
-
-
-\begin{dfn}[Hyperbolic plane representations]{def: poincare}{F}
+\begin{dfn}[Hyperbolic plane representations]{def: poincare}{G}
     Poincare Upper half plane model
     \[H = \{(x,y) \mid y > 0\}\subset \mathbb{R}^{2}\]
     with the first fundamental form
@@ -137,6 +144,13 @@ Coordinates \((y^{1},\dots,y^{n})(\text{an ordered set})\) are said to be \textb
         \includegraphics[width=\linewidth]{images/diskmodel.jpg}
     \end{figure}
 \end{dfn}
+
+\begin{dfn}[Standard Orientation]{def:standard-orientation}{H}
+The \textbf{standard orientation} (which we always assume) is defined by
+\[dx^{1} \wedge dx^{2}\wedge \cdots \wedge dx^{n}\]
+Coordinates \((y^{1},\dots,y^{n})(\text{an ordered set})\) are said to be \textbf{oriented} on \(D\) iff \(dy^{1}\wedge \cdots \wedge dy^{n}\) is a positive multiple of \(dx^{1}\wedge \cdots \wedge dx^{n}\) for all \(x\in D \subseteq \mathbb{R}^{n}\)
+\end{dfn}
+
 
 \newpage 
 
