@@ -54,7 +54,7 @@
 \raggedcolumns % don't force squeeze width of columns
 \section{\huge Leon's ITCS Exam Notes}
 \vspace{-5pt}
-Adapted from Chris Dalziel's notes :)
+Basically adapted from Chris Dalziel's notes :)
 
 \subsection*{Finite Automata}
 
@@ -352,6 +352,23 @@ Each instruction is one of the following:
 \end{itemize}
 RMs can compute anything any other computer can
 \end{dfn}
+
+% TODO: figure out a compact way to put in macros
+
+\begin{dfn}[Pairing Functions for RMs]{def:pairing-functs}{}
+A \textbf{pairing function} is an injective function $\mathbb{N} \times \mathbb{N} \to \mathbb{N}$. An example is $f(x,y) = 2^{x}3^{y}$.
+\newline
+We write $\langle x,y\rangle_{2}$ for $f(x,y)$. If $z = \langle x,y\rangle_{2}$, let $z_{0} = x$ and $z_{1} = y$.
+This lets us encode multiple values into a single value, and a 2-tuple pairing function is enough to cram an arbitrary sequence of natural numbers into one $\mathbb{N}^{*}\to \mathbb{N}$
+\end{dfn}
+
+\begin{thm}[Church-Turing Thesis]{thm:church-turing}{}
+The Church-Turing thesis states that any problem is computable by any model of computation iff it is computable by a \textbf{Turing machine}. \newline
+For our purposes this matters for RMs, TMs, and $\lambda$-calculus. \newline
+Other examples are combinator calculus, general recursive functions, pointer machines, counter machines, cellular automata, queue automata, enzyme-based
+DNA computers, Minecraft, Magic the Gathering, and others.
+% TODO: lol prob remove this
+\end{thm}
 
 blank filler text: \lipsum[1-12]
 
