@@ -20,7 +20,11 @@
 % set up new environment theorem with 3 arguments
 \newenvironment{thm}[3][]{%
 % newcommand thethm outputs argument 3 (Theorem Number)
-\renewcommand{\thethm}{#3}
+\ifstrempty{#3}{
+    \renewcommand{\thedfn}{#3}
+}{
+    \renewcommand{\thedfn}{}
+}
 % step counter for reference(?)
 \refstepcounter{thm}%
 % Set up bounding boxes in tikz

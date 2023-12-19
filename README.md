@@ -4,8 +4,9 @@
 
 # Link to Geometry Notes: [click here!](Geometry/geometry_notes.pdf)
 
+# Link to ITCS Notes: [click here!](ITCS/itcs_notes.pdf)
+
 ## Info 
-Any theorem number is the closest theorem to the lecture notes (some are taken from other sources)
 
 If you want to import into overleaf or anything, you will need `preamble.sty` and either `thmboxes_col.sty` or `thmboxes_white.sty` as well as the main `.tex` file
 
@@ -15,5 +16,6 @@ Dependencies that are not in a barebones TinyTeX installation are listed in the 
 
 If someone knows which package extarticle is included in then lmk :sob:, right now it's just sitting in the folder lol
 
+(only for FPM) Any theorem number is the closest theorem to the lecture notes (some are taken from other sources)
 
 :coffee: [(Optional) Buy me a coffee :)](https://ko-fi.com/leon024)
