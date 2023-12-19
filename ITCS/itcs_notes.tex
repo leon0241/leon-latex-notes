@@ -1,0 +1,371 @@
+\documentclass[landscape, 8pt]{extarticle}
+% \usepackage{showframe}
+
+\usepackage[dvipsnames]{xcolor}
+% custom colour definitions
+\colorlet{colour1}{Red}
+\colorlet{colour2}{Green}
+\colorlet{colour3}{Cerulean}
+
+\usepackage{geometry}
+% margins
+\geometry{
+    a4paper, 
+    margin=0.17in
+}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{preamble}
+\usepackage{multicol}
+\usepackage{microtype}
+\usepackage{stmaryrd}
+\usepackage{lipsum}
+\usepackage{float}
+\usepackage[nodisplayskipstretch]{setspace}
+
+
+% tikz and theorem boxes
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{../thmboxes_col}
+% \usepackage{../thmboxes_col}
+
+
+
+% Custom Definitions of operators
+\DeclareMathOperator{\Ima}{im}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\send}{send}
+\DeclareMathOperator{\dom}{dom}
+
+\begin{document}
+
+% vertical gap between full length math mode equations
+\setlength{\abovedisplayskip}{3.5pt}
+\setlength{\belowdisplayskip}{3.5pt}
+\setlength{\abovedisplayshortskip}{3.5pt}
+\setlength{\belowdisplayshortskip}{3.5pt}
+
+\begin{multicols}{3}
+\raggedcolumns % don't force squeeze width of columns
+\section{\huge Leon's ITCS Exam Notes}
+\vspace{-5pt}
+Adapted from Chris Dalziel's notes :)
+
+\subsection*{Finite Automata}
+
+\begin{dfn}[Finite Automata]{def:finite-Automata}{}
+A finite automaton takes a string as input and replies "yes" or "no". If an automaton $A$ replies "yes" on a string $S$ we say that $A$ "accepts" $S$.
+\end{dfn}
+
+\begin{dfn}[Deterministic Finite Automata]{def:DFAs}{}
+
+    A deterministic finite automaton (DFA) is a quintuple\newline $(Q,\Sigma, q_{0}, \delta, F)$ where
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item $Q$ is a finite set of states
+        \item $\Sigma$ is an alphabet
+        \item $q_{0}\in Q$ is the initial state
+        \item $\delta:Q \times \Sigma \to Q$ is the transition function
+        \item $F \subseteq Q$ is the set of final states
+    \end{itemize}
+    A DFA accepts a string $w\in \Sigma^{*}$ iff $\delta^{*}(q_{0}, w)\in F$, where $\delta^{*}$ is $\delta$ applied successively for each symbol in $w$.
+    \newline
+    The language of a DFA $A$ is the set of all strings accepted by $a$, $\mathcal{L}\subseteq \Sigma^{*}$ is the set of all strings accepted by $A$.
+    \newline
+    The transition function is a total function which gives exactly one next state for each input symbol, i.e. it is deterministic
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=\linewidth]{images/dfa.png}
+%     \caption{Example of a DFA}
+% \end{figure}
+\end{dfn}
+
+
+\begin{dfn}[Nondeterministic Finite Automata]{def:NDAs}{}
+    Non-determinism would mean that $\delta$ can return more than one successor state, it instead returns a set of possible states - no states is an empty set. A NFA is a quintuple $(Q, \Sigma, q_0, \delta, F)$ where:
+    \begin{itemize}
+        \item $Q$ is a finite set of states
+        \item $\Sigma$ is an alphabet
+        \item $q_0 \in Q$ is the initial state
+        \item $\delta : Q \times \Sigma \to \mathcal{P}(Q)$ is the transition function
+        \item $F \subseteq Q$ is the set of final states
+    \end{itemize}
+
+    The only difference between the definition of a DFA and that of an NFA is that in an NFA $\delta$ returns an element from the powerset of $Q$, $\mathcal{P}(Q)$
+
+    Adding non-determinism doesn't change "expressivity". Given an NFA $A$ there is an equivalent DFA $D$ such that $\mathcal{L}(D)=\mathcal{L}(A)$ and vice versa.
+
+\end{dfn}
+
+\begin{dfn}[$\epsilon$-NFA]{def:epsilon-nfas}{}
+If we allow non-deterministic state chnages that don't consume any input symbols, we can label silent moves using $\epsilon$ - meaning the empty string
+We define the $\epsilon$ closure $E(q)$ of a state $q$ as the set of all states reachable from $q$ by silent moves. That is, $E(q)$ is the least set satisfying:
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item $q\in E(q)$
+    \item For any $s\in E(q)$ we also have $\delta(s, \epsilon)\subseteq E(q)$
+\end{itemize}
+DFA, NFA, $\epsilon$-NFA are all equal in expressive power
+\end{dfn}
+
+\subsection*{Regular Languages}
+\begin{dfn}[Regular Languages]{def:reglangs}{}
+Any language which can be accepted by a finite automaton is called a regular language. \newline
+Regular languages are also those recognised by Regular Expressions
+\end{dfn}
+
+\begin{dfn}[Regular Language Closure Properties]{def:regex-properties}{}
+    For two languages $L_{1}$ and $L_{2}$, the following operations satisfy the closure property, i.e. for a member $x\in X$, and an operation $\phi$ we have that $\phi(x)\in\mathbb{R}$ for all $x$.
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item \textbf{Union}: $L_{1}\cup L_{2}$ is the language that includes all strings of $L_{1}$ and all strings of $L_{2}$. 
+        \item \textbf{Intersection}: $L_{1}\cap L_{2}$ is the language that includes all strings of $L_{1}$ that are not in $L_{2}$, and vice versa
+        \item \textbf{Sequential Composition}: $L_{1}L_{2}$ is the language of strings that consist of strings in $L_{1}$ followed by a string in $L_{2}$.
+        \item \textbf{Kleene closure}: $L^{*}$ is the language of strings that consist wholly of zero or more strings in $L$.
+        \[L^{*} = \bigcup_{i\in\mathbb{N}} L^{i}\]
+        \item \textbf{Complement}: $\bar{L}$ is the language of every string not in $L$.
+    \end{itemize}
+\end{dfn}
+
+
+\begin{dfn}[Regular Expressions]{def:regexs}{}
+Regular characterise the regular languages, just like finite automata do.
+The following table shows the syntax and semantics of a regex.
+
+\begin{table}[H]
+    \begin{tabular}{l|ll}
+    Syntax & Semantics                                                                                       &                  \\ \hline
+    $a$             & $\llbracket a \rrbracket = \{a\}$                                                               & $(a \in \Sigma)$ \\
+    $\emptyset$     & $\llbracket \emptyset \rrbracket = \emptyset$                                                   &                  \\
+    $\epsilon$      & $\llbracket \epsilon \rrbracket = \{\epsilon\}$                                                 &                  \\
+    $R_1 \cup R_2$  & $\llbracket R_1 \cup R_2 \rrbracket = \llbracket R_1 \rrbracket \cup \llbracket R_2 \rrbracket$ &                  \\
+    $R_1 \circ R_2$ & $\llbracket R_1 \circ R_2 \rrbracket = \llbracket R_1 \rrbracket \llbracket R_2 \rrbracket$     &                  \\
+    $R^*$           & $\llbracket R^* \rrbracket = \llbracket R \rrbracket^*$                                         &                 
+    \end{tabular}
+    \centering
+\end{table}
+
+
+\end{dfn}
+
+
+\begin{dfn}[Generalised NFAs]{def:gnfa}{}
+A \textbf{generalised NFA}, or GNFA is an NFA where:
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Transitions have \textbf{regular expressions} on them instead of symbols
+    \item There is only one unique final state
+    \item The transition relation if \textbf{full}, except that the initial state has no incoming transitions, and the final state has no outgoing transitions
+\end{itemize}
+\end{dfn}
+
+% TODO: maybe add converting DFA to GNFA
+
+\begin{thm}[Pumping Lemma]{thm:pumping-lemma}{}
+If $L\subseteq \Sigma^{*}$ is regular, then there is a \textbf{pumping length} $p\in\mathbb{N}$ such that for any $w\in L$ where $\lvert w\rvert \ge p$, we may split $w$ into three piexes $w=xyz$ satisfying three conditions:
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item $xy^{i}z,\quad \forall i\in \mathbb{N}$
+    \item $\lvert y\rvert > 0$
+    \item $\lvert xy\rvert \le p$
+\end{itemize}
+Note that if the pumping lemma fails then the language is not regular, but the inverse is not necessarily true.
+\end{thm}
+
+\begin{thm}[Myhill-Nerode Theorem]{thm:myhill-nerode}{}
+Let $L\subseteq \Sigma^{*}$ and $x,y\in \Sigma^{*}$. If there exists a suffix string $z$ such that $xz\in L$, but $yz \not\in L$ or vice versa, then $x$ and $y$ are \textbf{distinguishable} by $L$.
+If $x$ and $y$ are not distinguishable by $L$, then we say that $x \equiv_{L} y$ - this is an equivalence relation. A regular language satisfies the following
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item The number of equivalence classes $\equiv_{L}$ is finite.
+    \item The number of equivalence classes is equal to the number of states in the minimal DFA accepting $L$ (not as important)
+\end{itemize}
+
+Therefore, to show a language is non-regular, show that it has infinite equivalence classes - that is, we find an infinite sequence $u_{0}u_{1}\dots$ of strings such that for any $i,j$ where $i\ne j$, there is a string $w_{ij}$ such that $u_{i}w_{ij}\in L$ but $u_{j}w_{ij}\not\in L$ or vice-versa
+\end{thm}
+
+\subsection*{Context-Free Languages}
+
+\begin{dfn}[Context-free Languages]{def:context-free-langs}{}
+By adding recursion to regexs we can begin to recognise some non-regular languages. All regular languages are also context free. 
+\end{dfn}
+
+\newpage
+
+\begin{dfn}[Context-free Grammars]{def:context-free-grammar}{}
+A language is context-free iff it is recognised by a Context-free Grammar (CFG), which is a $4$-tuple $(N,\Sigma, P, S)$ where:
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item $N$ is a finite set of variables or non-terminals
+    \item $\Sigma$ is a finite set of terminals
+    \item $P\subseteq N \times (N\cup \Sigma)^{*}$ is a finite set of rules or productions
+    \renewcommand\labelitemi{\tiny$\bullet$}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item Typically productions are written $A\to aBc$
+        \item Productions with common heads can be combined, $A\to a$ and $A\to Aa$ can be combined into $A\to a \mid Aa$
+    \end{itemize}
+    \item $S\in N$ is the starting variable
+\end{itemize}
+We use $\alpha,\,\beta,\,\gamma$ to refer to sequences of terminals\newline
+We make a derivation step $\alpha A \beta \Rightarrow_G \alpha \gamma \beta$ whenever ($A \to \gamma$) $\in P$; The language of a CFG $G$ is:
+\[\mathcal{L}(G)=\{w \in \Sigma^* \:|\: S \Rightarrow_G^* w^*\}\]
+\newline 
+Where $\Rightarrow_G^*$ is the reflexive, transitive, closure of $\Rightarrow_G$.\newline
+Context-free grammars are ambiguous. They are closed under union, concatenation, and kleene star, but not under intersection or complementation
+\end{dfn}
+
+\begin{dfn}[Eliminating Ambiguity]{def:ambiguity-in-cfg}{}
+We want to eliminate ambiguity in CFGs while still accepting all the same strings. This can be done for our language of regular expressions:
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item First defining atomic expressions: $A\to (S) | \emptyset | \epsilon | a | b$
+    \item Then ones which use Kleene Star: $K \to A | A^{*}$
+    \item Then ones which may use left-associative composition: $C\to K | C\circ K$
+    \item Finally expressions which use unions: $S\to C | S\cup C$
+\end{itemize}
+The order of operations here is therefore bottom to top; unions come before compositions, which come before Kleene etc
+\end{dfn}
+
+\begin{dfn}[Push-down Automata]{def:pushdown-auto}{}
+Push-down automata are to CFGs what finite automatas are to regular expressions. They are implementationally identical to $\epsilon$-NFAs with the addition of a stack. The recursive element of CFGs is implemented using a standard last-in-first-out stack.
+
+Transitions in a push-down automata take the form $x,y\to z$ which is read as "consume the input $x$, popping $y$ off the stack, and push $z$ onto the stack". We can allow actions that don't consume, pop, or push by setting variables to $\epsilon$.
+\end{dfn}
+
+\begin{dfn}[Formal Def. of PDAs]{def:pda-definition}{}
+A \textbf{push-down automaton} is a $6$-tuple $(Q, \Sigma, \Gamma, \delta, q_{0}, F)$ where $Q,\,\Sigma,\,\Gamma$ are all finite sets. $\Gamma$ is the stack alphabet, and $\delta$ now may take a stack symbol as input or return one as output:
+\[\delta : Q \times \Sigma_{\epsilon} \times \Gamma_{\epsilon}\to \mathcal{P}(Q \times \Gamma_{\epsilon})\]
+All other compoments are as with $\epsilon$-NFAs
+
+A string $w$ is accepted by a PDA if it ends in a final state, i.e. $\delta^{*}(q_{0}, w, \epsilon)$ gives a state $q$ and a stack $\gamma$ wuch that $q\in F$.
+
+\end{dfn}
+
+\begin{thm}[CFG to PDA]{thm:cfg-to-pda}{}
+A language is context-free if and only if it is recognised by a push-down automaton. The proof is left as an exercise to the reader.
+\end{thm}
+
+\begin{thm}[Pumping CFLs intro]{thm:pumping-cfl-1}{}
+Suppose a CFG has $n$ non-terminals, and we have a parse tree of height $k>n$. Then the same non-terminal $V$ must have appeared as its own descendant in the tree
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item \textbf{Pumping down}: Cut the tree at the higher occurance of $V$ and replace it with the subtree at the lower occurance of $V$
+    \item \textbf{Pumping up}: Cut at the lower occurance and replace it with a fresh copy of the higher occurance
+\end{itemize}
+\end{thm}
+
+\begin{thm}[Pumping Lemma for CFLs]{thm:pumping-cfl-2}{}
+If $L$ is context-free then there exists a pumping length $p\in\mathbb{N}$ such that if $w\in L$ with $\lvert w\rvert \ge p$ then $w$ may be split into \textbf{five} pieces $w = uvxyz$ such that
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item $uv^{i}xy^{i}z\in L$ for all $i\in \mathbb{N}$ 
+    \item $\lvert vy\rvert > 0$
+    \item $\lvert vxy\rvert \le p$
+\end{itemize}
+\end{thm}
+
+\begin{dfn}[Chomsky Grammars]{def:chomsky}{}
+Context-free grammars are a special case of Chomsky Grammars. Chomsky grammars are similar to CFGs, except that the left-hand side of a production may be any string that includes at least one non-terminal. An example is shown below
+\begin{align*}
+    S &\to abc \mid aAbc \\
+    Ab &\to bA \\
+    Ac &\to Bbcc \\
+    bB &\to Bb \\
+    aB &\to aaA \mid aa
+\end{align*}
+Such a grammar is called \textbf{context-sensitive}
+\end{dfn}
+
+\begin{dfn}[The Chomsky Heirarchy]{def:chomsky-heir}{}
+A grammar $G = (N,\Sigma, P, S)$ is of type:
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{enumerate}\addtocounter{enumi}{-1}
+    \setlength\itemsep{0em}
+    \item (or \textbf{computably enumerable}) in the general case
+    \item (or \textbf{context sensitive}) if $\lvert \alpha \rvert \le \lvert  \beta\rvert $ for all productions $\alpha\to \beta$, except we also allow $S\to \epsilon$ if $S$ foes not occur on the RHS of any rule
+    \item (or \textbf{context free}) if all productions are of the form $A\to \alpha$ (i.e. a CFG)
+    \item (or \textbf{right-linear/regular}) if all productions are of the form $A\to w$ or $A\to wB$, where $w\in \Sigma$ and $B\in N$
+\end{enumerate}
+\end{dfn}
+
+\subsection*{Algorithms for Languages}
+\begin{thm}[Emptiness for Regular Languages]{def:emptiness}{}
+Can we write a program to determine if a given regular language is empty?
+\newline
+Given a finite-automaton this is an instance of graph reach-ability, so we can use a depth-first search.
+\end{thm}
+
+\begin{thm}[Emptiness for Context-free languages]{def:emptiness-cfl}{}
+Can we write a program to determine if a given context-free language is empty?
+\newline
+Given a CFG for our language, we can perform the following process:
+\begin{enumerate}
+    \item Mark the terminals and $\epsilon$ as generating
+    \item Mark all non-terminals which have a production with only generating symbols in their right hand side as generating
+    \item Repeat until nothing new is marked
+    \item Check if $S$ is marked as generating or not
+\end{enumerate}
+\end{thm}
+
+\begin{thm}[Equivalence of DFA]{thm:dfa-equiv}{}
+Is it possible to write a program to determine if two discrete finite automata are equivalent?
+
+Given two DFA for $L_1$ and $L_2$, we can use our standard constructions to produce a DFA of the symmetric set difference:
+\[(L_1 \cap \overline L_2) \cup (L_2 \cap \overline L_1)\]
+\end{thm}
+
+
+\newpage
+
+\subsection*{Register Machines}
+
+\begin{dfn}[Register Machines]{def:rms}{}
+A \textbf{register machine}, or RM, consists of:
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item A fixed number $m$ of registers $R_{0}\dots R_{m-1}$, which each holds a natural number
+    \item A fixed program $P$ which is a sequence of $n$ instructions $I_{0} \dots I_{n-1}$
+\end{itemize}
+Each instruction is one of the following:
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item \texttt{INC(i)}: which increments the register $R_i$ by one
+    \item \texttt{DECJZ(i, j)}: which decrements register $R_i$ unless $R_i = 0$ in which case it jumps to instruction $I_j$
+\end{itemize}
+RMs can compute anything any other computer can
+\end{dfn}
+
+blank filler text: \lipsum[1-12]
+
+
+
+
+\newpage
+\begin{xmp}[Regular Expressions]{def:ex-regex}{}
+At least one $0$:
+\[(0\cup 1) ^{*} 0(0\cup 1)*\]
+At least one $1$ and at least one $0$:
+\[((0 \cup 1)^*01(0 \cup 1)^*) \cup ((0 \cup 1)^*10(0 \cup 1)^*)\]
+\end{xmp}
+
+\end{multicols}
+
+\end{document}
