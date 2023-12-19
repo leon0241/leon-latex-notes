@@ -54,6 +54,8 @@
 \section{\huge Geometry Sheet - WIP}
 \vspace{-5pt}
 
+\subsection*{Definitions and stuff}
+
 \begin{dfn}[Standard Hyperbolic Derivatives]{def:hbol_derivs}{A}
     \begin{align*}
         y = \sinh(x) & \implies \quad y' = \cosh(x) \\
@@ -118,7 +120,29 @@ The \textbf{standard orientation} (which we always assume) is defined by
 Coordinates \((y^{1},\dots,y^{n})(\text{an ordered set})\) are said to be \textbf{oriented} on \(D\) iff \(dy^{1}\wedge \cdots \wedge dy^{n}\) is a positive multiple of \(dx^{1}\wedge \cdots \wedge dx^{n}\) for all \(x\in D \subseteq \mathbb{R}^{n}\)
 \end{dfn}
 
-\begin{xmp}[Wedge Product Exmaple]{def:wedge}{0}
+
+\begin{dfn}[Hyperbolic plane representations]{def: poincare}{F}
+    Poincare Upper half plane model
+    \[H = \{(x,y) \mid y > 0\}\subset \mathbb{R}^{2}\]
+    with the first fundamental form
+    \[I = \frac{(dx)^{2} + (dy)^{2}}{y^{2}}\]
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{images/halfplane1.jpg}
+    \end{figure}
+    
+    Poincare Hyperbolic disk model
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{images/diskmodel.jpg}
+    \end{figure}
+\end{dfn}
+
+\newpage 
+
+\subsection*{Examples}
+
+\begin{xmp}[Wedge Product Exmaple]{def:wedge}{1}
 Find the wedge product of 
 \[(x^{1}dx^{2} - dx^{3}) \wedge ((x^{1})^{2}dx^{1}\wedge dx^{2} + x^{3}dx^{1}\wedge dx^{3})\]
 \begin{align*}
@@ -132,7 +156,7 @@ Find the wedge product of
 \end{xmp}
 
 
-\begin{xmp}[Exterior Derivative Example]{def:ext-derivative}{1}
+\begin{xmp}[Exterior Derivative Example]{def:ext-derivative}{2}
 Find the Exterior Derivative of the 1-form \(\alpha = x^{1}x^{2}dx^{1} + x^{3}dx^{2} - dx^{3}\). (This should turn from a 1-form to a 2-form, i.e. \(\Omega^{1}(D)\to \Omega^{2}(D)\))
 \begin{align*}
     \alpha &= d(x^{1}x^{2}dx^{1} + x^{3}dx^{2} - dx^{3}) \\ 
@@ -144,7 +168,22 @@ Find the Exterior Derivative of the 1-form \(\alpha = x^{1}x^{2}dx^{1} + x^{3}dx
 
 \end{xmp}
 
-\begin{xmp}[Theorema Egregium]{def:theorema}{3}
+\begin{xmp}[Pullback Example]{def:pullback}{3}
+Let \(f:\mathbb{R}^{2} \to \mathbb{R}^{2}\) be given by
+\[f(u^{1}, u^{2}) = ((u^{1})^{2}, (u^{2})^{2}, u^{1}u^{2}))\]
+where we use the Cartesian coordinates \((u^{1}, u^{2})\) on \(\mathbb{R}^{2}\) and \((x^{1}, x^{2}, x^{3})\) on \(\mathbb{R}^{3}\). Calculate the pullback \(f^{*}\rho\) for the form
+\[\rho = x^{1}dx^{2}\wedge dx^{3}\]
+\begin{align*}
+    f^*\rho &= (u^{1})^{2}d((u^{2})^{2}) \wedge d(u^{1}u^{2}) \\
+    &= (u^{1})^{2} 2u^{2}du^{2} \wedge (u^{2} du^{1} + u^{1}du^{2}) \\
+    &= -2(u^{1}u^{2})^{2}du^{1} \wedge du^{2}
+\end{align*}
+
+\end{xmp}
+
+
+
+\begin{xmp}[Theorema Egregium]{def:theorema}{4}
     Example - Finding Gauss Curvature on a sphere defined with the equation
     \[x:(\alpha, \phi)\mapsto \begin{pmatrix}
         a\sin\alpha \cos\phi \\
@@ -186,8 +225,7 @@ Find the Exterior Derivative of the 1-form \(\alpha = x^{1}x^{2}dx^{1} + x^{3}dx
     Therefore, \(\displaystyle K = \frac{1}{a^{2}}\)
 \end{xmp}
 
-
-\begin{thm}[random q]{thm:random_q_1}{1}
+\begin{xmp}[random q]{thm:random_q_1}{5}
     I was just doing this on latex to be neater cos the calculations were really tedious, might remove later idk
 
     Find the exterior derivative of
@@ -215,7 +253,7 @@ Find the Exterior Derivative of the 1-form \(\alpha = x^{1}x^{2}dx^{1} + x^{3}dx
     \end{align*}
     
 
-\end{thm}
+\end{xmp}
 \vspace{-5pt}
 
 % Add a new page if a box gets cut off 
