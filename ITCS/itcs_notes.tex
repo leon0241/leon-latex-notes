@@ -176,7 +176,7 @@ If $L\subseteq \Sigma^{*}$ is regular, then there is a \textbf{pumping length} $
 \renewcommand\labelitemi{\tiny$\bullet$}
 \begin{itemize}
     \setlength\itemsep{0em}
-    \item $xy^{i}z,\quad \forall i\in \mathbb{N}$
+    \item $xy^{i}z\in L,\quad \forall i\in \mathbb{N}$
     \item $\lvert y\rvert > 0$
     \item $\lvert xy\rvert \le p$
 \end{itemize}
@@ -613,51 +613,6 @@ assignments and checking them in polynomial time, and then showing it’s NP-
 Hard by reducing any NP problem to SAT
 \end{thm}
 
-\subsection*{$\lambda$-calculus}
-\begin{dfn}[Syntax]{def:lambda_synt}{}
-$\lambda$-calculus computations are expressed as $\lambda$-terms:
-\begin{equation}
-\begin{aligned}
-    t \; & :== & x & \text{    (variables)} \nonumber \\
-       &\;\;\:|& t_1 \; t_2 & \text{    (application)} \nonumber \\
-       &\;\;\:|& \lambda x.\:t & \text{    ($\lambda$-abstraction)} \nonumber \\
-\end{aligned}
-\end{equation}
-A $\lambda$-term $(\lambda x.\:y)$ can be thought of as a function that given an input bound to the variable $x$, returns the term $y$.
-\begin{itemize}
-    \item Function application is left associative:
-\[f\:a\:b\:c = ((f\:a)\:b)\:c\]
-    \item $\lambda$-abstraction extends as far as possible:
-\[\lambda a.\:f\:a\:b = \lambda a.\:(f\:a\:b)\]
-\item All functions are unary, multiple argument functions are modeled via nested $\lambda$-abstractions:
-\[\lambda x.\:\lambda y.\:f\:y\:x\]
-\item $\lambda$-calculus is higher-order, in that functions may be arguments to functions themselves:
-\[\lambda f.\:\lambda g.\:\lambda x.\:f\:(g\:x)\]
-\end{itemize}
-\end{dfn}
-
-\begin{dfn}[$\alpha$-equivalence]{def:alpha_eq}{}
-$\alpha$-equivalence is a way of saying that two statements are semantically identical but differ in the choice of bound variable names.
-\[e_1 = (\lambda x.\:\lambda x.\:x + x)\]
-\[e_2 = (\lambda a.\:\lambda y.\:y + y)\]
-These two statements are $\alpha$-equivalent, we say that $e_1 \equiv_\alpha e_2$, the relation $\equiv_\alpha$ is an equivalence-relation. The process of consistently renaming variables that preserves $\alpha$-equivalence is called $\alpha$-renaming or $\alpha$-conversion.    
-\end{dfn}
-
-\begin{dfn}[$\beta$-reduction]{def:beta_red}{}
-$\beta$    
-\end{dfn}
-
-\begin{dfn}[$\eta$-reduction]{def:eta_red}{}
-$\eta$    
-\end{dfn}
-
-\begin{dfn}[$\eta$-reduction]{def:eta_red}{}
-$\eta$    
-\end{dfn}
-
-
-
-
 \subsection*{The Polynomial Heirarchy}
 \begin{dfn}[Sigma Notation]{def:sigmas}{}
 The set $\Sigma_{1}^{P}$ describes all problems that can be phrased as
@@ -737,6 +692,81 @@ with either $\forall$ or $\exists$.
 The class $\Sigma_n^P$ can therefore be described as the class of problems decided in polynomial time by an alternating machine that initially uses $\exists$-nondeterminism and swaps quantifiers at most $n-1$ times. This extends to $\Pi_n^P$ swapping starting with $\exists$ to starting with $\forall$.
 \end{dfn}
 
+
+\subsection*{$\lambda$-calculus}
+\begin{dfn}[Syntax]{def:lambda_synt}{}
+$\lambda$-calculus computations are expressed as $\lambda$-terms:
+\begin{equation}
+\begin{aligned}
+    t \; & :== & x & \text{    (variables)} \nonumber \\
+       &\;\;\:|& t_1 \; t_2 & \text{    (application)} \nonumber \\
+       &\;\;\:|& \lambda x.\:t & \text{    ($\lambda$-abstraction)} \nonumber \\
+\end{aligned}
+\end{equation}
+A $\lambda$-term $(\lambda x.\:y)$ can be thought of as a function that given an input bound to the variable $x$, returns the term $y$.
+\begin{itemize}
+    \item Function application is left associative:
+\[f\:a\:b\:c = ((f\:a)\:b)\:c\]
+    \item $\lambda$-abstraction extends as far as possible:
+\[\lambda a.\:f\:a\:b = \lambda a.\:(f\:a\:b)\]
+\item All functions are unary, multiple argument functions are modeled via nested $\lambda$-abstractions:
+\[\lambda x.\:\lambda y.\:f\:y\:x\]
+\item $\lambda$-calculus is higher-order, in that functions may be arguments to functions themselves:
+\[\lambda f.\:\lambda g.\:\lambda x.\:f\:(g\:x)\]
+\end{itemize}
+\end{dfn}
+
+\begin{dfn}[$\alpha$-equivalence]{def:alpha_eq}{}
+$\alpha$-equivalence is a way of saying that two statements are semantically identical but differ in the choice of bound variable names.
+\[e_1 = (\lambda x.\:\lambda x.\:x + x)\]
+\[e_2 = (\lambda a.\:\lambda y.\:y + y)\]
+These two statements are $\alpha$-equivalent, we say that $e_1 \equiv_\alpha e_2$, the relation $\equiv_\alpha$ is an equivalence-relation. The process of consistently renaming variables that preserves $\alpha$-equivalence is called $\alpha$-renaming or $\alpha$-conversion.    
+\end{dfn}
+
+\begin{dfn}[$\beta$-reduction]{def:beta_red}{}
+The rule to evaluate function applications is called $\beta$-reduction:
+\[(\lambda x.\:t)\:u \; \mapsto_\beta \; t[^u/_x]\]
+
+$\beta$-reduction is a congruence:
+\[\frac{}{(\lambda x\:t)\:u \mapsto_\beta t[^u/_x]}\]
+\[\frac{t \mapsto_\beta t'}{s\:t \mapsto_\beta s\:t'}\;\;\frac{s \mapsto_\beta s'}{s\:t \mapsto_\beta s'\:t}\;\;\frac{t \mapsto_\beta t'}{\lambda x.\:t \mapsto_\beta \lambda x.\:t'}\]
+
+This means we can pick any reducible subexpression (known as a redex) and perform $\beta$-reduction.   
+\end{dfn}
+
+\newpage
+
+\begin{dfn}[$\eta$-reduction]{def:eta_red}{}
+\[(\lambda x.\:f\:x) \mapsto_\eta f\]  
+\end{dfn}
+
+\begin{dfn}[Substitution]{def:subst}{}
+A variable $x$ is free in a term $e$ if $x$ occurs in $e$ but is not bound by a $\lambda$-abstraction in $e$· The variable $x$ is free in $\lambda y.\:x+y$, but not in $\lambda x.\:\lambda y.\:x+y$.\\
+A substitution, written $e[^t/_x]$ is the replacement of all free occurrences of $x$ in $e$ with $t$.
+\end{dfn}
+
+\begin{dfn}[Variable capture]{def:var_capt}{}
+$e[^t/_x]$ whenever there is a bound variable in the term $e$ with the same name as a free variable occurring in $t$.\\
+Fortunately, it is always possible to avoid capture by $\alpha$-rename the offending bound variable to an unused name.
+\end{dfn}
+
+\begin{dfn}[Normal Forms]{def:norm_forms}{}
+A $\lambda$-term which cannot be beta-reduction further is called a normal form.\\
+Not every term has a normal form. Thankfully, all terms that do have a normal form are unique due to the Church-Rosser theorem.
+\end{dfn}
+
+\begin{thm}[Church-Rosser Theorem (Confluence)]{def:chruch_rosser}{}
+If a term $t$ $\beta$-reduces to two terms $a$ and $b$, then there is a common term $t'$ to which both $a$ and $b$ are $\beta$-reducible.
+\end{thm}
+
+\begin{dfn}[Church encodings]{def:chruch_enc}{}
+In order to demonstrate that $\lambda$-calculus is a usable programming language we need to show how to encode certain useful structures and primitives like booleans and natural numbers with their operations as $\lambda$-terms.\\
+The general idea is to turn a data type into the type of its eliminator, in other words we make a function which serves the same purpose as the data type when used.
+\end{dfn}
+
+
+
+
 blank filler text: \lipsum[1-12]
 
 
@@ -756,6 +786,9 @@ blank filler text: \lipsum[1-12]
 \end{dfn}
 
 \newpage
+
+% note: idk if there's space to put examples - most likely if some of the theorems and stuff get trimmed down tho
+
 \begin{xmp}[Regular Expressions]{def:ex-regex}{}
 At least one $0$:
 \[(0\cup 1) ^{*} 0(0\cup 1)*\]
