@@ -16,6 +16,14 @@ snippet mk "LatexInline" iA
 \$$1\$
 endsnippet
 
+snippet add;ss "Add a subsection" bA
+\subsection*{$1}$0
+endsnippet
+
+snippet add;nss "Add a numbered subsection" bA
+\subsection{$1}$0
+endsnippet
+
 snippet add;fig "Add a figure" bA
 \begin{figure}[h!]
     \centering
@@ -88,18 +96,21 @@ endsnippet
 
 snippet add;env "LaTeX environment" bA
 \\begin{$1}
-    $2
+    $0
 \\end{$1}
-$0
 endsnippet
 
 snippet add;align "align environment" bA
-\\begin{align}
-    $1
-\\end{align}
+\begin{align*}
+    $0
+\end{align*}
 endsnippet
 
-
+snippet add;nalign "numbered align environment" bA
+\begin{align}
+    $0
+\end{align}
+endsnippet
 
 # ========================== #
 #   Math Mode Environments   #

@@ -24,6 +24,7 @@
 \usepackage{stmaryrd}
 \usepackage{lipsum}
 \usepackage{float}
+\usepackage{wrapfig}
 \usepackage[nodisplayskipstretch]{setspace}
 
 
@@ -499,6 +500,105 @@ All semi-decidable problems are computably enumerable, and any computably enumer
 \begin{thm}[Decidability Reductions]{thm:decidability-reductions}{}
 To prove that a problem $P_{2}$ is not c.e. we show that there is a mapping reduction from a known not-c.e. problem $P_{1}$ to $P_{2}$. We must use mapping reductions, as $H$ is c.e. but $L$ is not - but $L$ is Turing reducible to $H$ by flipping the answer.
 
+\end{thm}
+
+\subsection*{Time Complexity}
+\begin{dfn}[Time Complexity]{def:time-complexity}{}
+The \textbf{time complexity} of a (deterministic) machine $M$ that halts on all inputs is a functino $f : \mathbb{N} \to \mathbb{N}$ where $f(n)$ is the maximum number of steps that $M$ uses on any input of size $n$.
+\end{dfn}
+
+
+\begin{dfn}[Complexity Measures]{def:complexity-measures}{}
+When performing addition in a TM we have a time complexity of $\mathcal{O}(\log n)$, where it is $\mathcal{O}(n)$ for RMs - there's an exponential penalty for using a register machine!
+\newline
+Addition can be $\mathcal{O}(1)$ if we add dedicated \texttt{ADD(i,j)} and \texttt{SUB(i,j)} instructions - but this doesn't remove the inaccuracy it just makes it smaller.
+
+Complexity is useful, but the measures are slightly bogus:
+\begin{itemize}
+    \item $\mathcal{O}(n)$ is not always easy - if $n$ is massive for example
+    \item $\Omega(2^n)$ isn't always hard - there are problems much worse than this that are still solvable for real examples
+    \item $\mathcal{O}(n^{10})$ and $\Omega(n^{10})$ seem extremely difficult, but a new model or algorithm could reduce that significantly
+    \item Since we also ignore coefficients, we could have something like $f(n) \geq 10^{100} \log n$ which is slow but still only logarithmic - this isn't common enough to worry generally however.
+\end{itemize}
+\end{dfn}
+
+
+\begin{dfn}[Complexity Classes]{def:complexity-classes}{}
+
+\setlength{\columnsep}{0pt}
+\begin{wrapfigure}{R}{0.4\textwidth}
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/basic-complexity-classes.png}
+\end{wrapfigure}
+
+Let $t:\mathbb{N} \to \mathbb{R}_{\geq 0}$. A time complexity class \textbf{TIME}$(t(n))$ is the collection of all problems that are decidable by a deterministic machine RM, TM etc.) in $\mathcal{O}(t(n))$ time.
+
+Given $A = \{0^i1^i \:|\: i \in \mathbb{N}\}$, a TM can decide this in $\mathcal{O}(n^2)$, which means that $A \in$ \textbf{TIME}$(n^2)$.
+
+We also define \textbf{NTIME}$(t(n))$ to be the collection of all problems decidable by a nondeterministic machine NRM, NTM, etc.) in $\mathcal{O}(t(n))$.
+\end{dfn}
+
+\begin{dfn}[P / Polynomial Time]{def:poly-time}{}
+The polynomial complexity class \textbf{P} is the class of problems decidable with some deterministic polynomial time complexity.
+\[\textbf{P} = \bigcup_{k \in \mathbb{N}} \textbf{TIME}(n^k)\]
+
+Problems in \textbf{P} are called tractable. Any problem not in \textbf{P} is $\Omega(n^k)$ for every $k$.
+
+The class itself is robust, reasonable changes to model don't change it and reasonable translations between problems preserves membership in \textbf{P}.
+
+A polynomially-bounded RM together with a polynomial ($n^k$ for some $k$, without loss of generality), such that given an input $w$ it will always halt after executing $|w|^k$ instructions. A problem $Q$ is in \textbf{P} iff it is computed by such a machine.
+\end{dfn}
+
+\begin{dfn}[NP / Nondeterministic-polynomial time]{def:np-time}{}
+The polynomial complexity class \textbf{NP} is the class of problems decidable with some nondeterministic polynomial time complexity.
+\[\textbf{NP} = \bigcup_{k \in \mathbb{N}} \textbf{NTIME}(n^k)\]
+\newline
+We don't know if every exponentially bounded problem is in \textbf{NP}, we think that it's probably not the case.
+
+\end{dfn}
+
+\begin{dfn}[CoNP]{def:conp}{}
+We don't know if the class NP is closed under complement. We cannot flip the result because the result of flipping in a nondeterministic machine involves turning it from angelic nondeterminism to demonic nondeterminism (otherwise known as co-nondeterminism) or vice versa.
+\end{dfn}
+
+\begin{dfn}[AP / Alternating Poly time]{def:AP}{}
+The class \textbf{AP} is the class of all problems decidable by an alternating machine in polynomial time with no restriction on swapping quantifiers.
+
+\textbf{AP} is known to be equal to PSPACE.
+\end{dfn}
+
+\begin{dfn}[PSPACE / Polynomial Space]{def:pspace}{}
+An RM/TM is $f(n)$-space-bounded if it may use only $f(inputsize)$ space. For TMs this is the number of cells on the tape, where register machines uses bits in registers.
+
+\end{dfn}
+
+\begin{thm}[Polynomial Reductions]{thm:poly-reducts}{}
+A polynomial reduction from $P_1 = (D_1, Q_1)$ to $P_2 = (D_2, Q_2)$ is a \textbf{P}-computable function $f : D_1 \to D_2$ such that $d \in Q_1$ iff $d \in Q_2$.
+
+If $P_2$ is in \textbf{P}, then $P_1$ is in \textbf{P} straightforwardly. Therefore to prove a problem is not in \textbf{P} we can show that there is a polynomial reduction from a problem $P_2$ which isn't in \textbf{P} to our problem $P_1$
+
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item A problem $P_1$ is \textbf{polynomially reducible} to $P_2$, written $P_1 \leq_P P_2$ if there is a polynomially-bounded reduction from $P_1$ to $P_2$.
+    \item A problem $P$ is \textbf{NP}-Hard if for every $A \in$ \textbf{NP}, $A \leq_P P$.
+    
+    That is, if a problem $P_1$ is \textbf{NP}-Hard and $P_1$ is polynomially reducible to $P_2$, then $P_2$ is also \textbf{NP}-Hard.
+    
+    We can use this fact to prove other problems are \textbf{NP}-Hard by showing a reduction from a known \textbf{NP}-hard problem.
+
+    \item A problem is \textbf{NP}-Complete if it is both \textbf{NP}-Hard and in \textbf{NP}.
+
+\end{itemize}
+
+\end{thm}
+
+\begin{thm}[Cook-Levin Theorem]{thm:cook-levin}{}
+The Cook-Levin theorem states that the NP problem SAT is NP-Complete.
+\newline
+The proof of this involves showing it is NP by nondeterministically guessing
+assignments and checking them in polynomial time, and then showing it’s NP-
+Hard by reducing any NP problem to SAT
 \end{thm}
 
 
