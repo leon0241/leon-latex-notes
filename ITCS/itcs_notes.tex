@@ -431,12 +431,15 @@ suppose he could lift the loaded truck, then we could have him lift the car by
 putting it in the loaded truck - but we know he cannot lift a car.
 \end{xmp}
 
-
 \begin{dfn}[Mapping Reductions]{def:mapping-reductions}{}
 A \textbf{Turing transducer} is a RM (or TM) which takes an instance $d$ of a problem $P_{1} = (D_{1}, Q_{1})$ in $R_{0}$ and halts with an instance $d' = f(d)$ of $P_{2} = (D_{2}, Q_{2})$ in $R_{0}$. Thus, $f$ is a computable function $D_{1}\to D_{2}$\newline
 A \textbf{mapping reduction} (or a many-to-one reduction) from $P_{1}$ to $P_{2}$ is a turing transducer $f$ such that $d\in Q_{1}$ iff $f(d)\in Q_{2}$
 \newline
 If $A$ is mapping reducible to $B$, and $A$ is undecidable, then $B$ is undecidable.
+\end{dfn}
+
+\begin{dfn}[Oracles]{def:oracles}{}
+Given a decision problem $(D, Q)$, an \textbf{oracle} for $Q$ is a 'magic' RM instruction $\text{\texttt{ORACLE}}_{Q}(i)$ which, given an encoding of $d\in D$ in $R_{i}$, sets $R_{i}$ to contain $1$ iff $d\in Q$
 \end{dfn}
 
 \begin{dfn}[Turing Reductions]{def:turing-reductions}{}
@@ -457,6 +460,7 @@ Decidability results carry across during Turing reductions as with mapping reduc
 \noindent\rule{\textwidth}{0.2pt}
 \textbf{Rice's Theorem} - All non-trivial semantic properties are undecidable.\end{thm}
 
+\newpage
 \begin{thm}[Rice's Theorem part 2]{thm:rice-thm}{}
 Rice's theorem is useful for deciding propertiese like whether a language is empty, non-empty, regular, context-free etc\newline
 It cannot be applied to questions like whether a TM has fewer than $7$ states, a final state, a start state, etc. These properties are of machines and not languages\newline
@@ -464,7 +468,6 @@ It also doesn't apply to questions like is a language a subset of $\Sigma^{*}$ o
 The consequences of this is that we cannot write programs which answer non-trivial questions about the black-box behaviours of programs
 \end{thm}
 
-\newpage
 
 % TODO semi-decidable?
 
@@ -538,6 +541,15 @@ Given $A = \{0^i1^i \:|\: i \in \mathbb{N}\}$, a TM can decide this in $\mathcal
 We also define \textbf{NTIME}$(t(n))$ to be the collection of all problems decidable by a nondeterministic machine NRM, NTM, etc.) in $\mathcal{O}(t(n))$.
 \end{dfn}
 
+\begin{dfn}[NP / Nondeterministic-polynomial time]{def:np-time}{}
+The polynomial complexity class \textbf{NP} is the class of problems decidable with some nondeterministic polynomial time complexity.
+\[\textbf{NP} = \bigcup_{k \in \mathbb{N}} \textbf{NTIME}(n^k)\]
+\newline
+We don't know if every exponentially bounded problem is in \textbf{NP}, we think that it's probably not the case.
+
+\end{dfn}
+
+
 \begin{dfn}[P / Polynomial Time]{def:poly-time}{}
 The polynomial complexity class \textbf{P} is the class of problems decidable with some deterministic polynomial time complexity.
 \[\textbf{P} = \bigcup_{k \in \mathbb{N}} \textbf{TIME}(n^k)\]
@@ -549,16 +561,9 @@ The class itself is robust, reasonable changes to model don't change it and reas
 A polynomially-bounded RM together with a polynomial ($n^k$ for some $k$, without loss of generality), such that given an input $w$ it will always halt after executing $|w|^k$ instructions. A problem $Q$ is in \textbf{P} iff it is computed by such a machine.
 \end{dfn}
 
-\begin{dfn}[NP / Nondeterministic-polynomial time]{def:np-time}{}
-The polynomial complexity class \textbf{NP} is the class of problems decidable with some nondeterministic polynomial time complexity.
-\[\textbf{NP} = \bigcup_{k \in \mathbb{N}} \textbf{NTIME}(n^k)\]
-\newline
-We don't know if every exponentially bounded problem is in \textbf{NP}, we think that it's probably not the case.
-
-\end{dfn}
 
 \begin{dfn}[CoNP]{def:conp}{}
-We don't know if the class NP is closed under complement. We cannot flip the result because the result of flipping in a nondeterministic machine involves turning it from angelic nondeterminism to demonic nondeterminism (otherwise known as co-nondeterminism) or vice versa.
+We don't know if the class NP is closed under complement. We cannot flip the result because the result of flipping in a nondeterministic machine involves turning it from angelic nondeterminism to demonic nondeterminism (or co-nondeterminism) or vice versa.
 \end{dfn}
 
 \begin{dfn}[AP / Alternating Poly time]{def:AP}{}
@@ -577,6 +582,7 @@ A polynomial reduction from $P_1 = (D_1, Q_1)$ to $P_2 = (D_2, Q_2)$ is a \textb
 
 If $P_2$ is in \textbf{P}, then $P_1$ is in \textbf{P} straightforwardly. Therefore to prove a problem is not in \textbf{P} we can show that there is a polynomial reduction from a problem $P_2$ which isn't in \textbf{P} to our problem $P_1$
 
+\vspace{-5pt}
 \renewcommand\labelitemi{\tiny$\bullet$}
 \begin{itemize}
     \setlength\itemsep{0em}
@@ -592,7 +598,6 @@ If $P_2$ is in \textbf{P}, then $P_1$ is in \textbf{P} straightforwardly. Theref
 \end{itemize}
 
 \end{thm}
-
 
 \newpage
 
