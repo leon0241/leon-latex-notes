@@ -593,6 +593,9 @@ If $P_2$ is in \textbf{P}, then $P_1$ is in \textbf{P} straightforwardly. Theref
 
 \end{thm}
 
+
+\newpage
+
 \begin{thm}[Cook-Levin Theorem]{thm:cook-levin}{}
 The Cook-Levin theorem states that the NP problem SAT is NP-Complete.
 \newline
@@ -601,6 +604,85 @@ assignments and checking them in polynomial time, and then showing it’s NP-
 Hard by reducing any NP problem to SAT
 \end{thm}
 
+
+\subsection*{The Polynomial Heirarchy}
+\begin{dfn}[Sigma Notation]{def:sigmas}{}
+The set $\Sigma_{1}^{P}$ describes all problems that can be phrased as
+\[\{y \mid \exists ^{p} x \in \mathbb{N} .\,R(x,y)\}\]
+where $R$ is a \textbf{P}-decidable predicate and $\exists ^{p} x \dots$ indicates that $x$ is of size polynomial in the size of $y$.
+\newline
+We can say that $x$ is a certificate showing which guesses can be made by our NRM giving an accepting run.
+\newline
+If a problem $Q\in \Sigma^{P}_{1}$ then $Q$ is \textbf{NP}, because it is a problem for which we can verify the answer in polynomial time. If a problem $Q$ is in \textbf{NP} then $Q\in \Sigma^{P}_{1}$.
+\newline
+So, \textbf{NP} = $\Sigma^{P}_{1}$
+\end{dfn}
+
+\begin{dfn}[Pi notation]{def:pies}{}
+The set $\Pi^{P}_{1}$ describes all problems that can be phrased as
+\[\{y \mid \forall^{P}x \in \mathbb{N} . \, R(x,y)\}\]
+where $R$ is a \textbf{P}-decidable predicate, and $\forall^{P}x\dots$ indicates that $x$ is of size polynomial in the size of $y$.
+\newline
+We have that
+\[\Pi^{P}_{1} = \overline{\Sigma^{P}_{1}},\quad\text{and}\quad \Pi^{P}_{1} = \text{\textbf{CoNP}}\]
+\end{dfn}
+
+\begin{dfn}[Delta Notation]{def:deltas}{}
+There are two conflicting definitions of $\Delta^{P}_{1}$ "For reasons that are unknown to me" - lecturer
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item The set $\Delta^{P}_{1}$ describes the intersection of $\Sigma^{P}_{1}$ and $\Pi^{P}_{1}$
+    \item The set $\Delta^{P}_{1}$ describes the set \textbf{P}
+\end{itemize}
+From our characterisations of $\Sigma^{P}_{1}$ and $\Pi^{P}_{1}$, we have that $\Delta^{P}_{1}\subseteq \text{\textbf{P}}$, but we don't konw if these definitions are equal
+\end{dfn}
+
+
+\begin{dfn}[Moving higher]{def:next-dim-notations}{}
+The next layer of the heirarchy goes as follows:
+\begin{itemize}
+    \item $\Sigma_2^P$ is all problems of the form $\{x \:|\: \exists^P y.\: \forall^P z.\: R(x,y,z)\}$
+    \item $\Pi_2^P$ is all problems of the form $\{x \:|\: \forall^P y.\: \exists^P z.\: R(x,y,z)\}$
+    \item $\Delta_2^P = \Sigma_2^P \cap \Pi_2^P$
+\end{itemize}
+
+\vspace{-5pt}
+\noindent\rule{\textwidth}{0.2pt}
+We can also use oracles to get an alternate definition:
+\begin{itemize}
+    \item $\Delta_2^P$ is all problems that are decidable in polynomial time by some deterministic RM/TM with an $\mathcal{O}(1)$ oracle for some problem in $\Sigma_1^P$ (it is \textbf{P} with an $\mathcal{O}(1)$ oracle for \textbf{NP})
+    \item $\Sigma_2^P$ allows the TM/RM to be nondeterministic (it is \textbf{NP} with an $\mathcal{O}(1)$ oracle for \textbf{NP})
+    \item $\Pi_2^P$ is \textbf{CoNP} with an oracle for \textbf{NP}
+\end{itemize}
+
+\vspace{-5pt}
+\noindent\rule{\textwidth}{0.2pt}
+In general for any $n>1$:
+\begin{itemize}
+    \item $\Delta_n^P$ is all problems decidable by a deterministic polynomially bounded TM/RM with an $\mathcal{O}(1)$ oracle for some problem in $\Sigma_{n-1}^P$.
+    \item $\Sigma_n^P$ is all problems decidable by some nondeterministic polynomially bounded TM/RM with an $\mathcal{O}(1)$ oracle for some problem in $\Sigma_{n-1}^P$.
+    \item $\Pi_n^P$ is all problems decidable by some co-nondeterministic polynomially bounded TM/RM with an $\mathcal{O}(1)$ oracle for some problem in $\Sigma_{n-1}^P$.
+\end{itemize}
+Note: Co-nondeterminism could also be called \textbf{demonic} nondeterminism, like regular (angelic) nondeterminism but only accepts if \textbf{all} paths accept
+\end{dfn}
+
+
+\begin{dfn}[Alternation]{def:alternation}{}
+Equivalently $\Sigma^{P}_{n}$ are all problems that can be phrased as some \textbf{alternation} of (\textbf{P}-bounded) quantifiers, starting with $\exists^{P}$
+\[\{ w \mid \exists^{P} x_{1} . \exists^{P} x_{2} . \exists^{P} x_{3} . \exists^{P} x_{4} . \dots x_{n} . R(w, x_{1}, \dots, x_{n})\}\]
+$\Pi_n^P$ has a similar definition, starting instead with $\forall^P$
+\[\{ w \mid \forall^{P} x_{1} . \exists^{P} x_{2} . \exists^{P} x_{3} . \exists^{P} x_{4} . \dots x_{n} . R(w, x_{1}, \dots, x_{n})\}\]
+
+Alternating machines combine the acceptance modes of both angelic and demonic non-deterministic machines.
+
+Alternating register machines would replace the NRM's \texttt{MAYBE} instruction with the \texttt{MAYBE}$^\exists$ and \texttt{MAYBE}$^\forall$ instructions, which are nondeterministic branching choices where acceptance depends on if one branch accepts ($\exists$) or both branches accept ($\forall$).
+
+Alternating Turing Machines are defined by labelling states
+with either $\forall$ or $\exists$.
+
+The class $\Sigma_n^P$ can therefore be described as the class of problems decided in polynomial time by an alternating machine that initially uses $\exists$-nondeterminism and swaps quantifiers at most $n-1$ times. This extends to $\Pi_n^P$ swapping starting with $\exists$ to starting with $\forall$.
+\end{dfn}
 
 blank filler text: \lipsum[1-12]
 
@@ -619,7 +701,6 @@ blank filler text: \lipsum[1-12]
 \begin{dfn}[Name]{def:Label}{}
 
 \end{dfn}
-
 
 \newpage
 \begin{xmp}[Regular Expressions]{def:ex-regex}{}
