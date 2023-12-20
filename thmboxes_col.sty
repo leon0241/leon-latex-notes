@@ -21,9 +21,9 @@
 \newenvironment{thm}[3][]{%
 % newcommand thethm outputs argument 3 (Theorem Number)
 \ifstrempty{#3}{
-    \renewcommand{\thedfn}{#3}
-}{
     \renewcommand{\thedfn}{}
+}{
+    \renewcommand{\thedfn}{#3}
 }
 % step counter for reference(?)
 \refstepcounter{thm}%
@@ -62,9 +62,9 @@ frametitleaboveskip=\dimexpr-\ht\strutbox\relax
 \newenvironment{dfn}[3][]{%
 % newcommand thedef outputs argument 3 (Theorem Number)
 \ifstrempty{#3}{
-    \renewcommand{\thedfn}{#3}
-}{
     \renewcommand{\thedfn}{}
+}{
+    \renewcommand{\thedfn}{#3}
 }
 % step counter for reference(?)
 \refstepcounter{dfn}%

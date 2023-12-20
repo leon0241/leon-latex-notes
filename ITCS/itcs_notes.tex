@@ -362,12 +362,87 @@ We write $\langle x,y\rangle_{2}$ for $f(x,y)$. If $z = \langle x,y\rangle_{2}$,
 This lets us encode multiple values into a single value, and a 2-tuple pairing function is enough to cram an arbitrary sequence of natural numbers into one $\mathbb{N}^{*}\to \mathbb{N}$
 \end{dfn}
 
+\begin{dfn}[Turing Machine]{def:turing-machine}{}
+A \textbf{turing machine} is a $7$-tuple $(Q, \Sigma, \Gamma, \delta, q_{0}, q_{\text{accept}}, q_{\text{reject}})$
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item $Q$: states
+    \item $\Sigma$: input symbols
+    \item $\Gamma\subseteq\Sigma$: \textbf{tape} symbols, including a \textbf{blank} symbol $\sqcup$
+    \item $\delta : Q \times \Gamma \to Q \times \Gamma \times \{-1, 1\}$
+    \item $q_{0}, q_{\text{accept}}, q_{\text{reject}}\in Q$: start, accept, reject states
+\end{itemize}
+\end{dfn}
+
 \begin{thm}[Church-Turing Thesis]{thm:church-turing}{}
 The Church-Turing thesis states that any problem is computable by any model of computation iff it is computable by a \textbf{Turing machine}. \newline
 For our purposes this matters for RMs, TMs, and $\lambda$-calculus. \newline
 Other examples are combinator calculus, general recursive functions, pointer machines, counter machines, cellular automata, queue automata, enzyme-based
 DNA computers, Minecraft, Magic the Gathering, and others.
 % TODO: lol prob remove this
+\end{thm}
+
+\subsection*{Decidability}
+
+\begin{dfn}[Problems with no Algorithm]{def:decidability-intro}{}
+While the above problems are all computable, this is not always the case. The
+questions asked, i.e. ”can we determine x?”, are not always something we can
+answer using a program - if this is the case then that problem is considered
+undecidable.\newline
+Many such problems exist for Context-free Languages
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Are two CFG equivalent?
+    \item Is a given CFG ambiguous?
+    \item Is there a way to make a given CFG unambiguous?
+    \item Is the intersection of two CFLs empty?
+    \item Does a CFG generate all strings $\Sigma^{*}$?
+    \item ...
+\end{itemize}
+\end{dfn}
+
+\begin{thm}[The Halting Problem]{thm:halting-prob}{}
+Given a register machine encoding, can we write a program to determine if the simulated machine will halt or not? \newline
+If we suppose $H$ is such a register machine, which takes a machine encoding $\lceil M \rceil$ in $R_{0}$, halts with $1$ if $M$ halts, and halts with $0$ if $M$ doesn't halt. \newline
+We can construct a new machine $L = (P_{L}, R_{0},\dots)$ which, given a program $\lceil P \rceil $ runs $H$ on the program with itself as input, the machine $(P, \lceil P \rceil )$ and loops if it halts. \newline
+If we run $L$ on $P_{L}$ itself we get a problem. If $L$ halts on $\lceil P_{L} \rceil $ that means $H$ says $(P_{L}, \lceil P_{L} \rceil )$. If $L$ loops on $\lceil P_{L} \rceil $ that means that $H$ says $(P_{L}, \lceil P_{L} \rceil )$ halts.\newline
+This is a contradiction! \newline
+The halting problem proves that there are some programs which cannot be decided by register machines. What about other machines?
+\end{thm}
+
+
+\begin{dfn}[Reductions]{def:reductions}{}
+A reduction is a transformation from one problem to another. To prove that a problem $P_{2}$ is hard, show that there is an easy reduction from a known hard problem $P_{1}$ to $P_{2}$.\newline
+To show a problem $P_{2}$ is undecidable, show that there is a computable reduction from a known undecidable $P_{1}$ to $P_{2}$. The direction here matters - it tells us nothing to know that there's an easy way to make an easy problem difficult!
+\end{dfn}
+
+\begin{xmp}[Reduction analogy]{def:reduction-analogy}{}
+If it is a well known fact that Hyunwoo cannot lift a car, we can prove that
+Hyunwoo cannot lift a loaded truck by making the following reduction: If we
+suppose he could lift the loaded truck, then we could have him lift the car by
+putting it in the loaded truck - but we know he cannot lift a car.
+\end{xmp}
+
+
+\begin{dfn}[Mapping Reductions]{def:mapping-reductions}{}
+A mapping reduction (or a many-to-one reduction) from $P_{1}$ to $P_{2}$ is a \textbf{Turing transducer} $f$ such that $d\in Q_{1}$ iff $f(d)\in Q_{2}$
+\newline
+If $a$ is mapping reducible to $B$, and $A$ is undecidable, then $B$ is undecidable.
+\end{dfn}
+
+\begin{dfn}[Turing Reductions]{def:turing-reductions}{}
+A \textbf{Turing reduction} from $P_{1}$ to $P_{2}$ is an RM/TM equipped with an oracle for $P_{2}$ which solves $P_{1}$.\newline
+Decidability results carry across during Turing reductions as with mapping reductions, but mapping reductions make finer distinctions of computing power.
+\end{dfn}
+
+\begin{thm}[Rice's Theorem]{thm:rice-thm}{}
+All non-trivial semantic properties are undecidable.\newline
+Rice's theorem is useful for deciding propertiese like whether a language is empty, non-empty, regular, context-free etc\newline
+It cannot be applied to questions like whether a TM has fewer than $7$ states, a final state, a start state, etc. These properties are of machines and not languages\newline
+It also doesn't apply to questions like is a language a subset of $\Sigma^{*}$ or whether a language of a RM is a language of a TM - these are trivial properties!
+The consequences of this is that we cannot write programs which answer non-trivial questions about the black-box behaviours of programs
 \end{thm}
 
 blank filler text: \lipsum[1-12]

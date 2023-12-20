@@ -250,6 +250,11 @@ snippet lr[] "left right square bracket" iA
 \\left[ $1 \\right] $0
 endsnippet
 
+context math(context)
+snippet lrceil "Ceiling function" iA
+\\lceil $1 \\rceil $0
+endsnippet
+
 # == Environments ==
 
 
