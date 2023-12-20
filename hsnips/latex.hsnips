@@ -49,6 +49,11 @@ $0
 \end{multicols}
 endsnippet
 
+
+snippet add;bar "Add a horizontal bar" bA
+\noindent\rule{\textwidth}{0.2pt}
+endsnippet
+
 snippet add;thm "Add a Theorem" bA
 \begin{thm}[${1:Name}]{thm:${2:Label}}{${3:Number}}
 $0

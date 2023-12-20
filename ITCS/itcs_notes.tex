@@ -463,6 +463,45 @@ It also doesn't apply to questions like is a language a subset of $\Sigma^{*}$ o
 The consequences of this is that we cannot write programs which answer non-trivial questions about the black-box behaviours of programs
 \end{thm}
 
+\newpage
+
+% TODO semi-decidable?
+
+\subsection*{Computability in depth}
+
+\begin{dfn}[Semi-decidability]{def:semi-decide}{}
+A problem $(D, Q)$ is \textbf{semi-decidable} if there is a TM/RM that returns "yes" for any $d\in Q$, but may return "no" or loop forever when $d\not\in Q$
+\newline
+\noindent\rule{\textwidth}{0.2pt}
+A problem $(D, Q)$ is \textbf{co-semi-decidable} if ther eis a TM/RM that returns "no" for any $d\not\in Q$, but may return "yes" or loop forever when $d\in Q$
+\end{dfn}
+
+
+\begin{dfn}[Enumerable Computability]{def:enumerable-computability}{}
+A set $S$ is \textbf{enumerable} if there is a bijection between $S$ and $\mathbb{N}$
+\newline
+A set $S$ is called \textbf{computably enumerable} (or c.e.) if the enumeration function $f : \mathbb{N} \to S$ is computable \newline
+In terms of RM and TM we can think of enumeration as outputting an infinite
+list as it executes forever.
+\end{dfn}
+
+
+\begin{thm}[Decidability theorems]{thm:decidability-thm}{}
+Any problem that is both semi-decidable and co-semi-decidable is decidable
+\newline
+\noindent\rule{\textwidth}{0.2pt}
+If a problem $P$ is semi-decidable then its complement $\overline{P}$ is co-semi-decidable, and vice versa
+\newline
+\noindent\rule{\textwidth}{0.2pt}
+All semi-decidable problems are computably enumerable, and any computably enumerable problem is semi-decidable - being semi-decidable is the same as being computably enumerable.
+\end{thm}
+
+\begin{thm}[Decidability Reductions]{thm:decidability-reductions}{}
+To prove that a problem $P_{2}$ is not c.e. we show that there is a mapping reduction from a known not-c.e. problem $P_{1}$ to $P_{2}$. We must use mapping reductions, as $H$ is c.e. but $L$ is not - but $L$ is Turing reducible to $H$ by flipping the answer.
+
+\end{thm}
+
+
 blank filler text: \lipsum[1-12]
 
 
