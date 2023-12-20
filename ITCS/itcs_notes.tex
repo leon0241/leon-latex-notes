@@ -764,10 +764,93 @@ In order to demonstrate that $\lambda$-calculus is a usable programming language
 The general idea is to turn a data type into the type of its eliminator, in other words we make a function which serves the same purpose as the data type when used.
 \end{dfn}
 
+\begin{dfn}[Booleans]{def:lcalc-bools}{}
+We use booleans to choose between results, so the encoding of a boolean is a function that given two arguments returns the first if true and the second if false.
+\begin{align*}
+    \text{True} &\equiv \lambda a. \, \lambda b. \, a \\
+    \text{False} &\equiv \lambda a. \, \lambda b. \, b
+\end{align*}
+An If statement becomes
+\[\text{If} \equiv \lambda c . \, \lambda t. \, \lambda e. \, cte\]
+\end{dfn}
+
+\begin{dfn}[Church Numerals]{def:church-numerals}{}
+We use natural numbers to repeat processes $n$ times, so the encoding of a natural number is a function that takes a function $f$ and a value $x$ and will apply $f$ to $x$ that number of times.
+
+\begin{equation}
+\begin{aligned}
+    \text{Zero} &\equiv \lambda f. \: \lambda x. \: x \nonumber \\
+    \text{One}  &\equiv \lambda f. \: \lambda x. \: f \: x \nonumber \\
+    \text{Two}  &\equiv \lambda f. \: \lambda x. \: f \: (f \: x) \nonumber \\
+                &\;\;\vdots
+\end{aligned}
+\end{equation}
+\newline
+Then operations like the successor and addition are relatively simple:
+\begin{equation}
+\begin{aligned}
+    \text{Suc} &\equiv \lambda n. \: \lambda f. \: \lambda x. \: f \: (n\:f\:x) \nonumber \\
+    \text{Add}  &\equiv \lambda m. \: \lambda n. \: \lambda f. \: \lambda x. \: m \: f \: (n \: f \: x) \nonumber
+\end{aligned}
+\end{equation}
+\end{dfn}
+
+\begin{dfn}[$\mathcal{Y}$ Combinator]{def:y-combi}{}
+The $\mathcal{Y}$ combinator is a "fixed point combinator", and it's the way we achieve recursion in $\lambda$-calculus. One $\mathcal{Y}$ combinator is the following:
+\[\mathcal{Y} \equiv (\lambda f. \: (\lambda x. \: f \: (x \: x)) \: (\lambda x. \: f \: (x \: x)))\]
+\end{dfn}
+
+\subsection*{Simply Typed $\lambda$-Calculus}
+\begin{dfn}[Higher Order Logic]{def:higher-order-logic}{}
+Originally the $\lambda$-calculus was intended for use as a term language for a logic, called higher-order logic.
+
+The existence of the $\mathcal{Y}$ combinator and recursion in general causes a problem for this because we can cause statements like:
+\[\mathcal{Y} \: \neg \equiv_\beta \neg \: (\mathcal{Y} \: \neg)\]
+
+A logic which can have statements equivalent to their own negation is not ideal at all. To solve this church introduced types.
+\end{dfn}
 
 
+\begin{dfn}[Types]{def:lcalc-types}{}
+Typed $\lambda$-calculus has a set of base types like \texttt{nat} and \texttt{bool}.
 
-blank filler text: \lipsum[1-12]
+Given two types $\sigma$ and $\tau$, $\sigma \to \tau$ is the type signature of a function from $\sigma$ to $\tau$, type signatures are right associative:
+\[\sigma \to \tau \to \rho = \sigma \to (\tau \to \rho)\]
+
+$\lambda$-abstraction also specifies the type of the parameter: $\lambda x : \tau.\:t$
+
+Things like the $\mathcal{Y}$ combinator or other recursive structures (things like the term which $\beta$-reduces to itself) cannot be typed.
+\end{dfn}
+
+\begin{dfn}[Natural Deduction]{def:lcalc-deduction}{}
+We can specify a logical system as a deductive system by providing a set of rules and axioms that describe how to prove various connectives. The same can be done for typing.
+
+\[\frac{x : \tau \in \Gamma}{\Gamma \vdash t \: u : \tau}A \quad \frac{x : \sigma, \Gamma \vdash t : \tau}{\Gamma \vdash (\lambda x : \sigma.\:t) : \sigma \to \tau}I\]
+\[\frac{\Gamma \vdash t : \sigma \to \tau \quad \Gamma \vdash u : \sigma}{\Gamma \vdash t \: u : \tau}E\]
+
+This is the full rule-set for simply typed $\lambda$-calculus. The structure is that from the bottom you can derive the top, and that the right of the $\vdash$ symbol can be assumed true as a result of the left of it.
+
+$A$ is assignment, $I$ is introduction, and $E$ is elimination.
+\end{dfn}
+
+\begin{dfn}[The Results of Simply Typed $\lambda$-Calculus]{def:lcalc-results}{}
+This simply typed $\lambda$-calculus has the following properties:
+\begin{itemize}
+    \item Uniqueness of types: In a given context (types for free variables), any simply typed $\lambda$-terms has at most one type. Deciding this is in \textbf{P}.
+    \item Subject reduction (or type safety): Typing respects $\equiv_{\alpha\beta\eta}$, i.e. reduction does not affect a term's type.
+    \item Strong normalisation: Any well-typed term evaluates in finitely many reductions to a unique irreducible term. If the type is a base type, this term is a constant.
+\end{itemize}
+
+The $\mathcal{Y}$ combinator cannot be typed, and strong normalisation means that such a term cannot exist.
+
+If we want to do general computation in $\lambda$-calculus we need recursion back. The way this is done is by extending it to include a new built in feature called \textbf{fix}.
+
+We extend $\beta$-reduction to unroll recursion in a single step (which will keep strong normalisation). 
+
+Some type-theoretic languages avoid adding general recursion to the underlying $\lambda$-calculus - for reasons which are not examinable.
+\end{dfn}
+
+% blank filler text: \lipsum[1-12]
 
 
 % This is what a boxed environment is formatted like
@@ -781,20 +864,20 @@ blank filler text: \lipsum[1-12]
 % Second field is just to reference, not too important
 % Leave the last field blank, it was lecture note numbers from FPM and
 % but atm i cba changing the environment doesn't look the prettiest but o well
-\begin{dfn}[Name]{def:Label}{}
+% \begin{dfn}[Name]{def:Label}{}
 
-\end{dfn}
+% \end{dfn}
 
-\newpage
+% \newpage
 
-% note: idk if there's space to put examples - most likely if some of the theorems and stuff get trimmed down tho
+% % note: idk if there's space to put examples - most likely if some of the theorems and stuff get trimmed down tho
 
-\begin{xmp}[Regular Expressions]{def:ex-regex}{}
-At least one $0$:
-\[(0\cup 1) ^{*} 0(0\cup 1)*\]
-At least one $1$ and at least one $0$:
-\[((0 \cup 1)^*01(0 \cup 1)^*) \cup ((0 \cup 1)^*10(0 \cup 1)^*)\]
-\end{xmp}
+% \begin{xmp}[Regular Expressions]{def:ex-regex}{}
+% At least one $0$:
+% \[(0\cup 1) ^{*} 0(0\cup 1)*\]
+% At least one $1$ and at least one $0$:
+% \[((0 \cup 1)^*01(0 \cup 1)^*) \cup ((0 \cup 1)^*10(0 \cup 1)^*)\]
+% \end{xmp}
 
 
 
