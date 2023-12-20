@@ -200,6 +200,10 @@ Therefore, to show a language is non-regular, show that it has infinite equivale
 
 \begin{dfn}[Context-free Languages]{def:context-free-langs}{}
 By adding recursion to regexs we can begin to recognise some non-regular languages. All regular languages are also context free. 
+Context free languages are closed under:\\
+Union, Concatenation, Kleene Star.\\
+But are \textbf{not} closed under:\\
+Interesection, Complementation (shown via de Morgan's laws).
 \end{dfn}
 
 \newpage
@@ -609,6 +613,50 @@ assignments and checking them in polynomial time, and then showing it’s NP-
 Hard by reducing any NP problem to SAT
 \end{thm}
 
+\subsection*{$\lambda$-calculus}
+\begin{dfn}[Syntax]{def:lambda_synt}{}
+$\lambda$-calculus computations are expressed as $\lambda$-terms:
+\begin{equation}
+\begin{aligned}
+    t \; & :== & x & \text{    (variables)} \nonumber \\
+       &\;\;\:|& t_1 \; t_2 & \text{    (application)} \nonumber \\
+       &\;\;\:|& \lambda x.\:t & \text{    ($\lambda$-abstraction)} \nonumber \\
+\end{aligned}
+\end{equation}
+A $\lambda$-term $(\lambda x.\:y)$ can be thought of as a function that given an input bound to the variable $x$, returns the term $y$.
+\begin{itemize}
+    \item Function application is left associative:
+\[f\:a\:b\:c = ((f\:a)\:b)\:c\]
+    \item $\lambda$-abstraction extends as far as possible:
+\[\lambda a.\:f\:a\:b = \lambda a.\:(f\:a\:b)\]
+\item All functions are unary, multiple argument functions are modeled via nested $\lambda$-abstractions:
+\[\lambda x.\:\lambda y.\:f\:y\:x\]
+\item $\lambda$-calculus is higher-order, in that functions may be arguments to functions themselves:
+\[\lambda f.\:\lambda g.\:\lambda x.\:f\:(g\:x)\]
+\end{itemize}
+\end{dfn}
+
+\begin{dfn}[$\alpha$-equivalence]{def:alpha_eq}{}
+$\alpha$-equivalence is a way of saying that two statements are semantically identical but differ in the choice of bound variable names.
+\[e_1 = (\lambda x.\:\lambda x.\:x + x)\]
+\[e_2 = (\lambda a.\:\lambda y.\:y + y)\]
+These two statements are $\alpha$-equivalent, we say that $e_1 \equiv_\alpha e_2$, the relation $\equiv_\alpha$ is an equivalence-relation. The process of consistently renaming variables that preserves $\alpha$-equivalence is called $\alpha$-renaming or $\alpha$-conversion.    
+\end{dfn}
+
+\begin{dfn}[$\beta$-reduction]{def:beta_red}{}
+$\beta$    
+\end{dfn}
+
+\begin{dfn}[$\eta$-reduction]{def:eta_red}{}
+$\eta$    
+\end{dfn}
+
+\begin{dfn}[$\eta$-reduction]{def:eta_red}{}
+$\eta$    
+\end{dfn}
+
+
+
 
 \subsection*{The Polynomial Heirarchy}
 \begin{dfn}[Sigma Notation]{def:sigmas}{}
@@ -714,6 +762,11 @@ At least one $0$:
 At least one $1$ and at least one $0$:
 \[((0 \cup 1)^*01(0 \cup 1)^*) \cup ((0 \cup 1)^*10(0 \cup 1)^*)\]
 \end{xmp}
+
+
+
+
+
 
 \end{multicols}
 
