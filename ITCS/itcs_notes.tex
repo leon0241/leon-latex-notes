@@ -412,9 +412,14 @@ This is a contradiction! \newline
 The halting problem proves that there are some programs which cannot be decided by register machines. What about other machines?
 \end{thm}
 
+\begin{dfn}[Computability]{def:computability}{}
+A (total) function $\mathbb{N}\to\mathbb{N}$ is \textbf{computable} if there is an RM/TM which computes $f$, i.e., given an $x$ in $R_{0}$, leaves $f(x)$ in $R_{0}$\newline
+A \textbf{decision problem} is a set $D$ and a quiery subset $Q\subseteq D$. A problem is \textbf{decidable} or \textbf{computable} if $d\in Q$ is characterised by a computable function $f : D\to \{0, 1\}$.
+\end{dfn}
+
 
 \begin{dfn}[Reductions]{def:reductions}{}
-A reduction is a transformation from one problem to another. To prove that a problem $P_{2}$ is hard, show that there is an easy reduction from a known hard problem $P_{1}$ to $P_{2}$.\newline
+A \textbf{reduction} is a transformation from one problem to another. To prove that a problem $P_{2}$ is hard, show that there is an easy reduction from a known hard problem $P_{1}$ to $P_{2}$.\newline
 To show a problem $P_{2}$ is undecidable, show that there is a computable reduction from a known undecidable $P_{1}$ to $P_{2}$. The direction here matters - it tells us nothing to know that there's an easy way to make an easy problem difficult!
 \end{dfn}
 
@@ -427,9 +432,10 @@ putting it in the loaded truck - but we know he cannot lift a car.
 
 
 \begin{dfn}[Mapping Reductions]{def:mapping-reductions}{}
-A mapping reduction (or a many-to-one reduction) from $P_{1}$ to $P_{2}$ is a \textbf{Turing transducer} $f$ such that $d\in Q_{1}$ iff $f(d)\in Q_{2}$
+A \textbf{Turing transducer} is a RM (or TM) which takes an instance $d$ of a problem $P_{1} = (D_{1}, Q_{1})$ in $R_{0}$ and halts with an instance $d' = f(d)$ of $P_{2} = (D_{2}, Q_{2})$ in $R_{0}$. Thus, $f$ is a computable function $D_{1}\to D_{2}$\newline
+A \textbf{mapping reduction} (or a many-to-one reduction) from $P_{1}$ to $P_{2}$ is a turing transducer $f$ such that $d\in Q_{1}$ iff $f(d)\in Q_{2}$
 \newline
-If $a$ is mapping reducible to $B$, and $A$ is undecidable, then $B$ is undecidable.
+If $A$ is mapping reducible to $B$, and $A$ is undecidable, then $B$ is undecidable.
 \end{dfn}
 
 \begin{dfn}[Turing Reductions]{def:turing-reductions}{}
@@ -437,8 +443,20 @@ A \textbf{Turing reduction} from $P_{1}$ to $P_{2}$ is an RM/TM equipped with an
 Decidability results carry across during Turing reductions as with mapping reductions, but mapping reductions make finer distinctions of computing power.
 \end{dfn}
 
-\begin{thm}[Rice's Theorem]{thm:rice-thm}{}
-All non-trivial semantic properties are undecidable.\newline
+\begin{thm}[Rice's Theorem]{def:rice-terms}{}
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item A \textbf{property} is a set of RM (or TM) descriptions
+    \item A property is \textbf{non-trivial} if it contains some but not all descriptions
+    \item A property $P$ is \textbf{semantic} if
+    \[\mathcal{L}(M_{1}) =\mathcal{L}(M_{2}) \Rightarrow (\lceil M_{1} \rceil \in P \Leftrightarrow \lceil M_{2} \rceil \in P)\]
+    In other words, it concerns the \textbf{language} and not the particular implentation of the language
+\end{itemize}
+\noindent\rule{\textwidth}{0.2pt}
+\textbf{Rice's Theorem} - All non-trivial semantic properties are undecidable.\end{thm}
+
+\begin{thm}[Rice's Theorem part 2]{thm:rice-thm}{}
 Rice's theorem is useful for deciding propertiese like whether a language is empty, non-empty, regular, context-free etc\newline
 It cannot be applied to questions like whether a TM has fewer than $7$ states, a final state, a start state, etc. These properties are of machines and not languages\newline
 It also doesn't apply to questions like is a language a subset of $\Sigma^{*}$ or whether a language of a RM is a language of a TM - these are trivial properties!
