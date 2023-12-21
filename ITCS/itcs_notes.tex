@@ -260,8 +260,27 @@ A string $w$ is accepted by a PDA if it ends in a final state, i.e. $\delta^{*}(
 
 \end{dfn}
 
-\begin{thm}[CFG to PDA]{thm:cfg-to-pda}{}
-A language is context-free if and only if it is recognised by a push-down automaton. The proof is left as an exercise to the reader.
+\begin{thm}[CFG to PDA and PDA to CFG]{thm:cfg-to-pda}{}
+The upper loop on $q_1$ is added for every terminal $a$ in the CFG. The lower loop on $q_1$ is shorthand for a looping sequence of states added for each production $A \to w$ that builds up $w$ on the stack one symbol at a time.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{images/cfg-to-pda.png}
+\end{figure}
+\noindent\rule{\textwidth}{0.2pt}
+
+Firstly we ensure that the PDA has only one accept state, empties its stack before terminating, and has only transitions that either push or pop a symbol (but not transitions that do both or neither).
+
+Given such a PDA $P=(Q, \Sigma, \Gamma, \delta, q_0, F)$ we provide a CFG $(V, \Sigma, R, S)$ with $V$ containing a non-terminal $A_{pq}$ for every pair of states $(p,q) \in Q \times Q$.
+
+The non-terminal $A_{pq}$ generates all strings that go from $p$ with an empty stack to $q$ with an empty stack. Then $S$ is just $A_{q_0q_{accept}}$.
+
+$R$ consists of:
+\begin{itemize}
+    \item $A_{pq} \to aA_{rs}b$ if $p \xrightarrow[]{a,\epsilon \to t}r$ and $s \xrightarrow[]{b, t, \to \epsilon}q$ (for intermediate states $r, s$ and stack symbol $t$
+    \item $A_{pq} \to A_{pr}A_{rq}$ for all intermediate states $r$
+    \item $A_{pp} \to \epsilon$
+\end{itemize}
 \end{thm}
 
 \begin{thm}[Pumping CFLs intro]{thm:pumping-cfl-1}{}
@@ -316,6 +335,15 @@ Can we write a program to determine if a given regular language is empty?
 Given a finite-automaton this is an instance of graph reach-ability, so we can use a depth-first search.
 \end{thm}
 
+\begin{thm}[Equivalence of DFA]{thm:dfa-equiv}{}
+Is it possible to write a program to determine if two discrete finite automata are equivalent?
+
+Given two DFA for $L_1$ and $L_2$, we can use our standard constructions to produce a DFA of the symmetric set difference:
+\[(L_1 \cap \overline L_2) \cup (L_2 \cap \overline L_1)\]
+\end{thm}
+
+\newpage
+
 \begin{thm}[Emptiness for Context-free languages]{def:emptiness-cfl}{}
 Can we write a program to determine if a given context-free language is empty?
 \newline
@@ -328,15 +356,8 @@ Given a CFG for our language, we can perform the following process:
 \end{enumerate}
 \end{thm}
 
-\begin{thm}[Equivalence of DFA]{thm:dfa-equiv}{}
-Is it possible to write a program to determine if two discrete finite automata are equivalent?
-
-Given two DFA for $L_1$ and $L_2$, we can use our standard constructions to produce a DFA of the symmetric set difference:
-\[(L_1 \cap \overline L_2) \cup (L_2 \cap \overline L_1)\]
-\end{thm}
 
 
-\newpage
 
 \subsection*{Register Machines}
 
@@ -388,7 +409,24 @@ DNA computers, Minecraft, Magic the Gathering, and others.
 % TODO: lol prob remove this
 \end{thm}
 
+
+\begin{thm}[The Halting Problem]{thm:halting-prob}{}
+Given a register machine encoding, can we write a program to determine if the simulated machine will halt or not? \newline
+If we suppose $H$ is such a register machine, which takes a machine encoding $\lceil M \rceil$ in $R_{0}$, halts with $1$ if $M$ halts, and halts with $0$ if $M$ doesn't halt. \newline
+We can construct a new machine $L = (P_{L}, R_{0},\dots)$ which, given a program $\lceil P \rceil $ runs $H$ on the program with itself as input, the machine $(P, \lceil P \rceil )$ and loops if it halts. \newline
+If we run $L$ on $P_{L}$ itself we get a problem. If $L$ halts on $\lceil P_{L} \rceil $ that means $H$ says $(P_{L}, \lceil P_{L} \rceil )$. If $L$ loops on $\lceil P_{L} \rceil $ that means that $H$ says $(P_{L}, \lceil P_{L} \rceil )$ halts.\newline
+This is a contradiction! \newline
+The halting problem proves that there are some programs which cannot be decided by register machines. What about other machines?
+\end{thm}
+
+
+\vspace*{-10pt}
 \subsection*{Decidability}
+
+\begin{dfn}[Computability]{def:computability}{}
+A (total) function $\mathbb{N}\to\mathbb{N}$ is \textbf{computable} if there is an RM/TM which computes $f$, i.e., given an $x$ in $R_{0}$, leaves $f(x)$ in $R_{0}$\newline
+A \textbf{decision problem} is a set $D$ and a quiery subset $Q\subseteq D$. A problem is \textbf{decidable} or \textbf{computable} if $d\in Q$ is characterised by a computable function $f : D\to \{0, 1\}$.
+\end{dfn}
 
 \begin{dfn}[Problems with no Algorithm]{def:decidability-intro}{}
 While the above problems are all computable, this is not always the case. The
@@ -408,25 +446,14 @@ Many such problems exist for Context-free Languages
 \end{itemize}
 \end{dfn}
 
-\begin{thm}[The Halting Problem]{thm:halting-prob}{}
-Given a register machine encoding, can we write a program to determine if the simulated machine will halt or not? \newline
-If we suppose $H$ is such a register machine, which takes a machine encoding $\lceil M \rceil$ in $R_{0}$, halts with $1$ if $M$ halts, and halts with $0$ if $M$ doesn't halt. \newline
-We can construct a new machine $L = (P_{L}, R_{0},\dots)$ which, given a program $\lceil P \rceil $ runs $H$ on the program with itself as input, the machine $(P, \lceil P \rceil )$ and loops if it halts. \newline
-If we run $L$ on $P_{L}$ itself we get a problem. If $L$ halts on $\lceil P_{L} \rceil $ that means $H$ says $(P_{L}, \lceil P_{L} \rceil )$. If $L$ loops on $\lceil P_{L} \rceil $ that means that $H$ says $(P_{L}, \lceil P_{L} \rceil )$ halts.\newline
-This is a contradiction! \newline
-The halting problem proves that there are some programs which cannot be decided by register machines. What about other machines?
-\end{thm}
-
-\begin{dfn}[Computability]{def:computability}{}
-A (total) function $\mathbb{N}\to\mathbb{N}$ is \textbf{computable} if there is an RM/TM which computes $f$, i.e., given an $x$ in $R_{0}$, leaves $f(x)$ in $R_{0}$\newline
-A \textbf{decision problem} is a set $D$ and a quiery subset $Q\subseteq D$. A problem is \textbf{decidable} or \textbf{computable} if $d\in Q$ is characterised by a computable function $f : D\to \{0, 1\}$.
-\end{dfn}
 
 
 \begin{dfn}[Reductions]{def:reductions}{}
 A \textbf{reduction} is a transformation from one problem to another. To prove that a problem $P_{2}$ is hard, show that there is an easy reduction from a known hard problem $P_{1}$ to $P_{2}$.\newline
 To show a problem $P_{2}$ is undecidable, show that there is a computable reduction from a known undecidable $P_{1}$ to $P_{2}$. The direction here matters - it tells us nothing to know that there's an easy way to make an easy problem difficult!
 \end{dfn}
+
+
 
 \begin{xmp}[Reduction analogy]{def:reduction-analogy}{}
 If it is a well known fact that Hyunwoo cannot lift a car, we can prove that
@@ -451,6 +478,9 @@ A \textbf{Turing reduction} from $P_{1}$ to $P_{2}$ is an RM/TM equipped with an
 Decidability results carry across during Turing reductions as with mapping reductions, but mapping reductions make finer distinctions of computing power.
 \end{dfn}
 
+\newpage
+
+
 \begin{thm}[Rice's Theorem]{def:rice-terms}{}
 \renewcommand\labelitemi{\tiny$\bullet$}
 \begin{itemize}
@@ -464,7 +494,6 @@ Decidability results carry across during Turing reductions as with mapping reduc
 \noindent\rule{\textwidth}{0.2pt}
 \textbf{Rice's Theorem} - All non-trivial semantic properties are undecidable.\end{thm}
 
-\newpage
 \begin{thm}[Rice's Theorem part 2]{thm:rice-thm}{}
 Rice's theorem is useful for deciding propertiese like whether a language is empty, non-empty, regular, context-free etc\newline
 It cannot be applied to questions like whether a TM has fewer than $7$ states, a final state, a start state, etc. These properties are of machines and not languages\newline
@@ -494,6 +523,11 @@ list as it executes forever.
 \end{dfn}
 
 
+\begin{thm}[Decidability Reductions]{thm:decidability-reductions}{}
+To prove that a problem $P_{2}$ is not c.e. we show that there is a mapping reduction from a known not-c.e. problem $P_{1}$ to $P_{2}$. We must use mapping reductions, as $H$ is c.e. but $L$ is not - but $L$ is Turing reducible to $H$ by flipping the answer.
+
+\end{thm}
+
 \begin{thm}[Decidability theorems]{thm:decidability-thm}{}
 Any problem that is both semi-decidable and co-semi-decidable is decidable
 \newline
@@ -504,10 +538,6 @@ If a problem $P$ is semi-decidable then its complement $\overline{P}$ is co-semi
 All semi-decidable problems are computably enumerable, and any computably enumerable problem is semi-decidable - being semi-decidable is the same as being computably enumerable.
 \end{thm}
 
-\begin{thm}[Decidability Reductions]{thm:decidability-reductions}{}
-To prove that a problem $P_{2}$ is not c.e. we show that there is a mapping reduction from a known not-c.e. problem $P_{1}$ to $P_{2}$. We must use mapping reductions, as $H$ is c.e. but $L$ is not - but $L$ is Turing reducible to $H$ by flipping the answer.
-
-\end{thm}
 
 \subsection*{Time Complexity}
 \begin{dfn}[Time Complexity]{def:time-complexity}{}
@@ -581,6 +611,16 @@ An RM/TM is $f(n)$-space-bounded if it may use only $f(inputsize)$ space. For TM
 
 \end{dfn}
 
+\begin{thm}[Cook-Levin Theorem]{thm:cook-levin}{}
+The Cook-Levin theorem states that the NP problem SAT is NP-Complete.
+\newline
+The proof of this involves showing it is NP by nondeterministically guessing
+assignments and checking them in polynomial time, and then showing it’s NP-
+Hard by reducing any NP problem to SAT
+\end{thm}
+
+
+\newpage
 \begin{thm}[Polynomial Reductions]{thm:poly-reducts}{}
 A polynomial reduction from $P_1 = (D_1, Q_1)$ to $P_2 = (D_2, Q_2)$ is a \textbf{P}-computable function $f : D_1 \to D_2$ such that $d \in Q_1$ iff $d \in Q_2$.
 
@@ -603,15 +643,8 @@ If $P_2$ is in \textbf{P}, then $P_1$ is in \textbf{P} straightforwardly. Theref
 
 \end{thm}
 
-\newpage
 
-\begin{thm}[Cook-Levin Theorem]{thm:cook-levin}{}
-The Cook-Levin theorem states that the NP problem SAT is NP-Complete.
-\newline
-The proof of this involves showing it is NP by nondeterministically guessing
-assignments and checking them in polynomial time, and then showing it’s NP-
-Hard by reducing any NP problem to SAT
-\end{thm}
+
 
 \subsection*{The Polynomial Heirarchy}
 \begin{dfn}[Sigma Notation]{def:sigmas}{}
@@ -878,10 +911,6 @@ Some type-theoretic languages avoid adding general recursion to the underlying $
 % At least one $1$ and at least one $0$:
 % \[((0 \cup 1)^*01(0 \cup 1)^*) \cup ((0 \cup 1)^*10(0 \cup 1)^*)\]
 % \end{xmp}
-
-
-
-
 
 
 \end{multicols}
