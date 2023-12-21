@@ -453,7 +453,7 @@ A \textbf{reduction} is a transformation from one problem to another. To prove t
 To show a problem $P_{2}$ is undecidable, show that there is a computable reduction from a known undecidable $P_{1}$ to $P_{2}$. The direction here matters - it tells us nothing to know that there's an easy way to make an easy problem difficult!
 \end{dfn}
 
-
+\vspace*{-5pt}
 
 \begin{xmp}[Reduction analogy]{def:reduction-analogy}{}
 If it is a well known fact that Hyunwoo cannot lift a car, we can prove that
@@ -461,25 +461,24 @@ Hyunwoo cannot lift a loaded truck by making the following reduction: If we
 suppose he could lift the loaded truck, then we could have him lift the car by
 putting it in the loaded truck - but we know he cannot lift a car.
 \end{xmp}
-
+\vspace*{-5pt}
 \begin{dfn}[Mapping Reductions]{def:mapping-reductions}{}
 A \textbf{Turing transducer} is a RM (or TM) which takes an instance $d$ of a problem $P_{1} = (D_{1}, Q_{1})$ in $R_{0}$ and halts with an instance $d' = f(d)$ of $P_{2} = (D_{2}, Q_{2})$ in $R_{0}$. Thus, $f$ is a computable function $D_{1}\to D_{2}$\newline
 A \textbf{mapping reduction} (or a many-to-one reduction) from $P_{1}$ to $P_{2}$ is a turing transducer $f$ such that $d\in Q_{1}$ iff $f(d)\in Q_{2}$
 \newline
 If $A$ is mapping reducible to $B$, and $A$ is undecidable, then $B$ is undecidable.
 \end{dfn}
-
+\vspace*{-5pt}
 \begin{dfn}[Oracles]{def:oracles}{}
 Given a decision problem $(D, Q)$, an \textbf{oracle} for $Q$ is a 'magic' RM instruction $\text{\texttt{ORACLE}}_{Q}(i)$ which, given an encoding of $d\in D$ in $R_{i}$, sets $R_{i}$ to contain $1$ iff $d\in Q$
 \end{dfn}
-
+\vspace*{-5pt}
 \begin{dfn}[Turing Reductions]{def:turing-reductions}{}
 A \textbf{Turing reduction} from $P_{1}$ to $P_{2}$ is an RM/TM equipped with an oracle for $P_{2}$ which solves $P_{1}$.\newline
 Decidability results carry across during Turing reductions as with mapping reductions, but mapping reductions make finer distinctions of computing power.
 \end{dfn}
 
-\newpage
-
+\vspace*{-5pt}
 
 \begin{thm}[Rice's Theorem]{def:rice-terms}{}
 \renewcommand\labelitemi{\tiny$\bullet$}
@@ -492,7 +491,12 @@ Decidability results carry across during Turing reductions as with mapping reduc
     In other words, it concerns the \textbf{language} and not the particular implentation of the language
 \end{itemize}
 \noindent\rule{\textwidth}{0.2pt}
-\textbf{Rice's Theorem} - All non-trivial semantic properties are undecidable.\end{thm}
+\textbf{Rice's Theorem} - All non-trivial semantic properties are undecidable.
+\end{thm}
+
+
+\newpage
+
 
 \begin{thm}[Rice's Theorem part 2]{thm:rice-thm}{}
 Rice's theorem is useful for deciding propertiese like whether a language is empty, non-empty, regular, context-free etc\newline
@@ -611,16 +615,9 @@ An RM/TM is $f(n)$-space-bounded if it may use only $f(inputsize)$ space. For TM
 
 \end{dfn}
 
-\begin{thm}[Cook-Levin Theorem]{thm:cook-levin}{}
-The Cook-Levin theorem states that the NP problem SAT is NP-Complete.
-\newline
-The proof of this involves showing it is NP by nondeterministically guessing
-assignments and checking them in polynomial time, and then showing it’s NP-
-Hard by reducing any NP problem to SAT
-\end{thm}
 
 
-\newpage
+
 \begin{thm}[Polynomial Reductions]{thm:poly-reducts}{}
 A polynomial reduction from $P_1 = (D_1, Q_1)$ to $P_2 = (D_2, Q_2)$ is a \textbf{P}-computable function $f : D_1 \to D_2$ such that $d \in Q_1$ iff $d \in Q_2$.
 
@@ -643,7 +640,14 @@ If $P_2$ is in \textbf{P}, then $P_1$ is in \textbf{P} straightforwardly. Theref
 
 \end{thm}
 
-
+\newpage
+\begin{thm}[Cook-Levin Theorem]{thm:cook-levin}{}
+The Cook-Levin theorem states that the NP problem SAT is NP-Complete.
+\newline
+The proof of this involves showing it is NP by nondeterministically guessing
+assignments and checking them in polynomial time, and then showing it’s NP-
+Hard by reducing any NP problem to SAT
+\end{thm}
 
 
 \subsection*{The Polynomial Heirarchy}
