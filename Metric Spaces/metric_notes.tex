@@ -1,0 +1,64 @@
+\documentclass{article}
+% \usepackage{showframe}
+
+\usepackage[dvipsnames]{xcolor}
+% custom colour definitions
+\colorlet{colour1}{Red}
+\colorlet{colour2}{Green}
+\colorlet{colour3}{Cerulean}
+
+\usepackage{geometry}
+% margins
+\geometry{
+    a4paper, 
+}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{preamble}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage{float}
+\usepackage[nodisplayskipstretch]{setspace}
+
+
+% tikz and theorem boxes
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{../thmboxes_col}
+% \usepackage{thmboxes_col}
+
+
+% Custom Definitions of operators
+\DeclareMathOperator{\Ima}{im}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\send}{send}
+\DeclareMathOperator{\dom}{dom}
+
+\title{Metric Spaces Notes}
+\author{Leon Lee}
+
+
+\begin{document}
+
+\maketitle
+
+\newpage
+\section{Introduction to Metric Spaces}
+\textbf{Metric} is another name for distance. A \textbf{Metric Space} is a set equipped with a metric.
+A standard example is $\mathbb{R}$ with the standard metric
+\[d(x,y) = \lvert x-y \rvert\]
+We will now formally define what it means to have a metric
+
+\begin{dfn}[Definition of a Metric]{metric-definition}{1.1}
+    Let $X$ be a non-empty set. A function $d: X \times X \to \mathbb{R} $ is called a \textbf{metric} iff for all $x,\,y,\,z\in X$,
+    \begin{itemize}
+        \item $d(x,y)\ge 0$ and $d(x,y)=0 \iff x = y$\\
+        \item $d(x,y)=d(y,x)$\\
+        \item $d(x,y)\le d(x,z)+d(z,y)$ (Triangle Inequality)
+    \end{itemize}
+\end{dfn}
+\end{document}
