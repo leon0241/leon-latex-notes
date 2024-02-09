@@ -1,0 +1,4 @@
+\contentsline {section}{\numberline {1}Introduction to Metric Spaces}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Defining a Metric}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Examples of Metric Spaces}{3}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.5}Proof of the euclidean triangle inequality}{4}{subsubsection.1.2.5}%

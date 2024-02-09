@@ -1,0 +1,159 @@
+\documentclass{article}
+% \usepackage{showframe}
+
+% \usepackage[dvipsnames]{xcolor}
+% custom colour definitions
+% \colorlet{colour1}{Red}
+% \colorlet{colour2}{Green}
+% \colorlet{colour3}{Cerulean}
+
+\usepackage{geometry}
+% margins
+\geometry{
+    a4paper,
+    bottom=70pt,
+    % margin=70pt
+}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{preamble}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage{float}
+\usepackage[nodisplayskipstretch]{setspace}
+
+% tikz and theorem boxes
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{../thmboxes_v2}
+% \usepackage{thmboxes_col}
+
+
+\usepackage{hyperref} % note: this is the final package
+\parindent = 0pt
+
+% Custom Definitions of operators
+\DeclareMathOperator{\Ima}{im}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\send}{send}
+\DeclareMathOperator{\dom}{dom}
+
+\title{Metric Spaces Notes}
+\author{Leon Lee}
+\renewcommand\labelitemi{\tiny$\bullet$}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Section}
+\subsection{Subsection}
+
+
+\section{Week 3}
+\subsection{Evaluating a Language Model}
+Intuitively, a trigram model captures more context than a bigram model, so it should be a better model. How do we measure "better"?
+
+\noindent\rule{\textwidth}{0.2pt}
+\textbf{Extrinsic Evaluation}: measure performance on a downstream application
+\begin{itemize}
+    \item For LM, plug it into a machine translation/ASR/etc. system
+    \item The most reliable evaluation, but can be time-consuming.
+    \item And of course, we still need an evaluation measure for the downstream system
+\end{itemize}
+\textbf{Intrinsic Evaluation}: design a measure that is inherent to the current task.
+\begin{itemize}
+    \item Can be much quicker/easier during development cycle 
+    \item But not always easy to figure out what the right measure is: ideally, one that correlates well with extrinsic measures.
+\end{itemize}
+\noindent\rule{\textwidth}{0.2pt}
+Let's introduce a way to define intrinsic measures for LMs
+\subsection{Entropy}
+Definition of the \textbf{entropy} of a random variable $X$:
+\[H(X) = \sum_{x} - P(x) \log_{2} P(x)\]
+Also: the expected value of $-\log_{2} P(X)$
+
+Intuitively: it is a measure of uncertainty / disorder
+
+Idea: If events are more likely, then the entropy is lower
+
+\textbf{Example 1}: Equal odds $\to$ Medium entropy (kinda predictable)
+
+\begin{align*}
+    P(a) &= 0.5 & H(X) &= -0.5 \log_{2} 0.5 - 0.5\log_{2} 0.5 \\
+    P(b) &= 0.5 & &= -\log_{2} 0.5\\
+         & & &= 1
+\end{align*}
+
+\textbf{Example 2}: One term with higher odds $\to$ Lower entropy (more predictable)
+\begin{align*}
+    P(a) &= 0.97 & H(X) &= -0.97 \log_{2} 0.97 - 3 \cdot (0.01\log_{2} 0.01) \\
+    P(b) &= 0.01 & &= -0.97 \log_{2} 0.97 - 0.03\log_{2} 0.01 \\
+    P(c) &= 0.01 & &= 0.25194 \\
+    P(d) &= 0.01
+\end{align*}
+
+\section{Week 4}
+\subsection{Bayes theorem stuff}
+\subsubsection{Naive Bayes}
+Naive Bayes assumption is naive
+Features are not usually independent given the class.
+
+Adding multiple feature types (e.g. words and morphemes) often leads to even stronger correlations between features
+
+Accuracy of classifier can sometimes still be okay, but it will be highly overconfident
+
+A less naive model is "Maximum Entropy"
+
+\subsubsection{Maximum Entropy}
+Also called logistic regression
+
+Most commonly, multinomial logistic regression
+
+\noindent\rule{\textwidth}{0.2pt}
+It is trained to \textbf{discriminate} correct vs incorrect values of $c$, given an input $x$. That's all it can do
+
+Need not be probabilistic
+
+Examples: artificial neural networks, decision trees, nearest neighbour methods, support vector machines.
+
+Here we consider only one method: Maximum Entropy (MaxEnt) models
+
+\subsubsection{MaxEnt Feature Example}
+If we have three classes, our features will always come in groups of three. For example, we could have three binary features:
+\begin{align*}
+   f_{1} : \text{contains('ski')} \& c = 1 \\
+   f_{2} : \text{contains('ski')} \& c = 2 \\
+   f_{3} : \text{contains('ski')} \& c = 3
+\end{align*}
+
+
+\subsubsection{Classification with MaxEnt}
+Choose the class that has the highest probability according to
+\[P(c| \vec{x}) = \frac{1}{Z} \text{exp}\left(\sum_{i}^{} w_{i} f_{i}(\bar{x}, c)\right)\] 
+where the nomalization constant $Z = \sum_{c'} \text{exp}(\sum_{i}w_{i}f_{i}(\vec{x}, c'))$
+\begin{itemize}
+   \item Inside brackets is just a dot product: $\vec{w} \cdot \vec{f}$
+   \item $P(c| \vec{x})$ is a \textbf{monotonic function} of this dot product
+   \item So, we will end up choosing the class for which $\vec{w} \cdot \vec{f}$ is highest
+\end{itemize}
+
+\subsubsection{Training the model}
+Given annotated data, choose weights that make the class lavels most probable under the model
+That is given examples $x^{1} \dots x^{N}$ with labels $c^{1} \dots c^{N}$, choose
+\[\hat{w} = \text{argmax}_{\vec{w}} \sum_{j} \log P(c^{j} | x^{j})\]
+This is called \textbf{conditional maximum likelihood estimation} (CMLE)
+Like MLE, CMLE will overift, so we use tricks (regularization) to avoid that
+
+\subsubsection{How does the gradient look like?}
+bunch of maths lol
+
+\end{document}
