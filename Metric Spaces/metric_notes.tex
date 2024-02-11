@@ -182,6 +182,40 @@ This is the \textbf{Cauchy-Schwarz Inequality}. Various ways to prove this (watc
     Triangle inequality, cauchy schwarz, yadda yadda same as $2$-dim case
 \end{xmp}
 
+\subsubsection{L space}
+
+For two sequences $x = (x_{1}, \dots ,x_{n},\dots),\, y=(y_{1},\dots,y_{n},\dots)$ of real numbers we wish to define
+\[d_{1}(x,y) = \sum_{n = 0}^{\infty} \lvert x_{n} - y_{n} \rvert\]
+We need this series to converge - in particular when $y=(0,\dots,0,\dots)$, we need the series $\displaystyle\sum_{n = 1}^{\infty}\lvert x_{n} \rvert$ to converge
+
+\begin{dfn}[l space]{l-space}{}
+    We denote by $\ell^{1}$ the set of real sequences $(x_{n})_{n\in\mathbb{N}}$ for which the series $\displaystyle\sum_{n = 1}^{\infty}\lvert x_{n} \rvert$ converges.
+\end{dfn}
+
+If $x,y\in \ell^{1}$ i.e. if $\displaystyle\sum_{n = 1}^{\infty}\lvert x_{n} \rvert$ and $\displaystyle\sum_{n = 1}^{\infty}\lvert y_{n} \rvert$ converge, then $\displaystyle\sum_{n = 1}^{\infty} \lvert x_{n} - y_{n} \rvert$ converges, because for all $n$,
+\[\lvert x_{n} - y_{n} \rvert \le \lvert x_{n} \rvert + y_{n}\]
+
+For $x = (x_{1}, \dots, x_{n}, \dots)$ in $\ell^{1}$, we may now define
+\[\lVert x \rVert_{1} = \sum_{n = 1}^{\infty}\lvert x_{n} \rvert\]
+For $x = (x_{1}, \dots , x_{n}, \dots),\, y = (y_{1}, \dots, y_{n}, \dots)$ in $\ell^{1}$ we may now define
+\[d_{1}(x,y) = \lVert x - y \rVert_{1} = \sum_{n = 1}^{\infty} \lvert x_{n} - y_{n} \rvert\]
+\newpage
+\subsection{Real Vector Spaces}
+\begin{dfn}[Real Vector Spaces]{r-vector-spaces}{}
+    A \textit{real vector space} is a set $X$ with two operations, addition($+$) and scalar multiplication $\cdot$, with the following properties: for all $x,y,z\in X$, $a,b\in\mathbb{R}$, we have $x + y, a\cdot x\in X$, and
+    \begin{itemize}
+        \item $x + y = y + x$
+        \item $x + (y + z) = (x + y) + z$
+        \item There is an element of $X$ denoted by $0$ such that, for all $x$, $0 + x = x + 0 = x$
+        \item For every $x\in X$ there exists an element of $X$ denoted by $-x$ such that $x + (-x) = (-x) + x = 0$
+        \item $a \cdot (x + y) = a \cdot x + a \cdot y$
+        \item $(a + b) \cdot x = a \cdot x + b \cdot x$
+        \item $a \cdot (b \cdot x) = (ab) \cdot X$
+        \item $1 \cdot x = x$
+    \end{itemize}
+    (we usually write $ax$ instead of $x$)
+\end{dfn}
+
 
 
 \end{document}

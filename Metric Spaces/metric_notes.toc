@@ -2,3 +2,5 @@
 \contentsline {subsection}{\numberline {1.1}Defining a Metric}{3}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Examples of Metric Spaces}{3}{subsection.1.2}%
 \contentsline {subsubsection}{\numberline {1.2.5}Proof of the euclidean triangle inequality}{4}{subsubsection.1.2.5}%
+\contentsline {subsubsection}{\numberline {1.2.9}L space}{6}{subsubsection.1.2.9}%
+\contentsline {subsection}{\numberline {1.3}Real Vector Spaces}{7}{subsection.1.3}%
