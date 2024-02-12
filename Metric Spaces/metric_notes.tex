@@ -216,6 +216,66 @@ For $x = (x_{1}, \dots , x_{n}, \dots),\, y = (y_{1}, \dots, y_{n}, \dots)$ in $
     (we usually write $ax$ instead of $x$)
 \end{dfn}
 
+\subsubsection{Normalising l 1}
+Properties: For all sequences $x,y\in \ell^{1}$ and all real scalars $a$,
+\begin{itemize}
+    \item $\lVert x \rVert_{1}\ge 0$ and $\lVert x \rVert_{1} = 0 \iff x = 0$
+    \item $\lVert ax \rVert_{1} = \lvert a \rvert \lVert x \rVert_{1}$
+    \item $\lVert x + y \rVert_{1} \le \lVert x \rVert_{1} + \lVert y \rVert_{1}$
+\end{itemize}
 
+\subsubsection{Space l-2}
+We denote by $\ell^{2}$ the set of real sequences $(x_{1}, \dots ,x_{n},\dots)$ such that the seriese $\displaystyle \sum_{n = 1}^{\infty} \lvert x_{n} \rvert^{2}$ converges
+For $x = (x_{1}, \dots, x_{n}, \dots)\in \ell^{2}$, $y = (y_{1},\dots,y_{n},\dots)\in\ell^{2}$ we define
+\begin{itemize}
+    \item $\langle x,y \rangle = \sum_{n = 1}^{\infty}x_{n}y_{n}$ (inner product)
+    \item $\lVert x \rVert_{2} = \displaystyle\left(\sum_{n = 1}^{\infty}\lvert x_{n} \rvert^{2}\right)^{1/2}$ (norm)
+    \item $\displaystyle d_{2}(x,y) = \lVert x - y \rVert_{2} = \left(\sum_{n = 1}^{\infty} \lvert x_{n} - y_{n} \rvert^{2}\right)^{1/2}$ (Metric)
+\end{itemize}
+
+\begin{thm}[4]{thm:l2-vs}{}
+    $\ell^{2}$ is a real vector space
+    proof icba
+\end{thm}
+
+more stuff on $\ell^{2}$ - typical properties watch video 1
+
+\subsection{Generalising metric space features}
+
+\begin{dfn}[Normed Vector Spaces]{dfn:normed-vec-spaces}{}
+    A \textit{normed vector space} (or \textit{normed linear space} or \textit{normed space}) is a real vector space $X$ equipped with a \textit{norm}, i.e. a function that assigns to every vector $x\in X$ a real number $\lVert x \rVert$ so that, for all vectors $x$ and $y$ in $X$ and all real scalars $a$,
+    \begin{itemize}
+        \item $\lVert x\rVert\ge 0 $ and $\lVert x \rVert = 0 \iff x = 0$
+        \item $\lVert ax \rVert = \lvert a \rvert\lVert x \rVert$
+        \item $\lVert x+y \rVert\le \lVert x \rVert + \lVert y \rVert$
+    \end{itemize}
+    If $(X, \lVert \cdot \rVert)$ is a normed vector space then
+    \[d(x,y) = \lVert x - y \rVert\]
+    defines a metric in $X$
+\end{dfn}
+
+\begin{dfn}[Inner Product Spaces]{dfn:inner-product-space}{}
+    Let $X$a be a real vector space. An \textit{inner product} on $X$ is a function that assigns to every pair $(x,y)\in X \times X $ a real number denoted by $\langle x,y \rangle$ and has the following properties
+    \begin{itemize}
+        \item $\langle x,x \rangle\ge 0$ and $\langle x,x \rangle = 0 \iff x = 0$
+        \item $\langle x,y \rangle = \langle y,x \rangle$
+        \item $ax + by, z = a\langle x,z \rangle + b\langle y,z \rangle$
+    \end{itemize}
+    A \textit{real inner product space} is a real vector space equipped with an inner product.
+    If $\lVert \cdot , \cdot \rVert$ is an inner product on $X$, then
+    \[\lVert x \rVert = \sqrt{\langle x,x \rangle}\]
+    defines a norm and
+    \[d(x,y) = \lVert x - y \rVert\]
+    defines a metric
+\end{dfn}
+
+\begin{xmp}[Discrete metric]{xmp:discrete-metric}{}
+    Let $X$ be a non-empty set. Define $d: X \times X \to \mathbb{R}$ by
+    \[d(x,y) = \begin{cases}
+        0, &x = y \\
+        1, x \ne y
+    \end{cases}\]
+    Example of metric space without norm or inner prod
+\end{xmp}
 
 \end{document}
