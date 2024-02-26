@@ -278,6 +278,321 @@ more stuff on $\ell^{2}$ - typical properties watch video 1
     Example of metric space without norm or inner prod. Another example is post office metric
 \end{xmp}
 
+theres lots of examples, i kinda cba
 
+\newpage
+
+\subsection{Open Balls}
+
+\begin{dfn}[Open Ball]{def:open-ball}{}
+    Let $(X, d)$ be a metric space, $c$ be a point in $X$, and $r > 0$. The \textbf{open ball} with center $c$ and radius $r$ is defined by
+    \[B(c,r) = \{x\in X: d(c,x) < r\}\]
+\end{dfn}
+
+Note: there are lots of different notations for this, e.g. calling it a sphere
+
+\textbf{Example:} on the real line with the standard metric
+\[b(c,r) = \{x\in\mathbb{R} : \lvert x - c \rvert < r\} = (c - r, c + r)\]
+
+\textbf{Example:} on the real plane with the Euclidean metric, $X = \mathbb{R}^{2}$m
+\[d_{2}(x,y) = \sqrt{\lvert x_{1} - y_{1} \rvert^{2} + \lvert x_{2} - y_{2} \rvert}^{2}\]
+$B(c,r)$ is the open disc with center $c$ and radius $r$
+
+\noindent\rule{\textwidth}{0.2pt}
+
+Watch lecture recording for examples of open balls on:
+\begin{itemize}
+    \item Discrete metric
+    \item $\mathbb{R}^{2}$ with the $d_{1}$ metric
+    \item $\mathbb{R}^{2}$ with the $d_{\infty}$ metric
+\end{itemize}
+
+\newpage
+
+\section{Convergence}
+
+\subsection{Convergent Sequences in Metric Spaces}
+On the real line, $x_{n}\to x$ iff for every positive $\epsilon$, there exists an index $N$ such that for all indices $n$ where $n\ge N$, we have $\lvert x_{n} - x \rvert < \epsilon$.
+
+\begin{dfn}[Convergent Sequence]{metric-convergence}{}
+    Let $(X,d)$ be a metric space, $(x_{n})^{\infty}_{n=1}$ be a sequence in $X$, and $x\in X$. We say that $(x_{n})^{\infty}_{n=1}$ converges to $x$ iff for every positive $\epsilon$, there exists an index $N$ s.t. for all indices $n$ with $n\ge N$a we have $d(x_{n}, x) < \epsilon$.
+
+    Observe that:
+    \begin{itemize}
+        \item $d(x_{n}, x)< \epsilon$ is equivalent to $x_{n}\in B(x,\epsilon)$.
+        \item $x_{n}\to x$ in $(X,d)$ iff $d(x_{n}, x)\to 0$ on the real line
+    \end{itemize}
+\end{dfn}
+
+\begin{thm}[Uniqueness of metric limit]{thm:uniqueness-metric-limit}{}
+    \begin{itemize}
+        \item Let $(X,d)$ be a metric space, and $x,x'\in X,\,x\ne x'$. Then there exists a positive radius $r$ s.t. $B(x,r)\cap B(x',r) = \emptyset$
+        \item A sequence in a metric space can have at most one limit
+    \end{itemize}
+\end{thm}
+
+\textbf{Proof of first:} $d(x,x') > 0$ because $x \ne x'$. Choose any $r$ with $0  < r \le \frac{d(x,x')}{2}$. If $y\in B(x,r)$, then $d(y,x)<r$, therefore
+\[d(y,x' \ge d(x,x') - d(y,x) > d(x,x') - r)\]
+and $d(x,x') - r \ge r$, therefore
+\[d(y,x') > r\]
+Therefore, $y\not\in B(x', r)$
+
+\textbf{Proof of second: } Let $x_{n} \to x$ and $x_{n}\to x'$ in a metric space $(X,d)$. We claim that $x = x'$.
+Assume $x\ne x'$. Let $r > 0$ be s.t.
+\[B(x,r) \cap B(x',r) = \emptyset\]
+Since $x_{n}\to x$, there exists $N$ s.t. for all $n$ with $n \ge N$ we have
+\[x_{n} \in B(x,r)\]
+Since $x_{n}\to x$, there exists $N'$ s.t. for all $n$ with $n \ge N'$ we have
+\[x_{n} \in B(x',r)\]
+For any $n$ with $n \ge \max \{N, N'\}$, the term $x_{n}$ belongs to both balls - contradiction
+
+\newpage
+\begin{xmp}[convergence in ($\mathbb{R}^N, d_2$)]{xmp:convergence}{}
+    A sequence
+    \begin{align*}
+        x_{1} &= (x_{11}, \dots,x_{1j}, \dots x_{1N}) \\
+        x_{2} &= (x_{21}, \dots,x_{2j}, \dots x_{2N}) \\
+        \vdots & \\
+        x_{n} &= (x_{n1}, \dots,x_{nj}, \dots x_{nN}) \\
+        \vdots \\
+        \downarrow \\
+        x &= (x_{1}, \dots, x_{j}, \dots, x_{N})
+    \end{align*}
+    in $\mathbb{R}^{N}, d_{2}$ converges to $x = (x_{1}, \dots, x_{j}, \dots, x_{N})$ iff for each $j$,
+    \[x_{nj}\xrightarrow[j\to+\infty]{} x_{j}\]
+\end{xmp}
+
+\noindent\rule{\textwidth}{0.2pt}
+
+Watch lecture recording 23/01 for examples of:
+\begin{itemize}
+    \item Convergence in $\ell^{2}$
+    \item Convergecnce in $C([a,b])$
+\end{itemize}
+
+
+\begin{dfn}[Bounded Sequence]{def:bounded-sequence}{}
+    A sequence in a metric space is said to be \textbf{bounded} iff there exists an open ball that contains all of its terms
+\end{dfn}
+
+Note: this is the same definition as "sequence is bounded if there is upper and lower bound", as open ball implies the same thing
+
+\begin{thm}[]{thm:convergent-seq-bound}{}
+    Every convergence is bounded
+\end{thm}
+
+\textbf{Proof:} Let $x_{n}\to x$ in a metric space $(X,d)$. There exists an index $N$ s.t. for all $n$ with $n\ge N$,
+\[x_{n}\in B(x,1)\]
+Let $r$ be any positive number such that
+\[r>1,\,r>d(x,x_{1}),\dots,r>d(x,x_{N-1})\]
+Then, for all $n$,
+\[d(x_{n}, x) < r\]
+therefore
+\[x_{n}\in B(x,r)\]
+
+\subsection{Cauchy Sequences}
+Convergence: For every $\epsilon$, there is an $N$ such that for $n\ge N$, $d(x_{n}, x) < \epsilon$
+\[x_{1}\quad x_{2} \quad \cdots \quad x_{N} \quad \cdots x_{n} \quad \cdots \quad \to x\]
+Replace $x$ by any $x_{m}$ with $m \ge N$
+\[x_{1}\quad x_{2} \quad \cdots \quad x_{N} \quad \cdots x_{n} \quad \cdots \quad x_{m} \quad \cdots\]
+'$d(x_{n}, x) < \epsilon$' becomes '$\forall m \ge N,\,d(x_{n}, x_{m}) < \epsilon$'
+
+\begin{dfn}[Cauchy Sequence]{def:cauchy-seq}{}
+    A sequence $(x_{n})^{\infty}_{n=1}$ in a metric space $(X,d)$ is said to be a \textbf{Cauchy sequence} iff for every positive $\epsilon$, there exists an index $N$, s.t. for all indices $n,m$ with $n,m\ge N$,
+    \[d(x_{n}, x_{m}) < \epsilon\]
+\end{dfn}
+
+\begin{thm}[]{thm:convergent-to-cauchy}{}
+    If a sequence in a metric space converges, then it is a Cauchy sequence
+\end{thm}
+
+\textbf{Proof: } If $x_{n}\to L$ in a metric space $(X,d)$, then for every positive $\epsilon$, there exists an index $N$, such that for all indices $n$ with $n\ge N, d(x_{n}, L) < \frac{\epsilon}{2}$. Therefore for all $n,m\ge N$,
+\[d(x_{n}, x_{m})\le d(x_{n}, L) + d(x_{m}, L) < \frac{\epsilon}{2} +  \frac{\epsilon}{2} = \epsilon\]
+
+Note: The converse is not true.
+
+\textbf{Counterexample: }
+\[X = (0,1), d(x,y) = \lvert x - y \rvert,\,x_{n} = \frac{1}{n},\,(n\ge 2)\]
+This sequence is Cauchy but not convergent
+
+Cauchy: Let $\epsilon$ be positive. Pick $N$ s.t. $\frac{1}{N} < \frac{\epsilon}{2}$. For $n,m\ge N$ we have
+\[d(x_{n}, x_{m}) = \left\lvert \frac{1}{n} - \frac{1}{m} \right\rvert \le \frac{1}{n} + \frac{1}{m} \le \frac{2}{N} < \epsilon\]
+
+Not convergent: Let $x\in (0,1)$. Find $N$ s.t. $\frac{1}{N}< x$. For $n\ge N$ we have $x_{n} = \frac{1}{n} \le \frac{1}{N}$, so the open interval $(\frac{1}{N}, 1)$ contains $x$ and only finitely many terms of the sequence. Therefore $x_{n}\not\to x$
+
+\noindent\rule{\textwidth}{0.2pt}
+Watch Lecture 23/01 for example of counterexample
+\begin{itemize}
+    \item Metric spaces $(\mathbb{R}, d_{\mathbb{R}})$ and $(\mathbb{Q}, d_{\mathbb{Q}})$
+\end{itemize}
+
+\begin{dfn}[Complete Metric Spaces]{def:complete-ms}{}
+    A metric space is said to be \textbf{complete} if and only if every Cauchy Sequence is convergent
+\end{dfn}
+
+\textbf{Examples:}
+\begin{itemize}
+    \item $\mathbb{R}$ with the standard metric is complete
+    \item $\mathbb{Q}$ with the standard metric is not complete
+    \item $(0,1)$ with the standard metric is not complete
+    \item $[0,1]$ with the standard metric is complete
+    \item $\mathbb{R}^{n},\,\ell^{p},\,C([a,b])$ is complete (proof later)
+\end{itemize} 
+
+\subsection{Open sets and closed sets}
+
+\begin{dfn}[Open Sets and Closed Sets]{def:open-closed-set}{}
+    Let $(X,d)$ be a metric space.
+    \begin{itemize}
+        \item A subset $G$ of $X$ is said to be \textbf{open} iff for every point $x$ in $G$ there exists a positive radius $r$ such that $B(x,r)\subseteq G$.
+        \item A subset $F$ of $X$ is said to be \textbf{closed} iff $F^{c}$ is open
+    \end{itemize}
+\end{dfn}
+
+\textbf{Example:} In any metric space $(X, d)$, the sets $\emptyset$ and $X$ are both open and closed.
+
+$\emptyset$ is open because the following statement is true:
+\[\forall x (x\in\emptyset \implies \exists r \dots)\]
+$X$ is open because, for every $x$ in $X$ we can take $r = 1234$ to have $B(x,r)\subseteq X$
+
+$\emptyset^{c} = X$ and $X^{c} = \emptyset$ are closed
+
+\noindent\rule{\textwidth}{0.2pt}
+Watch lecture recording 26/01 for details on examples
+\begin{itemize}
+    \item Every open ball is an open set
+    \item If $d$ is the discrete metric on a non-empty set $X$, then every subset of $X$ is both open and closed
+    \item $X = \mathbb{Z},\,d(x,y) = \lvert x - y \rvert$, all subsets of $X$ are both open and closed
+\end{itemize}
+
+\begin{dfn}[Discrete Metric Space]{def:discrete-ms}{}
+    A metric space is called \textbf{discrete} iff all its subsets are open (equiv. all subsets are closed)
+\end{dfn}
+
+\textbf{Example:} $[0,1]\cap (2,3)$
+
+\begin{thm}[Properties of open sets]{thm:open-set-props}{}
+    Let $(X,d)$ be a metric space
+    \begin{enumerate}
+        \item The union of any family of open sets is an open set
+        \item The intersection of finitely many open sets is an open set
+    \end{enumerate}
+\end{thm}
+
+\textbf{Proof for 1:} Let $(G_{i})_{i\in I}$ be a family of open sets and define $G = \bigcup_{i\in I} G_{i}$. If $x\in G$, then $x\in G_{i}$ for some $i$. Since $G_{i}$ is open, there exists a positive $r$ such that $B(x,r)\subseteq G_{i}$. Then $B(x,r)\subseteq G$
+
+
+\textbf{Proof for 2:} Let $G_{1}, \dots, G_{n}$ be open sets. Define $G = G_{1} \cap \cdots \cap G_{n}$. If $x\in G$, then $x\in G_{i}$ for all $i$. Since each $G_{i}$ is open, there exists a positive $r_{i}$ such that $B(x,r_{i})\subseteq G_{i}$. Let $r = \min \{r_{1},\dots,r_{n}\}$. For each $i$,
+\[B(x,r)\subseteq B(x,r_{i})\subseteq G_{i}\]
+Therefore, $B(x,r)\subseteq G_{1} \cap \cdots \cap G_{n} = G$
+
+\newpage
+\begin{thm}[Infinite open sets]{thm:infinite-open-sets}{}
+    The intersection of infinitely many open sets is not always an open set
+    
+    For example, let $G_{n} = (- \frac{1}{n}, \frac{1}{n}), n = 1,2,\dots$ on the real line with the standard metric.
+
+    Each $G_{n}$ is open but
+    \[\bigcap\limits_{n = 1}^{\infty} G_{n} = \{0\}\]
+\end{thm}
+
+
+\begin{thm}[Relatively open sets]{thm:relatively-open}{}
+    Let $(X,d)$ be a metric space and $A$ be a non-empty subset of $X$ equipped with the induced metric $d_{A}$. Let $G\subseteq A$. $G$ is open in $(A, d_{A})$ iff there exists a subset $O$ of $X$, open in $(X,d)$, such that $G = A \cap O$
+
+    The open sets of $(A, d_{A})$ are sometimes referred to as \textbf{relatively open}
+\end{thm}
+
+\begin{thm}[]{thm:open-set-converge}{}
+    Let $(X, d)$ be a metric space, $(x_{n})^{\infty}_{n=1}$ be a sequence in $X$ and $x$ be a point in $X$.
+
+    $x_{n}\to x$ iff every open set that contains $x$ contains eventually all terms of the sequence
+\end{thm}
+
+\textbf{Proof:} Assume $x_{n}\to x$. Let $G$ be any open set with $x\in G$. There is a positive $r$ such that $B(x,r) \subseteq G$. There is an $N$ such that for all $n$ with $n \ge N$ we have $x_{n}\in B(x,r)$, hence, $x_{n}\in G$.
+
+Conversely, assume that every open set containing $x$ contains eventually all terms of the sequence. Every open ball centered at $x$ is an open set, therefore it contains eventually all terms of the sequence. It follows that $x_{n}\to x$.
+
+
+\begin{dfn}[Neighbourhoods of points]{def:neighbourhood}{}
+    An \textbf{open neighbourhood} of a point $x$ is any open set that contains $x$. $x_{n}\to x$ iff every open neighbourhood of $x$ contains eventually all terms of the sequence.
+
+    \noindent\rule{\textwidth}{0.2pt}
+
+    A \textbf{neighbourhood} of a point $x$ is a set that contains an open neighbourhood of $x$.  $x_{n}\to x$ iff every neighbourhood of $x$ contains eventually all terms of the sequence.
+\end{dfn}
+
+\begin{thm}[Properties of Closed sets]{thm:closed-set-props}{}
+    Let $(X, d)$ be a metric space.
+    \begin{enumerate}
+        \item The intersection of any family of closed sets is a closed set
+        \item The union of finitely many closed sets is a closed set.
+    \end{enumerate}
+\end{thm}
+
+\textbf{Proof for 1:} Let $(F_{i})_{i\in I}$ be a family of closed sets. Then each $F_{i}^{c}$ is open, therefore, $\displaystyle\bigcup_{i\in I} F^{c}_{i}$ is open, therefore $\displaystyle\left(\bigcup_{i\in I} F^{c}_{i}\right)$ is closed. By De Morgan's rule, $\displaystyle\left(\bigcup_{i\in I} F^{c}_{i}\right)^{c} = \bigcap_{i\in I} F_{i}$. Therefore, $\displaystyle\bigcap_{i\in I} F_{i}$ is closed.
+
+\textbf{Proof for 2}: Let $F_{1},\dots, F_{n}$ be closed sets. Then $F^{c}_{1},..,F^{c}_{n}$ are open, therefore $F^{c}_{1} \cap \cdots \cap F^{c}_{n}$ is open, therefore $(F^{c}_{1} \cap \cdots \cap F^{c}_{n})^{c}$ is closed. By de Morgan's rule, $(F^{c}_{1}\cap \cdots\cap F^{c}_{n})^{c} = F \cup \cdots \cup F_{n}$. Therefore, $F \cup \cdots \cup F_{n}$ is closed
+
+\begin{thm}[Infinite closed sets]{thm:infinite-closed-sets}{}
+    The union of infinitely many closed sets is not always a closed set.
+
+    For example, let $F_{n} = [\frac{1}{n}, 1], n=1,2,\dots,$ on the real line with the standard metric.
+    Each $F_{n}$ is closed but
+    \[\bigcup\limits_{n = 1}^{\infty}F_{n} = (0,1]\]
+    is not closed.
+\end{thm}
+
+\noindent\rule{\textwidth}{0.2pt}
+Watch lecture recording 30/01 for examples
+
+
+\begin{thm}[]{thm:closed-ms-convergence}{}
+    A subset $F$ of a metric space is closed iff the limit of every convergent sequence of elements of $F$ belongs to $F$
+\end{thm}
+
+\textbf{Proof $\implies$}: Assume $F$ is closed, and let $(x_{n})^{\infty}_{n=1}$ be a convergent sequence of elements of $F$. Let $x$ be its limit. We wish to show that $x\in F$. We argue by contradiction. Suppose $x\not\in F$. Then $x\in F^{c}$, and since $F^{c}$ is open, there exists a positive $r$ such that $B(x,r) \subseteq F^{c}$. Then $B(x,r)$ contains no terms of the sequence - contradiction
+
+\textbf{Proof $\impliedby$}: assume that the limit of every convergent sequence of elements of $F$ belongs to $F$. We wish to show that $F$ is closed.
+
+We show that $F^{c}$ is open. Let $x\in F^{c}$. We need to show that there exists a postive $r$ such that $B(x,r)\subseteq F^{c}$. If not, then for every $r$ there exists a point in $B(x,r)$ that belongs to $F$.
+
+Using this with $r = \frac{1}{n}, n=1,2,3,\dots$, we find points $x_{n}$ with $x_{n}\in B(x, 1 / n)$ and $x_{n}\in F$. Then $x_{n}\to x$ but $x\not\in F$a. Contradiction
+
+\noindent\rule{\textwidth}{0.2pt}
+Watch lecture recording 30/01 for examples
+
+\begin{itemize}
+    \item In any metric space $(X,d)$, singletons $F = \{x\}$ are closed.
+    \item In any metric space, any finite set is closed because
+        \[\{x_{1},\dots,x_{n}\} = \{x_{1}\}\cup \cdots \cup \{x_{n}\}\]
+\end{itemize}
+
+\begin{dfn}[Closure]{def:closure}{}
+    Let $(X, d)$ be a metric space and $A \subseteq X$. The \textbf{closure} of $A$, deonted by $\bar{A}$, is the smallest closed subset of $X$ that contains $A$
+
+    There exists at least one closed subset of $X$ that contains $A$, namely $X$ itself. The smallest closed subset of $X$ that contains $A$ is
+    \[\bigcap\limits_{A \subseteq F \subseteq X,\,F \text{closed}} F\]
+\end{dfn}
+
+\newpage
+\begin{thm}[Properties of Closure]{thm:closure-props}{}
+    Let $(X, d)$ be a metric space and $A,\,B \subseteq X$.
+    \begin{enumerate}
+        \item $\bar{\emptyset} = \emptyset$ and $\bar{X} = X$
+        \item $A \subseteq \bar{A}$ and $\bar{A}$ is closed
+        \item $A$ is closed iff $A = \bar{A}$
+        \item $\bar{\bar{A}} = \bar{A}$
+        \item If $A \subseteq B$, then $\bar{A} \subseteq \bar{B}$
+        \item $\bar{A \cup B} = \bar{A} \cup \bar{B}$
+    \end{enumerate}
+\end{thm}
+
+Lecture 30/01 45m for proofs
 
 \end{document}
+
+
+
+% TODO: fix theorembox
+% TODO: 
