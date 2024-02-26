@@ -212,7 +212,91 @@ $z_{1}$ and $z_{2}$ are each independent simple harmonic motions, and energy is 
     \item Energy in each normal mode conserved, mode with lowest $\omega$ is the most symmetric
 \end{itemize}
 
+\newpage
+\subsection{Coupled Pendulum}
+[a diagram]
+
+pendulum thing
+\[ml \frac{d^{2}\theta}{dt^{2}} = -ml \omega^{2}_{?} \theta\quad \omega_{\theta} = \left(\frac{g}{l}\right)^{1/2}\]
+
+Add in the force from the spring exension:
+\[x_{2} - x_{1} = l(\sin\theta_{2} - \sin\theta_{3}) \approx l(\theta_{2} - \theta)\]
+
+\begin{align*}
+    m \frac{d^{2}\theta_{1}}{dt^{2}} &= -m\omega_{0}^{2}\theta_{1} + k(\theta_{2} - \theta_{1}) \\
+    m \frac{d^{2}\theta_{2}}{dt^{2}} &= -m\omega_{0}^{2}\theta_{2} + k(\theta_{2} - \theta_{1})
+\end{align*}
+
+Putting it in vector form thing
+\[m \frac{d^{2}}{dt^{2}}\begin{pmatrix}
+    \theta_{1} \\
+    \theta_{2}
+\end{pmatrix} = - \begin{pmatrix}
+m\omega^{2}_{0} + k & -k \\
+-k & m\omega_{0}^{2} + k
+\end{pmatrix} \begin{pmatrix}
+    \theta_{1} \\
+    \theta_{2}
+\end{pmatrix}\]
+
+Normal mode $\underline{\theta} = \underline{b}\cos(\omega t) \quad -m\omega_{2} \underline{b} + K\underline{b} = 0$
+
+eigenvalue problem $K\underline{b} = \lambda \underline{b} \quad \lambda = m\omega^{2}$
+
+\[\det(K - \lambda \mathbb{1}) = 0 \quad \begin{vmatrix}
+    m\omega_{0}^{2} + k - \lambda & -k \\
+    -k & m\omega_{0}^{2} - k - \lambda
+\end{vmatrix} = 0\]
+
+\[(mw\omega^{2}_{0} + k - \lambda)^{2} - k^{2} = 0 \quad \lambda_{\Delta} = m\omega_{0}^{2} \quad \lambda_{B} = m\omega^{2}_{0} + 2k\]
+
+Eigenvctors
+\begin{align*}
+    \lambda_{A} &= m\omega^{2}_{0} = \begin{pmatrix}
+    k & -k\\
+    -k & k
+\end{pmatrix} \underline{b}_{A} = 0 \quad \underline{b}_{A} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+    1\\
+    1
+\end{pmatrix} \quad \text{ inphase} \quad \omega = \omega_{0} \\
+        \lambda_{B} &= m\omega^{2}_{0} = \begin{pmatrix}
+    k & -k\\
+    -k & -k
+\end{pmatrix} \underline{b}_{B} = 0 \quad \underline{b}_{B} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+    1\\
+    -1
+\end{pmatrix} \quad \text{ antiphase} \quad \omega_{B}^{2} = w_{0}^{2} + \frac{2k}{m}
+\end{align*}
+
+\subsubsection{Mass Matrix}
+\begin{align*}
+    m_{1}x_{1} &= (k_{1} + k_{2}) x_{1} + k_{2}x_{2}\\
+    m_{2}x_{2} &= k_{2}x_{1} - (k_{3} + k_{2})x_{2}
+\end{align*}
+
+NOTE: have defo missed some double dot $x$ at some points
+
+Write this as $M\underline{\ddot{x}} = -K\underline{x} \quad M = \begin{pmatrix}
+    m_{1} & 0 \\
+    0 & m_{2}
+\end{pmatrix}$
+
+Normal mode $\underline{x}(t) = \underline{b}\cos(\omega t - \pi) \quad -\omega^{2} M \underline{b} = -K \underline{b} \quad (K - \lambda M)\underline{ b} = 0$
+
+$(K - \lambda M) \underline{b} = 0$ for nontrivial sol $^{n}$(??) $\det(K - \lambda M) = 0$
+
+\[ \lambda = \omega^{2} \quad \begin{vmatrix}
+    k_{1} + k_{2} - \lambda m_{1} & -k_{2} \\
+    -k_{2} & k_{1} k_{2} - \lambda m_{2}
+\end{vmatrix} = 0\]
+
+$\implies$ quadratic for $\lambda$. For equal $k$,
+\[(2k - \lambda m_{1})(2k - \lambda m_{2}) - k^{2} = 0 \quad \text{(quadratic)}\]
 
 
+
+\begin{xmp}[CO2 Molecule]{xmp:co2}{}
+    cba doing this
+\end{xmp}
 
 \end{document}
