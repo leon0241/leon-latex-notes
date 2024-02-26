@@ -1,0 +1,218 @@
+\documentclass{article}
+% \usepackage{showframe}
+
+% \usepackage[dvipsnames]{xcolor}
+% custom colour definitions
+% \colorlet{colour1}{Red}
+% \colorlet{colour2}{Green}
+% \colorlet{colour3}{Cerulean}
+
+\usepackage{geometry}
+% margins
+\geometry{
+    a4paper,
+    bottom=70pt,
+    % margin=70pt
+}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{preamble}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage{float}
+\usepackage[nodisplayskipstretch]{setspace}
+
+% tikz and theorem boxes
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{../thmboxes_v2}
+% \usepackage{thmboxes_col}
+
+
+\usepackage{hyperref} % note: this is the final package
+\parindent = 0pt
+
+% Custom Definitions of operators
+\DeclareMathOperator{\Ima}{im}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\send}{send}
+\DeclareMathOperator{\dom}{dom}
+
+\title{Dynamics and Vector Calculus Notes}
+\author{Leon Lee}
+\renewcommand\labelitemi{\tiny$\bullet$}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Couple Oscillations and normal modus}
+
+% \begin{figure}[h!]
+%     \centering
+%     \includegraphics[width=\linewidth]{}
+%     \caption{idk how to do diagrams in LaTeX}
+%     \label{spring}
+% \end{figure}
+some diagram idk
+
+\noindent\rule{\textwidth}{0.2pt}
+
+where $x_{1}$ and $x_{2}$ are displacements from equilibrium
+
+\textbf{For mass 1}
+\begin{itemize}
+    \item Force to the left: $-k_{1}x_{1}$
+    \item Force to the right: $-k_{2}(x_{2}-x_{1})$
+\end{itemize}
+
+\[m \frac{d^{2}x_{1}}{dt^{2}} = -k_{1}x_{1} + k_{2}(x_{2} - x_{1}) - k_{3}x_{2}\]
+
+Write this in matrix form
+\[m \frac{d^{2}}{dt^{2}}\begin{pmatrix}
+    x_{1} \\
+    x_{2}
+\end{pmatrix} = \begin{pmatrix}
+k_{1} + k_{2} & -k_{2} \\
+-k_{2} & k_{2} + k_{3}
+\end{pmatrix} \begin{pmatrix}
+    x_{1} \\
+    x_{2}
+\end{pmatrix} \implies m \frac{d^{2}x}{dt^{2}} = -K x\]
+
+\begin{dfn}[Normal Mode Solution]{normal-mode}{}
+    \textbf{Normal Mode Solution}: All co-ordinates (here $x_{1},\,x_{2}$) oscillate with the same frequency
+\end{dfn}
+
+$x(t) = \cos{(\omega t - \phi)} \underline{b}$
+
+$\underline{b}$ is constant vector, $\omega$ to be determined
+
+sub in matrixeq??
+\begin{align*}
+    &-m \omega^{2} \cos(\omega t - \phi) \underline{b} + K \cos(\omega t - \varnothing) \underline{b} = 0\\
+    & -m \omega^{2} \underline{b} + K \underline{b} = 0 \to K \underline{b} = \lambda \underline{b} \quad \lambda = m \omega^{2}
+\end{align*}
+where $\lambda$ is eigenvalue, and $b$ is eigenvector
+
+For simplicity, take $k_{1} = k_{2} = k_{3} = k$
+
+Then,
+\[K = \begin{pmatrix}
+    2k & -k \\
+    -k & 2k
+\end{pmatrix} \qquad (K - \lambda \mathbb{1}) \underline{b} = 0 \implies \lvert k - \lambda \mathbb{1} \rvert = 0\]
+
+\[\begin{vmatrix}
+    2k - \lambda & -k \\
+    -k & 2k - x
+\end{vmatrix} = 0 \implies (2k - \lambda)^{2} - k^{2} = 0\]
+
+This is called the "Characteristic Equation"
+
+$(2k - \lambda) = \pm k \quad \lambda = 2k \mp k$
+
+Therefore, $\lambda = k, 3k$
+
+Mode A: $\lambda_{A} = k \quad (K - k \mathbb{1}) \underline{b} = 0$
+\[\begin{pmatrix}
+    k & -k \\
+    -k & k
+\end{pmatrix} \begin{pmatrix}
+    b_{1} \\
+    b_{2}
+\end{pmatrix} = 0 \quad \underline{b}_{A} = Ct \begin{pmatrix}
+    1 \\
+    1
+\end{pmatrix}\]
+
+Usually, choose a constant s.t. $\underline{b} \cdot \underline{b} = 1$
+
+Mode B: $\lambda_{A} = 3k \quad (K - 3k \mathbb{1}) \underline{b} = \begin{pmatrix}
+    -k & -k \\
+    -k & -k
+\end{pmatrix}\begin{pmatrix}
+    b_{1} \\
+    b_{2}
+\end{pmatrix} = 0$
+
+and some stuff more i forgor to write
+
+\noindent\rule{\textwidth}{0.2pt}
+
+[diagram thing]
+
+Normal mode $\underline{x}(t) = \underline{b}\cos(\omega t - \phi)\to (K - \kappa \mathbb{1})\underline{b} = 0 \quad \lambda = m \omega^{2}$
+\[\lambda_{A} = k,\, \underline{b}_{A} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+    1\\
+    1
+\end{pmatrix} \quad \lambda_{B} = 3k,\, \underline{b}_{B} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+    1\\
+    -1
+\end{pmatrix}\]
+
+So we have $2$ independent solutions 
+
+General solution: $\underline{x}(t) = A \underline{b}_{A} \cos(\omega_{A} t - \phi_{A}) + B \underline{b}_{B}\cos(\omega_{B}t - \varnothing_{B})$
+
+So there are $4$ constants $A,\,B,\,\phi_{A},\,\varnothing_{B}$ to be fixed
+
+
+\subsection{Motion in Normal modes}
+
+\begin{align*}
+    \text{Mode A} & x_{1} = x_{2} \quad \text{"unphase"} \quad \omega_{A} = \left(\frac{k}{m}\right)^{2} \\
+    \text{Mode B} & x_{1} = -x_{2} \quad \text{"antiphase"} \quad \omega_{A} > \omega{B}
+\end{align*}
+
+\textbf{Normal Co-ordinates}
+Take scalar product
+
+\begin{align*}
+    (1, 1) \begin{pmatrix}
+    x_{1} \\
+    x_{2}
+\end{pmatrix} &= x_{1} + x_{2} = 2A\cos(\omega_{A} - \phi_{A}) \\
+    (1, -1) \begin{pmatrix}
+    x_{1} \\
+    -x_{2}
+\end{pmatrix} &= x_{1} + x_{2} = 2B\cos(\omega_{B}t - \phi_{B}) \\
+\end{align*}
+
+\noindent\rule{\textwidth}{0.2pt}
+
+\textbf{Define}
+
+\begin{align*}
+    z_{1} = \frac{1}{\sqrt{2}}(x_{1} + x_{2}) = \alpha^{1}\cos(w_{A}t - \phi) \quad z_{1}+\omega^{2}_{A} z_{1} = 0 \quad\text{(SHO)} \\
+    z_{2} = \frac{1}{\sqrt{2}}(x_{1} - x_{2}) = \beta^{1}\cos(w_{B}t - \phi) \quad z_{2}+\omega^{2}_{B} z_{2} = 0\quad\text{(SHO)}
+\end{align*}
+
+$z_{1}$ and $z_{2}$ are each independent simple harmonic motions, and energy is preserved in each one
+
+\[E_{A} = \frac{1}{2} m (z_{1})^{2} + \frac{1}{2} k z^{2}_{1} = \text{constant in time}\]
+
+\subsection{Summmary: properties of Normal Modes}
+\[\]
+\begin{itemize}
+    \item $\underline{x}_{\alpha} = A_{\alpha} \underline{b}_{A} \cos(\omega_{\alpha} t - \phi_{\alpha}))$
+    \item All coordinates oscillate at the same frequency
+    \item constants $A_{\alpha}, \phi_{\alpha}$ are fixed by  ic (???)
+    \item General motion is superposition of normal modes
+    \item Normal coordinates $z_{\alpha} = \underline{b}_{\alpha} \cdot \underline{x}$
+    \item Transforming to the noraml coordinates $\to$ diagonalise $k$ (see notes i.e. ask alice or fiona for them)
+    \item Energy in each normal mode conserved, mode with lowest $\omega$ is the most symmetric
+\end{itemize}
+
+
+
+
+\end{document}

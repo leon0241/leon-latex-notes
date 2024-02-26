@@ -1,0 +1,3 @@
+\contentsline {section}{\numberline {1}Couple Oscillations and normal modus}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Motion in Normal modes}{4}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Summmary: properties of Normal Modes}{4}{subsection.1.2}%
