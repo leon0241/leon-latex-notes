@@ -33,6 +33,7 @@
 
 \usepackage{hyperref} % note: this is the final package
 \parindent = 0pt
+\linespread{1.1}
 
 % Custom Definitions of operators
 \DeclareMathOperator{\Ima}{im}
@@ -173,6 +174,7 @@ This is the \textbf{Cauchy-Schwarz Inequality}. Various ways to prove this (watc
     \end{itemize}
 \end{dfn}
 
+\newpage
 \begin{xmp}[Metric in $n$-dim euclidean space]{xmp:ndim-euclidean-space}{}
     For $x = (x_{1},x_{2},\dots,x_{n}),\,y=(y_{1},y_{2},\dots,y_{n})$ in $\mathbb{R}^{n}$, define
     \begin{align*}
@@ -568,8 +570,11 @@ Watch lecture recording 30/01 for examples
         \[\{x_{1},\dots,x_{n}\} = \{x_{1}\}\cup \cdots \cup \{x_{n}\}\]
 \end{itemize}
 
+
+\subsection{Closure}
+
 \begin{dfn}[Closure]{def:closure}{}
-    Let $(X, d)$ be a metric space and $A \subseteq X$. The \textbf{closure} of $A$, deonted by $\bar{A}$, is the smallest closed subset of $X$ that contains $A$
+    Let $(X, d)$ be a metric space and $A \subseteq X$. The \textbf{closure} of $A$, deonted by $\overline{A}$, is the smallest closed subset of $X$ that contains $A$
 
     There exists at least one closed subset of $X$ that contains $A$, namely $X$ itself. The smallest closed subset of $X$ that contains $A$ is
     \[\bigcap\limits_{A \subseteq F \subseteq X,\,F \text{closed}} F\]
@@ -579,16 +584,139 @@ Watch lecture recording 30/01 for examples
 \begin{thm}[Properties of Closure]{thm:closure-props}{}
     Let $(X, d)$ be a metric space and $A,\,B \subseteq X$.
     \begin{enumerate}
-        \item $\bar{\emptyset} = \emptyset$ and $\bar{X} = X$
-        \item $A \subseteq \bar{A}$ and $\bar{A}$ is closed
-        \item $A$ is closed iff $A = \bar{A}$
-        \item $\bar{\bar{A}} = \bar{A}$
-        \item If $A \subseteq B$, then $\bar{A} \subseteq \bar{B}$
-        \item $\bar{A \cup B} = \bar{A} \cup \bar{B}$
+        \item $\overline{\emptyset} = \emptyset$ and $\overline{X} = X$
+        \item $A \subseteq \overline{A}$ and $\overline{A}$ is closed
+        \item $A$ is closed iff $A = \overline{A}$
+        \item $\overline{\overline{A}} = \overline{A}$
+        \item If $A \subseteq B$, then $\overline{A} \subseteq \overline{B}$
+        \item $\overline{A \cup B} = \overline{A} \cup \overline{B}$
     \end{enumerate}
 \end{thm}
 
 Lecture 30/01 45m for proofs
+
+\noindent\rule{\textwidth}{0.2pt}
+\textbf{Example}: $X = \mathbb{R},\,d(x,y) = \lvert x - y \rvert,\,A = (0,1)$. We claim that $\overline{A} = [0,1]$
+
+$A \subseteq [0,1]$ and $[0,1]$ is a closed set. The smallest such set is $\overline{A}$. Therefore $\overline{A} \subseteq [0,1]$. 
+
+Next we show that $[0,1] \subseteq \overline{A}$. clearly, $(0,1) = A \subseteq \overline{A}$
+
+$(1 / 2, 1 /3 ,\dots, 1 /n \dots)\to 0$, each term belongs to $\overline{A}$, and $\overline{A}$ is closed, therefore $0\in \overline{A}$. Similarly, $1\in \overline{A}$
+
+\noindent\rule{\textwidth}{0.2pt}
+Watch lecture recording 02/02 10m for more in-depth examples of closure things
+\begin{itemize}
+    \item On the real line with the standard metric, $\overline{(a,b)} = [a,b]$
+    \item In $\mathbb{R}^{n}$ with the Euclidean metric $d_{2}$, the closure of the open ball $B(c,r)$ is the closed ball $\{x\in\mathbb{R}^{n}: d_{2}(x,c)\le r\}$
+    \item On the complex plane with its standard metric, the closure of an open disc is the corresponding closed disc
+    \item Let $X$ be a non-empty set with the discrete metric, $c\in X$ and $r =1$. Then $B(c,1) = \{c\}$, therefore $\overline{B(c,1)} - \overline{\{c\}} = \{c\}$, while
+        \[\{x\in X : d(x,c) \le 1\} = X\]
+        The closure of an open ball is not always equal to the corresponding closed ball
+    \item $X = \mathbb{R},\,d(x,y) = \lvert x - y \rvert$. $\overline{\mathbb{Q}} = \mathbb{R}$
+\end{itemize}
+
+\begin{dfn}[Dense Subset of a Metric Space]{def:dense-subset}{}
+    Let $(X, d)$ be a metric space. A subset $D$ of $X$ is said to be \textbf{dense} iff $\overline{D} = X$
+\end{dfn}
+
+Random fact: In $\mathbb{R}^{n}$ with the Euclidean metric $d_{2}$, $\mathbb{Q}^{n}$ is dense.
+
+\newpage
+\begin{thm}[Closure Equivalence]{thm:closure-equivalence}{}
+    Let $(X, d)$ be a metric space, $A \subseteq X, x\in X$. The following are equivalent
+    \begin{enumerate}
+        \item $x\in\overline{A}$
+        \item For every positive $r$, $B(x,r) \cap A \ne \emptyset$
+        \item There exists a sequence $(a_{n})_{n\in \mathbb{N}}$ with $a_{n}\in A$ for all $n$, such that $a_{n}\to x$
+    \end{enumerate}
+    A point $x$ with any of these properties is called an \textbf{adherent point} of $A$. So, $\overline{A}$ is the set of all adherent points of $A$.
+\end{thm}
+
+\textbf{Example}: $X = \mathbb{R},\,d(x,y) = \lvert x - y \rvert, A = (0,1)\cup \{2\},\, \overline{A} = [0,1] \cup \{2\}$
+
+$2$ is an adherent point of $A$. $0$ is an adherent point of $A$.
+
+Observe: $2\in A, 0\not\in A$
+
+\noindent\rule{\textwidth}{0.2pt}
+\textbf{Proof}: $1 \implies 2$
+
+Assume $x\in \overline{A}$. Fix a positive $r$. We show: $B(x,r)\cap A\ne \emptyset$.
+
+The set $\overline{A} \backslash B(x,r)$ is closed and $\overline{A} \backslash B(x,r) \subsetneq \overline{A}$
+
+Therefore, $A \not \subseteq \overline{A} \backslash B(x,r)$
+
+Therefore there exists an element $a\in A$ s.t. $a\not\in \overline{A} \backslash B(x,r)$. But $a\in \overline{A}$. Therefore $a\in B(x,r)$
+
+\textbf{Proof}: $2 \implies 3$
+
+If $A$ intersects every open ball centered at $x$, then for every $n$ there is a point $a_{n}$ that belongs to $A$ and to $B(x, 1 /n)$. Then $d(a_{n}, x) < 1 /n$, therefore $a_{n}\to x$
+
+\textbf{Proof}: $3\implies 1$
+Assume that there is a sequence $(a_{n})^{\infty}_{n=1}$ such that $a_{n}\in A$ for all $n$, and $a_{n}\to x$. We show that $x\in \overline{A}$.
+
+For each $n$ we have $a_{n}\in \overline{A}$. Also, $a_{n}\to x$ and $\overline{A}$ is closed. Therefore $x\in \overline{A}$
+
+\begin{dfn}[Limit points of sets]{def:limit-point}{}
+    Let $(X, d)$ be a metric space, $A \subseteq X$ and $x\in X$. We say that $x$ is a \textbf{limit point} or an \textbf{accumulation point} of $A$ iff every open ball centered at $x$ contains an element of $A$ distinct from $x$, i.e.
+    \[\forall r > 0 \quad (B(x,r) \backslash \{x\}) \cap A \ne \emptyset\]
+    The set of all limit points of $A$ is called the \textbf{derived set} of $A$ and is denoted by $A'$ or $\tilde{A}$.
+\end{dfn}
+
+\textbf{Note w/o proof}: $x$ is a limit point of $A$ iff there exists a sequence $(a_{n})^{\infty}_{n=1}$ such that $a_{n}\in A, a_{n} \ne x$ for all $n$, and $a_{n}\to x$
+
+\textbf{Note w/o proof}: Let $(X, d)$ be a metric space and $A \subseteq X$. Then $\overline{A} = A \cup A'$
+
+\noindent\rule{\textwidth}{0.2pt}
+\textbf{Example}: On the real line with the standard metric, let $A = (0,1) \cup \{2\}$. Then $\overline{A} = [0,1]\cup \{2\}$, so $0,2\in \overline{A}$
+$0$ is a limit point of $A$
+$2$ isn't a limit point of $A$
+
+\newpage
+\subsection{Continuous functions between metric spaces}
+
+\begin{dfn}[Continuity at a point]{def:metric-point-continuity}{}
+    Let $(X, d_{X}),\, (Y,d_{Y})$ be metric spaces and $f: X \to Y $ be a function. We say that $f$ is \textbf{continuous at a point} $x_{0}$ in $X$ iff for for every positive $\epsilon$, there exists a positive $\delta$, s.t., for all $x\in X$ with $d_{X}(x,x_{0}) < \delta$ we have $d_{Y}(f(x), f(x_{0})) < \epsilon$
+    
+    \noindent\rule{\textwidth}{0.2pt}
+    Alternatively, $f$ is \textbf{continuous at a point} $x_{0}\in X$ iff, for every positive $\epsilon$, there exists a positive $\delta$, such that, for all $x\in B_{X}(x_{0}, \delta)$ we have $f(x)\in B_{Y}(f(x_{0}), \epsilon)$
+\end{dfn}
+
+\begin{dfn}[Continuity of a function]{def:metric-continuity}{}
+    Let $(X, d_{X}), (Y, d_{Y})$ be metric spaces. A function $f: X \to Y $ is said to be \textbf{continuous} iff it is continuous at every point in $X$
+\end{dfn}
+
+\textbf{Example}: Let $(X, d)$ be a metric space and $p$ be a point in $X$. Define $f: X \to \mathbb{R} $ by $f(x) = d(x,p)$. $f$ is continuous.
+
+Watch lecture recording 02/02 40m for proof
+
+\begin{thm}[]{}{}
+    Let $(X,d_{X}), (Y, d_{Y})$ be metric spaces, $f : X \to Y$ be a function and $x_{0}$ be a point in $X$. Then $f$ is continuous at $x_{0}$ iff for every open neighbourhood $G$ of $f(x_{0})$ there exists an open neighbourhood $O$ of $x_{0}$ such that, for all $x\in O$, we have $f(x) \in G$
+\end{thm}
+
+\textbf{Proof}: Assume $f$ is continuous at $x_{0}$. Let $G$ be an open set in $Y$ with $f(x_{0})\in G$. There exists a positive $\epsilon$ such that $B_{Y}(f(x_{0}), \epsilon) \subseteq G$. By continuity, there exists a positive $\delta$ such that for all $x\in B_{X}(x_{0}, \delta)$ we have $f(x)\in B_{Y}(f(x_{0}), \epsilon)$. Let $O = B_{X}(x_{0}, \delta)$. For all $x\in O$ we have $f(x)\in G$
+
+\noindent\rule{\textwidth}{0.2pt}
+Conversely, assume that for every open neighbourhood $G$ of $f(x_{0})$ there exists an open neighbourhood $O$ of $x_{0}$ s.t. for all $x\in O$, we have $f(x)\in G$. We wish to show that $f$ is continuous at $x_{0}$
+
+Let $\epsilon$ be positive. Apply our hypothesis with $G = B_{Y}(f(x_{0}), \epsilon)$ to see that there exists an open set $O$ in $X$ with $x_{0}\in O$, s.t. for all $x\in O$ we have $f(x)\in G$.
+
+Since $O$ is open, there exists a positive $\delta$ such that $B_{X}(x_{0}, \delta) \subseteq O$.
+
+For all $x$ in $B_{X}(x_{0}, \delta)$ we have $f(x) \in B_{Y}(f(x_{0}), \epsilon)$
+
+\begin{thm}[Continuity and Convergence]{thm:continuity-conv-equivalence}{}
+    Let $(X, d_{X}),\, (Y, d_{Y})$ be metric spaces, $x_{0}$ be a point in $X$, and $f : X \to Y$ be a function. The following are equivalent:
+    \begin{enumerate}
+        \item $f$ is continuous at $x_{0}$
+        \item For every sequence $(x_{n})^{\infty}_{n = 1}$ in $X$, if $x_{n}\xrightarrow[n\to +\infty]{}$ in $(X, d_{X})$, then $f(x_{n}) \xrightarrow[n\to +\infty]{} f(x_{0})$ in $(Y, d_{Y})$
+    \end{enumerate}
+\end{thm}
+
+Watch lecture recording 02/02 50m for the proof
+
 
 \end{document}
 
