@@ -1,6 +1,6 @@
-# UoE Math LaTeX Notes
+# Leon's UoE Math LaTeX Notes
 
-Typed up Exam Notes for a variety of courses in UoE CompSci and Maths. Feel free to use / fork / customise to your liking
+LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and Maths. Feel free to use / fork / customise to your liking
 
 ## Links to 6-page Exam Sheets!
 - My magnum opus: Fundamentals of Pure Mathematics - [click here!](FPM/notes_colour.pdf)
@@ -13,10 +13,6 @@ Typed up Exam Notes for a variety of courses in UoE CompSci and Maths. Feel free
 - Foundations of Natural Language Processing (BIG WIP) - [click here!](FNLP/fnlp-notes.pdf)
 
 :coffee: [(Optional) Buy me a coffee :)](https://ko-fi.com/leon024)
-
-
-
-
 
 ## Info
 
