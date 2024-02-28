@@ -1,2 +1,9 @@
-\contentsline {section}{\numberline {1}Section}{3}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Subsection}{3}{subsection.1.1}%
+\contentsline {section}{\numberline {1}Vector Spaces}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Fields and Vector Spaces}{3}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.3}Vector Space Terminology}{4}{subsubsection.1.1.3}%
+\contentsline {subsubsection}{\numberline {1.1.5}Vector Space Lemmas}{4}{subsubsection.1.1.5}%
+\contentsline {subsection}{\numberline {1.2}Product of Sets and of Vector Spaces}{5}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Vector Subspaces}{5}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.3}Subspace terminology}{6}{subsubsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.4}Linear Independence and Bases}{6}{subsection.1.4}%
+\contentsline {subsubsection}{\numberline {1.4.4}Family notation}{6}{subsubsection.1.4.4}%

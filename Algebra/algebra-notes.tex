@@ -19,7 +19,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{preamble}
+% \usepackage{preamble}
 \usepackage{multicol}
 \usepackage{lipsum}
 \usepackage{float}
@@ -33,6 +33,7 @@
 
 \usepackage{hyperref} % note: this is the final package
 \parindent = 0pt
+\linespread{1.1}
 
 % Custom Definitions of operators
 \DeclareMathOperator{\Ima}{im}
@@ -53,9 +54,187 @@
 \tableofcontents
 \newpage
 
-\section{Section}
-\subsection{Subsection}
+\section{Vector Spaces}
+\subsection{Fields and Vector Spaces}
 
+\begin{dfn}[Definition of a field]{def:field}{}
+    A \textbf{field} $F$ is a set with functions
+    \begin{itemize}
+        \item Addition: $+ : F \times F \to F,\,(\lambda, \mu) \mapsto \lambda + \mu$
+        \item Multiplication: $\cdot : F \times F,\, (\lambda, \mu) \mapsto \lambda\mu$
+    \end{itemize}
+    and two distinguished members $0_{F},\, 1_{F}$ with $0_{F}\ne 1_{F}$ s.t. $(F,\, +)$ and $F \backslash \{0_{F},\, \cdot\}$ are \textit{abelian groups} whose neutral elements are $0_{F}$ and $1_{F}$ respectively, and which also satisifies
+    \[\lambda(\mu + \nu) = \lambda\mu + \lambda\nu \in F\]
+    for any $\lambda, \mu, \nu\in F$. 
+    Additional Requirements: For all $\lambda,\mu\in F$,
+    \begin{itemize}
+        \item $\lambda + \mu = \mu + \lambda$
+        \item $\lambda \cdot \mu = \mu \cdot \lambda$
+        \item $\lambda + 0_{F} = \lambda$
+        \item $\lambda \cdot 1_{F} = \lambda\in F$
+    \end{itemize}
+    For every $\lambda\in F$ there exists $-\lambda \in F$ such that
+    \[\lambda + (-\lambda) = 0_{F} \in F\]
+    For every $\lambda \ne 0 \in F$ there exists $\lambda^{-1}\ne 0\in F$ such that
+    \[\lambda(\lambda^{-1}) = 1_{F}\in F\]
+
+    NOTE: This is a terrible definition of a field, just think of it as a group with two operations instead of one
+\end{dfn}
+
+\begin{dfn}[Definition of a Vector Space]{def:vector-space}{}
+    A \textbf{vector space $V$ over a field} $F$ is a pair consisting of an abelian group $V = (V,\, \dot{+})$ and a mapping
+    \[F \times V \to V : (\lambda, \vec{v})\mapsto \lambda \vec{v}\]
+    such that for all $\lambda, \mu \in F$ and $\vec{v}, \vec{w}\in V$ the following identities hold:
+    \begin{align*}
+        \lambda(\vec{v} \dot{+} \vec{w}) &= (\lambda\vec{v}) \dot{+} (\lambda \vec{w})\\
+        (\lambda + \mu)\vec{v} &= (\lambda \vec{v}) \dot{+} (\mu \vec{v})\\
+        \lambda (\mu \vec{v}) &= (\lambda \mu) \vec{v}\\
+        1_{F}\vec{v} &= \vec{v}
+    \end{align*}
+    The first two laws are the \textbf{Distributive Laws}, the third law is called the \textbf{Associativity Law}. A vector field $V$ over a field $F$ is commonly called an \textbf{$F$-vector space}
+\end{dfn}
+
+\newpage
+
+\subsubsection{Vector Space Terminology}
+\begin{itemize}
+    \item Elements of a vector space: \textbf{vectors}
+    \item Elements of the field $F$: \textbf{scalars}
+    \item The field $F$ itself: \textbf{ground field}
+    \item The map $(\lambda, \vec{v})\mapsto \lambda\vec{v}$: \textbf{multiplication by scalars}, or the \textbf{action of the field $F$ on $V$}
+\end{itemize}
+
+\textbf{Notes}:
+\begin{itemize}
+    \item This is not the same as the "scalar product", as that produces a scalar from two vectors
+    \item Let the zero element of the abelian group $V$ be written as $\vec{0}$ and called the \textbf{zero vector}
+    \item The use of $\dot{+}$ and $1_{F}$ is there for mostly pedantic rigorous reasons, and a much less confusing way of defining a vector field is defined below:
+\end{itemize}
+
+
+\begin{dfn}[Alternative Vector Space definition]{def:vector-space-alt}{}
+    A \textbf{vector space $V$ over a field} $F$ is a pair consisting of an abelian group $V = (V,\, \dot{+})$ and a mapping
+    \[F \times V \to V : (\lambda, \vec{v})\mapsto \lambda \vec{v}\]
+    such that for all $\lambda, \mu \in F$ and $\vec{v}, \vec{w}\in V$ the following identities hold:
+    \begin{align*}
+        \lambda(\vec{v} \dot{+} \vec{w}) &= \lambda\vec{v} \dot{+} \lambda \vec{w}\\
+        (\lambda + \mu)\vec{v} &= \lambda \vec{v} \dot{+} \mu \vec{v}\\
+        \lambda (\mu \vec{v}) &= (\lambda \mu) \vec{v}\\
+        1\vec{v} &= \vec{v}
+    \end{align*}
+\end{dfn}
+
+\noindent\rule{\textwidth}{0.2pt}
+
+\subsubsection{Vector Space Lemmas}
+
+\textbf{Product with the scalar zero}: If $V$ is a \textit{vector space} and $\vec{v}\in V$, then $0\vec{v} = \vec{0}$, or in words "zero times a vector is the zero vector"
+
+\textbf{Product with the scalar $(-1)$}: If $V$ is a \textit{vector space} and $\vec{v}\in V$, then $(-1)\vec{v} = - \vec{v}$
+
+\textbf{Product with the zero vector}: If $V$ is a \textit{vector space} over a field $F$, then $\lambda \vec{0} = \vec{0}$ for all $\lambda\in F$. Furthermore, if $\lambda \vec{v} = \vec{0}$ then either $\lambda = 0$ or $@\vec{v} = \vec{0}$
+
+\newpage
+\subsection{Product of Sets and of Vector Spaces}
+
+\begin{dfn}[Cartesian Product of $n$ sets]{def:cartesian-prod}{}
+    Trivially: $X \times Y = \{(x,y) : x\in X,\,y\in Y\}$
+
+    Just extend this to $n$ numbers
+    \[X_{1} \times \cdots \times X_{n} := \{(x_{1}, \dots, x_{n}) : x_{i}\in X_{i} \text{ for } 1 \le i \le n\}\]
+
+    The elements of a product are called \textbf{$n$-tuples}. An individual entry $x_{i} = (x_{1}, \dots ,x_{n})$ is called a \textbf{component}.
+
+    There are special mappings called \textbf{projections} for a cartesian product:
+    \begin{align*}
+        \text{pr}_{i} : X_{1} \times \cdots \times X_{n} &\to X_{i}\\
+        (x_{1},\dots,x_{n}) &\mapsto x_{i}
+    \end{align*}
+
+    The cartesian product of $n$ copies of a set $X$ is written in short as: $X^{n}$
+\end{dfn}
+
+The elements of $X^{n}$ are $n$-tuples of elements from $X$. In the special case $n = 0$ we use the general convention that $X^{0}$ is "the" one element set, so that for all $n,m\ge 0$, we then have the canonical bijection
+\begin{align*}
+    X^{n} \times X^{m} &\to X^{n + m} \\
+    ((x_{1},x_{2},\dots,x_{n}),\,(x_{n+1}, x_{n+2},\dots,x_{n+m})) &\mapsto (x_{1},x_{2},\dots,x_{n},x_{n+1},x_{n+2},\dots,x_{n+m})
+\end{align*}
+Note: the $\to$ should have a tilde but idk how to typeset it like that
+
+[ Bunch of examples: check LN 1.3]
+
+\subsection{Vector Subspaces}
+
+\begin{dfn}[Vector Subspace]{def:vector-subspace}{}
+    A subset $U$ of a vector space $V$ is called a \textbf{vector subspace} or \textbf{subspace} if $U$ contains the zero vector, and whenever $\vec{u},\vec{v}\in U$ and $\lambda\in F$ we have $\vec{u} + \vec{v}\in U$ and $\lambda \vec{u}\in U$
+\end{dfn}
+
+\textbf{Note} There is a more generalized definition using concepts we haven't learned yet, it is as follows: Let $F$ be a field. A subset of an $F$-vector space is called a vector subspace if it can be given the structure of an $F$-vector space such that the embedding is a "homomorphism of $F$-vector spaces". This definition is a lot more general since it also applies to subgroups, subfields, sub-"any structure", etc
+
+\begin{dfn}[Spanning Subspace]{def:spanning-subspace}{}
+    Let $T$ be a subset of a vector space $V$ over a field $F$. Then amongst all vector subspaces of $V$ that include $T$ there is a smallest vector subspace
+    \[\langle T \rangle = \langle T \rangle_{F} \subseteq V\]
+    It can be described as the set of all vectors $\alpha_{1}\vec{v}_{1} + \cdots + \alpha_{r}\vec{v}_{r}$ with $\alpha_{1},\dots,\alpha_{r}\in F$ and $\vec{v}_{1},\dots,\vec{v}_{r}\in T$, together with the zero vector in the case $T = \emptyset$
+\end{dfn}
+
+\subsubsection{Subspace terminology}
+\begin{itemize}
+    \item An expression of the form $a_{1}\vec{v}_{1} + \cdots + \alpha_{r} \vec{v}_{r}$ is called a \textbf{linear combination} of vectors $\vec{v}_{1},\dots,\vec{v}_{r}$.
+    \item The smallest vector subspace $\langle T \rangle \subseteq V$ containing $T$ is called the \textbf{vector subspace generated by $T$} or the vector subspace \textbf{spanned by $T$} or even the \textbf{span of $T$}
+    \item If we allow the zero vector to be the "empty linear combination of $r = 0$ vectors", which is what we will mean from hereon, then the span of $T$ is exactly the set of all linear combinations of vectors from $T$
+\end{itemize}
+
+\begin{dfn}[Generating Subspace]{def:generating-subspace}{Number}
+    A subset of a vector space is called a \textbf{generating} or \textbf{spanning set} of our vector space if its span is all of the vector space. A vector space that has a finite generating set is said to be \textbf{finitely generated}.
+\end{dfn}
+
+\subsection{Linear Independence and Bases}
+
+\begin{dfn}[Linear Independence]{def:linear-independence}{}
+    A subset $L$ of a vector space $V$ is called \textbf{linearly independent} if for all pairwise different vectors $\vec{v}_{1},\dots,\vec{v}_{r}\in L$ and arbitrary scalars $\alpha,\dots,\alpha_{r}\in F$,
+    \[a_{1}\vec{v}_{1} + \cdots + \alpha_{r}\vec{v}_{r} = \vec{0} \implies a_{1} = \cdots = \alpha_{r} = 0\]
+\end{dfn}
+
+\begin{dfn}[Linear Dependence]{def:linear-dependence}{}
+    A subset $L$ of a vector space $V$ is called \textbf{ilnearly dependent} if it is not linearly independent (duh..). This means there exists pairwise different vectors $\vec{v}j_{1},\dots,\vec{v}_{r}\in L$ and scalars $\alpha_{1},\dots,\alpha_{r}\in F$, not all zero, such that $\alpha_{1}\vec{v}_{1} + \cdots \alpha_{r}\vec{v}_{r} = \vec{0}$
+\end{dfn}
+
+\begin{dfn}[Basis of a Vector Space]{def:basis}{}
+    A \textbf{basis of a vector space} $V$ is a linearly independent generating set in $V$
+\end{dfn}
+
+\subsubsection{Family notation}
+Let $A$ and $I$ be sets. We will refer to a mapping $I\to A$ as a \textbf{family of elements of $A$ indexed by $I$} and use the notation
+\[(a_{i})i\in I\]
+
+This is used mainly when $I$ plays a secondary role to $A$. In the case $I = \emptyset$, we will talk about the \textbf{empty family} of elements of $A$.
+
+Random facts:
+\begin{itemize}
+    \item The family $(\vec{v}_{i})_{i\in I}$ would be called a generating set if the set $\{\vec{v}_{i} : i\in I\}$ is a generating set.
+    \item It would be called \textbf{linearly independent} or a \textbf{linearly independent family} if, for pairwise distinct indices $i(1),\dots,i(r)\in I$ and arbitrary scalars $a_{1},\dots,a_{r}\in F$,
+        \[a_{1}\vec{v}_{i(1)} + \cdots + a_{r}\vec{v}_{i(r)} = \vec{0} \to \alpha_{1} = \cdots = a_{r} = 0\]
+\end{itemize}
+
+A difference between families and subsets is that the same vector can be represented by different indices in a family, in which case linear independence as a family is not possible. A family of vectors that is not linearly independent is called a \textbf{linearly dependent family}. A family of vectors that is a generating set and linearly independent is called either a \textbf{basis} or a \textbf{basis indexed by} $i\in I$
+
+\begin{xmp}[Standard Basis]{xmp:standard-basis}{}
+    Let $F$ be a field and $n\in \mathbb{N}$. We consider the following vectors in $F^{n}$
+    \[\vec{e}_{i} = (0,\dots,0,1,0,\dots,0)\]
+    with one $1$ in the $i$-th place and zero everywhere else. Then $\vec{e}_{1} ,\dots, \vec{e}_{n}$ form an ordered basis of $F^{n}$, the so-called \textbf{standard basis of $F^{n}$}
+\end{xmp}
+
+\begin{thm}[Linear combinations of basis elements]{thm:linear-combinations-of-basis-elems}{}
+    Let $F$ be a field, $V$ a vector space over $F$ and $\vec{v}_{1},\dots,\vec{v}_{r}\in V$ vectors. The family $(\vec{v}_{i})_{1\le i\le r}$ is a basis of $V$ if and only if the following "evaluation" mapping
+    \begin{align*}
+        \psi : F^{r} &\to V\\
+        (\alpha_{1},\dots,a_{r}) &\mapsto a_{1}\vec{v}_{1} + \cdots + \alpha_{r}\vec{v}_{r}
+    \end{align*}
+    is a bijection
+
+    If we label our ordered family by $\mathcal{A} = (\vec{v}_{1},\dots,\vec{v}_{r})$, then we done the above mapping by
+    \[\psi = \psi_{\mathcal{A}} : F^{r}\to V\]
+\end{thm}
 
 
 \end{document}
