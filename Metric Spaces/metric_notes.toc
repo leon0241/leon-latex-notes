@@ -14,3 +14,9 @@
 \contentsline {subsection}{\numberline {2.3}Open sets and closed sets}{13}{subsection.2.3}%
 \contentsline {subsection}{\numberline {2.4}Closure}{15}{subsection.2.4}%
 \contentsline {subsection}{\numberline {2.5}Continuous functions between metric spaces}{18}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Topology!!!}{20}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Homeomorphisms and Topological Properties}{20}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Just kidding back to metric spaces}{20}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.2}Continuity of linear operators between normed vector spaces}{21}{subsubsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.3}Fixed Points and Lipschitz}{22}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Equivalent Metrics}{23}{subsection.3.4}%

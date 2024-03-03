@@ -17,6 +17,7 @@
 
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{preamble}
@@ -29,6 +30,8 @@
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{../thmboxes_v2}
 % \usepackage{thmboxes_col}
+
+\usepackage{../coffeestains}
 
 
 \usepackage{hyperref} % note: this is the final package
@@ -62,6 +65,8 @@ A standard example is $\mathbb{R}$ with the standard metric
 \[d(x,y) = \lvert x-y \rvert\]
 We will now formally define what it means to have a metric
 
+
+
 \begin{thm}[Definition of a Metric]{def:metric}{}
     Let $X$ be a non-empty set. A function $d: X \times X \to \mathbb{R} $ is called a \textbf{metric} iff for all $x,\,y,\,z\in X$,
     \begin{itemize}
@@ -85,6 +90,10 @@ We can construct a metric space using the \textbf{Absolute value} equipped with 
 \[\lvert x_{1} + \cdots + x_{N} \rvert \le \lvert x_{1} \rvert + \cdots + \lvert x_{N} \rvert\]
 If $\displaystyle\sum_{n = 1}^{\infty}x_{n}$ converges absolutely, let $N\to +\infty$ to see that
 \[\left\lvert \sum_{n = 1}^{\infty}x_{n} \right\rvert \le \sum_{n = 1}^{\infty} \lvert x_{n} \rvert\]
+
+
+\coffeestainC{0.1}{2}{360}{130 pt}{-100 pt}
+
 
 \newpage
 A second example is the \textbf{Euclidean Plane}. The metric is defined using the \textbf{inner product} and the \textbf{norm}.
@@ -696,7 +705,9 @@ Watch lecture recording 02/02 40m for proof
     Let $(X,d_{X}), (Y, d_{Y})$ be metric spaces, $f : X \to Y$ be a function and $x_{0}$ be a point in $X$. Then $f$ is continuous at $x_{0}$ iff for every open neighbourhood $G$ of $f(x_{0})$ there exists an open neighbourhood $O$ of $x_{0}$ such that, for all $x\in O$, we have $f(x) \in G$
 \end{thm}
 
-\textbf{Proof}: Assume $f$ is continuous at $x_{0}$. Let $G$ be an open set in $Y$ with $f(x_{0})\in G$. There exists a positive $\epsilon$ such that $B_{Y}(f(x_{0}), \epsilon) \subseteq G$. By continuity, there exists a positive $\delta$ such that for all $x\in B_{X}(x_{0}, \delta)$ we have $f(x)\in B_{Y}(f(x_{0}), \epsilon)$. Let $O = B_{X}(x_{0}, \delta)$. For all $x\in O$ we have $f(x)\in G$
+\begin{proof}
+    Assume $f$ is continuous at $x_{0}$. Let $G$ be an open set in $Y$ with $f(x_{0})\in G$. There exists a positive $\epsilon$ such that $B_{Y}(f(x_{0}), \epsilon) \subseteq G$. By continuity, there exists a positive $\delta$ such that for all $x\in B_{X}(x_{0}, \delta)$ we have $f(x)\in B_{Y}(f(x_{0}), \epsilon)$. Let $O = B_{X}(x_{0}, \delta)$. For all $x\in O$ we have $f(x)\in G$
+\end{proof}
 
 \noindent\rule{\textwidth}{0.2pt}
 Conversely, assume that for every open neighbourhood $G$ of $f(x_{0})$ there exists an open neighbourhood $O$ of $x_{0}$ s.t. for all $x\in O$, we have $f(x)\in G$. We wish to show that $f$ is continuous at $x_{0}$
@@ -715,16 +726,246 @@ For all $x$ in $B_{X}(x_{0}, \delta)$ we have $f(x) \in B_{Y}(f(x_{0}), \epsilon
     \end{enumerate}
 \end{thm}
 
-Watch lecture recording 02/02 50m for the proof
+\newpage
+\begin{proof}
+    $1 \implies 2$: Assume $f$ is continuous at $x_{0}$ and let $x_{n}\to x_{0}\in X$
+
+Let $\epsilon$ be positive. There exists a positive $\delta$ such that, for all $x\in B_{X}(x_{0},\delta),\,f(x)\in B_{Y}(f(x_{0}), \epsilon)$. Eventually all $x_{n}$ belong to $B_{X}(x_{0}, \delta)$. Therefore eventually all $f(x_{n})$ belong to $B_{Y}(f(x_{0}), \epsilon)$
+\noindent\rule{\textwidth}{0.2pt}
+$2 \implies 1$: Contrapositive - not $1 \implies$ not 2
+
+Assume that $f$ is not continuous at $x_{0}$. Then
+\[\text{not}\left( \forall \epsilon,\,\exists \delta,\,\forall x\in B_{X}(x_{0}, \delta) \quad f(x)\in B_{Y}(f(x_{0}), \epsilon)\right)\]
+i.e.
+\[\exists \epsilon,\, \forall \delta,\, \exists x\in B_{X}(x_{0},\delta) \quad f(x)\not\in B_{Y}(f(x_{0}), \epsilon)\]
+Apply this with $\delta = 1, \frac{1}{2},\dots,\frac{1}{n},\dots$ to see that there exists $x_{1},x_{2},\dots,x_{n},\,$ such that
+\[x_{n}\in B_{X}(x_{0}, 1 /n) \text{ and } f(x_{n})\not\in B_{Y}(f(x_{0}), \epsilon)\]
+
+Then $x_{n}\to x_{0}$ in $X$ and $f(x_{n})\not\to f(x_{0})$ in $Y$, so, not 2
+\end{proof}
+
+\begin{thm}[Continuity and Open Sets]{def:continuity-open-sets}{}
+    Let $(X, d_{X}),\,(Y, d_{Y})$ be metric spaces. A function $f: X \to Y $ is continuous iff the inverse image $f^{-1}(G)$ of any open subset $G$ of $Y$ is an open subset of $X$
+\end{thm}
+
+\begin{proof}
+    Assume $f$ is continuous and let $G$ be an open subset of $Y$. Let $x_{0}\in f^{-1}(G)$. Then $f(x_{0})\in G$, therefore there exists a positive $\epsilon$ such that $B_{Y}(f(x_{0}), \epsilon)\subseteq G$. Since $f$ is continuous at $x_{0}$, there exists a positive $\delta$ such that, for all $x\in B_{X}(x_{0}, \delta)$ we have $f(x)\in B_{Y}(f(x_{0}), \epsilon)$, therefore $f(x)\in G$, therefore $x\in f^{-1}(G)$. This shows that $B_{X}(x_{0}, \delta)\subseteq f^{-1}(G)$.
+
+    \noindent\rule{\textwidth}{0.2pt}
+    Conversely, assume that the inverse image of every open subset of $Y$ is an open subset of $X$.
+
+    Fix a point $x_{0}\in x$. We show that $f$ is continuous at $x_{0}$.
+
+    Let $\epsilon$ be positive. The open ball $B_{Y}(f(x_{0}), \epsilon)$ is an open subset of $Y$, therefore $f^{-1}(B_{Y}(f(x_{0}), \epsilon))$ is an open subset of $X$ that contains $x_{0}$.
+
+    Therefore, there exists a positive $\delta$ such that
+    \[B_{X}(x_{0}, \delta)\subseteq f^{-1}(B_{Y}(f(x_{0}), \epsilon))\]
+    For any $x\in B_{X}(x_{0}, \delta)$ we have $x\in f^{-1}(B_{Y}(f(x_{0}), \epsilon))$, therefore $f(x)\in B(f(x_{0}), \epsilon)$
+\end{proof}
+
+\textbf{Exercise}: Let $(X, d_{X}), (Y, d_{Y}), Z_{d_{Z}}$ be three metric spaces. Let $f : X \to Y$ and $g : Y\to Z$ be two continuous functions. Then $g\circ f : X \to Z$ is continuous
+
+\newpage
+\section{Topology!!!}
+\subsection{Homeomorphisms and Topological Properties}
+\begin{dfn}[Topological Space]{def:topological-space}{}
+    A \textbf{topological space} is a set $X$ together with a family $\mathcal{T}$ of subsets of $X$ that has the following properties:
+    \begin{itemize}
+        \item $\emptyset,X\in \mathcal{T}$
+        \item Any union of elements of $\mathcal{T}$ is an element of $\mathcal{T}$
+        \item Any finite intersection of elements of $\mathcal{T}$ is an element of $\mathcal{T}$
+    \end{itemize}
+    $\mathcal{T}$ is called a \textbf{topology} and the elements of $\mathcal{T}$ are called \textbf{open sets}
+\end{dfn}
+
+\begin{dfn}[Continuity of Topological Spaces]{def:topological-continuity}{}
+    Let $(X, \mathcal{T}_{X})$ and $(Y, \mathcal{T}_{Y})$ be two topological spaces. A function $f : X \to Y$ is said to be \textbf{continuous} iff for every $G$ in $\mathcal{T}_{Y}$ the pre-image $f^{-1}(G)$ is an element of $\mathcal{T}_{X}$.
+
+    $f$ is said to be a \textbf{homeomorphism} iff it is a continuous bijection and its inverse is continuous.
+
+    If such a homeomorphism exists then $(X, \mathcal{T}_{X})$ and $(Y, \mathcal{T}_{Y})$ are said to be \textbf{homeomorphic}
+\end{dfn}
+
+If $(X, \mathcal{T}_{X})$ and $(Y, T_{Y})$ are homeomorphic, and one of them is compact or connected or separable etc etc, then so is the other
+
+Properties that are preserved by homeomorphisms are called topological properties
+
+\subsection{Just kidding back to metric spaces}
+
+\noindent\rule{\textwidth}{0.2pt}
+\textbf{Example}: Let $(X, d_{X})$ be a discrete metric space and $(Y, d_{Y})$ be any metric space. Show that every function $f : X \to Y$ is continuous.
+
+Indeed, the inverse image $f^{-1}(G)$ of any open subset $G$ of $Y$ is an open subset of $X$ (all subsets of $X$ are open)
+
+\noindent\rule{\textwidth}{0.2pt}
+
+\textbf{Example: }Let $X = \mathbb{R}$ equipped with the standard metric $d$, and $Y = \mathbb{R}$ equipped with the discrete metric $\rho$. Show the function $f : X \to Y,\, f(x) = x$ is not continuous.
+
+\begin{proof}
+    The set $\{0\}$ is open in $Y$, but the set $f^{-1}(\{0\}) = \{0\}$ is not open in $X$
+
+    Actually, for any point $x_{0}\in X$, we have $x_{0} + \frac{1}{n}\to x_{0}\in X$, but
+    \[f\left(x_{0} + \frac{1}{n}\right) = x_{0} + \frac{1}{n} \not\to x_{0} = f(x_{0}) \text{ in } Y\]
+    Therefore, $f$ is not continuous at $x_{0}$
+\end{proof}
+
+Watch lecture recording 06/02 for examples of continuous functions
+
+% TODO: actually write these things down - 06/03 30m
 
 
+\begin{thm}[$d : X \times X \to \mathbb{R}$ is continuous]{thm:metric-space-continuity}{}
+    Let $(X, d)$ be a metric space. The function $f: X \times X \to \mathbb{R} $ is continuous.
 
+    $\mathbb{R}$ is equipped with the standard metric. $X \times X$ is equipped with the product metric
+\end{thm}
+
+\begin{proof}
+    Fix $(x, x')\in X \times X$. We'll show that $d$ is continuous at $(x, x')$.
+
+    Let $(x_{n}, x_{n}')\to (x, x')$ in $(X \times X, D)$. We'll show that
+    \[d(x_{n}, x_{n}')\to d(x,x') \text{ in } \mathbb{R}\]
+    % TODO: exercise 25?
+    By exercise 25, $x_{n}\to x$ and $x_{n}' \to x'$ in $(X, d)$. By exercise 26, 
+    \[\lvert d(x_{n}, x_{n}') - d(x,x') \rvert \le d(x_{n},x) + d(x_{n}', x')\to 0 + 0 = 0\]
+\end{proof}
+
+
+\noindent\rule{\textwidth}{0.2pt}
+
+Let $X = Y = \mathbb{R}^{n}$, both equipped with the Euclidean metric $d_{2}$.
+
+Let $A$ be an $n \times n$ matrix, and define $T: \mathbb{R}^{n} \to \mathbb{R}^{n} $ by $T(x) = Ax$. Then $T$ is continuous.
+
+\begin{proof}
+    Fix $x_{0}\in \mathbb{R}^{n}$. For all $x\in \mathbb{R}^{n}$ we have
+    \begin{align*}
+        d_{2}(T(x), T(x_{0})) &= \lVert T(x) - T(x_{0}) \rVert_{2} = \lVert T(x - x_{0}) \rVert_{2}\\
+                              &= \lVert A(x - x_{0}) \rVert_{2} \le C\lVert x - x_{0} \rVert_{2} = Cd_{2}(x,x_{0})
+    \end{align*}
+    Where $C$ is a positive constant (independent of $x,x_{0}$).
+
+    Let $\epsilon > 0$. Define $\delta = \frac{\epsilon}{C}$. for all $x$ with $d_{2}(x,x_{0}) < \delta$ we have
+    \[d_{2}(T(x), T(x_{0})) \le Cd_{2}(x,x_{0}) < C\delta = \epsilon\]
+
+
+\end{proof}
+
+We need: For every $n \times n$ matrix $A$ there exists a constant $C$ such that, for all vectors $x\in \mathbb{R}^{n}$
+\[\lVert Ax \rVert_{2} \le C\lVert x \rVert_{2}\]
+
+\begin{proof}
+    The $i$-th component of $Ax$ is $(Ax)_{i} = \sum_{j = 1}^{n} a_{ij}x_{j}$. By Cauchy-Schwarz,
+    \[\lvert (Ax)_{i} \rvert^{2} \le \left(\sum_{j = 1}^{n} \lvert a_{ij} \rvert^{2}\right) \left(\sum_{j = 1}^{n} \lvert x_{j} \rvert^{2}\right) = \left(\sum_{j = 1}^{n} \lvert a_{ij} \rvert^{2}\right) \lVert  x \rVert^{2}_{2}\]
+    Summing over $i$ we have
+    \[\lVert Ax \rVert^{2}_{2} = \sum_{i = 1}^{n}\lvert (Ax)_{i} \rvert^{2} \le \underbrace{\left(\sum_{i = 1}^{n}\sum_{j = 1}^{n} \lvert a_{ij} \rvert^{2}\right)}_{= C^{2}} \lVert x \rVert^{2}_{2}\]
+\end{proof}
+
+\subsubsection{Continuity of linear operators between normed vector spaces}
+Let $(X, \lVert \cdot \rVert_{X}),\,(Y, \lVert \cdot \rVert_{Y})$ be normed vector spaces. Recall that $d_{X} : X \times X \to \mathbb{R},\,d(x, x') = \lVert x - x' \rVert_{X}$, and $d_{Y} : Y \times Y \to \mathbb{R},\, d_{Y}(y, y') = \lVert  y - y' \rVert_{Y}$ are metrics
+
+\begin{dfn}[Bounded Linear Operators]{def:bounded-linear-operators}{}
+    A linear operator $T : X \to Y$ is said to be \textbf{bounded} iff there exists a positive constant $C$ such that, for all $x\in X$,
+    \[\lVert T(x) \rVert_{Y} \le C \lVert x \rVert_{X}\]
+\end{dfn}
+
+\begin{thm}[Linear Operator Equivalence]{def:linear-operator-equiv}{}
+    Let $T: X \to Y $ be a linear operator. The following are equivalent:
+    \begin{enumerate}
+        \item $T$ is continuous
+        \item $T$ is continuous at $0$
+        \item $T$ is bounded
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}
+    $1 \implies 2$: Trivial
+
+    $2 \implies 3$: Assume that $T$ is continuous at $0$. We wish to show:
+    \[\exists C \forall x \lVert  T(x) \rVert_{Y} \le C \lVert x \rVert_{X}\]
+    If not, then
+    \[\forall C, \exists x \lVert  T(x) \rVert_{Y} > C \lVert x \rVert_{X}\]
+    Observe that the $x$ is $\ne 0$. Apply with $C = 1,2,\dots,$ to see that there exists a sequence $(x_{n})_{n\in \mathbb{N}}\in X$ such that, for all $n$,
+    \[\lVert T(x_{n}) \rVert_{Y} > n \lVert  x_{n} \rVert_{X}\]
+    Define $x_{n}' = \frac{1}{n} \frac{x_{n}}{\lVert x_{n} \rVert_{X}}$. Then $d_{X}(x_{n}', 0) = \lVert x_{n}' \rVert_{X} = \frac{1}{n}\to 0$, therefore, $x_{n}' \to 0\in X$, but $T(x_{n}')\not\to 0 \in Y$ because $T(x_{n}')$ is bigger than $1$
+
+    \noindent\rule{\textwidth}{0.2pt}
+    $3 \implies 1$: Assume $T$ is bounded. Fix $x_{0}\in X$. Let $\epsilon > 0$. Define $\delta = \frac{\epsilon}{C}$. For all $x$ with $d_{X}(x,x_{0}) < \delta$ we have
+    \begin{align*}
+        d_{Y}(T(x), T(x_{0})) &= \lVert T(x) - T(x_{0}) \rVert_{Y}\\
+                              &= \lVert T(x - x_{0}) \rVert_{Y}\\
+                              &\le C \lVert x - x_{0} \rVert_{X}\\
+                              &= C d_{X}(x,x_{0})\\
+                              &< C\delta\\
+                              &= \epsilon
+    \end{align*}
+\end{proof}
+
+\noindent\rule{\textwidth}{0.2pt}
+Watch lecture recording 09/02 for proofs on examples:
+\begin{itemize}
+    \item Let $(X, \lVert  \cdot \rVert)$ be a normed vector space and define $f: \mathbb{R} \times X \to X $ by $f(\lambda, x) = \lambda x$. Define $g: X \times X \to X $ by $g(x,y) = x + y$. $f$ and $g$ are continuous
+\end{itemize}
+
+
+\subsection{Fixed Points and Lipschitz}
+
+\begin{dfn}[Lipschitz Functions]{def:lipschitz-functions}{}
+    Let $(X, d_{X}),\,(Y, d_{Y})$ be metric spaces. A function $f : X \to Y$ is said to be a \textbf{Lipschitz} function iff there exists a constant $L$ such that for all $x,x'\in X$,
+    \[d_{Y}(f(x), f(x')) \le L d_{X}(x,x')\]
+    If $L < 1$, $f$ is said to be a \textbf{contraction}
+\end{dfn}
+
+\textbf{Note}: Magnus uses non-standard terminology here:
+\begin{itemize}
+    \item When the equation is satisifed and $L < 1$, Magnus calls $f$ a \textbf{strict contraction}
+    \item He uses \textbf{contraction} for a functino $f$ that satisfies the weaker condition: for all $x, x' \in X$ with $x \ne x'$
+        \[d_{Y}(f(x), f(x')) < d_{X}(x,x')\]
+\end{itemize}
+
+\begin{thm}[Lipschitz Continuity]{thm:lipschitz-continuity}{}
+    Every Lipschitz function is continuous
+\end{thm}
+
+\begin{dfn}[Fixed Points]{def:fixed-points}{}
+    A \textbf{fixed point} of a function $f: S \to S $ where $S$ is a non-empty set, is any element $x$ of $S$ such that $f(x) = x$
+
+    Solving equations can sometimes be reduced to finding fixed points
+\end{dfn}
+
+Watch lecture recording 06/03 for more in-depth examples
+\begin{itemize}
+    \item Newton's Method for solving $f(x) = 0$
+    \item Picard's Method for solving the Initial Value Problem
+\end{itemize}
+
+\begin{thm}[Metric Space Unique Fixed Points]{thm:complete-ms-fixed-point}{}
+    Let $(X, d)$ be a complete metric space and let $f : X \to X$ be a contraction. Then $f$ has a unique fixed point
+\end{thm}
+
+\begin{proof}
+    Let $x_{1}\in X$ and define $x_{n+1} = f(x_{n}),\, n = 1,2,\dots$
+
+    $(x_{n})^{\infty}_{n = 1}$ is a Cauchy sequence. Observe first that, for all $n$,
+    \[d(x_{n+1}, d+n) = d(f(x_{n}, f(x_{n-1})) \le L d(x_{n}, x_{n-1}))\]
+    Therefore, for all $n$,
+    \[d(x_{n+1}, x_{n}) \le Ld(x_{n}, x_{n-1})\le L^{2}d(x_{n-1},x_{n-2}) \le \cdots \le L^{n-1}d(x_{2}, x_{1})\]
+
+    This goes on for like 10 more lines, watch 09/06 42 min
+\end{proof}
+
+\subsection{Equivalent Metrics}
+\begin{dfn}[Equivalent Metrics]{def:equivalent-metrics}{}
+    Two metrics on the same non-empty set $X$ are said to be \textbf{equivalent} iff they have teh same open sets
+\end{dfn}
+
+\textbf{Exercise:} Let $X$ be a non-empty set and $d_{1},\,d_{2}$ be two metrics on $X$. Prove that $d_{1}$ and $d_{2}$ are equivalent iff the identity function
+\[i : (X, d_{1}) \to (X, d_{2})\]
+is a homeomorphism (i.e. $i$ is continuous and its inverse $i^{-1} = i : (X, d_{2})\to (X, d_{1})$ is continuous)
 
 
 
 \end{document}
-
-
 
 % TODO: fix theorembox
 % TODO: 
