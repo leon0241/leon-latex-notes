@@ -293,10 +293,106 @@ $(K - \lambda M) \underline{b} = 0$ for nontrivial sol $^{n}$(??) $\det(K - \lam
 $\implies$ quadratic for $\lambda$. For equal $k$,
 \[(2k - \lambda m_{1})(2k - \lambda m_{2}) - k^{2} = 0 \quad \text{(quadratic)}\]
 
+\newpage
+
+\subsection{Line integral :)}
+
+idk what's happening but line integral
+
+\[\Gamma(x) = \int_{a}^{a + \frac{\pi}{2}} \sin^{2}\lambda d\lambda = \int_{a}^{a + \frac{\pi}{2}} \cos^{2}\lambda d\lambda = \frac{1}{2} \int_{a}^{a + \frac{\pi}{2}} \sin^{2}\lambda + \cos^{2}\lambda d\lambda = \frac{\pi}{4}\]
+\[ = \frac{\pi}{4} - \frac{1}{3} \sin^{3}\lambda\cos\lambda \bigg\rvert^{\frac{\pi}{2}}_{0} - \frac{1}{3} \underbrace{\int_{0}^\frac{{\pi}{2}} \sin{4}\lambda d\lambda}_{I} = \frac{\pi}{4} - \frac{I}{3} = I\]
+
+random facts
+\begin{itemize}
+    \item $\underline{\Delta} \times \underline{\Delta} \phi = 0$
+    \item $\underline{\Delta} \cdot (\underline{ \Delta \times \underline{a}}) = 0$
+\end{itemize}
+
+\subsection{Surface Integrals}
+
+(shoutout to the generalised stoke's theorem, he got me fr fr)
+
+\begin{dfn}[Paramatric form of the surface integral]{def:surface-int-param}{}
+    \begin{align*}
+        \underline{\Lambda} &= \underline{\Lambda}(u,v)\\
+                            &= x_{1}(u,v)\underline{e}_{1} + x_{2}(u,v)\underline{e}_{2} + x_{3}(u,v)\underline{e}_{3}
+    \end{align*}
+\end{dfn}
+
+\textbf{Example:} Sphere (in spherical coordinates) idk how to draw diagrams
+
+\begin{align*}
+    x_{1}(\theta, \phi) &= \sin\theta\cos\phi\\
+    x_{2}(\theta, \phi) &= \sin\theta\sin\phi\\
+    x_{3}(\theta, \phi) &= \cos\theta
+\end{align*}
+
+\[d\underline{r} = \underbrace{\partial_{X}\underline{r} du}_{d\underline{r}_{u}} + \underbrace{\partial_{X}\underline{r} dv}_{d\underline{r}_{v}}\]
+
+\[d\underline{S} = d\underline{R}_{u} \times d\underline{r}_{v} = \text{"area of infinitessimal parallelogram"}\]
+
+Actual line integral equation
+\begin{dfn}[Line Integral Equation]{def:line-int}{}
+    \[\int_{S} \underline{a} \cdot d \underline{S} = \iint \underline{a} \cdot (\partial_{u}\underline{r} \times \partial_{v}\underline{r})du dv\]
+\end{dfn}
+
+\textbf{Remarks}z
+\begin{itemize}
+    \item $\underline{\vec{n}} \propto \partial{u}\underline{r} \times \partial_{v}\underline{r}$
+    \item ambiguity in orientation ($u \leftrightarrow v$ interchase)
+        \begin{itemize}
+            \item (circle): closed surface, choose $\underline{\vec{u}}$ outwards
+            \item open surface: can do either - choose one. In Stoke's theorem, there will be a double ambiguity
+                \begin{itemize}
+                    \item Orientation of $S$
+                    \item Direction of line integral
+                \end{itemize}
+        \end{itemize}
+    \item For applications, $\partial_{u}\underline{r} \delta_{v}\underline{r}$. 
+        e.g. spherical coords: $\partial_{\theta}\underline{r} \times \partial_{\phi}\underline{r} \propto \partial_{r}\underline{r}$
+\end{itemize}
 
 
-\begin{xmp}[CO2 Molecule]{xmp:co2}{}
-    cba doing this
-\end{xmp}
+\begin{dfn}[somethinglinear coordinates $I$, flux \& surface]{def:idk}{}
+    \[(x_{1},\, x_{2},\,x_{3}) \to (x,y,z)\]
+\end{dfn}
+
+\begin{dfn}[Plan polar coordinates]{def:polar-coords}{}
+    \begin{align*}
+        x_{1}(\rho, \phi) &= \rho\cos\phi & \quad & \rho = \sqrt{x_{1}^{2} + y_{2}^{2}}\in [0, \infty) \\
+        x_{2}(\rho, \phi) &= \rho\sin\phi & \quad & tg\phi = x_\frac{{2}}{x_{1}}\in [0, \infty)
+    \end{align*}
+
+    \[\underline{\Gamma}(\rho, \phi) = x_{1}(\rho, \phi)\underline{e}_{1} + \underline{x}_{2}(\rho,\phi)\underline{e_{2}}\]
+    
+\end{dfn}
+
+\[\underline{e}_{\rho} = \frac{\partial_{\rho}\underline{r}}{\lvert \partial_{\rho}\underline{r} \rvert} = \cos\phi\underline{e_{1}} + \sin\phi \underline{e_{2}} = \frac{1}{\rho}\underline{r} (\text{special case final line})\]
+
+\textbf{Remarks}
+
+\begin{itemize}
+    \item $\underline{r} \ne \rho \underline{e}_{\rho} + \phi\underline{e}_{\rho}$
+    \item generally, $\underline{a} = \underline{a}_{\rho}\underline{\epsilon}_{\rho} + a_{\phi}\underline{e}_{\phi},\, \alpha_{\rho, \phi} = \underline{a} \cdot \underline{e}_{\rho, \phi}$
+    \item new aspect: $\{ \underline{e}_{\rho}, \underline{e}_{\rho}\}$ is position dependent
+\end{itemize}
+
+
+\begin{dfn}[Cylindrical Coordinates]{def:cylindrical-coords}{}
+    \begin{align*}
+        x_{1} &= \rho\cos\phi\\
+        x_{2} &= \rho\sin\phi\\
+        x_{3} &= z
+    \end{align*}
+
+    \begin{align*}
+        \underline{\Gamma}(\rho,\phi,z) &= \rho\cos\phi \underline{e}_{1} + \rho\sin\phi\underline{e}_{1} + z\underline{e}_{3}\\
+                                        &= \rho\underline{e}_{\rho} + z\underline{e}_{z} \text{ (special case)}
+    \end{align*}
+
+    \textbf{Note:} $\{\underline{e}_{\rho}, \underline{e}_{\phi}, \underline{e}_{\zeta}\}$ forms a right-hand orthogonal basis
+\end{dfn}
+
+\[\mathbb{P}\]
 
 \end{document}
