@@ -17,6 +17,7 @@
 
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 % \usepackage{preamble}
@@ -32,6 +33,14 @@
 
 
 \usepackage{hyperref} % note: this is the final package
+\hypersetup{
+  colorlinks   = true,    % Colours links instead of ugly boxes
+  urlcolor     = blue,    % Colour for external hyperlinks
+  linkcolor    = blue,    % Colour of internal links
+  citecolor    = red      % Colour of citations
+}
+
+
 \parindent = 0pt
 \linespread{1.1}
 
@@ -236,5 +245,159 @@ A difference between families and subsets is that the same vector can be represe
     \[\psi = \psi_{\mathcal{A}} : F^{r}\to V\]
 \end{thm}
 
+\newpage
+\section{Rings}
+I can't be bothered doing changes of basis and stuff, time for something more interesting :D 
+
+\subsection{Ring basics}
+\begin{dfn}[Definition of a Ring]{def:ring}{}
+    A \textbf{ring} is a set with two operations $(\mathbb{R}, +, \cdot)$ that satisfy:
+    \begin{enumerate}
+        \item $(R, +)$ is an abelian group
+        \item $(R, \cdot)$ is a \textbf{monoid} - this means that the second operation $\cdot : R \times R \to R$ is associative and that there is an \textbf{identity element} $1 = 1_{R}\in R$, often just called the identity, with the property that $1 \cdot a = a \cdot 1 = a$ for all $a\in R$.
+        \item The distributive laws hold, meaning that for all $a,b,c\in R$,
+            \begin{align*}
+                a \cdot (b + c) &= (a \cdot b) + (a \cdot c)) \\
+                (a + b) \cdot c &= (a \cdot c) + (b \cdot c)
+            \end{align*}
+    \end{enumerate}
+    The two operations are called \textbf{addition} and \textbf{multiplication} in our ring. A ring in which multiplication, that is $a \cdot b = b \cdot a$ for all $a,b\in R$, is a \textbf{commutative ring}
+\end{dfn}
+
+\textbf{Note}: We'll call the element $1\in R$ as the identity element of the monoid $(R, \cdot)$, and we call the additive identity of $(R, +)$ zero, written as $0_{R}$ or $0$
+
+\textbf{Example}: We can define the \textbf{null ring} or \textbf{zero ring} as a ring where $R$ is a single ement set, e.g. $\{0\}$, with the operations $0 + 0 = 0$ and $0 \times 0 = 0$. We will call any ring that isn't the zero ring a \textbf{non-zero ring}
+
+\begin{xmp}[Modulo Rings]{xmp:modulo-rings}{}
+    Let $m\in \mathbb{Z}$ be an integer. Then the set of \textbf{integers modulo} $m$, written
+    \[\mathbb{Z} / m\mathbb{Z}\]
+    is a ring. The elements of $\mathbb{Z} / m\mathbb{Z}$ consist of \textbf{congruence classes} of integers modulo $m$ - that is the elements are the subsets $T$ of $\mathbb{Z}$ of the form $T = a + m\mathbb{Z}$ with $a\in \mathbb{Z}$. Think of these as the set of integers that have the same remainder when you divide them by $m$. I denote the above congruence class by $\overline{a}$. Obviously $\overline{a} = \overline{b}$ is the same as $a-b\in m\mathbb{Z}$, and often I'll write
+    \[a \equiv b \mod m\]
+\end{xmp}
+
+If $m\in \mathbb{N}_{\ge 0}$ then there are $m$ congruence classes modulo $m$, in other words, $\lvert \mathbb{Z} / m\mathbb{Z} \rvert = m$, and I could write out the set as
+\[\mathbb{Z} / m\mathbb{Z} = \{\overline{0}, \overline{1},\dots,\overline{m - 1}\}\]
+To define addition and multiplication, set
+\[\overline{a} + \overline{b} = \overline{a + b} \quad \text{and} \quad \overline{a} \cdot \overline{b} = \overline{ab}\]
+Distributivity for $\mathbb{Z} / m\mathbb{Z}$ then follows from distributivity for $\mathbb{Z}$.
+
+\newpage
+\subsection{Linking Rings to Fields and Further Properties}
+
+\begin{dfn}[Ring definition of a field]{def:field-ring}{}
+    A \textbf{field} is a non-zero commutative ring $F$ in which every non-zero element $a\in F$ has an inverse $a^{-1}\in F$, that is an element $a^{-1}$ with the property that $a \cdot a^{-1} = a^{-1} \cdot a = 1$
+\end{dfn}
+
+\textbf{Example}: The ring $\mathbb{Z} / 3\mathbb{Z}$ is a field, which we have been calling $\mathbb{F}_{3}$. The ring $\mathbb{Z} / 12\mathbb{Z}$ is not a field, because neither $\overline{3}$ or $\overline{8}$ are invertible, since $\overline{3} \cdot \overline{8} = \overline{0}$.
+
+\begin{thm}[Prime property of fields]{thm:prime-ring-fields}{}
+    Let $m$ be a positive integer. The commutative ring $\mathbb{Z} / m\mathbb{Z}$ is a field if and only if $m$ is prime.
+\end{thm}
+
+\begin{thm}[Lemmas for multiplying by zero and negatives]{def:ring-lemmas-1}{}
+    Let $R$ be a ring and let $a,b\in R$. Then
+    \begin{enumerate}
+        \item $0a = 0 = a 0$
+        \item $(-a)b = -(ab) = a(-b)$
+        \item $(-a)(-b) = ab)$
+    \end{enumerate}
+\end{thm}
+
+\textbf{Note}: The distributive axiom for rings has familiar properties such as
+\begin{align*}
+    (a + b)(c + d) &= ac + ad + bc + bd\\
+    a(b - c) &= ab - ac
+\end{align*}
+But remember that multiplication is not always commutative, so multiplicative factors must be kept in the correct order - $ac$ may not equal $ca$
+
+\noindent\rule{\textwidth}{0.2pt}
+Suppose we have a ring $R$ such that $1_{R} = 0_{R}$, then $R$ must be the zero ring. 3.2.2 in notes for proof
+
+\begin{dfn}[Multiples of an abelian group]{def:abelian-group-multis}{}
+    Let $m\in \mathbb{Z}$. The \textbf{$m$-th multiple $ma$ of an element $a$}in an abelian group $R$ is:
+    \[ma = \underbrace{a + a + \cdots + a}_{\text{$m$ terms}} \quad \text{if} m > 0\]
+    $0a = 0$ and negative multiples are defined by $(-m)a = -(ma)$
+\end{dfn}
+
+\newpage
+\begin{thm}[Lemmas for multiples]{def:ring-lemmas-2}{}
+    Let $R$ be a ring, let $a,b\in R$ and let $m,n\in \mathbb{Z}$. Then:
+    \begin{enumerate}
+        \item $m(a + b) = ma + mb$
+        \item $(m + n)a = ma + na$
+        \item $m(na) = (mn)a$
+        \item $m(ab) = (ma)b = a(mb)$
+        \item $(ma)(nb) = (mn)(ab)$
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}
+    (in the lecturer's words) This is trivial and boring, so I will leave the details up to you.
+\end{proof}
+
+\begin{dfn}[Unit of a ring]{def:ring-unit}{}
+    Let $R$ be a ring. An element $a\in R$ is called a \textbf{unit} if it is \textit{invertible} in $R$ or in other words \textit{has a multiplicative inverse in $R$}, meaning that there exists $a^{-1}\in R$ such that
+    \[aa^{-1} = 1 = a^{-1} a\]
+\end{dfn}
+
+\textbf{Example}: In a field, such as $\mathbb{R}, \mathbb{R}, \mathbb{C}$, every non-zero element is a unit. In $\mathbb{Z}$, only $1$ and $-1$ are units
+
+\begin{thm}[The subset of units in a ring forms a group]{thm:ring-units-form-a-group}{}
+    The set $R^{\times}$ of units in a ring $R$ forms a group under multiplication
+\end{thm}
+
+I will call $R^{\times}$ the \textbf{group of units of the ring $R$}
+
+\begin{dfn}[zero-divisors of a ring]{def:zero-divisor}{}
+    In a ring $R$, a non-zero element $a$ is called a \textbf{zero-divisor} or \textbf{divisor of zero} if there exists a non-zero element $b$ such that either $ab = 0$ or $ba = 0$.
+\end{dfn}
+
+\textbf{Example}: In $\text{Mat}(2; \mathbb{R})$,
+\[\begin{bmatrix}
+    -1& 1\\
+    -1& 1
+\end{bmatrix} \begin{bmatrix}
+    1& 1\\
+    1& 1
+\end{bmatrix} = \begin{bmatrix}
+    0& 0\\
+    0& 0
+\end{bmatrix}\]
+So, both $\begin{bmatrix}
+    -1& 1\\
+    -1& 1
+\end{bmatrix}$ and $\begin{bmatrix}
+    1& 1\\
+    1& 1
+\end{bmatrix}$ are zero-divisors
+
+
+\begin{dfn}[Integral Domain]{def:integral-domain}{}
+    An \textbf{integral domain} is a non-zero commutative ring that has no zero-divisors.
+
+    In an integral domain there are no zero-divisors and therefore the following laws will hold:
+    \begin{enumerate}
+        \item $ab = 0 \implies a = 0$ or $b = 0$, and
+        \item $a\ne 0$ and $b\ne 0 \implies ab \ne 0$ 
+    \end{enumerate}
+\end{dfn}
+
+\textbf{Example}: $\mathbb{Z}$ is an integral domain. Any field is an integral domain, since a unit in a ring $R$ cannot be a zero-divisor. To see this, let $R$ be a non-zero ring and let $a\in R^{\times}$ be a unit. Suppose that $ab = 0$ or $ba = 0$ for some $b\in R$. Multiplying on the left or on the right respectively by $a^{-1}$ shows that $a^{-1} ab = a^{-1} 0$ or $baa^{-1} = 0 a^{-1}$, so in both cases, $b = 0$
+
+\begin{thm}[Cancellation Law for Integral Domains]{thm:int-domains-cancellation-law}{}
+    Let $R$ be an \textit{integral domain} and let $a,b,c\in R$. If $ab = ac$ and $a\ne 0$ then $b = c$
+\end{thm}
+
+We will now reprove \ref{thm:prime-ring-fields} as a special case of a general theorem
+
+\begin{thm}[Prime Property for Integral Domains]{thm:prime-int-domains}{}
+    Let $m$ be a natural number. Then $\mathbb{Z} / m\mathbb{Z}$ is an integral domain if and only if $m$ is prime.
+\end{thm}
+
+\begin{thm}[Finite Integral Domains are Fields]{thm:finite-int-domains-are-fields}{}
+    Every \textbf{finite} \hyperref[def:integral-domain]{integral domain} is a \hyperref[def:field]{field}.
+\end{thm}
+
+\subsection{Polynomials}
 
 \end{document}
