@@ -41,9 +41,6 @@
 }
 
 
-\parindent = 0pt
-\linespread{1.1}
-
 % Custom Definitions of operators
 \DeclareMathOperator{\Ima}{im}
 \DeclareMathOperator{\Fix}{Fix}
@@ -51,6 +48,16 @@
 \DeclareMathOperator{\Stab}{Stab}
 \DeclareMathOperator{\send}{send}
 \DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\Maps}{Maps}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\scale}{sc}
+
+
+
+\parindent = 0pt
+\linespread{1.1}
+
 
 \title{Honours Algebra Notes}
 \author{Leon Lee}
@@ -398,6 +405,207 @@ We will now reprove \ref{thm:prime-ring-fields} as a special case of a general t
     Every \textbf{finite} \hyperref[def:integral-domain]{integral domain} is a \hyperref[def:field]{field}.
 \end{thm}
 
+
 \subsection{Polynomials}
+
+\begin{dfn}[Polynomial]{def:polynomial}{}
+    Let $R$ be a ring. A \textbf{polynomial over $R$} is an expression of the form
+    \[P = a_{0} + a_{1}X + a_{2}X^{2} + \cdots + a_{m}X^{m}\]
+    for some non-negative integer $m$ and elements $a_{i}\in R$ for $0 \le i \le m$. The set of all polynomials over $R$ is denoted by $R[X]$. In the case where $a_{m}$ is non-zero, the polynomial $P$ has \textbf{degree} $m$, (written $\deg(P)$), and $a_{m}$ is its \textbf{leading coefficient}. When the leading coefficient is $1$ the polynomial is a \textbf{monic polynomial}. A polynomial of degree one is called \textbf{linear}, a polynomial od degree two is called \textbf{quadractic}, and a polynomial of degree three is called \textbf{cubic}.
+\end{dfn}
+
+\begin{dfn}[Ring of Polynomials]{def:polynomial-rings}{}
+    The set $R[X]$ becomes a ring called the \textbf{ring of polynomials with coefficients in $R$, or over $R$}. The zero and the identity of $R[X]$ are the zero and identity of $R$, respectively.
+\end{dfn}
+
+\textbf{Note:} The elements of $R$ can be identified with polynomials of degree $0$. I will call these polynomials \textbf{constant}. You should notice from the multiplication rule that if $R$ is commutative, then so is $R[X]$
+
+\begin{thm}[Zero-Divisors of a Polynomial Ring]{thm:zero-divisors-of-poly-ring}{}
+    If $R$ is a ring with no zero-divisors, then $R[X]$ has no zero-divisors and $\deg(PQ) = \deg(P) + \deg(Q)$ for non-zero $P,Q\in R[X]$.
+    
+    \noindent\rule{\textwidth}{0.2pt}
+    If $R$ is an integral domain, then so is $R[X]$
+\end{thm}
+
+\newpage
+\begin{thm}[Division and Remainder]{thm:division-and-remainder}{}
+    Let $R$ be an integral domain and let $P, Q\in R[X]$ with $Q$ monic. Then there exists unique $A,B\in R[X]$ such that $P = AQ + B$ and $\deg(B) < \deg(Q)$ or $B = 0$
+\end{thm}
+
+\begin{dfn}[Formal definition of a function]{def:function-poly-ring}{}
+    Let $R$ be a commutative ring and $P\in R[X]$ a polynomial. Then the polynomial $P$ can be \textbf{evaluated} at the element $\lambda\in R$ to produce $P(\lambda)$ by replacing the powers of $X$ in the polynomial $P$ by the corresponding powers of $\lambda$. In this way we have a mapping
+    \[R[X] \to \Maps(R, R)\]
+    This is the precise mathematical description of thinking of a polynomial as a function. An element $\lambda\in R$ is a \textbf{root} of $P$ is $P(\lambda) = 0$
+\end{dfn}
+
+\begin{thm}[Roots of a Polynomial]{thm:polynomial-roots}{}
+    Let $R$ be a commutative ring, let $\lambda\in R$ and $P(X) \in R[X]$. Then $\lambda$ is a root of $P(X)$ if and only if $(X - \lambda)$ divides $P(X)$
+\end{thm}
+
+\begin{thm}[Degrees of Polynomial Roots]{thm:polynomial-root-degs}{}
+    Let $R$ be a field, or more generally an integral domain. Then a non-zero polynomial $P\in R[X] \backslash \{0\}$ has at most $\deg(P)$ roots in $R$
+\end{thm}
+
+\begin{dfn}[Algebraically closed fields]{def:algebraically=closed}{}
+    A field $F$ is \textbf{algebraically closed} if each non-constant polynomial $P\in F[X]\backslash F$ with coefficients in our field has a root in our field $F$
+\end{dfn}
+
+\textbf{Example}: The field of real numbers $\mathbb{R}$ is not algebraically closed. For instance, $X^{2} + 1$ has no root in $\mathbb{R}$
+
+\begin{thm}[Fundamental Theorem of Algebra]{thm:fundamental-theorem-of-algebra}{}
+    The field of complex numbers $\mathbb{C}$ is algebraically closed.
+\end{thm}
+
+\begin{thm}[Linear Factors of Algebraically Closed Fields]{thm:alg-closed-fields-linear-factors}{}
+    If $F$ is an algebraically closed field, then every non-zero polynomial $P\in F[X]\backslash \{0\}$ \textbf{decomposes into linear factors}
+    \[P = c(X - \lambda_{1}) \cdots (X - \lambda_{n})\]
+    with $n\ge 0,\, c\in F^{\times}$ and $\lambda_{1},\dots,\lambda_{n}\in F$. This decomposition is unique up to reordering the factors
+\end{thm}
+
+% TODO: bunch of stuff :)))))))
+
+
+\newpage
+\section{Determinants and Eigenvalues Redux}
+
+\subsection{Symmetric Groups}
+
+\begin{dfn}[Symmetric Groups]{def:symmetric-groups}{}
+    The group of all permutations of the set $\{1,2,\dots,n\}$, also known as bijections from $\{1,2,\dots,n\}$ to itself is denoted by $\mathfrak{S}_{n}$ (but i will just write $S_{n}$ because icba) and called the \textbf{$n$-th symmetric group}. It is a group under composition and has $n!$ elements.
+
+    \noindent\rule{\textwidth}{0.2pt}
+    A \textbf{tranposition} is a permutation that swaps two elements of the set and leaves all the others unchanged.
+\end{dfn}
+
+\begin{dfn}[Inversions of a permutation]{def:inversion}{}
+    An \textbf{inversion} of a permutation $\sigma\in S_{n}$ is a pair $(i, j)$ such that $1 \le i < j \le n$ and $\sigma(i) > \sigma(j)$. The number of inversions of the permutation $\sigma$ is called the \textbf{length of $\sigma$} and written $\ell(\sigma)$. In formulas:
+    \[\ell(\sigma) = \lvert \{(i,j) : i < j \text{ but } \sigma(i) > \sigma(j)\} \rvert\]
+    The \textbf{sign of $\sigma$} is defined to be the parity of the number of inversions of $\sigma$. In formulas:
+    \[\sgn(\sigma) = (-1)^{\ell(\sigma)}\]
+\end{dfn}
+
+\textbf{Note}: A permutation whose sign is $+1$, in other words which has even length, is called an \textbf{even permutation}
+
+\noindent\rule{\textwidth}{0.2pt}
+
+A permutation whose sign is $-1$, in other words which has odd length, is called an \textbf{odd permutation}
+
+[INSERT DIAGRAM]
+
+\begin{thm}[Multiplicativity of the sign]{thm:permutation-multiplicativity}{}
+    For each $n\in \mathbb{N}$ the sign of a permutation produces a group homomorphism $\sgn : S_{n} \to \{+1, -1\}$ from the symmetric group to the two-element group of signs. In formulas:
+    \[\sgn(\sigma\tau) = \sgn(\sigma)\sgn(\tau) \quad \forall \sigma, \tau\in S_{n}\]
+\end{thm}
+
+\begin{dfn}[Alternating Group of a Permutation]{def:alternating-group}{}
+    For $n\in \mathbb{N}$, the set of even permutations in $S_{n}$ forms a subgroup of $S_{n}$ because it is the kernel of the group homomorphism $\sgn : S_{n}\to \{+1, -1\}$. This group is the \textbf{alternating group} and is denoted $A_{n}$
+\end{dfn}
+
+\newpage
+
+\subsection{Determinants}
+
+\begin{dfn}[Determinants]{def:determinants}{}
+    Let $R$ be a commutative ring and $n\in \mathbb{N}$. The \textbf{determinant} is a mapping $\det : \Mat(n;R) \to R$ from square matrices with coefficients in $R$ to the ring $R$ that is given by the following formula
+
+    \[A = \begin{pmatrix}
+        a_{11} & \cdots & a_{1n}\\
+        \vdots & \ddots & \vdots\\
+        a_{n1} & \cdots & a_{nn}
+    \end{pmatrix} \mapsto \det(A) = \sum_{\sigma\in S_{n}} \sgn(\sigma) a_{1\sigma(1)\cdots}  a_{n\sigma(n)}\]
+\end{dfn}
+
+The sum is over all permutations of $n$, and the coefficient $\sgn(\sigma)$ is the sign of the permutation $\sigma$ defined above. This formula is called the \textbf{Leibniz formula}. The degenerate case $n = 0$ assigns the value $1$ as the determinant of the "empty matrix"
+
+\textbf{Remark}: The determinant determines whether or not a linear system of $kn$ equations in $n$ unknowns has a unique solution, hence the name
+
+\subsubsection{The connection between determinants and volumes}
+
+Each such linear mapping $L$ has an "area scaling factor" $\text{sc}(L)$ which I defined as the amount that $L$ changes the area, $\text{vol}(U)$, of a region $U$ in $\mathbb{R}^{2}$. In other words, $\text{area}(LU) = \text{sc}(L)\text{area}(U)$. I claim that
+\[\text{sc}(L) = \lvert \det(L) \rvert\]
+
+To see this, I consider the properties that the mapping $\text{sc} : \Mat(2;\mathbb{R})\to \mathbb{R}_{\ge 0}$, defined by $L \mapsto \text{sc}(L)$, must have:
+\begin{enumerate}
+    \item It should be "multiplicative": $\text{sc}(LM) = \text{sc}(L)\text{sc}(M)$
+    \item Dilating an axis should increase the area of a region by the amount of the dilation:
+        \[\text{sc}(\text{diag}(a, 1)) = \text{sc}(\text{diag}(1, a)) = \lvert a \rvert\]
+    \item A shear transformation should leave the area of a region unchanged: $\text{sc}(D) = 1$ for $D$ an upper or a lower triangular matrix with ones on the diagonal
+\end{enumerate}
+
+
+\subsubsection{The connection between determinants and orientation}
+
+The sign of the determinant of an invertible real $(2 \times 2)$ matrix shows whether the corresponding endomorphism of $\mathbb{R}^{2}$ preseves or reverses orientation. To comprehend orientation, I imagine a clock face inside the region $U$ I'm going to apply $L$ to: if, after applying $U$, the clock face is still the correct way round then $L$ preserves orientation; if it is the wrong way around, then $L$ reverses orientation. I think of this property as a mapping sending an invertible linear transformation $L : \mathbb{R}^{2}\to \mathbb{R}^{2}$ to $\epsilon(L)\in \{+1, -1\}$ as follows:
+\[\epsilon(L) = \begin{cases}
+    +1 & \text{$L$ preserves the orientation} \\
+    -1 & \text{$L$ reverses the orientation}
+\end{cases}\]
+Let $[a]$ denote the sign of a non-zero real number $a$. I claim that
+\[\epsilon(L) = [\det(L)]\]
+
+\newpage
+To see this, let's consider the properties that the mapping $\epsilon : GL(2;\mathbb{R})\to \{+1, -1\}$ defined by $L \mapsto \epsilon(L)$, must have:
+\begin{enumerate}
+    \item It should be "multiplicative": $\epsilon(LM) = \epsilon(L)\epsilon(M)$
+    \item Dilating an axis should change the orientation by the sign of the amount of the dilation:
+        \[\epsilon(\text{diag}(a, 1)) = \epsilon(\text{diag}(1, a)) = [a]\]
+    \item A shear transformation should preserve the orientation: $\epsilon(D) = 1$ for $D$ an upper or a lower triangular matrix with ones on the diagonal
+\end{enumerate}
+
+
+\subsection{Characterising the Determinant}
+
+Determinants exist for more than just real matrices, so here is an interpretation of the determinant over arbitrary fields
+
+\begin{dfn}[Bilinear Forms]{def:bilinear-forms}{}
+    Let $U,V,W$ be $F$-vector spaces. A \textbf{bilinear form on $U \times V$ with values in $W$} is a mapping $H: U \times V \to W $ which is a linear mapping in both of its entries. This means that it must satisfy the following properties for all $u_{1}, u_{2}\in U$ and $v_{1}, v_{2}\in V$ and all $\lambda\in F$:
+    \begin{align*}
+        H(u_{1} + u_{2}, v_{2}) &= H(u_{1}, v_{1}) + H(u_{2}, v_{1})\\
+        H(\lambda u_{1}, v_{1}) &= \lambda H(u_{1}, v_{1}) \\
+        H(u_{1}, v_{2} + u_{2}) &= H(u_{1}, v_{1}) + H(u_{2}, v_{1})\\
+        H(u_{1},\lambda v_{1}) &= \lambda H(u_{1}, v_{1}) \\
+    \end{align*}
+\end{dfn}
+
+The first two conditions state that for any fixed $v\in V$ the mapping $H(-, v) : U\to W$ is linear; the final two conditions state that for any fixed $u\in U$, the mapping $H(u, -) : V\to W$ is linear. If $U$, $V$, and $W$ are clear from the context I will simply say that $H$ is a \textbf{bilinear form}. A bilinear form $H$ is \textbf{symmetric} is $U = V$ and
+\[H(u,v) = H(v,u)\quad \text{for all } u,v\in U\]
+while it is \textbf{antisymmetric} or \textbf{alternating} if $U = V$ and
+\[H(u, u) = 0 \quad\text{for all } u\in U\]
+
+\textbf{Remark}: Suppose that $H : U \times U \ to W$ is an antisymmetric bilinear form on $U$ with values in $W$. Then for all $u, v\in W$:
+\begin{align*}
+    0 &= H(u + v, u + v)\\
+      &= H(u,u + v) + H(v, u + v)\\
+      &= H(u,u) + H(u,v) + H(v, u) + H(v, v)\\
+      &= H(u, v) + H(v, u)
+\end{align*}
+
+Therefore, an antisymmetric form always satisfies $H(u, v) = -H(v, u)$, hence the name. On the other hand, if $H$ is a bilinear form satisfying $H(u, v) + -H(v, u)$ for all $u,v\in U$, then taking $u = v$ gives $H(u,u) = -H(u,u)$ from which follows that $H(u,u) + H(u,u) = 0$. As long as $1_{F} + 1_{F} \ne 0_{F}$ I deduce that $H(u,u) = 0$ and so the form is antisymmetric. But remember that you know a field $F = \mathbb{F}_{2}$ in which $1_{F} + 1_{F} = 0_{F}$, so you do need to be careful
+
+
+\begin{dfn}[Multilinear Forms]{def:multilinear}{}
+    Let $V_{1},\dots,V_{n}, W$ be $F$-vector spaces. A mapping $H : V_{1} \times V_{2} \times \cdots \times V_{n} \to W$ is a \textbf{multilinear form} or just \textbf{multilinear} if for each $j$, the mapping $V_{j}\to W$ defined by $v_{j}\mapsto H(v_{1},\dots,v_{j},\dots,v_{n})$, with the $v_{i}\in V_{i}$ arbitrary fixed vectors of $V_{i}$ for $i\ne j$ is linear. 
+\end{dfn}
+In the case that $n = 2$, this is exactly the definition of a bilinear mapping shown above
+
+\begin{dfn}[Alternating Multilinear Forms]{def:alternating-multilinear}{}
+    Let $V$ and $W$ be $F$-vector spaces. A multilinear form $ H : V \times \cdots \times V \to W$ is \textbf{alternating} if it vanishes on every $n$-tuple of elements of $V$ that has at least two entries equal, in other words if:
+    \[(\exists i\ne j \text{ with } v_{i} = v_{j})\to H(v_{1},\dots,v_{i},\dots,v_{j},\dots,v_{n}) = 0\]
+\end{dfn}
+
+In the case $n = 2$, this is exactly the definition of an alternating/antisymmetric form shown above
+
+\textbf{Remark}: An alternating multilinear form $H$ has the property
+\[H(v_{1},\dots,v_{i},\dots,v_{j},\dots,v_{n}) = -H(v_{1},\dots,v_{j},\dots,v_{i},\dots,v_{n})\]
+for all $v_{1},\dots,v_{n}\in V$. Combining this with [WIP] shows that for any $\sigma\in S_{n}$,
+\[H(v_{\sigma(1)},\dots,v_{\sigma(n)}) = \sgn(\sigma)H(v_{1},\dots,v_{n})\]
+
+Conversely, if the above remark holds for a multilinear form $H$ and arbitrary $v_{1},\dots,v_{n}\in V$, then $H$ is alternating provided that $1_{F} + 1_{F} \ne 0_{F}$
+
+\begin{thm}[Characterisation of the Determinant]{thm:determinant-characterisation}{}
+    Let $F$ be a field. The mapping
+    \[\det : \Mat(n;F) \to F\]
+    is the unique alternating multilinear form on $n$-tuples of column vectors with values in $F$ that takes the value $1_{F}$ on the identity matrix
+\end{thm}
 
 \end{document}
