@@ -17,3 +17,10 @@
 \contentsline {subsubsection}{\numberline {3.2.2}The connection between determinants and volumes}{14}{subsubsection.3.2.2}%
 \contentsline {subsubsection}{\numberline {3.2.3}The connection between determinants and orientation}{14}{subsubsection.3.2.3}%
 \contentsline {subsection}{\numberline {3.3}Characterising the Determinant}{15}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Rules for Calculating with Determinants}{16}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.3}Consequences of determinant rules}{17}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.5}Simplifying Determinant Calculations}{17}{subsubsection.3.4.5}%
+\contentsline {subsubsection}{\numberline {3.4.10}Alternative Definition of Cramer's}{18}{subsubsection.3.4.10}%
+\contentsline {subsection}{\numberline {3.5}Eigenvalues and Eigenvectors}{19}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.5}Eigenvalue remarks}{19}{subsubsection.3.5.5}%
+\contentsline {subsection}{\numberline {3.6}Triangularisable, Diagonalisable, and Cayley-Hamilton}{21}{subsection.3.6}%

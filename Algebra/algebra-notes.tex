@@ -593,12 +593,17 @@ In the case that $n = 2$, this is exactly the definition of a bilinear mapping s
     \[(\exists i\ne j \text{ with } v_{i} = v_{j})\to H(v_{1},\dots,v_{i},\dots,v_{j},\dots,v_{n}) = 0\]
 \end{dfn}
 
+
+
 In the case $n = 2$, this is exactly the definition of an alternating/antisymmetric form shown above
 
 \textbf{Remark}: An alternating multilinear form $H$ has the property
 \[H(v_{1},\dots,v_{i},\dots,v_{j},\dots,v_{n}) = -H(v_{1},\dots,v_{j},\dots,v_{i},\dots,v_{n})\]
+
+
 for all $v_{1},\dots,v_{n}\in V$. Combining this with [WIP] shows that for any $\sigma\in S_{n}$,
-\[H(v_{\sigma(1)},\dots,v_{\sigma(n)}) = \sgn(\sigma)H(v_{1},\dots,v_{n})\]
+
+\[ H(v_{\sigma(1)},\dots,v_{\sigma(n)}) = \sgn(\sigma)H(v_{1},\dots,v_{n})\]
 
 Conversely, if the above remark holds for a multilinear form $H$ and arbitrary $v_{1},\dots,v_{n}\in V$, then $H$ is alternating provided that $1_{F} + 1_{F} \ne 0_{F}$
 
@@ -606,6 +611,188 @@ Conversely, if the above remark holds for a multilinear form $H$ and arbitrary $
     Let $F$ be a field. The mapping
     \[\det : \Mat(n;F) \to F\]
     is the unique alternating multilinear form on $n$-tuples of column vectors with values in $F$ that takes the value $1_{F}$ on the identity matrix
+\end{thm}
+
+\subsection{Rules for Calculating with Determinants}
+
+\begin{thm}[Multiplicativity of the Determinant]{thm:determinant-multiplicativity}{}
+    Let $R$ be a commutative ring and let $A,B\in \Mat(n;R)$. Then
+    \[\det(AB) = \det(A)\det(B)\]
+\end{thm}
+
+\begin{thm}[Determinantal Criteron for Invertibility]{thm:invertibility-criteron}{}
+    The determinant of a square matrix with entries in a field $F$ is non-zero if and only if the matrix is invertible
+\end{thm}
+
+\subsubsection{Consequences of determinant rules}
+\begin{itemize}
+    \item If $A$ is invertible then $\det(A^{-1}) = \det(A)^{-1}$
+    \item If $B$ is a square matrix then $\det(A^{-1}BA) = \det(B)$
+\end{itemize}
+
+
+
+\begin{thm}[Determinants of a Transpose Matrix]{thm:determinant-of-transpose}{}
+    The determinant of a square matrix and of the transpose of the square matrix are equal, that is for all $A\in \Mat(n;R)$ with $R$ a commutative ring,
+    \[\det(A^{T}) = \det(A)\]
+\end{thm}
+
+\subsubsection{Simplifying Determinant Calculations}
+Via \ref{thm:determinant-characterisation}, the theorem demonstrates that Gaussian elimination works with finding determinants - \textit{Row Addition} doesn't change the determinant, while \textit{Row Swap} changes the sign only. When Gaussian elimination is completed, the final matrix has staircase form so is upper triangular from which the determinant can easily be calculated by multiplying the entries of the diagonal together.
+
+\noindent\rule{\textwidth}{0.2pt}
+Although the determinant $\det(A) = \sum_{\sigma\in S_{n}} \sgn(\sigma) \prod_{i = 1}^{n} a_{i\sigma(i)}$ might strike you as difficult to calculate, the superficially simpler expression $\text{per}(A) = \sum_{\sigma\in S_{n}}\prod_{i=1}^{n} a_{i\sigma(i)}$ known as the \textbf{permanent} is much harder to calculate, and it's known to be NP-hard to compute.
+
+\begin{dfn}[Cofactors of a Matrix]{def:cofactors-matrix}{}
+    Let $A \in \Mat(n;R)$ for some commutative ring $R$ and natural number $n$. Let $i$ and $j$ be integers between $1$ and $n$. Then the $(i, )$ \textbf{cofactor of $A$} is $C_{ij} = (-1)^{i + j} \det(A\langle i,j \rangle)$ where $A\langle i, j \rangle$ is the matrix obtained from $A$ by deleting the $i$-th row and $j$-th column.
+    \[C_{23} = (-1)^{2 + 3} \det \begin{pmatrix}
+        a_{11} & a_{12}& \textcolor{red}{a_{13}}\\
+        \textcolor{red}{a_{21}}& \textcolor{red}{a_{22}}& \textcolor{red}{a_{23}}\\
+        a_{31}& a_{32}& \textcolor{red}{a_{33}}
+    \end{pmatrix} = -a_{11}a_{32} + a_{31}a_{12}\]
+\end{dfn}
+
+\begin{thm}[Laplace's Expansion of the Determinant]{thm:laplace-determinant}{}
+    Let $A = (a_{ij})$ be an $(n \times n)$-matrix with entries from a commutative ring $R$. For a fixed $i$, the \textbf{$i$-th row expansion of the determinant} is
+    \[\det(A) = \sum_{j = 1}^{n}a_{ij}C_{ij}\]
+    and for a fixed $j$, the \textbf{$j$-th column expansion of the determinant} is
+    \[\det(A) = \sum_{i = 1}^{n} a_{ij} C_{ij}\]
+\end{thm}
+
+\newpage
+\begin{dfn}[Adjugate Matrix]{def:adjugate-matrix}{}
+    Let $A$ be a $(n \times n)$-matrix with entries in a commutative ring $R$. The \textbf{adjugate matrix} $\text{adj}(A)$ is the $(n \times n)$-matrix whose entries are $adj(A)_{ij} = C_{ji}$ where $C_{ji}$ is the $(j, i)$-cofactor
+\end{dfn}
+
+\begin{thm}[Cramer's Rule]{thm:cramers-rule}{}
+    Let $A$ be a $(n \times n)$-matrix with entries in a commutative ring $R$. Then
+    \[A \cdot \text{adj}(A) = (\det A)I_{n}\]
+\end{thm}
+
+\subsubsection{Alternative Definition of Cramer's}
+In many sources, such as Wikipedia, Cramer's Rule means the formula
+\[x_{i} = \frac{\det(a_{*1}\mid \dots \mid b_{*} \mid \dots \mid a_{*n})}{\det(a_{*1}\mid \dots \mid a_{*i} \mid \dots \mid a_{*n})}\]
+for solving a field $F$ the system $A\vec{x} = \vec{b}$ of $n$ linear equations in $n$ unknowns, provided that a unique solution exists. A unique solution exists if and only if $A$ is invertible. So, instead of applying the Gaussian algorithm, you can calculate lots of determinants, replacing the $i$-th column of $A$ by the given solution vector $\vec{b}$. It turns out that if you implement this rule on a computer, it has the same efficiency as the Gaussian algorithm. The relationship between this version of Cramer's rule and the above theorem is got by successively taking the vector $\vec{b}$ in the system of linear equations to be the standard basis elements $\vec{e_{i}}$ with $1 \le i \le n$.
+
+\begin{thm}[Invertibility of Matrices]{thm:invertibility-of-matrices}{}
+    A square matrix with entries in a commutative ring $R$ is invertible if and only if its determinant is a unit in $R$. That is, $A\in \Mat(n;R)$ is invertible if and only if $\det(A)\in R^{\times}$
+\end{thm}
+
+So for instance, an integral matrix $A\in \Mat(n;\mathbb{Z})$ is invertible if and only if $\det(A)$ is $1$ or $-1$, since $\mathbb{Z}^{\times} = \{\pm 1\}$. On the other hand, a matrix $A\in \Mat(n;F)$ with entries in a field $F$ is invertible if and only if $\det(A)\ne 0$ since $F^{\times}$ consists of the non-zero elements of $F$.
+
+\begin{thm}[Jacobi's Formula]{thm:jacobis}{}
+    Let $A = (a_{ij})$ where the coefficients $a_{ij} = a_{ij}(t)$ are functions of $t$. Then
+    \[\frac{d}{dt} \det A = \text{Tr}\text{Adj} A \frac{dA}{dt}\]
+\end{thm}
+
+\newpage
+\subsection{Eigenvalues and Eigenvectors}
+
+\begin{dfn}[Eigenvalues and Eigenvectors]{def:eigenvalue-eigenvector}{}
+    Let $f: V \to V $ be an endomorphism of an $F$-vector space $V$. A scalar $\lambda\in F$ is an \textbf{eigenvalue of $f$} if and only if there exists a non-zero vector $\vec{v}\in V$ such that $f(\vec{v}) = \lambda \vec{v}$. Each such vector is called an \textbf{eigenvector of $f$ with eigenvalue $\lambda$}. For any $\lambda\in F$, the \textbf{eigenspace of $f$ with eigenvalue $\lambda$} is
+    \[E(\lambda, f) = \{\vec{v}\in V : f(\vec{v}) = \lambda \vec{v}\}\]
+\end{dfn}
+
+\begin{thm}[Existence of Eigenvalues]{thm:existence-of-eigenvalues}{}
+    Each endomorphism of a non-zero finite dimensional vector space over an algebraically closed field has an eigenvalue
+\end{thm}
+
+\begin{dfn}[Characteristic Polynomial]{def:characteristic-polynomial}{}
+    Let $R$ be a commutative ring and let $A\in \Mat(n;R)$ be a square matrix with entries in $R$. The polynomial $\det(x I_{n} - A)\in R[x]$ is called the \textbf{characteristic polynomial of the matrix $A$}. It is denoted by
+    \[\chi_{A}(x) := \det(x I_{n} - A)\]
+    (where $\chi$ stands for $\chi$aracteristic, lol)
+\end{dfn}
+
+\textbf{Note}: Previously $R[X]$ is written for the ring of polynomials on one variable with coefficients in the ring $R$, and now $R[x]$ has appeared instead. This is mainly just to make it clear that $x$ is a variable and not a matrix, as it might look confusing if it is written as $\det(X I_{n} - A)$ ($X$ might be mistaken as a matrix)
+
+\begin{thm}[Eigenvalues and Characteristic Polynomials]{thm:eigenvalues-char-polynomial}{}
+    Let $F$ be a field and $A\in \Mat(n;F)$ a square matrix with entries in $F$. The eigenvalues of the linear mapping $A : F^{n}\to F^{n}$ are exactly the roots of the characteristic polynomial $\chi_{A}$
+\end{thm}
+
+\subsubsection{Eigenvalue remarks}
+\begin{enumerate}
+    \item Square matrices $A,\,B\in \Mat(n;R)$ of the same size are \textit{conjugate} if
+        \[B = P^{-1}AP\in \Mat(n;R)\]
+    for an invertible $P\in \text{GL}(n;R)$. Conjugacy is an equivalence relation on $\Mat(n;R)$. (The definition makes sense for any commutative ring $R$, although we will mainly be concerned with the case of a field)
+    \item The motivation for conjugacy comes from the various matrix representations for an endomorphism $f : V \to V$ of an $n$-dimensional vector space $V$ over a field $F$. Let
+        \[A = (a_{ij}) =_{\mathcal{A}}\,[f]_{\mathcal{A}},\,B = (b_{ij}) =_{\mathcal{B}}\,[f]_{\mathcal{B}}\in \Mat(n;f)]\]
+        be the matrices of $f$ with respect to bases $\mathcal{A} = (\vec{v_{1}}, \vec{v_{2}},\dots,\vec{v_{n}}),\,\mathcal{B} = (\vec{w_{1}}, \vec{w_{2}},\dots,\vec{w_{n}})$ for $V$
+        \[f(\vec{v_{j}}) = \sum_{i = 1}^{n}a_{ij}\vec{v_{i}},\,f(\vec{w_{j}}) = \sum_{i = 1}^{n}b_{ij}\vec{w_{i}}\in V\]
+
+        The change of basis matrix $P = (p_{ij}) =_{\mathcal{A}}\, [\text{id}_{V}]_{\mathcal{B}}\in \Mat(n;F)$ is invertible, with
+        \[\vec{w_{j}} = \sum_{i = 1}^{n}p_{ij}\vec{v_{i}}\in V\]
+        We have the identity
+        \[B = P^{-1}AP\in \Mat(n;F)\]
+        so $A,B$ are conjugate
+    \item \textbf{Key observation}: the characteristic polynomials of conjugate $A,B\in \Mat(n,R)$ are the same
+        \begin{align*}
+            \chi_{B}(x) &= \det(x I_{n} - B) = \det(x I_{n} = P^{-1}AP) \\
+            &= \det(P^{-1}(x I_{n} - A)P) = \det(P)^{-1}\det(x I_{n} - A)\det(P) \\
+            &= \det(xI_{n} - A) = \chi_{A}(x)\in R[x]
+        \end{align*}
+    \item In view of $2$ and $3$ we can define the characteristic polynomial of an endomorphism $f : V\to V$ of an $n$-dimensional vector space over a field $F$ to be
+        \[\chi_{f}(x) = \chi_{A}(x)\in F[x]\]
+        with $A =\mathcal{A}\,[f]_{\mathcal{A}}\in \Mat(n;R)$ the matrix of $f$ with respect to \textit{any} basis $\mathcal{A}$ for $V$. Thanks to \ref{thm:eigenvalues-char-polynomial}, the eigenvalues of $f$ are exactly the roots of $\chi_{f}$, the characteristic polynomial of $f$
+\end{enumerate}
+
+\textbf{Remark}: Let $f : V\to V$ be an endomorphism of an $n$-dimensional vector space $V$ over a field $F$. Suppose given an $m$-dimensional subspace $W\subseteq V$ such that $f(W)\subseteq W$, so that there are defined endomorphisms of the subspace and the quotient space
+\begin{align*}
+    g &: W \to W;\, \vec{w}\mapsto f(\vec{w})\\
+    h &: V / W \to V / W;\, W + \vec{v} \mapsto W + f(\vec{v})
+\end{align*}
+Any ordered basis $\mathcal{A} = (\vec{w_{1}},\vec{w_{2}},\dots,\vec{w_{m}})$ for $W$ can be extended to an ordered basis for $V$
+\[\mathcal{B} = (\vec{w_{1}}, \vec{w_{2}},\dots,\vec{w_{m}},\vec{v}_{m+1},\vec{v}_{m+2}\cdots,\vec{v_{n}})\]
+
+The images of the $\vec{v}_{j}$'s under the canonical projection $\text{can} : V\to V / W$ are then an ordered basis for $V / W$
+\[\mathcal{C} = (\text{can}(v_{m + 1}), \text{can}(v_{m + 2}),\dots,\text{can}(\vec{v}_{n}))\]
+Let $a_{ij},b_{jk},c_{ik}\in F$ be the coefficients in the linear combinations
+\[f(\vec{w}_{j}) = \sum_{i = 1}^{m}a_{ij}\vec{w}_{i}\in W,\,f(\vec{v}_{k}) = \sum_{j = m+1}^{n} b_{jk}\vec{v}_{j} + \sum_{i = 1}^{n}c_{ik}\vec{w}_{i}\in V\]
+
+[WIP SO MUCH WRITING OMG]
+
+\newpage
+\subsection{Triangularisable, Diagonalisable, and Cayley-Hamilton}
+
+\begin{thm}[Triangularisability]{thm:triangularisability}{}
+    Let $f : V \to V$ be an endomorphism of a finite dimensional $F$-vector space $V$. The following two statements are equivalent:
+    \begin{enumerate}
+        \item The vector space $V$ has an ordered basis $\mathcal{B} = (\vec{v}_{1}, \vec{v}_{2},\dots,\vec{v}_{n})$ such that
+            \begin{align*}
+                f(\vec{v}_{1}) &= a_{11}\vec{v_{1}}, \\
+                f(\vec{v_{2}}) &= a_{12}\vec{v}_{1} + a_{22}\vec{v}_{2}, \\
+                &\vdots \\
+                f(\vec{v}_{n}) = a_{1n}\vec{v}_{1} + a_{2n}\vec{v}_{2} + \cdots + a_{nn}\vec{v}_{n}\in V
+            \end{align*}
+            (so that the first basis vector $\vec{v}_{1}$ is an eigenvector, with eigenvalue $a_{11}$) or equivalently such that the $n \times n$ matrix $\mathcal{B}[f]\mathcal{B} = (a_{ij})$ representing $f$ with respect to $\mathcal{B}$ is upper triangular
+            \[A = \begin{pmatrix}
+                a_{11}& a_{12}& a_{13}& \cdots & a_{1n} \\
+                0& a_{22}& a_{23}& \cdots& a_{2n} \\
+                0 & 0& a_{33}& \cdots& a_{3n} \\
+                \vdots& \vdots& \vdots& \ddots& \vdots \\
+                0 & 0& 0& \cdots& a_{nn}
+            \end{pmatrix}\]
+            When this happens, I will say that $f$ is \textbf{triangularisable}
+        \item The characteristic polynomial $\chi_{f}(x)$ of $f$ decomposes into linear factors in $F[x]$
+    \end{enumerate}
+\end{thm}
+
+\begin{thm}[]{thm:triangularisability-and-conjugacy}{}
+    An endomorphism $A : F^{n} \to F^{n}$ is triangularisable if and only if $A = (a_{ij})$ is conjugate to an upper triangular matrix $B = (b_{ij}(b_{ij} = 0 \text{ for i > j})$, with $P^{-1} AB$ for an invertible matrix $P$
+\end{thm}
+
+\begin{dfn}[Diagonalisability]{def:diagonal}{}
+    An endomorphism $f : V \to V$ of an $F$-vector space $V$ is \textbf{diagonalisable} if and only if there exists a basis of $V$ consisting of eigenvectors of $f$. If $V$ is finite dimensional then this is the same as saying that there exists an ordered basis $\mathcal{B} = \{\vec{v}_{1},\dots,\vec{v}_{n}\}$ such that corresponding matrix representing $f$ is diagonal, that is $_{\mathcal{B}}[f]_{\mathcal{B}} = \text{diag}(\lambda_{1},\dots,\lambda_{n})$. In this case, of course, $f(\vec{v}_{i}) = \lambda_{i}\vec{v}_{i}$.
+    
+    A square matrix $A\in \Mat(n;F)$ is \textbf{diagonalisable} if and only if the corresponding linear mapping $F^{n}\to F^{n}$ given by left multiplication by $A$ is diagonalisable. Thanks to [something] this just means that $A$ is conjugate to a diagonal matrix, there exists an invertible matrix $P \in \text{GL}j(n;F)$ such that $P^{-1}AP = \text{diag}(\lambda_{1},\dots,\lambda_{n})$. In this case the columns $P$ are the vectors of a basis of $F^{n}$ consisting of eigenvectors of $A$ with eigenvalues $\lambda_{1},\dots,\lambda_{n}$
+\end{dfn}
+
+\newpage
+\begin{thm}[Linear Independence of Eigenvectors]{thm:ev-linear-independence}{}
+    Let $f : V\to V$ be an endomorphism of a vector space $V$ and let $\vec{v}_{1},\dots,\vec{v}_{n}$ be eigenvectors of $f$ with pairwise different eigenvalues $\lambda_{1},\dots,\lambda_{n}$. Then the vectors $\vec{v}_{1},\dots,\vec{v}_{n}$ are linearly independent
+\end{thm}
+
+\begin{thm}[Cayley-Hamilton Theorem]{thm:cayley-hamilton}{}
+    Let $A\in \Mat(n;R)$ be a square matrix with entries in a commutative ring $R$. Then evaluating its characteristic polynomial $\chi_{A}(x)\in R[x]$ at the matrix $A$ gives zero.
 \end{thm}
 
 \end{document}
