@@ -1,0 +1,819 @@
+\documentclass{article}
+% \usepackage{showframe}
+
+% \usepackage[dvipsnames]{xcolor}
+% custom colour definitions
+% \colorlet{colour1}{Red}
+% \colorlet{colour2}{Green}
+% \colorlet{colour3}{Cerulean}
+
+\usepackage{geometry}
+% margins
+\geometry{
+    a4paper,
+    bottom=70pt,
+    % margin=70pt
+}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+% \usepackage{preamble}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage{float}
+\usepackage[nodisplayskipstretch]{setspace}
+
+% tikz and theorem boxes
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{../thmboxes_v2}
+% \usepackage{thmboxes_col}
+
+
+\usepackage{hyperref} % note: this is the final package
+\hypersetup{
+  colorlinks   = true,    % Colours links instead of ugly boxes
+  urlcolor     = blue,    % Colour for external hyperlinks
+  linkcolor    = blue,    % Colour of internal links
+  citecolor    = red      % Colour of citations
+}
+
+
+% Custom Definitions of operators
+\DeclareMathOperator{\Ima}{im}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\send}{send}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\Maps}{Maps}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\scale}{sc}
+
+
+
+\parindent = 0pt
+\linespread{1.1}
+
+
+\title{Honours Algebra Notes}
+\author{Leon Lee}
+\renewcommand\labelitemi{\tiny$\bullet$}
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Vector Spaces}
+\subsection{Fields and Vector Spaces}
+
+\begin{dfn}[Definition of a field]{def:field}{}
+    A \textbf{field} $F$ is a set with functions
+    \begin{itemize}
+        \item Addition: $+ : F \times F \to F,\,(\lambda, \mu) \mapsto \lambda + \mu$
+        \item Multiplication: $\cdot : F \times F,\, (\lambda, \mu) \mapsto \lambda\mu$
+    \end{itemize}
+    and two distinguished members $0_{F},\, 1_{F}$ with $0_{F}\ne 1_{F}$ s.t. $(F,\, +)$ and $F \backslash \{0_{F},\, \cdot\}$ are \textit{abelian groups} whose neutral elements are $0_{F}$ and $1_{F}$ respectively, and which also satisifies
+    \[\lambda(\mu + \nu) = \lambda\mu + \lambda\nu \in F\]
+    for any $\lambda, \mu, \nu\in F$. 
+    Additional Requirements: For all $\lambda,\mu\in F$,
+    \begin{itemize}
+        \item $\lambda + \mu = \mu + \lambda$
+        \item $\lambda \cdot \mu = \mu \cdot \lambda$
+        \item $\lambda + 0_{F} = \lambda$
+        \item $\lambda \cdot 1_{F} = \lambda\in F$
+    \end{itemize}
+    For every $\lambda\in F$ there exists $-\lambda \in F$ such that
+    \[\lambda + (-\lambda) = 0_{F} \in F\]
+    For every $\lambda \ne 0 \in F$ there exists $\lambda^{-1}\ne 0\in F$ such that
+    \[\lambda(\lambda^{-1}) = 1_{F}\in F\]
+
+    NOTE: This is a terrible definition of a field, just think of it as a group with two operations instead of one
+\end{dfn}
+
+\begin{dfn}[Definition of a Vector Space]{def:vector-space}{}
+    A \textbf{vector space $V$ over a field} $F$ is a pair consisting of an abelian group $V = (V,\, \dot{+})$ and a mapping
+    \[F \times V \to V : (\lambda, \vec{v})\mapsto \lambda \vec{v}\]
+    such that for all $\lambda, \mu \in F$ and $\vec{v}, \vec{w}\in V$ the following identities hold:
+    \begin{align*}
+        \lambda(\vec{v} \dot{+} \vec{w}) &= (\lambda\vec{v}) \dot{+} (\lambda \vec{w})\\
+        (\lambda + \mu)\vec{v} &= (\lambda \vec{v}) \dot{+} (\mu \vec{v})\\
+        \lambda (\mu \vec{v}) &= (\lambda \mu) \vec{v}\\
+        1_{F}\vec{v} &= \vec{v}
+    \end{align*}
+    The first two laws are the \textbf{Distributive Laws}, the third law is called the \textbf{Associativity Law}. A vector field $V$ over a field $F$ is commonly called an \textbf{$F$-vector space}
+\end{dfn}
+
+\newpage
+
+\subsubsection{Vector Space Terminology}
+\begin{itemize}
+    \item Elements of a vector space: \textbf{vectors}
+    \item Elements of the field $F$: \textbf{scalars}
+    \item The field $F$ itself: \textbf{ground field}
+    \item The map $(\lambda, \vec{v})\mapsto \lambda\vec{v}$: \textbf{multiplication by scalars}, or the \textbf{action of the field $F$ on $V$}
+\end{itemize}
+
+\textbf{Notes}:
+\begin{itemize}
+    \item This is not the same as the "scalar product", as that produces a scalar from two vectors
+    \item Let the zero element of the abelian group $V$ be written as $\vec{0}$ and called the \textbf{zero vector}
+    \item The use of $\dot{+}$ and $1_{F}$ is there for mostly pedantic rigorous reasons, and a much less confusing way of defining a vector field is defined below:
+\end{itemize}
+
+
+\begin{dfn}[Alternative Vector Space definition]{def:vector-space-alt}{}
+    A \textbf{vector space $V$ over a field} $F$ is a pair consisting of an abelian group $V = (V,\, \dot{+})$ and a mapping
+    \[F \times V \to V : (\lambda, \vec{v})\mapsto \lambda \vec{v}\]
+    such that for all $\lambda, \mu \in F$ and $\vec{v}, \vec{w}\in V$ the following identities hold:
+    \begin{align*}
+        \lambda(\vec{v} \dot{+} \vec{w}) &= \lambda\vec{v} \dot{+} \lambda \vec{w}\\
+        (\lambda + \mu)\vec{v} &= \lambda \vec{v} \dot{+} \mu \vec{v}\\
+        \lambda (\mu \vec{v}) &= (\lambda \mu) \vec{v}\\
+        1\vec{v} &= \vec{v}
+    \end{align*}
+\end{dfn}
+
+\noindent\rule{\textwidth}{0.2pt}
+
+\subsubsection{Vector Space Lemmas}
+
+\textbf{Product with the scalar zero}: If $V$ is a \textit{vector space} and $\vec{v}\in V$, then $0\vec{v} = \vec{0}$, or in words "zero times a vector is the zero vector"
+
+\textbf{Product with the scalar $(-1)$}: If $V$ is a \textit{vector space} and $\vec{v}\in V$, then $(-1)\vec{v} = - \vec{v}$
+
+\textbf{Product with the zero vector}: If $V$ is a \textit{vector space} over a field $F$, then $\lambda \vec{0} = \vec{0}$ for all $\lambda\in F$. Furthermore, if $\lambda \vec{v} = \vec{0}$ then either $\lambda = 0$ or $@\vec{v} = \vec{0}$
+
+\newpage
+\subsection{Product of Sets and of Vector Spaces}
+
+\begin{dfn}[Cartesian Product of $n$ sets]{def:cartesian-prod}{}
+    Trivially: $X \times Y = \{(x,y) : x\in X,\,y\in Y\}$
+
+    Just extend this to $n$ numbers
+    \[X_{1} \times \cdots \times X_{n} := \{(x_{1}, \dots, x_{n}) : x_{i}\in X_{i} \text{ for } 1 \le i \le n\}\]
+
+    The elements of a product are called \textbf{$n$-tuples}. An individual entry $x_{i} = (x_{1}, \dots ,x_{n})$ is called a \textbf{component}.
+
+    There are special mappings called \textbf{projections} for a cartesian product:
+    \begin{align*}
+        \text{pr}_{i} : X_{1} \times \cdots \times X_{n} &\to X_{i}\\
+        (x_{1},\dots,x_{n}) &\mapsto x_{i}
+    \end{align*}
+
+    The cartesian product of $n$ copies of a set $X$ is written in short as: $X^{n}$
+\end{dfn}
+
+The elements of $X^{n}$ are $n$-tuples of elements from $X$. In the special case $n = 0$ we use the general convention that $X^{0}$ is "the" one element set, so that for all $n,m\ge 0$, we then have the canonical bijection
+\begin{align*}
+    X^{n} \times X^{m} &\to X^{n + m} \\
+    ((x_{1},x_{2},\dots,x_{n}),\,(x_{n+1}, x_{n+2},\dots,x_{n+m})) &\mapsto (x_{1},x_{2},\dots,x_{n},x_{n+1},x_{n+2},\dots,x_{n+m})
+\end{align*}
+Note: the $\to$ should have a tilde but idk how to typeset it like that
+
+[ Bunch of examples: check LN 1.3]
+
+\subsection{Vector Subspaces}
+
+\begin{dfn}[Vector Subspace]{def:vector-subspace}{}
+    A subset $U$ of a vector space $V$ is called a \textbf{vector subspace} or \textbf{subspace} if $U$ contains the zero vector, and whenever $\vec{u},\vec{v}\in U$ and $\lambda\in F$ we have $\vec{u} + \vec{v}\in U$ and $\lambda \vec{u}\in U$
+\end{dfn}
+
+\textbf{Note} There is a more generalized definition using concepts we haven't learned yet, it is as follows: Let $F$ be a field. A subset of an $F$-vector space is called a vector subspace if it can be given the structure of an $F$-vector space such that the embedding is a "homomorphism of $F$-vector spaces". This definition is a lot more general since it also applies to subgroups, subfields, sub-"any structure", etc
+
+\begin{dfn}[Spanning Subspace]{def:spanning-subspace}{}
+    Let $T$ be a subset of a vector space $V$ over a field $F$. Then amongst all vector subspaces of $V$ that include $T$ there is a smallest vector subspace
+    \[\langle T \rangle = \langle T \rangle_{F} \subseteq V\]
+    It can be described as the set of all vectors $\alpha_{1}\vec{v}_{1} + \cdots + \alpha_{r}\vec{v}_{r}$ with $\alpha_{1},\dots,\alpha_{r}\in F$ and $\vec{v}_{1},\dots,\vec{v}_{r}\in T$, together with the zero vector in the case $T = \emptyset$
+\end{dfn}
+
+\subsubsection{Subspace terminology}
+\begin{itemize}
+    \item An expression of the form $a_{1}\vec{v}_{1} + \cdots + \alpha_{r} \vec{v}_{r}$ is called a \textbf{linear combination} of vectors $\vec{v}_{1},\dots,\vec{v}_{r}$.
+    \item The smallest vector subspace $\langle T \rangle \subseteq V$ containing $T$ is called the \textbf{vector subspace generated by $T$} or the vector subspace \textbf{spanned by $T$} or even the \textbf{span of $T$}
+    \item If we allow the zero vector to be the "empty linear combination of $r = 0$ vectors", which is what we will mean from hereon, then the span of $T$ is exactly the set of all linear combinations of vectors from $T$
+\end{itemize}
+
+\begin{dfn}[Generating Subspace]{def:generating-subspace}{Number}
+    A subset of a vector space is called a \textbf{generating} or \textbf{spanning set} of our vector space if its span is all of the vector space. A vector space that has a finite generating set is said to be \textbf{finitely generated}.
+\end{dfn}
+
+\subsection{Linear Independence and Bases}
+
+\begin{dfn}[Linear Independence]{def:linear-independence}{}
+    A subset $L$ of a vector space $V$ is called \textbf{linearly independent} if for all pairwise different vectors $\vec{v}_{1},\dots,\vec{v}_{r}\in L$ and arbitrary scalars $\alpha,\dots,\alpha_{r}\in F$,
+    \[a_{1}\vec{v}_{1} + \cdots + \alpha_{r}\vec{v}_{r} = \vec{0} \implies a_{1} = \cdots = \alpha_{r} = 0\]
+\end{dfn}
+
+\begin{dfn}[Linear Dependence]{def:linear-dependence}{}
+    A subset $L$ of a vector space $V$ is called \textbf{ilnearly dependent} if it is not linearly independent (duh..). This means there exists pairwise different vectors $\vec{v}j_{1},\dots,\vec{v}_{r}\in L$ and scalars $\alpha_{1},\dots,\alpha_{r}\in F$, not all zero, such that $\alpha_{1}\vec{v}_{1} + \cdots \alpha_{r}\vec{v}_{r} = \vec{0}$
+\end{dfn}
+
+\begin{dfn}[Basis of a Vector Space]{def:basis}{}
+    A \textbf{basis of a vector space} $V$ is a linearly independent generating set in $V$
+\end{dfn}
+
+\subsubsection{Family notation}
+Let $A$ and $I$ be sets. We will refer to a mapping $I\to A$ as a \textbf{family of elements of $A$ indexed by $I$} and use the notation
+\[(a_{i})i\in I\]
+
+This is used mainly when $I$ plays a secondary role to $A$. In the case $I = \emptyset$, we will talk about the \textbf{empty family} of elements of $A$.
+
+Random facts:
+\begin{itemize}
+    \item The family $(\vec{v}_{i})_{i\in I}$ would be called a generating set if the set $\{\vec{v}_{i} : i\in I\}$ is a generating set.
+    \item It would be called \textbf{linearly independent} or a \textbf{linearly independent family} if, for pairwise distinct indices $i(1),\dots,i(r)\in I$ and arbitrary scalars $a_{1},\dots,a_{r}\in F$,
+        \[a_{1}\vec{v}_{i(1)} + \cdots + a_{r}\vec{v}_{i(r)} = \vec{0} \to \alpha_{1} = \cdots = a_{r} = 0\]
+\end{itemize}
+
+A difference between families and subsets is that the same vector can be represented by different indices in a family, in which case linear independence as a family is not possible. A family of vectors that is not linearly independent is called a \textbf{linearly dependent family}. A family of vectors that is a generating set and linearly independent is called either a \textbf{basis} or a \textbf{basis indexed by} $i\in I$
+
+\begin{xmp}[Standard Basis]{xmp:standard-basis}{}
+    Let $F$ be a field and $n\in \mathbb{N}$. We consider the following vectors in $F^{n}$
+    \[\vec{e}_{i} = (0,\dots,0,1,0,\dots,0)\]
+    with one $1$ in the $i$-th place and zero everywhere else. Then $\vec{e}_{1} ,\dots, \vec{e}_{n}$ form an ordered basis of $F^{n}$, the so-called \textbf{standard basis of $F^{n}$}
+\end{xmp}
+
+\begin{thm}[Linear combinations of basis elements]{thm:linear-combinations-of-basis-elems}{}
+    Let $F$ be a field, $V$ a vector space over $F$ and $\vec{v}_{1},\dots,\vec{v}_{r}\in V$ vectors. The family $(\vec{v}_{i})_{1\le i\le r}$ is a basis of $V$ if and only if the following "evaluation" mapping
+    \begin{align*}
+        \psi : F^{r} &\to V\\
+        (\alpha_{1},\dots,a_{r}) &\mapsto a_{1}\vec{v}_{1} + \cdots + \alpha_{r}\vec{v}_{r}
+    \end{align*}
+    is a bijection
+
+    If we label our ordered family by $\mathcal{A} = (\vec{v}_{1},\dots,\vec{v}_{r})$, then we done the above mapping by
+    \[\psi = \psi_{\mathcal{A}} : F^{r}\to V\]
+\end{thm}
+
+\newpage
+\section{Rings}
+I can't be bothered doing changes of basis and stuff, time for something more interesting :D 
+
+\subsection{Ring basics}
+\begin{dfn}[Definition of a Ring]{def:ring}{}
+    A \textbf{ring} is a set with two operations $(\mathbb{R}, +, \cdot)$ that satisfy:
+    \begin{enumerate}
+        \item $(R, +)$ is an abelian group
+        \item $(R, \cdot)$ is a \textbf{monoid} - this means that the second operation $\cdot : R \times R \to R$ is associative and that there is an \textbf{identity element} $1 = 1_{R}\in R$, often just called the identity, with the property that $1 \cdot a = a \cdot 1 = a$ for all $a\in R$.
+        \item The distributive laws hold, meaning that for all $a,b,c\in R$,
+            \begin{align*}
+                a \cdot (b + c) &= (a \cdot b) + (a \cdot c)) \\
+                (a + b) \cdot c &= (a \cdot c) + (b \cdot c)
+            \end{align*}
+    \end{enumerate}
+    The two operations are called \textbf{addition} and \textbf{multiplication} in our ring. A ring in which multiplication, that is $a \cdot b = b \cdot a$ for all $a,b\in R$, is a \textbf{commutative ring}
+\end{dfn}
+
+\textbf{Note}: We'll call the element $1\in R$ as the identity element of the monoid $(R, \cdot)$, and we call the additive identity of $(R, +)$ zero, written as $0_{R}$ or $0$
+
+\textbf{Example}: We can define the \textbf{null ring} or \textbf{zero ring} as a ring where $R$ is a single ement set, e.g. $\{0\}$, with the operations $0 + 0 = 0$ and $0 \times 0 = 0$. We will call any ring that isn't the zero ring a \textbf{non-zero ring}
+
+\begin{xmp}[Modulo Rings]{xmp:modulo-rings}{}
+    Let $m\in \mathbb{Z}$ be an integer. Then the set of \textbf{integers modulo} $m$, written
+    \[\mathbb{Z} / m\mathbb{Z}\]
+    is a ring. The elements of $\mathbb{Z} / m\mathbb{Z}$ consist of \textbf{congruence classes} of integers modulo $m$ - that is the elements are the subsets $T$ of $\mathbb{Z}$ of the form $T = a + m\mathbb{Z}$ with $a\in \mathbb{Z}$. Think of these as the set of integers that have the same remainder when you divide them by $m$. I denote the above congruence class by $\overline{a}$. Obviously $\overline{a} = \overline{b}$ is the same as $a-b\in m\mathbb{Z}$, and often I'll write
+    \[a \equiv b \mod m\]
+\end{xmp}
+
+If $m\in \mathbb{N}_{\ge 0}$ then there are $m$ congruence classes modulo $m$, in other words, $\lvert \mathbb{Z} / m\mathbb{Z} \rvert = m$, and I could write out the set as
+\[\mathbb{Z} / m\mathbb{Z} = \{\overline{0}, \overline{1},\dots,\overline{m - 1}\}\]
+To define addition and multiplication, set
+\[\overline{a} + \overline{b} = \overline{a + b} \quad \text{and} \quad \overline{a} \cdot \overline{b} = \overline{ab}\]
+Distributivity for $\mathbb{Z} / m\mathbb{Z}$ then follows from distributivity for $\mathbb{Z}$.
+
+\newpage
+\subsection{Linking Rings to Fields and Further Properties}
+
+\begin{dfn}[Ring definition of a field]{def:field-ring}{}
+    A \textbf{field} is a non-zero commutative ring $F$ in which every non-zero element $a\in F$ has an inverse $a^{-1}\in F$, that is an element $a^{-1}$ with the property that $a \cdot a^{-1} = a^{-1} \cdot a = 1$
+\end{dfn}
+
+\textbf{Example}: The ring $\mathbb{Z} / 3\mathbb{Z}$ is a field, which we have been calling $\mathbb{F}_{3}$. The ring $\mathbb{Z} / 12\mathbb{Z}$ is not a field, because neither $\overline{3}$ or $\overline{8}$ are invertible, since $\overline{3} \cdot \overline{8} = \overline{0}$.
+
+\begin{thm}[Prime property of fields]{thm:prime-ring-fields}{}
+    Let $m$ be a positive integer. The commutative ring $\mathbb{Z} / m\mathbb{Z}$ is a field if and only if $m$ is prime.
+\end{thm}
+
+\begin{thm}[Lemmas for multiplying by zero and negatives]{def:ring-lemmas-1}{}
+    Let $R$ be a ring and let $a,b\in R$. Then
+    \begin{enumerate}
+        \item $0a = 0 = a 0$
+        \item $(-a)b = -(ab) = a(-b)$
+        \item $(-a)(-b) = ab)$
+    \end{enumerate}
+\end{thm}
+
+\textbf{Note}: The distributive axiom for rings has familiar properties such as
+\begin{align*}
+    (a + b)(c + d) &= ac + ad + bc + bd\\
+    a(b - c) &= ab - ac
+\end{align*}
+But remember that multiplication is not always commutative, so multiplicative factors must be kept in the correct order - $ac$ may not equal $ca$
+
+\noindent\rule{\textwidth}{0.2pt}
+Suppose we have a ring $R$ such that $1_{R} = 0_{R}$, then $R$ must be the zero ring. 3.2.2 in notes for proof
+
+\begin{dfn}[Multiples of an abelian group]{def:abelian-group-multis}{}
+    Let $m\in \mathbb{Z}$. The \textbf{$m$-th multiple $ma$ of an element $a$}in an abelian group $R$ is:
+    \[ma = \underbrace{a + a + \cdots + a}_{\text{$m$ terms}} \quad \text{if} m > 0\]
+    $0a = 0$ and negative multiples are defined by $(-m)a = -(ma)$
+\end{dfn}
+
+\newpage
+\begin{thm}[Lemmas for multiples]{def:ring-lemmas-2}{}
+    Let $R$ be a ring, let $a,b\in R$ and let $m,n\in \mathbb{Z}$. Then:
+    \begin{enumerate}
+        \item $m(a + b) = ma + mb$
+        \item $(m + n)a = ma + na$
+        \item $m(na) = (mn)a$
+        \item $m(ab) = (ma)b = a(mb)$
+        \item $(ma)(nb) = (mn)(ab)$
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}
+    (in the lecturer's words) This is trivial and boring, so I will leave the details up to you.
+\end{proof}
+
+\begin{dfn}[Unit of a ring]{def:ring-unit}{}
+    Let $R$ be a ring. An element $a\in R$ is called a \textbf{unit} if it is \textit{invertible} in $R$ or in other words \textit{has a multiplicative inverse in $R$}, meaning that there exists $a^{-1}\in R$ such that
+    \[aa^{-1} = 1 = a^{-1} a\]
+\end{dfn}
+
+\textbf{Example}: In a field, such as $\mathbb{R}, \mathbb{R}, \mathbb{C}$, every non-zero element is a unit. In $\mathbb{Z}$, only $1$ and $-1$ are units
+
+\begin{thm}[The subset of units in a ring forms a group]{thm:ring-units-form-a-group}{}
+    The set $R^{\times}$ of units in a ring $R$ forms a group under multiplication
+\end{thm}
+
+I will call $R^{\times}$ the \textbf{group of units of the ring $R$}
+
+\begin{dfn}[zero-divisors of a ring]{def:zero-divisor}{}
+    In a ring $R$, a non-zero element $a$ is called a \textbf{zero-divisor} or \textbf{divisor of zero} if there exists a non-zero element $b$ such that either $ab = 0$ or $ba = 0$.
+\end{dfn}
+
+\textbf{Example}: In $\text{Mat}(2; \mathbb{R})$,
+\[\begin{bmatrix}
+    -1& 1\\
+    -1& 1
+\end{bmatrix} \begin{bmatrix}
+    1& 1\\
+    1& 1
+\end{bmatrix} = \begin{bmatrix}
+    0& 0\\
+    0& 0
+\end{bmatrix}\]
+So, both $\begin{bmatrix}
+    -1& 1\\
+    -1& 1
+\end{bmatrix}$ and $\begin{bmatrix}
+    1& 1\\
+    1& 1
+\end{bmatrix}$ are zero-divisors
+
+
+\begin{dfn}[Integral Domain]{def:integral-domain}{}
+    An \textbf{integral domain} is a non-zero commutative ring that has no zero-divisors.
+
+    In an integral domain there are no zero-divisors and therefore the following laws will hold:
+    \begin{enumerate}
+        \item $ab = 0 \implies a = 0$ or $b = 0$, and
+        \item $a\ne 0$ and $b\ne 0 \implies ab \ne 0$ 
+    \end{enumerate}
+\end{dfn}
+
+\textbf{Example}: $\mathbb{Z}$ is an integral domain. Any field is an integral domain, since a unit in a ring $R$ cannot be a zero-divisor. To see this, let $R$ be a non-zero ring and let $a\in R^{\times}$ be a unit. Suppose that $ab = 0$ or $ba = 0$ for some $b\in R$. Multiplying on the left or on the right respectively by $a^{-1}$ shows that $a^{-1} ab = a^{-1} 0$ or $baa^{-1} = 0 a^{-1}$, so in both cases, $b = 0$
+
+\begin{thm}[Cancellation Law for Integral Domains]{thm:int-domains-cancellation-law}{}
+    Let $R$ be an \textit{integral domain} and let $a,b,c\in R$. If $ab = ac$ and $a\ne 0$ then $b = c$
+\end{thm}
+
+We will now reprove \ref{thm:prime-ring-fields} as a special case of a general theorem
+
+\begin{thm}[Prime Property for Integral Domains]{thm:prime-int-domains}{}
+    Let $m$ be a natural number. Then $\mathbb{Z} / m\mathbb{Z}$ is an integral domain if and only if $m$ is prime.
+\end{thm}
+
+\begin{thm}[Finite Integral Domains are Fields]{thm:finite-int-domains-are-fields}{}
+    Every \textbf{finite} \hyperref[def:integral-domain]{integral domain} is a \hyperref[def:field]{field}.
+\end{thm}
+
+
+\subsection{Polynomials}
+
+\begin{dfn}[Polynomial]{def:polynomial}{}
+    Let $R$ be a ring. A \textbf{polynomial over $R$} is an expression of the form
+    \[P = a_{0} + a_{1}X + a_{2}X^{2} + \cdots + a_{m}X^{m}\]
+    for some non-negative integer $m$ and elements $a_{i}\in R$ for $0 \le i \le m$. The set of all polynomials over $R$ is denoted by $R[X]$. In the case where $a_{m}$ is non-zero, the polynomial $P$ has \textbf{degree} $m$, (written $\deg(P)$), and $a_{m}$ is its \textbf{leading coefficient}. When the leading coefficient is $1$ the polynomial is a \textbf{monic polynomial}. A polynomial of degree one is called \textbf{linear}, a polynomial od degree two is called \textbf{quadractic}, and a polynomial of degree three is called \textbf{cubic}.
+\end{dfn}
+
+\begin{dfn}[Ring of Polynomials]{def:polynomial-rings}{}
+    The set $R[X]$ becomes a ring called the \textbf{ring of polynomials with coefficients in $R$, or over $R$}. The zero and the identity of $R[X]$ are the zero and identity of $R$, respectively.
+\end{dfn}
+
+\textbf{Note:} The elements of $R$ can be identified with polynomials of degree $0$. I will call these polynomials \textbf{constant}. You should notice from the multiplication rule that if $R$ is commutative, then so is $R[X]$
+
+\begin{thm}[Zero-Divisors of a Polynomial Ring]{thm:zero-divisors-of-poly-ring}{}
+    If $R$ is a ring with no zero-divisors, then $R[X]$ has no zero-divisors and $\deg(PQ) = \deg(P) + \deg(Q)$ for non-zero $P,Q\in R[X]$.
+    
+    \noindent\rule{\textwidth}{0.2pt}
+    If $R$ is an integral domain, then so is $R[X]$
+\end{thm}
+
+\newpage
+\begin{thm}[Division and Remainder]{thm:division-and-remainder}{}
+    Let $R$ be an integral domain and let $P, Q\in R[X]$ with $Q$ monic. Then there exists unique $A,B\in R[X]$ such that $P = AQ + B$ and $\deg(B) < \deg(Q)$ or $B = 0$
+\end{thm}
+
+\begin{dfn}[Formal definition of a function]{def:function-poly-ring}{}
+    Let $R$ be a commutative ring and $P\in R[X]$ a polynomial. Then the polynomial $P$ can be \textbf{evaluated} at the element $\lambda\in R$ to produce $P(\lambda)$ by replacing the powers of $X$ in the polynomial $P$ by the corresponding powers of $\lambda$. In this way we have a mapping
+    \[R[X] \to \Maps(R, R)\]
+    This is the precise mathematical description of thinking of a polynomial as a function. An element $\lambda\in R$ is a \textbf{root} of $P$ is $P(\lambda) = 0$
+\end{dfn}
+
+\begin{thm}[Roots of a Polynomial]{thm:polynomial-roots}{}
+    Let $R$ be a commutative ring, let $\lambda\in R$ and $P(X) \in R[X]$. Then $\lambda$ is a root of $P(X)$ if and only if $(X - \lambda)$ divides $P(X)$
+\end{thm}
+
+\begin{thm}[Degrees of Polynomial Roots]{thm:polynomial-root-degs}{}
+    Let $R$ be a field, or more generally an integral domain. Then a non-zero polynomial $P\in R[X] \backslash \{0\}$ has at most $\deg(P)$ roots in $R$
+\end{thm}
+
+\begin{dfn}[Algebraically closed fields]{def:algebraically=closed}{}
+    A field $F$ is \textbf{algebraically closed} if each non-constant polynomial $P\in F[X]\backslash F$ with coefficients in our field has a root in our field $F$
+\end{dfn}
+
+\textbf{Example}: The field of real numbers $\mathbb{R}$ is not algebraically closed. For instance, $X^{2} + 1$ has no root in $\mathbb{R}$
+
+\begin{thm}[Fundamental Theorem of Algebra]{thm:fundamental-theorem-of-algebra}{}
+    The field of complex numbers $\mathbb{C}$ is algebraically closed.
+\end{thm}
+
+\begin{thm}[Linear Factors of Algebraically Closed Fields]{thm:alg-closed-fields-linear-factors}{}
+    If $F$ is an algebraically closed field, then every non-zero polynomial $P\in F[X]\backslash \{0\}$ \textbf{decomposes into linear factors}
+    \[P = c(X - \lambda_{1}) \cdots (X - \lambda_{n})\]
+    with $n\ge 0,\, c\in F^{\times}$ and $\lambda_{1},\dots,\lambda_{n}\in F$. This decomposition is unique up to reordering the factors
+\end{thm}
+
+% TODO: bunch of stuff :)))))))
+
+
+\newpage
+\section{Determinants and Eigenvalues Redux}
+
+\subsection{Symmetric Groups}
+
+\begin{dfn}[Symmetric Groups]{def:symmetric-groups}{}
+    The group of all permutations of the set $\{1,2,\dots,n\}$, also known as bijections from $\{1,2,\dots,n\}$ to itself is denoted by $\mathfrak{S}_{n}$ (but i will just write $S_{n}$ because icba) and called the \textbf{$n$-th symmetric group}. It is a group under composition and has $n!$ elements.
+
+    \noindent\rule{\textwidth}{0.2pt}
+    A \textbf{tranposition} is a permutation that swaps two elements of the set and leaves all the others unchanged.
+\end{dfn}
+
+\begin{dfn}[Inversions of a permutation]{def:inversion}{}
+    An \textbf{inversion} of a permutation $\sigma\in S_{n}$ is a pair $(i, j)$ such that $1 \le i < j \le n$ and $\sigma(i) > \sigma(j)$. The number of inversions of the permutation $\sigma$ is called the \textbf{length of $\sigma$} and written $\ell(\sigma)$. In formulas:
+    \[\ell(\sigma) = \lvert \{(i,j) : i < j \text{ but } \sigma(i) > \sigma(j)\} \rvert\]
+    The \textbf{sign of $\sigma$} is defined to be the parity of the number of inversions of $\sigma$. In formulas:
+    \[\sgn(\sigma) = (-1)^{\ell(\sigma)}\]
+\end{dfn}
+
+\textbf{Note}: A permutation whose sign is $+1$, in other words which has even length, is called an \textbf{even permutation}
+
+\noindent\rule{\textwidth}{0.2pt}
+
+A permutation whose sign is $-1$, in other words which has odd length, is called an \textbf{odd permutation}
+
+[INSERT DIAGRAM]
+
+\begin{thm}[Multiplicativity of the sign]{thm:permutation-multiplicativity}{}
+    For each $n\in \mathbb{N}$ the sign of a permutation produces a group homomorphism $\sgn : S_{n} \to \{+1, -1\}$ from the symmetric group to the two-element group of signs. In formulas:
+    \[\sgn(\sigma\tau) = \sgn(\sigma)\sgn(\tau) \quad \forall \sigma, \tau\in S_{n}\]
+\end{thm}
+
+\begin{dfn}[Alternating Group of a Permutation]{def:alternating-group}{}
+    For $n\in \mathbb{N}$, the set of even permutations in $S_{n}$ forms a subgroup of $S_{n}$ because it is the kernel of the group homomorphism $\sgn : S_{n}\to \{+1, -1\}$. This group is the \textbf{alternating group} and is denoted $A_{n}$
+\end{dfn}
+
+\newpage
+
+\subsection{Determinants}
+
+\begin{dfn}[Determinants]{def:determinants}{}
+    Let $R$ be a commutative ring and $n\in \mathbb{N}$. The \textbf{determinant} is a mapping $\det : \Mat(n;R) \to R$ from square matrices with coefficients in $R$ to the ring $R$ that is given by the following formula
+
+    \[A = \begin{pmatrix}
+        a_{11} & \cdots & a_{1n}\\
+        \vdots & \ddots & \vdots\\
+        a_{n1} & \cdots & a_{nn}
+    \end{pmatrix} \mapsto \det(A) = \sum_{\sigma\in S_{n}} \sgn(\sigma) a_{1\sigma(1)\cdots}  a_{n\sigma(n)}\]
+\end{dfn}
+
+The sum is over all permutations of $n$, and the coefficient $\sgn(\sigma)$ is the sign of the permutation $\sigma$ defined above. This formula is called the \textbf{Leibniz formula}. The degenerate case $n = 0$ assigns the value $1$ as the determinant of the "empty matrix"
+
+\textbf{Remark}: The determinant determines whether or not a linear system of $kn$ equations in $n$ unknowns has a unique solution, hence the name
+
+\subsubsection{The connection between determinants and volumes}
+
+Each such linear mapping $L$ has an "area scaling factor" $\text{sc}(L)$ which I defined as the amount that $L$ changes the area, $\text{vol}(U)$, of a region $U$ in $\mathbb{R}^{2}$. In other words, $\text{area}(LU) = \text{sc}(L)\text{area}(U)$. I claim that
+\[\text{sc}(L) = \lvert \det(L) \rvert\]
+
+To see this, I consider the properties that the mapping $\text{sc} : \Mat(2;\mathbb{R})\to \mathbb{R}_{\ge 0}$, defined by $L \mapsto \text{sc}(L)$, must have:
+\begin{enumerate}
+    \item It should be "multiplicative": $\text{sc}(LM) = \text{sc}(L)\text{sc}(M)$
+    \item Dilating an axis should increase the area of a region by the amount of the dilation:
+        \[\text{sc}(\text{diag}(a, 1)) = \text{sc}(\text{diag}(1, a)) = \lvert a \rvert\]
+    \item A shear transformation should leave the area of a region unchanged: $\text{sc}(D) = 1$ for $D$ an upper or a lower triangular matrix with ones on the diagonal
+\end{enumerate}
+
+
+\subsubsection{The connection between determinants and orientation}
+
+The sign of the determinant of an invertible real $(2 \times 2)$ matrix shows whether the corresponding endomorphism of $\mathbb{R}^{2}$ preseves or reverses orientation. To comprehend orientation, I imagine a clock face inside the region $U$ I'm going to apply $L$ to: if, after applying $U$, the clock face is still the correct way round then $L$ preserves orientation; if it is the wrong way around, then $L$ reverses orientation. I think of this property as a mapping sending an invertible linear transformation $L : \mathbb{R}^{2}\to \mathbb{R}^{2}$ to $\epsilon(L)\in \{+1, -1\}$ as follows:
+\[\epsilon(L) = \begin{cases}
+    +1 & \text{$L$ preserves the orientation} \\
+    -1 & \text{$L$ reverses the orientation}
+\end{cases}\]
+Let $[a]$ denote the sign of a non-zero real number $a$. I claim that
+\[\epsilon(L) = [\det(L)]\]
+
+\newpage
+To see this, let's consider the properties that the mapping $\epsilon : GL(2;\mathbb{R})\to \{+1, -1\}$ defined by $L \mapsto \epsilon(L)$, must have:
+\begin{enumerate}
+    \item It should be "multiplicative": $\epsilon(LM) = \epsilon(L)\epsilon(M)$
+    \item Dilating an axis should change the orientation by the sign of the amount of the dilation:
+        \[\epsilon(\text{diag}(a, 1)) = \epsilon(\text{diag}(1, a)) = [a]\]
+    \item A shear transformation should preserve the orientation: $\epsilon(D) = 1$ for $D$ an upper or a lower triangular matrix with ones on the diagonal
+\end{enumerate}
+
+
+\subsection{Characterising the Determinant}
+
+Determinants exist for more than just real matrices, so here is an interpretation of the determinant over arbitrary fields
+
+\begin{dfn}[Bilinear Forms]{def:bilinear-forms}{}
+    Let $U,V,W$ be $F$-vector spaces. A \textbf{bilinear form on $U \times V$ with values in $W$} is a mapping $H: U \times V \to W $ which is a linear mapping in both of its entries. This means that it must satisfy the following properties for all $u_{1}, u_{2}\in U$ and $v_{1}, v_{2}\in V$ and all $\lambda\in F$:
+    \begin{align*}
+        H(u_{1} + u_{2}, v_{2}) &= H(u_{1}, v_{1}) + H(u_{2}, v_{1})\\
+        H(\lambda u_{1}, v_{1}) &= \lambda H(u_{1}, v_{1}) \\
+        H(u_{1}, v_{2} + u_{2}) &= H(u_{1}, v_{1}) + H(u_{2}, v_{1})\\
+        H(u_{1},\lambda v_{1}) &= \lambda H(u_{1}, v_{1}) \\
+    \end{align*}
+\end{dfn}
+
+The first two conditions state that for any fixed $v\in V$ the mapping $H(-, v) : U\to W$ is linear; the final two conditions state that for any fixed $u\in U$, the mapping $H(u, -) : V\to W$ is linear. If $U$, $V$, and $W$ are clear from the context I will simply say that $H$ is a \textbf{bilinear form}. A bilinear form $H$ is \textbf{symmetric} is $U = V$ and
+\[H(u,v) = H(v,u)\quad \text{for all } u,v\in U\]
+while it is \textbf{antisymmetric} or \textbf{alternating} if $U = V$ and
+\[H(u, u) = 0 \quad\text{for all } u\in U\]
+
+\textbf{Remark}: Suppose that $H : U \times U \ to W$ is an antisymmetric bilinear form on $U$ with values in $W$. Then for all $u, v\in W$:
+\begin{align*}
+    0 &= H(u + v, u + v)\\
+      &= H(u,u + v) + H(v, u + v)\\
+      &= H(u,u) + H(u,v) + H(v, u) + H(v, v)\\
+      &= H(u, v) + H(v, u)
+\end{align*}
+
+Therefore, an antisymmetric form always satisfies $H(u, v) = -H(v, u)$, hence the name. On the other hand, if $H$ is a bilinear form satisfying $H(u, v) + -H(v, u)$ for all $u,v\in U$, then taking $u = v$ gives $H(u,u) = -H(u,u)$ from which follows that $H(u,u) + H(u,u) = 0$. As long as $1_{F} + 1_{F} \ne 0_{F}$ I deduce that $H(u,u) = 0$ and so the form is antisymmetric. But remember that you know a field $F = \mathbb{F}_{2}$ in which $1_{F} + 1_{F} = 0_{F}$, so you do need to be careful
+
+
+\begin{dfn}[Multilinear Forms]{def:multilinear}{}
+    Let $V_{1},\dots,V_{n}, W$ be $F$-vector spaces. A mapping $H : V_{1} \times V_{2} \times \cdots \times V_{n} \to W$ is a \textbf{multilinear form} or just \textbf{multilinear} if for each $j$, the mapping $V_{j}\to W$ defined by $v_{j}\mapsto H(v_{1},\dots,v_{j},\dots,v_{n})$, with the $v_{i}\in V_{i}$ arbitrary fixed vectors of $V_{i}$ for $i\ne j$ is linear. 
+\end{dfn}
+In the case that $n = 2$, this is exactly the definition of a bilinear mapping shown above
+
+\begin{dfn}[Alternating Multilinear Forms]{def:alternating-multilinear}{}
+    Let $V$ and $W$ be $F$-vector spaces. A multilinear form $ H : V \times \cdots \times V \to W$ is \textbf{alternating} if it vanishes on every $n$-tuple of elements of $V$ that has at least two entries equal, in other words if:
+    \[(\exists i\ne j \text{ with } v_{i} = v_{j})\to H(v_{1},\dots,v_{i},\dots,v_{j},\dots,v_{n}) = 0\]
+\end{dfn}
+
+
+
+In the case $n = 2$, this is exactly the definition of an alternating/antisymmetric form shown above
+
+\textbf{Remark}: An alternating multilinear form $H$ has the property
+\[H(v_{1},\dots,v_{i},\dots,v_{j},\dots,v_{n}) = -H(v_{1},\dots,v_{j},\dots,v_{i},\dots,v_{n})\]
+
+
+for all $v_{1},\dots,v_{n}\in V$. Combining this with [WIP] shows that for any $\sigma\in S_{n}$,
+
+\[ H(v_{\sigma(1)},\dots,v_{\sigma(n)}) = \sgn(\sigma)H(v_{1},\dots,v_{n})\]
+
+Conversely, if the above remark holds for a multilinear form $H$ and arbitrary $v_{1},\dots,v_{n}\in V$, then $H$ is alternating provided that $1_{F} + 1_{F} \ne 0_{F}$
+
+\begin{thm}[Characterisation of the Determinant]{thm:determinant-characterisation}{}
+    Let $F$ be a field. The mapping
+    \[\det : \Mat(n;F) \to F\]
+    is the unique alternating multilinear form on $n$-tuples of column vectors with values in $F$ that takes the value $1_{F}$ on the identity matrix
+\end{thm}
+
+\subsection{Rules for Calculating with Determinants}
+
+\begin{thm}[Multiplicativity of the Determinant]{thm:determinant-multiplicativity}{}
+    Let $R$ be a commutative ring and let $A,B\in \Mat(n;R)$. Then
+    \[\det(AB) = \det(A)\det(B)\]
+\end{thm}
+
+\begin{thm}[Determinantal Criteron for Invertibility]{thm:invertibility-criteron}{}
+    The determinant of a square matrix with entries in a field $F$ is non-zero if and only if the matrix is invertible
+\end{thm}
+
+\subsubsection{Consequences of determinant rules}
+\begin{itemize}
+    \item If $A$ is invertible then $\det(A^{-1}) = \det(A)^{-1}$
+    \item If $B$ is a square matrix then $\det(A^{-1}BA) = \det(B)$
+\end{itemize}
+
+
+
+\begin{thm}[Determinants of a Transpose Matrix]{thm:determinant-of-transpose}{}
+    The determinant of a square matrix and of the transpose of the square matrix are equal, that is for all $A\in \Mat(n;R)$ with $R$ a commutative ring,
+    \[\det(A^{T}) = \det(A)\]
+\end{thm}
+
+\subsubsection{Simplifying Determinant Calculations}
+Via \ref{thm:determinant-characterisation}, the theorem demonstrates that Gaussian elimination works with finding determinants - \textit{Row Addition} doesn't change the determinant, while \textit{Row Swap} changes the sign only. When Gaussian elimination is completed, the final matrix has staircase form so is upper triangular from which the determinant can easily be calculated by multiplying the entries of the diagonal together.
+
+\noindent\rule{\textwidth}{0.2pt}
+Although the determinant $\det(A) = \sum_{\sigma\in S_{n}} \sgn(\sigma) \prod_{i = 1}^{n} a_{i\sigma(i)}$ might strike you as difficult to calculate, the superficially simpler expression $\text{per}(A) = \sum_{\sigma\in S_{n}}\prod_{i=1}^{n} a_{i\sigma(i)}$ known as the \textbf{permanent} is much harder to calculate, and it's known to be NP-hard to compute.
+
+\begin{dfn}[Cofactors of a Matrix]{def:cofactors-matrix}{}
+    Let $A \in \Mat(n;R)$ for some commutative ring $R$ and natural number $n$. Let $i$ and $j$ be integers between $1$ and $n$. Then the $(i, )$ \textbf{cofactor of $A$} is $C_{ij} = (-1)^{i + j} \det(A\langle i,j \rangle)$ where $A\langle i, j \rangle$ is the matrix obtained from $A$ by deleting the $i$-th row and $j$-th column.
+    \[C_{23} = (-1)^{2 + 3} \det \begin{pmatrix}
+        a_{11} & a_{12}& \textcolor{red}{a_{13}}\\
+        \textcolor{red}{a_{21}}& \textcolor{red}{a_{22}}& \textcolor{red}{a_{23}}\\
+        a_{31}& a_{32}& \textcolor{red}{a_{33}}
+    \end{pmatrix} = -a_{11}a_{32} + a_{31}a_{12}\]
+\end{dfn}
+
+\begin{thm}[Laplace's Expansion of the Determinant]{thm:laplace-determinant}{}
+    Let $A = (a_{ij})$ be an $(n \times n)$-matrix with entries from a commutative ring $R$. For a fixed $i$, the \textbf{$i$-th row expansion of the determinant} is
+    \[\det(A) = \sum_{j = 1}^{n}a_{ij}C_{ij}\]
+    and for a fixed $j$, the \textbf{$j$-th column expansion of the determinant} is
+    \[\det(A) = \sum_{i = 1}^{n} a_{ij} C_{ij}\]
+\end{thm}
+
+\newpage
+\begin{dfn}[Adjugate Matrix]{def:adjugate-matrix}{}
+    Let $A$ be a $(n \times n)$-matrix with entries in a commutative ring $R$. The \textbf{adjugate matrix} $\text{adj}(A)$ is the $(n \times n)$-matrix whose entries are $adj(A)_{ij} = C_{ji}$ where $C_{ji}$ is the $(j, i)$-cofactor
+\end{dfn}
+
+\begin{thm}[Cramer's Rule]{thm:cramers-rule}{}
+    Let $A$ be a $(n \times n)$-matrix with entries in a commutative ring $R$. Then
+    \[A \cdot \text{adj}(A) = (\det A)I_{n}\]
+\end{thm}
+
+\subsubsection{Alternative Definition of Cramer's}
+In many sources, such as Wikipedia, Cramer's Rule means the formula
+\[x_{i} = \frac{\det(a_{*1}\mid \dots \mid b_{*} \mid \dots \mid a_{*n})}{\det(a_{*1}\mid \dots \mid a_{*i} \mid \dots \mid a_{*n})}\]
+for solving a field $F$ the system $A\vec{x} = \vec{b}$ of $n$ linear equations in $n$ unknowns, provided that a unique solution exists. A unique solution exists if and only if $A$ is invertible. So, instead of applying the Gaussian algorithm, you can calculate lots of determinants, replacing the $i$-th column of $A$ by the given solution vector $\vec{b}$. It turns out that if you implement this rule on a computer, it has the same efficiency as the Gaussian algorithm. The relationship between this version of Cramer's rule and the above theorem is got by successively taking the vector $\vec{b}$ in the system of linear equations to be the standard basis elements $\vec{e_{i}}$ with $1 \le i \le n$.
+
+\begin{thm}[Invertibility of Matrices]{thm:invertibility-of-matrices}{}
+    A square matrix with entries in a commutative ring $R$ is invertible if and only if its determinant is a unit in $R$. That is, $A\in \Mat(n;R)$ is invertible if and only if $\det(A)\in R^{\times}$
+\end{thm}
+
+So for instance, an integral matrix $A\in \Mat(n;\mathbb{Z})$ is invertible if and only if $\det(A)$ is $1$ or $-1$, since $\mathbb{Z}^{\times} = \{\pm 1\}$. On the other hand, a matrix $A\in \Mat(n;F)$ with entries in a field $F$ is invertible if and only if $\det(A)\ne 0$ since $F^{\times}$ consists of the non-zero elements of $F$.
+
+\begin{thm}[Jacobi's Formula]{thm:jacobis}{}
+    Let $A = (a_{ij})$ where the coefficients $a_{ij} = a_{ij}(t)$ are functions of $t$. Then
+    \[\frac{d}{dt} \det A = \text{Tr}\text{Adj} A \frac{dA}{dt}\]
+\end{thm}
+
+\newpage
+\subsection{Eigenvalues and Eigenvectors}
+
+\begin{dfn}[Eigenvalues and Eigenvectors]{def:eigenvalue-eigenvector}{}
+    Let $f: V \to V $ be an endomorphism of an $F$-vector space $V$. A scalar $\lambda\in F$ is an \textbf{eigenvalue of $f$} if and only if there exists a non-zero vector $\vec{v}\in V$ such that $f(\vec{v}) = \lambda \vec{v}$. Each such vector is called an \textbf{eigenvector of $f$ with eigenvalue $\lambda$}. For any $\lambda\in F$, the \textbf{eigenspace of $f$ with eigenvalue $\lambda$} is
+    \[E(\lambda, f) = \{\vec{v}\in V : f(\vec{v}) = \lambda \vec{v}\}\]
+\end{dfn}
+
+\begin{thm}[Existence of Eigenvalues]{thm:existence-of-eigenvalues}{}
+    Each endomorphism of a non-zero finite dimensional vector space over an algebraically closed field has an eigenvalue
+\end{thm}
+
+\begin{dfn}[Characteristic Polynomial]{def:characteristic-polynomial}{}
+    Let $R$ be a commutative ring and let $A\in \Mat(n;R)$ be a square matrix with entries in $R$. The polynomial $\det(x I_{n} - A)\in R[x]$ is called the \textbf{characteristic polynomial of the matrix $A$}. It is denoted by
+    \[\chi_{A}(x) := \det(x I_{n} - A)\]
+    (where $\chi$ stands for $\chi$aracteristic, lol)
+\end{dfn}
+
+\textbf{Note}: Previously $R[X]$ is written for the ring of polynomials on one variable with coefficients in the ring $R$, and now $R[x]$ has appeared instead. This is mainly just to make it clear that $x$ is a variable and not a matrix, as it might look confusing if it is written as $\det(X I_{n} - A)$ ($X$ might be mistaken as a matrix)
+
+\begin{thm}[Eigenvalues and Characteristic Polynomials]{thm:eigenvalues-char-polynomial}{}
+    Let $F$ be a field and $A\in \Mat(n;F)$ a square matrix with entries in $F$. The eigenvalues of the linear mapping $A : F^{n}\to F^{n}$ are exactly the roots of the characteristic polynomial $\chi_{A}$
+\end{thm}
+
+\subsubsection{Eigenvalue remarks}
+\begin{enumerate}
+    \item Square matrices $A,\,B\in \Mat(n;R)$ of the same size are \textit{conjugate} if
+        \[B = P^{-1}AP\in \Mat(n;R)\]
+    for an invertible $P\in \text{GL}(n;R)$. Conjugacy is an equivalence relation on $\Mat(n;R)$. (The definition makes sense for any commutative ring $R$, although we will mainly be concerned with the case of a field)
+    \item The motivation for conjugacy comes from the various matrix representations for an endomorphism $f : V \to V$ of an $n$-dimensional vector space $V$ over a field $F$. Let
+        \[A = (a_{ij}) =\,_{\mathcal{A}}[f]_{\mathcal{A}},\,B = (b_{ij}) =\,_{\mathcal{B}}[f]_{\mathcal{B}}\in \Mat(n;f)]\]
+        be the matrices of $f$ with respect to bases $\mathcal{A} = (\vec{v_{1}}, \vec{v_{2}},\dots,\vec{v_{n}}),\,\mathcal{B} = (\vec{w_{1}}, \vec{w_{2}},\dots,\vec{w_{n}})$ for $V$
+        \[f(\vec{v_{j}}) = \sum_{i = 1}^{n}a_{ij}\vec{v_{i}},\,f(\vec{w_{j}}) = \sum_{i = 1}^{n}b_{ij}\vec{w_{i}}\in V\]
+
+        The change of basis matrix $P = (p_{ij}) =\,_{\mathcal{A}} [\text{id}_{V}]_{\mathcal{B}}\in \Mat(n;F)$ is invertible, with
+        \[\vec{w_{j}} = \sum_{i = 1}^{n}p_{ij}\vec{v_{i}}\in V\]
+        We have the identity
+        \[B = P^{-1}AP\in \Mat(n;F)\]
+        so $A,B$ are conjugate
+    \item \textbf{Key observation}: the characteristic polynomials of conjugate $A,B\in \Mat(n,R)$ are the same
+        \begin{align*}
+            \chi_{B}(x) &= \det(x I_{n} - B) = \det(x I_{n} = P^{-1}AP) \\
+            &= \det(P^{-1}(x I_{n} - A)P) = \det(P)^{-1}\det(x I_{n} - A)\det(P) \\
+            &= \det(xI_{n} - A) = \chi_{A}(x)\in R[x]
+        \end{align*}
+    \item In view of $2$ and $3$ we can define the characteristic polynomial of an endomorphism $f : V\to V$ of an $n$-dimensional vector space over a field $F$ to be
+        \[\chi_{f}(x) = \chi_{A}(x)\in F[x]\]
+        with $A =\mathcal{A}\,[f]_{\mathcal{A}}\in \Mat(n;R)$ the matrix of $f$ with respect to \textit{any} basis $\mathcal{A}$ for $V$. Thanks to \ref{thm:eigenvalues-char-polynomial}, the eigenvalues of $f$ are exactly the roots of $\chi_{f}$, the characteristic polynomial of $f$
+\end{enumerate}
+
+\textbf{Remark}: Let $f : V\to V$ be an endomorphism of an $n$-dimensional vector space $V$ over a field $F$. Suppose given an $m$-dimensional subspace $W\subseteq V$ such that $f(W)\subseteq W$, so that there are defined endomorphisms of the subspace and the quotient space
+\begin{align*}
+    g &: W \to W;\, \vec{w}\mapsto f(\vec{w})\\
+    h &: V / W \to V / W;\, W + \vec{v} \mapsto W + f(\vec{v})
+\end{align*}
+Any ordered basis $\mathcal{A} = (\vec{w_{1}},\vec{w_{2}},\dots,\vec{w_{m}})$ for $W$ can be extended to an ordered basis for $V$
+\[\mathcal{B} = (\vec{w_{1}}, \vec{w_{2}},\dots,\vec{w_{m}},\vec{v}_{m+1},\vec{v}_{m+2}\cdots,\vec{v_{n}})\]
+
+The images of the $\vec{v}_{j}$'s under the canonical projection $\text{can} : V\to V / W$ are then an ordered basis for $V / W$
+\[\mathcal{C} = (\text{can}(v_{m + 1}), \text{can}(v_{m + 2}),\dots,\text{can}(\vec{v}_{n}))\]
+Let $a_{ij},b_{jk},c_{ik}\in F$ be the coefficients in the linear combinations
+\[f(\vec{w}_{j}) = \sum_{i = 1}^{m}a_{ij}\vec{w}_{i}\in W,\,f(\vec{v}_{k}) = \sum_{j = m+1}^{n} b_{jk}\vec{v}_{j} + \sum_{i = 1}^{n}c_{ik}\vec{w}_{i}\in V\]
+
+[WIP SO MUCH WRITING OMG]
+
+\newpage
+\subsection{Triangularisable, Diagonalisable, and Cayley-Hamilton}
+
+\begin{dfn}[Triangularisability]{def:triangularisability}{}
+    Let $f : V \to V$ be an endomorphism of a finite dimensional $F$-vector space $V$. $f$ is \textbf{triangularisable} if the vector space $V$ has an ordered basis $\mathcal{B} = (\vec{v}_{1}, \vec{v}_{2},\dots,\vec{v}_{n})$ such that
+        \begin{align*}
+            f(\vec{v}_{1}) &= a_{11}\vec{v_{1}}, \\
+            f(\vec{v_{2}}) &= a_{12}\vec{v}_{1} + a_{22}\vec{v}_{2}, \\
+            &\vdots \\
+            f(\vec{v}_{n}) &= a_{1n}\vec{v}_{1} + a_{2n}\vec{v}_{2} + \cdots + a_{nn}\vec{v}_{n}\in V
+        \end{align*}
+        (so that the first basis vector $\vec{v}_{1}$ is an eigenvector, with eigenvalue $a_{11}$) or equivalently such that the $n \times n$ matrix $_{\mathcal{B}}[f]_{\mathcal{B}} = (a_{ij})$ representing $f$ with respect to $\mathcal{B}$ is upper triangular (or any other triangular)
+        \[A = \begin{pmatrix}
+            a_{11}& a_{12}& a_{13}& \cdots & a_{1n} \\
+            0& a_{22}& a_{23}& \cdots& a_{2n} \\
+            0 & 0& a_{33}& \cdots& a_{3n} \\
+            \vdots& \vdots& \vdots& \ddots& \vdots \\
+            0 & 0& 0& \cdots& a_{nn}
+        \end{pmatrix}\]
+\end{dfn}
+
+
+\begin{thm}[Triangularisability and Characteristic Polynomials]{thm:triangularisability-chi-poly}{}
+    Let $f : V \to V$ be an endomorphism of a finite dimensional $F$-vector space $V$. Then $f$ is triangularisable iff the characteristic polynomial $\chi_{f}$ decomposes into linear factors in $F[x]$
+\end{thm}
+
+\begin{thm}[Triangularisability and Conjugacy]{thm:triangularisability-and-conjugacy}{}
+    An endomorphism $A : F^{n} \to F^{n}$ is triangularisable if and only if $A = (a_{ij})$ is conjugate to an upper triangular matrix $B = (b_{ij})(b_{ij} = 0 \text{ for $i > j$})$, with $P^{-1} AP=B$ for an invertible matrix $P$
+\end{thm}
+
+\begin{dfn}[Diagonalisability]{def:diagonal}{}
+    An endomorphism $f : V \to V$ of an $F$-vector space $V$ is \textbf{diagonalisable} if and only if there exists a basis of $V$ consisting of eigenvectors of $f$. If $V$ is finite dimensional then this is the same as saying that there exists an ordered basis $\mathcal{B} = \{\vec{v}_{1},\dots,\vec{v}_{n}\}$ such that corresponding matrix representing $f$ is diagonal, that is $_{\mathcal{B}}[f]_{\mathcal{B}} = \text{diag}(\lambda_{1},\dots,\lambda_{n})$. In this case, of course, $f(\vec{v}_{i}) = \lambda_{i}\vec{v}_{i}$.
+    
+    A square matrix $A\in \Mat(n;F)$ is \textbf{diagonalisable} if and only if the corresponding linear mapping $F^{n}\to F^{n}$ given by left multiplication by $A$ is diagonalisable. Thanks to [something] this just means that $A$ is conjugate to a diagonal matrix, there exists an invertible matrix $P \in \text{GL}j(n;F)$ such that $P^{-1}AP = \text{diag}(\lambda_{1},\dots,\lambda_{n})$. In this case the columns $P$ are the vectors of a basis of $F^{n}$ consisting of eigenvectors of $A$ with eigenvalues $\lambda_{1},\dots,\lambda_{n}$
+\end{dfn}
+
+\newpage
+\begin{thm}[Linear Independence of Eigenvectors]{thm:ev-linear-independence}{}
+    Let $f : V\to V$ be an endomorphism of a vector space $V$ and let $\vec{v}_{1},\dots,\vec{v}_{n}$ be eigenvectors of $f$ with pairwise different eigenvalues $\lambda_{1},\dots,\lambda_{n}$. Then the vectors $\vec{v}_{1},\dots,\vec{v}_{n}$ are linearly independent
+\end{thm}
+
+\begin{thm}[Cayley-Hamilton Theorem]{thm:cayley-hamilton}{}
+    Let $A\in \Mat(n;R)$ be a square matrix with entries in a commutative ring $R$. Then evaluating its characteristic polynomial $\chi_{A}(x)\in R[x]$ at the matrix $A$ gives zero.
+\end{thm}
+
+
+\newpage
+\section{Jordan Normal Form}
+
+\subsection{Jordan Normal Form starting}
+
+\subsubsection{Recall from previous}
+
+\textbf{Def}: A matrix $A\in \Mat(n;F)$ where $F$ is a field is \textbf{diagonalisable} if it is conjugate to a diagonal matrix $D$, i.e. there exists an invertible matrix $P$ such that $P^{-1}AP = D$
+
+\noindent\rule{\textwidth}{0.2pt}
+\textbf{Lemma}: Let $F : V\to V$ be an endomorphism of a vector space $V$ and let $\vec{v}_{1},\dots,\vec{v}_{n}$ be aeigenvectors of $f$ with pairwise different eigenvalues $\lambda_{1},\dots,\lambda_{n}$. Then the vectors $\vec{v}_{1},\dots,\vec{v}_{n}$ are linearly independent.
+
+If the eigenvectors span $V$ then they give a basis with respect to which $f$ is diagonal.
+
+\noindent\rule{\textwidth}{0.2pt}
+\textbf{Corollary}: If all roots of $\chi_{A}$ are distinct then $A$ is \textbf{diagonalisable}
+
+A matrix in $\Mat(2;F)$ with repeated eigenvalues and which is not a multiple of the identity \textbf{cannot} be diagonalised
+
+
+\end{document}

@@ -393,6 +393,115 @@ Actual line integral equation
     \textbf{Note:} $\{\underline{e}_{\rho}, \underline{e}_{\phi}, \underline{e}_{\zeta}\}$ forms a right-hand orthogonal basis
 \end{dfn}
 
-\[\mathbb{P}\]
+\newpage
+\section{filler}
+\section{more filler}
+\subsection{filler}
+\subsection{The Vector Potential}
+
+Results ahead...
+
+\[\underline{\nabla} \times \underline{a} = 0 \iff \exists\phi \text{ s.t. } \underline{a} = \underline{\nabla} \phi ;\, \phi = \int_{0}^{1} d\lambda (\underline{a} ( \lambda \underline{r}) \cdot \underline{r})\]
+\[\underline{\nabla} \times \underline{B} = 0 \iff \exists \underline{A} \text{ s.t. } \underline{B} = \underline{\nabla} \underline{A} ;\, \underline{A} = \int_{0}^{1} d\lambda (\underline{B} ( \lambda \underline{r}) \cdot \underline{r}\lambda)\]
+
+\begin{thm}[Helmholtz Theorem]{thm:helmholtz}{}
+    Smooth $\underline{Q}$ decomposes (not unique)
+
+    \[\underline{Q} = \underline{\nabla} g + \underline{\nabla} \times \underline{G}\]
+
+    Conservative curl-free div-free vector free
+\end{thm}
+
+\textbf{Note:} related - Hodge decomposition (valid more generally) whatever that is
+
+\noindent\rule{\textwidth}{0.2pt}
+
+\textbf{Example}: 
+
+
+\begin{align*}
+    \underline{B} &= \underline{c} \times \underline{r},\quad \underline{\nabla} \cdot \underline{B} = \partial_{x_{i}} \epsilon_{ijk} c_{j} \times k\\
+                  &= \delta_{k}\epsilon_{ijk}c_{j} = 0
+\end{align*}
+
+note: what?
+
+\begin{align*}
+    \underline{A} = -\underline{r} \times \int_{0}^{1} \underline{B}(\lambda \underline{r}) d\lambda &= -\underline{r} \lambda (\underline{c} \times \underline{r}) \underbrace{\int_{0}^{1} d\lambda \lambda^{2}}_{1 /3}\\
+    &= \frac{1}{3} ((\underline{r} \cdot \underline{c})\underline{r} - r^{2}\underline{c})
+\end{align*}
+
+\[\underline{a} \times (\underline{b} \cdot \underline{ c})\]
+
+can't keep up with the guy lol
+
+\newpage
+
+\textbf{Formal Check of 2} (second formula, TODO: acstually figure out how to mark number lol)
+
+
+\[\underline{\nabla} \times \underline{\Delta} = \underline{\nabla} \times \int_{0}^{1} \underline{B} (\lambda \underline{r}) \times \underline{r} \lambda d\lambda = \int_{0}^{1} f(\lambda, \underline{r}) \lambda d\lambda\]
+
+\begin{align*}
+    f(\lambda, \underline{r}) &=^\text{(F)} [\underline{\nabla} \cdot \underline{r} \quad \underline{B}(\lambda \underline{r}) + \underline{r} \cdot \underline{\nabla} \quad \underline{B}(\lambda \underline{r})] - [\underbrace{(\underline{\nabla} \cdot \underline{B})}_{0} \underline{r} + \underbrace{(\underline{B} (\lambda \underline{r}) \cdot \underline{\nabla}) \underline{r}}_{\underline{B}}]\\
+                              &= 2\underline{B}(\lambda \underline{r}) + \underbrace{x_{i}\partial_{x_{i}} \quad \underline{B}(\lambda x_{1}, \lambda x_{2}, \lambda x_{3})_{\lambda\partial\lambda \underline{B}(\lambda x_{1}, \lambda x_{2}, \lambda x_{3})}}\\
+                              &= \int_{0}^{1} [\underbrace{2\underline{B}(\lambda\underline{r})\lambda}_{I_{n}} + \underbrace{\lambda^{2}\partial_{\lambda} \underline{B}(\lambda\underline{r})}_{I_{2}}] d\lambda \\
+I_{2} &= \underbrace{\lambda^{2}\underline{B}(\lambda\underline{r})}_{\underline{B}(\underline{r})} \big\rvert^{1}_{0} - \underbrace{\int_{0}^{1} 2\lambda \underline{B}(\lambda\underline{r}) d\lambda}_{\underline{I}_{n}} = \underline{B} - \underline{I_{n}} \\
+\underline{\nabla} \times \underline{A} &= \underline{I_{n}} + \underline{I_{2}} = \underline{I_{n}} + (\underline{B} - \underline{I_{n}}) = \underline{B}
+\end{align*}
+
+dunno what that equation means :P
+
+
+\subsection{Orthogonal Curvilinear Co-ordinates (OCC)}
+
+e.g. spherical co-ords
+
+\begin{align*}
+    x &= r \sin\theta\cos\phi\\
+    y &= r\sin\theta\sin\pi\\
+    z &= r\cos\theta
+\end{align*}
+
+In general: 
+
+$u_{i} = u_{i}(x_{1}, x_{2}, x_{3})$, $i = 1\dots 3$ (3 single valued invertible functions of 3 variables)
+
+$x_{i} = x_{i}(u_{1}, u_{2}, u_{3})$
+
+\begin{align*}
+    r &= \sqrt{x^{2} + y^{2} + z^{2}} & r = \text{ const $\implies$ Sphere}\\
+    \theta &= \cos ^{-1} (z /r) & \theta = \text{ const $\implies$ Cones}\\
+    \phi &= tg^{-1}(y \ x) & \phi = \text{ const $\implies$ Planes}
+\end{align*}
+
+\subsubsection{OCC}
+
+\begin{itemize}
+    \item $\partial u_{i} \underline{r} \cdot \partial_{u_{j}} \underline{r} = 0 \quad i\ne j \quad \text{ orthogonality}$
+    \item $\text{Scale Factor: }h_{i} = \lvert \partial_{u_{i}} \underline{r}\rvert\quad \text{norm}$
+    \item $\underline{e}_{u_{i}} = \frac{1}{h_{i}}\partial_{u_{i}}\underline{r} \qquad \underline{e}_{u_{i}} \cdot \underline{e}_{u_{j}} = \delta_{ij}$
+\end{itemize}
+
+\textbf{Examples}:
+\begin{enumerate}
+    \item Cartesian Coordinates: $\underline{r} = x_{i}\underline{e}_{i} \quad h_{i} = \lvert \partial_{x_{i}} \underline{r} \rvert = 1$
+    \item Spherical: $\underline{r} = r [\sin\theta\cos\phi\underline{e}_{1} + \sin\theta\sin\phi\underline{e}_{2} + \cos\theta\underline{e}_{3}]$
+
+    \begin{align*}
+    \partial_{r}\underline{r} &= [] \implies h_{r} = \lvert \partial_{r}\underline{r} \rvert = 1k \\
+    \partial_{\theta}\underline{r} &= r\sin\theta(\underbrace{-\sin\phi\underline{c}_{1} + \cos\phi\underline{e}_{2})}_{\underline{e}_{f}} \\
+    h_{\phi} &= \lvert \partial_{\phi}\underline{r} \rvert = r\sin\theta
+    \end{align*}
+
+\item Cylindrical Coordinates: $\underline{r} = \rho\cos\phi\underline{e}_{1} + \rho\sin\phi\underline{e}_{2} + z\underline{e}_{3}$
+    \begin{align*}
+        \partial_{\rho}\underline{r} &= \underbrace{\cos\phi\underline{e}_{1} + \sin\phi\underline{e}_{2}}_{\underline{e}_{\rho}} & h_{\rho} = 1 \\
+        \partial_{\phi}\underline{r} &= \rho (\underbrace{-\sin\phi\underline{e}_{1} + \cos\phi\underline{e}_{2}}_{\underline{e}_{\phi}}) & h_{\phi} = \rho \\
+        \partial_{z}\underline{r} &= \underline{e}_{3} = \underline{e}_{z} & h_{z} = 1
+    \end{align*}
+\end{enumerate}
+
+i cba
 
 \end{document}

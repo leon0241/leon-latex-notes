@@ -24,3 +24,6 @@
 \contentsline {subsection}{\numberline {3.5}Eigenvalues and Eigenvectors}{19}{subsection.3.5}%
 \contentsline {subsubsection}{\numberline {3.5.5}Eigenvalue remarks}{19}{subsubsection.3.5.5}%
 \contentsline {subsection}{\numberline {3.6}Triangularisable, Diagonalisable, and Cayley-Hamilton}{21}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Jordan Normal Form}{23}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Jordan Normal Form starting}{23}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Recall from previous}{23}{subsubsection.4.1.1}%

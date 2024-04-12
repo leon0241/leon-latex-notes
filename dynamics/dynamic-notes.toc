@@ -5,3 +5,9 @@
 \contentsline {subsubsection}{\numberline {1.3.1}Mass Matrix}{5}{subsubsection.1.3.1}%
 \contentsline {subsection}{\numberline {1.4}Line integral :)}{6}{subsection.1.4}%
 \contentsline {subsection}{\numberline {1.5}Surface Integrals}{6}{subsection.1.5}%
+\contentsline {section}{\numberline {2}filler}{8}{section.2}%
+\contentsline {section}{\numberline {3}more filler}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}filler}{8}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}The Vector Potential}{8}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Orthogonal Curvilinear Co-ordinates (OCC)}{9}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}OCC}{9}{subsubsection.3.3.1}%
