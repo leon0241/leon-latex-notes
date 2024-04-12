@@ -39,6 +39,8 @@
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\Mat}{Mat}
 \DeclareMathOperator{\scale}{sc}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\id}{id}
 
 \usepackage{hyperref} % note: this is the final package
 
@@ -59,19 +61,6 @@
 \section{Vector Spaces}
 \subsection{Fields and Vector Spaces}
 
-\begin{rcl}[Definition of a Group]{rcl:group-def}{A}
-    For an operation $\ast$, We say a non-empty set G is a \textbf{group} under $\ast$ if the following four axioms hold:
-    \begin{itemize}
-        \setlength\itemsep{0em}
-        \item \textbf{G1 - Closure:} $a\ast b \in G$ for all $a,b\in G$.
-        \item \textbf{G2 - Associativity:} $(a\ast b) \ast c =a\ast(b\ast c)$ for all $a,b,c\in G$
-        \item \textbf{G3 - Identity:} There exists an \textit{identity} element of $G$ such that $e\ast g = g\ast e = g$ for all $g\in G$.
-        \item \textbf{G4 - Inverse:} Every element $g\in G$ has an \textit{inverse} $g^{-1}$ such that $g\ast g^{-1}=g^{-1}\ast g = e$
-    \end{itemize}
-    
-    An \textbf{Abelian Group} is one where $a * b = b * a$ (commutative)
-\end{rcl}
-
 \begin{dfn}[Definition of a field]{dfn:field}{}
     A {field} $F$ is a set with two functions
     \begin{itemize}
@@ -87,6 +76,8 @@
         \item \textbf{Distributive law}: For all $a$, $b$, and $c$ in $F$, we have
             \[a(b + c) = ab + ac \in F\]
     \end{enumerate}
+
+    \vspace{-5pt}
     and the following lemmas:
     \begin{enumerate}
         \setlength\itemsep{0em}
@@ -102,6 +93,7 @@
     \[F \times V \to V : (\lambda, \vec{v})\mapsto \lambda \vec{v}\]
     s.t. for all $\lambda, \mu \in F$ and $\vec{v}, \vec{w}\in V$ the following identities hold:
 
+    \vspace{-5pt}
     \begin{itemize}
         \setlength\itemsep{0em}
         \item \textbf{Distributivity 1}: $\lambda(\vec{v} \dot{+} \vec{w}) = \lambda\vec{v} \dot{+} \lambda \vec{w}$
@@ -109,7 +101,10 @@
         \item \textbf{Associativity}: $\lambda (\mu \vec{v}) = (\lambda \mu) \vec{v}$
         \item \textbf{Identity}: $1\vec{v} = \vec{v}$
     \end{itemize}
+    \vspace{-5pt}
     and so do the following lemmas:
+
+    \vspace{-5pt}
     \begin{enumerate}
         \setlength\itemsep{0em}
         \item If $V$ is a vector space and $\vec{v}\in V$, then $0 \vec{v} = \vec{0}$
@@ -189,6 +184,7 @@
     \[\psi = \psi_{\mathcal{A}} : F^{r}\to V\]
 \end{thm}
 
+\vspace{-5pt}
 \begin{thm}[Characterisations of Bases]{thm:basis-characterisations}{}
     The following are equivalent for a subset $E$ of a vector space $V$:
     \begin{enumerate}
@@ -198,24 +194,186 @@
         \item $E$ is maximal among all linearly independent subsets, meaning that $E \cup \{\vec{v}\}$ is linearly dependent for any $\vec{v}\in V$
     \end{enumerate}
 
+    \vspace{-10pt}
     \noindent\rule{\textwidth}{0.2pt}
     \textbf{Corrollary}: Let $V$ be a finitely generated vector space over a field $F$. Then $V$ has a finite basis
 
     \noindent\rule{\textwidth}{0.2pt}
     \textbf{Basis Characterisation Variant}
     \begin{enumerate}
+        \setlength\itemsep{0em}
         \item If $L \subset V$ is a linearly independent subset and $E$ is minimal amongst all generating sets of $V$ with the property that $L \subseteq E$, then $E$ is a basis.
         \item If $E \subseteq V$ is a generating set and if $L$ is maximal amongst all linearly independent sets of $V$ with the property $L \subseteq$ $E$, then $L$ is a basis.
     \end{enumerate}
 \end{thm}
 
-\newpage
-
+\vspace{-5pt}
 \begin{dfn}[Free Vector Space]{dfn:free-vector-space}{}
     Let $X$ be a set and $F$ a field. The set $\Maps(X, F)$ of all mappings $f: X \to F $ becomes an $F$-vector space with the operations of pointwise addition and multiplication by a scalar. The subset of all mappings which send almost all elements of $X$ to zero is a vector subspace
     \[F\langle X \rangle \subseteq \Maps(X, F)\]
+    This subspace is called the \textbf{free vector space on the set $X$}
 \end{dfn}
 
+\vspace{-5pt}
+\begin{thm}[Variant of Linear Combinations]{thm:lin-combinations-of-basis}{}
+    Let $F$ be a field, $V$ be an $F$-vector space and $(\vec{v}_{i})_{i\in I}$ a family of vectors from the vector space $V$. The following are equivalent:
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item The family $(\vec{v}_{i})_{i\in I}$ is a basis for $V$
+        \item For each $\vec{v}\in V$ there is precisely one family $(a_{i})_{i\in I}$ of elements of $F$, almost all which are zero and such that
+            \[\vec{v} = \sum_{i = I} a_{i}\vec{v}_{i}\]
+    \end{enumerate}
+\end{thm}
+
+\newpage
+\subsection{Dimension of a Vector Space}
+
+\begin{thm}[Fundamental Estimate of LinAlg]{thm:fundamental-estimate-linalg}{}
+    No linearly independent subset of a given vector has more elements than a generating set. Thus if $V$ is a vector space, $L \subset V$ a linearly independent subset and $E \subseteq V$ a generating set, then
+    \[\lvert L \rvert \le \lvert E \rvert\]
+\end{thm} 
+
+\begin{thm}[Steinitz Exchange Theorem]{thm:steinitz-exchange}{}
+    Let $V$ be a vector space, $L \subset V$ a finite linearly independent subset and $E \subseteq V$ a generating set. Then there is an injection $\phi : L \hookrightarrow E$ such that $(E \backslash \phi(L)) \cup L$ is also a generating set for $V$
+    
+    \vspace{-5pt}
+    \noindent\rule{\textwidth}{0.2pt}
+    Let $V$ be a vector space, $M \subseteq V$ a linearly independent subset, and $E \subseteq V$ a generating subset, such that $M \subseteq E$. If $\vec{w}\in V\backslash M$ is a vector $\not\in M$ such that $M \cup \{ \vec{w}\}$ is linearly independent, then there exists $\vec{e}\in E \backslash M$ such that $(E \backslash \{\vec{e}\}) \cup \{\vec{w}\}$ is a generating set
+\end{thm}
+
+\begin{thm}[Cardinality of Bases]{thm:cardinality-of-bases}{}
+    Let $V$ be a finitely generated vector space.
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item $V$ has a finite basis
+        \item $V$ cannot have an infinite basis
+        \item Any two bases of $V$ have the same number of elements
+    \end{enumerate}
+\end{thm}
+
+\begin{dfn}[Dimension of a Vector Space]{dfn:dimension-vectorspace}{}
+    The cardinality of a basis of a finitely generated vector space $V$ is called the \textbf{dimension} of $V$, written $\dim V$. If $F$ is a field, and we want to denote that we mean dimension as an $F$-vector space, then we write $\dim_{F} V$. If the vector space is not finitely generated, then we say $\dim V = \infty$ and call $V$ \textbf{infinite dimensional}. 
+\end{dfn} 
+
+\begin{thm}[Dimension Theorems]{thm:dimension-theorems}{}
+    \textbf{Cardinality Criterion for Bases}
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item Each linearly independent subset $L \subset V$ has at most $\dim V$ elements, and if $\lvert L \rvert = \dim V$ then $L$ is a basis
+        \item Each generating set $E \subseteq V$ has at least $\dim V$ elements, and if $\lvert E \rvert = \dim V$ then $E$ is a basis
+    \end{enumerate}
+    \textbf{Dimension Estimate for Vector Subspaces}: A proper vector subspace of a finite dimensional vector space has itself a strictly smaller dimension
+
+    \noindent\rule{\textwidth}{0.2pt}
+    If $U \subseteq V$ is a vector subspace of an arbitrary vector space, then we have $\dim U \le \dim V$ and if we have $\dim U = \dim V < \infty$ then it follows that $U = V$
+\end{thm}
+
+\subsection{Linear Mappings}
+
+\begin{dfn}[Linear Mappings]{dfn:linear-mappings}{}
+    Let $V$, $W$ be vector spaces over a field $F$. A mapping $f : V \to W$ is called \textbf{linear}, or \textbf{$F$-linear}, or even a \textbf{homomorphism of $F$-vector spaces} if for all $\vec{v}_{1},\vec{v}_{2}\in V$ and $\lambda \in F$ we have
+    \begin{align*}
+        f(\vec{v}_{1} + \vec{v}_{2}) &= f(\vec{v}_{1}) + f(\vec{v}_{2})\\
+        f(\lambda \vec{v}_{1}) &= \lambda f(\vec{v}_{1})
+    \end{align*}
+    A bijective linear mapping is called an \textbf{isomorphism} of vector spaces. If there is an isomorphism between two vector spaces, we call them \textbf{isomorphic}. A homomorphism $V\to V$ is called an \textbf{endomorphism} of $V$. An isomorphism $V\to V$ is called an \textbf{automorphism} of $V$
+
+    \noindent\rule{\textwidth}{0.2pt}
+    Two vector subspaces $V_{1}, V_{2}$ of a vector space $V$ are called \textbf{complementary} if addition defines a bijection
+    \[V_{1} \times V_{2} \xrightarrow{\sim} V\]
+    something about direct sums
+\end{dfn}
+
+\vspace{-5pt}
+\begin{thm}[Classifying VecSpaces by Dimension]{thm:classifying-vecspaces-by-dim}{}
+    Let $n$ be a natural number. Then a vector space over a field $F$ is isomorphic to $F^{n}$ iff it has dimension $n$
+\end{thm}
+
+\vspace{-5pt}
+\begin{thm}[Linear Mapping and Bases]{thm:linear-maps-and-bases}{}
+    Let $V$, $W$ be vector spaces over a field $F$. The set of all homomorphisms from $V$ to $W$ is denoted by
+    \[\Hom_{F}(V,W) = \Hom(V,W)\subseteq \Maps(V,W)\]
+    Let $B \subset V$ be a basis. Then restriction of a mapping gives a bijection
+    \begin{align*}
+        \Hom_{F}(V, W) &\xrightarrow{\sim} \Maps(B, W) \\
+        f \mapsto f \lvert_{B}
+    \end{align*}
+\end{thm}
+
+\vspace{-5pt}
+\begin{thm}[Inverse Mappings]{thm:inverse-mappings}{}
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item Every injective linear mapping $f : V \hookrightarrow W$ has a \textbf{left inverse}, or a linear mapping $g : W \to V$ s.t. $g \circ f = \id_{V}$
+        \item Every surjective linear mapping $f : V \twoheadrightarrow W$ has a \textbf{right inverse}, or a linear mapping $G : W \to V$ s.t. $f \circ g = \id_{W}$
+    \end{enumerate}
+\end{thm}
+
+% \subsection{Rank Nullity Theorem}
+
+\vspace{-5pt}
+\begin{dfn}[Image and Kernel of a map]{dfn:image-kernel}{}
+    The \textbf{image} of a linear mapping $f : V \to W$ is the subset $\Ima(f) = f(V) \subseteq W$. It is a vector subspace of $W$. The preimage of the zero vector of a linear mapping $f : V \to W$ is denoted by:
+    \[\ker(f) := f^{-1}(0) = \{v\in V : f(v) = 0\}\]
+    and is called the \textbf{kernel} of the linear mapping $f$. The kernel is a subspace of $V$
+
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Mini lemma}: A linear mapping is injective iff its kernel is zero
+\end{dfn}
+
+\begin{thm}[Rank-Nullity / Dimension Theorem]{thm:rank-nullity}{}
+    Let $f : V \to W$ be a linear mapping between vector spaces. Then:
+    \[\dim V = \dim(\ker f) + \dim (\Ima f)\]
+    Dimension of $\Ima f$= \textbf{rank} of $f$, dimension of $\ker f$ = \textbf{nullity} of $f$
+
+    \noindent\rule{\textwidth}{0.2pt}
+    Let $V$ be a vector space, and $U,W\subseteq V$ vector subspaces. Then
+    \[\dim(U + W) + \dim(U \cap W) = \dim U + \dim W\]
+\end{thm}
+
+\section{Linear Mappings and Matrices}
+\subsection{Linear Mappings \texorpdfstring{$F^{m}\to F^{n}$}{Fm to Fn} and Matrices}
+\begin{thm}[Linear Maps \texorpdfstring{$F^{m}\to F^{n}$}{Fm to Fn} and Matrices]{thm:linear-maps-matrices}{}
+    Let $F$ be a field and let $m,n\in \mathbb{N}$. There is a bijection between the space of linear mappings $F^{m}\to F^{n}$ and the set of matrices with $n$ rows, $m$ columns, and entries in $F$:
+    \begin{align*}
+        M : \Hom_{F}(F^{m}, F^{n}) &\xrightarrow{\sim} \Mat(n \times m; F)\\
+        f &\mapsto [f]
+    \end{align*}
+
+    This attaches to each linear mapping $f$ its \textbf{representing matrix} $M(f) := [f]$. The columns of this matrix are the images under $f$ of the standard basis elements of $F^{m}$
+    \[[f] := (f(\vec{e}_{1}) \lvert f(\vec{e}_{2}) \rvert \mid \cdots \mid f(\vec{e}_{m}))\]
+\end{thm}
+
+
+% NOTE this could prob just be removed
+\begin{dfn}[Matrix Multiplication]{dfn:matrix-multiplication}{}
+    Let $n,m,\ell\in\mathbb{N}$, $F$ a field, and let $A\in \Mat(n \times m; F)$ and $B\in \Mat(m \times \ell; F)$ be matrices. The \textbf{product} $A \circ B = AB\in \Mat(n \times \ell;F)$ is the matrix defined by
+    \[(AB)_{ik} = \sum_{j = 1}^{m} A_{ij}B_{jk}\]
+\end{dfn}
+
+\begin{thm}[Composition of maps to products]{thm:linear-maps-and-mat-prods}{}
+    Let $g : F^{\ell}\to F^{m}$ and $f : F^{m} \to F^{n}$ be linear mappings. The representing matrix of their composition is the product of their representing matrices:
+    \[[f \circ g] = [f] \circ [g]\]
+    
+\end{thm}
+
+
+% NOTE this could prob just be removed
+\begin{thm}[Calculating with Matrices]{thm:matrix-calculations}{}
+    \vspace{-10pt}
+    \begin{multicols}{2}
+    \begin{itemize}
+        \item (A + A')B = AB + A'B
+        \item A(B + B') + AB + AB'
+        \item IB = B
+        \item AI = A
+        \item (AB)C = A(BC)
+    \end{itemize}
+    \end{multicols}
+    \vspace{5pt}
+\end{thm}
+
+\newpage
 
 \section{Rings}
 I can't be bothered doing changes of basis and stuff, time for something more interesting :D 
