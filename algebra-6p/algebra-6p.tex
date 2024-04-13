@@ -17,6 +17,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 % \usepackage{preamble}
+\usepackage{enumitem}
 \usepackage{multicol}
 \usepackage{lipsum}
 \usepackage[framemethod=TikZ]{mdframed}
@@ -29,7 +30,7 @@
 % \setlength{\parskip}{0pt}
 
 % Custom Definitions of operators
-\DeclareMathOperator{\Ima}{im}
+\DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\Fix}{Fix}
 \DeclareMathOperator{\Orb}{Orb}
 \DeclareMathOperator{\Stab}{Stab}
@@ -304,7 +305,7 @@
 
 \vspace{-5pt}
 \begin{thm}[Inverse Mappings]{thm:inverse-mappings}{}
-    \begin{enumerate}
+    \begin{enumerate}[leftmargin=*]
         \setlength\itemsep{0em}
         \item Every injective linear mapping $f : V \hookrightarrow W$ has a \textbf{left inverse}, or a linear mapping $g : W \to V$ s.t. $g \circ f = \id_{V}$
         \item Every surjective linear mapping $f : V \twoheadrightarrow W$ has a \textbf{right inverse}, or a linear mapping $G : W \to V$ s.t. $f \circ g = \id_{W}$
@@ -315,7 +316,7 @@
 
 \vspace{-5pt}
 \begin{dfn}[Image and Kernel of a map]{dfn:image-kernel}{}
-    The \textbf{image} of a linear mapping $f : V \to W$ is the subset $\Ima(f) = f(V) \subseteq W$. It is a vector subspace of $W$. The preimage of the zero vector of a linear mapping $f : V \to W$ is denoted by:
+    The \textbf{image} of a linear mapping $f : V \to W$ is the subset $\im(f) = f(V) \subseteq W$. It is a vector subspace of $W$. The preimage of the zero vector of a linear mapping $f : V \to W$ is denoted by:
     \[\ker(f) := f^{-1}(0) = \{v\in V : f(v) = 0\}\]
     and is called the \textbf{kernel} of the linear mapping $f$. The kernel is a subspace of $V$
 
@@ -325,8 +326,8 @@
 
 \begin{thm}[Rank-Nullity / Dimension Theorem]{thm:rank-nullity}{}
     Let $f : V \to W$ be a linear mapping between vector spaces. Then:
-    \[\dim V = \dim(\ker f) + \dim (\Ima f)\]
-    Dimension of $\Ima f$= \textbf{rank} of $f$, dimension of $\ker f$ = \textbf{nullity} of $f$
+    \[\dim V = \dim(\ker f) + \dim (\im f)\]
+    Dimension of $\im f$= \textbf{rank} of $f$, dimension of $\ker f$ = \textbf{nullity} of $f$
 
     \noindent\rule{\textwidth}{0.2pt}
     Let $V$ be a vector space, and $U,W\subseteq V$ vector subspaces. Then
@@ -470,22 +471,18 @@
     \[{}_{\mathcal{A}'}[f]_{\mathcal{A}'} = {}_{\mathcal{A}}[\id_{V}]_{\mathcal{A}'}^{-1} \circ {}_{\mathcal{A}}[f]_{\mathcal{A}} \circ {}_{\mathcal{A}}[\id_{V}]_{\mathcal{A}'}\]
 \end{thm}
 
+% \vspace{30pt}
 
-
-
-
-
-\newpage
-
-\section{Rings}
-I can't be bothered doing changes of basis and stuff, time for something more interesting :D 
+\section{Rings and Modules}
 
 \subsection{Ring basics}
 \begin{dfn}[Definition of a Ring]{dfn:ring}{}
     A \textbf{ring} is a set with two operations $(\mathbb{R}, +, \cdot)$ that satisfy:
+
     \begin{enumerate}
+        \setlength\itemsep{0em}
         \item $(R, +)$ is an abelian group
-        \item $(R, \cdot)$ is a \textbf{monoid} - this means that the second operation $\cdot : R \times R \to R$ is associative and that there is an \textbf{identity element} $1 = 1_{R}\in R$, often just called the identity, with the property that $1 \cdot a = a \cdot 1 = a$ for all $a\in R$.
+        \item $(R, \cdot)$ is a \textbf{monoid}, meaning that it is a set with \textbf{Associativity} and \textbf{Identity}, or in other words, a monoid is a group without the neccessity of having the \textbf{Inverse} axiom
         \item The distributive laws hold, meaning that for all $a,b,c\in R$,
             \begin{align*}
                 a \cdot (b + c) &= (a \cdot b) + (a \cdot c)) \\
@@ -493,16 +490,20 @@ I can't be bothered doing changes of basis and stuff, time for something more in
             \end{align*}
     \end{enumerate}
     The two operations are called \textbf{addition} and \textbf{multiplication} in our ring. A ring in which multiplication, that is $a \cdot b = b \cdot a$ for all $a,b\in R$, is a \textbf{commutative ring}
+
+    \noindent\rule{\textwidth}{0.2pt}
+
+    \textbf{Note}: We denote the identity of the monoid $(R, \cdot)$ as $1$, and the additive identity of $(R, +)$ as $0_{R}$ or $0$
+
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Note}: We define the \textbf{null ring} or \textbf{zero ring} as a ring where $R$ is a single element set, i.e. $\{0\}$ where $0 + 0 = 0$ and $0 \times 0 = 0$
 \end{dfn}
 
-\textbf{Note}: We'll call the element $1\in R$ as the identity element of the monoid $(R, \cdot)$, and we call the additive identity of $(R, +)$ zero, written as $0_{R}$ or $0$
-
-\textbf{Example}: We can define the \textbf{null ring} or \textbf{zero ring} as a ring where $R$ is a single ement set, e.g. $\{0\}$, with the operations $0 + 0 = 0$ and $0 \times 0 = 0$. We will call any ring that isn't the zero ring a \textbf{non-zero ring}
 
 \begin{xmp}[Modulo Rings]{xmp:modulo-rings}{}
-    Let $m\in \mathbb{Z}$ be an integer. Then the set of \textbf{integers modulo} $m$, written
+    Let $m\in \mathbb{Z}$. Then the set of \textbf{integers modulo} $m$, written
     \[\mathbb{Z} / m\mathbb{Z}\]
-    is a ring. The elements of $\mathbb{Z} / m\mathbb{Z}$ consist of \textbf{congruence classes} of integers modulo $m$ - that is the elements are the subsets $T$ of $\mathbb{Z}$ of the form $T = a + m\mathbb{Z}$ with $a\in \mathbb{Z}$. Think of these as the set of integers that have the same remainder when you divide them by $m$. I denote the above congruence class by $\overline{a}$. Obviously $\overline{a} = \overline{b}$ is the same as $a-b\in m\mathbb{Z}$, and often I'll write
+    is a ring. The elements of $\mathbb{Z} / m\mathbb{Z}$ consist of \textbf{congruence classes} of integers modulo $m$ - that is, the elements are the subsets $T$ of $\mathbb{Z}$ of the form $T = a + m\mathbb{Z}$ with $a\in \mathbb{Z}$. Think of these as the set of integers that have the same remainder when you divide them by $m$. I denote the above congruence class by $\overline{a}$. Obviously $\overline{a} = \overline{b}$ is the same as $a-b\in m\mathbb{Z}$, and often I'll write
     \[a \equiv b \mod m\]
 \end{xmp}
 
@@ -512,18 +513,6 @@ I can't be bothered doing changes of basis and stuff, time for something more in
     A \textbf{field} is a non-zero commutative ring $F$ in which every non-zero element $a\in F$ has an inverse $a^{-1}\in F$, that is an element $a^{-1}$ with the property that $a \cdot a^{-1} = a^{-1} \cdot a = 1$
 \end{dfn}
 
-\begin{thm}[Prime property of fields]{thm:prime-ring-fields}{}
-    Let $m$ be a positive integer. The commutative ring $\mathbb{Z} / m\mathbb{Z}$ is a field if and only if $m$ is prime.
-\end{thm}
-
-\begin{thm}[Lemmas for multiplying]{dfn:ring-lemmas-1}{}
-    Let $R$ be a ring and let $a,b\in R$. Then
-    \begin{enumerate}
-        \item $0a = 0 = a 0$
-        \item $(-a)b = -(ab) = a(-b)$
-        \item $(-a)(-b) = ab)$
-    \end{enumerate}
-\end{thm}
 
 
 \begin{dfn}[Multiples of an abelian group]{dfn:abelian-group-multis}{}
@@ -532,40 +521,65 @@ I can't be bothered doing changes of basis and stuff, time for something more in
     $0a = 0$ and negative multiples are defined by $(-m)a = -(ma)$
 \end{dfn}
 
-\begin{thm}[Lemmas for multiples]{dfn:ring-lemmas-2}{}
-    Let $R$ be a ring, let $a,b\in R$ and let $m,n\in \mathbb{Z}$. Then:
+\newpage
+
+
+\begin{thm}[Properties of Rings]{dfn:ring-lemmas-1}{}
+    \textbf{Lemma set 1}: Let $R$ be a ring and let $a,b\in R$. Then:
     \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item $0a = 0 = a 0$
+        \item $(-a)b = -(ab) = a(-b)$
+        \item $(-a)(-b) = ab)$
+    \end{enumerate}
+
+    \textbf{Lemma set 2}: Let $R$ be a ring, $a,b\in R$ and $m,n\in \mathbb{Z}$. Then:
+    \begin{enumerate}
+        \setlength\itemsep{0em}
         \item $m(a + b) = ma + mb$
         \item $(m + n)a = ma + na$
         \item $m(na) = (mn)a$
         \item $m(ab) = (ma)b = a(mb)$
         \item $(ma)(nb) = (mn)(ab)$
     \end{enumerate}
+
+    \vspace{-5pt}
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Prime Property for Fields}: Let $m$ be a natural number. The commutative ring $\mathbb{Z} / m\mathbb{Z}$ is a field if and only if $m$ is prime
 \end{thm}
 
 \begin{dfn}[Unit of a ring]{dfn:ring-unit}{}
     Let $R$ be a ring. An element $a\in R$ is called a \textbf{unit} if it is \textit{invertible} in $R$ or in other words \textit{has a multiplicative inverse in $R$}, meaning that there exists $a^{-1}\in R$ such that
     \[aa^{-1} = 1 = a^{-1} a\]
-\end{dfn}
 
-\begin{thm}[]{thm:ring-units-form-a-group}{}
-    The set $R^{\times}$ of units in a ring $R$ forms a group under multiplication
-\end{thm}
+    \vspace{-5pt}
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Thm}: The set $R^{\times}$ of units in a ring $R$ forms a group under multiplication
+\end{dfn}
 
 \begin{dfn}[zero-divisors of a ring]{dfn:zero-divisor}{}
     In a ring $R$, a non-zero element $a$ is called a \textbf{zero-divisor} or \textbf{divisor of zero} if there exists a non-zero element $b$ such that either $ab = 0$ or $ba = 0$.
 \end{dfn}
 
-\begin{thm}[Cancellation Law]{thm:int-domains-cancellation-law}{}
-    Let $R$ be an \textit{integral domain} and let $a,b,c\in R$. If $ab = ac$ and $a\ne 0$ then $b = c$
-\end{thm}
+\begin{dfn}[Integral Domain]{dfn:integral-domain}{}
+    An \textbf{integral domain} is a non-zero commutative ring that has no zero-divisors. The following two laws hold:
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item $ab = 0 \implies a = 0 \text{ or } b = 0$
+        \item $a \ne 0 \text{ and } b \ne 0 \implies ab \ne 0$
+    \end{enumerate}
+\end{dfn}
 
-\begin{thm}[Prime Property for Integral Domains]{thm:prime-int-domains}{}
-    Let $m$ be a natural number. Then $\mathbb{Z} / m\mathbb{Z}$ is an integral domain if and only if $m$ is prime.
-\end{thm}
 
-\begin{thm}[]{thm:finite-int-domains-are-fields}{}
-    Every \textbf{finite} integral domain is a \hyperref[dfn:field]{field}.
+\begin{thm}[Integral Domain Properties]{thm:int-domain-props}{}
+    \begin{itemize}[leftmargin=*]
+        \setlength\itemsep{0em}
+        \item \textbf{Cancellation Law}: Let $R$ be an integral domain and let $a,b,c\in R$. If $ab = ac$ and $a\ne 0$ then $b = c$
+        \item Let $m$ be a natural number. Then $\mathbb{Z} / m\mathbb{Z}$ is an integral domain if and only if $m$ is prime.
+        \item Every \textbf{finite} integral domain is a \hyperref[dfn:field]{field}.
+    \end{itemize}
+    
+    
 \end{thm}
 
 \subsection{Polynomials}
@@ -573,7 +587,16 @@ I can't be bothered doing changes of basis and stuff, time for something more in
 \begin{dfn}[Polynomial]{dfn:polynomial}{}
     Let $R$ be a ring. A \textbf{polynomial over $R$} is an expression of the form
     \[P = a_{0} + a_{1}X + a_{2}X^{2} + \cdots + a_{m}X^{m}\]
-    for some non-negative integer $m$ and elements $a_{i}\in R$ for $0 \le i \le m$. The set of all polynomials over $R$ is denoted by $R[X]$. In the case where $a_{m}$ is non-zero, the polynomial $P$ has \textbf{degree} $m$, (written $\deg(P)$), and $a_{m}$ is its \textbf{leading coefficient}. When the leading coefficient is $1$ the polynomial is a \textbf{monic polynomial}. A polynomial of degree one is called \textbf{linear}, a polynomial od degree two is called \textbf{quadractic}, and a polynomial of degree three is called \textbf{cubic}.
+    for some non-negative $m\in \mathbb{Z}$ and elements $a_{i}\in R$ for $0 \le i \le m$. 
+
+    \vspace{-5pt}
+    \begin{itemize}[leftmargin=*]
+        \setlength\itemsep{0em}
+        \item The set of all polynomials over $R$ is denoted by $R[X]$.
+        \item In the case where $a_{m}$ is non-zero, the polynomial $P$ has \textbf{degree} $m$, (written $\deg(P)$), and $a_{m}$ is its \textbf{leading coefficient}
+        \item When the leading coefficient is $1$ the polynomial is a \textbf{monic polynomial}.
+        \item A polynomial of degree one is called \textbf{linear}, degree two is called \textbf{quadractic}, and degree three is called \textbf{cubic}.
+    \end{itemize}
 \end{dfn}
 
 \begin{dfn}[Ring of Polynomials]{dfn:polynomial-rings}{}
@@ -581,27 +604,23 @@ I can't be bothered doing changes of basis and stuff, time for something more in
 \end{dfn}
 
 
-\begin{thm}[Zero-Divisors of a Polynomial Ring]{thm:zero-divisors-of-poly-ring}{}
-    If $R$ is a ring with no zero-divisors, then $R[X]$ has no zero-divisors and $\deg(PQ) = \deg(P) + \deg(Q)$ for non-zero $P,Q\in R[X]$.
-    
-    \noindent\rule{\textwidth}{0.2pt}
-    If $R$ is an integral domain, then so is $R[X]$
+\begin{thm}[Properties of a Polynomial Ring]{thm:zero-divisors-of-poly-ring}{}
+    \begin{itemize}[leftmargin=*]
+        \setlength\itemsep{0em}
+        \item If $R$ is a ring with no zero-divisors, then $R[X]$ has no zero-divisors and $\deg(PQ) = \deg(P) + \deg(Q)$ for non-zero $P,Q\in R[X]$.
+        \item If $R$ is an integral domain, then so is $R[X]$
+        \item Let $R$ be an integral domain and let $P, Q\in R[X]$ with $Q$ monic. Then there exists unique $A,B\in R[X]$ such that $P = AQ + B$ and $\deg(B) < \deg(Q)$ or $B = 0$
+    \end{itemize}
 \end{thm}
 
-\newpage
-\begin{thm}[Division and Remainder]{thm:division-and-remainder}{}
-    Let $R$ be an integral domain and let $P, Q\in R[X]$ with $Q$ monic. Then there exists unique $A,B\in R[X]$ such that $P = AQ + B$ and $\deg(B) < \deg(Q)$ or $B = 0$
-\end{thm}
-
-\begin{dfn}[Formal definition of a function]{dfn:function-poly-ring}{}
-    Let $R$ be a commutative ring and $P\in R[X]$ a polynomial. Then the polynomial $P$ can be \textbf{evaluated} at the element $\lambda\in R$ to produce $P(\lambda)$ by replacing the powers of $X$ in the polynomial $P$ by the corresponding powers of $\lambda$. In this way we have a mapping
+\begin{dfn}[Evaluating a Function]{dfn:evaluating-functions}{}
+    Let $R$ be a commutative ring and $P\in R[X]$ a polynomial. Then $P$ can be \textbf{evaluated} at the element $\lambda\in R$ to produce $P(\lambda)$ by replacing the powers of $X$ in $P$ by the corresponding powers of $\lambda$. In this way we have a mapping
     \[R[X] \to \Maps(R, R)\]
-    This is the precise mathematical description of thinking of a polynomial as a function. An element $\lambda\in R$ is a \textbf{root} of $P$ is $P(\lambda) = 0$
-\end{dfn}
+    This is the precise definition of thinking of a polynomial as a function. An element $\lambda\in R$ is a \textbf{root} of $P$ if $P(\lambda) = 0$
 
-\begin{thm}[Roots of a Polynomial]{thm:polynomial-roots}{}
-    Let $R$ be a commutative ring, let $\lambda\in R$ and $P(X) \in R[X]$. Then $\lambda$ is a root of $P(X)$ if and only if $(X - \lambda)$ divides $P(X)$
-\end{thm}
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Thm}: Let $R$ be a commutative ring, let $\lambda\in R$ and $P(X)\in R[X]$. Then $\lambda$ is a root of $P(X)$ if and only if $(X - \lambda)$ divides $P(X)$
+\end{dfn}
 
 \begin{thm}[Degrees of Polynomial Roots]{thm:polynomial-root-degs}{}
     Let $R$ be a field, or more generally an integral domain. Then a non-zero polynomial $P\in R[X] \backslash \{0\}$ has at most $\deg(P)$ roots in $R$
@@ -611,7 +630,7 @@ I can't be bothered doing changes of basis and stuff, time for something more in
     A field $F$ is \textbf{algebraically closed} if each non-constant polynomial $P\in F[X]\backslash F$ with coefficients in our field has a root in our field $F$
 \end{dfn}
 
-\begin{thm}[Fundamental Theorem of Algebra]{thm:fundamental-theorem-of-algebra}{}
+\begin{thm}[The Fundamental Theorem of Algebra]{thm:fundamental-theorem-of-algebra}{}
     The field of complex numbers $\mathbb{C}$ is algebraically closed.
 \end{thm}
 
@@ -621,9 +640,262 @@ I can't be bothered doing changes of basis and stuff, time for something more in
     with $n\ge 0,\, c\in F^{\times}$ and $\lambda_{1},\dots,\lambda_{n}\in F$. This decomposition is unique up to reordering the factors
 \end{thm}
 
-% TODO: bunch of stuff :)))))))
+\subsection{Homomorphisms, Ideals, and Substrings}
+
+\begin{dfn}[Ring Homomorphisms]{dfn:ring-homomorphisms}{}
+    Let $R$ and $S$ be rings. A mapping $f : R \to S$ is a \textbf{ring homomorphism} if the following hold for all $x, y\in R$:
+    \begin{align*}
+        f (x + y) &= f(x) + f(y)\\
+        f(xy) &= f(x)f(y)
+    \end{align*}
+\end{dfn}
+
+\begin{thm}[Properties of Ring Homomorphisms]{thm:ring-homomorphism-props}{}
+    Let $R$ and $S$ be rings and $f : R \to S$ a ring homomorphism. Then for all $x,y\in R$ and $m\in \mathbb{Z}$:
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item $f(0_{R}) = 0_{S}$, where $0_{R}$ and $0_{S}$ are the zeros of $R$ and $S$
+        \item $f(-x) = -f(x)$
+        \item $f(x - y)$ = f(x) - f(y)
+        \item $f(mx) = mf(x)$
+        \item $f(x^{n}) = (f(x))^{n}$ for all $x\in R$ and $n\in \mathbb{N}$
+    \end{enumerate}
+\end{thm}
+
+\begin{dfn}[Ideal]{dfn:ideal}{}
+    A subset $I$ of a ring $R$ is an \textbf{ideal}, $I \unlhd R$, if the following hold:
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item $I \ne \emptyset$
+        \item $I$ is closed under subtraction
+        \item for all $i\in I$ and $r\in R$ we have $ri, ir\in I$
+    \end{enumerate}
+\end{dfn}
+
+\newpage
+\begin{dfn}[Generated Ideals]{dfn:ideal-generators}{}
+    Let $R$ be a commutative ring and let $T \subset R$. Then the \textbf{ideal of $R$ generated by $T$} is the set
+    \[{}_{R}\langle T \rangle = \{r_{1}t_{1}+\cdots+r_{m}t_{m} : t_{1},\dots,t_{m}\in T,\,r_{1},\dots,r_{m}\in R\}\]
+\end{dfn}
+
+\begin{thm}[]{thm:generated-ideals-are-smallest-ideal}{}
+    Let $R$ be a commutative ring and let $T\subseteq R$. Then ${}_{R}\langle T \rangle$ is the smallest ideal of $R$ that contains $T$
+\end{thm}
+
+\begin{dfn}[Principal Ideal]{dfn:principal-ideal}{}
+    Let $R$ be a commutative ring. An ideal $I$ of $R$ is called a \textbf{principal ideal} if $I = \langle t \rangle$ for some $t\in R$
+\end{dfn}
+
+\begin{thm}[Kernels as Ideals]{thm:kernels-as-ideals}{}
+
+    \begin{itemize}[leftmargin=*]
+        \setlength\itemsep{0em}
+        \item Let $R$ and $S$ be rings and $f : R\to S$ a ring homomorphism. Then $\ker f$ is an ideal of $R$.
+        \item $f$ is injective if and only if $\ker f = \{0\}$
+        \item The intersection of any collection of ideals of a ring $R$ is an ideal of $R$
+        \item Let $I$ and $J$ be ideals of a ring $R$. Then
+            \[I + J = \{a + b : a\in I,\, b\in J\}\]
+            is an ideal of $R$
+    \end{itemize}
+\end{thm}
+
+\begin{dfn}[Subrings]{dfn:subrings}{}
+    Let $R$ be a ring. $R' \subset R$ is a \textbf{subring} of $R$ if $R'$ is itself a ring under the operations of addition and multiplication defined in $R$.
+
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Thm: Test for subring}: Let $R$ be a subset of a ring $R$. Then $R'$ is a subring iff:
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item $R'$ has a multiplicative identity
+        \item $R'$ is closed under subtraction: $a,b\in R' \to a-b\in R'$
+        \item $R'$ is closed under multiplication
+    \end{enumerate}
+
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Thm}: Let $R$ and $S$ be rings and $f : R \to S$ a ring homomorphism.
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item If $R'$ is a subring of $R$ then $f(R')$ is a subring of $S$. In particular, $\im f$ is a subring of $S$.
+        \item Assume that $f(1_{R}) = 1_{S}$. Then if $x$ is a unit in $R$, $f(x)$ is a unit in $S$ and $(f(x))^{-1} = f(x^{-1})$. In this case, $f$ restricts to a group homomorphism $f \rvert_{R^{X}} : R^{X} \to S^{X}$
+    \end{enumerate}
+\end{dfn}
+
+\subsection{Equivalence Relations}
+
+\begin{dfn}[Equivalence Relations]{dfn:equivalence-relations}{}
+    A \textbf{relation} $R$ on a set $X$ is a subset $R \subseteq X \times X $. In the context of relations, it's written $xRy$ instead of $(x,y)\in R$. $R$ is an \textbf{equivalence relation on $X$} when for all elements $x, y, z\in X$ the following hold:
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item \textbf{Reflexivity}: $xRx$
+        \item \textbf{Symmetry}: $xRy \iff yRx$
+        \item \textbf{Transivity}: $xRy \text{ and } yRz \implies xRz$
+    \end{enumerate}
+\end{dfn}
+
+\begin{dfn}[Equivalence Classes]{dfn:equivalence-classes}{}
+    Suppose that $\sim$ is an equivalence relation on a set $X$. For $x\in X$ the set $E(x) := \{z\in X : z \sim x\}$ is called the \textbf{equivalence class of $x$}. A subset $E \subseteq X$ is called an \textbf{equivalence class} for our equivalence relation if there is an $x\in X$ for which $E = E(x)$. An element of an equivalence class is called a \textbf{representive} of the class. A subset $Z \subseteq X$ containing precisely one element from each equivalence class is called a \textbf{system of representatives} for the equivalence relation
+\end{dfn}
+
+\begin{dfn}[Set of Equivalence Classes]{dfn:equivalence-class-sets}{}
+    Given an equivalence relation $\sim$ on the set $X$ I will denote the \textbf{set of equivalence classes}, which is a subset of the power set $\mathcal{P}(X)$, by
+    \[(X / \sim) := \{E(x) : x\in X\}\]
+    There is a canonical mapping $\text{can}: X \to (X / \sim),\, x\mapsto E(x)$ (surjection)
+\end{dfn}
+
+\subsection{Factor Rings and First Isomorphism Theorem}
+
+\begin{dfn}[Coset]{dfn:coset}{}
+    Let $I \unlhd R$ be an ideal in a ring $R$. The set
+    \[ x + I := \{x + i : i\in I\} \subseteq R\]
+    is a \textbf{coset of $I$ in $R$} or the \textbf{coset of $x$ w.r.t $I$ in $R$}
+\end{dfn}
+
+\begin{dfn}[Factor Ring]{dfn:factor-ring}{}
+    Let $R$ be a ring, $I \unlhd R$ be an ideal, and $\sim$ the equivalence relation defined by $x \sim y \iff x - y \in I$. Then $R / I$, the \textbf{factor ring of $R$ by $I$} or \textbf{the quotient of $R$ by $I$}, is the set $(R / \sim)$ of cosets of $I$ in $R$
+\end{dfn}
+
+\begin{thm}[]{thm:factor-ring-thm}{}
+    Let $R$ be a ring and $I \unlhd R$ an ideal. Then $R / I$ is a ring, where the operation of addition is defined by
+    \[(x + I) \dot{+} (y + I) = (x + y) + I \qquad \text{for all $x,y\in R$}\]
+    and multiplication is defined by
+    \[(x + I) \cdot (y + I) = xy + I \qquad \text{for all $x,y\in R$}\]
+\end{thm}
+
+\begin{thm}[Universal Property of Factor Rings]{thm:univ-prop-of-factor-rings}{}
+    Let $R$ be a ring and $I$ an ideal of $R$
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item The mapping $\text{can}: R \to R / I$ sending $r$ to $r + I$ for all $r\in R$ is a surjective ring homomorphism with kernel $I$
+        \item If $f : R \to S$ is a ring homomorphism with $f(I) = \{0_{S}\}$, so that $I \subseteq \ker f$ then there is a unique ring homomorphism $f : R / I \to S$ such that $f = \overline{f} \circ \text{can}$
+    \end{enumerate}
+\end{thm}
+
+\begin{thm}[First Isomorphism Theorem for Rings]{thm:first-iso-thm-rings}{}
+    Let $R$ and $S$ be rings. Then every ring homomorphism $f : R\to S$ induces a ring isomorphism
+    \[\overline{f} : R / \ker f \xrightarrow{\sim} \im f\]
+\end{thm}
+
+\subsection{Modules}
+
+\begin{dfn}[Module]{dfn:module}{}
+    A \textbf{(left) module $M$ over a ring $R$} (or an \textbf{$R$-module}) is a pair consisting of an abelian group $M = (M, \dot{+})$ a mapping
+    \begin{align*}
+        R \times M &\to M\\
+        (r, a) &\mapsto ra
+    \end{align*}
+
+    s.t. for all $r, s\in R$ and $a,b\in M$, we have:
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item \textbf{Distributivity 1}: $r(a \dot{+} b) = (ra) \dot{+} (rb)$
+        \item \textbf{Distributivity 2}: $(r + s)a = (ra) \dot{+} (sa)$
+        \item \textbf{Associativity}: $r (sa) = (rs) a$
+        \item \textbf{Identity}: $1_{R}a = a$
+    \end{itemize}
+\end{dfn}
 
 
+\begin{thm}[Module Lemmas]{thm:module-lemmas}{}
+    Let $R$ be a ring and $M$ an $R$-module
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item $0_{R}a = 0_{M}$ for all $a\in M$
+        \item $r 0_{m} = 0_{M}$ for all $r\in R$
+        \item $(-r) a = r(-a) = -(ra)$ for all $r\in R$, $a\in M$
+    \end{enumerate}
+\end{thm}
+
+\newpage
+
+\begin{dfn}[Module Homomorphisms]{dfn:module-homomorphismsa}{}
+    Let $R$ be a ring and let $M$, $N$ be $R$-modules. A mapping $f : M\to N$ is an \textbf{$R$-homomorphism} or \textbf{$homomorphism$} if the following hold for all $a,\in M$ and $r\in R$
+    \begin{align*}
+        f(a + b) &= f(a) + f(b)\\
+        f(ra) &= rf(a)
+    \end{align*}
+
+    \noindent\rule{\textwidth}{0.2pt}
+    \begin{itemize}[leftmargin=*]
+        \setlength\itemsep{0em}
+        \item The \textbf{kernel} of $f$ is $\ker f = \{a\in M : f(a) = 0_{N}\}\subseteq M$
+        \item The \textbf{image} of $f$ is $\im f = \{f(a) : a\in M\}\subseteq N$
+        \item If $f$ is a bijection then it is an \textbf{$R$-module isomorphim} or \textbf{isomorphism}, written $M \cong N$, and say $M$ and $N$ are \textbf{isomorphic}
+    \end{itemize}
+
+\end{dfn}
+
+\begin{dfn}[Submodules]{dfn:submodules}{}
+    A non-empty subset $M'$ of an $R$-module $M$ is a \textbf{submodule} if $M'$ is an $R$-module with respect to the operations of the $R$-module $M$ \textbf{restricted} to $M'$
+
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Thm}: Let $R$ be a ring and let $M$ be an $R$-module. A subset $M'$ of $M$ is a submodule if and only if
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item $0_{M}\in M'$
+        \item $a,b\in M' \implies a - b \in M'$
+        \item $r\in R, a\in M' \implies ra\in M'$
+    \end{enumerate}
+\end{dfn}
+
+\begin{thm}[Submodule lemmas]{thm:submodule-lemmas}{}
+    \begin{itemize}[leftmargin=*]
+        \setlength\itemsep{0em}
+        \item Let $f : M\to N$ be an $R$-homomorphism. Then $\ker f$ is a submodule of $M$ and $\im f$ is a submodule of $N$
+        \item Let $R$ be a ring, $M$ an $R$-homomorphism. Then $f$ is injective if and only if $\ker f = \{0_{M}\}$
+    \end{itemize}
+\end{thm}
+
+\begin{dfn}[Generated Submodules]{dfn:generated-submodules}{}
+    Let $R$ be a ring, $M$ an $R$-module nad let $T \subseteq M$. Then the \textbf{submodule of $M$ generated by $T$} is the set
+    \[{}_{R}\langle T \rangle = \{r_{1}t_{1} +\cdots+ r_{m}t_{m} : t_{1},\dots,t_{m}\in T, r_{1},\dots,r_{m}\in R\}\]
+together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dots,t_{n}\}$, a finite set, we write ${}_{R}\langle t_{1},\dots,t_{n} \rangle$ instead of ${}_{R}\langle \{t_{1},\dots,t_{n}\} \rangle$. The module $M$ is \textbf{finitely generated} if it is generated by a finite set: $M = {}_{R}\langle t_{1},\dots,t_{n} \rangle$. It is called \textbf{cyclic} if it is generated by a singleton $M = {}_{R}\langle T\rangle$
+\end{dfn}
+
+\begin{dfn}[Generated Submodule lemmas]{dfn:generated-submod-lemmas}{}
+    \begin{itemize}[leftmargin=*]
+        \setlength\itemsep{0em}
+        \item Let $T \subseteq M$. Then ${}_{R}\langle T \rangle$ is the smallest submodule of $M$ that contains $T$
+        \item The intersection of any collection of submodules of $M$ is a submodule of $M$.
+        \item Let $M_{1}$ and $M_{2}$ be submodules of a $M$. Then
+            \[M_{1} + M_{2} = \{a + b : a\in M_{1}, b\in M_{2}\}\]
+            is a submodule of $M$
+    \end{itemize}
+\end{dfn}
+
+\begin{dfn}[Submodule Cosets]{dfn:coset-submodule}{}
+    Let $R$ be a ring, $M$ an $R$-module, and $N$ a submodule of $M$. For each $a\in M$ the \textbf{coset of $a$ with respect to $N$ in $M$} is
+    \[a + N = \{ a + b : b\in N\}\]
+    It is a coset of $N$ in the abelian group $M$ and so is an equivalence class for the equivalence relation $a \sim b \iff a - b \in N$.
+
+    \noindent\rule{\textwidth}{0.2pt}
+    Let $M / N$, the \textbf{factor of $N$ by $N$} or the \textbf{quotient of $M$ by $N$} to be the set $(M / \sim)$ of all cosets of $N$ in $M$. This becomes an $R$-module by introducing the operations of addition and multiplication as follows:
+    \begin{align*}
+        (a + N) \dot{+} (b + N) &= (a + b) + N\\
+        r(a + N) &= ra + N
+    \end{align*}
+    for all $a,b\in M$, $r\in R$.
+
+    \noindent\rule{\textwidth}{0.2pt}
+    The zero of $M / N$ is the coset $0_{M /N} = 0_{M} + N$. The negative of $a + N\in M / N$ is the coset $-(a + N) = (-a) + N$
+
+    The $R$-module $M / N$ is the \textbf{factor module} of $M$ by the submodule $N$
+\end{dfn}
+
+\begin{thm}[Universal Property of Factor Modules]{thm:univ-prop-factor-mods}{}
+    Let $R$ be a ring, let $L$ and $M$ be $R$-modules, and $N$ a submodule of $M$.
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item The mapping $\text{can} : M\to M /N$ sending $a$ to $a + N$ for all $a\in M$ is a surjective $R$-homomorphism with kernel $N$
+        \item If $f : M\to L$ is an $R$-homomorphism with $f(N) = \{0_{L}\}$, so that $N \subseteq \ker f$, then there is a unique homomorphism $\overline{f} : M /N \to L$ such that $f = \overline{f} \circ \text{can}$
+    \end{enumerate}
+\end{thm}
+
+\begin{thm}[First Isomorphism Thm for Modules]{thm:first-iso-thm-modules}{}
+    Let $R$ be a ring and let $M$ and $N$ be $R$-modules. Then every $R$-homomorphism $f : M\to N$ induces an $R$-isomorphism
+    \[\overline{f} : M / \ker f \xrightarrow{\sim} \im f\]
+\end{thm}
+
+\newpage
 \section{Determinants and Eigenvalues Redux}
 
 \subsection{Symmetric Groups}
