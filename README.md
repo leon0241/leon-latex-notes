@@ -13,7 +13,7 @@ LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and M
 - Introduction to Theoretical Computer Science - [click here!](ITCS/itcs_notes.pdf) *(Adapted from Chris Dalziel's LaTeX notes)*
 
 ## Links to LaTeX Notes!
-- Honours Algebra (WIP) - [click here!](Algebra/algebra-notes.pdf)
+- Honours Algebra (WIP) - [click here!](algebra/algebra-notes.pdf)
 - Metric Spaces (WIP) - [click here!](Metric%20Spaces/metric-notes.pdf)
 - Foundations of Natural Language Processing (BIG WIP) - [click here!](FNLP/fnlp-notes.pdf)
 
