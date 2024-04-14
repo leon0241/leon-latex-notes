@@ -1398,6 +1398,163 @@ no time for motivation over here
 
 \lipsum[1-2]
 
+\newpage
+
+\begin{dfn}[Rings and Fields]{dfn:fields-and-rings}{A}
+    A \textbf{ring} (left) is a set with two operations $(\mathbb{R}, +, \cdot)$ that satisfies the following lemmas.\newline
+    A \textbf{field} (right) is an extension of a ring where $(\cdot)$ is a group 
+    \vspace{-15pt}
+    \def\columnseprulecolor{\color{black}}
+    \setlength{\columnseprule}{0.5pt}
+    \begin{multicols}{2}
+
+        \begin{enumerate}[leftmargin=*]
+            \setlength\itemsep{0em}
+            \item $(R, +)$ is an abelian group with identity $0$
+            \item $(R, \cdot)$ is a \textbf{monoid}, i.e. it is a set with \textbf{Associativity} and \textbf{Identity} (written as $1$)
+            \item \textbf{Distributive law}: For all $a$, $b$, and $c$ in $F$, we have
+                \begin{align*}
+                    a \cdot (b + c) &= (a \cdot b) + (a \cdot c)) \\
+                    (a + b) \cdot c &= (a \cdot c) + (b \cdot c)
+                \end{align*}
+        \end{enumerate}
+        \columnbreak
+
+        \begin{enumerate}[leftmargin=*]
+            \setlength\itemsep{0em}
+            \item $(F, +)$ is an abelian group $F^{+}$, with identity $0_{F}$
+            \item $(F\backslash \{0_{F}\}, \cdot)$ is an abelian group $F^{\times}$, with identity $1_{F}$
+            \item \textbf{Distributive law}: For all $a$, $b$, and $c$ in $F$, we have
+                \[a(b + c) = ab + ac \in F\]
+        \end{enumerate}
+    \end{multicols}
+
+    \vspace{-10pt}
+    and they satisfy the following lemmas (for both):
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item $0a = 0 = a 0$
+        \item The elements $0$ and $1$ are distinct (only ring case is zero ring)
+    \end{enumerate}
+
+    \vspace{-5pt}
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Field Specific Lemmas}:
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item $(\cdot)$ in $F$ is associative, $1_{F}$ is an identity (it's an abelian group only in $(F \backslash \{0_{F}\}, \cdot)$)
+    \end{enumerate}
+    
+    \vspace{-5pt}
+    \setlength{\columnseprule}{0pt}
+    \noindent\rule{\textwidth}{0pt}
+    \textbf{Ring Specific Lemmas and Definitions}:
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item The \textbf{null ring} or \textbf{zero ring} is defined as a ring where $R$ is a single element - i.e. $\{0\}$ where $0 + 0 = 0$ and $0 \times 0 = 0$
+        \item A \textbf{commutative ring} is one where $a \cdot b = b \cdot a$ for all $a,b\in R$
+       \vspace{-15pt}
+            \begin{multicols}{2}
+                \begin{itemize}[leftmargin=*]
+                    \item $(-a)(b) = -(ab) = a(-b)$
+                    \item $(-a)(-b) = ab$
+                    \item $m(a + b) = ma + mb$
+                    \item $(m + n)a = ma + na$
+                    \item $m(na) = (mn)a$
+                    \item $m(ab) = (ma)b = a(mb)$
+                    \item $(ma)(nb) = (mn)(ab)$
+                \end{itemize}
+            \end{multicols}
+    \end{enumerate}
+\end{dfn}
+
+\begin{dfn}[Modules and Vector Spaces]{dfn:modules-and-vector-spaces}{B}
+    A \textbf{left module $M$ over a ring $R$} (or an \textbf{$R$-module}) \textit{(left)} is a pair consisting of an abelian group $M = (M, \dot{+})$ and a mapping
+
+    A \textbf{vector space $V$ over a field} $F$ \textit{(right)} is an extension of a module but over a field instead, and using vectors - $V = (V, \dot{+})$
+    
+    \vspace{-15pt}
+    \setlength{\columnseprule}{0.5pt}
+    \begin{multicols}{2}
+        \begin{center}
+            $R \times M \to M : (r, a)\mapsto ra$
+
+        \end{center}
+        s.t. $\forall r, s\in R$ and $a,b\in M$, the following axioms apply:
+
+
+        \columnbreak
+        \begin{center}
+            $F \times V \to V : (\lambda, \vec{v})\mapsto \lambda \vec{v}$
+        \end{center}
+        s.t. $\forall \lambda, \mu\in F$ and $\vec{v},\vec{w}\in v$, the following axioms apply:
+    \end{multicols}
+
+    \vspace{-25pt}
+    \setlength{\columnseprule}{0pt}
+    \begin{multicols}{3}
+        \begin{flushright}
+            $r(a \dot{+} b) = (ra) \dot{+} (rb)$
+
+            $(r + s)a = (ra) \dot{+} (sa)$
+
+            $r (sa) = (rs) a$
+
+            $1_{R}a = a$
+        \end{flushright}
+
+
+        \columnbreak
+        \begin{center}
+            \textbf{Distributivity 1}
+
+            \textbf{Distributivity 2}
+
+            \textbf{Associativity}
+
+            \textbf{Identity}
+        \end{center}
+
+        \columnbreak
+
+            $\lambda(\vec{v} \dot{+} \vec{w}) = \lambda\vec{v} \dot{+} \lambda \vec{w}$
+
+            $(\lambda + \mu)\vec{v} = \lambda \vec{v} \dot{+} \mu \vec{v}$
+
+            $\lambda (\mu \vec{v}) = (\lambda \mu) \vec{v}$
+
+            $1\vec{v} = \vec{v}$
+    \end{multicols}
+
+
+    and they satisfy the following lemmas (for both):
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item $0_{R} a = 0_{M}$ for all $a\in M$ \quad or \quad $0 \vec{v} = \vec{0}$ for all $\vec{v} \in V$
+        \item $r 0_{M} = 0_{M}$ for all $r\in R$ \quad or \quad $\lambda \vec{0} = \vec{0}$ for all $\lambda\in F$
+        \item \begin{itemize}[leftmargin=*]
+            \setlength\itemsep{0em}
+            \item $(-r)a = r(-a) = -(ra)$ for all $r\in R$, $a\in M$
+            \item $(-1)\vec{v} = -\vec{v}$ for all $\vec{v}\in V$
+        \end{itemize}
+    \end{enumerate}
+\end{dfn}
+
+
+\begin{dfn}[Field Construction]{dfn:field-constructon}{B}
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Def 3.2.6}: Let $R$ be a ring. An element $a\in R$ is called a \textbf{unit} if it is invertible in $R$, i.e. there exists $r^{-1}\in R$ such that
+    \[a a^{-1} = 1 = a^{-1}a\]
+
+    \textbf{Prop 3.2.9}: The set of $R^{\times}$ units in a ring $R$ forms a group under multiplication
+
+    \textbf{Definition 3.1.8}: A \textbf{field} is a non-zero commutative ring $F$ in which every non-zero element $a\in F$ is a unit.
+\end{dfn}
+
+
+
+\lipsum[1-12]
+
 \end{multicols}
 
 \end{document}
