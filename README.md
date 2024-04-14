@@ -4,6 +4,10 @@ LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and M
 
 ## Links to 6-page Exam Sheets!
 - My magnum opus: Fundamentals of Pure Mathematics - [click here!](FPM/notes_colour.pdf)
+- Honours Algebra (not really 6 pages atm yet) - [click here!](algebra-6p/algebra-6p.pdf)
+
+
+
 - Y3 Geometry - [click here!](Geometry/geometry_notes.pdf) *(they are kinda shit tho)*
 - Introduction to Theoretical Computer Science - [click here!](ITCS/itcs_notes.pdf) *(Adapted from Chris Dalziel's LaTeX notes)*
 
