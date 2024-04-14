@@ -959,8 +959,6 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
     is the unique alternating multilinear form on $n$-tuples of column vectors with values in $F$ that takes the value $1_{F}$ on the identity matrix
 \end{thm}
 
-\subsection{Rules for Calculating with Determinants}
-
 \begin{thm}[Determinant Theorem Bank]{thm:determinant-theorems}{4.4}
     \begin{itemize}
         \item[\textbf{4.4.1}:] Let $R$ be a commutative ring, $A, B\in \Mat(n; R)$. Then
@@ -1010,9 +1008,7 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
     \[\frac{d}{dt} \det A = \text{Tr}\text{Adj} A \frac{dA}{dt}\]
 \end{thm}
 
-\subsection{Eigenvalues and Eigenvectors}
-
-\begin{dfn}[Eigenvalues and Eigenvectors]{dfn:eigenvalue-eigenvector}{}
+\begin{dfn}[Eigenvalues and Eigenvectors]{dfn:eigenvalue-eigenvector}{4.5.1}
     Let $f: V \to V $ be an endomorphism of an $F$-vector space $V$. A scalar $\lambda\in F$ is an \textbf{eigenvalue of $f$} if and only if there exists a non-zero vector $\vec{v}\in V$ such that $f(\vec{v}) = \lambda \vec{v}$. Each such vector is called an \textbf{eigenvector of $f$ with eigenvalue $\lambda$}. For any $\lambda\in F$, the \textbf{eigenspace of $f$ with eigenvalue $\lambda$} is
     \[E(\lambda, f) = \{\vec{v}\in V : f(\vec{v}) = \lambda \vec{v}\}\]
 \end{dfn}
@@ -1060,9 +1056,7 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
     % \[\mathcal{C} = (\text{can}(v_{m + 1}), \text{can}(v_{m + 2}),\dots,\text{can}(\vec{v}_{n}))\]
 \end{thm}
 
-\subsection{Triangularisable, Diagonalisable, and Cayley-Hamilton}
-
-\begin{dfn}[Triangularisability]{dfn:triangularisability}{}
+\begin{dfn}[Triangularisability]{dfn:triangularisability}{4.6.1}
     Let $f : V \to V$ be an endomorphism of a finite dimensional $F$-vector space $V$. $f$ is \textbf{triangularisable} if the vector space $V$ has an ordered basis $\mathcal{B} = (\vec{v}_{1}, \vec{v}_{2},\dots,\vec{v}_{n})$ such that
         \begin{align*}
             f(\vec{v}_{1}) &= a_{11}\vec{v_{1}}, \\
@@ -1115,8 +1109,6 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
     Let $A\in \Mat(n;R)$ be a square matrix with entries in a commutative ring $R$. Then evaluating its characteristic polynomial $\chi_{A}(x)\in R[x]$ at the matrix $A$ gives zero.
 \end{thm}
 
-\subsection{Markov Matrices}
-
 \begin{dfn}[Markov Matrix]{dfn:markov-matrix}{4.7.5}
     A matrix $M$ whose entires are non-negative and s.t. the sum of the entries of each column equals $1$ is a \textbf{Markov matrix} or a \textbf{stochastic matrix}
 
@@ -1132,8 +1124,6 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
 \end{thm}
 
 \section{Inner Product Spaces}
-
-\subsection{Inner Product Spaces Intro}
 
 \begin{dfn}[Inner Product]{dfn:inner-product}{5.1.1}
     Let $V$ be a vector space over $\mathbb{R}$. An \textbf{inner product} on $V$ is a mapping
@@ -1181,8 +1171,6 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
     \textbf{Thm 5.1.10}: Every finite dimensional inner product space has an orthonormal basis
 \end{dfn}
 
-\subsection{Orthogonal Complements and Projections}
-
 \begin{dfn}[Orthogonals to a Subset]{dfn:orthogonals}{5.2.1}
     Let $V$ be an inner product space and let $T \subseteq V$ be an arbitrary subset. Define
     \[T^{\bot} = \{\vec{v} \in V : \vec{v} \bot \vec{t} \, \forall \vec{t}\in T\}\]
@@ -1223,8 +1211,6 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
     TODO: write how to actually do the gram-shmidt process
 \end{thm}
 
-\subsection{Adjoints and Self-Adjoints}
-
 \begin{dfn}[Adjoints]{dfn:adjoints}{5.3.1}
     Let $V$ be an inner product space. Then two endomorphisms $T, S : V\to V$ are called \textbf{adjoint} to one another if the following holds for all $\vec{v}, \vec{w}\in V$:
     \[(T \vec{v}, \vec{w}) = (\vec{v}, S\vec{w})\]
@@ -1257,7 +1243,7 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
     An \textbf{Orthogonal matrix} is an $(n \times n)$-matrix $P$ with real entries such that $P^{T}P = I_{n}$, or in other words such that $P^{-1} = P^{T}$
 \end{dfn}
 
-\begin{dfn}[Complex Matrices]{dfn:unitary-matrices}{4.3.14}
+\begin{dfn}[Complex Matrices]{dfn:unitary-matrices}{5.3.14}
     A \textbf{hermitian matrix} is one that is self-adjoint in $\mathbb{C}$, or in other words one where $A = \overline{A}^{T}$ holds
 
 
