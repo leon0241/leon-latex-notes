@@ -12,6 +12,10 @@
     margin=0.17in
 }
 
+\pretolerance=0
+\hyphenpenalty=0
+
+
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -26,6 +30,10 @@
 \usepackage{float}
 % \usepackage{setspace}
 \usepackage[nodisplayskipstretch]{setspace}
+
+
+
+
 
 % \setlength{\parskip}{0pt}
 
@@ -44,6 +52,7 @@
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\rk}{rk}
 \DeclareMathOperator{\Tr}{tr}
+\DeclareMathOperator{\diag}{diag}
 
 \usepackage{hyperref} % note: this is the final package
 
@@ -1148,11 +1157,287 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
     If $M\in \Mat(n;\mathbb{R})$ is a Markov matrix with positive values, then the eigenspace $E(1, M)$ is one-dimensional. There exists a unique basis vector $\vec{v}\in E(1,M)$ with positive real entries s.t. the sum of its entries is $1$
 \end{thm}
 
+\section{Inner Product Spaces}
+
+\subsection{Inner Product Spaces Intro}
+
+\begin{dfn}[Inner Product]{dfn:inner-product}{5.1.1}
+    Let $V$ be a vector space over $\mathbb{R}$. An \textbf{inner product} on $V$ is a mapping
+    \[(- , - ) : V \times V \to \mathbb{R}\]
+    that satisfies the following for all $\vec{x}, \vec{y}, \vec{z}\in V$ and $\lambda,\mu\in \mathbb{R}$:
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item $\lambda\vec{x}+\mu\vec{y},z = \lambda(\vec{x},\vec{z} + \mu(\vec{y},\vec{z}))$
+        \item $(\vec{x},\vec{y}) = (\vec{y}, \vec{x})$
+        \item $(\vec{x},\vec{x}) \ge 0$, with equality iff $\vec{x} = \vec{0}$
+    \end{enumerate}
+    A \textbf{real inner product space} is a real vector space equipped with an inner product. \textbf{Note}: basically a generalisation of dot prod.
+
+    \noindent\rule{\textwidth}{0.2pt}
+    A \textbf{complex inner product space} is a complex vector space equipped with an inner product. This is the exact same, but condition $2$ uses $(\vec{x},\vec{y}) = \overline{(\vec{y}, \vec{x})}$ where $\overline{z}$ is the complex conjugate
+\end{dfn}
+
+\begin{dfn}[Norm]{dfn:norm}{5.1.5}
+    In a real or complex inner product space, the \textbf{length} or \textbf{inner product norm} or \textbf{norm} $\lVert \vec{v} \rVert\in \mathbb{R}$ of a vector $\vec{v}$ is defined as the non-negative square root
+    \[\lVert \vec{v} \rVert = \sqrt{(\vec{v}, \vec{v})}\]
+    Vectors whose length are $1$ are called \textbf{units}. Two vectors $\vec{v}, \vec{w}$ are \textbf{orthogonal}, written $\vec{v} \bot \vec{w}$, iff $(\vec{v}, \vec{w}) = 0$
+
+    \noindent\rule{\textwidth}{0.2pt}
+    The norm $\lVert \cdot \rVert$ on an inner product spacse $V$ satisfies, for any $\vec{v}, \vec{w}\in V$ and scalar $\lambda$:
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item $\lVert \vec{v} \rVert \ge 0$ with equality iff $\vec{v} = \vec{0}$
+        \item $\lVert \lambda \vec{v} \rVert = \lvert \lambda \rvert \lVert  \vec{v} \rVert$
+        \item $\lvert \vec{v} + \vec{w} \rvert \le \lVert \vec{v} \rVert + \lVert \vec{w} \rVert$ (triangle inequality)
+    \end{enumerate}
+\end{dfn}
+
+\newpage
+\begin{dfn}[Orthonormal Family]{dfn:orthonormal-family}{5.1.7}
+    A family $(\vec{v}_{i})_{i\in I}$ for vectors from an inner product space is an \textbf{orthonormal family} if all the vectors $\vec{v}_{i}$ have length $1$ and if they are pairwise orthogonal to each other, which, if $\delta_{i,j}$ is the \textbf{Kronecker delta} defined by
+    \[\delta_{i, j} = \begin{cases}
+        1 & i = j \\
+        0 & \text{otherwise}
+    \end{cases}\]
+    means that $(\vec{v}_{i}, \vec{v}_{j}) = \delta_{ij}$.
+
+    An orthonormal family that has a basis is an \textbf{orthonormal basis}
+    
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Thm 5.1.10}: Every finite dimensional inner product space has an orthonormal basis
+\end{dfn}
+
+\subsection{Orthogonal Complements and Projections}
+
+\begin{dfn}[Orthogonals to a Subset]{dfn:orthogonals}{5.2.1}
+    Let $V$ be an inner product space and let $T \subseteq V$ be an arbitrary subset. Define
+    \[T^{\bot} = \{\vec{v} \in V : \vec{v} \bot \vec{t} \, \forall \vec{t}\in T\}\]
+    calling this set the \textbf{orthogonal} to $T$
+\end{dfn}
+
+\begin{thm}[Complementary Othorgonals]{thm:complementary-orthogonals}{5.2.2}
+    Let $V$ be an inner product space and let $U$ be a finite dimensional subspace of $V$. Then $U$ and $U^{\bot}$ are complementary in the sense of \ref{dfn:linear-mappings}. i.e. $V = U \oplus U^{\bot}$
+\end{thm}
+
+\begin{dfn}[Orthogonal Projection]{dfn:orthogonal-projection}{5.2.3}
+    Let $U$ be a finite dimensional subspace of an inner product space $V$. The space $U^{\bot}$ is the \textbf{orthogonal complement to $U$}. The \textbf{orthogonal projection from $V$ onto $U$} is the map
+    \[\pi_{U} : V \to V\]
+    that sends $\vec{v} = \vec{p} + \vec{r}$ to $\vec{p}$
+
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Prop 5.2.4}: Let $U$ be a finite dimensional subspace of an inner product space $V$ and let $\pi_{U}$ be the orthogonal projection from $V$ onto $U$
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item $\pi_{U}$ is a linear mapping with $\im(\pi_{U}) = U$ and $\ker (\pi_{U}) = U^{\bot}$
+        \item If $\{\vec{v}_{1},\dots,\vec{v}_{n}\}$ is an orthonormal basis of $U$, then $\pi_{U}$ is given by the following formula for all $\vec{v}\in V$
+            \[\pi_{U}(\vec{v}) = \sum_{i = 1}^{n} (\vec{v}, \vec{v}_{i}) \vec{v}_{i}\]
+        \item $\pi_{U}^{2} = \pi_{U}$, that is, $\pi_{U}$ is an idempotent
+    \end{enumerate}
+\end{dfn}
+
+\begin{thm}[Cauchy-Shwarz Inequality]{thm:cauchy-shwarz}{5.2.5}
+    Let $\vec{v}$, $\vec{w}$ be vectors in an inner product space. Then
+    \[\lvert (\vec{v}, \vec{w}) \rvert \le \lVert \vec{v} \rVert \lVert \vec{w} \rVert\]
+    with equality if and only if $\vec{v}$ and $\vec{w}$ are linearly dependent
+\end{thm}
+
+\begin{thm}[Gram-Shmidt Process]{thm:gram-shmidt}{5.2.7}
+    Let $\vec{v}_{1},\dots,\vec{v}_{k}$ be linearly independent vectors in an inner product space $V$. Then there exists an orthonormal family $\vec{w}_{1},\dots,\vec{w}_{k}$ with the property that for all $1 \le i \le k$,
+    \[\vec{w}_{i} \in \mathbb{R}_{>0} \vec{v}_{i} + \langle \vec{v}_{i - 1},\dots,\vec{v}_{1} \rangle\]
+
+    \noindent\rule{\textwidth}{0.2pt}
+    TODO: write how to actually do the gram-shmidt process
+\end{thm}
+
+\subsection{Adjoints and Self-Adjoints}
+
+\begin{dfn}[Adjoints]{dfn:adjoints}{5.3.1}
+    Let $V$ be an inner product space. Then two endomorphisms $T, S : V\to V$ are called \textbf{adjoint} to one another if the following holds for all $\vec{v}, \vec{w}\in V$:
+    \[(T \vec{v}, \vec{w}) = (\vec{v}, S\vec{w})\]
+    In this case I will write $S = T^{*}$ and call $S$ the \textbf{adjoint} of $T$
+
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Remark 5.3.2}: Any endomorphism has at most one adjoint.
+\end{dfn}
+
+\begin{thm}[]{thm:adjoints-uniqueness}{5.3.4}
+    Let $V$ be a finite dimensional inner product space. Let $T : V \to V$ be an endomorphism. Then $T^{*}$ exists. That is, there is a unique linear mapping $T^{*} : V \to V$ such that for all $\vec{v}, \vec{w}\in V$:
+    \[(T \vec{v}, \vec{w}) = (\vec{v}, T^{*}\vec{w})\]
+\end{thm}
+
+\begin{dfn}[Self Adjoints]{thm:self-adjoints}{5.3.5}
+    An endomorphism of an inner product space $T : V \to V$ is \textbf{self-adjoint} if it equals its own adjoint, i.e. if $T^{*} = T$
+\end{dfn}
+
+\begin{thm}[Self-Adjoint Theorem bank]{thm:self-adjoint-thms}{5.3.7}
+    Let $T : V\to V$ be a self-adjoint linear mapping on an inner product space $V$
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item Every eigenvalue of $T$ is real
+        \item If $\lambda$ and $\mu$ are distinct eigenvalues of $T$ with corresponding eigenvectors $\vec{v}$ and $\vec{w}$, then $(\vec{v}, \vec{w}) = 0$
+        \item $T$ has an eigenvalue
+    \end{enumerate}
+\end{thm}
+
+\begin{dfn}[Orthogonal Matrices]{dfn:orthogonal-matrices}{5.3.11}
+    An \textbf{Orthogonal matrix} is an $(n \times n)$-matrix $P$ with real entries such that $P^{T}P = I_{n}$, or in other words such that $P^{-1} = P^{T}$
+\end{dfn}
+
+\begin{dfn}[Complex Matrices]{dfn:unitary-matrices}{4.3.14}
+    A \textbf{hermitian matrix} is one that is self-adjoint in $\mathbb{C}$, or in other words one where $A = \overline{A}^{T}$ holds
 
 
+    An \textbf{unitary matrix} is an $(n \times n)$-matrix $P$ with complex entries such that $\overline{P}^{T}P = I_{n}$, or such that $P^{-1} = \overline{P}^{T}$
+\end{dfn}
+
+\begin{thm}[Spectral Theorems]{spectral-thm-self-adjoint}{5.3.9}
+    \textbf{5.3.9}: \underline{\smash{The Spectral Theorem for Self-Adjoint Endomorphisms}}
+    
+    Let $V$ be a finite dimensional inner product space and let $T : V \to V$ be a self-adjoint linear mapping. Then $V$ has an orthonormal basis consisting of eigenvalues of $T$.
+
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{5.3.11}: \underline{\smash{The Spectral Theorem for Real Symmetric Matrices}}
+
+    Let $A$ be a real $(n \times n)$-symmetric matrix. Then there is an $(n \times n)$-orthogonal matrix $P$ such that
+    \[P^{T} A P = P^{-1}AP = \diag(\lambda_{1},\dots,\lambda_{n})\]
+    where $\lambda_{1},\dots,\lambda_{n}$ are the (necessarily real) eigenvalues of $A$, repeated according to their multiplicity as roots of $\chi_{A}$
+
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{5.3.15}: \underline{\smash{The Spectral Theorem for Hermitian Matrices}}
+
+    Let $A$ be a $(n \times n)$-hermitian matrix. Then there is an $(n \times n)$-unitary matrix $P$ such that
+    \[\overline{P}^{T} A P = P^{-1}AP = \diag(\lambda_{1},\dots,\lambda_{n})\]
+    where $\lambda_{1},\dots,\lambda_{n}$ are the (necessarily real) eigenvalues of $A$, repeated according to their multiplicity as roots of $\chi_{A}$
+\end{thm}
+
+\section{Jordan Normal Form}
+
+\subsection{Motivation}
+
+no time for motivation over here
+
+\subsection{The Jordan Normal Form}
+
+% \begin{dfn}[Exponential Map]{dfn:exponential}{6.1.0}
+%     The exponential map is defined as
+%     \begin{align*}
+%         \text{exp} : \Mat(n ; C) &\to \Mat(n ; \mathbb{C})\\
+%         A &\mapsto \sum_{k = 0}^{\infty} \frac{1}{k!} A^{k}
+%     \end{align*}
+% \end{dfn}
+
+\begin{dfn}[Jordan Blocks]{dfn:jordan-blocks}{6.2.1}
+    Given an integer $r \ge 1$ define an $(r \times r)$-matrix $J(r)$ called the \textbf{nilpotent Jordan block of size $r$}, by the rule $J(r)_{ij} = 1$ for $j = i + 1$ AND $J(r)_{ij} = 0$ otherwise
+
+    In particular, $J(1)$ is a $(1 \times 1)$-matrix whose only entry is zero.
+
+    \noindent\rule{\textwidth}{0.2pt}
+    Given an integer $r \ge 1$ and a scalar $\lambda\in F$, define an $(r \times r)$-matrix $J(r, \lambda)$ called the \textbf{Jordan block of size $r$ and eigenvalue $\lambda$} by the rule
+    \[J(r, \lambda) = \lambda I_{r} + J(r) = D + N\]
+    with $\lambda I_{r} = \text{diag}(\lambda, \lambda,\dots, \lambda) = D$ diagonal and $J(r) = N$ nilpotent such that $DN = ND$
+\end{dfn}
+
+\newpage
+
+\begin{thm}[Jordan Normal Form]{thm:jordan-normal-form}{6.2.2}
+    Let $F$ be an algebraically closed field. Let $V$ be a finite dimensional vector space and let $\phi : V \to V$ be an endomorphism of $V$ with characteristic polynomial
+    \[\chi_{\phi}(x) = (x - \lambda_{1})^{a_{1}}(x - \lambda_{2})^{a_{2}} . . (x - \lambda_{s})^{a_{s}}\in F[x], a_{i} \ge 1, \sum_{i = 1}^{s} a_{i} = n\]
+    For distinct $\lambda_{1},\lambda_{2},\dots,\lambda_{s}\in F$. Then there exists an ordered basis $\mathcal{B}$ of $V$ such that the matrix of $\phi$ with respect to the block $\mathcal{B}$ is block diagonal with Jordan blocks on the diagonal, ${}_{\mathcal{B}}[\phi]_{\mathcal{B}}$
+    \[ = \diag(J(r_{11}, \lambda_{1}),\dots,J(r_{1m_{1}}, \lambda_{1}), J(r_{21}, \lambda_{2}),\dots,J(r_{sm_{s}}, \lambda_{s}))\]
+    with $r_{11},\dots,r_{1m_{1}}, r_{21,\dots,r_{sm_{s}}} \ge 1$ such that
+    \[a_{i} = r_{i_{1}} + r_{i_{2}} + \cdots + r_{im_{i}} \quad (1 \le i \le s)\]
+\end{thm}
+
+\begin{thm}[Bézout’s identity for polynomials]{thm:jnf-bezout}{6.3.1}
+    For a characteristic polynomial
+    \[\chi_{\phi}(x) = \prod_{i = 1}^{s} (x - \lambda_{i})^{a_{i}}\in F[x]\]
+    where each $a_{i}$ is a positive integer, $\lambda_{i} \ne \lambda_{j}$ for $i\ne j$, and $\lambda_{i}$ are e.v.s of $\phi$. For each $1\le j \le s$ define
+    \[P_{j}(x) = \prod_{\substack{i = 1 \\ i \ne j}}^{s} (x - \lambda_{i})^{a_{i}}\]
+    There exists polynomials $Q_{j}(x)\in F[x]$ such that
+    \[\sum_{j = 1}^{s} P_{j}(x)Q_{j}(x) = 1\]
+\end{thm}
+
+\begin{dfn}[Generalised Eigenspace]{dfn:generalised-eigenspace}{6.3.2}
+    The \textbf{generalised eigenspace} of $\phi$ with eigenvalue $\lambda_{i}$, $E^{\text{gen}}(\lambda_{i}, \phi)$ is the following subspace of $V$:
+    \[E^{\text{gen}}(\lambda_{i}, \phi) = \{\vec{v}\in V \mid (\phi - \lambda_{i} \id_{V})^{a_{i}} (\vec{v}) = \vec{0}\}\]
+    The dimension of $E^{\text{gen}}(\lambda_{i}, \phi)$ is called the \textbf{algebraic multiplicity of $\phi$ with eigenvalue $\lambda_{i}$} while the dimension of the eigenspace $E(\lambda_{i}, \phi)$ is called the \textbf{geometric multiplicity of $\phi$ with eigenvalue $\lambda$}
+
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Remark 6.3.4}: The actual eigenspace is defined by
+    \[E(\lambda_{i}, \phi) = \{\vec{v}\in V \mid (\phi - \lambda_{i} \id_{V}) (\vec{v}) = \vec{0}\}\]
+    $E^{\text{gen}}(\lambda_{i}, \phi) \subseteq E^{\text{gen}}(\lambda_{i}, \phi)$, or the algebraic multiplicity of any e.v. must be greater or equal to the corresponding geometric multiplicity
 
 
-\lipsum[1-12]
+\end{dfn}
+
+\begin{dfn}[Stable subsets]{dfn:stable-subset}{6.3.4}
+    Let $f : X \to X$ be a mapping from a set $X$ to itself. A subset $Y \subseteq X$ is \textbf{stable under $f$} precisely when $f(Y) \subseteq Y$, that is if $y\in Y$ then $f(y)\in Y$.
+\end{dfn}
+
+\begin{thm}[Direct Sum Composition]{thm:direct-sum-composition}{6.3.5}
+    For each $1 \le i \le s$, let 
+    \[\mathcal{B}_{i} = \{\vec{v}_{ij}\in V \mid 1 \le j \le a_{i}\}\]
+    be a basis of $E^{\text{gen}}(\lambda_{i}, \phi)$, where $a_i$ is the algebraic multiplicity of $\phi$ with eigenvalue $\lambda_{i}$ s.t. $\sum_{i = 1}^{s} a_{i} = n$ is the dimension of $V$.
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item Each $E^{\text{gen}}(\lambda_{i}, \phi)$ is stable under $\phi$
+        \item For each $\vec{v}\in V$ there exist unique $\vec{v}_{i}\in E^{\text{gen}}(\lambda_{i}, \phi)$ such that $\vec{v} = \sum_{i = 1}^{s} \vec{v}_{i}$. In other words, there is a direct sum decomposition
+            \[V = \bigoplus_{i = 1}^{s} E^{\text{gen}}(\lambda_{i}, \phi)\]
+            with $\phi$ restricting to endomorphisms of the summands
+            \[\phi_{i} = \phi \rvert : E^{\text{gen}}(\lambda_{i}, \phi) \to E^{\text{gen}}(\lambda_{i}, \phi)\]
+        \item Then
+            \[\mathcal{B} = \mathcal{B}_{1} \cup\mathcal{B}_{2} \cup \cdots \cup \mathcal{B}_{s} = \{\vec{v}_{ij} \mid 1 \le i \le s, 1 \le j \le a_{i}\} \]
+            is a basis of $V$. The matrix of the endomorphism $\phi$ w.r.t. this basis is given by the block diagonal matrix
+            \[{}_{\mathcal{B}}[\phi]_{\mathcal{B}} = \left(\begin{array}{c|c|c|c}
+                B_{1} & 0 & 0 & 0 \\
+                \hline
+                0 & B_{2} & 0 & 0 \\
+                \hline
+                0 & 0 & \ddots & 0 \\
+                \hline
+                0 & 0 & 0 & B_{s}
+            \end{array}\right) \in \Mat(n ; F)\]
+            with $B_{i} = {}_{\mathcal{B}_{i}}[\phi_{i}]_{\mathcal{B}_{i}} \in \Mat(a_{i}; F)$
+    \end{enumerate}
+\end{thm}
+
+\begin{thm}[JNF Theorem Bank]{thm:jnf-theorems}{6.3}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item[\textbf{6.3.6}:] For each $i$, define a linear mapping
+            \[\psi_{i} : \frac{W_{i}}{W_{i - 1}} \to \frac{W_{i - 1}}{W_{i - 2}}\]
+            by $\psi_{i}(\vec{w} + W_{i - 1}) = \psi(\vec{w}) + W_{i - 2}$ for $\vec{w}\in W_{i}$. Then $\psi_{i}$ is well-defined and injective
+        \item[\textbf{6.3.7}:] Let $f : X \to Y$ be an injective linear mapping between the $F$-vector spaces $X$ and $Y$. If $\{\vec{x}_{1},\dots,\vec{x}_{t}\}$ is a linearly independent set in $X$, then $\{f(\vec{x}_{1},\dots,\vec{x}_{t})\}$ is a linearly independent set in $Y$
+        \item[\textbf{6.3.8}:] The set of elements $\{\vec{v}_{j,k} : 1 \le j \le m, 1 \le k \le d_{j}\}$ constructed in the next algorithm is a basis for $W$
+        \item[\textbf{6.3.9}:] Let $\mathcal{B}$ be the ordered basis of $W$ - $\{\vec{v}_{j,k} : 1 \le j \le m, 1 \le k \le d_{j}\}$. Then ${}_{\mathcal{B}}[\psi]_{\mathcal{B}} = $
+            \[\diag \underbrace{J(m),. .,J(m)}_{\text{$d_{m}$ times}}, \underbrace{J(m-1),. .,J(m-1)}_{\text{$d_{m - 1} - d_{m}$ times}},. .,\underbrace{J(1), . .,J(1)}_{\text{$d_{1} - d_{2}$ times}}\]
+            where $J(r)$ denotes the nilpotent Jordan block of size $r$
+    \end{itemize}
+\end{thm}
+
+
+% NOTE JNF algorithm
+
+\begin{thm}[JNF Basis Algorithm]{thm:jnf-algorithm}{6.3}
+    Algorithm to construct a basis for each $W_{i} / W_{i - 1}$:
+    \begin{itemize}[]
+        \item Choose an arbitrary basis for $W_{m} / W_{m - 1}$, say
+            \[\{v_{m, 1} + W_{m - 1}, \vec{v}_{m, 2} + W_{m - 1},\dots,\vec{v}_{m}, d_{m} + W_{m - 1}\}\]
+        \item Since $\psi_{m} : W_{m} / W_{m - 1} \to W_{m - 1} / W_{m - 2}$ is injective by 6.3.6, 6.3.7 proves that 
+            \[\{\psi(\vec{v}_{m,1}) + W_{m - 2}, \psi(\vec{v}_{m}, 2) + W_{m - 2}, . . ,\psi(\vec{v}_{m}, d_{m} + W_{m - 2})\}\]
+            is a linearly independent set in $W_{m - 1} / W_{m - 2}$. Set $\vec{v}_{m - 1, i} = \psi(\vec{v}_{m, i})$ for $1 \le i \le d_{m}$
+        \item Choose vectors $\{\vec{v}_{m - 1, i} : d_{m} + 1 \le i \le d_{m - 1}\}$ so that $\{\vec{v}_{m - 1, i} + W_{m - i - 1} : 1 \le k \le d_{m - i}\}$ is a basis of $W_{m - 1} / W_{m - 2}$
+        \item Repeat!
+    \end{itemize}
+\end{thm}
+
+\subsection{PageRank, again}
+
+\begin{thm}[]{thm:jnf-markov}{6.5.1}
+    If $M\in \Mat(n ; \mathbb{R})$ is a Markov matrix with all positive entries, consider $M$ as a complex matrix whose entries just happen to be real. If $\lambda\in \mathbb{C}$ is an eigenvalue of $M$ then either $\lambda = 1$ or $\lvert \lambda \rvert < 1$
+\end{thm}
+
+\lipsum[1-2]
 
 \end{multicols}
 
