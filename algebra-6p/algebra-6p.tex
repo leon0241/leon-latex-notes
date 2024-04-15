@@ -74,7 +74,12 @@
 \begin{multicols}{3}
 \raggedcolumns
 
-\section{Absstractions upon Abstractions}
+
+\section*{\huge Honours Algebra Exam Notes}
+Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
+
+\vspace{-5pt}
+\section{Abstractions upon Abstractions}
 see you guys in UG4 category theory!
 % \subsection{Fields and Vector Spaces}
 
@@ -109,13 +114,14 @@ see you guys in UG4 category theory!
 
     \vspace{-10pt}
     and they satisfy the following lemmas (for both):
+    \vspace{-5pt}
     \begin{enumerate}
         \setlength\itemsep{0em}
         \item $0a = 0 = a 0$
         \item The elements $0$ and $1$ are distinct (only ring case is zero ring)
     \end{enumerate}
 
-    \vspace{-5pt}
+    \vspace{-8pt}
     \noindent\rule{\textwidth}{0.2pt}
     \textbf{Field Specific Lemmas}:
     \begin{enumerate}
@@ -123,7 +129,7 @@ see you guys in UG4 category theory!
         \item $(\cdot)$ in $F$ is associative, $1_{F}$ is an identity (it's an abelian group only in $(F \backslash \{0_{F}\}, \cdot)$)
     \end{enumerate}
     
-    \vspace{-5pt}
+    \vspace{-10pt}
     \setlength{\columnseprule}{0pt}
     \noindent\rule{\textwidth}{0pt}
     \textbf{Ring Specific Lemmas and Definitions}:
@@ -376,20 +382,20 @@ see you guys in UG4 category theory!
      The elements of $\mathbb{Z} / m\mathbb{Z}$ consist of \textbf{congruence classes} of integers modulo $m$, written $\overline{a}$, - i.e. ``the subsets $T$ of $\mathbb{Z}$ of the form $T = a + m\mathbb{Z}$ with $a\in \mathbb{Z}$'', or ``set of integers that have the same remainder when you divide them by $m$''. $\overline{a} = \overline{b}$ is the same as $a-b\in m\mathbb{Z}$, and often I'll write
     \[a \equiv b \mod m\]
 
+    \vspace{-8pt}
     \noindent\rule{\textwidth}{0.2pt}
     \textbf{Thm 3.1.11 - Prime Property for Fields}: Let $m\in\mathbb{N}$. The commutative ring $\mathbb{Z} / m\mathbb{Z}$ is a field if and only if $m$ is prime
 \end{xmp}
 
-
+\vspace{-5pt}
 \begin{dfn}[Multiples of an abelian group]{dfn:abelian-group-multis}{3.2.3}
     Let $m\in \mathbb{Z}$. The \textbf{$m$-th multiple $ma$ of an element $a$}in an abelian group $R$ is:
     \[ma = \underbrace{a + a + \cdots + a}_{\text{$m$ terms}} \quad \text{if} m > 0\]
     $0a = 0$ and negative multiples are defined by $(-m)a = -(ma)$
 \end{dfn}
 
-
+\vspace{-5pt}
 \begin{dfn}[Units and Field Construction]{dfn:field-constructon}{3.2}
-    \noindent\rule{\textwidth}{0.2pt}
     \textbf{Def 3.2.6}: Let $R$ be a ring. An element $a\in R$ is called a \textbf{unit} if it is invertible in $R$, i.e. there exists $r^{-1}\in R$ such that
     \[a a^{-1} = 1 = a^{-1}a\]
 
@@ -1214,7 +1220,7 @@ see you guys in UG4 category theory!
 \end{dfn}
 
 \begin{dfn}[Norm]{dfn:norm}{5.1.5}
-    In a real or complex inner product space, the \textbf{length} or \textbf{inner product norm} or \textbf{norm} $\lVert \vec{v} \rVert\in \mathbb{R}$ of a vector $\vec{v}$ is defined as the non-negative square root
+    In a real/complex inner product space, the \textbf{length} or \textbf{inner product norm} or \textbf{norm} $\lVert \vec{v} \rVert\in \mathbb{R}$ of a vector $\vec{v}$ is the non-negative square root
     \[\lVert \vec{v} \rVert = \sqrt{(\vec{v}, \vec{v})}\]
     Vectors whose length are $1$ are called \textbf{units}. Two vectors $\vec{v}, \vec{w}$ are \textbf{orthogonal}, written $\vec{v} \bot \vec{w}$, iff $(\vec{v}, \vec{w}) = 0$
 
@@ -1391,8 +1397,8 @@ see you guys in UG4 category theory!
     Let $f : X \to X$ be a mapping from a set $X$ to itself. A subset $Y \subseteq X$ is \textbf{stable under $f$} precisely when $f(Y) \subseteq Y$, that is if $y\in Y$ then $f(y)\in Y$.
 \end{dfn}
 
-
 \newpage
+
 \begin{thm}[Direct Sum Composition]{thm:direct-sum-composition}{6.3.5}
     For each $1 \le i \le s$, let 
     \[\mathcal{B}_{i} = \{\vec{v}_{ij}\in V \mid 1 \le j \le a_{i}\}\]
