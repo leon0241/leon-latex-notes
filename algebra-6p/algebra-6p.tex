@@ -224,6 +224,7 @@ see you guys in UG4 category theory!
 \begin{dfn}[Sub-things]{dfn:subthings}{C}
     A sub-thing is basically something that is a smaller but self-contained version of a thing
 
+    \vspace{-5pt}
     \begin{itemize}
         \setlength\itemsep{0em}
         \item \textbf{Vector Subspace} \textit{(left)}: A subset $U$ of a vector space $V$
@@ -231,6 +232,7 @@ see you guys in UG4 category theory!
         \item \textbf{Submodule} \textit{(right)}: A subset $M'$ of a module $M$ under the same operations of the $R$-module $M$ \textbf{restricted} to $M$
     \end{itemize}
 
+    \vspace{-20pt}
     \setlength{\columnseprule}{0.5pt}
     \begin{multicols}{3}
         \textbf{Subspace Criteron}
@@ -266,13 +268,10 @@ see you guys in UG4 category theory!
     \setlength{\columnseprule}{0pt}
 \end{dfn}
 
-
-
-
-
-
+\vspace{-5pt}
 \begin{dfn}[Homo no homo]{dfn:homomorphisms}{D}
     Everything has its own homomorphism and they are all the exact same thing
+    \vspace{-5pt}
     \begin{itemize}
         \setlength\itemsep{0em}
         \item \textbf{Linear Mapping} \textit{(left)}: Homomorphism on a Vector Space
@@ -280,6 +279,7 @@ see you guys in UG4 category theory!
         \item \textbf{$R$-homomorphism} \textit{(right)}: Homomorphism on a module
     \end{itemize}
 
+    \vspace{-20pt}
     \setlength{\columnseprule}{0.5pt}
     \begin{multicols}{3}
         \textbf{V. Space Criteron}
@@ -311,8 +311,10 @@ see you guys in UG4 category theory!
         \end{itemize}
     \end{multicols}
     \setlength{\columnseprule}{0pt}
+    \vspace{-15pt}
 
     \noindent\rule{\textwidth}{0.2pt}
+    \vspace{-12pt}
 
     \begin{itemize}[leftmargin=*]
         \setlength\itemsep{0em}
@@ -322,11 +324,13 @@ see you guys in UG4 category theory!
         \item An isomorphism $V\to V$ is called an \textbf{automorphism} of $V$
     \end{itemize}
 
+    \vspace{-10pt}
     \noindent\rule{\textwidth}{0.2pt}
 
     \textbf{Image and Kernel}
 
     The image and kernel of a mapping $f : M \to N$ are as follows:
+    \vspace{-5pt}
 
     \begin{itemize}
         \setlength\itemsep{0em}
@@ -334,14 +338,14 @@ see you guys in UG4 category theory!
         \item \textbf{Kernel}: $\ker f = \{a\in M : f(a) = 0_{N}\} \subseteq M$
     \end{itemize}
 
-    Note: for vector spaces $\subseteq$ implies vector subspace
 
 \end{dfn}
 
 \begin{thm}[Universal Properties and First Iso Thm]{univ-prop-first-iso-thm}{E}
-    Let $A$ be an object of type $\sigma$, and $I$ be an ideal-ish $\sigma$ object
-
     \textbf{Thm: Universal Properties}
+
+    Let $A$ be an object of type $\sigma$, and $I$ be an ideal-ish $\sigma$ object
+    \vspace{-5pt}
     \begin{itemize}
         \item The mapping $\can : A \to A /I$ sending $a$ to $a + I$ for all $a\in A$ is a surjective $\sigma$-homomorphism with kernel $I$
         \item If $f : A \to B$ is an $\sigma$-homomorphism with $f(I) = \{0_{B}\}$, so that $I\subseteq \ker f$, then there is a unique $\sigma$-homomorphism $f : A / I \to B$ such that $f = \overline{f} \circ \can$
@@ -352,8 +356,10 @@ see you guys in UG4 category theory!
     Every $\sigma$ homomorphism $f : A \to B$ induces an $\sigma$-homomorphism
     \[\overline{f} : A / \ker f \xrightarrow{\sim} \im f\]
 
+    \vspace{-5pt}
     \noindent\rule{\textwidth}{0.2pt}
     This can be applied to pretty much everything!
+    \vspace{-5pt}
     \begin{itemize}[leftmargin=*]
         \setlength\itemsep{0em}
         \item \textbf{Factor Rings}: $\sigma$ are rings (so $A$ is a ring), and $I$ is an ideal
@@ -365,10 +371,13 @@ see you guys in UG4 category theory!
 \section{Rings and Modules}
 
 \begin{xmp}[Modulo Rings]{xmp:modulo-rings}{3.1.4}
-    Let $m\in \mathbb{Z}$. Then the set of \textbf{integers modulo} $m$, written
+    Let $m\in \mathbb{Z}$. Then the set of \textbf{integers modulo} $m$ is a ring, written
     \[\mathbb{Z} / m\mathbb{Z}\]
-    is a ring. The elements of $\mathbb{Z} / m\mathbb{Z}$ consist of \textbf{congruence classes} of integers modulo $m$ - that is, the elements are the subsets $T$ of $\mathbb{Z}$ of the form $T = a + m\mathbb{Z}$ with $a\in \mathbb{Z}$. Think of these as the set of integers that have the same remainder when you divide them by $m$. I denote the above congruence class by $\overline{a}$. Obviously $\overline{a} = \overline{b}$ is the same as $a-b\in m\mathbb{Z}$, and often I'll write
+     The elements of $\mathbb{Z} / m\mathbb{Z}$ consist of \textbf{congruence classes} of integers modulo $m$, written $\overline{a}$, - i.e. ``the subsets $T$ of $\mathbb{Z}$ of the form $T = a + m\mathbb{Z}$ with $a\in \mathbb{Z}$'', or ``set of integers that have the same remainder when you divide them by $m$''. $\overline{a} = \overline{b}$ is the same as $a-b\in m\mathbb{Z}$, and often I'll write
     \[a \equiv b \mod m\]
+
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Thm 3.1.11 - Prime Property for Fields}: Let $m\in\mathbb{N}$. The commutative ring $\mathbb{Z} / m\mathbb{Z}$ is a field if and only if $m$ is prime
 \end{xmp}
 
 
@@ -379,7 +388,7 @@ see you guys in UG4 category theory!
 \end{dfn}
 
 
-\begin{dfn}[Field Construction]{dfn:field-constructon}{something}
+\begin{dfn}[Units and Field Construction]{dfn:field-constructon}{3.2}
     \noindent\rule{\textwidth}{0.2pt}
     \textbf{Def 3.2.6}: Let $R$ be a ring. An element $a\in R$ is called a \textbf{unit} if it is invertible in $R$, i.e. there exists $r^{-1}\in R$ such that
     \[a a^{-1} = 1 = a^{-1}a\]
@@ -389,12 +398,6 @@ see you guys in UG4 category theory!
     \textbf{Definition 3.1.8}: A \textbf{field} is a non-zero commutative ring $F$ in which every non-zero element $a\in F$ is a unit.
 \end{dfn}
 
-\newpage
-
-\begin{thm}[Properties of Rings]{dfn:ring-lemmas-1}{3.2}
-    \noindent\rule{\textwidth}{0.2pt}
-    \textbf{Thm 3.1.11 - Prime Property for Fields}: Let $m\in\mathbb{N}$. The commutative ring $\mathbb{Z} / m\mathbb{Z}$ is a field if and only if $m$ is prime
-\end{thm}
 
 \begin{dfn}[zero-divisors of a ring]{dfn:zero-divisor}{3.2.11}
     In a ring $R$, a non-zero element $a$ is called a \textbf{zero-divisor} or \textbf{divisor of zero} if there exists a non-zero element $b$ such that either $ab = 0$ or $ba = 0$.
@@ -421,6 +424,7 @@ see you guys in UG4 category theory!
     
 \end{thm}
 
+\newpage
 \begin{dfn}[Polynomial]{dfn:polynomial}{3.1.1}
     Let $R$ be a ring. A \textbf{polynomial over $R$} is an expression of the form
     \[P = a_{0} + a_{1}X + a_{2}X^{2} + \cdots + a_{m}X^{m}\]
@@ -434,10 +438,10 @@ see you guys in UG4 category theory!
         \item When the leading coefficient is $1$ the polynomial is a \textbf{monic polynomial}.
         \item A polynomial of degree one is called \textbf{linear}, degree two is called \textbf{quadractic}, and degree three is called \textbf{cubic}.
     \end{itemize}
-\end{dfn}
 
-\begin{dfn}[Ring of Polynomials]{dfn:polynomial-rings}{3.3.2}
-    The set $R[X]$ becomes a ring called the \textbf{ring of polynomials with coefficients in $R$, or over $R$}. The zero and the identity of $R[X]$ are the zero and identity of $R$, respectively.
+    \vspace{-5pt}
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Thm 3.3.2}: The set $R[X]$ becomes a ring called the \textbf{ring of polynomials with coefficients in $R$, or over $R$}. The zero and the identity of $R[X]$ are the zero and identity of $R$, respectively.
 \end{dfn}
 
 \begin{thm}[Properties of a Polynomial Ring]{thm:zero-divisors-of-poly-ring}{3.3}
@@ -450,12 +454,12 @@ see you guys in UG4 category theory!
 \end{thm}
 
 \begin{dfn}[Evaluating a Function]{dfn:evaluating-functions}{3.3.6}
-    Let $R$ be a commutative ring and $P\in R[X]$ a polynomial. Then $P$ can be \textbf{evaluated} at the element $\lambda\in R$ to produce $P(\lambda)$ by replacing the powers of $X$ in $P$ by the corresponding powers of $\lambda$. In this way we have a mapping
+    Let $R$ be a commutative ring and $P\in R[X]$ a polynomial. $P$ can be \textbf{evaluated} at $\lambda\in R$ to make $P(\lambda)$ by replacing the powers of $X$ in $P$ by the corresponding powers of $\lambda$. In this way we have a mapping
     \[R[X] \to \Maps(R, R)\]
     This is the precise definition of thinking of a polynomial as a function. An element $\lambda\in R$ is a \textbf{root} of $P$ if $P(\lambda) = 0$
 
     \noindent\rule{\textwidth}{0.2pt}
-    \textbf{Thm 3.3.9}: Let $R$ be a commutative ring, let $\lambda\in R$ and $P(X)\in R[X]$. Then $\lambda$ is a root of $P(X)$ if and only if $(X - \lambda)$ divides $P(X)$
+    \textbf{Thm 3.3.9}: Let $R$ be a commutative ring, let $\lambda\in R$ and $P(X)\in R[X]$. Then $\lambda$ is a root of $P(X)$ iff $(X - \lambda)$ divides $P(X)$
 \end{dfn}
 
 \begin{thm}[Degrees of Polynomial Roots]{thm:polynomial-root-degs}{3.3.10}
@@ -464,18 +468,16 @@ see you guys in UG4 category theory!
 
 \begin{dfn}[Algebraically closed fields]{dfn:algebraically=closed}{3.3.11}
     A field $F$ is \textbf{algebraically closed} if each non-constant polynomial $P\in F[X]\backslash F$ with coefficients in our field has a root in our field $F$
-\end{dfn}
 
-\begin{thm}[Fundamental Theorem of Algebra]{thm:fundamental-theorem-of-algebra}{3.3.13}
-    The field of complex numbers $\mathbb{C}$ is algebraically closed.
-\end{thm}
+    \noindent\rule{\textwidth}{0.2pt}
 
-\begin{thm}[Linear Factors of Closed Fields]{thm:alg-closed-fields-linear-factors}{3.3.14}
-    If $F$ is an algebraically closed field, then every non-zero polynomial $P\in F[X]\backslash \{0\}$ \textbf{decomposes into linear factors}
+    \textbf{Thm 3.3.13 (Fundamental Thm of Algebra)}: The field of complex numbers $\mathbb{C}$ is algebraically closed.
+
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Thm 3.3.14 (Linear factors of closed fields)}: If $F$ is an algebraically closed field, then every non-zero polynomial $P\in F[X]\backslash \{0\}$ \textbf{decomposes into linear factors}
     \[P = c(X - \lambda_{1}) \cdots (X - \lambda_{n})\]
     with $n\ge 0,\, c\in F^{\times}$ and $\lambda_{1},\dots,\lambda_{n}\in F$. This decomposition is unique up to reordering the factors
-\end{thm}
-
+\end{dfn}
 
 \begin{thm}[Properties of Ring Homomorphisms]{thm:ring-homomorphism-props}{3.4.5}
     Let $R$ and $S$ be rings and $f : R \to S$ a ring homomorphism. Then for all $x,y\in R$ and $m\in \mathbb{Z}$:
@@ -489,27 +491,24 @@ see you guys in UG4 category theory!
     \end{enumerate}
 \end{thm}
 
-\begin{dfn}[Ideal]{dfn:ideal}{3.4.7}
-    A subset $I$ of a ring $R$ is an \textbf{ideal}, $I \unlhd R$, if the following hold:
+\begin{dfn}[All about Ideals]{dfn:ideal}{3.4}
+    \textbf{Def 3.4.7}: A subset $I$ of a ring $R$ is an \textbf{ideal}, $I \unlhd R$, if the following hold:
     \begin{enumerate}
         \setlength\itemsep{0em}
         \item $I \ne \emptyset$
         \item $I$ is closed under subtraction
         \item for all $i\in I$ and $r\in R$ we have $ri, ir\in I$
     \end{enumerate}
-\end{dfn}
 
-\begin{dfn}[Generated Ideals]{dfn:ideal-generators}{3.4.11}
-    Let $R$ be a commutative ring and let $T \subset R$. Then the \textbf{ideal of $R$ generated by $T$} is the set
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Def 3.4.11}: $R$ be a commutative ring and let $T \subset R$. Then the \textbf{ideal of $R$ generated by $T$} is the set
     \[{}_{R}\langle T \rangle = \{r_{1}t_{1}+\cdots+r_{m}t_{m} : t_{1},\dots,t_{m}\in T,\,r_{1},\dots,r_{m}\in R\}\]
-\end{dfn}
 
-\begin{thm}[]{thm:generated-ideals-are-smallest-ideal}{3.4.14}
-    Let $R$ be a commutative ring and let $T\subseteq R$. Then ${}_{R}\langle T \rangle$ is the smallest ideal of $R$ that contains $T$
-\end{thm}
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Thm 3.4.14}: Let $R$ be a commutative ring and let $T\subseteq R$. Then ${}_{R}\langle T \rangle$ is the smallest ideal of $R$ that contains $T$
 
-\begin{dfn}[Principal Ideal]{dfn:principal-ideal}{3.4.15}
-    Let $R$ be a commutative ring. An ideal $I$ of $R$ is called a \textbf{principal ideal} if $I = \langle t \rangle$ for some $t\in R$
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Def 3.4.15}: Let $R$ be a commutative ring. An ideal $I$ of $R$ is called a \textbf{principal ideal} if $I = \langle t \rangle$ for some $t\in R$
 \end{dfn}
 
 \begin{thm}[Kernels as Ideals]{thm:kernels-as-ideals}{3.4}
@@ -540,7 +539,6 @@ see you guys in UG4 category theory!
     Suppose that $\sim$ is an equivalence relation on a set $X$. For $x\in X$ the set $E(x) := \{z\in X : z \sim x\}$ is called the \textbf{equivalence class of $x$}. A subset $E \subseteq X$ is called an \textbf{equivalence class} for our equivalence relation if there is an $x\in X$ for which $E = E(x)$. An element of an equivalence class is called a \textbf{representive} of the class. A subset $Z \subseteq X$ containing precisely one element from each equivalence class is called a \textbf{system of representatives} for the equivalence relation
 \end{dfn}
 
-\newpage
 \begin{dfn}[Set of Equivalence Classes]{dfn:equivalence-class-sets}{3.5.5}
     Given an equivalence relation $\sim$ on the set $X$ I will denote the \textbf{set of equivalence classes}, which is a subset of the power set $\mathcal{P}(X)$, by
     \[(X / \sim) := \{E(x) : x\in X\}\]
@@ -563,9 +561,6 @@ see you guys in UG4 category theory!
     and multiplication is defined by
     \[(x + I) \cdot (y + I) = xy + I \qquad \text{for all $x,y\in R$}\]
 \end{thm}
-
-
-
 
 
 \begin{thm}[Submodule lemmas]{thm:submodule-lemmas}{3.7}
@@ -659,24 +654,20 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
         \item[\textbf{1.4.7}:] A subset of a vector space that spans the entire space is called a \textbf{generating} or \textbf{spanning set}. A vector space that has a finite generating set is said to be \textbf{finitely generated}
     \end{itemize}
 
-    \vspace{-5pt}
     \noindent\rule{\textwidth}{0.2pt}
 
-    \textbf{Linear Independence}
-    \vspace{5pt}
-
-    \textbf{1.5.1}: A subset $L$ of a vector space $V$ is called \textbf{linearly \newline independent} if for all pairwise different vectors $\vec{v}_{1},\dots,\vec{v}_{r}\in L$ and arbitrary scalars $\alpha,\dots,\alpha_{r}\in F$,
-    \[a_{1}\vec{v}_{1} + \cdots + \alpha_{r}\vec{v}_{r} = \vec{0} \implies a_{1} = \cdots = \alpha_{r} = 0\]
-    \textbf{1.5.2}: A subset $L$ of a vector space $V$ is called \textbf{linearly \newline dependent} if it is not linearly independent (duh..). This means there exists pairwise different vectors $\vec{v}j_{1},\dots,\vec{v}_{r}\in L$ and scalars $\alpha_{1},\dots,\alpha_{r}\in F$, not all zero, such that $\alpha_{1}\vec{v}_{1} + \cdots \alpha_{r}\vec{v}_{r} = \vec{0}$
-\end{dfn}
-
-% \subsection{Linear Independence and Bases}
-
-\begin{dfn}[Basis of a Vector Space]{dfn:basis}{1.5.8}
     A \textbf{basis of a vector space} $V$ is a linearly independent generating set in $V$
 
     \noindent\rule{\textwidth}{0.2pt}
     Let $A$ and $I$ be sets. A mapping $I\to A$ is referred to as a \textbf{family of elements of $A$ indexed by $I$}, using the notation $(a_{i})_{i\in I}$
+    % \noindent\rule{\textwidth}{0.2pt}
+    %
+    % \textbf{Linear Independence}
+    % \vspace{5pt}
+    %
+    % \textbf{1.5.1}: A subset $L$ of a vector space $V$ is called \textbf{linearly \newline independent} if for all pairwise different vectors $\vec{v}_{1},\dots,\vec{v}_{r}\in L$ and arbitrary scalars $\alpha,\dots,\alpha_{r}\in F$,
+    % \[a_{1}\vec{v}_{1} + \cdots + \alpha_{r}\vec{v}_{r} = \vec{0} \implies a_{1} = \cdots = \alpha_{r} = 0\]
+    % \textbf{1.5.2}: A subset $L$ of a vector space $V$ is called \textbf{linearly \newline dependent} if it is not linearly independent (duh..). This means there exists pairwise different vectors $\vec{v}j_{1},\dots,\vec{v}_{r}\in L$ and scalars $\alpha_{1},\dots,\alpha_{r}\in F$, not all zero, such that $\alpha_{1}\vec{v}_{1} + \cdots \alpha_{r}\vec{v}_{r} = \vec{0}$
 \end{dfn}
 
 % \begin{xmp}[Standard Basis]{xmp:standard-basis}{}
@@ -697,8 +688,6 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
     \[\psi = \psi_{\mathcal{A}} : F^{r}\to V\]
 \end{thm}
 
-\newpage
-\vspace{-5pt}
 \begin{thm}[Characterisations of Bases]{thm:basis-characterisations}{1.5.12}
     The following are equivalent for a subset $E$ of a vector space $V$:
     \vspace{-5pt}
@@ -763,6 +752,7 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
     \textbf{Def 1.6.5}: The cardinality of a basis of a finitely generated vector space $V$ is called the \textbf{dimension} of $V$, written $\dim V$. 
 \end{thm}
 
+\newpage
 \begin{thm}[Dimension Theorems]{thm:dimension-theorems}{1.6}
     \textbf{1.6.7: Cardinality Criterion for Bases}
     \vspace{-5pt}
@@ -880,8 +870,7 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
     % \noindent\rule{\textwidth}{0.6pt}
     % \textbf{Def 2.2.2}: An \textbf{elementary matrix} is any square matrix that differs from the identity matrix in at least one entry
 
-    \vspace{-5pt}
-    \noindent\rule{\textwidth}{0.2pt}
+    % \noindent\rule{\textwidth}{0.2pt}
     \textbf{Thm 2.2.3}: Every square matrix with entries in a field can be written as a product of elementary matrices
 
     \noindent\rule{\textwidth}{0.6pt}
@@ -896,19 +885,12 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
     \textbf{Thm 2.4.5}: Let $f : V \to W$ be a linear map between finite dim. $F$-vector spaces. There exists two ordered bases $\mathcal{A}$ of $V$, and $\mathcal{B}$ of $W$ s.t. the representing matrix ${}_{\mathcal{B}}[f]_{\mathcal{A}}$ is in Smith Normal Form
 
     \noindent\rule{\textwidth}{0.6pt}
-    \textbf{Def 2.2.7}: The \textbf{column rank} of a matrix $A\in \Mat(n \times m; F)$ is the dimension of the subspace of $F^{n}$ generated by the columns of $A$. Similarly, the \textbf{row rank} of $A$ is the dimension of the subspace of $F^{m}$ generated by the rows of $A$.
 
-    \vspace{-5pt}
-    \noindent\rule{\textwidth}{0.2pt}
-    \textbf{Thm 2.2.8}: The column and row rank of any matrix are equal
-
-    \noindent\rule{\textwidth}{0.6pt}
-    \textbf{Def 2.2.9}: Since they are the same, "column" and "row" can be omitted for the \textbf{rank of a matrix}, written as $\rk A$. If the rank is equal to the no. of rows/columns, then the matrix has \textbf{full rank}
+    \textbf{Def 2.2.9}: The \textbf{rank} of a matrix $A\in \Mat(n \times m; F)$, written $\rk A$, is the dim. of the subspace of $F^{n}$ generated by the columns of $A$, or same with the row. The row/column rank are the same. If the rank is equal to the no. of rows/columns, then the matrix has \textbf{full rank}
 
     \noindent\rule{\textwidth}{0.6pt}
     \textbf{Def 2.4.6}: The \textbf{trace} of a square matrix is defined to be the sum of its diagonal entries, denoted by $\Tr(A)$
 \end{dfn}
-\newpage
 
 \begin{thm}[Representing Matrices]{thm:representing-matrices}{2.3.1}
     Let $F$ be a field, $V$ and $W$ vector spaces over $F$ with ordered bases $\mathcal{A} = (\vec{v}_{1},\dots,\vec{v}_{m})$ and $\mathcal{B} = (\vec{w}_{1},\dots,\vec{w}_{n})$. Then to each linear mapping $f : V \to W$ we associate a \textbf{representing matrix} $_{\mathcal{B}}[f]\mathcal{A}$ whose entries $a_{ij}$ are defined by the identity
@@ -960,6 +942,7 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
     A \textbf{tranposition} is a permutation that swaps two elements of the set and leaves all the others unchanged.
 \end{dfn}
 
+\newpage
 \begin{dfn}[Inversions of a permutation]{dfn:inversion}{4.1.2}
     An \textbf{inversion} of a permutation $\sigma\in S_{n}$ is a pair $(i, j)$ such that $1 \le i < j \le n$ and $\sigma(i) > \sigma(j)$. The number of inversions of the permutation $\sigma$ is called the \textbf{length of $\sigma$} and written $\ell(\sigma)$. In formulas:
     \[\ell(\sigma) = \lvert \{(i,j) : i < j \text{ but } \sigma(i) > \sigma(j)\} \rvert\]
@@ -1037,7 +1020,6 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
     \end{itemize}
 \end{thm}
 
-\newpage
 \begin{dfn}[Cofactors of a Matrix]{dfn:cofactors-matrix}{4.4.6}
     Let $A \in \Mat(n;R)$ for some commutative ring $R$ and $n\in \mathbb{N}$. Let $i,j\in\mathbb{Z}$ between $1$ and $n$. Then the $(i, j)$ \textbf{cofactor of $A$} is $C_{ij} = (-1)^{i + j} \det(A\langle i,j \rangle)$ where $A\langle i, j \rangle$ is the matrix obtained from $A$ by deleting the $i$-th row and $j$-th column.
     \[C_{23} = (-1)^{2 + 3} \det \begin{pmatrix}
@@ -1081,16 +1063,17 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
     Each endomorphism of a non-zero finite dimensional vector space over an algebraically closed field has an eigenvalue
 \end{thm}
 
+\vspace{-5pt}
 \begin{dfn}[Characteristic Polynomial]{dfn:characteristic-polynomial}{4.5.6}
     Let $R$ be a commutative ring and let $A\in \Mat(n;R)$ be a square matrix with entries in $R$. The polynomial $\det(x I_{n} - A)\in R[x]$ is called the \textbf{characteristic polynomial of the matrix $A$}. It is denoted by
     \[\chi_{A}(x) := \det(x I_{n} - A)\]
-    (where $\chi$ stands for $\chi$aracteristic, lol)
+    % (where $\chi$ stands for $\chi$aracteristic, lol)
+
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Thm: 4.5.8}: Let $F$ be a field and $A\in \Mat(n;F)$ a square matrix with entries in $F$. The eigenvalues of the linear mapping $A : F^{n}\to F^{n}$ are exactly the roots of the characteristic polynomial $\chi_{A}$
 \end{dfn}
 
-\begin{thm}[EVs and Characteristic Polynomials]{thm:eigenvalues-char-polynomial}{4.5.8}
-    Let $F$ be a field and $A\in \Mat(n;F)$ a square matrix with entries in $F$. The eigenvalues of the linear mapping $A : F^{n}\to F^{n}$ are exactly the roots of the characteristic polynomial $\chi_{A}$
-\end{thm}
-
+\vspace{-5pt}
 \begin{thm}[Eigenvalue Remarks]{thm:eigenvalue-remarks}{4.5.9}
     \begin{itemize}[leftmargin=*]
         \setlength\itemsep{0em}
@@ -1105,13 +1088,14 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
     \end{itemize}
 \end{thm}
 
+\vspace{-5pt}
 \begin{thm}[Extending Bases]{thm:extending-bases}{4.5.10}
     Let $f : V\to V$ be an endomorphism of an $n$-dimensional vector space $V$ over a field $F$. Suppose given an $m$-dimensional subspace $W\subseteq V$ such that $f(W)\subseteq W$, so that there are defined endomorphisms of the subspace and the quotient space:
     \begin{align*}
         g &: W \to W;\, \vec{w}\mapsto f(\vec{w})\\
         h &: V / W \to V / W;\, W + \vec{v} \mapsto W + f(\vec{v})
     \end{align*}
-    The characteristic polynomial of $f$ is the product of the characteristic polynomials of $g$ and $h$
+    The char. poly. of $f$ is the product of the char. poly.s of $g$ and $h$
     % Any ordered basis $\mathcal{A} = (\vec{w_{1}},\vec{w_{2}},\dots,\vec{w_{m}})$ for $W$ can be extended to an ordered basis for $V$
     % \[\mathcal{B} = (\vec{w_{1}}, \vec{w_{2}},\dots,\vec{w_{m}},\vec{v}_{m+1},\vec{v}_{m+2}\cdots,\vec{v_{n}})\]
     %
@@ -1119,6 +1103,7 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
     % \[\mathcal{C} = (\text{can}(v_{m + 1}), \text{can}(v_{m + 2}),\dots,\text{can}(\vec{v}_{n}))\]
 \end{thm}
 
+\newpage
 \begin{dfn}[Triangularisability]{dfn:triangularisability}{4.6.1}
     Let $f : V \to V$ be an endomorphism of a finite dimensional $F$-vector space $V$. $f$ is \textbf{triangularisable} if the vector space $V$ has an ordered basis $\mathcal{B} = (\vec{v}_{1}, \vec{v}_{2},\dots,\vec{v}_{n})$ such that
         \begin{align*}
@@ -1167,7 +1152,6 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
 \begin{thm}[Linear Independence of Eigenvectors]{thm:ev-linear-independence}{4.6.9}
     Let $f : V\to V$ be an endomorphism of a vector space $V$ and let $\vec{v}_{1},\dots,\vec{v}_{n}$ be eigenvectors of $f$ with pairwise different eigenvalues $\lambda_{1},\dots,\lambda_{n}$. Then the vectors $\vec{v}_{1},\dots,\vec{v}_{n}$ are linearly independent
 \end{thm}
-\newpage
 
 \begin{thm}[Cayley-Hamilton Theorem]{thm:cayley-hamilton}{4.6.10}
     Let $A\in \Mat(n;R)$ be a square matrix with entries in a commutative ring $R$. Then evaluating its characteristic polynomial $\chi_{A}(x)\in R[x]$ at the matrix $A$ gives zero.
@@ -1266,6 +1250,7 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
     with equality if and only if $\vec{v}$ and $\vec{w}$ are linearly dependent
 \end{thm}
 
+\newpage
 \begin{thm}[Gram-Shmidt Process]{thm:gram-shmidt}{5.2.7}
     Let $\vec{v}_{1},\dots,\vec{v}_{k}$ be linearly independent vectors in an inner product space $V$. Then there exists an orthonormal family $\vec{w}_{1},\dots,\vec{w}_{k}$ with the property that for all $1 \le i \le k$,
     \[\vec{w}_{i} \in \mathbb{R}_{>0} \vec{v}_{i} + \langle \vec{v}_{i - 1},\dots,\vec{v}_{1} \rangle\]
@@ -1312,7 +1297,6 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
 
     An \textbf{unitary matrix} is an $(n \times n)$-matrix $P$ with complex entries such that $\overline{P}^{T}P = I_{n}$, or such that $P^{-1} = \overline{P}^{T}$
 \end{dfn}
-\newpage
 
 \begin{thm}[Spectral Theorems]{spectral-thm-self-adjoint}{5.3.9}
     \textbf{5.3.9}: \underline{\smash{The Spectral Theorem for Self-Adjoint Endomorphisms}}
@@ -1390,6 +1374,8 @@ together with the zero element in the case $T = \emptyset$. If $T = \{t_{1},\dot
 \begin{dfn}[Stable subsets]{dfn:stable-subset}{6.3.4}
     Let $f : X \to X$ be a mapping from a set $X$ to itself. A subset $Y \subseteq X$ is \textbf{stable under $f$} precisely when $f(Y) \subseteq Y$, that is if $y\in Y$ then $f(y)\in Y$.
 \end{dfn}
+
+\newpage
 
 \begin{thm}[Direct Sum Composition]{thm:direct-sum-composition}{6.3.5}
     For each $1 \le i \le s$, let 
