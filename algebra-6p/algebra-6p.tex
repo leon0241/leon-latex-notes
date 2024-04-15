@@ -972,7 +972,7 @@ see you guys in UG4 category theory!
     \end{itemize}
 \end{dfn}
 
-\begin{thm}[Multiplicativity of the sign]{thm:permutation-multiplicativity}{4.1.5}
+\begin{thm}[Multiplicativity of the sign]{thm:permutation-multiplicativity}{4.1}
     \textbf{Thm 4.1.5}: For each $n\in \mathbb{N}$, the sign of a permutation produces a group homomorphism $\sgn : S_{n} \to \{+1, -1\}$ from the symmetric group to the two-element group of signs. In formulas:
     \[\sgn(\sigma\tau) = \sgn(\sigma)\sgn(\tau) \quad \forall \sigma, \tau\in S_{n}\]
 
@@ -1033,23 +1033,6 @@ see you guys in UG4 category theory!
     is the unique alternating multilinear form on $n$-tuples of column vectors with values in $F$ that takes the value $1_{F}$ on the identity matrix
 \end{thm}
 
-\begin{thm}[Determinant Theorem Bank]{thm:determinant-theorems}{4.4}
-    \begin{itemize}
-        \item[\textbf{4.4.1}:] Let $R$ be a commutative ring, $A, B\in \Mat(n; R)$. Then
-            \[\det(AB) = \det(A)\det(B)\]
-        \item[\textbf{4.4.2}:] The determinant of a square matrix with entries in a field $F$ is non-zero if and only if the matrix is invertible
-        \item[\textbf{4.4.3}:] \begin{itemize}
-            \item If $A$ is invertible then $\det(A^{-1}) = \det(A)^{-1}$
-            \item If $B$ is a square matrix then $\det(A^{-1}BA) = \det(B)$
-        \end{itemize} 
-        \item[\textbf{4.4.4}:] For all $A\in \Mat(n;R)$ with $R$ a commutative ring,
-    \[\det(A^{T}) = \det(A)\]
-
-    \end{itemize}
-\end{thm}
-
-\newpage
-
 \begin{dfn}[Cofactors of a Matrix]{dfn:cofactors-matrix}{4.4.6}
     Let $A \in \Mat(n;R)$ for some commutative ring $R$ and $n\in \mathbb{N}$. Let $i,j\in\mathbb{Z}$ between $1$ and $n$. Then the $(i, j)$ \textbf{cofactor of $A$} is $C_{ij} = (-1)^{i + j} \det(A\langle i,j \rangle)$ where $A\langle i, j \rangle$ is the matrix obtained from $A$ by deleting the $i$-th row and $j$-th column.
     \[C_{23} = (-1)^{2 + 3} \det \begin{pmatrix}
@@ -1059,10 +1042,11 @@ see you guys in UG4 category theory!
     \end{pmatrix} = -a_{11}a_{32} + a_{31}a_{12}\]
 \end{dfn}
 
+\vspace{-4pt}
 \begin{thm}[Laplace's Expansion]{thm:laplace-determinant}{4.4.7}
     Let $A = (a_{ij})$ be an $(n \times n)$-matrix with entries from a commutative ring $R$. For a fixed $i$, the \textbf{$i$-th row expansion of the determinant} \textit{(left)} and similarly, the \textbf{$j$-th column expansion of the determinant} \textit{(right)} is
     
-    \vspace{-15pt}
+    \vspace{-17pt}
     \setlength{\columnseprule}{0.5pt}
     \begin{multicols}{2}
         \begin{center}
@@ -1082,28 +1066,33 @@ see you guys in UG4 category theory!
     Let $A$ be a $(n \times n)$-matrix with entries in a commutative ring $R$. The \textbf{adjugate matrix} $\text{adj}(A)$ is the $(n \times n)$-matrix whose entries are $adj(A)_{ij} = C_{ji}$ where $C_{ji}$ is the $(j, i)$-cofactor
 \end{dfn}
 
-\begin{thm}[Cramer's Rule]{thm:cramers-rule}{4.4.9}
-    Let $A$ be a $(n \times n)$-matrix with entries in a commutative ring $R$. Then
-    \[A \cdot \text{adj}(A) = (\det A)I_{n}\]
+\vspace{-3pt}
+\begin{thm}[Determinant Theorem Bank]{thm:determinant-thms-2}{4.4}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item[\textbf{4.4.1}:] Let $R$ be a commutative ring, $A, B\in \Mat(n; R)$. Then
+            \[\det(AB) = \det(A)\det(B)\]
+        \item[\textbf{4.4.2}:] The determinant of a square matrix with entries in a field $F$ is non-zero if and only if the matrix is invertible
+        \item[\textbf{4.4.3}:] \begin{itemize}
+            \item If $A$ is invertible then $\det(A^{-1}) = \det(A)^{-1}$
+            \item If $B$ is a square matrix then $\det(A^{-1}BA) = \det(B)$
+        \end{itemize} 
+        \item[\textbf{4.4.4}:] For all $A\in \Mat(n;R)$ with $R$ a commutative ring,
+    \[\det(A^{T}) = \det(A)\]
+        \item[\textbf{4.4.9}] \textbf{(Cramer's Rule)}: Let $A$ be a $(n \times n)$-matrix with entries in a commutative ring $R$. Then
+        \[A \cdot \text{adj}(A) = (\det A)I_{n}\]
+        \item[\textbf{4.4.11}] A square matrix with entries in a commutative ring $R$ is invertible if and only if its determinant is a unit in $R$. That is, $A\in \Mat(n;R)$ is invertible if and only if $\det(A)\in R^{\times}$
+        \item[\textbf{4.4.14}] \textbf{(Jacobi's Formula)}: Let $A = (a_{ij})$ where the coefficients $a_{ij} = a_{ij}(t)$ are functions of $t$. Then
+        \[\frac{d}{dt} \det A = \text{Tr}\text{Adj} A \frac{dA}{dt}\]
+    \end{itemize}
 \end{thm}
 
-\begin{thm}[Invertibility of Matrices]{thm:invertibility-of-matrices}{4.4.11}
-    A square matrix with entries in a commutative ring $R$ is invertible if and only if its determinant is a unit in $R$. That is, $A\in \Mat(n;R)$ is invertible if and only if $\det(A)\in R^{\times}$
-\end{thm}
-
-\begin{thm}[Jacobi's Formula]{thm:jacobis}{4.4.14}
-    Let $A = (a_{ij})$ where the coefficients $a_{ij} = a_{ij}(t)$ are functions of $t$. Then
-    \[\frac{d}{dt} \det A = \text{Tr}\text{Adj} A \frac{dA}{dt}\]
-\end{thm}
+\newpage
 
 % \begin{dfn}[Eigenvalues and Eigenvectors]{dfn:eigenvalue-eigenvector}{4.5.1}
 %     Let $f: V \to V $ be an endomorphism of an $F$-vector space $V$. A scalar $\lambda\in F$ is an \textbf{eigenvalue of $f$} if and only if there exists a non-zero vector $\vec{v}\in V$ such that $f(\vec{v}) = \lambda \vec{v}$. Each such vector is called an \textbf{eigenvector of $f$ with eigenvalue $\lambda$}. For any $\lambda\in F$, the \textbf{eigenspace of $f$ with eigenvalue $\lambda$} is
 %     \[E(\lambda, f) = \{\vec{v}\in V : f(\vec{v}) = \lambda \vec{v}\}\]
 % \end{dfn}
-
-\begin{thm}[Existence of Eigenvalues]{thm:existence-of-eigenvalues}{4.5.4}
-    Each endomorphism of a non-zero finite dimensional vector space over an algebraically closed field has an eigenvalue
-\end{thm}
 
 \vspace{-5pt}
 \begin{dfn}[Characteristic Polynomial]{dfn:characteristic-polynomial}{4.5.6}
@@ -1119,6 +1108,8 @@ see you guys in UG4 category theory!
 \begin{thm}[Eigenvalue Remarks]{thm:eigenvalue-remarks}{4.5.9}
     \begin{itemize}[leftmargin=*]
         \setlength\itemsep{0em}
+
+        \item \textbf{Thm 4.5.4 (Existence of Eigenvalues)}Each endomorphism of a non-zero finite dimensional vector space over an algebraically closed field has an eigenvalue
         \item Square matrices $A, B\in \Mat(n;R)$ of same size are \textbf{conjugate} if
             \[B = P^{-1}AP\in \Mat(n; R)\]
             for an invertible $P\in GL(n;R)$
@@ -1167,6 +1158,7 @@ see you guys in UG4 category theory!
 \begin{thm}[]{thm:triangularisability-chi-poly}{4.6.1 - 4.6.3}
     Let $f : V \to V$ be an endomorphism of a finite dimensional $F$-vector space $V$. Then $f$ is triangularisable iff the characteristic polynomial $\chi_{f}$ decomposes into linear factors in $F[x]$
 
+    \vspace{-5pt}
     \noindent\rule{\textwidth}{0.2pt}
     Finding ordered bases - Choose from the following subspaces
     \begin{enumerate}
@@ -1177,42 +1169,32 @@ see you guys in UG4 category theory!
     \end{enumerate}
     Then extend the basis to another ordered basis $\mathcal{B}$ for $V$(the full space) where $\text{can}(\vec{v}_{j}) = \vec{u}_{j}$ forms a basis for $V / W$. ${}_{\mathcal{B}}[f]_{\mathcal{B}}$ is upper triangular.
 
-    
+    \vspace{-5pt}
     \noindent\rule{\textwidth}{0.2pt}
 
     An endomorphism $A : F^{n} \to F^{n}$ is triangularisable iff $A = (a_{ij})$ is conjugate to $B = (b_{ij})(b_{ij} = 0 \text{ for $i > j$})$, an upper triangular matrix, with $P^{-1} AP=B$ for an invertible matrix $P$
 \end{thm}
 
+\vspace{-5pt}
 \begin{dfn}[Diagonalisability]{dfn:diagonal}{4.6.6}
     An endomorphism $f : V \to V$ of an $F$-vector space $V$ is \textbf{diagonalisable} iff there exists a basis of $V$ consisting of eigenvectors of $f$. If $V$ is finite dimensional then this is the same as saying that there exists an ordered basis $\mathcal{B} = \{\vec{v}_{1},\dots,\vec{v}_{n}\}$ where $_{\mathcal{B}}[f]_{\mathcal{B}} = \text{diag}(\lambda_{1},\dots,\lambda_{n})$. In this case, of course, $f(\vec{v}_{i}) = \lambda_{i}\vec{v}_{i}$.
     
+    \vspace{-3pt}
     \noindent\rule{\textwidth}{0.2pt}
     A square matrix $A\in \Mat(n;F)$ is \textbf{diagonalisable} iff $A$ is conjugate to a diagonal matrix, i.e. there exists $P \in \text{GL}(n;F)$ such that $P^{-1}AP = \text{diag}(\lambda_{1},\dots,\lambda_{n})$. In this case the columns $P$ are the vectors of a basis of $F^{n}$ consisting of eigenvectors of $A$ with eigenvalues $\lambda_{1},\dots,\lambda_{n}$
 \end{dfn}
 
+\vspace{-5pt}
 \begin{thm}[Linear Independence of Eigenvectors]{thm:ev-linear-independence}{4.6.9}
     Let $f : V\to V$ be an endomorphism of a vector space $V$ and let $\vec{v}_{1},\dots,\vec{v}_{n}$ be eigenvectors of $f$ with pairwise different eigenvalues $\lambda_{1},\dots,\lambda_{n}$. Then the vectors $\vec{v}_{1},\dots,\vec{v}_{n}$ are linearly independent
 \end{thm}
 
+\vspace{-5pt}
 \begin{thm}[Cayley-Hamilton Theorem]{thm:cayley-hamilton}{4.6.10}
     Let $A\in \Mat(n;R)$ be a square matrix with entries in a commutative ring $R$. Then evaluating its characteristic polynomial $\chi_{A}(x)\in R[x]$ at the matrix $A$ gives zero.
 \end{thm}
 
-\begin{dfn}[Markov Matrix]{dfn:markov-matrix}{4.7.5}
-    A matrix $M$ whose entires are non-negative and s.t. the sum of the entries of each column equals $1$ is a \textbf{Markov matrix} or a \textbf{stochastic matrix}
-
-    \noindent\rule{\textwidth}{0.2pt}
-    \begin{itemize}
-        \setlength\itemsep{0em}
-        \item[\textbf{4.7.6:}] Suppose $M\in \Mat(n;\mathbb{R})$ is a M.M. Then $\lambda = 1$ is an e.v.
-    \end{itemize}
-\end{dfn}
-
-\begin{thm}[Perron-Frobenius Theorem]{thm:perron-frobenius}{4.7.10}
-    If $M\in \Mat(n;\mathbb{R})$ is a Markov matrix with positive values, then the eigenspace $E(1, M)$ is one-dimensional. There exists a unique basis vector $\vec{v}\in E(1,M)$ with positive real entries s.t. the sum of its entries is $1$
-\end{thm}
-
-\newpage
+\vspace{-10pt}
 \section{Inner Product Spaces}
 
 \begin{dfn}[Inner Product]{dfn:inner-product}{5.1.1}
@@ -1247,12 +1229,7 @@ see you guys in UG4 category theory!
 \end{dfn}
 
 \begin{dfn}[Orthonormal Family]{dfn:orthonormal-family}{5.1.7}
-    A family $(\vec{v}_{i})_{i\in I}$ for vectors from an inner product space is an \textbf{orthonormal family} if all the vectors $\vec{v}_{i}$ have length $1$ and if they are pairwise orthogonal to each other, which, if $\delta_{i,j}$ is the \textbf{Kronecker delta} defined by
-    \[\delta_{i, j} = \begin{cases}
-        1 & i = j \\
-        0 & \text{otherwise}
-    \end{cases}\]
-    means that $(\vec{v}_{i}, \vec{v}_{j}) = \delta_{ij}$.
+    A family $(\vec{v}_{i})_{i\in I}$ for vectors from an inner product space is an \textbf{orthonormal family} if all the vectors $\vec{v}_{i}$ have length $1$ and if they are pairwise orthogonal to each other. If $\delta_{i,j}$ is the \textbf{Kronecker delta} defined by ``$1$ if $i = j$, and $0$ otherwise'', this means that $(\vec{v}_{i}, \vec{v}_{j}) = \delta_{ij}$.
 
     An orthonormal family that has a basis is an \textbf{orthonormal basis}
     
@@ -1267,7 +1244,7 @@ see you guys in UG4 category theory!
 \end{dfn}
 
 \begin{thm}[Complementary Othorgonals]{thm:complementary-orthogonals}{5.2.2}
-    Let $V$ be an inner product space and let $U$ be a finite dimensional subspace of $V$. Then $U$ and $U^{\bot}$ are complementary in the sense of \ref{dfn:linear-mappings}. i.e. $V = U \oplus U^{\bot}$
+    Let $V$ be an inner product space and let $U$ be a finite dimensional subspace of $V$. Then $U$ and $U^{\bot}$ are complementary, i.e. $V = U \oplus U^{\bot}$
 \end{thm}
 
 \begin{dfn}[Orthogonal Projection]{dfn:orthogonal-projection}{5.2.3}
@@ -1316,23 +1293,21 @@ see you guys in UG4 category theory!
 
 \begin{dfn}[Self Adjoints]{thm:self-adjoints}{5.3.5}
     An endomorphism of an inner product space $T : V \to V$ is \textbf{self-adjoint} if it equals its own adjoint, i.e. if $T^{*} = T$
-\end{dfn}
 
-\begin{thm}[Self-Adjoint Theorem bank]{thm:self-adjoint-thms}{5.3.7}
-    Let $T : V\to V$ be a self-adjoint linear mapping on an inner product space $V$
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Thm 5.3.7}: Let $T : V\to V$ be a self-adjoint linear mapping on an inner product space $V$
     \begin{enumerate}
         \setlength\itemsep{0em}
         \item Every eigenvalue of $T$ is real
         \item If $\lambda$ and $\mu$ are distinct eigenvalues of $T$ with corresponding eigenvectors $\vec{v}$ and $\vec{w}$, then $(\vec{v}, \vec{w}) = 0$
         \item $T$ has an eigenvalue
     \end{enumerate}
-\end{thm}
+\end{dfn}
 
 \begin{dfn}[Orthogonal Matrices]{dfn:orthogonal-matrices}{5.3.11}
     An \textbf{Orthogonal matrix} is an $(n \times n)$-matrix $P$ with real entries such that $P^{T}P = I_{n}$, or in other words such that $P^{-1} = P^{T}$
-\end{dfn}
 
-\begin{dfn}[Complex Matrices]{dfn:unitary-matrices}{5.3.14}
+    \noindent\rule{\textwidth}{0.2pt}
     A \textbf{hermitian matrix} is one that is self-adjoint in $\mathbb{C}$, or in other words one where $A = \overline{A}^{T}$ holds
 
 
@@ -1369,7 +1344,6 @@ see you guys in UG4 category theory!
 %     \end{align*}
 % \end{dfn}
 
-\newpage
 \begin{dfn}[Jordan Blocks]{dfn:jordan-blocks}{6.2.1}
     Given an integer $r \ge 1$ define an $(r \times r)$-matrix $J(r)$ called the \textbf{nilpotent Jordan block of size $r$}, by the rule $J(r)_{ij} = 1$ for $j = i + 1$ AND $J(r)_{ij} = 0$ otherwise
 
@@ -1417,6 +1391,8 @@ see you guys in UG4 category theory!
     Let $f : X \to X$ be a mapping from a set $X$ to itself. A subset $Y \subseteq X$ is \textbf{stable under $f$} precisely when $f(Y) \subseteq Y$, that is if $y\in Y$ then $f(y)\in Y$.
 \end{dfn}
 
+
+\newpage
 \begin{thm}[Direct Sum Composition]{thm:direct-sum-composition}{6.3.5}
     For each $1 \le i \le s$, let 
     \[\mathcal{B}_{i} = \{\vec{v}_{ij}\in V \mid 1 \le j \le a_{i}\}\]
@@ -1473,13 +1449,7 @@ see you guys in UG4 category theory!
     \end{itemize}
 \end{thm}
 
-\subsection{PageRank, again}
-
-\begin{thm}[]{thm:jnf-markov}{6.5.1}
-    If $M\in \Mat(n ; \mathbb{R})$ is a Markov matrix with all positive entries, consider $M$ as a complex matrix whose entries just happen to be real. If $\lambda\in \mathbb{C}$ is an eigenvalue of $M$ then either $\lambda = 1$ or $\lvert \lambda \rvert < 1$
-\end{thm}
-
-\lipsum[1]
+\lipsum[1-7]
 
 \end{multicols}
 
