@@ -513,6 +513,164 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	If the function $f$ is not integrable on the interval $I$ then we say that the integral of $f$ on $I$ does not exist. Hence if we say that the integral of $f$ on $I$ exists it just means that $f$ is (Lebesgue) integrable on $I$.
 \end{dfn}
 
+\begin{thm}[Lebesgue Equality]{thm:lebesgue-equality}{4.1}
+	Suppose that $c_{j}$, $d_{j}$ are real numbers and $J_{j}$, $K_{j}$ are bounded intervals for all $j=1,2,3,\dots$, and
+	\[\sum_{j=1}^{\infty} \lvert c_{j} \rvert \lambda(J_{j})<\infty,\quad \sum_{j=1}^{\infty} \lvert d_{j} \rvert \lambda(K_{j})<\infty\]
+	If
+	\[\sum_{j=1}^{\infty} c_{j}\chi_{J_{j}}(x)=\sum_{j=1}^{\infty} d_{j}\chi_{K_{j}}(x)\]
+	holds for all $x$ such that
+	\[\sum_{j=1}^{\infty} \lvert c_{j} \rvert \chi_{J_{j}}(x)<\infty,\quad \sum_{j=1}^{\infty} \lvert d_{j} \rvert \chi_{K_{j}}(x)<\infty\]
+	Then
+	\[\sum_{j=1}^{\infty} c_{j}\lambda(J_{j})=\sum_{j=1}^{\infty} d_{j}\lambda(K_{j})\]
+\end{thm}
+
+\newpage
+\begin{thm}[Lebesgue Integral Properties]{dfn:lebesgue-props}{4.2}
+	Suppose $f$ and $g$ are integrable on $I$ and $\alpha$ and $\beta$ are real numbers. Then
+	\begin{enumerate}
+		\setlength\itemsep{0em}
+		\item $\alpha f + \beta g$ is integrable on $I$ and
+		\[\int_{I} (\alpha f + \beta g)=\alpha\int_{I} f+\beta\int_{I} g\]
+		\item If $f\ge 0$ on $I$ then $\int_{I}f\ge 0$; if $f\ge g$ on $I$ then $\int_{I}f\ge \int_{I}g$
+		\item $\lvert f \rvert$ is integrable on $I$ and $\left\lvert  \int_{f}f  \right\rvert\le \int_{I}\lvert f \rvert$
+		\item $\max\{f,g\}$ and $\min\{f,g\}$ are integrable on $I$
+		\item If one of the functions is bounded then the product $fg$ is integrable on $I$
+		\item If $f\ge 0$ with $\int_{I}f=0$ then any function $h$ such that $0\le h\le f$ on $I$ is integrable on $I$
+	\end{enumerate}
+\end{thm}
+
+\begin{thm}[Integrability of Sequences and Series]{thm:seq-series-integrability}{4.3}
+	Suppose that $(f_{n})_{n\in\mathbb{N}}$ is a sequence of functions each of which is integrable on $I$
+	\begin{enumerate}
+		\setlength\itemsep{0em}
+		\item Assume that
+		\[\sum_{n=1}^{\infty} \int_{I} \lvert f_{n} \rvert <\infty\]
+		Let $f$ be a function on the interval $I$ such that
+		\[f(x)=\sum_{n=1}^{\infty} f_{n}(x)\quad\text{for all } x\in I\text{ such that}\quad \sum_{n=1}^{\infty} \lvert f_{n}(x) \rvert <\infty\]
+		Then $f$ is integrable on $I$ and its integral on $I$ is equal to
+		\[\int_{I} f=\sum_{n=1}^{\infty} \int_{I} f_{n}\]
+		\item Assume that each $f_{n}\ge 0$ on $I$ and let $f(x)=\sum_{n=1}^{\infty}f_{n}(x)$ for all $x\in I$ (we allow for the possibility that at some points this sum is infinite). Then $f$ is integrable on $I$ if and only if
+		\[\sum_{n=1}^{\infty} \int_{I} f_{n}<\infty\]
+	\end{enumerate}
+\end{thm}
+
+\begin{thm}[Monotone Convergence Theorem]{thm:monotone-convergence}{4.4}
+	Suppose that $(f_{n})$ is a monotone increasing sequence of integrable functions on an interval $I$. That is, $f_{1}(x) \le f_{2}(x) \le f_{3}(x) \le \dots$ for all $x\in I$. For all $x\in I$, let
+	\[f(x) = \lim_{n\to \infty} f_{n}(x)\]
+	where we allow for the possibility that at some points this limit is infinite. Then $f$ is integrable on $I$ iff
+	\[sup_{n\in \mathbb{N}} \int_{I} f_{n} = \lim_{n\to \infty} \int_{I} f_{n} < \infty. \quad \text{Also,} \int_{I} f = \lim_{n\to \infty} \int_{I} f_{n}\]
+\end{thm}
+
+
+
+\begin{dfn}[Riemann Integrable Functions]{dfn:riemann-integrable}{4.4}
+	Let $f : \mathbb{R} \to \mathbb{R}$. We say that $f$ is \textbf{Riemann-integrable} if for every $\epsilon > 0$ there exists step functions $\phi$ and $\psi$ such that
+	\[\phi \le f \le \psi\]
+	and
+	\[\int \psi - \int \phi < \epsilon\]
+
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Thm 4.5}: A function $f : \mathbb{R}\to \mathbb{R}$ is Riemann-integrable iff
+	\begin{align*}
+		& \sup \left\{\int \phi : \text{$\phi$ is a step function and $\phi \le f$}\right\} \\
+		= & \inf \left\{\int \psi : \text{$\psi$ is a step function and $\phi \ge f$}\right\}
+	\end{align*}
+
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Def 4.5}: If $f$ is Riemann-integrable we define its Riemann integral $(R) \int f$ as the common value
+	\begin{align*}
+		(R) \int f&:= \sup \left\{\int \phi : \text{$\phi$ is a step function and $\phi \le f$}\right\} \\
+		&= \inf \left\{\int \psi : \text{$\psi$ is a step function and $\phi \ge f$}\right\}
+	\end{align*}
+\end{dfn}
+
+\begin{thm}[Connection between Riemann and Lebesgue]{thm:riemann-lebesgue-connection}{4.6}
+	Suppose that $f : \mathbb{R} \to \mathbb{R}$ is Riemann-integrable. Then $f$ is also Lebesgue integrable on $\mathbb{R}$ and moreoever
+	\[(R) \int f = \int f\]
+	where the number on the lefthand side is the value of the Riemann integral of $f$, while the righthand side denotes the value of the Lebesgue integral of $f$ on $\mathbb{R}$
+\end{thm}
+
+\begin{thm}[Riemann lemmas]{thm:riemann-lemmas}{4.1}
+	Let $f : \mathbb{R} \to \mathbb{R}$ be a bounded function with bounded support $[a, b]$. The following are equivalent:
+	\begin{enumerate}
+	    \item $f$ is Riemann-integrable
+	    \item for every $\epsilon > 0$ there exists $a = x_{0} < \cdots < x_{n} = b$ s.t. if $M_{j}$ and $m_{j}$ denote the supremum and infimum values of $f$ on $(x_{j-1}, x_{j})$ respectively, then
+			\[\sum_{j = 1}^{n}(M_{j} - m_{j})(x_{j} - x_{j - 1}) < \epsilon\]
+		\item for every $\epsilon > 0$ there exists $\alpha = x_{0} < \cdots < x_{n} = b$ s.t. with $I_{j} = (x_{j-1}, x_{j})$ for $j \ge 1$
+			\[\sum_{j = 1}^{n} \sup_{x,y\in I_{j}} \lvert f(x) - f(y) \rvert \lambda(I_{j}) < \epsilon\]
+	\end{enumerate}
+
+	\noindent\rule{\textwidth}{0.2pt}
+	Notation to aid these lemmas: For $f : \mathbb{R}\to \mathbb{R}$ a bounded function with bounded support $[a, b]$ and for $a = x_{0} < \cdots < x_{n} = b$, we let $I_{j} = (x_{j - 1}, x_{j}),\, m_{j} := \inf_{x\in I_{j}}f(x)$ and $M_{j} := \sup_{x\in I_{j}} f(x)$. We define the \textbf{lower step function of $f$ with respect to $\{x_{0},\dots,x_{n}\}$} as
+	\[\phi_{*}(x) = \sum_{j = 1}^{n} m_{j}\chi_{I_{j}}(x) + \sum_{j = 0}^{n} f(x_{j}) \chi_{\{x_{j}\}}(x)\]
+	and the \textbf{upper step function of $f$ with respect to $\{x_{0},\dots,x_{n}\}$} as
+	\[\phi^{*}(x) = \sum_{j = 1}^{n} M_{j}\chi_{I_{j}}(x) + \sum_{j = 0}^{n} f(x_{j}) \chi_{\{x_{j}\}}(x)\]
+
+	\textbf{Note:} $\phi_{*}(x)$ and $\phi^{*}(x)$ are step functions, and that $\phi_{*}(x) \le f \le \phi^{*}(x)$
+
+	\noindent\rule{\textwidth}{0.2pt}
+	Suppose that $g : [a, b] \to \mathbb{R}$ and let $f$ be defined by $f(x) = g(x)$ for $x\in [a,b]$ and $f(x) = 0$ otherwise.
+	\begin{enumerate}
+	    \setlength\itemsep{0em}
+	    \item If $g$ is continuous on $[a, b]$, then $f$ is Riemann-integrable
+	    \item If $g$ is a monotone function then $f$ is Riemann-integrable
+	\end{enumerate}
+\end{thm}
+
+\newpage
+\begin{thm}[Dependence on Intervals for Lebesgue]{thm:dependence-on-intervals}{4.8}
+	Let $I$ and $J$ be two intervals such that $J \subset I$.
+	\begin{enumerate}
+	    \item If $f$ is integrable on $I$ then $f$ is also integrable on the subinterval $J$
+	    \item If $f$ is integrable on $J$ and simultaneously $f(x) = 0$ for all $x\in I \backslash J$ then $f$ is integrable on $I$ and
+			\[\int_{J} f = \int_{I} f\]
+		\item If $f$ is integrable on $I$ and $f(x) \ge 0$ for all $x\in I$ then
+			\[\int_{J} f \le \int_{I} f\]
+		\item Suppose that $I$ can be written as the union of disjoint intervals $I_{n},\, n = 1,2,3,\dots$ and let $f$ be integrable on each of the intervals $I_{n}$. Then $f$ is integrable on $I$ iff
+			\[\sum_{n = 1}^{\infty} \int_{I_{n}} \lvert f \rvert < \infty\]
+			If this holds, then
+			\[\int_{I} f = \sum_{n = 1}^{\infty} \int_{I_{n}} f\]
+	\end{enumerate}
+\end{thm}
+
+
+\begin{thm}[Addition of Intervals]{thm:interval-addition}{4.9}
+	If any two of these integrals
+	\[\int_{a}^{b} f, \quad \int_{b}^{c} f, \quad \int_{a}^{c} f\]
+	exist then so does the third and
+	\[\int_{a}^{b} f, + \int_{b}^{c} f = \int_{a}^{c} f\]
+\end{thm}
+
+\begin{thm}[Fundamental Theorem of Calculus]{thm:differentiability}{4.10}
+	Let $I$ be an interval and let $g : I \to \mathbb{R}$ be integrable on $I$. For all $x\in I$ and some fixed $x_{0}\in I$ let $G(x) = \int_{x_{0}}^{x}g$. Suppose $g$ is continuous at $x$ for some $x\in I$ [if $x$ is an endpoint we mean one-sided continuity.] Then $G$ is differentiable at $x$ and $G'(x) = g(x)$. [if $x$ if an endpoint we mean one-sided differentiable]
+
+	\noindent\rule{\textwidth}{0.2pt}
+	Suppose $f : I \to \mathbb{R}$ has continuous derivative $f'$ on the interval $I$. Then for any $a, b\in I$:
+	\[\int_{a}^{b} f' = f(b) - f(a) \]
+\end{thm}
+
+\begin{lma}[Fatoux Lemma]{thm:fatoux}{4.2}
+	Let $(f_{n})$ be a sequence of non-negative integrable functions on an interval $I$. Let
+	\[f(x) = \liminf_{n\to \infty} f_{n}(x),\quad\text{for all $x\in I$}\]
+	If $\liminf_{n\to \infty}\int_{I} f_{n} < \infty$ then $f$ is integrable on $I$ and
+	\[\int_{I} f \le \liminf_{n\to \infty}\int_{i} f_{n}\]
+\end{lma}
+
+\begin{thm}[Dominated Convergence Theorem]{thm:dominated-convergence-thm}{4.12}
+	Let $(f_{n})$ be a sequence of integrable functions on an interval $I$ and assume that
+	\[f(x) = \lim_{n\to \infty} f_{n}(x), \quad \text{for all $x\in I$}\].
+	Assume also that the sequence $(f_{n})$ is \textbf{dominated} by some integrable function $g$, that is
+	\[\lvert f_{n}(x) \rvert \le g(x),\quad \text{for all $x\in I$ and $n = 1,2,\dots,$} \quad \int_{I} g < \infty\]
+	Then the function $f$ is integrable on $I$ and
+	\[\int_{I} f = \lim_{n\to \infty} \int_{I} f_{n}\]
+\end{thm}
+
+\begin{thm}[]{thm:convergent-seq-integration}{4.13}
+	Let $(a, b)$ be a bounded interval and suppose that $f_{n} : (a, b) \to \mathbb{R}$ are integrable functions which converges uniformly to a function $f$. Then $f$ is integrable on $(a, b)$ and
+	\[\int_{a}^{b} f = \lim_{n\to \infty} \int_{a}^{b} f_{n} \]
+\end{thm}
+
+\section{Fourier Series and Orthogonality}
 
 
 

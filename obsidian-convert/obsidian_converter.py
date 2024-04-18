@@ -9,6 +9,7 @@ with open(INPUT_FILE,'r') as f:
 
 
 in_itemize = False
+in_enum = False
 
 
 newdoc = []
@@ -51,6 +52,27 @@ for line in rawdoc:
     elif in_itemize:
         newline = "\t" + newline
 
+    # start itemize environment
+    if not in_enum and re.findall("^\d*\.", newline) != []:
+        in_enum = True
+        newdoc.append("\\begin{enumerate}")
+        newdoc.append("\t\\setlength\\itemsep{0em}")
+        newline = re.sub("^\d*\.", r"\\item", newline)
+        newline = "\t" + newline
+    # end of itemize
+    elif in_enum and newline == "":
+        in_enum = False
+        newdoc.append("\\end{enumerate}")
+    # itemize - add an item
+    elif in_enum and re.findall("^\d*\.", newline) != []:
+        newline = re.sub("^\d*\.", r"\\item", newline)
+        newline = "\t" + newline
+    # itemize - inline item
+    elif in_enum:
+        newline = "\t" + newline
+
+
+
     newline = re.sub("\*\*([^\*]*)\*\*", r"\\textbf{\1}", newline)
     newline = re.sub("\*([^\*]*)\*", r"\\textbf{\1}", newline)
     newline = re.sub("\[\[[^\]]*\|([^\]]*)\]\]", r"\1", newline)
@@ -61,6 +83,9 @@ for line in rawdoc:
 if in_itemize:
     in_itemize = False
     newdoc.append("\\end{itemize}")
+elif in_enum:
+    in_enum = False
+    newdoc.append("\\end{enumerate}")
 
 with open(INPUT_FILE,'w') as f:
     for i in range(len(newdoc) - 1):
