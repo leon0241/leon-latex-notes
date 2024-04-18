@@ -672,6 +672,167 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 \section{Fourier Series and Orthogonality}
 
+\begin{dfn}[The Space \texorpdfstring{$L^{2}$}{L2}]{dfn:l2-space}{5.1}
+	Define the space $L^{2} = L^{2}([a, b])$ as the set of measurable functions $f : [a, b] \to \mathbb{C}$ so that the function $x \mapsto \lvert f(x) \rvert^{2}$ is Lebesgue integrable, i.e.
+	\[\lVert f \rVert^{2}_{2} := \int_{a}^{b} \lvert f(x) \rvert^{2} dx < \infty\]
+	The quantity $\lVert f \rVert_{2}$ is called the \textbf{$L^{2}$-norm} of $f$. If $\lVert f \rVert_{2} = 1$, then we say that $f$ is \textbf{$L^{2}$-normalised}
+\end{dfn}
+
+\begin{dfn}[Inner Product]{dfn:inner-prod}{5.2}
+	For two functions $f, g\in L^{2}([a,b])$, we define their \textbf{inner product} by
+	\[\langle f, g \rangle = \int_{a}^{b} f(x)\overline{g(x)} dx\]
+\end{dfn}
+
+\begin{thm}[Cauchy-Shwarz Inequality]{dfn:cauchy-schwarz}{5.1}
+	Let $f, g\in L^{2}([a, b])$. then the function $x \mapsto f(x)\overline{g(x)}$ is Lebesgue integrable and we have
+	\[\lvert \langle f, g \rangle \rvert \le \lVert f \rVert_{2} \lVert g \rVert_{2}\]
+
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Minkowski's Inequality}: For two functions $f, g\in L^{2}([a, b])$,
+	\[\lVert f + g \rVert_{2} \le \lVert f \rVert_{2} + \lVert g \rVert_{2}\]
+\end{thm}
+
+\begin{dfn}[Convergent Sequences in \texorpdfstring{$L^{2}$}{L2}]{dfn:convergent-seqs-in-L2}{5.3}
+	Let $f,f_{1},f_{2},\dots$ be functions in $L^{2}([a, b])$. We say that the function $(f_{n})_{n}$ converges to $f$ in $L^{2}$ if the sequence
+	\[\lVert f_{n} - f \rVert_{2} = \left(\int_{a}^{b} \lvert f_{n}(x) - f(x) \rvert^{2} dx\right)^{1 /2}\]
+	converges to zero as $n \to \infty$. We will also write $f_{n} \to f$ in $L^{2}$
+\end{dfn}
+
+\begin{dfn}[Orthonormal Systems]{dfn:orthonormal-systems}{5.4}
+	A sequence $(\phi_{n})_{n}$ of $L^{2}$ functions on $[a, b]$ is called an \textbf{orthonormal system on $[a, b]$} if
+	\[\langle \phi_{n}, \phi_{m} \rangle = \int_{a}^{b} \phi_{n}(x)\overline{\phi_{m}(x)} dx = \begin{cases}
+		0, & \text{if $n \ne m$} \\
+		1, & \text{if $n = m$}
+	\end{cases}\]
+	(The index $n$ may run over any countable set. We will write $\sum_{n}$ to denote a sum over all the indices. In proofs we will always adopt the interpretation that $n$ runs over $1,2,3,\dots$ withot loss of genererality)
+\end{dfn}
+
+\begin{thm}[]{thm:linear-span-approximation}{5.2}
+	Let $(\phi_{n})_{n}$ be an orthonormal system on $[a, b]$ and $f\in L^{2}$. Consider
+	\[s_{N}(x) = \sum_{n = 1}^{N}\langle f, \phi_{n} \rangle \phi_{n}(x)\]
+	Denote the linear span of the functions $(\phi_{n})_{n=1,\dots,N}$ by $X_{N}$. Then
+	\[\lVert f - s_{N} \rVert_{2} \le \lVert f - g \rVert_{2}\]
+	holds for all $g\in X_{N}$ with equality iff $g = s_{N}$
+\end{thm}
+
+\begin{dfn}[Bessel's Inequality]{dfn:bessel-inequality}{5.3}
+	If $(\phi_{n})_{n}$ is an orthonormal system on $[a,b]$ and $f\in L^{2}$, then
+	\[\sum_{n} \lvert \langle f, \phi_{n} \rangle \rvert^{2} \le \lVert f \rVert^{2}_{2}\]
+
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Corollary - Riemann-Lebesgue lemma in $L^{2}$}. Let $(\phi_{n})_{n=1,2,\dots}$ be an orthonormal system and $f\in L^{2}$, then
+	\[\lim_{n\to \infty}\langle f, \phi_{n} \rangle = 0\]
+\end{dfn}
+
+\newpage
+
+\begin{dfn}[Complete Orthonormal Systems]{dfn:complete-orthonormal-system}{5.5}
+	An orthonormal system $(\phi_{n})_{n}$ is called \textbf{complete} if
+	\[\sum_{n} \lvert \langle f, \phi_{n} \rangle \rvert^{2} = \lVert f \rVert^{2}_{2}\]
+	for all $f\in L^{2}$
+	
+	\noindent\rule{\textwidth}{0.2pt}
+	% i have no idea why it's labelled wrong
+	\textbf{Thm 5.4}: Let $(\phi_{n})_{n}$ be an orthonormal system on $[a, b]$. Let $(s_{N})_{N}$ be as in Theorem \hyperref[dfn:inner-prod]{5.2}. Then $(\phi_{n})_{n}$ is complete iff $(s_{N})_{N}$ converges to $f$ in the $L^{2}$-norm for every $f\in L^{2}$
+\end{dfn}
+
+\begin{dfn}[Trigonometric Polynomials]{dfn:trigonometric-polynomials}{5.6}
+	A \textbf{trigonometric polynomial} is a function of the form
+	\[f(x) = \sum_{n = -N}^{N} c_{n} e^{2 \pi inx} \quad (x\in\mathbb{R})\]
+	where $N\in\mathbb{N}$ and $c_{n}\in\mathbb{C}$. If $c_{N}$ or $c_{-N}$ is non-zero, then $N$ is called the \textbf{degree} of $f$
+
+	Observe that trigonometric polynomials are continuous functions. Moreover, from Euler's identity $e^{ix} = \cos(x) + i\sin(x),\, (x\in \mathbb{R})$ we see that every trigonometric polynomial can also be written in the alternate form
+	\[ f(x) = a_{0} + \sum_{n = 0}^{N}(a_{n} \cos(2\pi nx) + b_{n}\sin(2 \pi nx))\]
+
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Lemma 5.1}: $(e^{2 \pi inx})_{n\in \mathbb{Z}}$ forms an orthonormal system on $[0, 1]$. In particular,
+	\begin{enumerate}
+	    \item for all $n\in \mathbb{Z}$,
+			\[\int_{0}^{1} e^{2 \pi inx} dx = \begin{cases}
+				0, & \text{if $n\ne 0$} \\
+				1, & \text{if $n = 0$}
+			\end{cases}\]
+		\item if $f(x) = \sum_{n = -N}^{N} c_{n}e^{2 \pi inx}$ is a trigonometric polynomial, then
+			\[c_{n} = \langle f, \phi_{n} \rangle = \int_{0}^{1} f(t) e^{-2 \pi i n t} dt\]
+	\end{enumerate}
+\end{dfn}
+
+\begin{dfn}[Fourier Coefficient]{dfn:fourier-coefficient}{5.7}
+	For a $1$-periodic integrable function $f$ and $n\in \mathbb{Z}$ we define the \textbf{$n$th Fourier coefficieent} by
+	\[\widehat{f}(n) = \int_{0}^{1} f(t)e^{-2 \pi i n t} dt = \langle f, \phi_{n} \rangle\]
+	(the integral on the right exists since $f$ is integrable and $\lvert \phi_{n} \rvert \le 1$.) The doubly infinite series
+	\[\sum_{n = -\infty}^{\infty} \widehat{f}(n) e^{2 \pi i n x}\]
+	is called the \textbf{Fourier series} of $f$
+
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Def 5.8 (Partial Sums)}: For a $1$-periodic integrable function $f$, we define the \textbf{partial sums}
+	\[S_{N}f(x) = \sum_{n = -N}^{N}\widehat{f}(n)e^{2 \pi inx}\]
+	\textbf{Note}: for all $f\in L^{2}$ and trigonometric polynomials $g$ of degree $\le N$, we have
+	\[\lVert f - S_{N} f \rVert_{2} \le \lVert f - g \rVert_{2}\]
+\end{dfn}
+
+\begin{dfn}[Convolution]{dfn:convolution}{5.9}
+	For two $1$-periodic functions $f, g\in L^{2}$ we define their \textbf{convolution} by
+	\[f * g(x) = \int_{0}^{1} f(t)g(x - t) dt\]
+	(The integral on the right hand side exists by Cauchy-Shwarz)
+
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Lemma bank}
+	\begin{itemize}
+	    \setlength\itemsep{0em}
+	    \item[\textbf{5.2}] For $1$-periodic functions $f, g\in L^{2}$,
+			\[f * g = g * f\]
+		\item[\textbf{5.3}] We have
+			\[D_{N}(x) = \frac{\sin(2 \pi(N + \frac{1}{2})x)}{\sin( \pi x)}\]
+		\item[\textbf{5.4}] We have
+			\begin{align*}
+				K_{N}(x) &= \frac{1}{2(N+1)} \frac{1 - \cos(2\pi(N + 1)x)}{\sin(\pi x)^{2}}\\
+						 &= \frac{1}{N+1} \left( \frac{\sin(\pi(N + 1) x)}{\sin(\pi x)}\right)^{2}
+			\end{align*}
+	\end{itemize}
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Thm 5.5 (Fejér)}: For every $1$-periodic continuous function $f$,
+	\[K_{N} * f \to f\]
+	uniformly on $\mathbb{R}$ as $N\to\infty$
+
+	\textbf{Corollary}: Every $1$-periodic continuous function can be uniformly approximated by trigonometric polynomials. That is, for every $1$-periodic continuous $f$ there exists a sequence $(f_{n})_{n}$ of trigonometric polynomials so that $f_{n} \to f$ uniformly
+\end{dfn}
+
+\begin{dfn}[Approximation of Unity]{dfn:unity-approximation}{5.10}
+	A sequence of $1$-periodic integrable functions $(k_{n})_{n}$ is called \textbf{approximation of unity} if for all $1$-periodic continuous functions $f$ we have that $f * k_{n}$ converges uniformly to $f$ on $\mathbb{R}$. That is,
+	\[\sup_{x\in\mathbb{R}} \lvert f * k_{n}(x) - f(x) \rvert \to 0 \quad \text{as $n\to\infty$}\]
+
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Thm 5.6}: Let $(k_{n})_{n}$ be a sequence of $1$-periodic integrable functions such that
+	\begin{enumerate}
+	    \item $k_{n}(x) \ge 0$ for all $x\in\mathbb{R}$
+	    \item $\int_{-1 /2}^{1 /2} k_{n}(t) dt = 1$
+	    \item For all $1 /2 \ge \delta > 0$ we have
+			\[\int_{-\delta}^{\delta} k_{n}(t) dt \to 1 \quad\text{as $n\to\infty$}\]
+	\end{enumerate}
+
+	Then $(k_{n})_{n}$ is an approximation of unity
+
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Corollary}: The Fejér kernel $(K_{N})_{N}$ is an approximation of unity
+\end{dfn}
+
+\begin{lma}[]{dfn:fejer-continuous}{5.5}
+	Let $f$ be a $1$-periodic and continuous function. Then
+	\[\lim_{N\to \infty} \lVert S_{N} f - f \rVert_{2} = 0\]
+\end{lma}
+
+\begin{thm}[Completeness of Trigonometric System]{thm:trigonometric-completeness}{5.7}
+	The trigonometric system is complete. In view of Theorem \hyperref[dfn:complete-orthonormal-system]{5.4} this means that for every $1$-periodic $L^{2}$ function $f$ we have
+	\[\lim_{N\to \infty} \lVert S_{N} f - f \rVert_{2} = 0\]
+	In other words, the Fourier series of $f$ converges to $f$ in the $L^{2}$ sense
+
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Corollary (Parseval's Theorem)}: If $f, g$ are $1$-periodic $L^{2}$ functions then
+	\[\langle f, g \rangle = \sum_{n = -\infty}^{\infty} \widehat{f}(n) \overline{\widehat{g}(n)}\]
+	In particular,
+	\[\lVert f \rVert^{2}_{2} = \sum_{n = -\infty}^{\infty} \lvert \widehat{f}(n) \rvert^{2}\]
+\end{thm}
 
 
 \lipsum[1-12]
