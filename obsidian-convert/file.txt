@@ -1,0 +1,10 @@
+	A function $f:I\to \mathbb{R}$ is said to be \textbf{integrable} or more precisely \textbf{Lebesgue integrable} on an interval $I$ if there exist numbers $c_{j}$ and bounded intervals $J_{j}\subset I,\,j=1,2,3,\dots$ such that
+	\[\sum_{j=1}^{\infty} \lvert c_{j} \rvert \lambda(J_{j})<\infty\]
+	and the equality
+	\[f(x)=\sum_{j=1}^{\infty} c_{j}\chi_{J_{j}}(x)\]
+	holds for all $x\in I$ at which
+	\[\sum_{j=1}^{\infty} \lvert c_{j} \rvert \chi_{J_{j}}(x)<\infty\]
+	We denote by $\int_{I}f$ the number
+	\[\int _{I}f=\sum_{j=1}^{\infty} c_{j}\lambda(J_{j})\]
+	and call it the integral of $f$ over the interval $I$.
+	If the function $f$ is not integrable on the interval $I$ then we say that the integral of $f$ on $I$ does not exist. Hence if we say that the integral of $f$ on $I$ exists it just means that $f$ is (Lebesgue) integrable on $I$.

@@ -8,8 +8,8 @@
 \colorlet{colour3}{Cerulean}
 
 \geometry{
-    a4paper, 
-    margin=0.17in
+	a4paper, 
+	margin=0.17in
 }
 
 \pretolerance=0
@@ -46,7 +46,7 @@
 % \DeclareMathOperator{\Orb}{Orb}
 % \DeclareMathOperator{\Stab}{Stab}
 % \DeclareMathOperator{\send}{send}
-% \DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\dom}{dom}
 % \DeclareMathOperator{\Maps}{Maps}
 % \DeclareMathOperator{\sgn}{sgn}
 % \DeclareMathOperator{\Mat}{Mat}
@@ -79,6 +79,443 @@
 Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 \vspace{-5pt}
-\section{Abstractions upon Abstractions}
+\section{Revisiting FPM}
 
+\begin{dfn}[Nested Sequences]{dfn:nested-sequence}{1.1}
+	A sequence $(I_{n})_{n\in\mathbb{N}}$ of sets is said to be \textbf{nested} if
+	\[I_{1} \subset I_{2} \subset I_{3} \subset \cdots\]
+\end{dfn}
+
+\begin{thm}[Nested Interval Property]{thm:nested-interval-property}{1.1}
+	If $(I_{n})$ is a nested sequence of nonempty closed bounded intervals then
+	$$E = \bigcap\limits_{n\in\mathbb{N}} I_{n} = \{x\in\mathbb{R}: x\in I_{n},\,\forall n\in\mathbb{N}\}$$
+	is nonempty (i.e. it contains at least one number). Moreover if $\lambda(I_{n})\to 0$, where $\lambda(I_{n})$ denotes the length of interval $I_{n}$, then $E$ contains exactly one number
+\end{thm}
+
+\begin{thm}[Covers]{thm:finite-subcovers}{1.2}
+	Let $E$ be a subset of $\mathbb{R}^n$
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item A \textbf{cover} of $E$ is a collection of sets  $\{I_{\alpha}\}_{\alpha\in A}$ such that
+			\[E\subseteq \bigcup\limits_{\alpha\in A} I_{\alpha}\]
+		\item An \textbf{open covering} of $E$ is a cover such that each $I_{\alpha}$ is open, i.e.$(a,b)$ compared to $[a,b]$
+		\item A \textbf{finite subcover} of $E$ is a collection of sets $(I_{\alpha})_{\alpha\in A_{0}}$ where there exists a subset $A_{0} = \{\alpha_{1}, \alpha_{2}, \dots, a_{N}\}$ of $A$ such that $(I_{\alpha})_{\alpha\in A_{0}}$ is a finite subset of $(I_{\alpha})_{\alpha\in A}$ that is also a cover
+		\item The set $E$ is said to be \textbf{compact} iff every open covering of $E$ has a \textbf{finite subcovering}; that is
+			\[E\subseteq \bigcup\limits_{j=1}^{N} I_{aj} \quad \text{ or } \quad E \subseteq I_{\alpha_{1}} \cup I_{a_{2}} \cup \cdots \cup I_{a_{N}}\]
+	\end{itemize}
+\end{thm}
+
+\begin{dfn}[Epsilon-N Convergence of Sequence]{dfn:epsilon-n-sequences}{1.2}
+
+	A sequence of real numbers $(x_{n})$ is said to \textbf{converge} to a real number $a\in \mathbb{R}$ iff for every $\epsilon>0$ there is an $N\in\mathbb{N}$ such that
+
+	\[n\ge N \text{ implies } \lvert x_{n} - a \rvert < \epsilon\]
+	If $(x_{n})$ converges to $a$, we will write $\displaystyle\lim_{n \to \infty} x_{n}=a$, or $x_{n}\to a$. The number $a$ is called the limit of the sequence $(x_{n})$. A sequence that does not converge to some real number is said to *diverge
+\end{dfn}
+
+\begin{dfn}[Cauchy Sequence]{dfn:cauchy-sequence}{1.3}
+	A sequence $(x_{n})$ of numbers $x_{n} \in \mathbb{R}$ is said to be \textbf{Cauchy} if for every $\epsilon > 0$ there is $N\in \mathbb{N}$ such that
+	\[\lvert x_{n} - x_{m} \rvert < \epsilon \quad \forall n,m\ge N\]
+\end{dfn}
+
+\begin{thm}[Convergent Sequences are Cauchy]{thm:convergent-seq-cauchy}{1.3}
+	Let $(x_{n})$ be a sequence of real numbers. Then $(x_{n})$ is a Cauchy sequence if and only if $(x_{n})$ is a convergent sequence.
+
+	\textbf{Note}: This works both ways ($(x_{n})$ is a convergent seq $\implies$ Cauchy)
+\end{thm}
+
+\begin{dfn}[Subsequences]{dfn:subsequence}{1.4}
+	Suppose $(x_{n})_{n\in\mathbb{N}}$ is a sequence. A subsequence of this sequence is a sequence of the form $(x_{n_{k}})_{k\in\mathbb{N}}$ where for each $k$ there is a positive integer $n_{k}$ such that
+
+	\[n_{1} < n_{2} < \cdots < n_{k} < n_{k+1} < \cdots\]
+	Thus, $(x_{n})_{n\in\mathbb{N}}$ is just a selection of some (possibly all) of the $x_{n}$'s taken in order
+\end{dfn}
+
+\begin{thm}[Bolzano-Weierstrass]{thm:bolzano-weierstrass-thm}{1.5}
+	Every bounded sequence of real numbers has a convergent subsequence
+\end{thm}
+
+
+\begin{dfn}[Limit Superior and Inferior]{dfn:limsup-liminf}{1.5}
+	If $(x_{n})$ is a bounded sequence of real numbers we denote by
+
+	\[\limsup_{{n\to\infty}} x_{n} = \lim_{n \to \infty} \left(\displaystyle \sup_{k\ge n} x_{k}\right),\,\qquad \liminf_{{n\to\infty}} x_{n} = \lim_{n \to \infty} \left(\displaystyle \inf_{k\ge n} x_{k}\right)\]
+
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Note}: These are only defined for bounded sequences
+
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item If $(x_{n})$ is not bounded from above then we write $\limsup_{n \to \infty} x_{n} = +\infty$
+
+		\item If $(x_{n})$ is not bounded from below then we write $\liminf_{n \to \infty} x_{n} = +\infty$
+	\end{itemize}
+\end{dfn}
+
+\begin{thm}[Convergence from Limsup and Liminf]{thm:limsup-convergence}{1.6}
+	A sequence $(x_{n})$ of real numbers is convergent if and only if $\limsup_{n \to \infty}x_{n}$ and $\liminf_{n \to \infty}x_{n}$ are real numbers and
+
+	\[\limsup_{n \to \infty} x_{n} = \liminf_{n \to \infty} x_{n}\]
+\end{thm}
+
+\begin{dfn}[Convergent Infinite Series]{dfn:convergent-infinite-series}{1.6}
+	Let $S=\sum_{k=1}^{\infty}a_{k}$ be an infinite series $a_{k}$. For each $n\in\mathbb{N}$, the partial sum of $S$ of order $n$ is defined by
+
+	\[s_{n} = \sum_{k=1}^{n} a_{k}\]
+	$S$ is said to \textbf{converge} iff its sequence of partial sums $(s_{n})$ converges to some $s \in\mathbb{R}$ as $n\to\infty$; that is, iff for every $\epsilon>0$ there is an $N\in\mathbb{N}$ such that for all $n\ge N$ we have $\lvert s_{n}-s \rvert < \epsilon$. In this case we shall write
+
+	\[\sum_{k=1}^{\infty} a_{k} = s\]
+	and call $s$ the \textbf{sum} or \textbf{value} of the series $\sum_{k=1}^{\infty}a_{k}$
+
+	\noindent\rule{\textwidth}{0.2pt}
+
+	A series $S=\sum_{k=1}^{\infty}a_{k}$ is said to be \textbf{absolutely convergent} if the series $\sum_{k=1}^{\infty}\lvert a_{k} \rvert$ is convergent. A series is called \textbf{conditionally convergent} if it is convergent but not absolutely convergent.
+\end{dfn}
+
+
+% idk where i got this guy actually?
+
+% \begin{thm}[Cauchy Criteron]{thm:cauchy-criteron}{1.7}
+% 	Let $\{a_{k}\}$ be a real sequence. Then the infinite series $\sum_{k=1}^{\infty} a_{k}$ converges if and only if given $\epsilon>0$ there is an $N\in\mathbb{N}$ such that
+%
+% 	\[n\ge N \text{ implies } \left\lvert  \sum_{k=n}^{\infty} a_{k}  \right\rvert <\epsilon\]
+% \end{thm}
+
+\begin{thm}[Cauchy Criteron]{thm:cauchy-criteron}{1.7}
+	Let $S=\sum_{k=1}^{\infty}a_{k}$ be a series. Then the series $S$ is convergent iff for any $\epsilon>0$ there exists $N$ such that for all $m\ge n\ge N$ we have that
+
+	\[\left\lvert  \sum_{k=n+1}^{m} a_{k}  \right\rvert < \epsilon\]
+\end{thm}
+
+
+\begin{thm}[Rearrangements of Abs. Convergent Series]{thm:rearrangements-absolute-convergent-series}{1.8}
+	Let $S=\sum_{k=1}^{\infty} a_{k}$ be an absolutely convergent series. Then
+
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item The series $S$ is convergent
+
+		\item Let $z:\mathbb{N}\to \mathbb{N}$ be a bijection. Then the series $\sum_{k=1}^{\infty} a_{z(k)}$ is convergent and
+			\[\sum_{k=1}^{\infty} a_{k} = \sum_{k=1}^{\infty} a_{z(k)} \]
+	\end{itemize}
+
+	The series $\sum_{k=1}^{\infty} a_{z(k)}$ is called a \textbf{rearrangement} of the series $\sum_{k=1}^{\infty} a_{k}$. What we do here is add the terms of the sum in a different order to the original one, for example
+
+	\[a_{3} + a_{7}+ a_{1}+ a_{100} + a_{2} + \dots\]
+	Since $z:\mathbb{N}\to \mathbb{N}$ is a bijection, we will miss no terms.
+
+\end{thm}
+
+\newpage
+\begin{thm}[Rearrangements of Cond. Convergent Series]{thm:rearrangements-conditionally-convergent-series}{1.9}
+	Let $S = \sum_{k=1}^{\infty} a_{k}$ be any conditionally convergent series. Then there exists rearrangements $z:\mathbb{N}\to \mathbb{N}$ (where $z$ is a bijection) such that
+
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item For any $r\in\mathbb{R}$ the series $\sum_{k=1}^{\infty} a_{z(k)}$ is conditionally convergent and its sum is $r$
+
+		\item The series $\sum_{k=1}^{\infty} a_{z(k)}$ diverges to $+\infty$
+
+		\item The series $\sum_{k=1}^{\infty} a_{z(k)}$ diverges to $-\infty$
+
+		\item The partial sums of the series $\sum_{k=1}^{\infty} a_{z(k)}$ oscillate between any two real numbers
+
+	\end{itemize}
+\end{thm}
+
+% TODO: section 1.4
+
+\begin{dfn}[Continuity]{dfn:continuity}{1.7}
+	Let $f$ be a function $f : \dom(f) \to \mathbb{R}$ where $\dom(f)\subset \mathbb{R}$. We say that $f$ is continuous at some $a\in \dom(f)$ if for any sequence $(x_{n})$ whose terms lie in $\dom(f)$ and which converges to $a$, we have $\lim_{n\to \infty} f(x_{n}) = f(a)$. If $f$ is continuous at each $a\in S \subset \dom(f)$ then we say $f$ is continuous on $S$. If $f$ is continuous of $\dom(f)$ then we say $f$ is continuous
+\end{dfn}
+
+\begin{thm}[Properties of Continuity]{thm:continuity-props}{1.10}
+	Let $f, g : D \to \mathbb{R}$ be continuous on $D$, and let $\alpha\in \mathbb{R}$. Then the following functions are continuous on $D:$
+	\vspace{-10pt}
+	\begin{multicols}{3}
+		\begin{enumerate}
+			\item $\alpha$ f
+			\item $f + g$
+			\item $fg$
+		\end{enumerate}
+	\end{multicols}
+\end{thm}
+
+\begin{dfn}[Composition]{dfn:composition}{1.8}
+	Let $A, B \subseteq \mathbb{R}$ be nonempty, let $f : A \to \mathbb{R},\, g : B \to \mathbb{R}$ and $f(A) \subseteq B$. The composition of $g$ with $f$ is the function $g \circ f : A \to \mathbb{R}$ defined by
+	\[(g \circ f)(x) = g(f(x)), \quad \text{for all $x\in A$}\]
+\end{dfn}
+
+\begin{thm}[Continuity of Composition]{thm:composition-continuity}{1.11}
+	If $f$ is continuous at $a\in \mathbb{R}$ and $g$ is continuous at $f(a)$ then the composition $g \circ f$ is continuous at $a$
+\end{thm}
+
+\begin{thm}[\texorpdfstring{$\epsilon-\delta$}{epsilon-delta} definition of continuity]{thm:e-d-def-continuity}{1.12}
+	Let $f$ be a function $f : \dom(f) \to \mathbb{R}$ where $\dom(f) \subset \mathbb{R}$. Then $f$ is continuous at $a\in \dom(f)$ iff for any $\epsilon > 0$ there exists $\delta > 0$ s.t. whenever $x\in\dom(f)$ and $\lvert x - a \rvert < \delta$ we have $\lvert f(x) - f(a) \rvert < \epsilon$
+\end{thm}
+
+\begin{dfn}[Intermediate Value Theorem]{dfn:intermediate-value-thm}{1.13}
+	Let $a < b$ real numbers and $f : [a, b] \to \mathbb{R}$ be continuous on $[a, b]$. If $f(a)f(b)<0$ then there exists at least one $c\in (a, b)$ s.t. $f(c) = 0$
+\end{dfn}
+
+\begin{dfn}[Extreme Value Theorem]{dfn:extreme-value-thm}{1.14}
+	Let $a < b$ real numbers and $f : [a, b]\to \mathbb{R}$ be continuous on $[a, b]$. Then there exists points $c, d\in [a,b]$ s.t.
+	\[f(c) = \inf \{f(x) : x\in [a, b]\}, \quad f(d) = \sup \{f(x) : x\in [a, b]\}\]
+	That is, the function $f$ on the interval $[a, b]$ is bounded and attains its minimal value at some point $c\in [a,b]$. Similarly, the maximal value of $f$ is also attained at some point $d\in [a,b]$
+\end{dfn}
+
+
+\section{Uniform convergence}
+
+\begin{dfn}[Pointwise Convergence]{dfn:pointwise-convergence}{2.1}
+	Let $E$ be a nonempty subset of $\mathbb{R}$. A sequence of functions $f_{n}: E\to \mathbb{R}$ is said to \textbf{converge pointwise} on $E$, written $f_{n}\to f$ pointwise on $E$ as $n\to \infty$, iff $f(x) = \displaystyle\lim_{n \to \infty}f_{n(x)}$ exists for each $x \in E$
+
+	\noindent\rule{\textwidth}{0.2pt}
+	Let $E$ be a nonempty subset of $\mathbb{R}$. Then a sequence of functions $f_{n}$ converges pointwise on $E$, as $n\to\infty$, iff for every $\epsilon>0$ and $x \in E$ there is an $N \in\mathbb{N}$ (which may depend on $x$ as well we $\epsilon$) such that
+
+	\[n\ge N\quad\text{implies}\quad \lvert f_{n}(x)-f(x) \rvert < \epsilon\]
+
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Remarks}:
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item The pointwise limit of continuous (respectively, differentiable) functions is not necessarily continuous (respectively, differentiable).
+
+		\item The pointwise limit of integrable functions is not necessarily integrable.
+
+		\item There exist continuous functions $f_{n}$ and $f$ such that $f_{n}\to f$ pointwise on $[0,1]$ but
+
+			\[\lim_{n \to \infty} \int_{0}^{1} f_{n}(x) \, dx \ne \int_{0}^{1} \left(\lim_{n \to \infty} f_{n}(x)\right) \, dx \]
+	\end{itemize}
+
+\end{dfn}
+
+
+\begin{dfn}[Uniform Convergence]{dfn:uniform-convergence}{2.2}
+	Let $E$ be a nonempty subset of $\mathbb{R}$. A sequence of functions $f_{n}: E\to\mathbb{R}$ is said to \textbf{converge uniformly} on $E$ to a function $f$ (notation: $f_{n}\to f$ uniformly on $E$ as $n\to\infty$) if and only if for every $\epsilon>0$ there is an $N \in\mathbb{N}$ such that for all $x \in E$
+
+	\[n\ge N\quad\text{implies}\quad \lvert f_{n}(x)-f(x) \rvert <\epsilon\]
+\end{dfn}
+
+
+\begin{rem}[Differences between Pointwise and Uniform]{rem:pointwise-uniform-diffs}{2.2}
+	Let $E$ be a nonempty subset of $\mathbb{R}$. 
+
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item A sequence of functions $f_{n}$ \textbf{converges pointwise} on $E$, as $n\to\infty$, if and only if for every $\epsilon>0$ and $\textcolor{red}{x \in E}$ there is an $N \in\mathbb{N}$ (which may depend on $x$ as well we $\epsilon$) such that
+
+			\[n\ge N\quad\text{implies}\quad \lvert f_{n}(x)-f(x) \rvert < \epsilon\]
+
+		\item A sequence of functions $f_{n}: E\to\mathbb{R}$ \textbf{converges uniformly} on $E$ iff for every $\epsilon>0$ there is an $N \in\mathbb{N}$ such that for all $\textcolor{red}{x \in E}$
+
+			\[n\ge N\quad\text{implies}\quad \lvert f_{n}(x)-f(x) \rvert <\epsilon\]
+	\end{itemize}
+
+	For a sequence of functions to be pointwise convergent, it is enough to have an $N_{n}$ for every $x_{n}$, but for it to be uniformly convergent, it has to have \textbf{the same} $N$ for every $x$ in the sequence
+
+\end{rem}
+
+
+\begin{thm}[Equivalence of Uniform Convergence]{thm:uniform-convergence-equivalence}{2.1}
+	The following are equivalent concerning a sequence of functions $f_{n}:E\to \mathbb{R}$ and $f: E\to \mathbb{R}$:
+
+	\begin{itemize}[leftmargin=*]
+		\setlength\itemsep{0em}
+		\item $f_{n}\to f$ uniformly on $E$
+
+		\item $\displaystyle\sup_{x\in E}\lvert f_{n}(x)-f(x) \rvert\to 0$ as $n\to\infty$
+
+		\item there exists a sequence $a_{n}\to 0$ s.t. $\lvert f_{n}(x)-f(x) \rvert\le a_{n},\, \forall x\in E$
+
+	\end{itemize}
+\end{thm}
+
+
+\begin{thm}[]{thm:continuity-of-convergent-f}{2.1}
+	Let $E$ be a nonempty subset of $\mathbb{R}$ and suppose that $f_{n}\to f$ uniformly on $E$ as $n\to\infty$. If each $f_{n}$ is continuous at some $x_{0}\in E$, then $f$ is continuous at $x_{0}\to E$
+\end{thm}
+
+\begin{dfn}[Uniformly Bounded Sequences]{dfn:uniformly-bounded}{2.2}
+	A sequence of functions $f_{n}$ is said to be \textbf{uniformly bounded} on a set $E$ if there is a $M>0$ such that $\lvert f_{n}(x) \rvert\le M$ for all $x\in E$ and all $n\in N$
+
+\end{dfn}
+
+\begin{thm}[]{thm:uniform-convergence-limit-swap}{2.2}
+	Suppose that $f_{n}\to f$ uniformly on a closed interval $[a,b]$. If each $f_{n}$ is integrable on $[a,b]$, then so is $f$ and 
+
+	\[\lim_{n \to \infty} \int_{a}^{b} f_{n}(x) \, dx =\int_{a}^{b} \left(\lim_{n \to \infty} f_{n}(x)\right) \, dx \]
+\end{thm}
+
+\begin{thm}[]{thm:uniformly-convergent-derivatives}{2.3}
+	Let $(a,b)$ be a bounded interval and suppose that $f_{n}$ is a sequence of functions which converges at some $x_{0}\in(a,b)$. If each $f_{n}$ is differentiable on $(a,b)$, and $f_{n}'$ converges uniformly on $(a,b)$ as $n\to\infty$, then $f_{n}$ converges uniformly on $(a,b)$ and
+
+	\[\lim_{n \to \infty} f'_{n}(x)=\left(\lim_{n \to \infty} f_{n}(x)\right)'\]
+\end{thm}
+
+\newpage
+
+\begin{dfn}[Convergence of series]{dfn:convergence-of-sequence}{2.3}
+	Let $f_{k}$ be a sequence of a real functions defined on some set $E$ and set
+
+	\[s_{n}(x)=\sum_{k=1}^{n} f_{k}(x),\quad x\in E,\,n\in \mathbb{N}\]
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item The series $\displaystyle\sum_{k=1}^{\infty} f_{k}$ is said to \textbf{converge pointwise} on $E$ if and only if the sequence $s_{n}(x)$ converges pointwise on $E$ as $n\to\infty$
+
+		\item The series $\displaystyle\sum_{k=1}^{\infty} f_{k}$ is said to \textbf{converge uniformly} on $E$ if and only if the sequence $s_{n}(x)$ converges uniformly on $E$ as $n\to\infty$
+
+		\item The series $\displaystyle\sum_{k=1}^{\infty} f_{k}$ is said to \textbf{converge absolutely} (pointwise) on $E$ if and only if $\displaystyle\sum_{k=1}^{\infty} \lvert f_{k}(x) \rvert$ converges for each $x\in E$
+
+	\end{itemize}
+\end{dfn}
+
+\begin{thm}[Results of Convergent Series]{thm:convergent-series-results}{2.4}
+	Let $E$ be a nonempty subset of $\mathbb{R}$ and let $(f_{k})$ be a sequence of real functions defined on $E$.
+
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item Suppose that $x_{0}\in E$ and that each $f_{k}$ is continuous at $x_{0}\in E$. If $f=\displaystyle\sum_{k=1}^{\infty}f_{k}$ converges uniformly on $E$, then $f$ is continuous at $x_{0}\in E$.
+
+		\item Term-by-term integration: Suppose that $E=[a,b]$ and that each $f_{k}$ is integrable on $[a,b]$. If $f=\displaystyle\sum_{k=1}^{\infty} f_{k}$ converges uniformly on $[a,b]$, then $f$ is integrable on $[a,b]$ and
+
+		\[\int_{a}^{b} \sum_{k=1}^{\infty} f_{k}(x) \, dx =\sum_{k=1}^{\infty} \int_{a}^{b} f_{k}(x) \, dx \]
+		\item Term-by-term differentiation: Suppose that $E$ is a bounded, open interval and that each $f_{k}$ is differentiable on $E$. If $\sum_{k=1}^{\infty}f_{k}(x_{0})$ converges at some $x_{0}\in E$, and $g=\sum_{k=1}^{\infty}f'(k)$ converges uniformly on $E$, then $f= \sum_{k=1}^{\infty}f_{k}$ converges uniformly on $E$, is differentiable on $E$, and
+
+		\[f'(x)=\left( \sum_{k=1}^{\infty} f_{k}(x) \right)'=\sum_{k=1}^{\infty} f'_{k}(x)=g(x)\]
+		for $x\in E$
+
+	\end{itemize}
+\end{thm}
+
+\begin{thm}[Weierstrass M-test]{thm:weierstrass-m-test}{2.5}
+	Let $E$ be a nonempty subset of $\mathbb{R}$, let $f_{k}: E\to \mathbb{R},\,k\in\mathbb{N}$, and suppose that $M_{k}>0$ satisfies $\displaystyle\sum_{k=1}^{\infty} M_{k}<\infty$. If $\lvert f_{k}(x) \rvert \le M_{k}$ for $k\in \mathbb{N}$ and $x\in E$,  then $f=\displaystyle\sum_{k=1}^{\infty}f_{k}$ converges absolutely and uniformly on $E$.
+\end{thm}
+
+\begin{dfn}[Power Series]{dfn:power-series}{3.0}
+	Let $(a_{n})$ be a sequence of real numbers, and $c\in \mathbb{R}$. A \textbf{power series} is a series of the form
+
+	\[\sum_{n=0}^{\infty} a_{n}(x-c)^{n}\]
+	The numbers $a_{n}$ are called the \textbf{coefficients} of the power series, and $c$ is its \textbf{centre}. In many cases it suffices to set $c=0$. Note that the series will always converge at the point $x=c$ as all terms beyond the first are $0$.
+\end{dfn}
+
+
+\begin{dfn}[Radius of Convergence]{dfn:radius-of-convergence}{3.1}
+	The \textbf{radius of convergence} $R$ of the power series
+
+	\begin{equation}
+		\sum_{n=0}^{\infty} a_{n}(x-c)^{n}\tag{$*$}\label{$*$}
+	\end{equation}
+	is defined by
+
+	\[R=\sup\{r\ge 0:(a_{n}r^n) \text{ is bounded}\}\]
+	unless $(a_{n}r^{n})$ is bounded for all $r\ge 0$, in which case we say that $R=\infty$
+
+	\noindent\rule{\textwidth}{0.2pt}
+
+	\textbf{Thm 3.1}: Suppose the radius of convergence $R$ of \ref{$*$} satisfies $0<R<\infty$. If $\lvert x-c \rvert<R$, the power series \ref{$*$} converges absolutely. If $\lvert x-c \rvert>R$, the power series \ref{$*$} diverges
+\end{dfn}
+
+\begin{thm}[Continuty of Power Series]{thm:power-series-continuity}{3.2}
+	Assume that $R>0$. Suppose that $0<r<R$. Then a power series converges uniformly and absolutely on $\lvert x-c \rvert\le r$ to a continuous function $f$. Hence
+
+	\[f(x)=\sum_{n=0}^{\infty} a_{n}(x-c)^{n}\]
+	defines a continuous function $f:(c-R,c+R)\to \mathbb{R}$
+
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Lemma 3.1}: The two power series
+
+	\[\sum_{n=1}^{\infty} a_{n}(x-c)^{n}\text{ and } \sum_{n=1}^{\infty} na_{n}(x-c)^{n-1}\]
+	have the same radius of convergence
+\end{thm}
+
+\begin{thm}[Differentiation of Power Series]{thm:power-series-differentiation}{3.3}
+	Suppose the radius of convergence of a power series is $R$. Then the function
+
+	\[f(x)=\sum_{n=0}^{\infty} a_{n}(x-c)^{n}\]
+	is infinitely differentiable on $\lvert x-c \rvert<R$, and for such $x$,
+
+	\[f'(x)=\sum_{n=0}^{\infty} na_{n}(x-c)^{n-1}\]
+	and the series converges absolutely, and also uniformly on $[c-r,c+r]$ for any $r<R$. Moreover,
+
+	\[a_{n}=\frac{f^{(n)}(c)}{n!}\]
+\end{thm}
+
+% TODO: maybe some stuff on exponential function (pg 32)
+
+
+\newpage
+\section{Lebesgue Integration}
+
+\begin{dfn}[Characteristic Function]{dfn:characteristic-function}{4.0}
+	Let $E$ be a subset of $\mathbb{R}$. We define its \textbf{characteristic function} $\chi_{E}:\mathbb{R}\to\mathbb{R}$ by $\chi_{E}(x)=1$ if $x\in E$ and $\chi_{E}(x)=0$ if $x\not\in E$. In other words,
+	\[\chi_{E}=\begin{cases}
+	1&x\in E \\
+	0 & x\not\in E
+	\end{cases}\]
+	In other words, this is a function that is $1$ at all points of a bounded interval, and $0$ elsewhere
+
+	\noindent\rule{\textwidth}{0.2pt}
+	
+	Let $I$ be a bounded interval with endpoints $a,\,b$ and $a\le b$. We call the number $b-a$ the \textbf{length of the interval} $I$ and we denote it by $\lambda(I)$. This might also be referred to as $\lvert I \rvert$. That is,
+	\[\lambda((a,b)) = \lambda([a,b]) = \lambda((a,b]) = \lambda([a,b)) = b-a\]
+
+	\noindent\rule{\textwidth}{0.2pt}
+	From our definition of a characteristic function and the length of an interval, we have that the area of the characteristic function is a rectangle with width $\lambda(I)$ and height $1$, therefore
+	\[\int \chi_{I} = 1 \cdot \lambda(I) = \lambda(I)\]
+\end{dfn}
+
+\begin{dfn}[Step function]{dfn:step-function}{4.1}
+	We say that $\phi:\mathbb{R}\to \mathbb{R}$ is a \textbf{step function} if there exist real numbers $x_{0}<x_{1}<x_{2}<\cdots<x_{n}$ (for some $n\in \mathbb{N}$) such that
+
+	\begin{enumerate}
+	    \setlength\itemsep{0em}
+	    \item $\phi(x)=0$ for $x<x_{0}$ and $x>x_{n}$
+	    \item $\phi$ is constant on $(x_{j-1}, x_{j})$ for $1\le j \le n$
+	\end{enumerate}
+
+	We shall use the phrase "$\phi$ is a step function with respect to $\{x_{0},x_{1},\dots,x_{n}\}$" to describe this situation
+
+
+	\noindent\rule{\textwidth}{0.2pt}
+
+	\textbf{Properties of Step Functions}
+
+	\begin{enumerate}
+	    \setlength\itemsep{0em}
+	    \item The class of step functions is a vector space - i.e. if $\phi$ and $\psi$ are step functions and $\alpha$ and $\beta$ are real numbers, then $\alpha\phi+\beta\psi$ is a step function, and that if $\phi$ and $\psi$ are step functions, then $\max\{\phi,\psi\}$, $\min\{\phi\psi\}$, $\lvert \phi \rvert$ and $\phi\psi$ are also step functions
+	    \item If $\phi$ and $\psi$ are step functions, then $\phi + \psi$ is a step function
+	    \item $\phi$ is a step function if and only if it is of the form
+	\[\phi=\sum_{j=1}^{n} c_{j}\chi_{J_{j}}\]
+	for some $n$, $c_{j}$, and bounded intervals $J_{j}$
+	\end{enumerate}
+
+	\noindent\rule{\textwidth}{0.2pt}
+
+	\textbf{Def 4.2: Integral of a Step Function}
+
+	If $\phi$ is a step function with respect to $\{x_{0},x_{1},\dots,x_{n}\}$ which takes the value $c_{j}$ on $(x_{j-1},x_{j})$, then
+	\[\int \phi := \sum_{j=1}^{n} c_{j}(x_{j}-x_{j-1})\]
+	Therefore, using the characteristic definition of a step function, the integral is
+	\[\int \phi = \int \sum_{j=1}^{n} c_{j}\chi_{J_{j}}=\sum_{j=1}^{n} c_{j}\int \chi_{IJ_{j}}=\sum_{j=1}^{n} c_{j}\lambda(J_{j})\]
+\end{dfn}
+
+\begin{dfn}[Lebesgue Integrals]{dfn:lebesgue-integral}{4.3}
+	A function $f:I\to \mathbb{R}$ is said to be \textbf{integrable} or more precisely \textbf{Lebesgue integrable} on an interval $I$ if there exist numbers $c_{j}$ and bounded intervals $J_{j}\subset I,\,j=1,2,3,\dots$ such that
+	\[\sum_{j=1}^{\infty} \lvert c_{j} \rvert \lambda(J_{j})<\infty\]
+	and the equality
+	\[f(x)=\sum_{j=1}^{\infty} c_{j}\chi_{J_{j}}(x)\]
+	holds for all $x\in I$ at which
+	\[\sum_{j=1}^{\infty} \lvert c_{j} \rvert \chi_{J_{j}}(x)<\infty\]
+	We denote by $\int_{I}f$ the number
+	\[\int _{I}f=\sum_{j=1}^{\infty} c_{j}\lambda(J_{j})\]
+	and call it the integral of $f$ over the interval $I$.
+	If the function $f$ is not integrable on the interval $I$ then we say that the integral of $f$ on $I$ does not exist. Hence if we say that the integral of $f$ on $I$ exists it just means that $f$ is (Lebesgue) integrable on $I$.
+\end{dfn}
+
+
+
+
+\lipsum[1-12]
+\end{multicols}
 \end{document}
