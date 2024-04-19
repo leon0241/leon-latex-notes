@@ -81,19 +81,17 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \vspace{-5pt}
 \section{Revisiting FPM}
 
-\begin{dfn}[Nested Sequences]{dfn:nested-sequence}{1.1}
+\begin{dfn}[Nested Sequences and covers]{dfn:nested-sequence}{1.1}
 	A sequence $(I_{n})_{n\in\mathbb{N}}$ of sets is said to be \textbf{nested} if
 	\[I_{1} \subset I_{2} \subset I_{3} \subset \cdots\]
-\end{dfn}
 
-\begin{thm}[Nested Interval Property]{thm:nested-interval-property}{1.1}
-	If $(I_{n})$ is a nested sequence of nonempty closed bounded intervals then
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Thm 1.1}: If $(I_{n})$ is a nested sequence of nonempty closed bounded intervals then
 	$$E = \bigcap\limits_{n\in\mathbb{N}} I_{n} = \{x\in\mathbb{R}: x\in I_{n},\,\forall n\in\mathbb{N}\}$$
 	is nonempty (i.e. it contains at least one number). Moreover if $\lambda(I_{n})\to 0$, where $\lambda(I_{n})$ denotes the length of interval $I_{n}$, then $E$ contains exactly one number
-\end{thm}
 
-\begin{thm}[Covers]{thm:finite-subcovers}{1.2}
-	Let $E$ be a subset of $\mathbb{R}^n$
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Thm 1.2}: Let $E$ be a subset of $\mathbb{R}^n$
 	\begin{itemize}
 		\setlength\itemsep{0em}
 		\item A \textbf{cover} of $E$ is a collection of sets  $\{I_{\alpha}\}_{\alpha\in A}$ such that
@@ -103,73 +101,163 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 		\item The set $E$ is said to be \textbf{compact} iff every open covering of $E$ has a \textbf{finite subcovering}; that is
 			\[E\subseteq \bigcup\limits_{j=1}^{N} I_{aj} \quad \text{ or } \quad E \subseteq I_{\alpha_{1}} \cup I_{a_{2}} \cup \cdots \cup I_{a_{N}}\]
 	\end{itemize}
-\end{thm}
+\end{dfn}
 
-\begin{dfn}[Epsilon-N Convergence of Sequence]{dfn:epsilon-n-sequences}{1.2}
+\begin{dfn}[Convergence of Sequences and Cauchy]{dfn:epsilon-n-sequences}{1.2}
 
 	A sequence of real numbers $(x_{n})$ is said to \textbf{converge} to a real number $a\in \mathbb{R}$ iff for every $\epsilon>0$ there is an $N\in\mathbb{N}$ such that
 
 	\[n\ge N \text{ implies } \lvert x_{n} - a \rvert < \epsilon\]
-	If $(x_{n})$ converges to $a$, we will write $\displaystyle\lim_{n \to \infty} x_{n}=a$, or $x_{n}\to a$. The number $a$ is called the limit of the sequence $(x_{n})$. A sequence that does not converge to some real number is said to *diverge
-\end{dfn}
+	If $(x_{n})$ converges to $a$, we will write $\lim_{n \to \infty} x_{n}=a$, or $x_{n}\to a$. The number $a$ is called the limit of the sequence $(x_{n})$. A sequence that does not converge to some real number is said to *diverge
 
-\begin{dfn}[Cauchy Sequence]{dfn:cauchy-sequence}{1.3}
-	A sequence $(x_{n})$ of numbers $x_{n} \in \mathbb{R}$ is said to be \textbf{Cauchy} if for every $\epsilon > 0$ there is $N\in \mathbb{N}$ such that
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Def 1.3}: A sequence $(x_{n})$ of numbers $x_{n} \in \mathbb{R}$ is said to be \textbf{Cauchy} if for every $\epsilon > 0$ there is $N\in \mathbb{N}$ such that
 	\[\lvert x_{n} - x_{m} \rvert < \epsilon \quad \forall n,m\ge N\]
+
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Thm 1.3}: Let $(x_{n})$ be a sequence of real numbers. Then $(x_{n})$ is a Cauchy sequence if and only if $(x_{n})$ is a convergent sequence.
+
+	\textbf{Thm 1.4}: Let $(x_{n})$ be a sequence of real numbers. Then $(x_{n})$ is a Cauchy sequence iff $(x_{n})$ is a convergent sequence
 \end{dfn}
-
-\begin{thm}[Convergent Sequences are Cauchy]{thm:convergent-seq-cauchy}{1.3}
-	Let $(x_{n})$ be a sequence of real numbers. Then $(x_{n})$ is a Cauchy sequence if and only if $(x_{n})$ is a convergent sequence.
-
-	\textbf{Note}: This works both ways ($(x_{n})$ is a convergent seq $\implies$ Cauchy)
-\end{thm}
 
 \begin{dfn}[Subsequences]{dfn:subsequence}{1.4}
 	Suppose $(x_{n})_{n\in\mathbb{N}}$ is a sequence. A subsequence of this sequence is a sequence of the form $(x_{n_{k}})_{k\in\mathbb{N}}$ where for each $k$ there is a positive integer $n_{k}$ such that
 
 	\[n_{1} < n_{2} < \cdots < n_{k} < n_{k+1} < \cdots\]
 	Thus, $(x_{n})_{n\in\mathbb{N}}$ is just a selection of some (possibly all) of the $x_{n}$'s taken in order
-\end{dfn}
 
-\begin{thm}[Bolzano-Weierstrass]{thm:bolzano-weierstrass-thm}{1.5}
-	Every bounded sequence of real numbers has a convergent subsequence
-\end{thm}
+	\textbf{Thm 1.5 (Bolzano-Weierstrass)}: Every bounded sequence of real numbers has a convergent subsequence
+\end{dfn}
 
 
 \begin{dfn}[Limit Superior and Inferior]{dfn:limsup-liminf}{1.5}
 	If $(x_{n})$ is a bounded sequence of real numbers we denote by
 
+	\vspace{-5pt}
 	\[\limsup_{{n\to\infty}} x_{n} = \lim_{n \to \infty} \left(\displaystyle \sup_{k\ge n} x_{k}\right),\,\qquad \liminf_{{n\to\infty}} x_{n} = \lim_{n \to \infty} \left(\displaystyle \inf_{k\ge n} x_{k}\right)\]
 
 	\noindent\rule{\textwidth}{0.2pt}
 	\textbf{Note}: These are only defined for bounded sequences
 
+	\vspace{-5pt}
 	\begin{itemize}
 		\setlength\itemsep{0em}
 		\item If $(x_{n})$ is not bounded from above then we write $\limsup_{n \to \infty} x_{n} = +\infty$
 
 		\item If $(x_{n})$ is not bounded from below then we write $\liminf_{n \to \infty} x_{n} = +\infty$
 	\end{itemize}
-\end{dfn}
 
-\begin{thm}[Convergence from Limsup and Liminf]{thm:limsup-convergence}{1.6}
-	A sequence $(x_{n})$ of real numbers is convergent if and only if $\limsup_{n \to \infty}x_{n}$ and $\liminf_{n \to \infty}x_{n}$ are real numbers and
+	\vspace{-5pt}
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Thm 1.6}: A sequence $(x_{n})$ of real numbers is convergent if and only if $\limsup_{n \to \infty}x_{n}$ and $\liminf_{n \to \infty}x_{n}$ are real numbers and
 
 	\[\limsup_{n \to \infty} x_{n} = \liminf_{n \to \infty} x_{n}\]
-\end{thm}
+\end{dfn}
+
+\begin{dfn}[Continuity]{dfn:continuity}{1.7}
+	Let $f$ be a function $f : \dom(f) \to \mathbb{R}$ where $\dom(f)\subset \mathbb{R}$. We say that $f$ is \textbf{continuous} at some $a\in \dom(f)$, if for any sequence $(x_{n})$ whose terms lie in $\dom(f)$ and which converges to $a$, we have $\lim_{n\to \infty} f(x_{n}) = f(a)$.
+
+	If $f$ is continuous at each $a\in S \subset \dom(f)$ then we say $f$ is continuous on $S$. If $f$ is continuous of $\dom(f)$ then we say $f$ is continuous
+
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Thm 1.10}: Let $f, g : D \to \mathbb{R}$ be continuous on $D$, and let $\alpha\in \mathbb{R}$. Then the following functions are continuous on $D:$
+
+	\vspace{-10pt}
+	\begin{multicols}{3}
+		\begin{enumerate}
+			\item $\alpha$ f
+			\item $f + g$
+			\item $fg$
+		\end{enumerate}
+	\end{multicols}
+
+	\vspace{-10pt}
+	\noindent\rule{\textwidth}{0.2pt}
+
+	\textbf{Thm 1.12 ($\epsilon-\delta$ Definition of Continuity)}: Let $f$ be a function $f : \dom(f) \to \mathbb{R}$ where $\dom(f) \subset \mathbb{R}$. Then $f$ is continuous at $a\in \dom(f)$ iff for any $\epsilon > 0$ there exists $\delta > 0$ s.t. whenever $x\in\dom(f)$ and $\lvert x - a \rvert < \delta$ we have $\lvert f(x) - f(a) \rvert < \epsilon$
+
+	\noindent\rule{\textwidth}{0.2pt}
+
+	\textbf{Thm 1.13 (Intermediate Value Theorem)}: Let $a < b$ real numbers and $f : [a, b] \to \mathbb{R}$ be continuous on $[a, b]$. If $f(a)f(b)<0$ then there exists at least one $c\in (a, b)$ s.t. $f(c) = 0$
+
+	\noindent\rule{\textwidth}{0.2pt}
+
+	\textbf{Thm 1.14 (Extreme Value Theorem)}: Let $a < b$ real numbers and $f : [a, b]\to \mathbb{R}$ be continuous on $[a, b]$. Then there exists points $c, d\in [a,b]$ s.t.
+	\[f(c) = \inf \{f(x) : x\in [a, b]\}, \quad f(d) = \sup \{f(x) : x\in [a, b]\}\]
+	That is, the function $f$ on the interval $[a, b]$ is bounded and attains its minimal value at some point $c\in [a,b]$. Similarly, the maximal value of $f$ is also attained at some point $d\in [a,b]$
+\end{dfn}
+
 
 \begin{dfn}[Convergent Infinite Series]{dfn:convergent-infinite-series}{1.6}
 	Let $S=\sum_{k=1}^{\infty}a_{k}$ be an infinite series $a_{k}$. For each $n\in\mathbb{N}$, the partial sum of $S$ of order $n$ is defined by
 
+	\vspace{-8pt}
 	\[s_{n} = \sum_{k=1}^{n} a_{k}\]
-	$S$ is said to \textbf{converge} iff its sequence of partial sums $(s_{n})$ converges to some $s \in\mathbb{R}$ as $n\to\infty$; that is, iff for every $\epsilon>0$ there is an $N\in\mathbb{N}$ such that for all $n\ge N$ we have $\lvert s_{n}-s \rvert < \epsilon$. In this case we shall write
 
+	$S$ is said to \textbf{converge} iff its sequence of partial sums $(s_{n})$ converges to some $s \in\mathbb{R}$ as $n\to\infty$; that is, iff for every $\epsilon>0$ there is an $N\in\mathbb{N}$ s.t. for all $n\ge N$ we have $\lvert s_{n}-s \rvert < \epsilon$. In this case we shall write
+
+	\vspace{-7pt}
 	\[\sum_{k=1}^{\infty} a_{k} = s\]
+	\vspace{-3pt}
 	and call $s$ the \textbf{sum} or \textbf{value} of the series $\sum_{k=1}^{\infty}a_{k}$
 
 	\noindent\rule{\textwidth}{0.2pt}
 
-	A series $S=\sum_{k=1}^{\infty}a_{k}$ is said to be \textbf{absolutely convergent} if the series $\sum_{k=1}^{\infty}\lvert a_{k} \rvert$ is convergent. A series is called \textbf{conditionally convergent} if it is convergent but not absolutely convergent.
+	\vspace{-5pt}
+	\begin{itemize}[leftmargin=*]
+	    \setlength\itemsep{0em}
+	    \item \textbf{Absolutely convergent}: the series $\sum_{k = 1}^{\infty} \lvert a_{k} \rvert$ is convergent
+	    \item \textbf{Conditionally convergent}: Convergent but not absolutely
+	\end{itemize}
+
+	\vspace{-7pt}
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Thm 1.7 (Cauchy Criteron)}: Let $S=\sum_{k=1}^{\infty}a_{k}$ be a series. Then $S$ is convergent iff for any $\epsilon>0$ there exists $N$ such that for all $m\ge n\ge N$ we have that
+
+	\vspace{-9pt}
+	\[\left\lvert  \sum_{k=n+1}^{m} a_{k}  \right\rvert < \epsilon\]
+
+	\noindent\rule{\textwidth}{0.2pt}
+
+	\textbf{Thm 1.8 (Rearranging Absolutely Convergent Series)}
+
+	Let $S=\sum_{k=1}^{\infty} a_{k}$ be an absolutely convergent series. Then
+
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item The series $S$ is convergent
+
+		\item Let $z:\mathbb{N}\to \mathbb{N}$ be a bijection. Then the series $\sum_{k=1}^{\infty} a_{z(k)}$ is convergent and
+			\vspace{-5pt}
+			\[\sum_{k=1}^{\infty} a_{k} = \sum_{k=1}^{\infty} a_{z(k)} \]
+	\end{itemize}
+
+	\vspace{-5pt}
+	The series $\sum_{k=1}^{\infty} a_{z(k)}$ is called a \textbf{rearrangement} of the series $\sum_{k=1}^{\infty} a_{k}$. What we do here is add the terms of the sum in a different order to the original one, for example
+
+	\vspace{-8pt}
+	\[a_{3} + a_{7}+ a_{1}+ a_{100} + a_{2} + \dots\]
+	Since $z:\mathbb{N}\to \mathbb{N}$ is a bijection, we will miss no terms.
+
+	\vspace{-5pt}
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Thm 1.9 (Rearranging Conditionally Convergent Series)}
+
+	Let $S = \sum_{k=1}^{\infty} a_{k}$ be any conditionally convergent series. Then there exists rearrangements $z:\mathbb{N}\to \mathbb{N}$ (where $z$ is a bijection) such that
+
+	\vspace{-5pt}
+	\begin{itemize}[leftmargin=*]
+		\setlength\itemsep{0em}
+		\item For any $r\in\mathbb{R}$, $\sum_{k=1}^{\infty} a_{z(k)}$ is conditionally convergent with sum $r$
+
+		\item The series $\sum_{k=1}^{\infty} a_{z(k)}$ diverges to $+\infty$
+
+		\item The series $\sum_{k=1}^{\infty} a_{z(k)}$ diverges to $-\infty$
+
+		\item The partial sums of the series $\sum_{k=1}^{\infty} a_{z(k)}$ oscillate between any two real numbers
+
+	\end{itemize}
+
 \end{dfn}
 
 
@@ -181,194 +269,104 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 % 	\[n\ge N \text{ implies } \left\lvert  \sum_{k=n}^{\infty} a_{k}  \right\rvert <\epsilon\]
 % \end{thm}
 
-\begin{thm}[Cauchy Criteron]{thm:cauchy-criteron}{1.7}
-	Let $S=\sum_{k=1}^{\infty}a_{k}$ be a series. Then the series $S$ is convergent iff for any $\epsilon>0$ there exists $N$ such that for all $m\ge n\ge N$ we have that
-
-	\[\left\lvert  \sum_{k=n+1}^{m} a_{k}  \right\rvert < \epsilon\]
-\end{thm}
-
-
-\begin{thm}[Rearrangements of Abs. Convergent Series]{thm:rearrangements-absolute-convergent-series}{1.8}
-	Let $S=\sum_{k=1}^{\infty} a_{k}$ be an absolutely convergent series. Then
-
-	\begin{itemize}
-		\setlength\itemsep{0em}
-		\item The series $S$ is convergent
-
-		\item Let $z:\mathbb{N}\to \mathbb{N}$ be a bijection. Then the series $\sum_{k=1}^{\infty} a_{z(k)}$ is convergent and
-			\[\sum_{k=1}^{\infty} a_{k} = \sum_{k=1}^{\infty} a_{z(k)} \]
-	\end{itemize}
-
-	The series $\sum_{k=1}^{\infty} a_{z(k)}$ is called a \textbf{rearrangement} of the series $\sum_{k=1}^{\infty} a_{k}$. What we do here is add the terms of the sum in a different order to the original one, for example
-
-	\[a_{3} + a_{7}+ a_{1}+ a_{100} + a_{2} + \dots\]
-	Since $z:\mathbb{N}\to \mathbb{N}$ is a bijection, we will miss no terms.
-
-\end{thm}
-
-\newpage
-\begin{thm}[Rearrangements of Cond. Convergent Series]{thm:rearrangements-conditionally-convergent-series}{1.9}
-	Let $S = \sum_{k=1}^{\infty} a_{k}$ be any conditionally convergent series. Then there exists rearrangements $z:\mathbb{N}\to \mathbb{N}$ (where $z$ is a bijection) such that
-
-	\begin{itemize}
-		\setlength\itemsep{0em}
-		\item For any $r\in\mathbb{R}$ the series $\sum_{k=1}^{\infty} a_{z(k)}$ is conditionally convergent and its sum is $r$
-
-		\item The series $\sum_{k=1}^{\infty} a_{z(k)}$ diverges to $+\infty$
-
-		\item The series $\sum_{k=1}^{\infty} a_{z(k)}$ diverges to $-\infty$
-
-		\item The partial sums of the series $\sum_{k=1}^{\infty} a_{z(k)}$ oscillate between any two real numbers
-
-	\end{itemize}
-\end{thm}
-
-% TODO: section 1.4
-
-\begin{dfn}[Continuity]{dfn:continuity}{1.7}
-	Let $f$ be a function $f : \dom(f) \to \mathbb{R}$ where $\dom(f)\subset \mathbb{R}$. We say that $f$ is continuous at some $a\in \dom(f)$ if for any sequence $(x_{n})$ whose terms lie in $\dom(f)$ and which converges to $a$, we have $\lim_{n\to \infty} f(x_{n}) = f(a)$. If $f$ is continuous at each $a\in S \subset \dom(f)$ then we say $f$ is continuous on $S$. If $f$ is continuous of $\dom(f)$ then we say $f$ is continuous
-\end{dfn}
-
-\begin{thm}[Properties of Continuity]{thm:continuity-props}{1.10}
-	Let $f, g : D \to \mathbb{R}$ be continuous on $D$, and let $\alpha\in \mathbb{R}$. Then the following functions are continuous on $D:$
-	\vspace{-10pt}
-	\begin{multicols}{3}
-		\begin{enumerate}
-			\item $\alpha$ f
-			\item $f + g$
-			\item $fg$
-		\end{enumerate}
-	\end{multicols}
-\end{thm}
-
+\vspace{-5pt}
 \begin{dfn}[Composition]{dfn:composition}{1.8}
 	Let $A, B \subseteq \mathbb{R}$ be nonempty, let $f : A \to \mathbb{R},\, g : B \to \mathbb{R}$ and $f(A) \subseteq B$. The composition of $g$ with $f$ is the function $g \circ f : A \to \mathbb{R}$ defined by
 	\[(g \circ f)(x) = g(f(x)), \quad \text{for all $x\in A$}\]
+
+	\vspace{-5pt}
+	\noindent\rule{\textwidth}{0.2pt}
+
+	\textbf{Thm 1.11}: If $f$ is continuous at $a\in \mathbb{R}$ and $g$ is continuous at $f(a)$ then the composition $g \circ f$ is continuous at $a$
 \end{dfn}
 
-\begin{thm}[Continuity of Composition]{thm:composition-continuity}{1.11}
-	If $f$ is continuous at $a\in \mathbb{R}$ and $g$ is continuous at $f(a)$ then the composition $g \circ f$ is continuous at $a$
-\end{thm}
-
-\begin{thm}[\texorpdfstring{$\epsilon-\delta$}{epsilon-delta} definition of continuity]{thm:e-d-def-continuity}{1.12}
-	Let $f$ be a function $f : \dom(f) \to \mathbb{R}$ where $\dom(f) \subset \mathbb{R}$. Then $f$ is continuous at $a\in \dom(f)$ iff for any $\epsilon > 0$ there exists $\delta > 0$ s.t. whenever $x\in\dom(f)$ and $\lvert x - a \rvert < \delta$ we have $\lvert f(x) - f(a) \rvert < \epsilon$
-\end{thm}
-
-\begin{dfn}[Intermediate Value Theorem]{dfn:intermediate-value-thm}{1.13}
-	Let $a < b$ real numbers and $f : [a, b] \to \mathbb{R}$ be continuous on $[a, b]$. If $f(a)f(b)<0$ then there exists at least one $c\in (a, b)$ s.t. $f(c) = 0$
-\end{dfn}
-
-\begin{dfn}[Extreme Value Theorem]{dfn:extreme-value-thm}{1.14}
-	Let $a < b$ real numbers and $f : [a, b]\to \mathbb{R}$ be continuous on $[a, b]$. Then there exists points $c, d\in [a,b]$ s.t.
-	\[f(c) = \inf \{f(x) : x\in [a, b]\}, \quad f(d) = \sup \{f(x) : x\in [a, b]\}\]
-	That is, the function $f$ on the interval $[a, b]$ is bounded and attains its minimal value at some point $c\in [a,b]$. Similarly, the maximal value of $f$ is also attained at some point $d\in [a,b]$
-\end{dfn}
-
-
+\newpage
+\vspace{-15pt}
 \section{Uniform convergence}
 
 \begin{dfn}[Pointwise Convergence]{dfn:pointwise-convergence}{2.1}
 	Let $E$ be a nonempty subset of $\mathbb{R}$. A sequence of functions $f_{n}: E\to \mathbb{R}$ is said to \textbf{converge pointwise} on $E$, written $f_{n}\to f$ pointwise on $E$ as $n\to \infty$, iff $f(x) = \displaystyle\lim_{n \to \infty}f_{n(x)}$ exists for each $x \in E$
 
 	\noindent\rule{\textwidth}{0.2pt}
-	Let $E$ be a nonempty subset of $\mathbb{R}$. Then a sequence of functions $f_{n}$ converges pointwise on $E$, as $n\to\infty$, iff for every $\epsilon>0$ and $x \in E$ there is an $N \in\mathbb{N}$ (which may depend on $x$ as well we $\epsilon$) such that
+	$f_{n}$ converges pointwise on $E$, as $n\to\infty$, iff for every $\epsilon>0$ and $x \in E$ there is an $N \in\mathbb{N}$ (which may depend on $x$ as well we $\epsilon$) such that
 
+	\vspace{-8pt}
 	\[n\ge N\quad\text{implies}\quad \lvert f_{n}(x)-f(x) \rvert < \epsilon\]
 
+	\vspace{-5pt}
 	\noindent\rule{\textwidth}{0.2pt}
 	\textbf{Remarks}:
-	\begin{itemize}
+	\begin{itemize}[leftmargin=*]
 		\setlength\itemsep{0em}
-		\item The pointwise limit of continuous (respectively, differentiable) functions is not necessarily continuous (respectively, differentiable).
+		\item The pointwise limit of continuous (or differentiable) functions is not necessarily continuous (or differentiable).
 
-		\item The pointwise limit of integrable functions is not necessarily integrable.
+		\item The pointwise limit of integrable functions is not always integrable.
 
 		\item There exist continuous functions $f_{n}$ and $f$ such that $f_{n}\to f$ pointwise on $[0,1]$ but
 
+			\vspace{-5pt}
 			\[\lim_{n \to \infty} \int_{0}^{1} f_{n}(x) \, dx \ne \int_{0}^{1} \left(\lim_{n \to \infty} f_{n}(x)\right) \, dx \]
 	\end{itemize}
 
-\end{dfn}
+	\noindent\rule{\textwidth}{0.6pt}
 
+	\textbf{Def 2.2}: Let $E$ be a nonempty subset of $\mathbb{R}$. A sequence of functions $f_{n}: E\to\mathbb{R}$ is said to \textbf{converge uniformly} on $E$ to a function $f$ (notation: $f_{n}\to f$ uniformly on $E$ as $n\to\infty$) if and only if for every $\epsilon>0$ there is an $N \in\mathbb{N}$ such that for all $x \in E$
 
-\begin{dfn}[Uniform Convergence]{dfn:uniform-convergence}{2.2}
-	Let $E$ be a nonempty subset of $\mathbb{R}$. A sequence of functions $f_{n}: E\to\mathbb{R}$ is said to \textbf{converge uniformly} on $E$ to a function $f$ (notation: $f_{n}\to f$ uniformly on $E$ as $n\to\infty$) if and only if for every $\epsilon>0$ there is an $N \in\mathbb{N}$ such that for all $x \in E$
-
+	\vspace{-5pt}
 	\[n\ge N\quad\text{implies}\quad \lvert f_{n}(x)-f(x) \rvert <\epsilon\]
+
+	\vspace{-5pt}
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Remark (The difference between Pointwise and Uniform)}: For a sequence of functions to be pointwise convergent, it is enough to have an $N_{n}$ for every $x_{n}$, but for it to be uniformly convergent, it has to have \textbf{the same} $N$ for every $x$ in the sequence
+
+	\noindent\rule{\textwidth}{0.2pt}
+
+	\textbf{Def 2.2}: A sequence of functions $f_{n}$ is said to be \textbf{uniformly bounded} on a set $E$ if there is a $M>0$ such that $\lvert f_{n}(x) \rvert\le M$ for all $x\in E$ and all $n\in N$
 \end{dfn}
 
-
-\begin{rem}[Differences between Pointwise and Uniform]{rem:pointwise-uniform-diffs}{2.2}
-	Let $E$ be a nonempty subset of $\mathbb{R}$. 
-
-	\begin{itemize}
-		\setlength\itemsep{0em}
-		\item A sequence of functions $f_{n}$ \textbf{converges pointwise} on $E$, as $n\to\infty$, if and only if for every $\epsilon>0$ and $\textcolor{red}{x \in E}$ there is an $N \in\mathbb{N}$ (which may depend on $x$ as well we $\epsilon$) such that
-
-			\[n\ge N\quad\text{implies}\quad \lvert f_{n}(x)-f(x) \rvert < \epsilon\]
-
-		\item A sequence of functions $f_{n}: E\to\mathbb{R}$ \textbf{converges uniformly} on $E$ iff for every $\epsilon>0$ there is an $N \in\mathbb{N}$ such that for all $\textcolor{red}{x \in E}$
-
-			\[n\ge N\quad\text{implies}\quad \lvert f_{n}(x)-f(x) \rvert <\epsilon\]
-	\end{itemize}
-
-	For a sequence of functions to be pointwise convergent, it is enough to have an $N_{n}$ for every $x_{n}$, but for it to be uniformly convergent, it has to have \textbf{the same} $N$ for every $x$ in the sequence
-
-\end{rem}
-
-
-\begin{thm}[Equivalence of Uniform Convergence]{thm:uniform-convergence-equivalence}{2.1}
-	The following are equivalent concerning a sequence of functions $f_{n}:E\to \mathbb{R}$ and $f: E\to \mathbb{R}$:
-
-	\begin{itemize}[leftmargin=*]
-		\setlength\itemsep{0em}
-		\item $f_{n}\to f$ uniformly on $E$
-
-		\item $\displaystyle\sup_{x\in E}\lvert f_{n}(x)-f(x) \rvert\to 0$ as $n\to\infty$
-
-		\item there exists a sequence $a_{n}\to 0$ s.t. $\lvert f_{n}(x)-f(x) \rvert\le a_{n},\, \forall x\in E$
-
-	\end{itemize}
-\end{thm}
-
-
-\begin{thm}[]{thm:continuity-of-convergent-f}{2.1}
-	Let $E$ be a nonempty subset of $\mathbb{R}$ and suppose that $f_{n}\to f$ uniformly on $E$ as $n\to\infty$. If each $f_{n}$ is continuous at some $x_{0}\in E$, then $f$ is continuous at $x_{0}\to E$
-\end{thm}
-
-\begin{dfn}[Uniformly Bounded Sequences]{dfn:uniformly-bounded}{2.2}
-	A sequence of functions $f_{n}$ is said to be \textbf{uniformly bounded} on a set $E$ if there is a $M>0$ such that $\lvert f_{n}(x) \rvert\le M$ for all $x\in E$ and all $n\in N$
-
-\end{dfn}
-
-\begin{thm}[]{thm:uniform-convergence-limit-swap}{2.2}
-	Suppose that $f_{n}\to f$ uniformly on a closed interval $[a,b]$. If each $f_{n}$ is integrable on $[a,b]$, then so is $f$ and 
-
-	\[\lim_{n \to \infty} \int_{a}^{b} f_{n}(x) \, dx =\int_{a}^{b} \left(\lim_{n \to \infty} f_{n}(x)\right) \, dx \]
-\end{thm}
-
-\begin{thm}[]{thm:uniformly-convergent-derivatives}{2.3}
-	Let $(a,b)$ be a bounded interval and suppose that $f_{n}$ is a sequence of functions which converges at some $x_{0}\in(a,b)$. If each $f_{n}$ is differentiable on $(a,b)$, and $f_{n}'$ converges uniformly on $(a,b)$ as $n\to\infty$, then $f_{n}$ converges uniformly on $(a,b)$ and
-
-	\[\lim_{n \to \infty} f'_{n}(x)=\left(\lim_{n \to \infty} f_{n}(x)\right)'\]
-\end{thm}
-
-\newpage
-
+\vspace{-5pt}
 \begin{dfn}[Convergence of series]{dfn:convergence-of-sequence}{2.3}
-	Let $f_{k}$ be a sequence of a real functions defined on some set $E$ and set
+	Let $f_{k}$ be a sequence of real functions defined on some set $E$ and set
 
+	\vspace{-5pt}
 	\[s_{n}(x)=\sum_{k=1}^{n} f_{k}(x),\quad x\in E,\,n\in \mathbb{N}\]
 	\begin{itemize}
 		\setlength\itemsep{0em}
-		\item The series $\displaystyle\sum_{k=1}^{\infty} f_{k}$ is said to \textbf{converge pointwise} on $E$ if and only if the sequence $s_{n}(x)$ converges pointwise on $E$ as $n\to\infty$
+		\item The series $\sum_{k=1}^{\infty} f_{k}$ \textbf{converges pointwise} on $E$ iff the sequence $s_{n}(x)$ converges pointwise on $E$ as $n\to\infty$
 
-		\item The series $\displaystyle\sum_{k=1}^{\infty} f_{k}$ is said to \textbf{converge uniformly} on $E$ if and only if the sequence $s_{n}(x)$ converges uniformly on $E$ as $n\to\infty$
+		\item The series $\sum_{k=1}^{\infty} f_{k}$ \textbf{converges uniformly} on $E$ iff the sequence $s_{n}(x)$ converges uniformly on $E$ as $n\to\infty$
 
-		\item The series $\displaystyle\sum_{k=1}^{\infty} f_{k}$ is said to \textbf{converge absolutely} (pointwise) on $E$ if and only if $\displaystyle\sum_{k=1}^{\infty} \lvert f_{k}(x) \rvert$ converges for each $x\in E$
+		\item The series $\sum_{k=1}^{\infty} f_{k}$ \textbf{converges absolutely} (pointwise) on $E$ iff $\sum_{k=1}^{\infty} \lvert f_{k}(x) \rvert$ converges for each $x\in E$
 
 	\end{itemize}
 \end{dfn}
+
+
+\begin{thm}[Uniform Continuity Theorems]{thm:uniform-continuity-thms}{2.1 - 2.3}
+	\begin{itemize}
+	    \setlength\itemsep{0em}
+	    \item The following are equivalent concerning a sequence of functions $f_{n}:E\to \mathbb{R}$ and $f: E\to \mathbb{R}$:
+
+			\begin{itemize}[leftmargin=*]
+				\setlength\itemsep{0em}
+				\item $f_{n}\to f$ uniformly on $E$
+
+				\item $\displaystyle\sup_{x\in E}\lvert f_{n}(x)-f(x) \rvert\to 0$ as $n\to\infty$
+
+				\item there exists a seq $a_{n}\to 0$ s.t. $\lvert f_{n}(x)-f(x) \rvert\le a_{n},\, \forall x\in E$
+
+			\end{itemize}
+			
+		\item[\textbf{2.1}:] Let $E$ be a nonempty subset of $\mathbb{R}$ and suppose that $f_{n}\to f$ uniformly on $E$ as $n\to\infty$. If each $f_{n}$ is continuous at some $x_{0}\in E$, then $f$ is continuous at $x_{0}\to E$
+		
+		\item[\textbf{2.2}:] Suppose that $f_{n}\to f$ uniformly on a closed interval $[a,b]$. If each $f_{n}$ is integrable on $[a,b]$, then so is $f$ and 
+	\[\lim_{n \to \infty} \int_{a}^{b} f_{n}(x) \, dx =\int_{a}^{b} \left(\lim_{n \to \infty} f_{n}(x)\right) \, dx \]
+		\item[\textbf{2.3}:] Let $(a,b)$ be a bounded interval and suppose that $f_{n}$ is a sequence of functions which converges at some $x_{0}\in(a,b)$. If each $f_{n}$ is differentiable on $(a,b)$, and $f_{n}'$ converges uniformly on $(a,b)$ as $n\to\infty$, then $f_{n}$ converges uniformly on $(a,b)$ and
+			\vspace{-2pt}
+			\[\lim_{n \to \infty} f'_{n}(x)=\left(\lim_{n \to \infty} f_{n}(x)\right)'\]
+	\end{itemize}
+\end{thm}
+
 
 \begin{thm}[Results of Convergent Series]{thm:convergent-series-results}{2.4}
 	Let $E$ be a nonempty subset of $\mathbb{R}$ and let $(f_{k})$ be a sequence of real functions defined on $E$.
@@ -392,52 +390,54 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	Let $E$ be a nonempty subset of $\mathbb{R}$, let $f_{k}: E\to \mathbb{R},\,k\in\mathbb{N}$, and suppose that $M_{k}>0$ satisfies $\displaystyle\sum_{k=1}^{\infty} M_{k}<\infty$. If $\lvert f_{k}(x) \rvert \le M_{k}$ for $k\in \mathbb{N}$ and $x\in E$,  then $f=\displaystyle\sum_{k=1}^{\infty}f_{k}$ converges absolutely and uniformly on $E$.
 \end{thm}
 
-\begin{dfn}[Power Series]{dfn:power-series}{3.0}
-	Let $(a_{n})$ be a sequence of real numbers, and $c\in \mathbb{R}$. A \textbf{power series} is a series of the form
-
-	\[\sum_{n=0}^{\infty} a_{n}(x-c)^{n}\]
-	The numbers $a_{n}$ are called the \textbf{coefficients} of the power series, and $c$ is its \textbf{centre}. In many cases it suffices to set $c=0$. Note that the series will always converge at the point $x=c$ as all terms beyond the first are $0$.
-\end{dfn}
-
-
-\begin{dfn}[Radius of Convergence]{dfn:radius-of-convergence}{3.1}
+\vspace{-5pt}
+\begin{dfn}[Power Series and RoC]{dfn:power-series}{3.1}
 	The \textbf{radius of convergence} $R$ of the power series
 
+	\vspace{-5pt}
 	\begin{equation}
 		\sum_{n=0}^{\infty} a_{n}(x-c)^{n}\tag{$*$}\label{$*$}
 	\end{equation}
 	is defined by
 
+	\vspace{-5pt}
 	\[R=\sup\{r\ge 0:(a_{n}r^n) \text{ is bounded}\}\]
-	unless $(a_{n}r^{n})$ is bounded for all $r\ge 0$, in which case we say that $R=\infty$
+	unless $(a_{n}r^{n})$ is bounded for all $r\ge 0$, where we say that $R=\infty$
 
 	\noindent\rule{\textwidth}{0.2pt}
 
 	\textbf{Thm 3.1}: Suppose the radius of convergence $R$ of \ref{$*$} satisfies $0<R<\infty$. If $\lvert x-c \rvert<R$, the power series \ref{$*$} converges absolutely. If $\lvert x-c \rvert>R$, the power series \ref{$*$} diverges
 \end{dfn}
 
+\vspace{-5pt}
 \begin{thm}[Continuty of Power Series]{thm:power-series-continuity}{3.2}
 	Assume that $R>0$. Suppose that $0<r<R$. Then a power series converges uniformly and absolutely on $\lvert x-c \rvert\le r$ to a continuous function $f$. Hence
 
+	\vspace{-5pt}
 	\[f(x)=\sum_{n=0}^{\infty} a_{n}(x-c)^{n}\]
 	defines a continuous function $f:(c-R,c+R)\to \mathbb{R}$
 
 	\noindent\rule{\textwidth}{0.2pt}
 	\textbf{Lemma 3.1}: The two power series
 
+	\vspace{-5pt}
 	\[\sum_{n=1}^{\infty} a_{n}(x-c)^{n}\text{ and } \sum_{n=1}^{\infty} na_{n}(x-c)^{n-1}\]
 	have the same radius of convergence
 \end{thm}
 
+\vspace{-5pt}
 \begin{thm}[Differentiation of Power Series]{thm:power-series-differentiation}{3.3}
 	Suppose the radius of convergence of a power series is $R$. Then the function
 
+	\vspace{-5pt}
 	\[f(x)=\sum_{n=0}^{\infty} a_{n}(x-c)^{n}\]
 	is infinitely differentiable on $\lvert x-c \rvert<R$, and for such $x$,
+	\vspace{-5pt}
 
 	\[f'(x)=\sum_{n=0}^{\infty} na_{n}(x-c)^{n-1}\]
 	and the series converges absolutely, and also uniformly on $[c-r,c+r]$ for any $r<R$. Moreover,
 
+	\vspace{-5pt}
 	\[a_{n}=\frac{f^{(n)}(c)}{n!}\]
 \end{thm}
 
