@@ -730,7 +730,9 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	holds for all $g\in X_{N}$ with equality iff $g = s_{N}$
 \end{thm}
 
+\vspace{-5pt}
 \begin{dfn}[Bessel's Inequality]{dfn:bessel-inequality}{5.3}
+	\vspace{-5pt}
 	If $(\phi_{n})_{n}$ is an orthonormal system on $[a,b]$ and $f\in L^{2}$, then
 	\[\sum_{n} \lvert \langle f, \phi_{n} \rangle \rvert^{2} \le \lVert f \rVert^{2}_{2}\]
 
@@ -739,27 +741,38 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	\[\lim_{n\to \infty}\langle f, \phi_{n} \rangle = 0\]
 \end{dfn}
 
+\vspace{-5pt}
 \begin{dfn}[Complete Orthonormal Systems]{dfn:complete-orthonormal-system}{5.5}
+	\vspace{-5pt}
 	An orthonormal system $(\phi_{n})_{n}$ is called \textbf{complete} if
 	\[\sum_{n} \lvert \langle f, \phi_{n} \rangle \rvert^{2} = \lVert f \rVert^{2}_{2}\]
+
+	\vspace{-2pt}
 	for all $f\in L^{2}$
 	
+	\vspace{-5pt}
 	\noindent\rule{\textwidth}{0.2pt}
 	% i have no idea why it's labelled wrong
 	\textbf{Thm 5.4}: Let $(\phi_{n})_{n}$ be an orthonormal system on $[a, b]$. Let $(s_{N})_{N}$ be as in Theorem \hyperref[dfn:inner-prod]{5.2}. Then $(\phi_{n})_{n}$ is complete iff $(s_{N})_{N}$ converges to $f$ in the $L^{2}$-norm for every $f\in L^{2}$
 \end{dfn}
 
+\vspace{-5pt}
 \begin{dfn}[Trigonometric Polynomials]{dfn:trigonometric-polynomials}{5.6}
 	A \textbf{trigonometric polynomial} is a function of the form
 	\[f(x) = \sum_{n = -N}^{N} c_{n} e^{2 \pi inx} \quad (x\in\mathbb{R})\]
 	where $N\in\mathbb{N}$ and $c_{n}\in\mathbb{C}$. If $c_{N}$ or $c_{-N}$ is non-zero, then $N$ is called the \textbf{degree} of $f$
 
-	Observe that trigonometric polynomials are continuous functions. Moreover, from Euler's identity $e^{ix} = \cos(x) + i\sin(x),\, (x\in \mathbb{R})$ we see that every trigonometric polynomial can also be written in the alternate form
+	Observe that trigonometric polynomials are continuous functions.
+
+	From Euler's identity $e^{ix} = \cos(x) + i\sin(x),\, (x\in \mathbb{R})$ we see that every trigonometric polynomial can also be written in the form
+	\vspace{-3pt}
 	\[ f(x) = a_{0} + \sum_{n = 0}^{N}(a_{n} \cos(2\pi nx) + b_{n}\sin(2 \pi nx))\]
 
+	\vspace{-2pt}
 	\noindent\rule{\textwidth}{0.2pt}
 	\textbf{Lemma 5.1}: $(e^{2 \pi inx})_{n\in \mathbb{Z}}$ forms an orthonormal system on $[0, 1]$. In particular,
-	\begin{enumerate}
+	\vspace{-3pt}
+	\begin{enumerate}[leftmargin=*]
 	    \item for all $n\in \mathbb{Z}$,
 			\[\int_{0}^{1} e^{2 \pi inx} dx = \begin{cases}
 				0, & \text{if $n\ne 0$} \\
@@ -784,7 +797,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	\[\lVert f - S_{N} f \rVert_{2} \le \lVert f - g \rVert_{2}\]
 \end{dfn}
 
-\newpage
 \begin{dfn}[Convolution]{dfn:convolution}{5.9}
 	For two $1$-periodic functions $f, g\in L^{2}$ we define their \textbf{convolution} by
 	\[f * g(x) = \int_{0}^{1} f(t)g(x - t) dt\]
@@ -812,6 +824,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	\textbf{Corollary}: Every $1$-periodic continuous function can be uniformly approximated by trigonometric polynomials. That is, for every $1$-periodic continuous $f$ there exists a sequence $(f_{n})_{n}$ of trigonometric polynomials so that $f_{n} \to f$ uniformly
 \end{dfn}
 
+\newpage
 \begin{dfn}[Approximation of Unity]{dfn:unity-approximation}{5.10}
 	A sequence of $1$-periodic integrable functions $(k_{n})_{n}$ is called \textbf{approximation of unity} if for all $1$-periodic continuous functions $f$ we have that $f * k_{n}$ converges uniformly to $f$ on $\mathbb{R}$. That is,
 	\[\sup_{x\in\mathbb{R}} \lvert f * k_{n}(x) - f(x) \rvert \to 0 \quad \text{as $n\to\infty$}\]
