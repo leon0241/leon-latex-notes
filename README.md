@@ -3,19 +3,19 @@
 LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and Maths. Feel free to use / fork / customise to your liking
 
 ## Links to 6-page Exam Sheets!
-- My magnum opus: Fundamentals of Pure Mathematics - [click here!](FPM/notes_colour.pdf)
-- Honours Algebra (not really 6 pages atm yet) - [click here!](algebra-6p/algebra-6p.pdf)
-- Honours Algebra everything (it's 10 pages lol) - [click here!](algebra-10p/algebra-10p.pdf)
+- My magnum opus: **Fundamentals of Pure Mathematics** - [click here!](FPM/notes_colour.pdf)
+- **Honours Algebra** - [click here!](algebra-6p/algebra-6p.pdf) *(not really 6 pages atm yet)*
+- **Honours Analysis** - [click here!](analysis-6p/analysis-6p.pdf) *(5 and a bit pages, will refine later)*
 
+- **Honours Algebra** everything - [click here!](algebra-10p/algebra-10p.pdf) *(it's 10 pages lol)*
 
+- Y3 **Geometry** - [click here!](Geometry/geometry_notes.pdf) *(they are really shit tho)*
+- **Introduction to Theoretical Computer Science** - [click here!](ITCS/itcs_notes.pdf) *(Adapted from Chris Dalziel's LaTeX notes)*
 
-- Y3 Geometry - [click here!](Geometry/geometry_notes.pdf) *(they are kinda shit tho)*
-- Introduction to Theoretical Computer Science - [click here!](ITCS/itcs_notes.pdf) *(Adapted from Chris Dalziel's LaTeX notes)*
-
-## Links to LaTeX Notes!
-- Honours Algebra (WIP) - [click here!](algebra/algebra-notes.pdf)
-- Metric Spaces (WIP) - [click here!](Metric%20Spaces/metric-notes.pdf)
-- Foundations of Natural Language Processing (BIG WIP) - [click here!](FNLP/fnlp-notes.pdf)
+## Links to LaTeX Notes! (probably none of these are getting finished lol)
+- **Honours Algebra** (WIP) - [click here!](algebra/algebra-notes.pdf) 
+- **Metric Spaces** (WIP) - [click here!](Metric%20Spaces/metric-notes.pdf)
+- **Foundations of Natural Language Processing** (BIG WIP) - [click here!](FNLP/fnlp-notes.pdf)
 
 :coffee: [(Optional) Buy me a coffee :)](https://ko-fi.com/leon024)
 
@@ -34,10 +34,11 @@ Text
 \end{type}
 ```
 Where:
-- type can be of type `thm` (theorem) / `dfn` (definition) / `xmp` (examples) / `rem` (remark)
-- title is what will be displayed after the type / number
-- reference is for cross-document hyperlinking
-- number is a custom text if filled. Does not have to be numeric
+- type can be of type: `thm` (theorem) / `dfn` (definition) / `xmp` (examples) / `rem` (remark) / `lma` (lemma) / `rcl` (recall - previous course def)
+
+`title` is what will be displayed after the type / number
+- `reference` is for cross-document hyperlinking
+- `number` is a custom text if filled. Does not have to be numeric
     - If not filled, the number follows an automatic scheme on `\subsubsection` level
 
 The files `thmboxes_col` and `thmboxes_white` are legacy from the FPM notes. `thmboxes_v2.sty`  might be cross compatible but I'm not going to try. 
@@ -68,7 +69,7 @@ Documentation is not being made for my snippets any time soon, and probably will
 Other configs I've tried to use (the FPM notes were made entirely with VSCode, not entirely sure how I did it because I tried to use it again in third year and it wasn't nearly as smooth, might upload my DICE VSCode configs at some point)
 
 - [VSCode with HSnips](https://github.com/leon0241/leon-latex-vscode-hsnip) - [Bonus video in action](https://youtu.be/LiLjxrPmJKo) (Quite possibly outdated)
-- [LaTeX Suite with Obsidian](https://github.com/leon0241/latex-suite-config) - Very smooth, and obsidian has the potential to be the best note-taking app by far, just requires a lot of dedication and planning
+- [LaTeX Suite with Obsidian](https://github.com/leon0241/latex-suite-config) - Very smooth, and obsidian has the potential to be a great cross-course note-taking app, just requires a lot of dedication and planning
 
 
 ## Legacy Info
