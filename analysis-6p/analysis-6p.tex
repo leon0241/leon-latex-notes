@@ -481,6 +481,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 	\textbf{Properties of Step Functions}
 
+	\vspace{-5pt}
 	\begin{enumerate}
 	    \setlength\itemsep{0em}
 	    \item The class of step functions is a vector space - i.e. if $\phi$ and $\psi$ are step functions and $\alpha$ and $\beta$ are real numbers, then $\alpha\phi+\beta\psi$ is a step function, and that if $\phi$ and $\psi$ are step functions, then $\max\{\phi,\psi\}$, $\min\{\phi\psi\}$, $\lvert \phi \rvert$ and $\phi\psi$ are also step functions
@@ -490,6 +491,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	for some $n$, $c_{j}$, and bounded intervals $J_{j}$
 	\end{enumerate}
 
+	\vspace{-8pt}
 	\noindent\rule{\textwidth}{0.2pt}
 
 	\textbf{Def 4.2: Integral of a Step Function}
@@ -524,7 +526,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	\[\sum_{j=1}^{\infty} c_{j}\lambda(J_{j})=\sum_{j=1}^{\infty} d_{j}\lambda(K_{j})\]
 \end{thm}
 
-\newpage
 \begin{thm}[Lebesgue Integral Properties]{dfn:lebesgue-props}{4.2}
 	Suppose $f$ and $g$ are integrable on $I$ and $\alpha$ and $\beta$ are real numbers. Then
 	\begin{enumerate}
@@ -561,9 +562,10 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	\[sup_{n\in \mathbb{N}} \int_{I} f_{n} = \lim_{n\to \infty} \int_{I} f_{n} < \infty. \quad \text{Also,} \int_{I} f = \lim_{n\to \infty} \int_{I} f_{n}\]
 \end{thm}
 
-
+\newpage
 
 \begin{dfn}[Riemann Integrable Functions]{dfn:riemann-integrable}{4.4}
+	\vspace{-5pt}
 	Let $f : \mathbb{R} \to \mathbb{R}$. We say that $f$ is \textbf{Riemann-integrable} if for every $\epsilon > 0$ there exists step functions $\phi$ and $\psi$ such that
 	\[\phi \le f \le \psi\]
 	and
@@ -584,32 +586,37 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	\end{align*}
 \end{dfn}
 
-\begin{thm}[Connection between Riemann and Lebesgue]{thm:riemann-lebesgue-connection}{4.6}
-	Suppose that $f : \mathbb{R} \to \mathbb{R}$ is Riemann-integrable. Then $f$ is also Lebesgue integrable on $\mathbb{R}$ and moreoever
-	\[(R) \int f = \int f\]
-	where the number on the lefthand side is the value of the Riemann integral of $f$, while the righthand side denotes the value of the Lebesgue integral of $f$ on $\mathbb{R}$
-\end{thm}
-
+\vspace{-6pt}
 \begin{thm}[Riemann lemmas]{thm:riemann-lemmas}{4.1}
+	\vspace{-5pt}
 	Let $f : \mathbb{R} \to \mathbb{R}$ be a bounded function with bounded support $[a, b]$. The following are equivalent:
-	\begin{enumerate}
+
+	\vspace{-5pt}
+	\begin{enumerate}[leftmargin=*]
 	    \item $f$ is Riemann-integrable
-	    \item for every $\epsilon > 0$ there exists $a = x_{0} < \cdots < x_{n} = b$ s.t. if $M_{j}$ and $m_{j}$ denote the supremum and infimum values of $f$ on $(x_{j-1}, x_{j})$ respectively, then
+			\vspace{-3pt}
+	    \item for every $\epsilon > 0$ there exists $a = x_{0} < \cdots < x_{n} = b$ s.t. if $M_{j}$ and $m_{j}$ denote the sup and inf of $f$ on $(x_{j-1}, x_{j})$ respectively, then
+
+			\vspace{-13pt}
 			\[\sum_{j = 1}^{n}(M_{j} - m_{j})(x_{j} - x_{j - 1}) < \epsilon\]
 		\item for every $\epsilon > 0$ there exists $\alpha = x_{0} < \cdots < x_{n} = b$ s.t. with $I_{j} = (x_{j-1}, x_{j})$ for $j \ge 1$
 			\[\sum_{j = 1}^{n} \sup_{x,y\in I_{j}} \lvert f(x) - f(y) \rvert \lambda(I_{j}) < \epsilon\]
 	\end{enumerate}
 
+	\vspace{-5pt}
 	\noindent\rule{\textwidth}{0.2pt}
 	Notation to aid these lemmas: For $f : \mathbb{R}\to \mathbb{R}$ a bounded function with bounded support $[a, b]$ and for $a = x_{0} < \cdots < x_{n} = b$, we let $I_{j} = (x_{j - 1}, x_{j}),\, m_{j} := \inf_{x\in I_{j}}f(x)$ and $M_{j} := \sup_{x\in I_{j}} f(x)$. We define the \textbf{lower step function of $f$ with respect to $\{x_{0},\dots,x_{n}\}$} as
 	\[\phi_{*}(x) = \sum_{j = 1}^{n} m_{j}\chi_{I_{j}}(x) + \sum_{j = 0}^{n} f(x_{j}) \chi_{\{x_{j}\}}(x)\]
 	and the \textbf{upper step function of $f$ with respect to $\{x_{0},\dots,x_{n}\}$} as
 	\[\phi^{*}(x) = \sum_{j = 1}^{n} M_{j}\chi_{I_{j}}(x) + \sum_{j = 0}^{n} f(x_{j}) \chi_{\{x_{j}\}}(x)\]
 
-	\textbf{Note:} $\phi_{*}(x)$ and $\phi^{*}(x)$ are step functions, and that $\phi_{*}(x) \le f \le \phi^{*}(x)$
+	\vspace{-2pt}
+	$\phi_{*}(x)$ and $\phi^{*}(x)$ are step functions, and $\phi_{*}(x) \le f \le \phi^{*}(x)$
 
+	\vspace{-3pt}
 	\noindent\rule{\textwidth}{0.2pt}
 	Suppose that $g : [a, b] \to \mathbb{R}$ and let $f$ be defined by $f(x) = g(x)$ for $x\in [a,b]$ and $f(x) = 0$ otherwise.
+	\vspace{-3pt}
 	\begin{enumerate}
 	    \setlength\itemsep{0em}
 	    \item If $g$ is continuous on $[a, b]$, then $f$ is Riemann-integrable
@@ -617,7 +624,14 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	\end{enumerate}
 \end{thm}
 
-\newpage
+\begin{thm}[Connection between Riemann and Lebesgue]{thm:riemann-lebesgue-connection}{4.6}
+	Suppose that $f : \mathbb{R} \to \mathbb{R}$ is Riemann-integrable. Then $f$ is also Lebesgue integrable on $\mathbb{R}$ and moreoever
+	\[(R) \int f = \int f\]
+	where the number on the lefthand side is the value of the Riemann integral of $f$, while the righthand side denotes the value of the Lebesgue integral of $f$ on $\mathbb{R}$
+\end{thm}
+
+
+
 \begin{thm}[Dependence on Intervals for Lebesgue]{thm:dependence-on-intervals}{4.8}
 	Let $I$ and $J$ be two intervals such that $J \subset I$.
 	\begin{enumerate}
@@ -670,6 +684,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	\[\int_{a}^{b} f = \lim_{n\to \infty} \int_{a}^{b} f_{n} \]
 \end{thm}
 
+\newpage
 \section{Fourier Series and Orthogonality}
 
 \begin{dfn}[The Space \texorpdfstring{$L^{2}$}{L2}]{dfn:l2-space}{5.1}
@@ -724,8 +739,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	\[\lim_{n\to \infty}\langle f, \phi_{n} \rangle = 0\]
 \end{dfn}
 
-\newpage
-
 \begin{dfn}[Complete Orthonormal Systems]{dfn:complete-orthonormal-system}{5.5}
 	An orthonormal system $(\phi_{n})_{n}$ is called \textbf{complete} if
 	\[\sum_{n} \lvert \langle f, \phi_{n} \rangle \rvert^{2} = \lVert f \rVert^{2}_{2}\]
@@ -771,6 +784,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	\[\lVert f - S_{N} f \rVert_{2} \le \lVert f - g \rVert_{2}\]
 \end{dfn}
 
+\newpage
 \begin{dfn}[Convolution]{dfn:convolution}{5.9}
 	For two $1$-periodic functions $f, g\in L^{2}$ we define their \textbf{convolution} by
 	\[f * g(x) = \int_{0}^{1} f(t)g(x - t) dt\]
