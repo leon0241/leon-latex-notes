@@ -58,7 +58,7 @@ Check thmboxes section on how to use
 
 Currently using a NeoVim / VimTex / LuaSnip setup to write notes. [Link to nvim config](https://github.com/leon0241/nvim-leon). The actual snippets are in `lua/snippets/tex`. Using TeXLive full installation, but a mini one should work decent, I don't think I use that many obscure packages
 
-nvim is mostly for more flexibility in terms of customising autocomplete (I use `jl` to navigate snippet tabs, `jp` to navigate back which afaik you can't do in VSCode and Obsidian)
+nvim is mostly for more flexibility in terms of customising autocomplete (I use `jl` to navigate snippet tabs, `jp` to navigate back which afaik you can't do in VSCode and Obsidian). Obviously though the biggest advantage is the superiority complex and ego boost of using vim :) (i use arch btw 🤓)
 
 Obviously inspired by the late Gilles Castel [Link to his setup](https://castel.dev/)
 
