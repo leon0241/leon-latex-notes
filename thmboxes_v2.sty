@@ -341,3 +341,60 @@
 
 
 
+
+
+
+
+% ======================== %
+%    (small) DEFINITION    %
+% ======================== %
+
+% \newcounter{thm}[section]
+% \setcounter{thm}{0}
+
+% set up new environment theorem with 3 arguments
+% [Name]{reference}{number}
+\newenvironment{sdfn}[3][]{%
+    % Argument 3 is a custom number
+    \ifstrempty{#3}
+        {
+            % If argument 3 isn't provided, then use the subsubsection numbering
+            \refstepcounter{subsubsection}
+            \newcommand{\thesdfn}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+        }
+        {
+            \newcommand{\thesdfn}{#3}
+        }
+    % Set up bounding boxes in tikz
+    \ifstrempty{#1}%
+        {
+            % if there is no argument 1 (Title), then just a box
+            \mdfsetup{
+                frametitle={
+                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                    \node[anchor=east,rectangle,fill=green!20]
+                    {\strut Def \thesdfn};
+                }
+            }
+        }
+        {
+            % if there is argument 1 (Title), then add title
+            \mdfsetup{
+                frametitle={
+                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                    \node[anchor=east,rectangle,fill=green!20]
+                    {\strut \thesdfn~#1};
+                }
+            }
+        }
+
+    % set bounds of box
+    \mdfsetup{innertopmargin=5pt,linecolor=green!20,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+    }
+    % start environment with label as argument 2
+    \begin{mdframed}[backgroundcolor=green!2]\relax\raggedright%
+        \label{#2}
+    }
+{\end{mdframed}}

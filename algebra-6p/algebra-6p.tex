@@ -112,6 +112,7 @@ see you guys in UG4 category theory!
         \end{enumerate}
     \end{multicols}
 
+
     \vspace{-10pt}
     and they satisfy the following lemmas (for both):
     \vspace{-5pt}
@@ -376,6 +377,7 @@ see you guys in UG4 category theory!
 
 \section{Rings and Modules}
 
+\vspace{-5pt}
 \begin{xmp}[Modulo Rings]{xmp:modulo-rings}{3.1.4}
     Let $m\in \mathbb{Z}$. Then the set of \textbf{integers modulo} $m$ is a ring, written
     \[\mathbb{Z} / m\mathbb{Z}\]
@@ -387,7 +389,7 @@ see you guys in UG4 category theory!
     \textbf{Thm 3.1.11 - Prime Property for Fields}: Let $m\in\mathbb{N}$. The commutative ring $\mathbb{Z} / m\mathbb{Z}$ is a field if and only if $m$ is prime
 \end{xmp}
 
-\vspace{-5pt}
+\vspace{-6pt}
 \begin{dfn}[Multiples of an abelian group]{dfn:abelian-group-multis}{3.2.3}
     Let $m\in \mathbb{Z}$. The \textbf{$m$-th multiple $ma$ of an element $a$}in an abelian group $R$ is:
     \[ma = \underbrace{a + a + \cdots + a}_{\text{$m$ terms}} \quad \text{if} m > 0\]
@@ -404,20 +406,40 @@ see you guys in UG4 category theory!
     \textbf{Definition 3.1.8}: A \textbf{field} is a non-zero commutative ring $F$ in which every non-zero element $a\in F$ is a unit.
 \end{dfn}
 
-
+\vspace{-5pt}
 \begin{dfn}[zero-divisors of a ring]{dfn:zero-divisor}{3.2.11}
-    In a ring $R$, a non-zero element $a$ is called a \textbf{zero-divisor} or \textbf{divisor of zero} if there exists a non-zero element $b$ such that either $ab = 0$ or $ba = 0$.
+    \vspace{-5pt}
+    In a ring $R$, a non-zero $a$ is called a \textbf{zero-divisor} or \textbf{divisor of zero} if there exists a non-zero element $b$ such that either $ab = 0$ or $ba = 0$.
 \end{dfn}
 
-\begin{dfn}[Integral Domain]{dfn:integral-domain}{3.2.12}
-    An \textbf{integral domain} is a non-zero commutative ring that has no zero-divisors. The following two laws hold:
-    \begin{enumerate}
-        \setlength\itemsep{0em}
-        \item $ab = 0 \implies a = 0 \text{ or } b = 0$
-        \item $a \ne 0 \text{ and } b \ne 0 \implies ab \ne 0$
-    \end{enumerate}
-\end{dfn}
+\vspace{-10pt}
+\begin{multicols}{2}
+    \begin{sdfn}[Integral Domain]{dfn:integral-domain}{3.2.12}
+        \vspace{-5pt}
+        An \textbf{integral domain} is a non-zero commutative ring that has no zero-divisors. The following two laws hold:
+        \begin{enumerate}
+            \setlength\itemsep{0em}
+            \item $ab = 0 \implies a = 0 \text{ or } b = 0$
+            \item $a \ne 0 \text{ and } b \ne 0 \implies ab \ne 0$
+        \end{enumerate}
 
+
+    \end{sdfn}
+
+    \columnbreak
+
+    \begin{rcl}[Group]{dfn:group-def}{A}
+        \begin{itemize}[leftmargin=*]
+            \setlength\itemsep{0em}
+            \item Closure: $a*b\in G$
+            \item Assocciativity: $(a * b) * c = a * (b * c)$
+            \item Identity: $\exists e$ s.t. $e*g=g*e=e$
+            \item Inverse: $\exists g$ s.t. $g*g^{-1}=g^{-1}*g=e$
+        \end{itemize}
+    \end{rcl}
+\end{multicols}
+
+\vspace{-10pt}
 
 \begin{thm}[Integral Domain Properties]{thm:int-domain-props}{3.2}
     \begin{itemize}
