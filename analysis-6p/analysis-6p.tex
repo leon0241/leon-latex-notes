@@ -19,6 +19,10 @@
 
 \usepackage[fontsize=7pt]{scrextend}
 
+\usepackage{pgfplots}
+\pgfplotsset{width=200pt,compat=1.9}
+
+
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -982,6 +986,68 @@ All the metric space stuff isn't here coz i've got no idea what will actually sh
     \[\dots = \text{"equation in terms of n"} \le \text{"same thing in terms of N"} < \epsilon\]
 \end{xmp}
 
+\begin{xmp}[Lebesgue Integral]{xmp:lebesgue-2022}{2022 Q3a}
+	\textit{Let $\displaystyle f(x) = \left\lfloor \frac{1}{x} \right\rfloor^{2}$, where $\lfloor \cdot \rfloor$ is the floor function.}
+
+	\textit{Using the definition of the Lebesgue integral, discuss integrability of $f$ on the interval $( \frac{1}{3}, \infty)$. If the function is Lebesgue integrable, calculate the value of $\int_{ 1 /3}^{\infty}f$}
+
+	\vspace{-2pt}
+	\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[
+		height=120pt,
+		width=\textwidth,
+		xtick={0,1/3,1/2,1},
+		xticklabels={$0$,$\frac{1}{3}$, $\frac{1}{2}$, $1$},
+		ytick={0,1,4,9},
+		ymin=0,ymax=10,
+		xmin=0,xmax=3,
+		]
+	\addplot[
+		domain=1/3:10,
+		samples=100,
+		color=red
+		]{1/x^2};
+	\draw[color=black, dashed] 
+		(axis cs:1/3, 0) -- (axis cs:1/3, 10);
+	\draw (axis cs:1/3,0) rectangle (axis cs:1/2,4);
+	\draw (axis cs:1/2,0) rectangle (axis cs:1,1);
+	
+
+	\addlegendentry{\( \frac{1}{x^2} \)};
+	\end{axis}
+	\end{tikzpicture}
+	\end{center}
+	\vspace{-5pt}
+
+	Above is the graph of $f(x)$ compared to $\frac{1}{x}^{2}$.
+	\newline For $x > 1$, we have $f(x) = 0$ and for $x\in (\frac{1}{n+1}, \frac{1}{n}]$ we have $f(x) = n^{2}$
+	\newline Therefore, on $(\frac{1}{3}, \infty)$, $J = \{( \frac{1}{2}, 1], ( \frac{1}{3}, \frac{1}{2}]\}$ we have
+		\[f(x) = \sum_{j = 1}^{2} c_{j} \chi_{J_{j}}(x) = 4\chi_{( \frac{1}{3}, \frac{1}{2}]} + 1\chi_{( \frac{1}{2}, 1]}\]
+
+	Therefore, via Definition 4.3, we have that
+	\[\sum_{j = 1}^{2} \lvert c_{j} \rvert \lambda(J_{j}) =\lvert 1 \rvert \lambda\left( \left( \frac{1}{2}, 1\right]\right) + \lvert 4 \rvert \lambda\left( \left( \frac{1}{3}, \frac{1}{2}\right]\right) < \infty\]
+	And therefore, $f$ is integrable on $(\frac{1}{3}, \infty)$, and
+	\begin{align*}
+		\int_{ \frac{1}{3}}^{\infty} f &= \lambda\left( \left( \frac{1}{2}, 1\right]\right) + 4\lambda\left( \left( \frac{1}{3}, \frac{1}{2}\right]\right) \\
+									   &= \left(1 - \frac{1}{2}\right) + 4\left( \frac{1}{2} - \frac{1}{3}\right) = \frac{1}{2} + \frac{4}{6} = \frac{7}{6}
+	\end{align*}
+
+	\noindent\rule{\textwidth}{0.2pt}
+	\textit{Discuss the Lebesgue integrability of the function $f$ on the interval $(0, 1]$. If the function is integrable, calculate the value of $\int_{0}^{1} f$}
+
+	Proof using Monotone Convergence Theorem: Consider $f_{n} = f \chi_{(1 /n, 1]}$. Then $f_{n}\to f$ monotonically and hence $f$ is integrable on $(0, 1]$ iff
+	\[\sup_{n} \int_{0}^{1} f_{n} < \infty\]
+	For each $f_{n}$ we can calculate an increasing sum:
+	\begin{align*}
+		\int_{0}^{1} f_{n} = \int_{1 /n}^{1} f &= \sum_{k = 1}^{n - 1} k^{2} \lambda \left(\left(\frac{1}{k+1}, \frac{1}{k}\right]\right) \\
+											   &= \sum_{k = 1}^{n - 1} \frac{k^{2}}{k(k+1)} =\sum_{k = 1}^{n - 1} \frac{k}{k+1} 
+	\end{align*}
+
+	Since $\frac{k}{k + 1} \to 1$ the series $\sum_{k = 1}^{\infty} \frac{k}{k+1}$ diverges, and hence
+	\[\sup_{n} \int_{0}^{1} f_{n} = \infty\]
+	and therefore, $f$ is \textbf{not} integrable on $(0, 1]$
+\end{xmp}
 
 
 
