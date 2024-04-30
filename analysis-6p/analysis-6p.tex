@@ -248,7 +248,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	Let $E \subset \mathbb{R}$, $E$ nonempty. A sequence of functions $f_{n}: E\to \mathbb{R}$ is said to \textbf{converge pointwise} on $E$, written $f_{n}\to f$ pointwise on $E$ as $n\to \infty$, iff $f(x) = \lim_{n \to \infty}f_{n}(x)$ exists for each $x \in E$
 
 	\noindent\rule{\textwidth}{0.2pt}
-	$f_{n}$ converges pointwise on $E$, as $n\to\infty$, iff for every $\epsilon>0$ and $x \in E$ there is an $N \in\mathbb{N}$ (which may depend on $x$ as well we $\epsilon$) such that
+	$f_{n}$ \textbf{converges pointwise} on $E$, as $n\to\infty$, iff for every $\epsilon>0$ and $x \in E$ there's an $N \in\mathbb{N}$ (which may depend on $x$ as well as $\epsilon$) s.t.
 
 	\vspace{-8pt}
 	\[n\ge N\quad\text{implies}\quad \lvert f_{n}(x)-f(x) \rvert < \epsilon\]
@@ -963,6 +963,15 @@ All the metric space stuff isn't here coz i've got no idea what will actually sh
 				\text{diverges}, & \lvert r \rvert \ge 1
 			\end{cases}\]
 		\item \textbf{Ratio test}: $\displaystyle L = \lim_{n\to\infty} \left\lvert \frac{a_{n+1}}{a_{n}} \right\rvert$ - $L<1$: converge,  $L>1$: diverge
+		
+		\item \textbf{Mean Value Theorem}: If $f : [a,b]\to\mathbb{R}$, $a < b$ is continuous in $[a,b]$, differentiable in $(a, b)$ then $\exists c\in (a,b)$ s.t.
+			\[f'(c) = \frac{f(b) - f(a)}{b - a}\]
+			This can be rearranged to be
+			\[\lvert f(x) - f(a) \rvert = \lvert f'(c) \rvert \lvert x - a \rvert\]
+			and you can randomly substitute $a = 0$ to get
+			\[\lvert f(x) - f(0) \rvert = \lvert f'(c) \rvert \lvert x - 0 \rvert \implies \lvert f'(c) \rvert \lvert x \rvert\]
+			also for some reason it shows
+			\[\lvert \sin(a) - \sin(b) \rvert \le \lvert a - b \rvert\]
 	\end{itemize}
 \end{rcl}
 
@@ -985,6 +994,12 @@ All the metric space stuff isn't here coz i've got no idea what will actually sh
     "Same steps as rough working"
     \[\dots = \text{"equation in terms of n"} \le \text{"same thing in terms of N"} < \epsilon\]
 \end{xmp}
+
+\begin{xmp}[Random functions to compare]{xmp:comparison-functions}{yippee}
+	
+\end{xmp}
+
+
 
 \begin{xmp}[Lebesgue Integral]{xmp:lebesgue-2022}{2022 Q3a}
 	\textit{Let $\displaystyle f(x) = \left\lfloor \frac{1}{x} \right\rfloor^{2}$, where $\lfloor \cdot \rfloor$ is the floor function.}
