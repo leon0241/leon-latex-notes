@@ -584,6 +584,9 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \begin{dfn}[Inner Product]{dfn:inner-prod}{5.2}
 	For two functions $f, g\in L^{2}([a,b])$, we define their \textbf{inner product} by
 	\[\langle f, g \rangle = \int_{a}^{b} f(x)\overline{g(x)} dx\]
+
+	Also, we have that
+	\[\lvert z \rvert^{2} = z \overline{z} \text{ and therefore } \int_{a}^{b} \lvert z \rvert^{2} dx = \langle z, z \rangle\]
 \end{dfn}
 
 \begin{thm}[Cauchy-Shwarz Inequality]{dfn:cauchy-schwarz}{5.1}
@@ -960,16 +963,53 @@ All the metric space stuff isn't here coz i've got no idea what will actually sh
 				\displaystyle\frac{a}{1 - r}, & \lvert r \rvert < 1 \\
 				\text{diverges}, & \lvert r \rvert \ge 1
 			\end{cases}\]
-		\item \textbf{Ratio test}: $\displaystyle L = \lim_{n\to\infty} \left\lvert \frac{a_{n+1}}{a_{n}} \right\rvert$ - $L<1$: converge,  $L>1$: diverge
+		\item \textbf{Ratio test}: $\displaystyle L = \lim_{n\to\infty} \left\lvert \frac{a_{n+1}}{a_{n}} \right\rvert$. $L<1$: converge,  $L>1$: diverge
+		\item \textbf{Root Test}: $\displaystyle L = \lim_{n\to \infty} \sqrt[n]{a_{n}}$. $0 \le L < 1$: converge, $L>1$: diverge
 		
 		\item \textbf{Mean Value Theorem}: If $f : [a,b]\to\mathbb{R}$, $a < b$ is continuous in $[a,b]$, differentiable in $(a, b)$ then $\exists c\in (a,b)$ s.t.
 			\[f'(c) = \frac{f(b) - f(a)}{b - a}\]
-			This can be rearranged to be
-			\[\lvert f(x) - f(a) \rvert = \lvert f'(c) \rvert \lvert x - a \rvert\]
-			and you can randomly substitute $a = 0$ to get
-			\[\lvert f(x) - f(0) \rvert = \lvert f'(c) \rvert \lvert x - 0 \rvert \implies \lvert f'(c) \rvert \lvert x \rvert\]
-			also for some reason it shows
-			\[\lvert \sin(a) - \sin(b) \rvert \le \lvert a - b \rvert\]
+			Random things that you can say ``via the MVT...'' for:
+			\begin{itemize}
+			    \item $\lvert f(x) - f(a) \rvert = \lvert f'(c) \rvert \lvert x - a \rvert$
+			    \item $\lvert f(x) - f(0) \rvert = \lvert f'(c) \rvert \lvert x - 0 \rvert \implies \lvert f'(c) \rvert \lvert x \rvert$ (substitute $0$)
+			    \item $\lvert \sin(a) - \sin(b) \rvert \le \lvert a - b \rvert$
+			
+			\end{itemize}
+	\end{itemize}
+
+	\noindent\rule{\textwidth}{0.2pt}
+
+	\textbf{Random Expansions (Taylor's Version)}
+	\vspace{-10pt}
+	\begin{itemize}
+	\begin{multicols}{2}
+	    \item $\displaystyle E(x) := \sum_{n = 0}^{\infty} \frac{x^{n}}{n!}$
+	    \item $\displaystyle \sin(x) = \sum_{n = 0}^{\infty} \frac{(-1)^{n}x^{2n + 1}}{(2n + 1)!}$
+	    \item $\displaystyle \cos(x) = \sum_{n = 0}^{\infty} -\frac{(-1)^{n}x^{2n}}{(2n)!}$
+	\end{multicols}
+	\end{itemize}
+
+	\vspace{-15pt}
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Random Lebaguette functions}
+	\begin{itemize}
+	    \item \textbf{Dirichlet function}: $f(x) = \begin{cases}
+				1 & x\in\mathbb{Q} \\
+				0 & x\not\in\mathbb{Q}
+	    \end{cases} = \chi_{\mathbb{Q}\cap[0,1]}$
+
+		The dirichlet function is equal to $0$, because the rationals are countable and therefore have measure $0$
+		\item \textbf{Cantor Middle Set}: uhh a set without the middle third in it
+			\begin{align*}
+				C = \bigcap\limits_{k = 1}^{\infty} F_{k}:\quad \text{$F_{0} = [0,1]$},\quad F_{1} &= \left[0, \frac{1}{3}\right] \cup \left[ \frac{2}{3}, 1\right] \\
+																												   &= [0, 1] \backslash \left( \frac{1}{3}, \frac{2}{3}\right)
+			\end{align*}
+		and further intervals are constructed by removing the middle third of each interval, e.g.
+		\begin{align*}
+			F_{2} &= \left[0, \frac{1}{9}\right] \cup \left[ \frac{2}{9}, \frac{1}{3}\right] \cup \left[ \frac{2}{3}, \frac{7}{9}\right] \cup \left[ \frac{8}{9}, 1\right] \\
+				  &= F_{1} \backslash \left(\frac{1}{9}, \frac{2}{9}\right) \backslash \left( \frac{7}{9}, \frac{8}{9}\right)
+		\end{align*}
+		lotta workin' but basically it equals $0$
 	\end{itemize}
 \end{rcl}
 
@@ -993,9 +1033,15 @@ All the metric space stuff isn't here coz i've got no idea what will actually sh
     \[\dots = \text{"equation in terms of n"} \le \text{"same thing in terms of N"} < \epsilon\]
 \end{xmp}
 
-\begin{xmp}[Random functions to compare]{xmp:comparison-functions}{yippee}
-	
-\end{xmp}
+\begin{thm}[random inner product derivation]{thm:inner-prod}{idk}
+	\begin{align*}
+		\int_{0}^{1} \lvert f_{k}(x) - f_{l}(x) \rvert^{2} dx &= \int_{0}^{1} \left\lvert \sum_{n = 1}^{k} c_{n}\phi_{n} - \sum_{n = 1}^{l} c_{n}\phi_{n}(x) \right\rvert ^{2} dx\\
+															  &= \int_{0}^{1} \left\lvert \sum_{n = l+1}^{M} c_{n}\phi_{n}(x) \right\rvert^{2} dx\\
+		\text{(because $\lvert z \rvert = z \overline{z}$),} &= \int_{0}^{1} \left(\sum_{n = l+1}^{M} c_{n}\phi_{n}(x)\right)\hspace{-5pt}\overline{\left(\sum_{n = l+1}^{M} c_{n}\phi_{n}(x)\right)} dx\\
+															 &= \left\langle \sum_{n = l+1}^{M} c_{n}\phi_{n}(x),\sum_{n = l+1}^{M} c_{n}\phi_{n}(x) \right\rangle\\
+															 &= \sum_{n = m}^{M} \lvert c_{n} \rvert^{2}
+	\end{align*}
+\end{thm}
 
 
 
@@ -1061,6 +1107,7 @@ All the metric space stuff isn't here coz i've got no idea what will actually sh
 	\[\sup_{n} \int_{0}^{1} f_{n} = \infty\]
 	and therefore, $f$ is \textbf{not} integrable on $(0, 1]$
 \end{xmp}
+
 
 
 
