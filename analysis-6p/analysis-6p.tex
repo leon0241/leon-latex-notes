@@ -708,34 +708,55 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 	\textbf{Corollary}: Every $1$-periodic continuous function can be uniformly approximated by trigonometric polynomials. That is, for every $1$-periodic continuous $f$ there exists a sequence $(f_{n})_{n}$ of trigonometric polynomials so that $f_{n} \to f$ uniformly
 
-	% TODO: Add cesaro sum
 \end{dfn}
 
+\begin{dfn}[Cesaro and Abel Summations]{dfn:cesaro-abel}{5.10}
+	Let $(a_{k})_{k}$ be a sequence of complex numbers with limit $L$. Prove that
+	\[\lim_{n\to \infty} \frac{a_{1} + \cdots + a_{n}}{n} = L\]
+	Given the sequence $a_{k}$, form the partial sums $s_{n} = \sum_{k = 1}^{n} a_{k}$ and let
+	\[\sigma_{N} = \frac{s_{1} + \cdots + s_{N}}{N}\]
+	$\sigma_{N}$ is called the $N$-th Cesàro mean of the sequence $s_{k}$ or the $N$-th Cesàro sum of the series $\sum_{k = 1}^{\infty} a_{k}$. If $\sigma_{N}$ converges to a limit $S$ we say that the sereis $\sum_{k = 1}^{\infty} a_{k}$ is \textbf{Cesàro summable to $S$}
+
+	If $\sum_{k = 1}^{\infty} a_{k}$ is summable to $S$ (i.e. converges with sum $S$), then $\sum_{k = 1}^{\infty} a_{k}$ is Cesàro summable to $S$
+
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Def (Abel summation)}: $\sum_{n = 0}^{\infty}a_{n}$ with $a_{n}\in \mathbb{C}$ is \textbf{Abel summable to $S$} if the series $A(r) = \sum_{n = 0}^{\infty}a_{n}r^{n}$ converges for every $r\in(0,1)$ and the limit $\lim_{r\to 1-} A(r)$ exists and equals $S$
+\end{dfn}
+
+\vspace{-5pt}
 \begin{dfn}[Approximation of Unity]{dfn:unity-approximation}{5.10}
+	\vspace{-5pt}
 	A sequence of $1$-periodic integrable functions $(k_{n})_{n}$ is called \textbf{approximation of unity} if for all $1$-periodic continuous functions $f$ we have that $f * k_{n}$ converges uniformly to $f$ on $\mathbb{R}$. That is,
 	\[\sup_{x\in\mathbb{R}} \lvert f * k_{n}(x) - f(x) \rvert \to 0 \quad \text{as $n\to\infty$}\]
 
 	\noindent\rule{\textwidth}{0.2pt}
 	\textbf{Thm 5.6}: Let $(k_{n})_{n}$ be a sequence of $1$-periodic integrable functions such that
+	\vspace{-5pt}
 	\begin{enumerate}
 	    \item $k_{n}(x) \ge 0$ for all $x\in\mathbb{R}$
 	    \item $\int_{-1 /2}^{1 /2} k_{n}(t) dt = 1$
-	    \item For all $1 /2 \ge \delta > 0$ we have
-			\[\int_{-\delta}^{\delta} k_{n}(t) dt \to 1 \quad\text{as $n\to\infty$}\]
+			\vspace{-8pt}
+	    \item For all $1 /2 \ge \delta > 0$ we have $\displaystyle\int_{-\delta}^{\delta} k_{n}(t) dt \to 1 \quad\text{as $n\to\infty$}$
 	\end{enumerate}
 
+	\vspace{-5pt}
 	Then $(k_{n})_{n}$ is an approximation of unity
 
+	\vspace{-5pt}
 	\noindent\rule{\textwidth}{0.2pt}
 	\textbf{Corollary}: The Fejér kernel $(K_{N})_{N}$ is an approximation of unity
 \end{dfn}
 
+\vspace{-5pt}
 \begin{lma}[]{dfn:fejer-continuous}{5.5}
+	\vspace{-5pt}
 	Let $f$ be a $1$-periodic and continuous function. Then
 	\[\lim_{N\to \infty} \lVert S_{N} f - f \rVert_{2} = 0\]
 \end{lma}
 
+\vspace{-5pt}
 \begin{thm}[Completeness of Trigonometric System]{thm:trigonometric-completeness}{5.7}
+	\vspace{-5pt}
 	The trigonometric system is complete. In view of Theorem \hyperref[dfn:complete-orthonormal-system]{5.4} this means that for every $1$-periodic $L^{2}$ function $f$ we have
 	\[\lim_{N\to \infty} \lVert S_{N} f - f \rVert_{2} = 0\]
 	In other words, the Fourier series of $f$ converges to $f$ in the $L^{2}$ sense
@@ -867,10 +888,15 @@ All the metric space stuff isn't here coz i've got no idea what will actually sh
 	\noindent\rule{\textwidth}{0.2pt}
 
 	\textbf{Thm 2.5 (Weierstrass M-test)}Let $E$ be a nonempty subset of $\mathbb{R}$, let $f_{k}: E\to \mathbb{R},\,k\in\mathbb{N}$, and suppose that $M_{k}>0$ satisfies $\sum_{k=1}^{\infty} M_{k}<\infty$. If $\lvert f_{k}(x) \rvert \le M_{k}$ for $k\in \mathbb{N}$ and $x\in E$,  then $f=\sum_{k=1}^{\infty}f_{k}$ converges absolutely and uniformly on $E$.
+
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Random theorem (Workshop 6)}: Suppose $f : [a,b]\to \mathbb{R}$ is continuous. Then it is uniformly continuous
 \end{thm}
 
 \begin{thm}[Is something Lebesgue Integrable?]{thm:integrable-theorems}{C}
+	\vspace{-5pt}
 	\textbf{Theorem 4.2 (Basic Properties of Lebesgue Integral)}: Suppose $f$ and $g$ are integrable on $I$, and $\alpha, \beta\in \mathbb{R}$. Then,
+	\vspace{-5pt}
 	\begin{enumerate}
 		\setlength\itemsep{0em}
 		\item $\alpha f + \beta g$ is integrable on $I$ and
@@ -882,6 +908,7 @@ All the metric space stuff isn't here coz i've got no idea what will actually sh
 		\item If $f\ge 0$ with $\int_{I}f=0$ then any function $h$ such that $0\le h\le f$ on $I$ is integrable on $I$
 	\end{enumerate}
 
+	\vspace{-7pt}
 	\noindent\rule{\textwidth}{0.2pt}
 	\textbf{Theorem 4.3 (Integrability of Sequences and Series)}
 
@@ -889,6 +916,7 @@ All the metric space stuff isn't here coz i've got no idea what will actually sh
 	\begin{enumerate}
 		\setlength\itemsep{0em}
 		\item Assume that
+			\vspace{-5pt}
 		\[\sum_{n=1}^{\infty} \int_{I} \lvert f_{n} \rvert <\infty\]
 		Let $f$ be a function on the interval $I$ such that
 		\[f(x)=\sum_{n=1}^{\infty} f_{n}(x)\quad\text{for all } x\in I\text{ such that}\quad \sum_{n=1}^{\infty} \lvert f_{n}(x) \rvert <\infty\]
@@ -897,6 +925,8 @@ All the metric space stuff isn't here coz i've got no idea what will actually sh
 		\item Assume that each $f_{n}\ge 0$ on $I$ and let $f(x)=\sum_{n=1}^{\infty}f_{n}(x)$ for all $x\in I$ (we allow for the possibility that at some points this sum is infinite). Then $f$ is integrable on $I$ if and only if
 		\[\sum_{n=1}^{\infty} \int_{I} f_{n}<\infty\]
 	\end{enumerate}
+
+	\vspace{-5pt}
 	\noindent\rule{\textwidth}{0.2pt}
 
 	\textbf{Theorem 4.4 (Monotone Convergence)}: Suppose that $(f_{n})$ is a monotone increasing sequence of integrable functions on an interval $I$. i.e. $f_{1}(x) \le f_{2}(x) \le f_{3}(x) \le \dots$ for all $x\in I$. For all $x\in I$, let
@@ -906,10 +936,13 @@ All the metric space stuff isn't here coz i've got no idea what will actually sh
 
 	\noindent\rule{\textwidth}{0.2pt}
 
-	Let $I$ be an interval and $E \subset I$ a coutnable set. $\chi_{E}$ is integrable on $I$ and $\int_{I}\chi_{E} = 0$
+	Let $I$ be an interval and $E \subset I$ a countable set. $\chi_{E}$ is integrable on $I$ and $\int_{I}\chi_{E} = 0$
 
 	\noindent\rule{\textwidth}{0.2pt}
 	\textbf{Random remark}: Step functions are Riemann-integrable
+
+	\textbf{Random theorem in workshop 9 2023 lol}: $g$ is integrable on $[0, \infty)$ iff $g$ is integrable on $[0, v)$ for all $v < \infty$ and
+	\[\sup_{v > 0} \int_{0}^{v} \lvert g(x) \rvert dx < \infty\]
 \end{thm}
 
 \newpage
