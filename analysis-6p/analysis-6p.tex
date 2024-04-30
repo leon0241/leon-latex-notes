@@ -863,6 +863,49 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	\[\lVert f \rVert^{2}_{2} = \sum_{n = -\infty}^{\infty} \lvert \widehat{f}(n) \rvert^{2}\]
 \end{thm}
 
+\newpage
+
+\section{Theorem Bank}
+
+
+\begin{thm}[Is something Integrable?]{thm:integrable-theorems}{A}
+	\textbf{Theorem 4.2 (Basic Properties of Lebesgue Integral)}: Suppose $f$ and $g$ are integrable on $I$, and $\alpha$ and $\beta$ 
+	\begin{enumerate}
+		\setlength\itemsep{0em}
+		\item $\alpha f + \beta g$ is integrable on $I$ and
+		\[\int_{I} (\alpha f + \beta g)=\alpha\int_{I} f+\beta\int_{I} g\]
+		\item If $f\ge 0$ on $I$ then $\int_{I}f\ge 0$; if $f\ge g$ on $I$ then $\int_{I}f\ge \int_{I}g$
+		\item $\lvert f \rvert$ is integrable on $I$ and $\left\lvert  \int_{f}f  \right\rvert\le \int_{I}\lvert f \rvert$
+		\item $\max\{f,g\}$ and $\min\{f,g\}$ are integrable on $I$
+		\item If one of the functions is bounded then the product $fg$ is integrable on $I$
+		\item If $f\ge 0$ with $\int_{I}f=0$ then any function $h$ such that $0\le h\le f$ on $I$ is integrable on $I$
+	\end{enumerate}
+
+	\noindent\rule{\textwidth}{0.2pt}
+	\textbf{Theorem 4.3 (Integrability of Sequences and Series)}
+
+	Suppose that $(f_{n})_{n\in\mathbb{N}}$ is a sequence of functions each of which is integrable on $I$
+	\begin{enumerate}
+		\setlength\itemsep{0em}
+		\item Assume that
+		\[\sum_{n=1}^{\infty} \int_{I} \lvert f_{n} \rvert <\infty\]
+		Let $f$ be a function on the interval $I$ such that
+		\[f(x)=\sum_{n=1}^{\infty} f_{n}(x)\quad\text{for all } x\in I\text{ such that}\quad \sum_{n=1}^{\infty} \lvert f_{n}(x) \rvert <\infty\]
+		Then $f$ is integrable on $I$ and its integral on $I$ is equal to
+		\[\int_{I} f=\sum_{n=1}^{\infty} \int_{I} f_{n}\]
+		\item Assume that each $f_{n}\ge 0$ on $I$ and let $f(x)=\sum_{n=1}^{\infty}f_{n}(x)$ for all $x\in I$ (we allow for the possibility that at some points this sum is infinite). Then $f$ is integrable on $I$ if and only if
+		\[\sum_{n=1}^{\infty} \int_{I} f_{n}<\infty\]
+	\end{enumerate}
+	\noindent\rule{\textwidth}{0.2pt}
+
+	Let $I$ be an interval and $E \subset I$ a coutnable set. $\chi_{E}$ is integrable on $I$ and $\int_{I}\chi_{E} = 0$
+\end{thm}
+
+% TODO: Add the inverse to continuity - also add uniform continuity definition
+% - Triangle Inequality (and reverse tri ineq)
+% - step functions are riemann integrable
+% - Geometric series test
+
 
 \lipsum[1-12]
 \end{multicols}
