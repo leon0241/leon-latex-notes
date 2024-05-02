@@ -4,7 +4,7 @@ LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and M
 
 ## Links to 6-page Exam Sheets!
 - My magnum opus: **Fundamentals of Pure Mathematics** - [click here!](FPM/notes_colour.pdf)
-- **Honours Algebra** - [click here!](algebra-6p/algebra-6p.pdf) *(not really 6 pages atm yet)*
+- **Honours Algebra** - [click here!](algebra-6p/algebra-6p.pdf) *(6 pages babyyyy)*
 - **Honours Analysis** - [click here!](analysis-6p/analysis-6p.pdf) *done :)*
 - **Honours Analysis** - [click here!](analysis-6p/analysis-6p-no-examples.pdf) *(without examples - basically 5 pages)*
 
