@@ -562,6 +562,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 \vspace{-5pt}
 \begin{xmp}[Modulo Rings]{xmp:modulo-rings}{3.1.4}
+    \vspace{-5pt}
     Let $m\in \mathbb{Z}$. Then the set of \textbf{integers modulo} $m$ is a ring, written
     \[\mathbb{Z} / m\mathbb{Z}\]
      The elements of $\mathbb{Z} / m\mathbb{Z}$ consist of \textbf{congruence classes} of integers modulo $m$, written $\overline{a}$, - i.e. ``the subsets $T$ of $\mathbb{Z}$ of the form $T = a + m\mathbb{Z}$ with $a\in \mathbb{Z}$'', or ``set of integers that have the same remainder when you divide them by $m$''. $\overline{a} = \overline{b}$ is the same as $a-b\in m\mathbb{Z}$, and often I'll write
@@ -574,6 +575,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 \vspace{-6pt}
 \begin{dfn}[Multiples of an abelian group]{dfn:abelian-group-multis}{3.2.3}
+    \vspace{-5pt}
     Let $m\in \mathbb{Z}$. The \textbf{$m$-th multiple $ma$ of an element $a$}in an abelian group $R$ is:
     \[ma = \underbrace{a + a + \cdots + a}_{\text{$m$ terms}} \quad \text{if} m > 0\]
     $0a = 0$ and negative multiples are defined by $(-m)a = -(ma)$
@@ -581,6 +583,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 \vspace{-5pt}
 \begin{dfn}[Units and Field Construction]{dfn:field-constructon}{3.2}
+    \vspace{-5pt}
     \textbf{Def 3.2.6}: Let $R$ be a ring. An element $a\in R$ is called a \textbf{unit} if it is invertible in $R$, i.e. there exists $r^{-1}\in R$ such that
     \[a a^{-1} = 1 = a^{-1}a\]
 
@@ -622,9 +625,9 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{rcl}
 \end{multicols}
 
-\vspace{-10pt}
-
+\vspace{-14pt}
 \begin{thm}[Integral Domain Properties]{thm:int-domain-props}{3.2}
+    \vspace{-5pt}
     \begin{itemize}
         \setlength\itemsep{0em}
         \item[\textbf{3.2.15}] \textbf{(Cancellation Law)}: Let $R$ be an integral domain and let $a,b,c\in R$. If $ab = ac$ and $a\ne 0$ then $b = c$
@@ -635,7 +638,9 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     
 \end{thm}
 
+\vspace{-5pt}
 \begin{dfn}[Polynomial]{dfn:polynomial}{3.1.1}
+    \vspace{-5pt}
     Let $R$ be a ring. A \textbf{polynomial over $R$} is an expression of the form
     \[P = a_{0} + a_{1}X + a_{2}X^{2} + \cdots + a_{m}X^{m}\]
     for some non-negative $m\in \mathbb{Z}$ and elements $a_{i}\in R$ for $0 \le i \le m$. 
@@ -649,7 +654,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
         \item A polynomial of degree one is called \textbf{linear}, degree two is called \textbf{quadractic}, and degree three is called \textbf{cubic}.
     \end{itemize}
 
-    \vspace{-5pt}
+    \vspace{-7pt}
     \noindent\rule{\textwidth}{0.2pt}
     \textbf{Thm 3.3.2}: The set $R[X]$ becomes a ring called the \textbf{ring of polynomials with coefficients in $R$, or over $R$}. The zero and the identity of $R[X]$ are the zero and identity of $R$, respectively.
 \end{dfn}
@@ -719,7 +724,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 % \setcounter{subsection}{3}
 % \subsection{Vector Subspaces}
 
-\vspace{-13pt}
+\vspace{-8pt}
 \section{Linear algebra (ew)}
 
 \vspace{-5pt}
@@ -760,7 +765,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 %     \[\vec{e}_{i} = (0,\dots,0,1,0,\dots,0)\]
 %     with one $1$ in the $i$-th place and zero everywhere else. Then $\vec{e}_{1} ,\dots, \vec{e}_{n}$ form an ordered basis of $F^{n}$, the so-called \textbf{standard basis of $F^{n}$}
 % \end{xmp}
-\newpage
 
 \begin{thm}[Basis Theorems]{thm:basis-thms}{1.5.11}
     \vspace{-5pt}
@@ -824,7 +828,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \[F\langle X \rangle \subseteq \Maps(X, F)\]
 \end{dfn}
 
-
+\vspace{-5pt}
 \begin{thm}[Steinitz Exchange Theorem]{thm:steinitz-exchange}{1.6}
     \textbf{1.6.2}: Let $V$ be a vector space, $L \subset V$ a finite linearly indep. subset and $E \subseteq V$ a generating set. Then there is an injection $\phi : L \hookrightarrow E$ such that $(E \backslash \phi(L)) \cup L$ is also a generating set for $V$
     
@@ -833,6 +837,8 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \textbf{1.6.3}: Let $V$ be a vector space, $M \subseteq V$ a linearly indep. subset, and $E \subseteq V$ a generating subset, such that $M \subseteq E$. If $\vec{w}\in V\backslash M$ is a vector $\not\in M$ such that $M \cup \{ \vec{w}\}$ is linearly independent, then there exists $\vec{e}\in E \backslash M$ such that $(E \backslash \{\vec{e}\}) \cup \{\vec{w}\}$ is a generating set
 \end{thm}
 
+\vspace{-5pt}
+\newpage
 
 \begin{thm}[Cardinality of Bases and Dimension]{thm:cardinality-of-bases}{1.6}
     \textbf{Def 1.6.4}: Let $V$ be a finitely generated vector space. $V$ has a finite basis, and any two bases of $V$ also have the same number of elements
@@ -864,12 +870,17 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{itemize}
 \end{thm}
 
-\begin{dfn}[Linear Mappings]{dfn:linear-mappings}{1.7.1}
+\begin{dfn}[Random tidbits about Linear Mappings]{dfn:linear-mappings}{1.7.1}
+    \textbf{Def 1.7.5}: A point that is sent to itself by a mapping is called a \textbf{fixed point} of the mapping. Given a mapping $f : X \to X$, we denote the set of fixed points by
+    \[X^{f} = \{x \in X : f(x) = x\}\]
     \textbf{Def 1.7.6}: Two vector subspaces $V_{1}, V_{2}$ of a vector space $V$ are called \textbf{complementary} if addition defines a bijection
     \[V_{1} \times V_{2} \xrightarrow{\sim} V\]
-    something about direct sums
 
     \noindent\rule{\textwidth}{0.2pt}
+
+    \textbf{Example (Direct Sum)}: Given vector spaces $V_{1},\dots,V_{n}, W$ and linear maps $f_{i} : V_{i} \to W$ we can form a new mapping $f : V_{1} \oplus \cdots \oplus V_{n} \to W$ by $f(v_{1},\dots,v_{n}) = f_{1}(v_{1}) + \cdots + f_{n}(v_{n})$. This is a bijection
+    \[\Hom(V_{1}, W) \times \cdots \times \Hom(V_{n}, W) \xrightarrow{\sim} \Hom(V_{1} \oplus \cdots \oplus V_{n}, W)\]
+    Taking $W = V$, we produce a vector iso. $V_{1} \oplus V_{2} \xrightarrow{\sim} V$. Writing $V = V_{1} \oplus V_{2}$, we call $V$ the \textbf{direct sum}, or \textbf{internal direct sum} of the subspaces $V_{1}, V_{2}$
 
 \end{dfn}
 
@@ -1017,6 +1028,8 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \vspace{-5pt}
     Let $\mathcal{A} = (\vec{v}_{1},\dots,\vec{v}_{n})$, $\mathcal{B} = (\vec{w}_{1},\dots,\vec{w}_{n})$ be ordered bases of the same $F$-vector space $V$. Then the matrix representing the identity mapping w.r.t. these bases
     \[{}_{\mathcal{B}}[\id_{V}]_{\mathcal{A}}\]
+
+    \vspace{-2pt}
     is called a \textbf{change of basis matrix}. Its entries are $\vec{v}_{j} = \sum_{i = 1}^{n} a_{ij}\vec{w}_{i}$
 
     \vspace{-3pt}
@@ -1030,12 +1043,12 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \[{}_{\mathcal{A}'}[f]_{\mathcal{A}'} = {}_{\mathcal{A}}[\id_{V}]_{\mathcal{A}'}^{-1} \circ {}_{\mathcal{A}}[f]_{\mathcal{A}} \circ {}_{\mathcal{A}}[\id_{V}]_{\mathcal{A}'}\]
 \end{dfn}
 
-% \vspace{30pt}
-
+\vspace{-5pt}
 \begin{dfn}[Symmetric Groups]{dfn:symmetric-groups}{4.1.1}
-    The group of all permutations of the set $\{1,2,\dots,n\}$, also known as bijections from $\{1,2,\dots,n\}$ to itself is denoted by $\mathfrak{S}_{n}$ (but i will just write $S_{n}$ because icba) and called the \textbf{$n$-th symmetric group}. It is a group under composition and has $n!$ elements.
+    \vspace{-5pt}
+    The group of all permutations of the set $\{1,2,\dots,n\}$, or bijections from $\{1,2,\dots,n\}$ to itself is denoted by $S_{n}$ and called the \textbf{$n$-th symmetric group}. It is a group under composition and has $n!$ elements.
 
-
+    \vspace{-5pt}
     \begin{itemize}[leftmargin=*]
         \setlength\itemsep{0em}
         \item \textbf{Tranposition}: A permutation that swaps two elements of the set and leaves all the others unchanged.
@@ -1047,8 +1060,9 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{itemize}
 \end{dfn}
 
-\newpage
+\vspace{-5pt}
 \begin{thm}[Multiplicativity of the sign]{thm:permutation-multiplicativity}{4.1}
+    \vspace{-5pt}
     \textbf{Thm 4.1.5}: For each $n\in \mathbb{N}$, the sign of a permutation produces a group homomorphism $\sgn : S_{n} \to \{+1, -1\}$ from the symmetric group to the two-element group of signs. In formulas:
     \[\sgn(\sigma\tau) = \sgn(\sigma)\sgn(\tau) \quad \forall \sigma, \tau\in S_{n}\]
 
@@ -1070,7 +1084,9 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 %     The sum is over all permutations of $n$, and the coefficient $\sgn(\lambda)$ is the sign of the permutation $\sigma$ defined above. When $n = 0$, the determinant is $1$
 % \end{dfn}
 
+\vspace{-5pt}
 \begin{dfn}[Bilinear Forms]{dfn:bilinear-forms}{4.3.1}
+    \vspace{-5pt}
     Let $U,V,W$ be $F$-vector spaces. A \textbf{bilinear form on $U \times V$ with values in $W$} is a mapping $H: U \times V \to W $ which is a linear mapping in both of its entries. This means that it must satisfy the following properties for all $u_{1}, u_{2}\in U$ and $v_{1}, v_{2}\in V$ and all $\lambda\in F$:
 
     \vspace{5pt}
@@ -1080,7 +1096,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \vspace{5pt}
     \noindent\rule{\textwidth}{0.2pt}
     \vspace{-10pt}
-
     A bilinear form $H$ is \textbf{symmetric} is $U = V$ and
     \[H(u,v) = H(v,u)\quad \text{for all } u,v\in U\]
     while it is \textbf{antisymmetric} or \textbf{alternating} if $U = V$ and
@@ -1095,6 +1110,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{itemize}
 \end{dfn}
 
+\vspace{-5pt}
 \begin{dfn}[Multilinear Forms]{dfn:multilinear}{4.3.3}
     Let $V_{1},\dots,V_{n}, W$ be $F$-vector spaces. A mapping $H : V_{1} \times V_{2} \times \cdots \times V_{n} \to W$ is a \textbf{multilinear form} or just \textbf{multilinear} if for each $j$, the mapping $V_{j}\to W$ defined by $v_{j}\mapsto H(v_{1},\dots,v_{j},\dots,v_{n})$, with the $v_{i}\in V_{i}$ arbitrary fixed vectors of $V_{i}$ for $i\ne j$ is linear. 
 
@@ -1103,13 +1119,17 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \[(\exists i\ne j \text{ with } v_{i} = v_{j})\to H(v_{1},\dots,v_{i},\dots,v_{j},\dots,v_{n}) = 0\]
 \end{dfn}
 
+\newpage
 \begin{thm}[Characterisation of the Determinant]{thm:determinant-characterisation}{4.3.6}
+    \vspace{-5pt}
     Let $F$ be a field. The mapping
     \[\det : \Mat(n;F) \to F\]
     is the unique alternating multilinear form on $n$-tuples of column vectors with values in $F$ that takes the value $1_{F}$ on the identity matrix
 \end{thm}
 
+\vspace{-5pt}
 \begin{dfn}[Cofactors of a Matrix]{dfn:cofactors-matrix}{4.4.6}
+    \vspace{-5pt}
     Let $A \in \Mat(n;R)$ for some commutative ring $R$ and $n\in \mathbb{N}$. Let $i,j\in\mathbb{Z}$ between $1$ and $n$. Then the $(i, j)$ \textbf{cofactor of $A$} is $C_{ij} = (-1)^{i + j} \det(A\langle i,j \rangle)$ where $A\langle i, j \rangle$ is the matrix obtained from $A$ by deleting the $i$-th row and $j$-th column.
     \[C_{23} = (-1)^{2 + 3} \det \begin{pmatrix}
         a_{11} & a_{12}& \textcolor{red}{a_{13}}\\
@@ -1136,8 +1156,10 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
         \end{center}
     \end{multicols}
 
+    \vspace{-6pt}
 \end{thm}
 
+\vspace{-5pt}
 \begin{dfn}[Adjugate Matrix]{dfn:adjugate-matrix}{4.4.8}
     Let $A$ be a $(n \times n)$-matrix with entries in a commutative ring $R$. The \textbf{adjugate matrix} $\text{adj}(A)$ is the $(n \times n)$-matrix whose entries are $adj(A)_{ij} = C_{ji}$ where $C_{ji}$ is the $(j, i)$-cofactor
 \end{dfn}
@@ -1181,6 +1203,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 \vspace{-5pt}
 \begin{thm}[Eigenvalue Remarks]{thm:eigenvalue-remarks}{4.5.9}
+    \vspace{-5pt}
     \begin{itemize}[leftmargin=*]
         \setlength\itemsep{0em}
 
@@ -1198,6 +1221,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 \vspace{-5pt}
 \begin{thm}[Extending Bases]{thm:extending-bases}{4.5.10}
+    \vspace{-5pt}
     Let $f : V\to V$ be an endomorphism of an $n$-dimensional vector space $V$ over a field $F$. Suppose given an $m$-dimensional subspace $W\subseteq V$ such that $f(W)\subseteq W$, so that there are defined endomorphisms of the subspace and the quotient space:
     \begin{align*}
         g &: W \to W;\, \vec{w}\mapsto f(\vec{w})\\
@@ -1211,7 +1235,9 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     % \[\mathcal{C} = (\text{can}(v_{m + 1}), \text{can}(v_{m + 2}),\dots,\text{can}(\vec{v}_{n}))\]
 \end{thm}
 
+\vspace{-5pt}
 \begin{dfn}[Triangularisability]{dfn:triangularisability}{4.6.1}
+    \vspace{-5pt}
     Let $f : V \to V$ be an endomorphism of a finite dimensional $F$-vector space $V$. $f$ is \textbf{triangularisable} if the vector space $V$ has an ordered basis $\mathcal{B} = (\vec{v}_{1}, \vec{v}_{2},\dots,\vec{v}_{n})$ such that
         \begin{align*}
             f(\vec{v}_{1}) &= a_{11}\vec{v_{1}}, \\
@@ -1229,8 +1255,9 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
         % \end{pmatrix}\]
 \end{dfn}
 
-
+\vspace{-5pt}
 \begin{thm}[]{thm:triangularisability-chi-poly}{4.6.1 - 4.6.3}
+    \vspace{-5pt}
     Let $f : V \to V$ be an endomorphism of a finite dimensional $F$-vector space $V$. Then $f$ is triangularisable iff the characteristic polynomial $\chi_{f}$ decomposes into linear factors in $F[x]$
 
     \vspace{-5pt}
@@ -1252,6 +1279,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 \vspace{-5pt}
 \begin{dfn}[Diagonalisability]{dfn:diagonal}{4.6.6}
+    \vspace{-5pt}
     An endomorphism $f : V \to V$ of an $F$-vector space $V$ is \textbf{diagonalisable} iff there exists a basis of $V$ consisting of eigenvectors of $f$. If $V$ is finite dimensional then this is the same as saying that there exists an ordered basis $\mathcal{B} = \{\vec{v}_{1},\dots,\vec{v}_{n}\}$ where $_{\mathcal{B}}[f]_{\mathcal{B}} = \text{diag}(\lambda_{1},\dots,\lambda_{n})$. In this case, of course, $f(\vec{v}_{i}) = \lambda_{i}\vec{v}_{i}$.
     
     \vspace{-3pt}
@@ -1269,8 +1297,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     Let $A\in \Mat(n;R)$ be a square matrix with entries in a commutative ring $R$. Then evaluating its characteristic polynomial $\chi_{A}(x)\in R[x]$ at the matrix $A$ gives zero.
 \end{thm}
 
-\newpage
-\vspace{-10pt}
 \section{Inner Product Spaces}
 
 \begin{dfn}[Inner Product]{dfn:inner-product}{5.1.1}
@@ -1320,6 +1346,8 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     calling this set the \textbf{orthogonal} to $T$
 \end{dfn}
 
+\newpage
+
 \begin{thm}[Complementary Othorgonals]{thm:complementary-orthogonals}{5.2.2}
     Let $V$ be an inner product space and let $U$ be a finite dimensional subspace of $V$. Then $U$ and $U^{\bot}$ are complementary, i.e. $V = U \oplus U^{\bot}$
 \end{thm}
@@ -1340,18 +1368,27 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{enumerate}
 \end{dfn}
 
+
 \begin{thm}[Cauchy-Shwarz Inequality]{thm:cauchy-shwarz}{5.2.5}
     Let $\vec{v}$, $\vec{w}$ be vectors in an inner product space. Then
     \[\lvert (\vec{v}, \vec{w}) \rvert \le \lVert \vec{v} \rVert \lVert \vec{w} \rVert\]
     with equality if and only if $\vec{v}$ and $\vec{w}$ are linearly dependent
 \end{thm}
 
+\vspace{-5pt}
 \begin{thm}[Gram-Shmidt Process]{thm:gram-shmidt}{5.2.7}
     Let $\vec{v}_{1},\dots,\vec{v}_{k}$ be linearly independent vectors in an inner product space $V$. Then there exists an orthonormal family $\vec{w}_{1},\dots,\vec{w}_{k}$ with the property that for all $1 \le i \le k$,
     \[\vec{w}_{i} \in \mathbb{R}_{>0} \vec{v}_{i} + \langle \vec{v}_{i - 1},\dots,\vec{v}_{1} \rangle\]
 
     \noindent\rule{\textwidth}{0.2pt}
-    TODO: write how to actually do the gram-shmidt process
+    \textbf{Gram-Shmidt Algorithm}: Start with an arbitrary linerly independent ordered subset $v_{1}, v_{2}$ of an inner product space
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item Take the first element $v_{1}$ and normalise it to have length $1$
+        \item Take $v_{2}$, and subtract the orthogonal projection of it to the space $\langle \vec{w}_{1} \rangle$ to make it a right angle. Normalise this to have length $1$
+        \item Take $v_{3}$ and subtract the orthogonal projection of it onto $\langle \vec{w}_{1}, \vec{w}_{2} \rangle$. Normalise this to length $1$
+    \end{enumerate}
+    Repeat this for all vectors. Observe that for each step we have $\langle \vec{w}_{i-1},\dots,\vec{w}_{1} \rangle \subseteq \langle \vec{v}_{i-1},\dots, \vec{v}_{1} \rangle$ and because the dimension of both sides is the same, it's actually an equality
 \end{thm}
 
 \begin{dfn}[Adjoints]{dfn:adjoints}{5.3.1}
@@ -1369,10 +1406,13 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \end{thm}
 
 \begin{dfn}[Self Adjoints]{thm:self-adjoints}{5.3.5}
+    \vspace{-5pt}
     An endomorphism of an inner product space $T : V \to V$ is \textbf{self-adjoint} if it equals its own adjoint, i.e. if $T^{*} = T$
-
+    
+    \vspace{-2pt}
     \noindent\rule{\textwidth}{0.2pt}
     \textbf{Thm 5.3.7}: Let $T : V\to V$ be a self-adjoint linear mapping on an inner product space $V$
+    \vspace{-2pt}
     \begin{enumerate}
         \setlength\itemsep{0em}
         \item Every eigenvalue of $T$ is real
@@ -1381,9 +1421,12 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{enumerate}
 \end{dfn}
 
+\vspace{-5pt}
 \begin{dfn}[Orthogonal Matrices]{dfn:orthogonal-matrices}{5.3.11}
+    \vspace{-5pt}
     An \textbf{Orthogonal matrix} is an $(n \times n)$-matrix $P$ with real entries such that $P^{T}P = I_{n}$, or in other words such that $P^{-1} = P^{T}$
 
+    \vspace{-2pt}
     \noindent\rule{\textwidth}{0.2pt}
     A \textbf{hermitian matrix} is one that is self-adjoint in $\mathbb{C}$, or in other words one where $A = \overline{A}^{T}$ holds
 
@@ -1391,7 +1434,9 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     An \textbf{unitary matrix} is an $(n \times n)$-matrix $P$ with complex entries such that $\overline{P}^{T}P = I_{n}$, or such that $P^{-1} = \overline{P}^{T}$
 \end{dfn}
 
+\vspace{-5pt}
 \begin{thm}[Spectral Theorems]{spectral-thm-self-adjoint}{5.3.9}
+    \vspace{-5pt}
     \textbf{5.3.9}: \underline{\smash{The Spectral Theorem for Self-Adjoint Endomorphisms}}
     
     Let $V$ be a finite dimensional inner product space and let $T : V \to V$ be a self-adjoint linear mapping. Then $V$ has an orthonormal basis consisting of eigenvalues of $T$.
@@ -1411,6 +1456,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     where $\lambda_{1},\dots,\lambda_{n}$ are the (necessarily real) eigenvalues of $A$, repeated according to their multiplicity as roots of $\chi_{A}$
 \end{thm}
 
+\vspace{-12pt}
 \section{Jordan Normal Form}
 
 % \begin{dfn}[Exponential Map]{dfn:exponential}{6.1.0}
@@ -1422,6 +1468,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 % \end{dfn}
 
 \begin{dfn}[Jordan Blocks]{dfn:jordan-blocks}{6.2.1}
+    \vspace{-5pt}
     Given an integer $r \ge 1$ define an $(r \times r)$-matrix $J(r)$ called the \textbf{nilpotent Jordan block of size $r$}, by the rule $J(r)_{ij} = 1$ for $j = i + 1$ AND $J(r)_{ij} = 0$ otherwise
 
     In particular, $J(1)$ is a $(1 \times 1)$-matrix whose only entry is zero.
@@ -1432,9 +1479,11 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     with $\lambda I_{r} = \text{diag}(\lambda, \lambda,\dots, \lambda) = D$ diagonal and $J(r) = N$ nilpotent such that $DN = ND$
 \end{dfn}
 
-
+\vspace{-5pt}
 \begin{thm}[Jordan Normal Form]{thm:jordan-normal-form}{6.2.2}
-    Let $F$ be an algebraically closed field. Let $V$ be a finite dimensional vector space and let $\phi : V \to V$ be an endomorphism of $V$ with characteristic polynomial
+    \vspace{-5pt}
+    Let $F$ be an algebraically closed field. Let $V$ be a finite dimensional vector space and let $\phi : V \to V$ be an endomorphism of $V$ with char. polynomial
+    \vspace{-5pt}
     \[\chi_{\phi}(x) = (x - \lambda_{1})^{a_{1}}(x - \lambda_{2})^{a_{2}} . . (x - \lambda_{s})^{a_{s}}\in F[x], a_{i} \ge 1, \sum_{i = 1}^{s} a_{i} = n\]
     For distinct $\lambda_{1},\lambda_{2},\dots,\lambda_{s}\in F$. Then there exists an ordered basis $\mathcal{B}$ of $V$ such that the matrix of $\phi$ with respect to the block $\mathcal{B}$ is block diagonal with Jordan blocks on the diagonal, ${}_{\mathcal{B}}[\phi]_{\mathcal{B}}$
     \[ = \diag(J(r_{11}, \lambda_{1}),\dots,J(r_{1m_{1}}, \lambda_{1}), J(r_{21}, \lambda_{2}),\dots,J(r_{sm_{s}}, \lambda_{s}))\]
@@ -1442,7 +1491,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \[a_{i} = r_{i_{1}} + r_{i_{2}} + \cdots + r_{im_{i}} \quad (1 \le i \le s)\]
 \end{thm}
 
-\newpage
 \begin{thm}[Bézout’s identity for polynomials]{thm:jnf-bezout}{6.3.1}
     For a characteristic polynomial
     \[\chi_{\phi}(x) = \prod_{i = 1}^{s} (x - \lambda_{i})^{a_{i}}\in F[x]\]
@@ -1469,6 +1517,21 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     Let $f : X \to X$ be a mapping from a set $X$ to itself. A subset $Y \subseteq X$ is \textbf{stable under $f$} precisely when $f(Y) \subseteq Y$, that is if $y\in Y$ then $f(y)\in Y$.
 \end{dfn}
 
+\begin{thm}[JNF Theorem Bank]{thm:jnf-theorems}{6.3}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item[\textbf{6.3.6}:] For each $i$, define a linear mapping
+            \[\psi_{i} : \frac{W_{i}}{W_{i - 1}} \to \frac{W_{i - 1}}{W_{i - 2}}\]
+            by $\psi_{i}(\vec{w} + W_{i - 1}) = \psi(\vec{w}) + W_{i - 2}$ for $\vec{w}\in W_{i}$. Then $\psi_{i}$ is well-defined and injective
+        \item[\textbf{6.3.7}:] Let $f : X \to Y$ be an injective linear mapping between the $F$-vector spaces $X$ and $Y$. If $\{\vec{x}_{1},\dots,\vec{x}_{t}\}$ is a linearly independent set in $X$, then $\{f(\vec{x}_{1},\dots,\vec{x}_{t})\}$ is a linearly independent set in $Y$
+        \item[\textbf{6.3.8}:] The set of elements $\{\vec{v}_{j,k} : 1 \le j \le m, 1 \le k \le d_{j}\}$ constructed in the next algorithm is a basis for $W$
+        \item[\textbf{6.3.9}:] Let $\mathcal{B}$ be the ordered basis of $W$ - $\{\vec{v}_{j,k} : 1 \le j \le m, 1 \le k \le d_{j}\}$. Then ${}_{\mathcal{B}}[\psi]_{\mathcal{B}} = $
+            \[\diag \underbrace{J(m),. .,J(m)}_{\text{$d_{m}$ times}}, \underbrace{J(m-1),. .,J(m-1)}_{\text{$d_{m - 1} - d_{m}$ times}},. .,\underbrace{J(1), . .,J(1)}_{\text{$d_{1} - d_{2}$ times}}\]
+            where $J(r)$ denotes the nilpotent Jordan block of size $r$
+    \end{itemize}
+\end{thm}
+
+\newpage
 \begin{thm}[Direct Sum Composition]{thm:direct-sum-composition}{6.3.5}
     For each $1 \le i \le s$, let 
     \[\mathcal{B}_{i} = \{\vec{v}_{ij}\in V \mid 1 \le j \le a_{i}\}\]
@@ -1496,20 +1559,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{enumerate}
 \end{thm}
 
-\begin{thm}[JNF Theorem Bank]{thm:jnf-theorems}{6.3}
-    \begin{itemize}
-        \setlength\itemsep{0em}
-        \item[\textbf{6.3.6}:] For each $i$, define a linear mapping
-            \[\psi_{i} : \frac{W_{i}}{W_{i - 1}} \to \frac{W_{i - 1}}{W_{i - 2}}\]
-            by $\psi_{i}(\vec{w} + W_{i - 1}) = \psi(\vec{w}) + W_{i - 2}$ for $\vec{w}\in W_{i}$. Then $\psi_{i}$ is well-defined and injective
-        \item[\textbf{6.3.7}:] Let $f : X \to Y$ be an injective linear mapping between the $F$-vector spaces $X$ and $Y$. If $\{\vec{x}_{1},\dots,\vec{x}_{t}\}$ is a linearly independent set in $X$, then $\{f(\vec{x}_{1},\dots,\vec{x}_{t})\}$ is a linearly independent set in $Y$
-        \item[\textbf{6.3.8}:] The set of elements $\{\vec{v}_{j,k} : 1 \le j \le m, 1 \le k \le d_{j}\}$ constructed in the next algorithm is a basis for $W$
-        \item[\textbf{6.3.9}:] Let $\mathcal{B}$ be the ordered basis of $W$ - $\{\vec{v}_{j,k} : 1 \le j \le m, 1 \le k \le d_{j}\}$. Then ${}_{\mathcal{B}}[\psi]_{\mathcal{B}} = $
-            \[\diag \underbrace{J(m),. .,J(m)}_{\text{$d_{m}$ times}}, \underbrace{J(m-1),. .,J(m-1)}_{\text{$d_{m - 1} - d_{m}$ times}},. .,\underbrace{J(1), . .,J(1)}_{\text{$d_{1} - d_{2}$ times}}\]
-            where $J(r)$ denotes the nilpotent Jordan block of size $r$
-    \end{itemize}
-\end{thm}
-
 % NOTE JNF algorithm
 
 \begin{thm}[JNF Basis Algorithm]{thm:jnf-algorithm}{6.3}
@@ -1524,8 +1573,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
         \item Repeat!
     \end{itemize}
 \end{thm}
-
-\lipsum[1-7]
 
 \end{multicols}
 
