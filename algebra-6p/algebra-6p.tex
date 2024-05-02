@@ -17,7 +17,7 @@
 
 \usepackage{lmodern}
 
-\usepackage[fontsize=7pt]{scrextend}
+\usepackage[fontsize=6pt]{scrextend}
 
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
@@ -80,10 +80,11 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 \vspace{-5pt}
 \section{Abstractions upon Abstractions}
-see you guys in UG4 category theory!
+% see you guys in UG4 category theory! (jk they're not running it next year..)
 % \subsection{Fields and Vector Spaces}
 
 \begin{dfn}[Rings and Fields]{dfn:fields-and-rings}{A}
+    \vspace{-7pt}
     A \textbf{ring} (left) is a set with two operations $(\mathbb{R}, +, \cdot)$ that satisfies the following lemmas.\newline
     A \textbf{field} (right) is an extension of a ring where $(\cdot)$ is a group 
     \vspace{-15pt}
@@ -125,6 +126,7 @@ see you guys in UG4 category theory!
     \vspace{-8pt}
     \noindent\rule{\textwidth}{0.2pt}
     \textbf{Field Specific Lemmas}:
+    \vspace{-3pt}
     \begin{enumerate}
         \setlength\itemsep{0em}
         \item $(\cdot)$ in $F$ is associative, $1_{F}$ is an identity (it's an abelian group only in $(F \backslash \{0_{F}\}, \cdot)$)
@@ -135,6 +137,7 @@ see you guys in UG4 category theory!
     \noindent\rule{\textwidth}{0pt}
     \textbf{Ring Specific Lemmas and Definitions}:
     \begin{enumerate}
+        \vspace{-3pt}
         \setlength\itemsep{0em}
         \item The \textbf{null ring} or \textbf{zero ring} is defined as a ring where $R$ is a single element - i.e. $\{0\}$ where $0 + 0 = 0$ and $0 \times 0 = 0$
         \item A \textbf{commutative ring} is one where $a \cdot b = b \cdot a$ for all $a,b\in R$
@@ -153,7 +156,9 @@ see you guys in UG4 category theory!
     \end{enumerate}
 \end{dfn}
 
+\vspace{-5pt}
 \begin{dfn}[Modules and Vector Spaces]{dfn:modules-and-vector-spaces}{B}
+    \vspace{-5pt}
     A \textbf{left module $M$ over a ring $R$} (or an \textbf{$R$-module}) \textit{(left)} is a pair consisting of an abelian group $M = (M, \dot{+})$ and a mapping
 
     A \textbf{vector space $V$ over a field} $F$ \textit{(right)} is an extension of a module but over a field instead, and using vectors - $V = (V, \dot{+})$
@@ -163,16 +168,18 @@ see you guys in UG4 category theory!
     \begin{multicols}{2}
         \begin{center}
             $R \times M \to M : (r, a)\mapsto ra$
-
         \end{center}
-        s.t. $\forall r, s\in R$ and $a,b\in M$, the following axioms apply:
+        \vspace{-5pt}
+        such that $\forall r, s\in R$ and $a,b\in M$, the following axioms apply:
 
 
         \columnbreak
         \begin{center}
             $F \times V \to V : (\lambda, \vec{v})\mapsto \lambda \vec{v}$
         \end{center}
-        s.t. $\forall \lambda, \mu\in F$ and $\vec{v},\vec{w}\in v$, the following axioms apply:
+
+        \vspace{-5pt}
+        such that $\forall \lambda, \mu\in F$ and $\vec{v},\vec{w}\in v$, the following axioms apply:
     \end{multicols}
 
     \vspace{-25pt}
@@ -211,8 +218,9 @@ see you guys in UG4 category theory!
             $1\vec{v} = \vec{v}$
     \end{multicols}
 
-
+    \vspace{-8pt}
     and they satisfy the following lemmas (for both):
+    \vspace{-3pt}
     \begin{enumerate}
         \setlength\itemsep{0em}
         \item $0_{R} a = 0_{M}$ for all $a\in M$ \quad or \quad $0 \vec{v} = \vec{0}$ for all $\vec{v} \in V$
@@ -225,10 +233,9 @@ see you guys in UG4 category theory!
     \end{enumerate}
 \end{dfn}
 
-
-
-
+\vspace{-5pt}
 \begin{dfn}[Sub-things]{dfn:subthings}{C}
+    \vspace{-5pt}
     A sub-thing is basically something that is a smaller but self-contained version of a thing
 
     \vspace{-5pt}
@@ -452,7 +459,6 @@ see you guys in UG4 category theory!
     
 \end{thm}
 
-\newpage
 \begin{dfn}[Polynomial]{dfn:polynomial}{3.1.1}
     Let $R$ be a ring. A \textbf{polynomial over $R$} is an expression of the form
     \[P = a_{0} + a_{1}X + a_{2}X^{2} + \cdots + a_{m}X^{m}\]
@@ -481,7 +487,13 @@ see you guys in UG4 category theory!
     \end{itemize}
 \end{thm}
 
+\begin{thm}[Degrees of Polynomial Roots]{thm:polynomial-root-degs}{3.3.10}
+    Let $R$ be a field, or more generally an integral domain. Then a non-zero polynomial $P\in R[X] \backslash \{0\}$ has at most $\deg(P)$ roots in $R$
+\end{thm}
+
+\newpage
 \begin{dfn}[Evaluating a Function]{dfn:evaluating-functions}{3.3.6}
+    \vspace{-5pt}
     Let $R$ be a commutative ring and $P\in R[X]$ a polynomial. $P$ can be \textbf{evaluated} at $\lambda\in R$ to make $P(\lambda)$ by replacing the powers of $X$ in $P$ by the corresponding powers of $\lambda$. In this way we have a mapping
     \[R[X] \to \Maps(R, R)\]
     This is the precise definition of thinking of a polynomial as a function. An element $\lambda\in R$ is a \textbf{root} of $P$ if $P(\lambda) = 0$
@@ -490,11 +502,9 @@ see you guys in UG4 category theory!
     \textbf{Thm 3.3.9}: Let $R$ be a commutative ring, let $\lambda\in R$ and $P(X)\in R[X]$. Then $\lambda$ is a root of $P(X)$ iff $(X - \lambda)$ divides $P(X)$
 \end{dfn}
 
-\begin{thm}[Degrees of Polynomial Roots]{thm:polynomial-root-degs}{3.3.10}
-    Let $R$ be a field, or more generally an integral domain. Then a non-zero polynomial $P\in R[X] \backslash \{0\}$ has at most $\deg(P)$ roots in $R$
-\end{thm}
-
+\vspace{-5pt}
 \begin{dfn}[Algebraically closed fields]{dfn:algebraically=closed}{3.3.11}
+    \vspace{-5pt}
     A field $F$ is \textbf{algebraically closed} if each non-constant polynomial $P\in F[X]\backslash F$ with coefficients in our field has a root in our field $F$
 
     \noindent\rule{\textwidth}{0.2pt}
@@ -507,7 +517,9 @@ see you guys in UG4 category theory!
     with $n\ge 0,\, c\in F^{\times}$ and $\lambda_{1},\dots,\lambda_{n}\in F$. This decomposition is unique up to reordering the factors
 \end{dfn}
 
+\vspace{-5pt}
 \begin{thm}[Properties of Ring Homomorphisms]{thm:ring-homomorphism-props}{3.4.5}
+    \vspace{-5pt}
     Let $R$ and $S$ be rings and $f : R \to S$ a ring homomorphism. Then for all $x,y\in R$ and $m\in \mathbb{Z}$ (where $0_{R}$ and $0_{S}$ are the zeros of $R$ and $S$):
 
     \vspace{-15pt}
@@ -561,8 +573,17 @@ see you guys in UG4 category theory!
     \end{itemize}
 \end{thm}
 
+\begin{thm}[Submodule lemmas]{thm:submodule-lemmas}{3.7}
+    \vspace{-5pt}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item[\textbf{3.7.21}] Let $f : M\to N$ be an $R$-homomorphism. Then $\ker f$ is a submodule of $M$ and $\im f$ is a submodule of $N$
+        \item[\textbf{2.7.22}] Let $R$ be a ring, $M$ an $R$-homomorphism. Then $f$ is injective if and only if $\ker f = \{0_{M}\}$
+    \end{itemize}
+\end{thm}
 
 \begin{dfn}[Equivalence Relations]{dfn:equivalence-relations}{3.5.1}
+    \vspace{-5pt}
     A \textbf{relation} $R$ on a set $X$ is a subset $R \subseteq X \times X $. In the context of relations, it's written $xRy$ instead of $(x,y)\in R$. $R$ is an \textbf{equivalence relation on $X$} when for all elements $x, y, z\in X$ the following hold:
     \begin{enumerate}
         \setlength\itemsep{0em}
@@ -593,7 +614,9 @@ see you guys in UG4 category theory!
     There is a canonical mapping $\text{can}: X \to (X / \sim),\, x\mapsto E(x)$ (surjection)
 \end{dfn}
 
+\vspace{-5pt}
 \begin{dfn}[Coset]{dfn:coset}{3.6.1}
+    \vspace{-5pt}
     Let $I \unlhd R$ be an ideal in a ring $R$. The set
     \[ x + I := \{x + i : i\in I\} \subseteq R\]
     is a \textbf{coset of $I$ in $R$} or the \textbf{coset of $x$ w.r.t $I$ in $R$}
@@ -604,17 +627,28 @@ see you guys in UG4 category theory!
     \noindent\rule{\textwidth}{0.2pt}
     \textbf{Thm 3.6.4}: Let $R$ be a ring and $I \unlhd R$ an ideal. Then $R / I$ is a ring, where the operation of addition and multiplication is defined by
     \[(x + I) \dot{+} (y + I) = (x + y) + I, \quad (x + I) \cdot (y + I) = xy + I \quad \forall x,y\in R\]
-\end{dfn}
 
-\vspace{-5pt}
-\begin{thm}[Submodule lemmas]{thm:submodule-lemmas}{3.7}
+    \noindent\rule{\textwidth}{0.6pt}
+
+    \textbf{Def 3.7.31}: Let $R$ be a ring, $M$ an $R$-module, and $N$ a submodule of $M$. For each $a\in M$ the \textbf{coset of $a$ with respect to $N$ in $M$} is
+    \[a + N = \{ a + b : b\in N\}\]
+    It is a coset of $N$ in the abelian group $M$ and so is an equivalence class for the equivalence relation $a \sim b \iff a - b \in N$.
+
     \vspace{-5pt}
-    \begin{itemize}
-        \setlength\itemsep{0em}
-        \item[\textbf{3.7.21}] Let $f : M\to N$ be an $R$-homomorphism. Then $\ker f$ is a submodule of $M$ and $\im f$ is a submodule of $N$
-        \item[\textbf{2.7.22}] Let $R$ be a ring, $M$ an $R$-homomorphism. Then $f$ is injective if and only if $\ker f = \{0_{M}\}$
-    \end{itemize}
-\end{thm}
+    \noindent\rule{\textwidth}{0.2pt}
+    Let $M / N$, the \textbf{factor of $N$ by $N$} or the \textbf{quotient of $M$ by $N$} to be the set $(M / \sim)$ of all cosets of $N$ in $M$. This becomes an $R$-module by introducing the operations of addition and multiplication:
+    \begin{align*}
+        (a + N) \dot{+} (b + N) &= (a + b) + N\\
+        r(a + N) &= ra + N
+    \end{align*}
+    for all $a,b\in M$, $r\in R$.
+
+    \vspace{-5pt}
+    \noindent\rule{\textwidth}{0.2pt}
+    The zero of $M / N$ is the coset $0_{M /N} = 0_{M} + N$. The negative of $a + N\in M / N$ is the coset $-(a + N) = (-a) + N$
+
+    The $R$-module $M / N$ is the \textbf{factor module} of $M$ by the submod. $N$
+\end{dfn}
 
 \vspace{-5pt}
 \begin{dfn}[Generated Submodules]{dfn:generated-submodules}{3.7.23}
@@ -636,30 +670,6 @@ see you guys in UG4 category theory!
     \end{itemize}
 \end{dfn}
 
-\vspace{-5pt}
-\begin{dfn}[Submodule Cosets]{dfn:coset-submodule}{3.7.31}
-    \vspace{-5pt}
-    Let $R$ be a ring, $M$ an $R$-module, and $N$ a submodule of $M$. For each $a\in M$ the \textbf{coset of $a$ with respect to $N$ in $M$} is
-    \[a + N = \{ a + b : b\in N\}\]
-    It is a coset of $N$ in the abelian group $M$ and so is an equivalence class for the equivalence relation $a \sim b \iff a - b \in N$.
-
-    \vspace{-5pt}
-    \noindent\rule{\textwidth}{0.2pt}
-    Let $M / N$, the \textbf{factor of $N$ by $N$} or the \textbf{quotient of $M$ by $N$} to be the set $(M / \sim)$ of all cosets of $N$ in $M$. This becomes an $R$-module by introducing the operations of addition and multiplication:
-    \begin{align*}
-        (a + N) \dot{+} (b + N) &= (a + b) + N\\
-        r(a + N) &= ra + N
-    \end{align*}
-    for all $a,b\in M$, $r\in R$.
-
-    \vspace{-5pt}
-    \noindent\rule{\textwidth}{0.2pt}
-    The zero of $M / N$ is the coset $0_{M /N} = 0_{M} + N$. The negative of $a + N\in M / N$ is the coset $-(a + N) = (-a) + N$
-
-    The $R$-module $M / N$ is the \textbf{factor module} of $M$ by the submod. $N$
-\end{dfn}
-
-\newpage
 
 % \subsection{Working with Vector Spaces}
 
@@ -679,10 +689,12 @@ see you guys in UG4 category theory!
 % \setcounter{subsection}{3}
 % \subsection{Vector Subspaces}
 
+\vspace{-13pt}
 \section{Linear algebra (ew)}
 
-
+\vspace{-5pt}
 \begin{dfn}[Spans and Linear Independence]{dfn:spanning-subspace}{1.4.5}
+    \vspace{-5pt}
     Let $T \subset V$ for some vector space $V$ over a field $F$. Then amongus all subspaces of $V$ that include $T$ there is a smallest subspace
     \[\langle T \rangle = \langle T \rangle_{F} \subseteq V\]
     ``the set of all vectors $\alpha_{1}\vec{v}_{1} + \cdots + \alpha_{r}\vec{v}_{r}$ with $\alpha_{1},\dots,\alpha_{r}\in F$ and $\vec{v}_{1},\dots,\vec{v}_{r}\in T$, together with the zero vector in the case $T = \emptyset$''
@@ -692,13 +704,14 @@ see you guys in UG4 category theory!
     \noindent\rule{\textwidth}{0.2pt}
 
     \textbf{Terminology Dump}
+    \vspace{-3pt}
     \begin{itemize}
         \setlength\itemsep{0em}
         \item \textbf{Linear Combination} of vectors $\vec{v}_{1},\dots,\vec{v}_{r}$: An expression of the form $\alpha_{1}\vec{v}_{1}+\cdots+\alpha_{r}\vec{v}_{r}$
         \item \textbf{Vec. Subspace generated(or spanned) by $T$ / span of $T$}: The smallest vector subspace $\langle T \rangle \subseteq V$ containing $T$
         \item If we allow the zero vector to be the "empty linear combination of $r = 0$ vectors", then the span of $T$ is exactly the set of all linear combinations of vectors from $T$ 
         \item[\textbf{1.4.7}:] \textbf{Generating / Spanning set}: A subset of a vector space that spans the entire space. A vector space that has a finite generating set is said to be \textbf{finitely generated}
-        \item[\textbf{1.5.8}:] \textbf{Basis of a vector space $V$}: a linearly independent generating set in $V$
+        \item[\textbf{1.5.8}:] \textbf{Basis of a vec space $V$}: a linearly independent generating set in $V$
         \item[\textbf{1.5.9}:] Let $A$ and $I$ be sets. A \textbf{family of elements of $A$ indexed by $I$}, written $(a_{i})_{i\in I}$ is a mapping $I\to A$
     \end{itemize}
     
@@ -719,6 +732,7 @@ see you guys in UG4 category theory!
 % \end{xmp}
 
 \begin{thm}[Basis Theorems]{thm:basis-thms}{1.5.11}
+    \vspace{-5pt}
     \textbf{Thm 1.5.11 (Linear combinations of basis elements)}: Let $F$ be a field, $V$ a vector space over $F$ and $\vec{v}_{1},\dots,\vec{v}_{r}\in V$ vectors. The family $(\vec{v}_{i})_{1\le i\le r}$ is a basis of $V$ iff the following "evaluation" mapping, or if we label the family as $\mathcal{A}$, written $\psi = \psi_{\mathcal{A}} : F^{r}\to V$,
     \begin{align*}
         \psi : F^{r} &\to V\\
@@ -748,6 +762,7 @@ see you guys in UG4 category theory!
         \item If $E \subseteq V$ is a generating set and if $L$ is maximal amongst all linearly indep. sets of $V$ where $L \subseteq$ $E$, then $L$ is a basis.
     \end{enumerate}
 
+    \vspace{-5pt}
     \noindent\rule{\textwidth}{0.2pt}
     \textbf{Thm 1.5.16 (Variant of Linear Combis of basis elements)}: Let $F$ be a field, $V$ be an $F$-vector space and $(\vec{v}_{i})_{i\in I}$ a family of vectors from the vector space $V$. The following are equivalent:
     \begin{enumerate}
@@ -759,6 +774,13 @@ see you guys in UG4 category theory!
 
 \end{thm}
 
+
+\begin{thm}[Fundamental Estimate of LinAlg]{thm:fundamental-estimate-linalg}{1.6.1}
+    No linearly independent subset of a given vector has more elements than a generating set. Thus if $V$ is a vector space, $L \subset V$ a linearly independent subset and $E \subseteq V$ a generating set, then
+    \[\lvert L \rvert \le \lvert E \rvert\]
+\end{thm} 
+
+\newpage
 \begin{dfn}[Random sets]{dfn:power-set-free-space}{1.4 - 1.5}
     \textbf{Def 1.4.9}: The set of all subsets $\mathcal{P}(X) = \{U : U\subseteq X\}$ of $X$ is the \textbf{power set} of $X$, $\mathcal{P}(X)$ is referred to as a \textbf{system of subsets of $X$}. We can now define $2$ new subsets - the \textbf{union} and \textbf{intersection}
     \begin{align*}
@@ -772,10 +794,6 @@ see you guys in UG4 category theory!
     \[F\langle X \rangle \subseteq \Maps(X, F)\]
 \end{dfn}
 
-\begin{thm}[Fundamental Estimate of LinAlg]{thm:fundamental-estimate-linalg}{1.6.1}
-    No linearly independent subset of a given vector has more elements than a generating set. Thus if $V$ is a vector space, $L \subset V$ a linearly independent subset and $E \subseteq V$ a generating set, then
-    \[\lvert L \rvert \le \lvert E \rvert\]
-\end{thm} 
 
 \begin{thm}[Steinitz Exchange Theorem]{thm:steinitz-exchange}{1.6}
     \textbf{1.6.2}: Let $V$ be a vector space, $L \subset V$ a finite linearly indep. subset and $E \subseteq V$ a generating set. Then there is an injection $\phi : L \hookrightarrow E$ such that $(E \backslash \phi(L)) \cup L$ is also a generating set for $V$
@@ -877,7 +895,6 @@ see you guys in UG4 category theory!
     
 \end{thm}
 
-\newpage
 
 % NOTE this could prob just be removed
 % \begin{thm}[Calculating with Matrices]{thm:matrix-calculations}{2.1.9}
@@ -1000,6 +1017,7 @@ see you guys in UG4 category theory!
     \end{itemize}
 \end{dfn}
 
+\newpage
 \begin{thm}[Multiplicativity of the sign]{thm:permutation-multiplicativity}{4.1}
     \textbf{Thm 4.1.5}: For each $n\in \mathbb{N}$, the sign of a permutation produces a group homomorphism $\sgn : S_{n} \to \{+1, -1\}$ from the symmetric group to the two-element group of signs. In formulas:
     \[\sgn(\sigma\tau) = \sgn(\sigma)\sgn(\tau) \quad \forall \sigma, \tau\in S_{n}\]
@@ -1115,7 +1133,6 @@ see you guys in UG4 category theory!
     \end{itemize}
 \end{thm}
 
-\newpage
 
 % \begin{dfn}[Eigenvalues and Eigenvectors]{dfn:eigenvalue-eigenvector}{4.5.1}
 %     Let $f: V \to V $ be an endomorphism of an $F$-vector space $V$. A scalar $\lambda\in F$ is an \textbf{eigenvalue of $f$} if and only if there exists a non-zero vector $\vec{v}\in V$ such that $f(\vec{v}) = \lambda \vec{v}$. Each such vector is called an \textbf{eigenvector of $f$ with eigenvalue $\lambda$}. For any $\lambda\in F$, the \textbf{eigenspace of $f$ with eigenvalue $\lambda$} is
@@ -1222,6 +1239,7 @@ see you guys in UG4 category theory!
     Let $A\in \Mat(n;R)$ be a square matrix with entries in a commutative ring $R$. Then evaluating its characteristic polynomial $\chi_{A}(x)\in R[x]$ at the matrix $A$ gives zero.
 \end{thm}
 
+\newpage
 \vspace{-10pt}
 \section{Inner Product Spaces}
 
@@ -1394,6 +1412,7 @@ see you guys in UG4 category theory!
     \[a_{i} = r_{i_{1}} + r_{i_{2}} + \cdots + r_{im_{i}} \quad (1 \le i \le s)\]
 \end{thm}
 
+\newpage
 \begin{thm}[Bézout’s identity for polynomials]{thm:jnf-bezout}{6.3.1}
     For a characteristic polynomial
     \[\chi_{\phi}(x) = \prod_{i = 1}^{s} (x - \lambda_{i})^{a_{i}}\in F[x]\]
@@ -1419,8 +1438,6 @@ see you guys in UG4 category theory!
 \begin{dfn}[Stable subsets]{dfn:stable-subset}{6.3.4}
     Let $f : X \to X$ be a mapping from a set $X$ to itself. A subset $Y \subseteq X$ is \textbf{stable under $f$} precisely when $f(Y) \subseteq Y$, that is if $y\in Y$ then $f(y)\in Y$.
 \end{dfn}
-
-\newpage
 
 \begin{thm}[Direct Sum Composition]{thm:direct-sum-composition}{6.3.5}
     For each $1 \le i \le s$, let 
