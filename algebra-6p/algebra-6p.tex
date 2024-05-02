@@ -876,11 +876,16 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \textbf{Def 1.7.6}: Two vector subspaces $V_{1}, V_{2}$ of a vector space $V$ are called \textbf{complementary} if addition defines a bijection
     \[V_{1} \times V_{2} \xrightarrow{\sim} V\]
 
+    \vspace{-5pt}
     \noindent\rule{\textwidth}{0.2pt}
 
     \textbf{Example (Direct Sum)}: Given vector spaces $V_{1},\dots,V_{n}, W$ and linear maps $f_{i} : V_{i} \to W$ we can form a new mapping $f : V_{1} \oplus \cdots \oplus V_{n} \to W$ by $f(v_{1},\dots,v_{n}) = f_{1}(v_{1}) + \cdots + f_{n}(v_{n})$. This is a bijection
     \[\Hom(V_{1}, W) \times \cdots \times \Hom(V_{n}, W) \xrightarrow{\sim} \Hom(V_{1} \oplus \cdots \oplus V_{n}, W)\]
-    Taking $W = V$, we produce a vector iso. $V_{1} \oplus V_{2} \xrightarrow{\sim} V$. Writing $V = V_{1} \oplus V_{2}$, we call $V$ the \textbf{direct sum}, or \textbf{internal direct sum} of the subspaces $V_{1}, V_{2}$
+    Taking $W = V$, we produce a vector iso. $V_{1} \oplus V_{2} \xrightarrow{\sim} V$. Writing $V = V_{1} \oplus V_{2}$, we call $V$ the \textbf{direct sum}, or \textbf{internal direct sum} of the subspaces $V_{1}, V_{2}$. or well basically
+    \[A \oplus B = \begin{bmatrix}
+        A & 0 \\
+        0 & B
+    \end{bmatrix}\]
 
 \end{dfn}
 
