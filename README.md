@@ -2,6 +2,8 @@
 
 LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and Maths. Feel free to use / fork / customise to your liking
 
+:coffee: [(Optional) Buy me a coffee :)](https://ko-fi.com/leon024)
+
 ## Links to 6-page Exam Sheets!
 - My magnum opus: **Fundamentals of Pure Mathematics** - [click here!](FPM/notes_colour.pdf)
 - **Honours Algebra** - [click here!](algebra-6p/algebra-6p.pdf) *(6 pages babyyyy)*
@@ -18,7 +20,6 @@ LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and M
 - **Metric Spaces** (WIP) - [click here!](Metric%20Spaces/metric-notes.pdf)
 - **Foundations of Natural Language Processing** (BIG WIP) - [click here!](FNLP/fnlp-notes.pdf)
 
-:coffee: [(Optional) Buy me a coffee :)](https://ko-fi.com/leon024)
 
 ## Info
 
