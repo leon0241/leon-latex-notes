@@ -1,0 +1,166 @@
+\documentclass[landscape, 8pt]{extarticle}
+\usepackage{geometry}
+% \usepackage{showframe}
+\usepackage[dvipsnames]{xcolor}
+
+\colorlet{colour1}{Red}
+\colorlet{colour2}{Green}
+\colorlet{colour3}{Cerulean}
+
+\geometry{
+    a4paper, 
+    margin=0.17in
+}
+
+\pretolerance=0
+\hyphenpenalty=0
+
+\usepackage{lmodern}
+
+\usepackage[fontsize=7pt]{scrextend}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+% \usepackage{preamble}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage[framemethod=TikZ]{mdframed}
+% \usepackage{../thmboxes_white}
+\usepackage{../thmboxes_v2}
+\usepackage{float}
+% \usepackage{setspace}
+\usepackage[nodisplayskipstretch]{setspace}
+
+
+
+
+
+% \setlength{\parskip}{0pt}
+
+% Custom Definitions of operators
+% \DeclareMathOperator{\im}{im}
+% \DeclareMathOperator{\Fix}{Fix}
+% \DeclareMathOperator{\Orb}{Orb}
+% \DeclareMathOperator{\Stab}{Stab}
+% \DeclareMathOperator{\send}{send}
+% \DeclareMathOperator{\dom}{dom}
+% \DeclareMathOperator{\Maps}{Maps}
+% \DeclareMathOperator{\sgn}{sgn}
+% \DeclareMathOperator{\Mat}{Mat}
+% \DeclareMathOperator{\scale}{sc}
+% \DeclareMathOperator{\Hom}{Hom}
+% \DeclareMathOperator{\id}{id}
+% \DeclareMathOperator{\rk}{rk}
+% \DeclareMathOperator{\Tr}{tr}
+% \DeclareMathOperator{\diag}{diag}
+% \DeclareMathOperator{\can}{can}
+
+\usepackage{hyperref} % note: this is the final package
+
+\parindent = 0pt
+
+\renewcommand\labelitemi{\tiny$\bullet$}
+
+\begin{document}
+
+\setlength{\abovedisplayskip}{3.5pt}
+\setlength{\belowdisplayskip}{3.5pt}
+\setlength{\abovedisplayshortskip}{3.5pt}
+\setlength{\belowdisplayshortskip}{3.5pt}
+
+\begin{multicols}{3}
+\raggedcolumns
+
+
+\section*{\huge FNLP Exam Notes}
+Made by Leon :) 
+\vspace{-5pt}
+\section{smooth and stuff}
+
+\begin{dfn}[Maximum Likelihood Estimates (MLE)]{dfn:mle}{}
+    \[\mathbb{P}_{RF}(x) = \frac{C(x)}{N}\]
+    $C(x)$ is the count of $x$ in the dataset, and $N$ is the total number of items in the dataset
+
+    \begin{itemize}[leftmargin=*]
+        \setlength\itemsep{0em}
+        \item \textbf{Problem 1 (Sparse data problem)}: If the count of an item is $0$, then the probability will also be $0$ - you want the model to be able to calculate sentences with new words in them. \textbf{Solution}: Smoothing
+        \item \textbf{Problem 2}: Cannot reliably find probability of sentences (the chance of ``skibidi sigma gyatt rizz'' being already in a corpus is very low). \textbf{Solution}: use $n$-gram models
+    \end{itemize}
+\end{dfn}
+
+\begin{dfn}[n-gram models]{dfn:ngrams}{}
+    Turn a sentence $\mathbb{P}(S = w_{1}\dots w_{n})$ into joint probabilities $\mathbb{P}(w_{1},\dots,w_{n})$. We have $\mathbb{P}(X, Y) = \mathbb{P}(Y | X)\mathbb{P}(X)$. So
+    \begin{align*}
+        \mathbb{P}(a, b, c) &= \mathbb{P}(c | a,b)\mathbb{P}(a,b)\\
+                            &= \mathbb{P}(c | a, b)\mathbb{P}(b|a)\mathbb{P}(a)
+    \end{align*}
+
+    n-gram model just estimates probability to $n$ probabilities
+    \begin{itemize}[leftmargin=*]
+        \setlength\itemsep{0em}
+        \item \textbf{Trigram}: $\mathbb{P}(w_{i}|w_{1},w_{2},\dots,w_{i-1}) \approx \mathbb{P}(w_{i}|w_{i-2}, w_{i-1})$
+        \item \textbf{Bigram}: $\mathbb{P}(w_{i}|w_{1},w_{2},\dots,w_{i-1}) \approx \mathbb{P}(w_{i}|w_{i-1})$
+        \item \textbf{Unigram}: $\mathbb{P}(w_{i}|w_{1},w_{2},\dots,w_{i-1}) \approx \mathbb{P}(w_{i})$
+    \end{itemize}
+
+    \noindent\rule{\textwidth}{0.2pt}
+    To be able to detect edges of sentences, add \texttt{<s>} and \texttt{<\symbol{92}s>} on sentence edges to be factored into the $n$-gram model
+    \[\text{\texttt{skibidi rizz}} \implies \text{\texttt{<s> skibidi rizz <\symbol{92}s>}}\]
+    therefore a bigram like $\mathbb{P}(\text{\texttt{<\symbol{92}s>}} | \tt{rizz})$ will detect the end of a sentence 
+
+    Usually, \textbf{negative log probs} will be used instead of regular decimals, as the probabilities will get small fast and floating precision issues will happen.
+    \begin{itemize}[leftmargin=*]
+        \setlength\itemsep{0em}
+        \item Probabilities from 0 to 1, but negative log probs go from 0 to $\infty$
+        \item Log probs are added instead of multiplied like regular probabilities
+    \end{itemize}
+\end{dfn}
+
+\begin{dfn}[Add-one and Lidstone smoothing]{dfn:add-one-lidstone-smoothing}{}
+    \textbf{Add one smoothing}
+    \[\mathbb{P}_{+1}(w_{i} | w_{i-2}, w_{i-1}) = \frac{C(w_{i-2}, w_{i-1}, w_{i}) + 1}{C(w_{i - 2}, w_{i-1}) + v}\]
+    where $v$ is the vocabulary size
+
+    \noindent\rule{\textwidth}{0.2pt}
+
+    \textbf{Add-$\alpha$ smoothing}
+    \[\mathbb{P}_{+\alpha}(w_{i} | w_{i - 1}) = \frac{C(w_{i-1}, w+i) + \alpha}{C(w_{i-1}) + \alpha v}\]
+
+    Choosing an $\alpha$: Use a three-way data split: \textbf{training set} (80-90\%), \textbf{held-out/development set} (5-10\%), and \textbf{test set} (5-10\%)
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item Train model (estimate probabilities) on training set with different values of $\alpha$
+        \item Choose the $\alpha$ that minimizes cross-entropy on development set
+        \item Report final results on test set
+    \end{itemize}
+    More generally, use development set for evaluating different models, debugging, and optimizing choises. This avoids overfitting to the training set and even to the test set
+
+\end{dfn}
+
+\begin{dfn}[Good-Turing Smoothing]{dfn:good-turing}{}
+    \[c* = (c + 1) \frac{N_{c+1}}{N+c} \qquad P*_{c} = \frac{c*}{N} = (c + 1) \frac{\frac{N_{c+1}}{N_{c}}}{N}\]
+
+    \begin{itemize}[leftmargin=*]
+        \setlength\itemsep{0em}
+        \item $N_{c}$ is the number of occurances with count $c$
+        \item $P*_{c}$ is the probability of an item with count $c$
+        \item $c*$ is the good-turing smoothed version of count
+        \item $N$ is total count
+    \end{itemize}
+
+    \textbf{random items}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item Probability the next observation is new
+            \[\mathbb{P}(unseen) = \frac{N_{1}}{N}\]
+        \item Probability the next observation is a specific new object
+            \[\mathbb{P}_{GT} = \frac{1}{N_{0}} \frac{N_{1}}{N} \implies c* = \frac{N_{1}}{N_{0}}\]
+    \end{itemize}
+\end{dfn}
+
+\lipsum[1-12]
+\end{multicols}
+\end{document}
