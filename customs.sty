@@ -1,0 +1,14 @@
+% \newcommand*\textrule[1]{
+%     \makebox[\textwidth]{
+%         \hrulefill\hspace{1ex}\raisebox{-.5ex}{\textbf{#1}}\hspace{1ex}\hrulefill
+%     }
+% }
+
+\def\textrule#1{
+    \parbox\textwidth{\hrulefill\hspace{0.5em}\lower.3ex\hbox{#1}\hspace{0.5em}\hrulefill}\vspace{-2ex}
+}
+
+\newcommand\longrule[1]{
+    \vspace{-3pt}
+    \noindent\rule{\textwidth}{#1}
+}
