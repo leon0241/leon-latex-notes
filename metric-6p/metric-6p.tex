@@ -848,8 +848,47 @@ Watch lecture recording 06/03 for more in-depth examples
 \newpage
 \section{Compactness}
 
-\begin{dfn}[Compactness]{dfn:compactness}{}
-    Let $X = \mathbb{R}$ and $d$ be the standard metric. A subset $K$ of $\mathbb{R}$ is said to be \textbf{compact} iff every sequence of elements of $K$ has a subsequence that converges to an element of $K$
+\begin{dfn}[Open Covers and Subcovers]{dfn:open-covers-subcovers}{}
+    An \textbf{open cover} of a set $S$ in a metric space is a family $(G_{i})_{i\in I}$ of open sets such that $S \subset \bigcup\limits_{i \in I} G_{i}$. A \textbf{subcover} of an open cover $(G_{i})_{i\in I}$ is a sub-family $(G_{i})_{i\in I'}$ where $I' \subset I$, such that $S \subseteq \bigcup_{i\in I'} G_{i}$
+\end{dfn}
+
+\begin{dfn}[Compacting Compactness]{dfn:compactness}{}
+    Let $X = \mathbb{R}$ and $d$ be the standard metric. Let $K$ be a subset of $\mathbb{R}$
+    \textrule{\textbf{Compactness}}
+
+    \vspace{-2pt}
+    The following definitions are equivalent:
+    \vspace{-5pt}
+    \begin{enumerate}[leftmargin=*]
+        \item $K$ is said to be \textbf{compact} iff every sequence of elements of $K$ has a subsequence that converges to an element of $K$
+        \item $K$ is \textbf{compact} iff every open cover of $K$ has a finite subcover
+    \end{enumerate}
+    \vspace{-5pt}
+    \textrule{\textbf{Sequential Compactness}}
+    \vspace{-8pt}
+    \begin{enumerate}[leftmargin=*]
+        \item[3.] $K$ is \textbf{sequentially compact} iff every sequence in $K$ has a subsequence that converges to an element of $K$
+
+            For the case $K = X$ it's just the definition $(1)$ defined above
+    \end{enumerate}
+
+    \vspace{-5pt}
+    \textrule{\textbf{Uniform Continuity}}
+
+    \vspace{-5pt}
+    \begin{enumerate}[leftmargin=*]
+        \item[4.] Let $(X, d_{X}), (Y, d_{Y})$ be metric spaces. A function $f : X \to Y$ is said to be \textbf{uniformly continuous} iff for every $\epsilon>0$ there exists a $\delta>0$ such that, for all $x, x'$ in $X$ with $d_{X}(x, x') < \delta$ we have
+            \[d_{Y}(f(x), f(x')) < \epsilon\]
+    \end{enumerate}
+
+    \vspace{-3pt}
+    \textrule{\textbf{Totally bounded Spaces}}
+    \vspace{-8pt}
+    \begin{enumerate}[leftmargin=*]
+        \item[5.] A metric space $(X, d)$ is said to be \textbf{totally bounded} iff for every positive $\delta$, $X$ can be covered by a finite number of open balls of radius $\delta$.
+        \item[6.] If $(X, d)$ is totally bounded then it is bounded, but the converse is not necessarily true
+    \end{enumerate}
+    
 \end{dfn}
 
 \begin{xmp}[Examples of compactness]{xmp:compact-sets}{}
@@ -872,103 +911,113 @@ Watch lecture recording 06/03 for more in-depth examples
     \vspace{-3pt}
 \end{xmp}
 
-\vspace{-5pt}
-\begin{thm}[Heine-Borel Theorem]{thm:heine-borel}{}
-    On the real line with the standard metric, a set is compact if and only if it is closed and bounded
+\begin{thm}[Lebesgue's Lemma]{thm:lebesgue-lemma}{}
+    \vspace{-5pt}
+    Let $(X, d)$ be a sequentially compact metric space and $X = \bigcup_{i\in I} G_{i}$ be an open cover of $X$. There exists a $\delta > 0$ such that for any two points $x, y\in X$ with $d(x, y) < \delta$ there exists an $i$ such that $x, y\in G_{i}$. Any such $\delta$ is called a \textbf{Lebesgue number} of the open cover
 
     \longrule{0.08ex}
-    In $\mathbb{R}^{n}$ with the Euclidean metric, a set is compact if and only if it is closed and bounded
+    \textbf{Lemma}: Let $(X, d)$ be a sequentially compact metric space and $X = \bigcup_{i\in I} G_{i}$ be an open cover of $X$. Then there exists a $\delta > 0$ such that any nonempty subset of $X$ of diameter $< \delta$ can be covered by a single $G_{i}$
 \end{thm}
 
-\vspace{-5pt}
-\begin{thm}[Continuous Functions on Compact Sets]{thm:cont-functions-on-compact-sets}{}
-    Let $K \subseteq \mathbb{R}$ be compact, and $f : K \to \mathbb{R}$ be a continuous function. Then $f$ is bounded
-\end{thm}
 
-\begin{thm}[Extreme Value Theorem]{thm:evt}{}
-    Let $K \subseteq \mathbb{R}$ be compact and $f : K \to \mathbb{R}$ be a continuous function. Then $f$ has a maximum and a minimum
-\end{thm}
 
-\begin{thm}[Open Covers]{thm:open-covers}{}
-    An \textbf{open cover} of a set $S$ in a metric space is a family $(G_{i})_{i\in I}$ of open sets such that $S \subset \bigcup\limits_{i \in I} G_{i}$. A \textbf{subcover} of an open cover $(G_{i})_{i\in I}$ is a sub-family $(G_{i})_{i\in I'}$ where $I' \subset I$, such that $S \subseteq \bigcup_{i\in I'} G_{i}$
-
-    \longrule{0.08ex}
-    \textbf{Thm}: On the real line with the standard metric, a set $K$ is compact iff every open cover of $K$ has a finite subcover
-
-    \longrule{0.08ex}
-    \textbf{Lemma}: Every open cover of the interval $[a, b]$, where $a, b\in \mathbb{R}$, $a \le b$ has a finite cover
-
-    \longrule{0.08ex}
-    \textbf{Thm}: Let $K \subseteq \mathbb{R}$ and assume that every open cover of $K$ has a finite subcover. Then $K$ is closed and bounded, hence compact
-\end{thm}
-
-\begin{dfn}[Sequentially compact sets]{dfn:sequentially-compact}{}
-    Let $(X, d)$ be a metric space and $K \subseteq X$
+\begin{thm}[big theorem bank of obvious shit]{thm:compactness-thms}{}
+    \vspace{-5pt}
+    \textrule{\textbf{Regular Compactness}}
+    \vspace{-7pt}
     \begin{itemize}[leftmargin=*]
-        \item We say that $K$ is \textbf{sequentially compact} iff every sequence in $K$ has a subsequence that converges to an element of $K$
-        
-            For $K = X$ this becomes: $X$ is compact iff every sequence in $X$ has a convergent subsequence
+        \item For a set $K$ in $\mathbb{R}$ with the standard metric:
+            \vspace{-5pt}
+            \begin{itemize}
+                \item $K$ is compact $\iff$ $K$ is closed and bounded
+                \item $K$ is compact $\iff$ every open cover of $K$ has a finite cover
+            \end{itemize}
 
-        \item We say that $K$ is \textbf{compact} iff every open cover of $K$ has a finite subcover
+
+        \vspace{-5pt}
+        \item For a set $K$ in $\mathbb{R}^{n}$ with the Euclidean metric:
+            \vspace{-5pt}
+            \begin{itemize}
+                \item $K$ is compact $\iff$ $K$ is closed and bounded
+            \end{itemize}
+
+        \vspace{-5pt}
+        \item For a set $K$ in $\mathbb{R}$
+            \vspace{-5pt}
+            \begin{itemize}
+                \item Every open cover of $K$ has a finite subcover $\implies$ $K$ is closed and bounded $\implies$ $K$ is compact
+            \end{itemize} 
+
+        \vspace{-5pt}
+        \item Every open cover of the interval $[a, b]$, where $a, b\in \mathbb{R}$, $a \le b$ has a finite subcover
+
+    
     \end{itemize}
 
-    These two notions of compactness are equivalent
-\end{dfn}
+    \vspace{-5pt}
+    \textrule{\textbf{Continuous Functions}}
+    \vspace{-5pt}
+    \begin{itemize}[leftmargin=*]
+        \item Let $K \subseteq \mathbb{R}$ be compact, and $f : K \to \mathbb{R}$ continuous:
+            \vspace{-5pt}
+            \begin{itemize}
+                \item $f$ is bounded
+                \item $f$ has a maximum and minimum (EVT)
+            \end{itemize}
+        \vspace{-5pt}
+        \item Let $(X, d)$ be a metric space, $K$ be a sequentially compact subset of $X$ and $f : K \to \mathbb{R}$ be a continous function:
+            \vspace{-5pt}
+            \begin{itemize}
+                \item $f$ has a maximum and a minimum. In particular, $f$ is bounded. (EVT ..again)
+            \end{itemize} 
+    \end{itemize}
 
-\begin{thm}[idk more thms]{thm:compact-thms}{}
-    \textbf{Thm}: Let $(X, d)$ be a metric space and $K \subseteq X, K\ne\emptyset$, $d_{K}$ be the induced metric on $K$. $K$ is a (sequentially) compact subset of $X$ iff the metric space $(K, d_{K})$ is (sequentially compact)
+    \vspace{-5pt}
+    \textrule{\textbf{Sequential compactness stuff}}
 
-    \longrule{0.08ex}
-    \textbf{Thm}: Let $(X, d)$ be a metric space and $K \subseteq X$ be sequentially compact. Then $K$ is closed and bounded
+    Let $(X, d)$ be a metric space, and $K \subseteq X$:
+    \vspace{-5pt}
+    \begin{itemize}[leftmargin=*]
+        \item Let $K\ne\emptyset$, and let $d_{K}$ be the induced metric on $K$.
+            \vspace{-3pt}
+            \begin{itemize}
+                \item $K$ (sequentially) compact $\iff$ the metric space $(K, d_{K})$ is (sequentially) compact
+            \end{itemize}
+            
+            \vspace{-2pt}
+    \item $K$ sequentially compact $\implies$ $K$ is closed and bounded
 
-    \longrule{0.08ex}
-    \textbf{Thm}: Let $(X, d)$ be a sequentially compact metric space and $K \subseteq X$. The set $K$ is sequentially compact iff it is closed
+    \item $(X, d)$ and $K$ are both sequentially compact $\iff$ $K$ is closed
 
-    \longrule{0.08ex}
-    \textbf{Thm}: If a metric space $(X, d)$ is sequentially compact, then it is complete
-\end{thm}
+    \item $(X, d)$ is sequentially compact $\implies$ $(X, d)$ is complete
+    \item $(X, d)$ is compact $\implies$ $(X, d)$ is sequentially compact
 
-\begin{thm}[Extreme Value Theorem again]{thm:evt-again}{}
-    Let $(X, d)$ be a metric space, $K$ be a sequentially compact subset of $X$ and $f : K \to \mathbb{R}$ be a continous function. Then $f$ has a maximum and a minimum. In particular, $f$ is bounded.
-\end{thm}
+    \item $K$ is compact $\iff$ $K$ is sequentially compact
 
-\begin{dfn}[Uniform Continuity]{dfn:uniform-continuity}{}
-    Let $(X, d_{X}), (Y, d_{Y})$ be metric spaces. A function $f : X \to Y$ is said to be \textbf{uniformly continuous} iff for every positive $\epsilon$ there exists a positive $\delta$ such that, for all $x, x'$ in $X$ with $d_{X}(x, x') < \delta$ we have $d_{Y}(f(x), f(x')) < \epsilon$
+    \item $(X, d)$ is compact, and let $A$ be an infinite subset of $X$ $\implies$ $A$ has at least one limit point
+    \end{itemize}
 
-    \longrule{0.08ex}
-    \textbf{Thm}: Let $(X, d_{X})$ be a sequentially compact metric space, $(Y, d_{Y})$ be a metric space and $f : X\to Y$ be a continuous function. Then $f$ is uniformly continuous
-\end{dfn}
+    \vspace{-5pt}
+    \textrule{\textbf{Uniform Continuity}}
 
-\begin{thm}[yet another compactness thm]{thm:compactness-thm-againnnnn}{}
-    If a metric spasce $(X, d)$ is compact, then it is sequentially compact
+    Let $(X, d_{X})$ be a sequentially compact metric space, $(Y, d_{Y})$ be a metric space and $f : X\to Y$ be a continuous function. Then $f$ is uniformly continuous
+    
 
-    If a subset $K$ of $X$ is compact, prove that $K$ is sequentially compact
+    \textrule{\textbf{Totally Compact Spaces}}
 
-    Let $(X, d)$ be a compact metric space and $A$ be an infinite subset of $X$. Then $A$ has at least one limit point
-\end{thm}
-
-
-\begin{thm}[Lebesgue's Lemma]{thm:lebesgue-lemma}{}
-    Let $(X, d)$ be a sequentially compact metric space and $X = \bigcup_{i\in I} G_{i}$ be an open cover of $X$. There exists a positive $\delta$ such that for any two points $x, y\in X$ with $d(x, y) < \delta$ there exists an $i$ such that $x, y\in G_{i}$. Any such $\delta$ is called a \textbf{Lebesgue number} of the open cover
-
-    \textbf{Lemma}: Let $(D, d)$ be a sequentially compact metric space and $X = \bigcup_{i\in I} G_{i}$ be an open cover of $X$. Then there exists a $\delta > 0$ s.t. any nonempty subset of $X$ of diameter $< \delta$ can be covered by a single $G_{i}$
-\end{thm}
-
-\begin{dfn}[Totally bounded spaces]{thm:totally-bounded}{}
-    A metric space $(X, d)$ is said to be \textbf{totally bounded} iff for every positive $\delta$, $X$ can be covered by a finite number of open balls of radius $\delta$.
-
-    \textbf{Note}: If $(X, d)$ is totally bounded then it is bounded, but the converse is not necessarily true
-\end{dfn}
-
-\begin{thm}[Sequentially compactness boundedness]{thm:seq-compact-bound}{}
-    If a metric space is sequentially compact, then it is totally bounded
-
-    \longrule{0.08ex}
+    Let $(X, d)$ be a metric space:
+    \vspace{-5pt}
+    \begin{itemize}[leftmargin=*]
+        \item $(X, d)$ is sequentially compact $\implies$ $(X, d)$ is totally bounded
+        \item $(X, d)$ is compact $\iff$ $(X, d)$ complete and totally bounded
+    \end{itemize}
+    \vspace{-5pt}
     \textbf{Thm}: Every sequentially compact metric space is compact. (From now on, refer to sequentially compact spaces as compact)
-
-    \longrule{0.08ex}
-    \textbf{Thm}: A metric space is compact iff it is complete and totally bounded
 \end{thm}
+
+
+
+
 
 \begin{dfn}[Countable and Uncountable Sets]{dfn:countable-sets}{}
     A set $S$ is said to be:
