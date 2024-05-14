@@ -101,6 +101,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
         \item $d(x,y)=d(y,x)$
         \item $d(x,y)\le d(x,z)+d(z,y)$ (Triangle Inequality)
     \end{itemize}
+    \vspace{-5pt}
     A non-empty set $X$ equipped with a metric $d$ is a \textbf{metric space}
 \end{thm}
 
@@ -108,11 +109,11 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \begin{dfn}[Real Vector Spaces]{dfn:modules-and-vector-spaces}{}
     \vspace{-5pt}
     A \textbf{real vector space $V$} is a set with two operations $(X, +, \cdot)$, where:
-    \vspace{-10pt}
+    \vspace{-15pt}
     \begin{itemize}[leftmargin=*]
         \item $+$ is addition, and $\cdot$ is scalar multiplication
         \item $(X, +)$ is an abelian group - i.e. for all (vectors) $x,y,z\in X$:
-            \vspace{-2pt}
+            \vspace{-5pt}
             \begin{itemize}
                 \item \textbf{Closure}: $x + y\in X$
                 \item \textbf{Commutativity}: $x + y = y + x$
@@ -121,6 +122,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
                 \item \textbf{Inverse}: $\forall x\in X$ we have $-x$ s.t. $x + (-x) = (-x) + x = 0$
             \end{itemize}
             
+            \vspace{-5pt}
             \item Vector space axioms: for all $x,y,z\in X$ and $\mu, \lambda \in \mathbb{R}$ we have:
                 \vspace{-5pt}
                 \begin{itemize}
@@ -138,7 +140,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \vspace{-5pt}
     \textrule{\textbf{Normed Vector Spaces}}
 
-    \vspace{-2pt}
+    \vspace{-3pt}
     A \textbf{normed vector space} is a real vector space $X$ equipped with a \textbf{norm}, i.e. a function that assigns to every vector $x\in X$ a real number $\lVert x \rVert$ so that, for all vectors $x$ and $y$ in $X$ and all real scalars $a$:
 
     \vspace{-5pt}
@@ -158,7 +160,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 
     \textrule{\textbf{Inner Product Spaces}}
-
+    \vspace{-3pt}
     Let $X$ be a real vector space. An \textbf{inner product} on $X$ is a function that assigns to every pair $(x,y)\in X \times X $ a real number denoted by $\langle x,y \rangle$ and has the following properties:
     \vspace{-3pt}
     \begin{itemize}
@@ -181,49 +183,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \end{dfn}
 
 
-
-
-% \begin{dfn}[Metric Space operations]{def:metric-operations}{}
-%     \vspace{-10pt}
-%     \[\text{Let }X = \mathbb{R}^{n} = \{(x_{1},x_{2},\dots,x_{n}) : x_{1},x_{2},\dots,x_{n}\in\mathbb{R}\}\]
-%
-%     \textrule{\textbf{$n$-inner product}}
-%
-%     For $x = (x_{1},x_{2},\dots,x_{n})$, $y=(y_{1},y_{2},\dots,y_{n})$ in $\mathbb{R}^{n}$, the \textbf{inner product} is defined as:
-%     \[\langle x,y \rangle = x_{1}y_{1} + x_{2}y_{2} + \cdots + x_{n}y_{n}\]
-%     \textbf{Properties of $n$-inner product}: For all vectors $x,y,z\in\mathbb{R}^{n}$ and all real scalars $a,b$,
-%     \vspace{-5pt}
-%     \begin{itemize}
-%         \item $\langle x,x \rangle\ge 0$ and $\langle x,x \rangle=0 \iff x = 0$
-%         \item $\langle x,y \rangle = \langle y,x \rangle$
-%         \item $\langle ax+by,z \rangle = a\langle x,z \rangle + b\langle y,z \rangle$
-%     \end{itemize}
-%
-%     \textbf{Remark}: This is a generalisation of the dot product
-%
-%     \textrule{\textbf{$n$-norm}}
-%
-%     For $x = (x_{1},x_{2},\dots,.x_{n})\in\mathbb{R}^{n}$, the \textbf{norm} is defined as
-%     \[\lVert x \rVert_{2} = \langle x,x \rangle^{1/2} = \sqrt{x^{2}_{1} + x^{2}_{2} + \cdots + c^{2}_{n}}\text{(norm)}\]
-%     \textbf{Properties of $n$-norm}: For $x,y\in\mathbb{R}^{n},\,a\in\mathbb{R}$,
-%     \vspace{-5pt}
-%     \begin{itemize}
-%         \item $\lVert x \rVert_{2}\ge 0$ and $\lVert x \rVert_{2}=0 \iff x = 0$
-%         \item $\lVert ax \rVert_{2}=\lvert a \rvert\lVert x \rVert_{2}$
-%         \item $\lVert x+y \rVert_{2}\le \lVert x \rVert_{2} + \lVert y \rVert_{2}\text{ (triangle inequality)}$
-%     \end{itemize}
-%     \textbf{Remark}: This is a generalisation of the "length of a vector"
-%
-%     \longrule{0.08ex}
-%
-%     In particular, the \textbf{inner product} and \textbf{norm} in $\mathbb{R}^{2}$ are defined as
-%     \[\langle x,y \rangle = x_{1}y_{1} + x_{2}y_{2} \quad \text{and} \quad \lVert x \rVert_{2} = \langle x,x \rangle^{1/2} = \sqrt{x^{2}_{1} + x^{2}_{2}}\]
-% \end{dfn}
-%
-
-
 \vspace{-5pt}
-\setcounter{subsection}{1}
 
 \begin{dfn}[$n$-dimensional Euclidean space]{def:ndim-euclidean-space}{}
     \vspace{-5pt}
@@ -231,20 +191,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \newline
     For $x = (x_{1},x_{2},\dots,x_{n})$, $y=(y_{1},y_{2},\dots,y_{n})$ in $\mathbb{R}^{n}$, define
     \[\langle x,y \rangle = x_{1}y_{1} + x_{2}y_{2} + \cdots + x_{n}y_{n} \text{ (inner product)}\]
-    \textbf{Properties of $n$-inner product}: For all vectors $x,y,z\in\mathbb{R}^{n}$ and all real scalars $a,b$,
-    \begin{itemize}
-        \item $\langle x,x \rangle\ge 0$ and $\langle x,x \rangle=0 \iff x = 0$
-        \item $\langle x,y \rangle = \langle y,x \rangle$
-        \item $\langle ax+by,z \rangle = a\langle x,z \rangle + b\langle y,z \rangle$
-    \end{itemize}
-    For $x = (x_{1},x_{2},\dots,.x_{n})\in\mathbb{R}^{n}$ define
     \[\lVert x \rVert_{2} = \langle x,x \rangle^{1/2} = \sqrt{x^{2}_{1} + x^{2}_{2} + \cdots + c^{2}_{n}}\text{(norm)}\]
-    \textbf{Properties of $n$-norm}: For $x,y\in\mathbb{R}^{n},\,a\in\mathbb{R}$,
-    \begin{itemize}
-        \item $\lVert x \rVert_{2}\ge 0$ and $\lVert x \rVert_{2}=0 \iff x = 0$
-        \item $\lVert ax \rVert_{2}=\lvert a \rvert\lVert x \rVert_{2}$
-        \item $\lVert x+y \rVert_{2}\le \lVert x \rVert_{2} + \lVert y \rVert_{2}\text{ (triangle inequality)}$
-    \end{itemize}
 \end{dfn}
 \vspace{-5pt}
 
