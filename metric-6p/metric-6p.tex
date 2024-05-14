@@ -49,7 +49,7 @@
 
 
 
-% \setlength{\parskip}{0pt}
+\setlength{\parskip}{0.2em}
 
 % Custom Definitions of operators
 % \DeclareMathOperator{\im}{im}
@@ -787,30 +787,543 @@ Watch lecture recording 06/03 for more in-depth examples
     \item Picard's Method for solving the Initial Value Problem
 \end{itemize}
 
-\begin{thm}[Metric Space Unique Fixed Points]{thm:complete-ms-fixed-point}{}
+\begin{thm}[Banach's Fixed Point Theorem]{thm:complete-ms-fixed-point}{}
     Let $(X, d)$ be a complete metric space and let $f : X \to X$ be a contraction. Then $f$ has a unique fixed point
 \end{thm}
 
-\begin{proof}
-    Let $x_{1}\in X$ and define $x_{n+1} = f(x_{n}),\, n = 1,2,\dots$
-
-    $(x_{n})^{\infty}_{n = 1}$ is a Cauchy sequence. Observe first that, for all $n$,
-    \[d(x_{n+1}, d+n) = d(f(x_{n}, f(x_{n-1})) \le L d(x_{n}, x_{n-1}))\]
-    Therefore, for all $n$,
-    \[d(x_{n+1}, x_{n}) \le Ld(x_{n}, x_{n-1})\le L^{2}d(x_{n-1},x_{n-2}) \le \cdots \le L^{n-1}d(x_{2}, x_{1})\]
-
-    This goes on for like 10 more lines, watch 09/06 42 min
-\end{proof}
-
 \subsection{Equivalent Metrics}
 \begin{dfn}[Equivalent Metrics]{def:equivalent-metrics}{}
-    Two metrics on the same non-empty set $X$ are said to be \textbf{equivalent} iff they have teh same open sets
+    Two metrics on the same non-empty set $X$ are said to be \textbf{equivalent} iff they have the same open sets
 \end{dfn}
 
-\textbf{Exercise:} Let $X$ be a non-empty set and $d_{1},\,d_{2}$ be two metrics on $X$. Prove that $d_{1}$ and $d_{2}$ are equivalent iff the identity function
-\[i : (X, d_{1}) \to (X, d_{2})\]
-is a homeomorphism (i.e. $i$ is continuous and its inverse $i^{-1} = i : (X, d_{2})\to (X, d_{1})$ is continuous)
+\begin{thm}[Equivalent Metrics Theorem]{thm:equivalent-metrics}{}
+    Let $d_{1}$ and $d_{2}$ be metrics on the same non-empty set $X$. If there exist positive constants $C$ and $C'$ such that for all $x, y$ in $X$,
+    \[Cd_{1}(x, y) \le d_{2}(x, y) \le C'd_{1}(x, y)\]
+    then $d_{1}$ and $d_{2}$ are equivalent
+\end{thm}
 
+\begin{dfn}[Limits of functions between metric spaces]{dfn:functions-metric-spaces}{}
+    Let $(X, d_{X})$ and $(Y, d_{Y})$ be metric spaces, $x_{0}$ be a limit point of $X$, $y_{0}\in Y$ and $f : X \to Y$ be a function. We say that $\lim_{x\to x_{0}} f(x) = y_{0}$ iff
+    \[\forall \epsilon > 0 \quad \exists \delta > 0 \quad \forall x\in B_{X}(x_{0}, \delta) \backslash \{x_{0}\} \quad f(x)\in B_{Y}(y_{0}, \epsilon)\]
+\end{dfn}
+
+\begin{thm}[Completeness of the Classical Spaces]{thm:completeness-of-classical-spaces}{}
+    \vspace{-5pt}
+    Some examples of complete metric spaces:
+    \vspace{-12pt}
+    \begin{multicols}{4}
+    \begin{itemize}
+        \item $(\mathbb{R}^{n}, d_{2})$
+        \item $\ell^{2}$
+        \item $C([a, b])$
+        \item $\ell^{\infty}$
+    \end{itemize}
+    \end{multicols}
+    \vspace{-5pt}
+    \longrule{0.08ex}
+    \vspace{-5pt}
+
+    Let $(X, d_{X})$ and $(Y, d_{Y})$ be two metric spaces and assume that $(Y, d_{Y})$ is complete.
+
+    Let $C(X, Y)$ be the set of all continuous and bounded functions from $X$ to $Y$. For $f, g\in C(X, Y)$ define
+    \[D(f, g) = \sup \{d_{Y}(f(x), g(x)) : x\in X\}\]
+    $D$ is a metric and the metric space $(C(X, Y), D)$ is complete
+\end{thm}
+
+\begin{dfn}[The product space \texorpdfstring{$X^{n}$}{Xn}]{dfn:x-n-product-space}{}
+    Let $(X, d)$ be a metric space and $n\in \mathbb{N}$. Define $D : X^{n} \to \mathbb{R}$ by
+    \[D(x_{1}, x_{2}) = d(x_{11}, x_{21}) + d(x_{12}, x_{22}) + \cdots + d(x_{1n}, x_{2n})\]
+    \textbf{Lemma}: $D$ is a metric and a sequence converges in $(X^{n}, D)$ iff it converges componentwise
+
+    \textbf{Lemma}: If $(X, d)$ is complete then $(X^{n}, D)$ is complete
+\end{dfn}
+
+\begin{dfn}[The product space \texorpdfstring{$X^{\mathbb{N}}$}{X^N}]{dfn:x-natural-product-space}{}
+    Let $B^{A}$, where $A, B$ are sets, be the set of all functions from $A$ to $B$
+
+    \longrule{0.08ex}
+    \textbf{Def:} Let $(X, d)$ be a metric space. Define a metric $D : X^{\mathbb{N}} \times X^{\mathbb{N}} \to \mathbb{R}$ by
+    \[D(x_{1}, x_{2}) = \sum_{n = 1}^{\infty} \frac{1}{2^{n}} \frac{d(x_{1n}, x_{2n})}{1 + d(x_{1n}, x_{2n})}\]
+    where $x_{1} = (x_{11},\dots, x_{1n},\dots)$, $x_{2} = (x_{21},\dots,x_{2n},\dots)$
+
+    $(X^{\mathbb{N}}, D)$ is called a \textbf{product space}
+
+\end{dfn}
+
+\begin{thm}[Convergence of Product spaces]{thm:product-space-convergence}{}
+    Let $(X, d)$ be a metric space, let $(x_{k})_{k=1}^{\infty}$ be a sequence in $X^{\mathbb{N}}$ and let $x\in X^{\mathbb{N}}$. Write $x_{k} = (x_{k 1},\dots, x_{kn},\dots)$ and $x = (l_{1},\dots,l_{n},\dots)$. Then, $x_{k} \xrightarrow[k \to +\infty]{(X^{\mathbb{N}}, D)} x$ if and only if, for all $n$, $x_{kn}\xrightarrow[k \to +\infty]{(X^{\mathbb{N}} l_{n}}$
+\end{thm}
+
+\begin{thm}[Completeness of product spaces]{thm:product-space-completeness}{}
+    Let $(X, d)$ be a complete metric space. Then the product space $(X^{\mathbb{N}}, D)$ is complete.
+\end{thm}
+
+\begin{thm}[Completeness of \texorpdfstring{$\mathbb{R}$}{R}]{thm:completeness-of-R}{}
+    \vspace{-5pt}
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Thm (Least Upper Bound Principle)}: Every non-empty bounded above subset of $\mathbb{R}$ has a least upper bound
+        \item \textbf{Thm (Monotone Convergence)}: Every bounded monotone sequence of real numbers has a limit
+        \item \textbf{Thm ($\epsilon$-convergence)}: Let $A$ be a non-empty boudned subset of $\mathbb{R}$ and let $\epsilon$ be positive. If the distance between any two elements of $A$ is $< \epsilon$, then
+        \[\sup(A) - \inf(A) \le \epsilon\]
+        \item \textbf{Thm}: Every Cauchy sequence of real numbers is convergent
+    \end{itemize}
+\end{thm}
+
+\begin{dfn}[Limit Superior and Inferior]{dfn:limsup-liminf}{}
+    Let $(x_{n})^{\infty}_{n=1}$ be a Cauchy sequence in $\mathbb{R}$. Then $(x_{n})^{\infty}_{n=1}$ is bounded.
+
+    Define:
+    \[I_{n} = \inf \{x_{n}, x_{n+1},\dots\} \quad S_{n} = \sup \{x_{n}, x_{n+1},\dots\}\]
+
+    \longrule{0.08ex}
+    \textbf{Thm}: $(S_{n})^{\infty}_{n=1}$ and $(I_{n})^{\infty}_{n=1}$ are monotone and bounded
+    \[I_{1} \le I_{n} \le S_{n} \le S_{1}, \quad n = 1,2,\dots\]
+    Therefore $I_{n} \to I$ and $S_{n} \to S$ for some reals $I$ and $S$. Since $S_{n} - I_{n} \to 0$ we have $S = I$. We also have $x_{n}\to S = I$
+
+    \textrule{\textbf{Limsup and Liminf}}
+    \vspace{-8pt}
+
+    \begin{itemize}[leftmargin=*]
+        \item The limit of the sequence $(I_{n})^{\infty}_{n=1}$ is called the \textbf{limit inferior} of $(x_{n})^{\infty}_{n=1}$ and is denoted by $\liminf x_{n}$
+            \[\liminf x_{n} = \lim_{n\to +\infty} I_{n} = \lim_{n\to +\infty} \inf \{x_{n}, x_{n+1},\dots\}\]
+        \item The limit of the sequence $(S_{n})^{\infty}_{n=1}$ is called the \textbf{limit superior} of $(x_{n})^{\infty}_{n=1}$ and is denoted by $\limsup x_{n}$
+            \[\limsup x_{n} = \lim_{n\to +\infty} S_{n} = \lim_{n\to +\infty} \sup \{x_{n}, x_{n+1},\dots\}\]
+    \end{itemize}
+
+    \longrule{0.08ex}
+    \begin{itemize}[leftmargin=*]
+        \item $\liminf x_{n}$ is the smallest subsequential limit of $(x_{n})^{\infty}_{n=1}$
+        \item $\limsup x_{n}$ is the largest subsequential limit of $(x_{n})^{\infty}_{n=1}$
+        \item $(x_{n})^{\infty}_{n=1}$ converges iff $\liminf x_{n} = \limsup x_{n}$
+    \end{itemize}
+\end{dfn}
+
+\newpage
+\section{Compactness}
+
+\begin{dfn}[Compactness]{dfn:compactness}{}
+    Let $X = \mathbb{R}$ and $d$ be the standard metric. A subset $K$ of $\mathbb{R}$ is said to be \textbf{compact} iff every sequence of elements of $K$ has a subsequence that converges to an element of $K$
+\end{dfn}
+
+\begin{xmp}[Examples of compactness]{xmp:compact-sets}{}
+    \vspace{-13pt}
+    \setlength{\columnseprule}{0.5pt}
+    \begin{multicols}{2}
+        \textbf{Compact sets}
+        \begin{itemize}[leftmargin=*]
+            \item $[a, b]$ is compact
+            \item $\emptyset$ is compact
+            \item $\mathbb{R} \cup \{-\infty, +\infty\}$ is compact!
+        \end{itemize}
+
+        \textbf{Not Compact sets}
+        \begin{itemize}[leftmargin=*]
+            \item $(0, 1)$ is not compact
+            \item $\mathbb{R}$ is not compact
+        \end{itemize}
+    \end{multicols}
+    \vspace{-3pt}
+\end{xmp}
+
+\vspace{-5pt}
+\begin{thm}[Heine-Borel Theorem]{thm:heine-borel}{}
+    On the real line with the standard metric, a set is compact if and only if it is closed and bounded
+
+    \longrule{0.08ex}
+    In $\mathbb{R}^{n}$ with the Euclidean metric, a set is compact if and only if it is closed and bounded
+\end{thm}
+
+\vspace{-5pt}
+\begin{thm}[Continuous Functions on Compact Sets]{thm:cont-functions-on-compact-sets}{}
+    Let $K \subseteq \mathbb{R}$ be compact, and $f : K \to \mathbb{R}$ be a continuous function. Then $f$ is bounded
+\end{thm}
+
+\begin{thm}[Extreme Value Theorem]{thm:evt}{}
+    Let $K \subseteq \mathbb{R}$ be compact and $f : K \to \mathbb{R}$ be a continuous function. Then $f$ has a maximum and a minimum
+\end{thm}
+
+\begin{thm}[Open Covers]{thm:open-covers}{}
+    An \textbf{open cover} of a set $S$ in a metric space is a family $(G_{i})_{i\in I}$ of open sets such that $S \subset \bigcup\limits_{i \in I} G_{i}$. A \textbf{subcover} of an open cover $(G_{i})_{i\in I}$ is a sub-family $(G_{i})_{i\in I'}$ where $I' \subset I$, such that $S \subseteq \bigcup_{i\in I'} G_{i}$
+
+    \longrule{0.08ex}
+    \textbf{Thm}: On the real line with the standard metric, a set $K$ is compact iff every open cover of $K$ has a finite subcover
+
+    \longrule{0.08ex}
+    \textbf{Lemma}: Every open cover of the interval $[a, b]$, where $a, b\in \mathbb{R}$, $a \le b$ has a finite cover
+
+    \longrule{0.08ex}
+    \textbf{Thm}: Let $K \subseteq \mathbb{R}$ and assume that every open cover of $K$ has a finite subcover. Then $K$ is closed and bounded, hence compact
+\end{thm}
+
+\begin{dfn}[Sequentially compact sets]{dfn:sequentially-compact}{}
+    Let $(X, d)$ be a metric space and $K \subseteq X$
+    \begin{itemize}[leftmargin=*]
+        \item We say that $K$ is \textbf{sequentially compact} iff every sequence in $K$ has a subsequence that converges to an element of $K$
+        
+            For $K = X$ this becomes: $X$ is compact iff every sequence in $X$ has a convergent subsequence
+
+        \item We say that $K$ is \textbf{compact} iff every open cover of $K$ has a finite subcover
+    \end{itemize}
+
+    These two notions of compactness are equivalent
+\end{dfn}
+
+\begin{thm}[idk more thms]{thm:compact-thms}{}
+    \textbf{Thm}: Let $(X, d)$ be a metric space and $K \subseteq X, K\ne\emptyset$, $d_{K}$ be the induced metric on $K$. $K$ is a (sequentially) compact subset of $X$ iff the metric space $(K, d_{K})$ is (sequentially compact)
+
+    \longrule{0.08ex}
+    \textbf{Thm}: Let $(X, d)$ be a metric space and $K \subseteq X$ be sequentially compact. Then $K$ is closed and bounded
+
+    \longrule{0.08ex}
+    \textbf{Thm}: Let $(X, d)$ be a sequentially compact metric space and $K \subseteq X$. The set $K$ is sequentially compact iff it is closed
+
+    \longrule{0.08ex}
+    \textbf{Thm}: If a metric space $(X, d)$ is sequentially compact, then it is complete
+\end{thm}
+
+\begin{thm}[Extreme Value Theorem again]{thm:evt-again}{}
+    Let $(X, d)$ be a metric space, $K$ be a sequentially compact subset of $X$ and $f : K \to \mathbb{R}$ be a continous function. Then $f$ has a maximum and a minimum. In particular, $f$ is bounded.
+\end{thm}
+
+\begin{dfn}[Uniform Continuity]{dfn:uniform-continuity}{}
+    Let $(X, d_{X}), (Y, d_{Y})$ be metric spaces. A function $f : X \to Y$ is said to be \textbf{uniformly continuous} iff for every positive $\epsilon$ there exists a positive $\delta$ such that, for all $x, x'$ in $X$ with $d_{X}(x, x') < \delta$ we have $d_{Y}(f(x), f(x')) < \epsilon$
+
+    \longrule{0.08ex}
+    \textbf{Thm}: Let $(X, d_{X})$ be a sequentially compact metric space, $(Y, d_{Y})$ be a metric space and $f : X\to Y$ be a continuous function. Then $f$ is uniformly continuous
+\end{dfn}
+
+\begin{thm}[yet another compactness thm]{thm:compactness-thm-againnnnn}{}
+    If a metric spasce $(X, d)$ is compact, then it is sequentially compact
+
+    If a subset $K$ of $X$ is compact, prove that $K$ is sequentially compact
+
+    Let $(X, d)$ be a compact metric space and $A$ be an infinite subset of $X$. Then $A$ has at least one limit point
+\end{thm}
+
+
+\begin{thm}[Lebesgue's Lemma]{thm:lebesgue-lemma}{}
+    Let $(X, d)$ be a sequentially compact metric space and $X = \bigcup_{i\in I} G_{i}$ be an open cover of $X$. There exists a positive $\delta$ such that for any two points $x, y\in X$ with $d(x, y) < \delta$ there exists an $i$ such that $x, y\in G_{i}$. Any such $\delta$ is called a \textbf{Lebesgue number} of the open cover
+
+    \textbf{Lemma}: Let $(D, d)$ be a sequentially compact metric space and $X = \bigcup_{i\in I} G_{i}$ be an open cover of $X$. Then there exists a $\delta > 0$ s.t. any nonempty subset of $X$ of diameter $< \delta$ can be covered by a single $G_{i}$
+\end{thm}
+
+\begin{dfn}[Totally bounded spaces]{thm:totally-bounded}{}
+    A metric space $(X, d)$ is said to be \textbf{totally bounded} iff for every positive $\delta$, $X$ can be covered by a finite number of open balls of radius $\delta$.
+
+    \textbf{Note}: If $(X, d)$ is totally bounded then it is bounded, but the converse is not necessarily true
+\end{dfn}
+
+\begin{thm}[Sequentially compactness boundedness]{thm:seq-compact-bound}{}
+    If a metric space is sequentially compact, then it is totally bounded
+
+    \longrule{0.08ex}
+    \textbf{Thm}: Every sequentially compact metric space is compact. (From now on, refer to sequentially compact spaces as compact)
+
+    \longrule{0.08ex}
+    \textbf{Thm}: A metric space is compact iff it is complete and totally bounded
+\end{thm}
+
+\begin{dfn}[Countable and Uncountable Sets]{dfn:countable-sets}{}
+    A set $S$ is said to be:
+    \begin{itemize}
+        \item \textbf{Infinitely coutnable} iff there is a bijection $f : \mathbb{N} \to S$
+        \item \textbf{Countable} if it is finite or infinitely countable
+        \item \textbf{Uncountable} iff it isn't countable
+    \end{itemize}
+
+    \textrule{\textbf{Examples}}
+    \begin{itemize}
+        \item $\{1, 2, 3\}$ and $\mathbb{R}$ are countable sets
+        \item $\mathbb{Q}$ is infinitely countable
+        \item $\mathbb{R}$ is uncountable
+    \end{itemize}
+\end{dfn}
+
+\begin{thm}[Dense Subset equivalence]{thm:dense-equivalence}{}
+    Let $(X, d)$ be a metric space and $D \subseteq X$. The following are equivalent:
+    \begin{enumerate}
+        \item $D$ is dense
+        \item For every $x\in X$ and $\epsilon > 0$ there exists $y\in D$ s.t. $d(x, y) < \epsilon$
+        \item For every $x\in X$ there is a sequence $(y_{n})^{\infty}_{n = 1}$ of elements of $D$ s.t. $y_{n}\to x$
+        \item For every element $x\in X$ and every open nbhd $G$ of $x$, $G \cap D \ne \emptyset$
+        \item $D$ intersects every non-empty open set
+    \end{enumerate}
+\end{thm}
+
+\newpage
+\begin{dfn}[Separable spaces]{dfn:separable-spaces}{}
+    A metric space is said to be \textbf{separable} iff it has a countable dense subset
+
+    \textrule{\textbf{Examples}}
+    \begin{itemize}
+        \item $\mathbb{R}$ with the standard metric is a separable metric because $\mathbb{Q}$ is dense and countable
+        \item $\mathbb{R}^{n}$ with the Euclidean metric is a separable metric space because $\mathbb{Q}^{n}$ is dense and countable
+        \item $\mathbb{C}$ with its standard metric is a separable metric space because $\{ z\in\mathbb{C} : \text{Re}(z), \text{Im}(z)\in \mathbb{Q}\}$
+        \item $\ell^{2}$ is separable, and $\ell^{p}$ is separable for $1 \le p < \infty$
+    \end{itemize}
+\end{dfn}
+
+\begin{thm}[Weierstrass Approximation Theorem]{thm:weierstrass-approximation}{}
+    Let $f : [a, b]\to \mathbb{R}$ be a continuous function and $\epsilon > 0$. There exists a polynomial $p$ with \textit{real} coefficients s.t. for all $x\in [a,b]$
+    \[\lvert f(x) - p(x) \rvert < \epsilon\]
+
+    \longrule{0.08ex}
+    Let $f : [a,b]\to \mathbb{R}$ be a continuous function and $\epsilon > 0$. There exists a polynomial $p$ with \textit{rational} coefficients s.t. for all $x\in [a,b]$
+    \[\lvert f(x) - p(x) \rvert < \epsilon\]
+\end{thm}
+
+\begin{thm}[more theorems]{thm:more-thms}{}
+    The set of all polynomials with rational coefficients is countable
+    
+    \textbf{Thm}: $C([a,b])$ is separable
+\end{thm}
+
+\begin{thm}[Separability of subspaces]{thm:separability-of-subspaces}{}
+    Let $(X, d)$ be a separable metric space, $A \subseteq X$, $A \ne \emptyset$, and $d_{A}$ be the induced metric on $A$. Then the metric space $(A, d_{A})$ is separable
+
+    \longrule{0.08ex}
+    \textbf{Thm}: Every compact metric space is separable (compact $\implies$ separable)
+\end{thm}
+
+\begin{thm}[Open Ball countability]{thm:open-ball-countable}{}
+    Let $(X, d)$ be a separable metric space and let $D$ be a countable dense subset of $X$. Let
+    \[\mathcal{B} = \{B(c, r): c\in D, r\in \mathbb{Q}^{+}\}\]
+    be the set of all open balls with centers in $D$ and rational radii. Then $\mathcal{B}$ is countable and every open set in $X$ can be written as a union of elements of $\mathcal{B}$
+\end{thm}
+
+\begin{dfn}[Open Bases and Second Countability]{dfn:open-bases-second-countable}{}
+    \textrule{\textbf{Open Bases}}
+
+    Let $(X, \mathcal{T})$ be a topological space. An \textbf{open base} (or \textbf{base}) for the topology $\mathcal{T}$ is a family $\mathcal{B}$ of open sets such that every open set in $\mathcal{T}$ can be written as a union of elements of $\mathcal{B}$
+
+    \textrule{\textbf{Second Countability}}
+
+    A topological space $(X, \mathcal{T})$ is said to satisfy the \textbf{second Axiom of Countability}, or is \textbf{second countable} iff it has a countable open base
+
+    \longrule{0.08ex}
+    \textbf{Thm}: In a separable metric space, every family of pairwise disjoint non-empty open sets is countable
+
+    \longrule{0.08ex}
+    \textbf{Thm}: On the real line with the standard metric, every open set can be written as a countable union of disjoint open intervals
+\end{dfn}
+
+\begin{dfn}[Continuous Extensions]{dfn:continuous-extensions}{}
+    Let $(X, d_{X}), (Y, d_{Y})$ be metric spaces, $D$ be a dense subset of $X$, $f, g : X \to Y$ continuous functions s.t. $f(x) = g(x)$ for all $x\in D$. Then $f = g$
+
+    \longrule{0.08ex}
+    Let $(X, d_{X}), (Y, d_{Y})$ be metric spaces, $D \subseteq X$ be dense, $f : D \to Y$ be uniformly continuous, and assume that $(Y, d_{Y})$ is complete. Then $f$ has a unique continuous extension $F : X \to Y$
+\end{dfn}
+
+\begin{thm}[complete ms props]{thm:complete-ms-props}{}
+    Let $(X, d)$ be a metric space, $F$ be a nonempty subset of $X$ and $d_{F}$ be the induced metric on $F$. If the metric space $(F, d_{F})$ is complete then $F$ is a closed subset of $X$
+
+    \longrule{0.08ex}
+    \textbf{Thm}: Let $(X, d)$ be a complete metric space, $F$ be a nonempty subset of $X$, and $d_{F}$ be the induced metric on $F$. If $F$ is a closed subset of $X$, then the metric space $(F, d_{F})$ is complete
+
+    \longrule{0.08ex}
+    \textbf{Thm}: Let $(X, d)$ be a complete metric space, $A \subseteq X$, $A \ne \emptyset$. Then
+    \begin{enumerate}
+        \item The metric space $(\overline{A}, d_{\overline{A}})$ is complete
+        \item If $A \subseteq B \subseteq X$ and $(B, d_{B})$ is complete, then $\overline{A} \subseteq B$
+    \end{enumerate}
+\end{thm}
+
+\begin{dfn}[Isometries]{dfn:isometries}{}
+    Let $(X, d_{X})$ and $(Y, d_{Y})$ be metric spaces. A function $f : X \to Y$ is called a \textbf{isometry} iff for all $x_{1}, x_{2}\in X$,
+    \[d_{Y}(f(x_{1}), f(x_{2})) = d_{X}(x_{1}, x_{2})\]
+
+    \longrule{0.08ex}
+    \textbf{Thm}: Let $(X, d_{X})$ and $(Y, d_{Y})$ be metric spaces and $f : X \to Y$ be an isometry. Then $f$ is an injection. If, moreover, $f$ is a surjection (hence $f$ bij.) then $f^{-1} : Y \to X$ is also an isometry
+
+    \longrule{0.08ex}
+    \textbf{Thm}: The metric spaces $(X, d_{X})$ and $(Y, d_{Y})$ are said to be \textbf{isometric} iff there exists an isometry $f$ from $X$ onto $Y$
+
+    \longrule{0.08ex}
+    \textbf{Thm}: if two metric spaces are isometric and one of them is complete/compact/connected/... then so is the other
+\end{dfn}
+
+\begin{thm}[Isometry completion]{thm:isometry-completion}{}
+    Let $(X, d)$ be a bounded metric space and let $C(X, \mathbb{R})$ be the set of all bounded continuous functions $f : X \to \mathbb{R}$ equipped with the metric
+    \[d_{\infty}(f_{1}, f_{2}) = \sup \{\lvert f_{1}(t) - f_{2}(t) \rvert : t\in X\}\]
+    For each $x\in X$, define $F_{X} : X \to \mathbb{R}$ be $F_{X}(x') = d(x, x')$. Then
+    \begin{enumerate}
+        \item $F_{X} \in C(X, \mathbb{R})$
+        \item The map $X \to C(X, \mathbb{R}), x \mapsto F_{X}$ is an isometry
+        \item $X^{*} = \{F_{X} : x\in X\}$, equipped with the induced metric, is a subspae of $C(X \mathbb{R})$ isometric to $X$
+        \item The closure $\overline{X^{*}}$ of $X^{*}$ in $C(X, \mathbb{R})$, equipped with the induced metric, is a complete metric space
+        \item $X^{*}$ is dense in $\overline{X^{*}}$
+    \end{enumerate}
+\end{thm}
+
+\begin{dfn}[Completion of a Metric Space]{dfn:completion-ms}{}
+    Let $(X, d)$ be a metric space. A \textbf{completion} of $(X, d_{X})$ is any metric space $(Y, d_{Y})$ with the following properties
+    \begin{enumerate}
+        \item $(Y, d_{Y})$ is complete
+        \item $(Y, d_{Y})$ has a subspace $X^{*}$ isometric to $(X, d_{X})$
+        \item $X^{*}$ is dense in $Y$
+    \end{enumerate}
+
+    It can be shown that any two completions of $X$ are isometric to each other, i.e. a completion is unique up to isometries
+\end{dfn}
+
+
+\begin{dfn}[Construction of Completion via Cauchy]{dfn:completion-cauchy}{}
+    Let $(X, d)$ be a metric space and let $\mathcal{C}$ be the set of all Cauchy sequences of elements of $X$
+
+    We define an equivalence relation $\sim$ in $\mathcal{C}$ as follows: Let $x = (x_{n})_{n\in \mathbb{N}}$, $y=(y_{n})_{n\in \mathbb{N}}\in \mathcal{C}$. We say that $x \sim y$ iff $d(x_{n}, y_{n})\to 0$
+
+    Distinct equivalence classes are disjoint and partition $\mathcal{C}$
+
+    The set of all equivalence classes is called the \textbf{quotient space}, denoted $\mathcal{C} / \sim$
+    
+    \longrule{0.08ex}
+    Define a metric $D$ on $\mathcal{C} / \sim$ as follows:
+
+    Let $\alpha, \beta\in \mathcal{C} /\sim$. Then 
+    \[\alpha = [(x_{1},\dots,x_{n},\dots)] \text{ and } \beta = [(y_{1},\dots,y_{n},\dots)]\]
+    for some $(x_{1},\dots,x_{n},\dots), (y_{1},\dots,y_{n},\dots)\in \mathcal{C}$. Define
+    \[D(\alpha, \beta) = \lim_{n\to +\infty} d(x_{n}, y_{n})\]
+    $(\mathcal{C} / \sim, D)$ is complete. Additionally, the following is an isometry:
+    \[X \to \mathcal{C} / \sim \qquad x \mapsto ([x,x,\dots,x,\dots])\]
+    Let $X^{*}$ be its range. The metric space $(X^{*}, D_{X^{*}})$ is isometric to $(X, d), (\overline{X^{*}}, D_{\overline{X^{*}}})$ is a complete metric space, and $X^{*}$ is dense in $\overline{X^{*}}$
+\end{dfn}
+
+\newpage
+\begin{dfn}[Connected and Disconnected Spaces]{dfn:connected-spaces}{}
+    A metric space $(X, d)$ is said to be \textbf{disconnected} iff there exists non-empty disjoint open sets $G_{1}$ and $G_{2}$ such that
+    \[X = G_{1} \cup G_{2}\]
+    Otherwise the metric space is called \textbf{connected}
+
+    \longrule{0.08ex}
+    A non-empty subset $A$ of a metric space $(X, d)$ is said to be disconnected iff the metric space $(A, d_{A})$, where $d_{A}$ is the induced metric, is disconnected
+\end{dfn}
+
+\begin{thm}[Connected Theorems]{thm:connection}{}
+    A subset $O$ of $A$ is open in $(A, d_{A})$ iff $O = A \cup G$ for some $G$ that is open in $X$ % TODO: exercise 18
+
+    Therefore, $A$ is disconnected iff there exist open subsets $G_{1}, G_{2}$ of $X$ s.t.
+    \begin{itemize}[leftmargin=*]
+        \item $A = (A \cap G_{1}) \cup (A \cap G_{2})$, which is equivalent to $A \subseteq G_{1} \cup G_{2}$
+        \item $A \cap G_{1} \ne \emptyset,\, A \cap G_{2}\ne \emptyset$
+        \item $(A \cap G_{1}) \cap (A \cap G_{2}) = \emptyset$, which is equivalent to $A \cap G_{1} \cap G_{2} = \emptyset$
+    \end{itemize}
+
+    \longrule{0.08ex}
+    \textbf{Thm}: $\mathbb{R}$ with the standard metric is connected
+
+    \textbf{Thm}: On the real line with the standard metric, all intervals are connected sets
+
+    \textbf{Thm}: A non-empty subset of the real line is connected iff it is an interval
+
+    \textbf{Thm}: A metric space $(X, d)$ is connected iff the only subsets of $X$ with empty boundary are $\emptyset$ and $X$
+
+    \textbf{Thm}: Let $(X, d_{X})$ be a connected metric space, $(Y, d_{Y})$ be a metric space and $f : X \to Y$ be a continuous surjection. Then $(Y, d_{Y})$ is connected as well
+\end{thm}
+
+\begin{thm}[Intermediate Value Theorem]{thm:ivt}{}
+    Let $(X, d)$ be a connected metric space and $f : X \to \mathbb{R}$ be a continuous function. If $x_{1}, x_{2}\in X$ with $f(x_{1} \ne f(x_{2}))$ and $y$ is a real number between $f(x_{1})$ and $f(x_{2})$, then there exists an $x\in X$ such that $f(x) = y$
+\end{thm}
+
+\begin{thm}[Clopen]{thm:clopen}{}
+    A metric space $(X, d)$ is connected iff the only clopen subsets are $\emptyset, X$
+\end{thm}
+
+\begin{dfn}[Connected Components]{dfn:connected-components}{}
+    Let $(X, d)$ be a metric space. We define an equivalence relation $\sim$ in $X$ as follows: $x \sim x'$ iff there exists a connected subset $C$ of $X$ that contains both $x$ and $x'$
+
+    \textbf{Thm}: If $(C_{i})_{i\in I}$ is a family of connected subsets of $X$ with nonempty intersection, then $\bigcup_{i\in I} C_{i}$ is connected
+\end{dfn}
+
+\begin{thm}[Big equivalence classes]{thm:big-equivalence-classes}{}
+    The equivalence class of any point in $X$ is the largest connected subset of $X$ that contains that point (what point?)
+\end{thm}
+
+\begin{dfn}[Path Connected Metric Spaces]{dfn:path-connected}{}
+    Let $(X, d)$ be a metric space and $x_{0}, x_{1}\in X$. A \textbf{path} in $X$ from $x_{0}$ to $x_{1}$ is a continuous function $\gamma : [0, 1] \to X$ s.t. $\gamma(0) = x_{0}$, $\gamma(1) = x_{1}$
+
+    $(X, d)$ is said to be \textbf{path-connected} iff for any two points $x_{0}, x_{1}$ in $X$ there is a path in $X$ from $x_{0}$ to $x_{1}$
+
+    A non-empty subset $A$ of $X$ is said to be \textbf{path-connected} iff the metric space $(A, d_{A})$, where $d_{A}$ is the induced metric, is path connected
+\end{dfn}
+
+\begin{thm}[Path connected theorem]{thm:path-connected-thm}{}
+    Every path-connected metric space is connected
+
+    Not every connected metric space is necessarily path-connected
+\end{thm}
+
+
+\section{Applications}
+
+% TODO: newton and heron's method
+
+\begin{dfn}[Equivalent Norms]{dfn:equivalent-norms}{}
+    Two norms on the same real vector space are said to be equivalent iff their corresponding metrics are equivalent
+
+    \longrule{0.08ex}
+    If $\lVert \cdot \rVert_{1}$ and $\lVert \cdot \rVert_{2}$ are norms on the same real vector space $X$ and there exist positive constants $C$ and $C'$ such that, for all $x\in X$,
+    \[D \lVert x \rVert_{1} \le \lVert x \rVert_{2} \le C' \lVert x \rVert_{1}\]
+    then they are equivalent
+\end{dfn}
+
+\begin{thm}[p metric again?]{dfn:p-metric}{}
+    For any $p$ with $1 \le p < \infty$ and any $x\in \mathbb{R}^{n}$ we define
+    \[\lVert x \rVert_{p} = (\lvert x_{1} \rvert^{p} + \cdots + \lvert x_{n} \rvert^{p})^{1 /p}\]
+
+    \textrule{Young's Inequality}
+    
+    Let $1 \le p, q \le \infty$ s.t. $\frac{1}{p} + \frac{1}{q} = 1$, and $a, b\le 0$. Then
+    \[ab \le \frac{a^{p}}{p} + \frac{b^{q}}{q}\]
+
+    \textrule{Holder Inequality}
+
+    Let $1 \le p, q \le \infty$ s.t. $\frac{1}{p} + \frac{1}{q} = 1$ and $x, y\in \mathbb{R}^{n}$. Then
+    \[\sum_{i = 1}^{n} \lvert x_{i}y_{i} \rvert \le \lVert x \rVert_{p} \lVert y \rVert_{q}\]
+
+    \textrule{Equivalence of $p$-metrics}
+    
+    \textbf{Thm}: Any of the following norms are equivalent:
+    \begin{align*}
+        \lVert x \rVert_{p} &= (\lvert x_{1} \rvert^{p} + \cdots + \lvert x_{n} \rvert^{p})^{1 /p},\,x\in \mathbb{R}^{n},\, 1\le p < \infty\\
+        \lVert x \rVert_{\infty} &= \max \{\lvert x_{1} \rvert,\dots,\lvert x_{n} \rvert\},\,x\in\mathbb{R}^{n}
+    \end{align*}
+
+    \textbf{Thm}: Let $1 \le p \le q < \infty$. For all $x\in\mathbb{R}^{n}$:
+    \[\lVert x \rVert_{q} \le \lVert x \rVert_{p}\]
+    As a consequence,
+    \[\lVert x \rVert_{\infty} \le \lVert x \rVert_{q} \le \lVert x \rVert_{p} \le \lVert x \rVert_{1}\]
+
+    \textbf{Thm}: All norms in $\mathbb{R}^{n}$ are equivalent
+\end{thm}
+
+\begin{thm}[Picard's Theorem]{thm:picard}{}
+    Let $f : \mathbb{R} \times \mathbb{R} \to \mathbb{R}$ be a continuous and boudned function, and $t_{0}, x_{0}$ be real numbers. Assume that there exists a positive constant $L$ s.t. for all real $t, x_{1}, x_{2}$ we have:
+    \[\lvert f(t, x_{1}) - f(t, x_{2}) \rvert \le L\lvert x_{1} - x_{2} \rvert\]
+    Then, there exists a positive $\delta$ and a unique differentiable function $x : [t_{0} - \delta, t_{0} + \delta]\to \mathbb{R}$ s.t. for all $t\in [t_{0}-\delta, t_{0} + \delta]$,
+    \[x'(t) = f(t, x(t)) \quad \text{and} \quad x(t_{0}) = x_{0}\]
+\end{thm}
+
+% TODO: solving linear systems
+% TODO: Fredholm Intergral Equation
+
+\begin{dfn}[Lipschitz Functions again]{dfn:lipshitz-function}{}
+    Let $(X, d_{X}),\,(Y, d_{Y})$ be metric spaces. A function $f : X \to Y$ is said to be a \textbf{Lipschitz} function iff there exists a constant $L$ such that for all $x,x'\in X$,
+    \[d_{Y}(f(x), f(x')) \le L d_{X}(x,x')\]
+    If $L < 1$, $f$ is said to be a \textbf{contraction}
+    
+    \longrule{0.08ex}
+    If $f : \mathbb{R} \to \mathbb{R}$ is a Lipschitz function and $x_{0}$ is any point in $\mathbb{R}$, then for any $x\in \mathbb{R}$ we have
+    \[\lvert f(x) - f(x_{0}) \rvert \le L\lvert x - x_{0} \rvert\]
+    For $x \ge x_{0}$ this can be expanded to
+    \[f(x_{0}) - L(x - x_{0}) \le f(x) \le f(x_{0}) + L(x - x_{0})\]
+
+    \longrule{0.08ex}
+    Let $(X, d_{X})$ and $(Y, d_{Y})$ be two metric spaces, and $f : X \to Y$ be a Lipschitz function. Then there exists a smallest Lipschitz constant of $f$
+
+    \longrule{0.08ex}
+    \textbf{Thm}: Let $I$ be a non-degenerate open interval on the real line and let $f : I \to \mathbb{R}$ be a differentiable function. Then $f$ is Lipschitz iff $f'$ is bounded. When that is the case,
+    \[\lvert f \rvert_{\text{Lip}} = \sup \{\lvert f'(x) \rvert : x\in I\}\]
+\end{dfn}
 
 \lipsum[1-12]
 \end{multicols}
