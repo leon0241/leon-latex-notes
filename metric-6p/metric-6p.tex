@@ -530,7 +530,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \textbf{Def 33}: A set that is both open and closed is called \textbf{clopen}
 \end{dfn}
 
-\vspace{-5pt}
+\vspace{-7pt}
 \begin{thm}[Properties of open and closed sets]{thm:open-set-props}{34}
     \vspace{-5pt}
     Let $(X,d)$ be a metric space
@@ -543,7 +543,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{enumerate}
 \end{thm}
 
-\vspace{-5pt}
+\vspace{-7pt}
 \begin{rem}[Infinite open sets]{thm:infinite-open-sets}{35}
     \vspace{-5pt}
     The intersection of infinitely many open sets isn't always an open set
@@ -568,15 +568,15 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     is not closed.
 \end{rem}
 
-\vspace{-5pt}
+\vspace{-7pt}
 \begin{thm}[Relatively open sets]{thm:relatively-open}{18}
     \vspace{-5pt}
-    Let $(X,d)$ be a metric space and $A$ a nonempty subset of $X$ equipped with the induced metric $d_{A}$. Let $G\subseteq A$. Then $G$ is open in $(A, d_{A})$ iff there exists a subset $O$ of $X$, open in $(X,d)$, s.t. $G = A \cap O$
+    Let $(X,d)$ be a metric space and $A$ a nonempty subset ocomplementf $X$ equipped with the induced metric $d_{A}$. Let $G\subseteq A$. Then $G$ is open in $(A, d_{A})$ iff there exists a subset $O$ of $X$, open in $(X,d)$, s.t. $G = A \cap O$
 
     The open sets of $(A, d_{A})$ are referred to as \textbf{relatively open}
 \end{thm}
 
-\vspace{-5pt}
+\vspace{-7pt}
 \begin{thm}[]{thm:open-set-converge}{36}
     \vspace{-5pt}
     Let $(X, d)$ be a metric space, $(x_{n})^{\infty}_{n=1}$ be a sequence in $X$ and $x$ be a point in $X$.
@@ -702,12 +702,20 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{enumerate}
 \end{thm}
 
+\begin{thm}[Continuity for Open and Closed Sets]{def:continuity-open-sets}{59}
+    \vspace{-5pt}
+    Let $(X, d_{X}),\,(Y, d_{Y})$ be metric spaces. A function $f: X \to Y $ is continuous iff...
+
+    \vspace{-5pt}
+    \begin{itemize}[leftmargin=*]
+        \item the inverse image $f^{-1}(G)$ of any open subset $G$ of $Y$ is an open subset of $X$
+        \item the inverse image $f^{-1}(G)$ of any closed subset $G$ of $Y$ is an closed subset of $X$
+
+    \end{itemize}
 \vspace{-5pt}
-\begin{thm}[Continuity and Open Sets]{def:continuity-open-sets}{59}
-    Let $(X, d_{X}),\,(Y, d_{Y})$ be metric spaces. A function $f: X \to Y $ is continuous iff the inverse image $f^{-1}(G)$ of any open subset $G$ of $Y$ is an open subset of $X$
+
 \end{thm}
 
-\vspace{-5pt}
 \begin{dfn}[Topological Space]{def:topological-space}{60}
     \vspace{-5pt}
     A \textbf{topological space} is a set $X$ together with a family $\mathcal{T}$ of subsets of $X$ that has the following properties:
@@ -721,7 +729,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     $\mathcal{T}$ is called a \textbf{topology} and the elements of $\mathcal{T}$ are called \textbf{open sets}
 \end{dfn}
 
-\vspace{-5pt}
 \begin{dfn}[Continuity of Topological Spaces]{def:topological-continuity}{61}
     \vspace{-5pt}
     \begin{itemize}[leftmargin=*]
@@ -745,6 +752,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \end{thm}
 
 \begin{dfn}[Bounded Linear Operators]{def:bounded-linear-operators}{67}
+    \vspace{-5pt}
     A linear operator $T : X \to Y$ is said to be \textbf{bounded} iff there exists a positive constant $C$ such that, for all $x\in X$,
     \[\lVert T(x) \rVert_{Y} \le C \lVert x \rVert_{X}\]
 
@@ -760,6 +768,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{multicols}
 \end{dfn}
 
+\vspace{-5pt}
 \begin{dfn}[Lipschitz Functions]{def:lipschitz-functions}{70}
     Let $(X, d_{X}),\,(Y, d_{Y})$ be metric spaces. A function $f : X \to Y$ is said to be a \textbf{Lipschitz} function iff there exists a constant $L$ such that for all $x,x'\in X$,
     \[d_{Y}(f(x), f(x')) \le L d_{X}(x,x')\]
@@ -783,12 +792,14 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \end{dfn}
 
 \begin{dfn}[Fixed Points]{def:fixed-points}{72}
+    \vspace{-5pt}
     A \textbf{fixed point} of a function $f: S \to S $ where $S$ is a non-empty set, is any element $x$ of $S$ such that $f(x) = x$
 
     Solving equations can sometimes be reduced to finding fixed points
 \end{dfn}
 
 \begin{thm}[Banach's Fixed Point Theorem]{thm:complete-ms-fixed-point}{75}
+    \vspace{-5pt}
     Let $(X, d)$ be a complete metric space and let $f : X \to X$ be a contraction. Then $f$ has a unique fixed point
 \end{thm}
 
