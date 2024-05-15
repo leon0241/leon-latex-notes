@@ -901,7 +901,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     An \textbf{open cover} of a set $S$ in a metric space is a family $(G_{i})_{i\in I}$ of open sets such that $S \subset \bigcup\limits_{i \in I} G_{i}$. A \textbf{subcover} of an open cover $(G_{i})_{i\in I}$ is a sub-family $(G_{i})_{i\in I'}$ where $I' \subset I$, such that $S \subseteq \bigcup_{i\in I'} G_{i}$
 \end{dfn}
 
-\begin{dfn}[Compacting Compactness]{dfn:compactness}{}
+\begin{dfn}[Compacting Compactness]{dfn:compactness}{M}
     \vspace{-5pt}
     \textrule{\textbf{Def 91 (Compactness)}}
 
@@ -935,7 +935,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     
 \end{dfn}
 
-\begin{xmp}[Examples of compactness]{xmp:compact-sets}{}
+\begin{xmp}[Examples of compactness]{xmp:compact-sets}{N}
     \vspace{-16pt}
     \setlength{\columnseprule}{0.5pt}
     \begin{multicols}{2}
@@ -967,7 +967,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \end{thm}
 
 \vspace{-6pt}
-\begin{thm}[big theorem bank of obvious shit]{thm:compactness-thms}{}
+\begin{thm}[big theorem bank of obvious shit]{thm:compactness-thms}{O}
     \vspace{-5pt}
     \textrule{\textbf{Regular Compactness}}
     \vspace{-7pt}
@@ -1066,15 +1066,20 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \newpage
 
 
-\begin{dfn}[Countable and Uncountable Sets]{dfn:countable-sets}{}
+\begin{dfn}[Countable and Uncountable Sets]{dfn:countable-sets}{123}
+    \vspace{-5pt}
     A set $S$ is said to be:
+    \vspace{-5pt}
     \begin{itemize}
-        \item \textbf{Infinitely coutnable} iff there is a bijection $f : \mathbb{N} \to S$
+        \item \textbf{Infinitely countable} iff there is a bijection $f : \mathbb{N} \to S$
         \item \textbf{Countable} if it is finite or infinitely countable
         \item \textbf{Uncountable} iff it isn't countable
     \end{itemize}
 
-    \textrule{\textbf{Examples}}
+    \vspace{-5pt}
+    \textrule{\textbf{Example 124}}
+
+    \vspace{-8pt}
     \begin{itemize}
         \item $\{1, 2, 3\}$ and $\mathbb{R}$ are countable sets
         \item $\mathbb{Q}$ is infinitely countable
@@ -1082,9 +1087,12 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{itemize}
 \end{dfn}
 
-\begin{thm}[Dense Subset equivalence]{thm:dense-equivalence}{}
-    Let $(X, d)$ be a metric space and $D \subseteq X$. The following are equivalent:
-    \begin{enumerate}
+\begin{thm}[Dense Subset equivalence]{thm:dense-equivalence}{or rather Ex 45}
+
+    \vspace{-5pt}
+    Let $(X, d)$ be a metric space, $D \subseteq X$. The following are equivalent:
+    \vspace{-5pt}
+    \begin{enumerate}[leftmargin=*]
         \item $D$ is dense
         \item For every $x\in X$ and $\epsilon > 0$ there exists $y\in D$ s.t. $d(x, y) < \epsilon$
         \item For every $x\in X$ there is a sequence $(y_{n})^{\infty}_{n = 1}$ of elements of $D$ s.t. $y_{n}\to x$
@@ -1093,11 +1101,13 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{enumerate}
 \end{thm}
 
-\begin{dfn}[Separable spaces]{dfn:separable-spaces}{}
-    A metric space is said to be \textbf{separable} iff it has a countable dense subset
+\begin{dfn}[Separable spaces]{dfn:separable-spaces}{125}
+    \vspace{-5pt}
+    A metric space is \textbf{separable} iff it has a countable dense subset
 
     \textrule{\textbf{Examples}}
-    \begin{itemize}
+    \vspace{-5pt}
+    \begin{itemize}[leftmargin=*]
         \item $\mathbb{R}$ with the standard metric is a separable metric because $\mathbb{Q}$ is dense and countable
         \item $\mathbb{R}^{n}$ with the Euclidean metric is a separable metric space because $\mathbb{Q}^{n}$ is dense and countable
         \item $\mathbb{C}$ with its standard metric is a separable metric space because $\{ z\in\mathbb{C} : \text{Re}(z), \text{Im}(z)\in \mathbb{Q}\}$
@@ -1105,90 +1115,109 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{itemize}
 \end{dfn}
 
-\begin{thm}[Weierstrass Approximation Theorem]{thm:weierstrass-approximation}{}
+\begin{thm}[Polynomials]{thm:polynomials}{P}
+    \vspace{-5pt}
+    \textrule{\textbf{Thm 130 (Weierstrass Approximation Theorem)}}
+
     Let $f : [a, b]\to \mathbb{R}$ be a continuous function and $\epsilon > 0$. There exists a polynomial $p$ with \textit{real} coefficients s.t. for all $x\in [a,b]$
     \[\lvert f(x) - p(x) \rvert < \epsilon\]
 
-    \longrule{0.08ex}
+    \textrule{\textbf{Thm 131 (literally same thing but with $\mathbb{Q}$)}}
+
     Let $f : [a,b]\to \mathbb{R}$ be a continuous function and $\epsilon > 0$. There exists a polynomial $p$ with \textit{rational} coefficients s.t. for all $x\in [a,b]$
     \[\lvert f(x) - p(x) \rvert < \epsilon\]
+
+    \textrule{\textbf{More Theorems}}
+    \vspace{-8pt}
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Ex 47}: The set of all polynomials (of one variable and any degree) with rational coefficients is countable
+        \item \textbf{Thm 132}: $C([a,b])$ is separable
+    \end{itemize}
 \end{thm}
 
-\begin{thm}[more theorems]{thm:more-thms}{}
-    The set of all polynomials with rational coefficients is countable
-    
-    \textbf{Thm}: $C([a,b])$ is separable
-\end{thm}
-
-\begin{thm}[Separability of subspaces]{thm:separability-of-subspaces}{}
+\begin{thm}[Separability of subspaces]{thm:separability-of-subspaces}{133}
     Let $(X, d)$ be a separable metric space, $A \subseteq X$, $A \ne \emptyset$, and $d_{A}$ be the induced metric on $A$. Then the metric space $(A, d_{A})$ is separable
 
     \longrule{0.08ex}
-    \textbf{Thm}: Every compact metric space is separable (compact $\implies$ separable)
+    \textbf{Thm 135}: Every compact metric space is separable (compact $\implies$ separable)
 \end{thm}
 
-\begin{thm}[Open Ball countability]{thm:open-ball-countable}{}
+\begin{thm}[Open Ball countability]{thm:open-ball-countable}{136}
+    \vspace{-5pt}
     Let $(X, d)$ be a separable metric space and let $D$ be a countable dense subset of $X$. Let
     \[\mathcal{B} = \{B(c, r): c\in D, r\in \mathbb{Q}^{+}\}\]
     be the set of all open balls with centers in $D$ and rational radii. Then $\mathcal{B}$ is countable and every open set in $X$ can be written as a union of elements of $\mathcal{B}$
 \end{thm}
 
-\begin{dfn}[Open Bases and Second Countability]{dfn:open-bases-second-countable}{}
-    \textrule{\textbf{Open Bases}}
+\begin{dfn}[Open Bases and Second Countability]{dfn:open-bases-second-countable}{Q}
+    \vspace{-5pt}
+    \textrule{\textbf{Def 137 (Open Bases)}}
+    \vspace{-3pt}
 
-    Let $(X, \mathcal{T})$ be a topological space. An \textbf{open base} (or \textbf{base}) for the topology $\mathcal{T}$ is a family $\mathcal{B}$ of open sets such that every open set in $\mathcal{T}$ can be written as a union of elements of $\mathcal{B}$
+    Let $(X, \mathcal{T})$ be a topological space. An \textbf{open base} (or \textbf{base}) for the topology $\mathcal{T}$, is a family $\mathcal{B}$ of open sets such that every open set in $\mathcal{T}$ can be written as a union of elements of $\mathcal{B}$
 
-    \textrule{\textbf{Second Countability}}
+    \textrule{\textbf{Def 139 (Second Countability)}}
+    \vspace{-3pt}
 
-    A topological space $(X, \mathcal{T})$ is said to satisfy the \textbf{second Axiom of Countability}, or is \textbf{second countable} iff it has a countable open base
+    A topological space $(X, \mathcal{T})$ satisfies the \textbf{second Axiom of Countability}, or is \textbf{second countable} iff it has a countable open base
 
-    \longrule{0.08ex}
-    \textbf{Thm}: In a separable metric space, every family of pairwise disjoint non-empty open sets is countable
+    \textrule{\textbf{Other theorems}}
+    \vspace{-8pt}
 
-    \longrule{0.08ex}
-    \textbf{Thm}: On the real line with the standard metric, every open set can be written as a countable union of disjoint open intervals
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Thm 140}: In a separable metric space, every family of pairwise disjoint non-empty open sets is countable
+        \item \textbf{Thm 141}: On the real line with the standard metric, every open set can be written as a countable union of disjoint open intervals
+    \end{itemize}
 \end{dfn}
 
-\begin{dfn}[Continuous Extensions]{dfn:continuous-extensions}{}
+\begin{thm}[Continuous Extensions]{dfn:continuous-extensions}{142}
+    \vspace{-5pt}
     Let $(X, d_{X}), (Y, d_{Y})$ be metric spaces, $D$ be a dense subset of $X$, $f, g : X \to Y$ continuous functions s.t. $f(x) = g(x)$ for all $x\in D$. Then $f = g$
 
     \longrule{0.08ex}
-    Let $(X, d_{X}), (Y, d_{Y})$ be metric spaces, $D \subseteq X$ be dense, $f : D \to Y$ be uniformly continuous, and assume that $(Y, d_{Y})$ is complete. Then $f$ has a unique continuous extension $F : X \to Y$
-\end{dfn}
-
-\begin{thm}[complete ms props]{thm:complete-ms-props}{}
-    Let $(X, d)$ be a metric space, $F$ be a nonempty subset of $X$ and $d_{F}$ be the induced metric on $F$. If the metric space $(F, d_{F})$ is complete then $F$ is a closed subset of $X$
-
-    \longrule{0.08ex}
-    \textbf{Thm}: Let $(X, d)$ be a complete metric space, $F$ be a nonempty subset of $X$, and $d_{F}$ be the induced metric on $F$. If $F$ is a closed subset of $X$, then the metric space $(F, d_{F})$ is complete
-
-    \longrule{0.08ex}
-    \textbf{Thm}: Let $(X, d)$ be a complete metric space, $A \subseteq X$, $A \ne \emptyset$. Then
-    \begin{enumerate}
-        \item The metric space $(\overline{A}, d_{\overline{A}})$ is complete
-        \item If $A \subseteq B \subseteq X$ and $(B, d_{B})$ is complete, then $\overline{A} \subseteq B$
-    \end{enumerate}
+    \textbf{Thm 143}: Let $(X, d_{X}), (Y, d_{Y})$ be metric spaces, $D \subseteq X$ be dense, $f : D \to Y$ be uniformly continuous, and assume that $(Y, d_{Y})$ is complete. Then $f$ has a unique continuous extension $F : X \to Y$
 \end{thm}
 
-\begin{dfn}[Isometries]{dfn:isometries}{}
+\begin{thm}[Properties of Complete Metric Spaces]{thm:complete-ms-props}{R}
+    \vspace{-5pt}
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{144}: Let $(X, d)$ be a metric space, $F$ be a nonempty subset of $X$ and $d_{F}$ be the induced metric on $F$. If the metric space $(F, d_{F})$ is complete then $F$ is a closed subset of $X$
+
+        \item \textbf{145}: Let $(X, d)$ be a complete metric space, $F$ be a nonempty subset of $X$, and $d_{F}$ be the induced metric on $F$. If $F$ is a closed subset of $X$, then the metric space $(F, d_{F})$ is complete
+
+        \item \textbf{146}: Let $(X, d)$ be a complete metric space, $A \subseteq X$, $A \ne \emptyset$. Then
+            \vspace{-5pt}
+            \begin{enumerate}
+                \item The metric space $(\overline{A}, d_{\overline{A}})$ is complete
+                \item If $A \subseteq B \subseteq X$ and $(B, d_{B})$ is complete, then $\overline{A} \subseteq B$
+            \end{enumerate}
+    \end{itemize}
+\end{thm}
+
+\begin{dfn}[Isometries]{dfn:isometries}{147}
+    \vspace{-5pt}
     Let $(X, d_{X})$ and $(Y, d_{Y})$ be metric spaces. A function $f : X \to Y$ is called a \textbf{isometry} iff for all $x_{1}, x_{2}\in X$,
     \[d_{Y}(f(x_{1}), f(x_{2})) = d_{X}(x_{1}, x_{2})\]
 
-    \longrule{0.08ex}
-    \textbf{Thm}: Let $(X, d_{X})$ and $(Y, d_{Y})$ be metric spaces and $f : X \to Y$ be an isometry. Then $f$ is an injection. If, moreover, $f$ is a surjection (hence $f$ bij.) then $f^{-1} : Y \to X$ is also an isometry
+    The metric spaces $(X, d_{X})$ and $(Y, d_{Y})$ are said to be \textbf{isometric} iff there exists an isometry $f$ from $X$ onto $Y$
 
-    \longrule{0.08ex}
-    \textbf{Thm}: The metric spaces $(X, d_{X})$ and $(Y, d_{Y})$ are said to be \textbf{isometric} iff there exists an isometry $f$ from $X$ onto $Y$
+    \textrule{\textbf{Isometry Theorems}}
+    \vspace{-8pt}
 
-    \longrule{0.08ex}
-    \textbf{Thm}: if two metric spaces are isometric and one of them is complete/compact/connected/... then so is the other
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Thm 148}: Let $(X, d_{X})$ and $(Y, d_{Y})$ be metric spaces and $f : X \to Y$ be an isometry. Then $f$ is an injection. If, moreover, $f$ is a surjection (hence $f$ bij.) then $f^{-1} : Y \to X$ is also an isometry
+        \item \textbf{Fun Fact}: if two metric spaces are isometric and one of them is complete/compact/connected/... then so is the other
+    \end{itemize}
 \end{dfn}
 
-\begin{thm}[Isometry completion]{thm:isometry-completion}{}
+\begin{thm}[Isometry completion]{thm:isometry-completion}{150}
+    \vspace{-5pt}
     Let $(X, d)$ be a bounded metric space and let $C(X, \mathbb{R})$ be the set of all bounded continuous functions $f : X \to \mathbb{R}$ equipped with the metric
     \[d_{\infty}(f_{1}, f_{2}) = \sup \{\lvert f_{1}(t) - f_{2}(t) \rvert : t\in X\}\]
     For each $x\in X$, define $F_{X} : X \to \mathbb{R}$ be $F_{X}(x') = d(x, x')$. Then
-    \begin{enumerate}
+    \vspace{-5pt}
+    \begin{enumerate}[leftmargin=*]
         \item $F_{X} \in C(X, \mathbb{R})$
         \item The map $X \to C(X, \mathbb{R}), x \mapsto F_{X}$ is an isometry
         \item $X^{*} = \{F_{X} : x\in X\}$, equipped with the induced metric, is a subspae of $C(X \mathbb{R})$ isometric to $X$
@@ -1197,20 +1226,22 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{enumerate}
 \end{thm}
 
-\begin{dfn}[Completion of a Metric Space]{dfn:completion-ms}{}
+\begin{dfn}[Completion of a Metric Space]{dfn:completion-ms}{152}
+    \vspace{-5pt}
     Let $(X, d)$ be a metric space. A \textbf{completion} of $(X, d_{X})$ is any metric space $(Y, d_{Y})$ with the following properties
+    \vspace{-5pt}
     \begin{enumerate}
         \item $(Y, d_{Y})$ is complete
         \item $(Y, d_{Y})$ has a subspace $X^{*}$ isometric to $(X, d_{X})$
         \item $X^{*}$ is dense in $Y$
     \end{enumerate}
+    \vspace{-5pt}
 
     It can be shown that any two completions of $X$ are isometric to each other, i.e. a completion is unique up to isometries
 \end{dfn}
 
-\newpage
-
-\begin{dfn}[Construction of Completion via Cauchy]{dfn:completion-cauchy}{}
+\begin{dfn}[Construction of Completion via Cauchy]{dfn:completion-cauchy}{S}
+    \vspace{-5pt}
     Let $(X, d)$ be a metric space and let $\mathcal{C}$ be the set of all Cauchy sequences of elements of $X$
 
     We define an equivalence relation $\sim$ in $\mathcal{C}$ as follows: Let $x = (x_{n})_{n\in \mathbb{N}}$, $y=(y_{n})_{n\in \mathbb{N}}\in \mathcal{C}$. We say that $x \sim y$ iff $d(x_{n}, y_{n})\to 0$
@@ -1231,69 +1262,79 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     Let $X^{*}$ be its range. The metric space $(X^{*}, D_{X^{*}})$ is isometric to $(X, d), (\overline{X^{*}}, D_{\overline{X^{*}}})$ is a complete metric space, and $X^{*}$ is dense in $\overline{X^{*}}$
 \end{dfn}
 
-\begin{dfn}[Connected and Disconnected Spaces]{dfn:connected-spaces}{}
+\begin{dfn}[Connected and Disconnected Spaces]{dfn:connected-spaces}{153}
+    \vspace{-5pt}
     A metric space $(X, d)$ is said to be \textbf{disconnected} iff there exists non-empty disjoint open sets $G_{1}$ and $G_{2}$ such that
     \[X = G_{1} \cup G_{2}\]
     Otherwise the metric space is called \textbf{connected}
 
+    \vspace{-3pt}
     \longrule{0.08ex}
-    A non-empty subset $A$ of a metric space $(X, d)$ is said to be disconnected iff the metric space $(A, d_{A})$, where $d_{A}$ is the induced metric, is disconnected
+    A non-empty subset $A$ of a metric space $(X, d)$ is said to be \newline\textbf{disconnected} iff the metric space $(A, d_{A})$, where $d_{A}$ is the induced metric, is disconnected
 \end{dfn}
 
-\begin{thm}[Connected Theorems]{thm:connection}{}
-    A subset $O$ of $A$ is open in $(A, d_{A})$ iff $O = A \cup G$ for some $G$ that is open in $X$ % TODO: exercise 18
+\newpage
 
-    Therefore, $A$ is disconnected iff there exist open subsets $G_{1}, G_{2}$ of $X$ s.t.
+\begin{thm}[Connected Theorems]{thm:connection}{T}
+    \vspace{-5pt}
+    A subset $O$ of $A$ is open in $(A, d_{A})$ iff $O = A \cup G$ for some $G$ that is open in $X$. Therefore, $A$ is disconnected iff there exist open subsets $G_{1}, G_{2}$ of $X$ s.t.
+    % TODO: exercise 18
+    \vspace{-5pt}
     \begin{itemize}[leftmargin=*]
         \item $A = (A \cap G_{1}) \cup (A \cap G_{2})$, which is equivalent to $A \subseteq G_{1} \cup G_{2}$
         \item $A \cap G_{1} \ne \emptyset,\, A \cap G_{2}\ne \emptyset$
         \item $(A \cap G_{1}) \cap (A \cap G_{2}) = \emptyset$, which is equivalent to $A \cap G_{1} \cap G_{2} = \emptyset$
     \end{itemize}
 
-    \longrule{0.08ex}
-    \textbf{Thm}: $\mathbb{R}$ with the standard metric is connected
+    \vspace{-5pt}
+    \textrule{\textbf{Connected Theorems}}
+    \vspace{-8pt}
 
-    \textbf{Thm}: On the real line with the standard metric, all intervals are connected sets
-
-    \textbf{Thm}: A non-empty subset of the real line is connected iff it is an interval
-
-    \textbf{Thm}: A metric space $(X, d)$ is connected iff the only subsets of $X$ with empty boundary are $\emptyset$ and $X$
-
-    \textbf{Thm}: Let $(X, d_{X})$ be a connected metric space, $(Y, d_{Y})$ be a metric space and $f : X \to Y$ be a continuous surjection. Then $(Y, d_{Y})$ is connected as well
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Thm 154}: $\mathbb{R}$ with the standard metric is connected
+        \item \textbf{Ex.53}: On the real line with the standard metric, all intervals are connected sets
+        \item \textbf{Thm 155}: A non-empty subset of the real line is connected iff it is an interval
+        \item \textbf{Thm 157}: A metric space $(X, d)$ is connected iff the only subsets of $X$ with empty boundary are $\emptyset$ and $X$
+        \item \textbf{Thm 158}: Let $(X, d_{X})$ be a connected metric space, $(Y, d_{Y})$ be a metric space and $f : X \to Y$ be a continuous surjection. Then $(Y, d_{Y})$ is connected as well
+        \item \textbf{Thm 160}: A metric space $(X, d)$ is connected iff the only clopen subsets are $\emptyset, X$
+    \end{itemize}
 \end{thm}
 
-\begin{thm}[Intermediate Value Theorem]{thm:ivt}{}
+\begin{thm}[Intermediate Value Theorem]{thm:ivt}{159}
     Let $(X, d)$ be a connected metric space and $f : X \to \mathbb{R}$ be a continuous function. If $x_{1}, x_{2}\in X$ with $f(x_{1} \ne f(x_{2}))$ and $y$ is a real number between $f(x_{1})$ and $f(x_{2})$, then there exists an $x\in X$ such that $f(x) = y$
 \end{thm}
 
-\begin{thm}[Clopen]{thm:clopen}{}
-    A metric space $(X, d)$ is connected iff the only clopen subsets are $\emptyset, X$
-\end{thm}
-
-\begin{dfn}[Connected Components]{dfn:connected-components}{}
+\begin{dfn}[Connected Components]{dfn:connected-components}{U}
     Let $(X, d)$ be a metric space. We define an equivalence relation $\sim$ in $X$ as follows: $x \sim x'$ iff there exists a connected subset $C$ of $X$ that contains both $x$ and $x'$
 
-    \textbf{Thm}: If $(C_{i})_{i\in I}$ is a family of connected subsets of $X$ with nonempty intersection, then $\bigcup_{i\in I} C_{i}$ is connected
+    \longrule{0.08ex}
+    \textbf{Ex.55}: If $(C_{i})_{i\in I}$ is a family of connected subsets of $X$ with nonempty intersection, then $\bigcup_{i\in I} C_{i}$ is connected
 \end{dfn}
 
-\begin{thm}[Big equivalence classes]{thm:big-equivalence-classes}{}
+\begin{thm}[Big equivalence classes]{thm:big-equivalence-classes}{161}
+    \vspace{-5pt}
     The equivalence class of any point in $X$ is the largest connected subset of $X$ that contains that point (what point?)
 \end{thm}
 
-\begin{dfn}[Path Connected Metric Spaces]{dfn:path-connected}{}
-    Let $(X, d)$ be a metric space and $x_{0}, x_{1}\in X$. A \textbf{path} in $X$ from $x_{0}$ to $x_{1}$ is a continuous function $\gamma : [0, 1] \to X$ s.t. $\gamma(0) = x_{0}$, $\gamma(1) = x_{1}$
+\begin{dfn}[Path Connected Metric Spaces]{dfn:path-connected}{162}
+    \vspace{-5pt}
+    Let $(X, d)$ be a metric space and $x_{0}, x_{1}\in X$. 
 
-    $(X, d)$ is said to be \textbf{path-connected} iff for any two points $x_{0}, x_{1}$ in $X$ there is a path in $X$ from $x_{0}$ to $x_{1}$
+    \vspace{-5pt}
+    \begin{itemize}[leftmargin=*]
+        \item A \textbf{path} in $X$ from $x_{0}$ to $x_{1}$ is a continuous function $\gamma : [0, 1] \to X$ s.t. $\gamma(0) = x_{0}$, $\gamma(1) = x_{1}$
+        \item $(X, d)$ is \textbf{path-connected} iff for any two points $x_{0}, x_{1}$ in $X$ there is a path in $X$ from $x_{0}$ to $x_{1}$
+        \item A non-empty subset $A$ of $X$ is \textbf{path-connected} iff the metric space $(A, d_{A})$, where $d_{A}$ is the induced metric, is path connected
+    \end{itemize}
 
-    A non-empty subset $A$ of $X$ is said to be \textbf{path-connected} iff the metric space $(A, d_{A})$, where $d_{A}$ is the induced metric, is path connected
+    \vspace{-5pt}
+    \textrule{\textbf{Thm 163 (Path Connected Theorem)}}
+    \vspace{-5pt}
+    \begin{itemize}[leftmargin=*]
+        \item Every path-connected metric space is connected
+        \item Not every connected metric space is necessarily path-connected
+    \end{itemize}
 \end{dfn}
-
-\begin{thm}[Path connected theorem]{thm:path-connected-thm}{}
-    Every path-connected metric space is connected
-
-    Not every connected metric space is necessarily path-connected
-\end{thm}
-
 
 \section{Applications}
 
@@ -1311,13 +1352,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 % TODO: solving linear systems
 % TODO: Fredholm Intergral Equation
 
-\begin{dfn}[Lipschitz Functions again]{dfn:lipshitz-function}{}
-    Let $(X, d_{X}),\,(Y, d_{Y})$ be metric spaces. A function $f : X \to Y$ is said to be a \textbf{Lipschitz} function iff there exists a constant $L$ such that for all $x,x'\in X$,
-    \[d_{Y}(f(x), f(x')) \le L d_{X}(x,x')\]
-    If $L < 1$, $f$ is said to be a \textbf{contraction}
-    
-\end{dfn}
-
 \begin{xmp}[Examples of closure]{xmp:closure}{}
     \begin{itemize}[leftmargin=*]
         \item On the real line with the standard metric, $\overline{(a,b)} = [a,b]$
@@ -1332,7 +1366,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 
 
-
-\lipsum[1-12]
+\vspace{1000em}
+% \lipsum[1-12]
 \end{multicols}
 \end{document}
