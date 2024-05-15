@@ -25,6 +25,7 @@
 \usepackage[fontsize=7pt]{scrextend}
 
 \usepackage{multirow}
+\usepackage{array}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -46,7 +47,8 @@
 \usepackage[nodisplayskipstretch]{setspace}
 
 
-
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}       % top strut
+\newcommand\Bstrut{\rule[-1.1ex]{0pt}{0pt}} % bottom strut
 
 
 \setlength{\parskip}{0.2em}
@@ -92,7 +94,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \vspace{-5pt}
 \section{Introduction to Metric Spaces}
 
-\begin{thm}[Definition of a Metric]{def:metric}{}
+\begin{dfn}[Definition of a Metric]{def:metric}{1}
     \vspace{-5pt}
     Let $X$ be a non-empty set. A function $d: X \times X \to \mathbb{R} $ is called a \textbf{metric} iff for all $x,\,y,\,z\in X$,
     \vspace{-3pt}
@@ -103,10 +105,10 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{itemize}
     \vspace{-5pt}
     A non-empty set $X$ equipped with a metric $d$ is a \textbf{metric space}
-\end{thm}
+\end{dfn}
 
 \vspace{-5pt}
-\begin{dfn}[Real Vector Spaces]{dfn:modules-and-vector-spaces}{}
+\begin{dfn}[Real Vector Spaces]{dfn:modules-and-vector-spaces}{A}
     \vspace{-5pt}
     A \textbf{real vector space $V$} is a set with two operations $(X, +, \cdot)$, where:
     \vspace{-15pt}
@@ -136,9 +138,9 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \end{dfn}
 
 \vspace{-5pt}
-\begin{dfn}[Normed and Inner Product Spaces]{def:normed-space-inner-space}{}
+\begin{dfn}[Normed and Inner Product Spaces]{def:normed-space-inner-space}{B}
     \vspace{-5pt}
-    \textrule{\textbf{Normed Vector Spaces}}
+    \textrule{\textbf{Def 5: Normed Vector Spaces}}
 
     \vspace{-3pt}
     A \textbf{normed vector space} is a real vector space $X$ equipped with a \textbf{norm}, i.e. a function that assigns to every vector $x\in X$ a real number $\lVert x \rVert$ so that, for all vectors $x$ and $y$ in $X$ and all real scalars $a$:
@@ -156,11 +158,11 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \[d(x,y) = \lVert x - y \rVert\]
     defines a metric in $X$
 
-    \textbf{Remark}: This is a generalisation of the "length of a vector"
+    % \textbf{Remark}: This is a generalisation of the "length of a vector"
 
 
-    \textrule{\textbf{Inner Product Spaces}}
-    \vspace{-3pt}
+    \textrule{\textbf{Def 6: Inner Product Spaces}}
+
     Let $X$ be a real vector space. An \textbf{inner product} on $X$ is a function that assigns to every pair $(x,y)\in X \times X $ a real number denoted by $\langle x,y \rangle$ and has the following properties:
     \vspace{-3pt}
     \begin{itemize}
@@ -179,13 +181,13 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
         \item $d(x,y) = \lVert x - y \rVert$ defines a metric in $X$
     \end{itemize}
     \vspace{-5pt}
-    \textbf{Remark}: This is a generalisation of the dot product
+    % \textbf{Remark}: This is a generalisation of the dot product
 \end{dfn}
 
 
 \vspace{-5pt}
 
-\begin{dfn}[$n$-dimensional Euclidean space]{def:ndim-euclidean-space}{}
+\begin{dfn}[$n$-dimensional Euclidean space]{def:ndim-euclidean-space}{C}
     \vspace{-5pt}
     Let $X = \mathbb{R}^{n} = \{(x_{1},x_{2},\dots,x_{n}) : x_{1},x_{2},\dots,x_{n}\in\mathbb{R}\}$
     \newline
@@ -195,47 +197,51 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \end{dfn}
 \vspace{-5pt}
 
-\begin{xmp}[Examples of Metric Spaces]{xmp:metric-spaces}{}
+\begin{xmp}[Examples of Metric Spaces]{xmp:metric-spaces}{D}
     \vspace{-5pt}
     Unless stated otherwise let $X = \mathbb{R}^{n}$. The case $X = \mathbb{R}^{2}$ is listed in \textcolor{red}{red}
 
+    \vspace{-6pt}
     \def\arraystretch{1.5}
     \begin{center}
         \begin{tabular}{|c|l|}
         \hline
-        Name & Norm and Metric \\
+        \textbf{Name} & \textbf{Norm and Metric} \\
         \hline
-        \multirow{2}{*}{Standard} & $\lvert x \rvert = \sqrt{\textcolor{red}{x^{2}_{1} + x^{2}_{2}} + \cdots + x^{2}_{n}}$ \\
-        & $d(x, y) = \sqrt{\textcolor{red}{(x_{1} \! - \! y_{1})^{2} \! + \! (x_{2} \! - \! y_{2})^{2}} \! + \cdots + \! (x_{n} \! - \! y_{n})^{2}}$ \\
+        \multirow{2}{*}{Standard} & $X = \mathbb{R}$ and $\lvert x \rvert = \text{Absolute Value}$ \\
+        & $d(x, y) = \lvert x - y \rvert$ \\
 
         \hline
         \multirow{2}{*}{Taxicab} & $\lVert x \rVert_{1} = \textcolor{red}{\lvert x_{1} \rvert + \lvert x_{2} \rvert} + \cdots \lvert x_{n} \rvert$ \\
                                  & $d_{1}(x, y) = \textcolor{red}{\lvert x_{1} - y_{1} \rvert + \lvert x_{2} - y_{2} \rvert} + \cdots + \lvert x_{n} - y_{n} \rvert$ \\
         \hline
-        \multirow{2}{*}{Euclidean} & $\lVert x \rVert_{2} = \sqrt{\textcolor{red}{\lvert x_{1} \rvert^{2} + \lvert x_{2} \rvert^{2}} + \cdots \lvert x_{n} \rvert^{2}}$ \\
-                                   & $d_{2}(x, y) = \sqrt{\textcolor{red}{\lvert x_{1} \! - \! y_{1} \rvert^{2} \! + \! \lvert x_{2} \! - \! y_{2} \rvert^{2}} \! + \cdots + \! \lvert x_{n} \! - \! y_{n} \rvert^{2}}$ \\
+        \multirow{2}{*}{Euclidean} & \parbox{20em}{\vspace{2pt}$\lVert x \rVert_{2} = \sqrt{\textcolor{red}{\lvert x_{1} \rvert^{2} + \lvert x_{2} \rvert^{2}} + \cdots \lvert x_{n} \rvert^{2}}$\vspace{2pt}} \\
+                                   & $d_{2}(x, y) = \sqrt{\textcolor{red}{( x_{1} \! - \! y_{1} )^{2} \! + \! ( x_{2} \! - \! y_{2} )^{2}} \! + \cdot\!\cdot +  ( x_{n} \! - \! y_{n} )^{2}}$ \\
         \hline
-        \multirow{2}{*}{$p$-metric} & $\lVert x \rVert_{p} = \displaystyle \left( \sum_{k = 1}^{n} \lvert x_{k} \rvert^{p}\right)^{1 /p}$ \\
-                          & $d_{p}(x, y) = \displaystyle \left( \sum_{k = 1}^{n} \lvert x_{k} - y_{k} \rvert^{p}\right)^{1 /p}$ \\
+        \multirow{2}{*}{$p$-metric} & \parbox{20em}{\vspace{2pt}$\lVert x \rVert_{p} = \displaystyle \left( \sum_{k = 1}^{n} \lvert x_{k} \rvert^{p}\right)^{1 /p}$\vspace{2pt}} \\
+                                    & \parbox{20em}{\vspace{2pt}$d_{p}(x, y) = \displaystyle \left( \sum_{k = 1}^{n} \lvert x_{k} - y_{k} \rvert^{p}\right)^{1 /p}$\vspace{2pt}} \\
         \hline
         \multirow{2}{*}{Chebyshev} & $\lVert x \rVert_{\infty} = \max \{\textcolor{red}{\lvert x_{1} \rvert, \lvert x_{2} \rvert},\dots, \lvert x_{n} \rvert\}$ \\
                                    & $d(x, y) = \max \{\textcolor{red}{\lvert x_{1} - y_{1} \rvert, \lvert x_{2} - y_{2} \rvert},\dots, \lvert x_{n} - y_{n} \rvert\}$ \\
 
         \hline
-        \multirow{2}{*}{Discrete} & Not induced by a metric \\
-                          & $d(x, y) = \begin{cases}
-                              0 & x = y \\
-                              1 & x \ne y
-                          \end{cases}$ \\
+        Discrete & \parbox{20em}{\vspace{2pt}$d(x, y) = \begin{cases}
+                0 & x = y \\
+                1 & x \ne y
+        \end{cases}$\vspace{2pt}} \\
         \hline
-        \multirow{2}{*}{Post Office} & Not induced by a metric \\
-                          & $d(x, y) = \begin{cases}
-                              \lVert x \rVert_{2} + \lVert y \rVert_{2} & x = y \\
-                              1 & x \ne y
-                          \end{cases}$ \\
+            Post Office & \parbox{20em}{\vspace{2pt}$d(x, y) = \begin{cases}
+                \lVert x \rVert_{2} + \lVert y \rVert_{2} & x = y \\
+                1 & x \ne y
+            \end{cases}$\vspace{2pt}} \\
         \hline
     \end{tabular}
     \end{center}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{images/2024-05-14-225838_hyprshot.png}
+    \end{figure}
 
     % TODO: cauchy shwarz?
 
@@ -254,7 +260,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 
 
-\begin{xmp}[Sequence Spaces]{xmp:sequence-spaces}{}
+\begin{xmp}[Sequence Spaces]{xmp:sequence-spaces}{E}
     \vspace{-5pt}
     \textrule{\textbf{The space $\ell^{1}$}}
 
@@ -326,8 +332,8 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{itemize}
 \end{xmp}
 
-\begin{dfn}[Metric Subspaces]{dfn:metric-subspace}{}
-    Let $(X, d)$ be a metric space and $Y$ a non-empty subset of $X$. Define
+\begin{dfn}[Metric Subspaces]{dfn:metric-subspace}{F}
+    \textbf{Ex 7}: Let $(X, d)$ be a metric space and $Y$ a non-empty subset of $X$. Define
     \begin{itemize}
         \item $d_{Y} : Y \times Y \to \mathbb{R}$
         \item $d_{y}(y, y') = d(y, y')$
@@ -336,19 +342,77 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     Then $d_{Y}$ is a metric on $Y$. $d_{Y}$ is called the \textbf{induced} or \textbf{inherited} metric, and $(Y, d_{Y})$ is said to be a metric subspace of the metric space $(X, d)$
 \end{dfn}
 
+\newpage
 
-\begin{dfn}[Open Ball]{def:open-ball}{}
+\begin{thm}[a lack of equality or fair treatment in t...]{dfn:p-metric}{G}
+    \textrule{\textbf{Good old fashioned Triangle Inequality}}
+
+    If it ain't broke...
+    \[\lvert x + y \rvert \le \lvert x \rvert + \lvert y \rvert \quad \text{and} \quad \lvert x - y \rvert \ge \lvert \lvert x \rvert - \lvert y \rvert \rvert\]
+
+    \textrule{\textbf{Cauchy-Schwarz Inequality}}
+
+    For all $x$ and $y$ of an inner product space:
+    \[\lvert \langle x, y \rangle \rvert \le \lVert x \rVert \lVert y \rVert\]
+
+    \textrule{\textbf{Minkowski's Inequality}}
+
+    Let $p \ge 1$, and real numbers $x_{i}, y_{i},\,(i = 1,\dots,n)$. Then
+    \begin{align*}
+        \lVert x + y \rVert_{p} &\le \lVert x \rVert_{p} + \lVert y \rVert_{p} \\
+        \left(\sum_{i = 1}^{n} \lvert x_{i} + y_{i} \rvert^{p}\right)^{\frac{1}{p}} &\le \left(\sum_{i = 1}^{n} \lvert x_{i} \rvert^{p}\right)^{\frac{1}{p}} + \left(\sum_{i = 1}^{n} \lvert y_{i} \rvert^{p}\right)^{\frac{1}{p}}
+    \end{align*}
+
+    \textrule{\textbf{Ex 56 (Young's Inequality)}}
+    
+    Let $1 \le p, q \le \infty$ s.t. $\frac{1}{p} + \frac{1}{q} = 1$, and $a, b\le 0$. Then
+    \[ab \le \frac{a^{p}}{p} + \frac{b^{q}}{q}\]
+
+    \textrule{\textbf{Thm 169 (Hölder Inequality)}}
+
+    Let $1 \le p, q \le \infty$ s.t. $\frac{1}{p} + \frac{1}{q} = 1$ and $x, y\in \mathbb{R}^{n}$. Then
+    \[\sum_{i = 1}^{n} \lvert x_{i}y_{i} \rvert \le \lVert x \rVert_{p} \lVert y \rVert_{q}\]
+
+\end{thm}
+
+
+\begin{dfn}[Equivalent Norms]{dfn:equivalent-norms}{166}
+    \vspace{-5pt}
+    Two norms on the same real vector space are said to be equivalent iff their corresponding metrics are equivalent
+
+    \longrule{0.08ex}
+    \textbf{Thm 167}: If $\lVert \cdot \rVert_{1}$ and $\lVert \cdot \rVert_{2}$ are norms on the same real vector space $X$ and there exist positive constants $C$ and $C'$ s.t., for all $x\in X$,
+    \[D \lVert x \rVert_{1} \le \lVert x \rVert_{2} \le C' \lVert x \rVert_{1}\]
+    then they are equivalent
+
+
+    \textrule{\textbf{Equivalence Theorems of $p$-metrics}}
+
+    \vspace{-10pt}
+    \begin{itemize}
+        \item[\textbf{171}:] Any of the following norms are equivalent:
+            \begin{align*}
+                \lVert x \rVert_{p} &= (\lvert x_{1} \rvert^{p} + \cdots + \lvert x_{n} \rvert^{p})^{1 /p},\,x\in \mathbb{R}^{n},\, 1\le p < \infty\\
+                \lVert x \rVert_{\infty} &= \max \{\lvert x_{1} \rvert,\dots,\lvert x_{n} \rvert\},\,x\in\mathbb{R}^{n}
+            \end{align*}
+        \item[\textbf{172}:] Let $1 \le p \le q < \infty$. For all $x\in\mathbb{R}^{n}$:
+            \[\lVert x \rVert_{q} \le \lVert x \rVert_{p}\]
+            As a consequence,
+            \[\lVert x \rVert_{\infty} \le \lVert x \rVert_{q} \le \lVert x \rVert_{p} \le \lVert x \rVert_{1}\]
+        \item[\textbf{173}:] All norms in $\mathbb{R}^{n}$ are equivalent
+
+    \end{itemize}
+\end{dfn}
+
+\setcounter{subsection}{1}
+
+\begin{dfn}[Open Ball]{def:open-ball}{8}
     Let $(X, d)$ be a metric space, $c$ be a point in $X$, and $r > 0$. The \textbf{open ball} with center $c$ and radius $r$ is defined by
     \[B(c,r) = \{x\in X: d(c,x) < r\}\]
 \end{dfn}
 
-\newpage
+% TODO: open ball examples?
 
-
-
-
-% Note: there are lots of different notations for this, e.g. calling it a sphere
-%
 % \textbf{Example:} on the real line with the standard metric
 % \[b(c,r) = \{x\in\mathbb{R} : \lvert x - c \rvert < r\} = (c - r, c + r)\]
 %
@@ -368,310 +432,280 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 \section{Convergence}
 
-\subsection{Convergent Sequences in Metric Spaces}
-On the real line, $x_{n}\to x$ iff for every positive $\epsilon$, there exists an index $N$ such that for all indices $n$ where $n\ge N$, we have $\lvert x_{n} - x \rvert < \epsilon$.
+% On the real line, $x_{n}\to x$ iff for every positive $\epsilon$, there exists an index $N$ such that for all indices $n$ where $n\ge N$, we have $\lvert x_{n} - x \rvert < \epsilon$.
 
-\begin{dfn}[Convergent Sequence]{metric-convergence}{}
-    Let $(X,d)$ be a metric space, $(x_{n})^{\infty}_{n=1}$ be a sequence in $X$, and $x\in X$. We say that $(x_{n})^{\infty}_{n=1}$ converges to $x$ iff for every positive $\epsilon$, there exists an index $N$ s.t. for all indices $n$ with $n\ge N$a we have $d(x_{n}, x) < \epsilon$.
+\begin{dfn}[Convergent Sequence]{metric-convergence}{15}
+    Let $(X,d)$ be a metric space, $(x_{n})^{\infty}_{n=1}$ be a sequence in $X$, and $x\in X$. We say that $(x_{n})^{\infty}_{n=1}$ converges to $x$ iff for every $\epsilon > 0$, there exists an index $N$ s.t. for all $n\ge N$ we have $d(x_{n}, x) < \epsilon$.
 
     Observe that:
+    \vspace{-5pt}
     \begin{itemize}
         \item $d(x_{n}, x)< \epsilon$ is equivalent to $x_{n}\in B(x,\epsilon)$.
         \item $x_{n}\to x$ in $(X,d)$ iff $d(x_{n}, x)\to 0$ on the real line
     \end{itemize}
 \end{dfn}
 
-\begin{thm}[Uniqueness of metric limit]{thm:uniqueness-metric-limit}{}
+\begin{thm}[Uniqueness of metric limit]{thm:uniqueness-metric-limit}{16}
     \begin{itemize}
         \item Let $(X,d)$ be a metric space, and $x,x'\in X,\,x\ne x'$. Then there exists a positive radius $r$ s.t. $B(x,r)\cap B(x',r) = \emptyset$
         \item A sequence in a metric space can have at most one limit
     \end{itemize}
 \end{thm}
 
-%
-% \textbf{Proof of first:} $d(x,x') > 0$ because $x \ne x'$. Choose any $r$ with $0  < r \le \frac{d(x,x')}{2}$. If $y\in B(x,r)$, then $d(y,x)<r$, therefore
-% \[d(y,x' \ge d(x,x') - d(y,x) > d(x,x') - r)\]
-% and $d(x,x') - r \ge r$, therefore
-% \[d(y,x') > r\]
-% Therefore, $y\not\in B(x', r)$
-%
-% \textbf{Proof of second: } Let $x_{n} \to x$ and $x_{n}\to x'$ in a metric space $(X,d)$. We claim that $x = x'$.
-% Assume $x\ne x'$. Let $r > 0$ be s.t.
-% \[B(x,r) \cap B(x',r) = \emptyset\]
-% Since $x_{n}\to x$, there exists $N$ s.t. for all $n$ with $n \ge N$ we have
-% \[x_{n} \in B(x,r)\]
-% Since $x_{n}\to x$, there exists $N'$ s.t. for all $n$ with $n \ge N'$ we have
-% \[x_{n} \in B(x',r)\]
-% For any $n$ with $n \ge \max \{N, N'\}$, the term $x_{n}$ belongs to both balls - contradiction
-%
-
-\begin{xmp}[convergence in ($\mathbb{R}^N, d_2$)]{xmp:convergence}{}
-    A sequence
-    \begin{align*}
-        x_{1} &= (x_{11}, \dots,x_{1j}, \dots x_{1N}) \\
-        x_{2} &= (x_{21}, \dots,x_{2j}, \dots x_{2N}) \\
-        \vdots & \\
-        x_{n} &= (x_{n1}, \dots,x_{nj}, \dots x_{nN}) \\
-        \vdots \\
-        \downarrow \\
-        x &= (x_{1}, \dots, x_{j}, \dots, x_{N})
-    \end{align*}
-    in $\mathbb{R}^{N}, d_{2}$ converges to $x = (x_{1}, \dots, x_{j}, \dots, x_{N})$ iff for each $j$,
-    \[x_{nj}\xrightarrow[j\to+\infty]{} x_{j}\]
-\end{xmp}
-
-% \longrule{0.08ex}
-
-% Watch lecture recording 23/01 for examples of:
-% \begin{itemize}
-%     \item Convergence in $\ell^{2}$
-%     \item Convergecnce in $C([a,b])$
-% \end{itemize}
-
-
-\begin{dfn}[Bounded Sequence]{def:bounded-sequence}{}
+\begin{dfn}[Bounded Sequence]{def:bounded-sequence}{19}
     A sequence in a metric space is said to be \textbf{bounded} iff there exists an open ball that contains all of its terms
 
     \longrule{0.08ex}
-    \textbf{Note}: this is the same definition as "sequence is bounded if there is upper and lower bound", as open ball implies the same thing
+    \textbf{Note}: this is the same definition as ``sequence is bounded if there is upper and lower bound'', as open ball implies the same thing
+
+    \longrule{0.08ex}
+    \textbf{Thm 20}: Every convergent sequence is bounded
 \end{dfn}
 
+\stepcounter{subsection}
 
-\begin{thm}[]{thm:convergent-seq-bound}{}
-    Every convergence is bounded
-    % TODO: lol
-\end{thm}
-
-% \textbf{Proof:} Let $x_{n}\to x$ in a metric space $(X,d)$. There exists an index $N$ s.t. for all $n$ with $n\ge N$,
-% \[x_{n}\in B(x,1)\]
-% Let $r$ be any positive number such that
-% \[r>1,\,r>d(x,x_{1}),\dots,r>d(x,x_{N-1})\]
-% Then, for all $n$,
-% \[d(x_{n}, x) < r\]
-% therefore
-% \[x_{n}\in B(x,r)\]
-%
-\subsection{Cauchy Sequences}
-Convergence: For every $\epsilon$, there is an $N$ such that for $n\ge N$, $d(x_{n}, x) < \epsilon$
-\[x_{1}\quad x_{2} \quad \cdots \quad x_{N} \quad \cdots x_{n} \quad \cdots \quad \to x\]
-Replace $x$ by any $x_{m}$ with $m \ge N$
-\[x_{1}\quad x_{2} \quad \cdots \quad x_{N} \quad \cdots x_{n} \quad \cdots \quad x_{m} \quad \cdots\]
-'$d(x_{n}, x) < \epsilon$' becomes '$\forall m \ge N,\,d(x_{n}, x_{m}) < \epsilon$'
-
-\begin{dfn}[Cauchy Sequence]{def:cauchy-seq}{}
+\begin{dfn}[Cauchy Sequence]{def:cauchy-seq}{21}
     A sequence $(x_{n})^{\infty}_{n=1}$ in a metric space $(X,d)$ is said to be a \textbf{Cauchy sequence} iff for every positive $\epsilon$, there exists an index $N$, s.t. for all indices $n,m$ with $n,m\ge N$,
     \[d(x_{n}, x_{m}) < \epsilon\]
+
+    \longrule{0.08ex}
+    \textbf{Thm 22}: If a sequence in a metric space converges, then it is a Cauchy sequence. \textbf{Note}: the converse is not true
 \end{dfn}
 
-\begin{thm}[]{thm:convergent-to-cauchy}{}
-    If a sequence in a metric space converges, then it is a Cauchy sequence
-\end{thm}
-
-% TODO: The converse is not true.
-
-\begin{dfn}[Complete Metric Spaces]{def:complete-ms}{}
+\begin{dfn}[Complete Metric Spaces]{def:complete-ms}{24}
     A metric space is said to be \textbf{complete} if and only if every Cauchy Sequence is convergent
 \end{dfn}
 
-\textbf{Examples:}
-\begin{itemize}
-    \item $\mathbb{R}$ with the standard metric is complete
-    \item $\mathbb{Q}$ with the standard metric is not complete
-    \item $(0,1)$ with the standard metric is not complete
-    \item $[0,1]$ with the standard metric is complete
-    \item $\mathbb{R}^{n},\,\ell^{p},\,C([a,b])$ is complete (proof later)
-\end{itemize} 
+\begin{xmp}[Examples of Complete Metric Spaces]{xmp:complete-ms}{25}
+    \begin{itemize}
+        \item $\mathbb{R}$ with the standard metric is complete
+        \item $\mathbb{Q}$ with the standard metric is not complete
+        \item $(0,1)$ with the standard metric is not complete
+        \item $[0,1]$ with the standard metric is complete
+        \item $\mathbb{R}^{n},\,\ell^{p},\,C([a,b])$ is complete (proof later)
+    \end{itemize} 
+\end{xmp}
 
-\subsection{Open sets and closed sets}
-
-\begin{dfn}[Open Sets and Closed Sets]{def:open-closed-set}{}
+\begin{dfn}[Open Sets and Closed Sets]{def:open-closed-set}{26}
+    \vspace{-5pt}
     Let $(X,d)$ be a metric space.
+    \vspace{-5pt}
     \begin{itemize}
         \item A subset $G$ of $X$ is said to be \textbf{open} iff for every point $x$ in $G$ there exists a positive radius $r$ such that $B(x,r)\subseteq G$.
         \item A subset $F$ of $X$ is said to be \textbf{closed} iff $F^{c}$ is open
     \end{itemize}
 \end{dfn}
 
-\begin{dfn}[Discrete Metric Space]{def:discrete-ms}{}
+\begin{dfn}[Discrete Spaces and Clopens]{def:discrete-ms}{31}
+    \vspace{-5pt}
     A metric space is called \textbf{discrete} iff all its subsets are open (equiv. all subsets are closed)
 
     \textbf{Example:} $[0,1]\cap (2,3)$
+
+    \longrule{0.08ex}
+    \textbf{Def 33}: A set that is both open and closed is called \textbf{clopen}
 \end{dfn}
 
-
-\begin{thm}[Properties of open sets]{thm:open-set-props}{}
+\vspace{-5pt}
+\begin{thm}[Properties of open and closed sets]{thm:open-set-props}{34}
+    \vspace{-5pt}
     Let $(X,d)$ be a metric space
+    \vspace{-5pt}
     \begin{enumerate}
-        \item The union of any family of open sets is an open set
-        \item The intersection of finitely many open sets is an open set
+        \item The union of \textbf{any family} of open sets is an open set
+        \item The intersection of \textbf{finitely many} open sets is an open set
+        \item The intersection of \textbf{any family} of closed sets is an closed set
+        \item The union of \textbf{finitely many} closed sets is an closed set
     \end{enumerate}
 \end{thm}
 
-\begin{thm}[Infinite open sets]{thm:infinite-open-sets}{}
-    The intersection of infinitely many open sets is not always an open set
+\vspace{-5pt}
+\begin{rem}[Infinite open sets]{thm:infinite-open-sets}{35}
+    \vspace{-5pt}
+    The intersection of infinitely many open sets isn't always an open set
     
-    For example, let $G_{n} = (- \frac{1}{n}, \frac{1}{n}), n = 1,2,\dots$ on the real line with the standard metric.
+    e.g., let $G_{n} = (- \frac{1}{n}, \frac{1}{n}), n = 1,2,\dots$ on $\mathbb{R}$ with the standard metric.
 
     Each $G_{n}$ is open but
     \[\bigcap\limits_{n = 1}^{\infty} G_{n} = \{0\}\]
+\end{rem}
+
+\vspace{-5pt}
+\begin{thm}[Relatively open sets]{thm:relatively-open}{18}
+    \vspace{-5pt}
+    Let $(X,d)$ be a metric space and $A$ a nonempty subset of $X$ equipped with the induced metric $d_{A}$. Let $G\subseteq A$. Then $G$ is open in $(A, d_{A})$ iff there exists a subset $O$ of $X$, open in $(X,d)$, s.t. $G = A \cap O$
+
+    The open sets of $(A, d_{A})$ are referred to as \textbf{relatively open}
 \end{thm}
 
-\begin{thm}[Relatively open sets]{thm:relatively-open}{}
-    Let $(X,d)$ be a metric space and $A$ be a non-empty subset of $X$ equipped with the induced metric $d_{A}$. Let $G\subseteq A$. $G$ is open in $(A, d_{A})$ iff there exists a subset $O$ of $X$, open in $(X,d)$, such that $G = A \cap O$
-
-    The open sets of $(A, d_{A})$ are sometimes referred to as \textbf{relatively open}
-\end{thm}
-
-\begin{thm}[]{thm:open-set-converge}{}
+\vspace{-5pt}
+\begin{thm}[]{thm:open-set-converge}{36}
+    \vspace{-5pt}
     Let $(X, d)$ be a metric space, $(x_{n})^{\infty}_{n=1}$ be a sequence in $X$ and $x$ be a point in $X$.
 
     $x_{n}\to x$ iff every open set that contains $x$ contains eventually all terms of the sequence
 \end{thm}
 
-\begin{dfn}[Neighbourhoods of points]{def:neighbourhood}{}
-    An \textbf{open neighbourhood} of a point $x$ is any open set that contains $x$. $x_{n}\to x$ iff every open neighbourhood of $x$ contains eventually all terms of the sequence.
+\vspace{-5pt}
+\begin{dfn}[Neighbourhoods of points]{def:neighbourhood}{H}
+    \vspace{-5pt}
+    An \textbf{open neighbourhood} of a point $x$ is any open set that has $x$. 
+
+    $x_{n}\to x$ iff every open neighbourhood of $x$ contains eventually all terms of the sequence.
 
     \longrule{0.08ex}
+    A \textbf{neighbourhood} of a point $x$ is a set that contains an open neighbourhood of $x$.
 
-    A \textbf{neighbourhood} of a point $x$ is a set that contains an open neighbourhood of $x$.  $x_{n}\to x$ iff every neighbourhood of $x$ contains eventually all terms of the sequence.
+    $x_{n}\to x$ iff every neighbourhood of $x$ contains eventually all terms of the sequence.
 \end{dfn}
 
-\begin{thm}[Properties of Closed sets]{thm:closed-set-props}{}
-    Let $(X, d)$ be a metric space.
-    \begin{enumerate}
-        \item The intersection of any family of closed sets is a closed set
-        \item The union of finitely many closed sets is a closed set.
-    \end{enumerate}
-\end{thm}
-
-\begin{thm}[Infinite closed sets]{thm:infinite-closed-sets}{}
+\begin{rem}[Infinite closed sets]{thm:infinite-closed-sets}{38}
+    \vspace{-5pt}
     The union of infinitely many closed sets is not always a closed set.
 
     For example, let $F_{n} = [\frac{1}{n}, 1], n=1,2,\dots,$ on the real line with the standard metric.
     Each $F_{n}$ is closed but
     \[\bigcup\limits_{n = 1}^{\infty}F_{n} = (0,1]\]
     is not closed.
-\end{thm}
-
-\begin{thm}[]{thm:closed-ms-convergence}{}
-    A subset $F$ of a metric space is closed iff the limit of every convergent sequence of elements of $F$ belongs to $F$
-\end{thm}
+\end{rem}
 
 \newpage
+\begin{thm}[]{thm:closed-ms-convergence}{41}
+    \vspace{-5pt}
+    A subset $F$ of a metric space is closed iff the limit of every convergent sequence of elements of $F$ belongs to $F$
 
-\begin{itemize}
-    \item In any metric space $(X,d)$, singletons $F = \{x\}$ are closed.
-    \item In any metric space, any finite set is closed because
-        \[\{x_{1},\dots,x_{n}\} = \{x_{1}\}\cup \cdots \cup \{x_{n}\}\]
-\end{itemize}
+    \longrule{0.08ex}
+    \vspace{-13pt}
+    \begin{itemize}[leftmargin=*]
+        \item In any metric space $(X,d)$, singletons $F = \{x\}$ are closed.
+        \item In any metric space, any finite set is closed because
+            \[\{x_{1},\dots,x_{n}\} = \{x_{1}\}\cup \cdots \cup \{x_{n}\}\]
+    \end{itemize}
+\end{thm}
 
-
-\subsection{Closure}
-
-\begin{dfn}[Closure]{def:closure}{}
+\begin{dfn}[Closure]{def:closure}{43}
+    \vspace{-5pt}
     Let $(X, d)$ be a metric space and $A \subseteq X$. The \textbf{closure} of $A$, deonted by $\overline{A}$, is the smallest closed subset of $X$ that contains $A$
 
     There exists at least one closed subset of $X$ that contains $A$, namely $X$ itself. The smallest closed subset of $X$ that contains $A$ is
-    \[\bigcap\limits_{A \subseteq F \subseteq X,\,F \text{closed}} F\]
+    \[\bigcap\limits_{\substack{A \subseteq F \subseteq X\\
+    F \text{closed}}} F\]
 \end{dfn}
 
-\begin{thm}[Properties of Closure]{thm:closure-props}{}
+\begin{thm}[Properties of Closure]{thm:closure-props}{44}
+    \vspace{-5pt}
     Let $(X, d)$ be a metric space and $A,\,B \subseteq X$.
-    \begin{enumerate}
-        \item $\overline{\emptyset} = \emptyset$ and $\overline{X} = X$
-        \item $A \subseteq \overline{A}$ and $\overline{A}$ is closed
-        \item $A$ is closed iff $A = \overline{A}$
-        \item $\overline{\overline{A}} = \overline{A}$
-        \item If $A \subseteq B$, then $\overline{A} \subseteq \overline{B}$
-        \item $\overline{A \cup B} = \overline{A} \cup \overline{B}$
-    \end{enumerate}
+    \vspace{-15pt}
+    \begin{multicols}{2}
+        \begin{enumerate}[leftmargin=*]
+            \item $\overline{\emptyset} = \emptyset$ and $\overline{X} = X$
+            \item $A \subseteq \overline{A}$ and $\overline{A}$ is closed
+            \item $A$ is closed iff $A = \overline{A}$
+            \item $\overline{\overline{A}} = \overline{A}$
+            \item If $A \subseteq B$, then $\overline{A} \subseteq \overline{B}$
+            \item $\overline{A \cup B} = \overline{A} \cup \overline{B}$
+        \end{enumerate}
+    \end{multicols}
 \end{thm}
 
-\begin{itemize}
-    \item On the real line with the standard metric, $\overline{(a,b)} = [a,b]$
-    \item In $\mathbb{R}^{n}$ with the Euclidean metric $d_{2}$, the closure of the open ball $B(c,r)$ is the closed ball $\{x\in\mathbb{R}^{n}: d_{2}(x,c)\le r\}$
-    \item On the complex plane with its standard metric, the closure of an open disc is the corresponding closed disc
-    \item Let $X$ be a non-empty set with the discrete metric, $c\in X$ and $r =1$. Then $B(c,1) = \{c\}$, therefore $\overline{B(c,1)} - \overline{\{c\}} = \{c\}$, while
-        \[\{x\in X : d(x,c) \le 1\} = X\]
-        The closure of an open ball is not always equal to the corresponding closed ball
-    \item $X = \mathbb{R},\,d(x,y) = \lvert x - y \rvert$. $\overline{\mathbb{Q}} = \mathbb{R}$
-\end{itemize}
+\begin{xmp}[Examples of closure]{xmp:closure}{}
+    \begin{itemize}[leftmargin=*]
+        \item On the real line with the standard metric, $\overline{(a,b)} = [a,b]$
+        \item In $\mathbb{R}^{n}$ with the Euclidean metric $d_{2}$, the closure of the open ball $B(c,r)$ is the closed ball $\{x\in\mathbb{R}^{n}: d_{2}(x,c)\le r\}$
+        \item On the complex plane with its standard metric, the closure of an open disc is the corresponding closed disc
+        \item Let $X$ be a non-empty set with the discrete metric, $c\in X$ and $r =1$. Then $B(c,1) = \{c\}$, therefore $\overline{B(c,1)} - \overline{\{c\}} = \{c\}$, while
+            \[\{x\in X : d(x,c) \le 1\} = X\]
+            The closure of an open ball is not always equal to the corresponding closed ball
+        \item $X = \mathbb{R},\,d(x,y) = \lvert x - y \rvert$. $\overline{\mathbb{Q}} = \mathbb{R}$
+    \end{itemize}
+\end{xmp}
 
-\begin{dfn}[Dense Subset of a Metric Space]{def:dense-subset}{}
-    Let $(X, d)$ be a metric space. A subset $D$ of $X$ is said to be \textbf{dense} iff $\overline{D} = X$
+\begin{dfn}[Dense Subset of a Metric Space]{def:dense-subset}{49}
+    Let $(X, d)$ be a metric space. A subset $D \subseteq X$ is \textbf{dense} iff $\overline{D} = X$
+
+    \longrule{0.08ex}
+    \textbf{Random Fact}: In $\mathbb{R}^{n}$ with the Euclidean metric $d_{2}$, $\mathbb{Q}^{n}$ is dense.
 \end{dfn}
 
-Random fact: In $\mathbb{R}^{n}$ with the Euclidean metric $d_{2}$, $\mathbb{Q}^{n}$ is dense.
-
-\begin{thm}[Closure Equivalence]{thm:closure-equivalence}{}
-    Let $(X, d)$ be a metric space, $A \subseteq X, x\in X$. The following are equivalent
+\begin{thm}[Adherent Points]{thm:closure-equivalence}{50}
+    \vspace{-5pt}
+    Let $(X, d)$ be a metric space, $A \subseteq X, x\in X$. The following are equiv.
+    \vspace{-10pt}
     \begin{enumerate}
         \item $x\in\overline{A}$
         \item For every positive $r$, $B(x,r) \cap A \ne \emptyset$
         \item There exists a sequence $(a_{n})_{n\in \mathbb{N}}$ with $a_{n}\in A$ for all $n$, such that $a_{n}\to x$
     \end{enumerate}
+    \vspace{-5pt}
     A point $x$ with any of these properties is called an \textbf{adherent point} of $A$. So, $\overline{A}$ is the set of all adherent points of $A$.
 \end{thm}
 
-\begin{dfn}[Limit points of sets]{def:limit-point}{}
+\begin{dfn}[Limit points of sets]{def:limit-point}{52}
     Let $(X, d)$ be a metric space, $A \subseteq X$ and $x\in X$. We say that $x$ is a \textbf{limit point} or an \textbf{accumulation point} of $A$ iff every open ball centered at $x$ contains an element of $A$ distinct from $x$, i.e.
     \[\forall r > 0 \quad (B(x,r) \backslash \{x\}) \cap A \ne \emptyset\]
     The set of all limit points of $A$ is called the \textbf{derived set} of $A$ and is denoted by $A'$ or $\tilde{A}$.
 \end{dfn}
 
-\subsection{Continuous functions between metric spaces}
+\vspace{-5pt}
+\begin{dfn}[Continuity at a point]{def:metric-point-continuity}{54}
+    \vspace{-5pt}
+    Let $(X, d_{X}),\, (Y,d_{Y})$ be metric spaces and $f: X \to Y $ be a function. We say that $f$ is \textbf{continuous at a point} $x_{0}$ in $X$ iff...
+    \vspace{-8pt}
 
-\begin{dfn}[Continuity at a point]{def:metric-point-continuity}{}
-    Let $(X, d_{X}),\, (Y,d_{Y})$ be metric spaces and $f: X \to Y $ be a function. We say that $f$ is \textbf{continuous at a point} $x_{0}$ in $X$ iff for for every positive $\epsilon$, there exists a positive $\delta$, s.t., for all $x\in X$ with $d_{X}(x,x_{0}) < \delta$ we have $d_{Y}(f(x), f(x_{0})) < \epsilon$
-    
-    \longrule{0.08ex}
-    Alternatively, $f$ is \textbf{continuous at a point} $x_{0}\in X$ iff, for every positive $\epsilon$, there exists a positive $\delta$, such that, for all $x\in B_{X}(x_{0}, \delta)$ we have $f(x)\in B_{Y}(f(x_{0}), \epsilon)$
-\end{dfn}
+    \begin{itemize}[leftmargin=*]
+        \item for every $\epsilon > 0$, there exists a $\delta > 0$, such that, for all $x\in X$ with $d_{X}(x,x_{0}) < \delta$ we have 
+            \[d_{Y}(f(x), f(x_{0})) < \epsilon\]
+        \item for every $\epsilon > 0$, there exists a $\delta > 0$, such that, for all $x\in B_{X}(x_{0}, \delta)$ we have 
+            \[f(x)\in B_{Y}(f(x_{0}), \epsilon)\]
+        \item \textbf{Thm 57}: for every open nbhd $G$ of $f(x_{0})$, there exists an open nbhd $O$ of $x_{0}$ such that, for all $x\in O$, we have $f(x) \in G$
 
-\begin{dfn}[Continuity of a function]{def:metric-continuity}{}
+    \end{itemize}
+
+    \vspace{-5pt}
+    \textrule{\textbf{Def 55: Continuity of a Function}}
+
     Let $(X, d_{X}), (Y, d_{Y})$ be metric spaces. A function $f: X \to Y $ is said to be \textbf{continuous} iff it is continuous at every point in $X$
 \end{dfn}
 
-\begin{thm}[]{}{}
-    Let $(X,d_{X}), (Y, d_{Y})$ be metric spaces, $f : X \to Y$ be a function and $x_{0}$ be a point in $X$. Then $f$ is continuous at $x_{0}$ iff for every open neighbourhood $G$ of $f(x_{0})$ there exists an open neighbourhood $O$ of $x_{0}$ such that, for all $x\in O$, we have $f(x) \in G$
-\end{thm}
-
-\begin{thm}[Continuity and Convergence]{thm:continuity-conv-equivalence}{}
+\vspace{-5pt}
+\begin{thm}[Continuity and Convergence]{thm:continuity-conv-equivalence}{58}
+    \vspace{-5pt}
     Let $(X, d_{X}),\, (Y, d_{Y})$ be metric spaces, $x_{0}$ be a point in $X$, and $f : X \to Y$ be a function. The following are equivalent:
+    \vspace{-5pt}
     \begin{enumerate}
         \item $f$ is continuous at $x_{0}$
         \item For every sequence $(x_{n})^{\infty}_{n = 1}$ in $X$, if $x_{n}\xrightarrow[n\to +\infty]{}$ in $(X, d_{X})$, then $f(x_{n}) \xrightarrow[n\to +\infty]{} f(x_{0})$ in $(Y, d_{Y})$
     \end{enumerate}
 \end{thm}
 
-\begin{thm}[Continuity and Open Sets]{def:continuity-open-sets}{}
+\vspace{-5pt}
+\begin{thm}[Continuity and Open Sets]{def:continuity-open-sets}{59}
     Let $(X, d_{X}),\,(Y, d_{Y})$ be metric spaces. A function $f: X \to Y $ is continuous iff the inverse image $f^{-1}(G)$ of any open subset $G$ of $Y$ is an open subset of $X$
 \end{thm}
 
-\section{Topology!!!}
-\subsection{Homeomorphisms and Topological Properties}
-\begin{dfn}[Topological Space]{def:topological-space}{}
+\vspace{-5pt}
+\begin{dfn}[Topological Space]{def:topological-space}{60}
+    \vspace{-5pt}
     A \textbf{topological space} is a set $X$ together with a family $\mathcal{T}$ of subsets of $X$ that has the following properties:
+    \vspace{-5pt}
     \begin{itemize}
         \item $\emptyset,X\in \mathcal{T}$
         \item Any union of elements of $\mathcal{T}$ is an element of $\mathcal{T}$
         \item Any finite intersection of elements of $\mathcal{T}$ is an element of $\mathcal{T}$
     \end{itemize}
+    \vspace{-5pt}
     $\mathcal{T}$ is called a \textbf{topology} and the elements of $\mathcal{T}$ are called \textbf{open sets}
 \end{dfn}
 
-\begin{dfn}[Continuity of Topological Spaces]{def:topological-continuity}{}
-    Let $(X, \mathcal{T}_{X})$ and $(Y, \mathcal{T}_{Y})$ be two topological spaces. A function $f : X \to Y$ is said to be \textbf{continuous} iff for every $G$ in $\mathcal{T}_{Y}$ the pre-image $f^{-1}(G)$ is an element of $\mathcal{T}_{X}$.
-
-    $f$ is said to be a \textbf{homeomorphism} iff it is a continuous bijection and its inverse is continuous.
-
-    If such a homeomorphism exists then $(X, \mathcal{T}_{X})$ and $(Y, \mathcal{T}_{Y})$ are said to be \textbf{homeomorphic}
+\vspace{-5pt}
+\begin{dfn}[Continuity of Topological Spaces]{def:topological-continuity}{61}
+    \vspace{-5pt}
+    \begin{itemize}[leftmargin=*]
+        \item Let $(X, \mathcal{T}_{X})$ and $(Y, \mathcal{T}_{Y})$ be two topological spaces. A function $f : X \to Y$ is said to be \textbf{continuous} iff for every $G$ in $\mathcal{T}_{Y}$ the pre-image $f^{-1}(G)$ is an element of $\mathcal{T}_{X}$.
+        \item $f$ is said to be a \textbf{homeomorphism} iff it is a continuous bijection and its inverse is continuous.
+        \item If such a homeomorphism exists then $(X, \mathcal{T}_{X})$ and $(Y, \mathcal{T}_{Y})$ are said to be \textbf{homeomorphic}
+    \end{itemize}
 \end{dfn}
-
-If $(X, \mathcal{T}_{X})$ and $(Y, T_{Y})$ are homeomorphic, and one of them is compact or connected or separable etc etc, then so is the other
-
-Properties that are preserved by homeomorphisms are called topological properties
-
 
 \begin{thm}[$d : X \times X \to \mathbb{R}$ is continuous]{thm:metric-space-continuity}{}
     Let $(X, d)$ be a metric space. The function $f: X \times X \to \mathbb{R} $ is continuous.
@@ -679,7 +713,6 @@ Properties that are preserved by homeomorphisms are called topological propertie
     $\mathbb{R}$ is equipped with the standard metric. $X \times X$ is equipped with the product metric
 \end{thm}
 
-\subsubsection{Continuity of linear operators between normed vector spaces}
 Let $(X, \lVert \cdot \rVert_{X}),\,(Y, \lVert \cdot \rVert_{Y})$ be normed vector spaces. Recall that $d_{X} : X \times X \to \mathbb{R},\,d(x, x') = \lVert x - x' \rVert_{X}$, and $d_{Y} : Y \times Y \to \mathbb{R},\, d_{Y}(y, y') = \lVert  y - y' \rVert_{Y}$ are metrics
 
 \begin{dfn}[Bounded Linear Operators]{def:bounded-linear-operators}{}
@@ -700,9 +733,6 @@ Let $(X, \lVert \cdot \rVert_{X}),\,(Y, \lVert \cdot \rVert_{Y})$ be normed vect
     \item Let $(X, \lVert  \cdot \rVert)$ be a normed vector space and define $f: \mathbb{R} \times X \to X $ by $f(\lambda, x) = \lambda x$. Define $g: X \times X \to X $ by $g(x,y) = x + y$. $f$ and $g$ are continuous
 \end{itemize}
 
-
-\newpage
-
 \subsection{Fixed Points and Lipschitz}
 
 \begin{dfn}[Lipschitz Functions]{def:lipschitz-functions}{}
@@ -710,6 +740,8 @@ Let $(X, \lVert \cdot \rVert_{X}),\,(Y, \lVert \cdot \rVert_{Y})$ be normed vect
     \[d_{Y}(f(x), f(x')) \le L d_{X}(x,x')\]
     If $L < 1$, $f$ is said to be a \textbf{contraction}
 \end{dfn}
+
+\newpage
 
 \textbf{Note}: Magnus uses non-standard terminology here:
 \begin{itemize}
@@ -801,6 +833,7 @@ Watch lecture recording 06/03 for more in-depth examples
     Let $(X, d)$ be a metric space, let $(x_{k})_{k=1}^{\infty}$ be a sequence in $X^{\mathbb{N}}$ and let $x\in X^{\mathbb{N}}$. Write $x_{k} = (x_{k 1},\dots, x_{kn},\dots)$ and $x = (l_{1},\dots,l_{n},\dots)$. Then, $x_{k} \xrightarrow[k \to +\infty]{(X^{\mathbb{N}}, D)} x$ if and only if, for all $n$, $x_{kn}\xrightarrow[k \to +\infty]{(X^{\mathbb{N}} l_{n}}$
 \end{thm}
 
+\newpage
 \begin{thm}[Completeness of product spaces]{thm:product-space-completeness}{}
     Let $(X, d)$ be a complete metric space. Then the product space $(X^{\mathbb{N}}, D)$ is complete.
 \end{thm}
@@ -845,7 +878,6 @@ Watch lecture recording 06/03 for more in-depth examples
     \end{itemize}
 \end{dfn}
 
-\newpage
 \section{Compactness}
 
 \begin{dfn}[Open Covers and Subcovers]{dfn:open-covers-subcovers}{}
@@ -1015,10 +1047,6 @@ Watch lecture recording 06/03 for more in-depth examples
     \textbf{Thm}: Every sequentially compact metric space is compact. (From now on, refer to sequentially compact spaces as compact)
 \end{thm}
 
-
-
-
-
 \begin{dfn}[Countable and Uncountable Sets]{dfn:countable-sets}{}
     A set $S$ is said to be:
     \begin{itemize}
@@ -1035,6 +1063,7 @@ Watch lecture recording 06/03 for more in-depth examples
     \end{itemize}
 \end{dfn}
 
+\newpage
 \begin{thm}[Dense Subset equivalence]{thm:dense-equivalence}{}
     Let $(X, d)$ be a metric space and $D \subseteq X$. The following are equivalent:
     \begin{enumerate}
@@ -1046,7 +1075,6 @@ Watch lecture recording 06/03 for more in-depth examples
     \end{enumerate}
 \end{thm}
 
-\newpage
 \begin{dfn}[Separable spaces]{dfn:separable-spaces}{}
     A metric space is said to be \textbf{separable} iff it has a countable dense subset
 
@@ -1162,6 +1190,7 @@ Watch lecture recording 06/03 for more in-depth examples
     It can be shown that any two completions of $X$ are isometric to each other, i.e. a completion is unique up to isometries
 \end{dfn}
 
+\newpage
 
 \begin{dfn}[Construction of Completion via Cauchy]{dfn:completion-cauchy}{}
     Let $(X, d)$ be a metric space and let $\mathcal{C}$ be the set of all Cauchy sequences of elements of $X$
@@ -1184,7 +1213,6 @@ Watch lecture recording 06/03 for more in-depth examples
     Let $X^{*}$ be its range. The metric space $(X^{*}, D_{X^{*}})$ is isometric to $(X, d), (\overline{X^{*}}, D_{\overline{X^{*}}})$ is a complete metric space, and $X^{*}$ is dense in $\overline{X^{*}}$
 \end{dfn}
 
-\newpage
 \begin{dfn}[Connected and Disconnected Spaces]{dfn:connected-spaces}{}
     A metric space $(X, d)$ is said to be \textbf{disconnected} iff there exists non-empty disjoint open sets $G_{1}$ and $G_{2}$ such that
     \[X = G_{1} \cup G_{2}\]
@@ -1253,44 +1281,7 @@ Watch lecture recording 06/03 for more in-depth examples
 
 % TODO: newton and heron's method
 
-\begin{dfn}[Equivalent Norms]{dfn:equivalent-norms}{}
-    Two norms on the same real vector space are said to be equivalent iff their corresponding metrics are equivalent
 
-    \longrule{0.08ex}
-    If $\lVert \cdot \rVert_{1}$ and $\lVert \cdot \rVert_{2}$ are norms on the same real vector space $X$ and there exist positive constants $C$ and $C'$ such that, for all $x\in X$,
-    \[D \lVert x \rVert_{1} \le \lVert x \rVert_{2} \le C' \lVert x \rVert_{1}\]
-    then they are equivalent
-\end{dfn}
-
-\begin{thm}[p metric again?]{dfn:p-metric}{}
-    For any $p$ with $1 \le p < \infty$ and any $x\in \mathbb{R}^{n}$ we define
-    \[\lVert x \rVert_{p} = (\lvert x_{1} \rvert^{p} + \cdots + \lvert x_{n} \rvert^{p})^{1 /p}\]
-
-    \textrule{Young's Inequality}
-    
-    Let $1 \le p, q \le \infty$ s.t. $\frac{1}{p} + \frac{1}{q} = 1$, and $a, b\le 0$. Then
-    \[ab \le \frac{a^{p}}{p} + \frac{b^{q}}{q}\]
-
-    \textrule{Holder Inequality}
-
-    Let $1 \le p, q \le \infty$ s.t. $\frac{1}{p} + \frac{1}{q} = 1$ and $x, y\in \mathbb{R}^{n}$. Then
-    \[\sum_{i = 1}^{n} \lvert x_{i}y_{i} \rvert \le \lVert x \rVert_{p} \lVert y \rVert_{q}\]
-
-    \textrule{Equivalence of $p$-metrics}
-    
-    \textbf{Thm}: Any of the following norms are equivalent:
-    \begin{align*}
-        \lVert x \rVert_{p} &= (\lvert x_{1} \rvert^{p} + \cdots + \lvert x_{n} \rvert^{p})^{1 /p},\,x\in \mathbb{R}^{n},\, 1\le p < \infty\\
-        \lVert x \rVert_{\infty} &= \max \{\lvert x_{1} \rvert,\dots,\lvert x_{n} \rvert\},\,x\in\mathbb{R}^{n}
-    \end{align*}
-
-    \textbf{Thm}: Let $1 \le p \le q < \infty$. For all $x\in\mathbb{R}^{n}$:
-    \[\lVert x \rVert_{q} \le \lVert x \rVert_{p}\]
-    As a consequence,
-    \[\lVert x \rVert_{\infty} \le \lVert x \rVert_{q} \le \lVert x \rVert_{p} \le \lVert x \rVert_{1}\]
-
-    \textbf{Thm}: All norms in $\mathbb{R}^{n}$ are equivalent
-\end{thm}
 
 \begin{thm}[Picard's Theorem]{thm:picard}{}
     Let $f : \mathbb{R} \times \mathbb{R} \to \mathbb{R}$ be a continuous and boudned function, and $t_{0}, x_{0}$ be real numbers. Assume that there exists a positive constant $L$ s.t. for all real $t, x_{1}, x_{2}$ we have:
