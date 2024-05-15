@@ -340,23 +340,32 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{itemize}
 
     Then $d_{Y}$ is a metric on $Y$. $d_{Y}$ is called the \textbf{induced} or \textbf{inherited} metric, and $(Y, d_{Y})$ is said to be a metric subspace of the metric space $(X, d)$
+
+    \textrule{\textbf{Interior}}
+
+    Let $(X, d)$ be a metric space. The \textbf{interior} $\mathring{A}$ of a subset $A$ of $X$ is the largest open set contained in $A$. e.g. $A=[0,1],\,\mathring{A}=(0,1)$
+
 \end{dfn}
 
 \newpage
 
 \begin{thm}[a lack of equality or fair treatment in t...]{dfn:p-metric}{G}
+    \vspace{-5pt}
     \textrule{\textbf{Good old fashioned Triangle Inequality}}
+    \vspace{-2pt}
 
     If it ain't broke...
-    \[\lvert x + y \rvert \le \lvert x \rvert + \lvert y \rvert \quad \lvert x - y \rvert \ge \big\lvert \lvert x \rvert - \lvert y \rvert \big\rvert \quad \lvert x - y \rvert \le \lvert x - z \rvert + \lvert z - y \rvert\]
-
+    \[\lvert x + y \rvert \le \lvert x \rvert + \lvert y \rvert, \quad \lvert x - y \rvert \ge \big\lvert \lvert x \rvert - \lvert y \rvert \big\rvert \quad, \lvert x - y \rvert \le \lvert x - z \rvert + \lvert z - y \rvert\]
+    \vspace{-8pt}
     \textrule{\textbf{Cauchy-Schwarz Inequality}}
 
+    \vspace{-2pt}
     For all $x$ and $y$ of an inner product space:
     \[\lvert \langle x, y \rangle \rvert \le \lVert x \rVert \lVert y \rVert\]
-
+    \vspace{-8pt}
     \textrule{\textbf{Minkowski's Inequality}}
 
+    \vspace{-2pt}
     Let $p \ge 1$, and real numbers $x_{i}, y_{i},\,(i = 1,\dots,n)$. Then
     \begin{align*}
         \lVert x + y \rVert_{p} &\le \lVert x \rVert_{p} + \lVert y \rVert_{p} \\
@@ -367,7 +376,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     
     Let $1 \le p, q \le \infty$ s.t. $\frac{1}{p} + \frac{1}{q} = 1$, and $a, b\le 0$. Then
     \[ab \le \frac{a^{p}}{p} + \frac{b^{q}}{q}\]
-
+    \vspace{-3pt}
     \textrule{\textbf{Thm 169 (Hölder Inequality)}}
 
     Let $1 \le p, q \le \infty$ s.t. $\frac{1}{p} + \frac{1}{q} = 1$ and $x, y\in \mathbb{R}^{n}$. Then
@@ -375,17 +384,17 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 \end{thm}
 
-
+\vspace{-5pt}
 \begin{dfn}[Equivalent Norms]{dfn:equivalent-norms}{166}
     \vspace{-5pt}
-    Two norms on the same real vector space are said to be equivalent iff their corresponding metrics are equivalent
+    Two norms on the same real vector space are said to be \textbf{equivalent} iff their corresponding metrics are equivalent
 
+    \vspace{-3pt}
     \longrule{0.08ex}
-    \textbf{Thm 167}: If $\lVert \cdot \rVert_{1}$ and $\lVert \cdot \rVert_{2}$ are norms on the same real vector space $X$ and there exist positive constants $C$ and $C'$ s.t., for all $x\in X$,
+    \textbf{Thm 167}: If $\lVert \cdot \rVert_{1}$ and $\lVert \cdot \rVert_{2}$ are norms on the same real vector space $X$, then they are equivalent if there exist positive constants $C$ and $C'$ such that, for all $x\in X$,
     \[D \lVert x \rVert_{1} \le \lVert x \rVert_{2} \le C' \lVert x \rVert_{1}\]
-    then they are equivalent
 
-
+    \vspace{-5pt}
     \textrule{\textbf{Equivalence Theorems of $p$-metrics}}
 
     \vspace{-10pt}
@@ -395,20 +404,35 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
                 \lVert x \rVert_{p} &= (\lvert x_{1} \rvert^{p} + \cdots + \lvert x_{n} \rvert^{p})^{1 /p},\,x\in \mathbb{R}^{n},\, 1\le p < \infty\\
                 \lVert x \rVert_{\infty} &= \max \{\lvert x_{1} \rvert,\dots,\lvert x_{n} \rvert\},\,x\in\mathbb{R}^{n}
             \end{align*}
-        \item[\textbf{172}:] Let $1 \le p \le q < \infty$. For all $x\in\mathbb{R}^{n}$:
-            \[\lVert x \rVert_{q} \le \lVert x \rVert_{p}\]
-            As a consequence,
-            \[\lVert x \rVert_{\infty} \le \lVert x \rVert_{q} \le \lVert x \rVert_{p} \le \lVert x \rVert_{1}\]
-        \item[\textbf{173}:] All norms in $\mathbb{R}^{n}$ are equivalent
-
+    \vspace{-12pt}
+    \item[\textbf{172}:] Let $1 \le p \le q < \infty$. For all $x\in\mathbb{R}^{n}$:
+            \[\lVert x \rVert_{q} \le \lVert x \rVert_{p} \quad\text{and} \quad \lVert x \rVert_{\infty} \le \lVert x \rVert_{q} \le \lVert x \rVert_{p} \le \lVert x \rVert_{1}\]
+    \vspace{-11pt}
+    \item[\textbf{173}:] All norms in $\mathbb{R}^{n}$ are equivalent
     \end{itemize}
 \end{dfn}
 
-\setcounter{subsection}{1}
-
+\vspace{-5pt}
 \begin{dfn}[Open Ball]{def:open-ball}{8}
+    \vspace{-5pt}
     Let $(X, d)$ be a metric space, $c$ be a point in $X$, and $r > 0$. The \textbf{open ball} with center $c$ and radius $r$ is defined by
     \[B(c,r) = \{x\in X: d(c,x) < r\}\]
+
+    \vspace{-3pt}
+    \textrule{\textbf{Boundedness and Distance Set}}
+    \vspace{-3pt}
+
+    Let $A \subseteq X$. $A$ is \textbf{bounded} iff there exists a $c\in X$ and radius $r$ s.t. $A \subseteq B(c, r)$. The \textbf{distance set} of $D$, $D(A)$ is defined by
+    \[D(A) = \{d(x, y) : x, y\in A\}\]
+
+    \vspace{-3pt}
+    \textrule{\textbf{Boundary Points}}
+    \vspace{-3pt}
+
+    Let $(X, d)$ metric space and $A \subseteq X$. $x\in X$ is a \textbf{boundary point} of $A$ iff every open ball centered at $x$ intersects both $A$ and $A^{c}$, i.e.
+    \[B(x,r) \cap A \ne \emptyset \text{ and } B(x, r) \cap A^{c} \ne \emptyset\]
+    \textbf{Boundary} of $A$: The set of all boundary points of $A$, denoted $\partial A$
+
 \end{dfn}
 
 % TODO: open ball examples?
@@ -527,7 +551,21 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     e.g., let $G_{n} = (- \frac{1}{n}, \frac{1}{n}), n = 1,2,\dots$ on $\mathbb{R}$ with the standard metric.
 
     Each $G_{n}$ is open but
+    \vspace{-2pt}
     \[\bigcap\limits_{n = 1}^{\infty} G_{n} = \{0\}\]
+    is not open
+
+    \vspace{-2pt}
+    \textrule{\textbf{Remark 38 (Infinite Closed Sets)}}
+
+    \vspace{-2pt}
+    The union of infinitely many closed sets is not always a closed set.
+
+    For example, let $F_{n} = [\frac{1}{n}, 1], n=1,2,\dots,$ on the real line with the standard metric.
+    Each $F_{n}$ is closed but
+    \vspace{-2pt}
+    \[\bigcup\limits_{n = 1}^{\infty}F_{n} = (0,1]\]
+    is not closed.
 \end{rem}
 
 \vspace{-5pt}
@@ -553,21 +591,12 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
     $x_{n}\to x$ iff every open neighbourhood of $x$ contains eventually all terms of the sequence.
 
+    \vspace{-2pt}
     \longrule{0.08ex}
     A \textbf{neighbourhood} of a point $x$ is a set that contains an open neighbourhood of $x$.
 
     $x_{n}\to x$ iff every neighbourhood of $x$ contains eventually all terms of the sequence.
 \end{dfn}
-
-\begin{rem}[Infinite closed sets]{thm:infinite-closed-sets}{38}
-    \vspace{-5pt}
-    The union of infinitely many closed sets is not always a closed set.
-
-    For example, let $F_{n} = [\frac{1}{n}, 1], n=1,2,\dots,$ on the real line with the standard metric.
-    Each $F_{n}$ is closed but
-    \[\bigcup\limits_{n = 1}^{\infty}F_{n} = (0,1]\]
-    is not closed.
-\end{rem}
 
 \newpage
 \begin{thm}[]{thm:closed-ms-convergence}{41}
