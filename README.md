@@ -10,6 +10,8 @@ LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and M
 - **Honours Analysis** - [click here!](analysis-6p/analysis-6p.pdf) *done :)*
 - **Honours Analysis** - [click here!](analysis-6p/analysis-6p-no-examples.pdf) *(without examples - basically 5 pages)*
 
+- **Metric Spaces** - [click here!](metric-6p/metric-6p.pdf) *(without examples or applications - 5 and a bit pages)*
+
 - **Honours Algebra** everything - [click here!](algebra-10p/algebra-10p.pdf) *(it's 10 pages lol)*
 
 - Y3 **Geometry** - [click here!](Geometry/geometry_notes.pdf) *(they are really shit tho)*
