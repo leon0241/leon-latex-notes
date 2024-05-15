@@ -608,17 +608,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{multicols}
 \end{thm}
 
-\begin{xmp}[Examples of closure]{xmp:closure}{}
-    \begin{itemize}[leftmargin=*]
-        \item On the real line with the standard metric, $\overline{(a,b)} = [a,b]$
-        \item In $\mathbb{R}^{n}$ with the Euclidean metric $d_{2}$, the closure of the open ball $B(c,r)$ is the closed ball $\{x\in\mathbb{R}^{n}: d_{2}(x,c)\le r\}$
-        \item On the complex plane with its standard metric, the closure of an open disc is the corresponding closed disc
-        \item Let $X$ be a non-empty set with the discrete metric, $c\in X$ and $r =1$. Then $B(c,1) = \{c\}$, therefore $\overline{B(c,1)} - \overline{\{c\}} = \{c\}$, while
-            \[\{x\in X : d(x,c) \le 1\} = X\]
-            The closure of an open ball is not always equal to the corresponding closed ball
-        \item $X = \mathbb{R},\,d(x,y) = \lvert x - y \rvert$. $\overline{\mathbb{Q}} = \mathbb{R}$
-    \end{itemize}
-\end{xmp}
 
 \begin{dfn}[Dense Subset of a Metric Space]{def:dense-subset}{49}
     Let $(X, d)$ be a metric space. A subset $D \subseteq X$ is \textbf{dense} iff $\overline{D} = X$
@@ -644,6 +633,12 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     Let $(X, d)$ be a metric space, $A \subseteq X$ and $x\in X$. We say that $x$ is a \textbf{limit point} or an \textbf{accumulation point} of $A$ iff every open ball centered at $x$ contains an element of $A$ distinct from $x$, i.e.
     \[\forall r > 0 \quad (B(x,r) \backslash \{x\}) \cap A \ne \emptyset\]
     The set of all limit points of $A$ is called the \textbf{derived set} of $A$ and is denoted by $A'$ or $\tilde{A}$.
+
+    \longrule{0.08ex}
+    \textbf{Thm 78}: Let $(X, d_{X})$ and $(Y, d_{Y})$ be metric spaces, $x_{0}$ be a limit point of $X$, $y_{0}\in Y$ and $f : X \to Y$ be a function.
+
+    We say that $\lim_{x\to x_{0}} f(x) = y_{0}$ iff for all $\epsilon > 0$, there exists $\delta > 0$ such that for all $x\in B_{X}(x_{0}, \delta) \backslash \{x_{0}\}$ we have
+    \[f(x)\in B_{Y}(y_{0}, \epsilon)\]
 \end{dfn}
 
 \vspace{-5pt}
@@ -707,160 +702,179 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{itemize}
 \end{dfn}
 
-\begin{thm}[$d : X \times X \to \mathbb{R}$ is continuous]{thm:metric-space-continuity}{}
-    Let $(X, d)$ be a metric space. The function $f: X \times X \to \mathbb{R} $ is continuous.
+\begin{thm}[$d : X \times X \to \mathbb{R}$ is continuous]{thm:metric-space-continuity}{66}
+    \vspace{-5pt}
+    Let $(X, d)$ be a metric space. $f: X \times X \to \mathbb{R} $ is continuous, where
 
-    $\mathbb{R}$ is equipped with the standard metric. $X \times X$ is equipped with the product metric
+    \vspace{-5pt}
+    \begin{itemize}
+        \item $\mathbb{R}$ is equipped with the standard metric.
+        \item $X \times X$ is equipped with the product metric
+    \end{itemize}
+
+     
 \end{thm}
 
-Let $(X, \lVert \cdot \rVert_{X}),\,(Y, \lVert \cdot \rVert_{Y})$ be normed vector spaces. Recall that $d_{X} : X \times X \to \mathbb{R},\,d(x, x') = \lVert x - x' \rVert_{X}$, and $d_{Y} : Y \times Y \to \mathbb{R},\, d_{Y}(y, y') = \lVert  y - y' \rVert_{Y}$ are metrics
-
-\begin{dfn}[Bounded Linear Operators]{def:bounded-linear-operators}{}
+\begin{dfn}[Bounded Linear Operators]{def:bounded-linear-operators}{67}
     A linear operator $T : X \to Y$ is said to be \textbf{bounded} iff there exists a positive constant $C$ such that, for all $x\in X$,
     \[\lVert T(x) \rVert_{Y} \le C \lVert x \rVert_{X}\]
-\end{dfn}
 
-\begin{thm}[Linear Operator Equivalence]{def:linear-operator-equiv}{}
-    Let $T: X \to Y $ be a linear operator. The following are equivalent:
-    \begin{enumerate}
+    \longrule{0.08ex}
+    \textbf{Thm 68}: Let $T: X \to Y $ be a linear operator. The following are equivalent:
+    \vspace{-13pt}
+    \begin{multicols}{3}
+    \begin{enumerate}[leftmargin=*]
         \item $T$ is continuous
-        \item $T$ is continuous at $0$
+        \item $T$ is continu. at $0$
         \item $T$ is bounded
     \end{enumerate}
-\end{thm}
+    \end{multicols}
+\end{dfn}
 
-\begin{itemize}
-    \item Let $(X, \lVert  \cdot \rVert)$ be a normed vector space and define $f: \mathbb{R} \times X \to X $ by $f(\lambda, x) = \lambda x$. Define $g: X \times X \to X $ by $g(x,y) = x + y$. $f$ and $g$ are continuous
-\end{itemize}
-
-\subsection{Fixed Points and Lipschitz}
-
-\begin{dfn}[Lipschitz Functions]{def:lipschitz-functions}{}
+\begin{dfn}[Lipschitz Functions]{def:lipschitz-functions}{70}
     Let $(X, d_{X}),\,(Y, d_{Y})$ be metric spaces. A function $f : X \to Y$ is said to be a \textbf{Lipschitz} function iff there exists a constant $L$ such that for all $x,x'\in X$,
     \[d_{Y}(f(x), f(x')) \le L d_{X}(x,x')\]
     If $L < 1$, $f$ is said to be a \textbf{contraction}
+
+    If $f : \mathbb{R} \to \mathbb{R}$ is a Lipschitz function and $x$ is any point in $\mathbb{R}$, then for any $x\in \mathbb{R}$ we have
+    \[\lvert f(x) - f(x') \rvert \le L\lvert x - x' \rvert\]
+    For $x \ge x'$ this can be expanded to
+    \[f(x') - L(x - x') \le f(x) \le f(x') + L(x - x')\]
+
+    \textrule{\textbf{Lipschitz Theorem Bank}}
+
+    \vspace{-8pt}
+    \begin{itemize}
+        \item[\textbf{71}:] Every Lipschitz function is continuous
+        \item[\textbf{175:}] Let $(X, d_{X})$ and $(Y, d_{Y})$ be two metric spaces, and $f : X \to Y$ be a Lipschitz function. Then there exists a smallest Lipschitz constant of $f$ 
+        \item[\textbf{176}:] Let $I$ be a non-degenerate open interval on the real line and let $f : I \to \mathbb{R}$ be a differentiable function. Then $f$ is Lipschitz iff $f'$ is bounded. When that is the case,
+            \[\lvert f \rvert_{\text{Lip}} = \sup \{\lvert f'(x) \rvert : x\in I\}\]
+    \end{itemize}
+
 \end{dfn}
 
-\newpage
-
-\textbf{Note}: Magnus uses non-standard terminology here:
-\begin{itemize}
-    \item When the equation is satisifed and $L < 1$, Magnus calls $f$ a \textbf{strict contraction}
-    \item He uses \textbf{contraction} for a functino $f$ that satisfies the weaker condition: for all $x, x' \in X$ with $x \ne x'$
-        \[d_{Y}(f(x), f(x')) < d_{X}(x,x')\]
-\end{itemize}
-
-\begin{thm}[Lipschitz Continuity]{thm:lipschitz-continuity}{}
-    Every Lipschitz function is continuous
-\end{thm}
-
-\begin{dfn}[Fixed Points]{def:fixed-points}{}
+\begin{dfn}[Fixed Points]{def:fixed-points}{72}
     A \textbf{fixed point} of a function $f: S \to S $ where $S$ is a non-empty set, is any element $x$ of $S$ such that $f(x) = x$
 
     Solving equations can sometimes be reduced to finding fixed points
 \end{dfn}
 
-Watch lecture recording 06/03 for more in-depth examples
-\begin{itemize}
-    \item Newton's Method for solving $f(x) = 0$
-    \item Picard's Method for solving the Initial Value Problem
-\end{itemize}
-
-\begin{thm}[Banach's Fixed Point Theorem]{thm:complete-ms-fixed-point}{}
+\begin{thm}[Banach's Fixed Point Theorem]{thm:complete-ms-fixed-point}{75}
     Let $(X, d)$ be a complete metric space and let $f : X \to X$ be a contraction. Then $f$ has a unique fixed point
 \end{thm}
 
-\subsection{Equivalent Metrics}
-\begin{dfn}[Equivalent Metrics]{def:equivalent-metrics}{}
-    Two metrics on the same non-empty set $X$ are said to be \textbf{equivalent} iff they have the same open sets
-\end{dfn}
 
-\begin{thm}[Equivalent Metrics Theorem]{thm:equivalent-metrics}{}
-    Let $d_{1}$ and $d_{2}$ be metrics on the same non-empty set $X$. If there exist positive constants $C$ and $C'$ such that for all $x, y$ in $X$,
+\begin{dfn}[Equivalent Metrics]{def:equivalent-metrics}{76}
+    Two metrics on the same non-empty set $X$ are said to be \textbf{equivalent} iff they have the same open sets
+
+    \longrule{0.08ex}
+    \textbf{Thm 77}: Let $d_{1}$ and $d_{2}$ be metrics on the same non-empty set $X$. If there exist positive constants $C$ and $C'$ such that for all $x, y$ in $X$,
     \[Cd_{1}(x, y) \le d_{2}(x, y) \le C'd_{1}(x, y)\]
     then $d_{1}$ and $d_{2}$ are equivalent
-\end{thm}
-
-\begin{dfn}[Limits of functions between metric spaces]{dfn:functions-metric-spaces}{}
-    Let $(X, d_{X})$ and $(Y, d_{Y})$ be metric spaces, $x_{0}$ be a limit point of $X$, $y_{0}\in Y$ and $f : X \to Y$ be a function. We say that $\lim_{x\to x_{0}} f(x) = y_{0}$ iff
-    \[\forall \epsilon > 0 \quad \exists \delta > 0 \quad \forall x\in B_{X}(x_{0}, \delta) \backslash \{x_{0}\} \quad f(x)\in B_{Y}(y_{0}, \epsilon)\]
 \end{dfn}
 
-\begin{thm}[Completeness of the Classical Spaces]{thm:completeness-of-classical-spaces}{}
+
+
+\newpage
+
+\section{Completeness}
+\begin{thm}[Completeness of the Classical Spaces]{thm:completeness-of-classical-spaces}{I}
     \vspace{-5pt}
     Some examples of complete metric spaces:
-    \vspace{-12pt}
-    \begin{multicols}{4}
-    \begin{itemize}
-        \item $(\mathbb{R}^{n}, d_{2})$
-        \item $\ell^{2}$
-        \item $C([a, b])$
-        \item $\ell^{\infty}$
+
+    \vspace{-6pt}
+    \begin{center}
+    \def\arraystretch{1.7}
+    \begin{tabular}{ |c|c|c|c|c| }
+        \hline
+        \textbf{79}: $(\mathbb{R}^{n}, d_{2})$ & \textbf{80}: $\ell^{2}$ & \textbf{81}: $\ell^{p}$ & \textbf{82}: $C([a, b])$ & \textbf{83}: $\ell^{\infty}$ \\
+        \hline
+    \end{tabular}
+    \end{center}
+
+    \vspace{-3pt}
+    \textrule{\textbf{Exercise 31}}
+    \vspace{-8pt}
+
+    \begin{itemize}[leftmargin=*]
+        \item Let $(X, d_{X})$ and $(Y, d_{Y})$ be two metric spaces and assume that $(Y, d_{Y})$ is complete.
+        \item Let $C(X, Y)$ be the set of all continuous and bounded functions from $X$ to $Y$. For $f, g\in C(X, Y)$ define
+            \[D(f, g) = \sup \{d_{Y}(f(x), g(x)) : x\in X\}\]
+        \item Then $D$ is a metric and the metric space $(C(X, Y), D)$ is complete
     \end{itemize}
-    \end{multicols}
-    \vspace{-5pt}
-    \longrule{0.08ex}
-    \vspace{-5pt}
-
-    Let $(X, d_{X})$ and $(Y, d_{Y})$ be two metric spaces and assume that $(Y, d_{Y})$ is complete.
-
-    Let $C(X, Y)$ be the set of all continuous and bounded functions from $X$ to $Y$. For $f, g\in C(X, Y)$ define
-    \[D(f, g) = \sup \{d_{Y}(f(x), g(x)) : x\in X\}\]
-    $D$ is a metric and the metric space $(C(X, Y), D)$ is complete
 \end{thm}
 
-\begin{dfn}[The product space \texorpdfstring{$X^{n}$}{Xn}]{dfn:x-n-product-space}{}
+\vspace{-5pt}
+\begin{dfn}[The product space \texorpdfstring{$X^{n}$}{Xn}]{dfn:x-n-product-space}{83}
+    \vspace{-5pt}
     Let $(X, d)$ be a metric space and $n\in \mathbb{N}$. Define $D : X^{n} \to \mathbb{R}$ by
     \[D(x_{1}, x_{2}) = d(x_{11}, x_{21}) + d(x_{12}, x_{22}) + \cdots + d(x_{1n}, x_{2n})\]
-    \textbf{Lemma}: $D$ is a metric and a sequence converges in $(X^{n}, D)$ iff it converges componentwise
 
-    \textbf{Lemma}: If $(X, d)$ is complete then $(X^{n}, D)$ is complete
+    \vspace{-5pt}
+    \textrule{\textbf{Lemma Bank}}
+
+    \vspace{-8pt}
+    \begin{itemize}
+        \item[\textbf{Ex.33}:] $D$ is a metric and a sequence converges in $(X^{n}, D)$ iff it \newline converges componentwise
+        \item[\textbf{Ex.34}:] If $(X, d)$ is complete then $(X^{n}, D)$ is complete
+    \end{itemize}
 \end{dfn}
 
-\begin{dfn}[The product space \texorpdfstring{$X^{\mathbb{N}}$}{X^N}]{dfn:x-natural-product-space}{}
+\vspace{-5pt}
+\begin{dfn}[The product space \texorpdfstring{$X^{\mathbb{N}}$}{X^N}]{dfn:x-natural-product-space}{84}
+    \vspace{-5pt}
     Let $B^{A}$, where $A, B$ are sets, be the set of all functions from $A$ to $B$
 
     \longrule{0.08ex}
-    \textbf{Def:} Let $(X, d)$ be a metric space. Define a metric $D : X^{\mathbb{N}} \times X^{\mathbb{N}} \to \mathbb{R}$ by
+    \textbf{Def 85:} Let $(X, d)$ be a metric space. Define a metric $D : X^{\mathbb{N}} \times X^{\mathbb{N}} \to \mathbb{R}$ by
     \[D(x_{1}, x_{2}) = \sum_{n = 1}^{\infty} \frac{1}{2^{n}} \frac{d(x_{1n}, x_{2n})}{1 + d(x_{1n}, x_{2n})}\]
-    where $x_{1} = (x_{11},\dots, x_{1n},\dots)$, $x_{2} = (x_{21},\dots,x_{2n},\dots)$
 
-    $(X^{\mathbb{N}}, D)$ is called a \textbf{product space}
-
+    \vspace{-8pt}
+    \begin{itemize}[leftmargin=*]
+        \item $x_{1} = (x_{11},\dots, x_{1n},\dots)$, $x_{2} = (x_{21},\dots,x_{2n},\dots)$
+        \item $(X^{\mathbb{N}}, D)$ is called a \textbf{product space}
+    \end{itemize}
 \end{dfn}
 
-\begin{thm}[Convergence of Product spaces]{thm:product-space-convergence}{}
-    Let $(X, d)$ be a metric space, let $(x_{k})_{k=1}^{\infty}$ be a sequence in $X^{\mathbb{N}}$ and let $x\in X^{\mathbb{N}}$. Write $x_{k} = (x_{k 1},\dots, x_{kn},\dots)$ and $x = (l_{1},\dots,l_{n},\dots)$. Then, $x_{k} \xrightarrow[k \to +\infty]{(X^{\mathbb{N}}, D)} x$ if and only if, for all $n$, $x_{kn}\xrightarrow[k \to +\infty]{(X^{\mathbb{N}} l_{n}}$
-\end{thm}
+\vspace{-5pt}
+\begin{thm}[Product space Convergence \& Completeness]{thm:product-space-convergence}{J}
+    \vspace{-5pt}
+    \textrule{\textbf{Thm 86 (Convergence)}}
 
-\newpage
-\begin{thm}[Completeness of product spaces]{thm:product-space-completeness}{}
+    Let $(X, d)$ be a metric space, let $(x_{k})_{k=1}^{\infty}$ be a sequence in $X^{\mathbb{N}}$ and let $x\in X^{\mathbb{N}}$. Write $x_{k} = (x_{k 1},\dots, x_{kn},\dots)$ and $x = (l_{1},\dots,l_{n},\dots)$. Then, $x_{k} \xrightarrow[k \to +\infty]{(X^{\mathbb{N}}, D)} x$ if and only if, for all $n$, $x_{kn}\xrightarrow[k \to +\infty]{(X^{\mathbb{N}} l_{n}}$
+
+    \textrule{\textbf{Thm 87 (Completeness)}}
+
     Let $(X, d)$ be a complete metric space. Then the product space $(X^{\mathbb{N}}, D)$ is complete.
 \end{thm}
 
-\begin{thm}[Completeness of \texorpdfstring{$\mathbb{R}$}{R}]{thm:completeness-of-R}{}
+\vspace{-5pt}
+\begin{thm}[Completeness of \texorpdfstring{$\mathbb{R}$}{R}]{thm:completeness-of-R}{K}
     \vspace{-5pt}
     \begin{itemize}[leftmargin=*]
         \item \textbf{Thm (Least Upper Bound Principle)}: Every non-empty bounded above subset of $\mathbb{R}$ has a least upper bound
-        \item \textbf{Thm (Monotone Convergence)}: Every bounded monotone sequence of real numbers has a limit
-        \item \textbf{Thm ($\epsilon$-convergence)}: Let $A$ be a non-empty boudned subset of $\mathbb{R}$ and let $\epsilon$ be positive. If the distance between any two elements of $A$ is $< \epsilon$, then
+        \item \textbf{Thm 88 (Monotone Convergence)}: Every bounded monotone sequence of real numbers has a limit
+        \item \textbf{Thm/Ex. 36 ($\epsilon$-convergence)}: Let $A$ be a non-empty boudned subset of $\mathbb{R}$ and let $\epsilon$ be positive. If the distance between any two elements of $A$ is $< \epsilon$, then
         \[\sup(A) - \inf(A) \le \epsilon\]
-        \item \textbf{Thm}: Every Cauchy sequence of real numbers is convergent
+        \vspace{-13pt}
+        \item \textbf{Thm 89}: Every Cauchy sequence of real numbers is convergent
     \end{itemize}
 \end{thm}
 
-\begin{dfn}[Limit Superior and Inferior]{dfn:limsup-liminf}{}
+\begin{dfn}[Limit Superior and Inferior]{dfn:limsup-liminf}{L}
+    \vspace{-5pt}
     Let $(x_{n})^{\infty}_{n=1}$ be a Cauchy sequence in $\mathbb{R}$. Then $(x_{n})^{\infty}_{n=1}$ is bounded.
 
     Define:
     \[I_{n} = \inf \{x_{n}, x_{n+1},\dots\} \quad S_{n} = \sup \{x_{n}, x_{n+1},\dots\}\]
 
+    \vspace{-5pt}
     \longrule{0.08ex}
     \textbf{Thm}: $(S_{n})^{\infty}_{n=1}$ and $(I_{n})^{\infty}_{n=1}$ are monotone and bounded
     \[I_{1} \le I_{n} \le S_{n} \le S_{1}, \quad n = 1,2,\dots\]
     Therefore $I_{n} \to I$ and $S_{n} \to S$ for some reals $I$ and $S$. Since $S_{n} - I_{n} \to 0$ we have $S = I$. We also have $x_{n}\to S = I$
 
-    \textrule{\textbf{Limsup and Liminf}}
+    \textrule{\textbf{Def 90: Limsup and Liminf}}
     \vspace{-8pt}
 
     \begin{itemize}[leftmargin=*]
@@ -871,6 +885,7 @@ Watch lecture recording 06/03 for more in-depth examples
     \end{itemize}
 
     \longrule{0.08ex}
+    \vspace{-14pt}
     \begin{itemize}[leftmargin=*]
         \item $\liminf x_{n}$ is the smallest subsequential limit of $(x_{n})^{\infty}_{n=1}$
         \item $\limsup x_{n}$ is the largest subsequential limit of $(x_{n})^{\infty}_{n=1}$
@@ -878,56 +893,54 @@ Watch lecture recording 06/03 for more in-depth examples
     \end{itemize}
 \end{dfn}
 
+\vspace{-16pt}
 \section{Compactness}
 
-\begin{dfn}[Open Covers and Subcovers]{dfn:open-covers-subcovers}{}
+\begin{dfn}[Open Covers and Subcovers]{dfn:open-covers-subcovers}{96}
+    \vspace{-5pt}
     An \textbf{open cover} of a set $S$ in a metric space is a family $(G_{i})_{i\in I}$ of open sets such that $S \subset \bigcup\limits_{i \in I} G_{i}$. A \textbf{subcover} of an open cover $(G_{i})_{i\in I}$ is a sub-family $(G_{i})_{i\in I'}$ where $I' \subset I$, such that $S \subseteq \bigcup_{i\in I'} G_{i}$
 \end{dfn}
 
 \begin{dfn}[Compacting Compactness]{dfn:compactness}{}
-    Let $X = \mathbb{R}$ and $d$ be the standard metric. Let $K$ be a subset of $\mathbb{R}$
-    \textrule{\textbf{Compactness}}
+    \vspace{-5pt}
+    \textrule{\textbf{Def 91 (Compactness)}}
 
     \vspace{-2pt}
-    The following definitions are equivalent:
-    \vspace{-5pt}
-    \begin{enumerate}[leftmargin=*]
-        \item $K$ is said to be \textbf{compact} iff every sequence of elements of $K$ has a subsequence that converges to an element of $K$
-        \item $K$ is \textbf{compact} iff every open cover of $K$ has a finite subcover
-    \end{enumerate}
-    \vspace{-5pt}
-    \textrule{\textbf{Sequential Compactness}}
+    Let $X = \mathbb{R}$ and $d$ be the standard metric. A subset $K$ of $\mathbb{R}$ is said to be \textbf{compact} iff every sequence of elements of $K$ has a subsequence that converges to an element of $K$
+
+    \textrule{\textbf{Def 102 (Sequential Compactness)}}
     \vspace{-8pt}
     \begin{enumerate}[leftmargin=*]
-        \item[3.] $K$ is \textbf{sequentially compact} iff every sequence in $K$ has a subsequence that converges to an element of $K$
+        \item $K$ is \textbf{sequentially compact} iff every sequence in $K$ has a subsequence that converges to an element of $K$
 
             For the case $K = X$ it's just the definition $(1)$ defined above
+        \item $K$ is \textbf{compact} iff every open cover of $K$ has a finite subcover
     \end{enumerate}
 
     \vspace{-5pt}
-    \textrule{\textbf{Uniform Continuity}}
-
-    \vspace{-5pt}
+    \textrule{\textbf{Def 111 (Uniform Continuity)}}
+    \vspace{-8pt}
     \begin{enumerate}[leftmargin=*]
-        \item[4.] Let $(X, d_{X}), (Y, d_{Y})$ be metric spaces. A function $f : X \to Y$ is said to be \textbf{uniformly continuous} iff for every $\epsilon>0$ there exists a $\delta>0$ such that, for all $x, x'$ in $X$ with $d_{X}(x, x') < \delta$ we have
+        \item[3.] Let $(X, d_{X}), (Y, d_{Y})$ be metric spaces. A function $f : X \to Y$ is said to be \textbf{uniformly continuous} iff for every $\epsilon>0$ there exists a $\delta>0$ such that, for all $x, x'$ in $X$ with $d_{X}(x, x') < \delta$ we have
             \[d_{Y}(f(x), f(x')) < \epsilon\]
     \end{enumerate}
 
     \vspace{-3pt}
-    \textrule{\textbf{Totally bounded Spaces}}
+    \textrule{\textbf{Def 117 (Totally bounded Spaces)}}
     \vspace{-8pt}
     \begin{enumerate}[leftmargin=*]
-        \item[5.] A metric space $(X, d)$ is said to be \textbf{totally bounded} iff for every positive $\delta$, $X$ can be covered by a finite number of open balls of radius $\delta$.
-        \item[6.] If $(X, d)$ is totally bounded then it is bounded, but the converse is not necessarily true
+        \item[\textbf{117}:] A metric space $(X, d)$ is said to be \textbf{totally bounded} iff for every positive $\delta$, $X$ can be covered by a finite number of open balls of radius $\delta$.
+        \item[\textbf{118}:] If $(X, d)$ is totally bounded then it is bounded, but the converse is not necessarily true
     \end{enumerate}
     
 \end{dfn}
 
 \begin{xmp}[Examples of compactness]{xmp:compact-sets}{}
-    \vspace{-13pt}
+    \vspace{-16pt}
     \setlength{\columnseprule}{0.5pt}
     \begin{multicols}{2}
         \textbf{Compact sets}
+        \vspace{-5pt}
         \begin{itemize}[leftmargin=*]
             \item $[a, b]$ is compact
             \item $\emptyset$ is compact
@@ -935,34 +948,35 @@ Watch lecture recording 06/03 for more in-depth examples
         \end{itemize}
 
         \textbf{Not Compact sets}
+        \vspace{-5pt}
         \begin{itemize}[leftmargin=*]
             \item $(0, 1)$ is not compact
             \item $\mathbb{R}$ is not compact
         \end{itemize}
     \end{multicols}
-    \vspace{-3pt}
+    \vspace{-8pt}
 \end{xmp}
 
-\begin{thm}[Lebesgue's Lemma]{thm:lebesgue-lemma}{}
-    \vspace{-5pt}
+\vspace{-6pt}
+\begin{thm}[Lebesgue's Lemma]{thm:lebesgue-lemma}{116}
+    \vspace{-6pt}
     Let $(X, d)$ be a sequentially compact metric space and $X = \bigcup_{i\in I} G_{i}$ be an open cover of $X$. There exists a $\delta > 0$ such that for any two points $x, y\in X$ with $d(x, y) < \delta$ there exists an $i$ such that $x, y\in G_{i}$. Any such $\delta$ is called a \textbf{Lebesgue number} of the open cover
 
     \longrule{0.08ex}
-    \textbf{Lemma}: Let $(X, d)$ be a sequentially compact metric space and $X = \bigcup_{i\in I} G_{i}$ be an open cover of $X$. Then there exists a $\delta > 0$ such that any nonempty subset of $X$ of diameter $< \delta$ can be covered by a single $G_{i}$
+    \textbf{Ex.44}: Let $(X, d)$ be a sequentially compact m.s. and $X = \bigcup_{i\in I} G_{i}$ be an open cover of $X$. Then there exists a $\delta > 0$ s.t. any nonempty subset of $X$ of diameter $< \delta$ can be covered by a single $G_{i}$
 \end{thm}
 
-
-
+\vspace{-6pt}
 \begin{thm}[big theorem bank of obvious shit]{thm:compactness-thms}{}
     \vspace{-5pt}
     \textrule{\textbf{Regular Compactness}}
     \vspace{-7pt}
-    \begin{itemize}[leftmargin=*]
+    \begin{itemize}[leftmargin=1.5em]
         \item For a set $K$ in $\mathbb{R}$ with the standard metric:
             \vspace{-5pt}
             \begin{itemize}
-                \item $K$ is compact $\iff$ $K$ is closed and bounded
-                \item $K$ is compact $\iff$ every open cover of $K$ has a finite cover
+                \item[\textbf{93}:] $K$ is compact $\iff$ $K$ is closed and bounded
+                \item[\textbf{100}:] $K$ is compact $\iff$ every open cover of $K$ has a finite cover
             \end{itemize}
 
 
@@ -970,82 +984,87 @@ Watch lecture recording 06/03 for more in-depth examples
         \item For a set $K$ in $\mathbb{R}^{n}$ with the Euclidean metric:
             \vspace{-5pt}
             \begin{itemize}
-                \item $K$ is compact $\iff$ $K$ is closed and bounded
+                \item[\textbf{Ex.38}:] $K$ is compact $\iff$ $K$ is closed and bounded
             \end{itemize}
 
         \vspace{-5pt}
         \item For a set $K$ in $\mathbb{R}$
             \vspace{-5pt}
             \begin{itemize}
-                \item Every open cover of $K$ has a finite subcover $\implies$ $K$ is closed and bounded $\implies$ $K$ is compact
+                \item[\textbf{101}:] Every open cover of $K$ has a finite subcover $\implies$ $K$ is closed and bounded $\implies$ $K$ is compact
             \end{itemize} 
 
         \vspace{-5pt}
-        \item Every open cover of the interval $[a, b]$, where $a, b\in \mathbb{R}$, $a \le b$ has a finite subcover
+    \item[\textbf{99}:] Every open cover of the interval $[a, b]$, where $a, b\in \mathbb{R}$, $a \le b$ has a finite subcover
 
     
     \end{itemize}
 
-    \vspace{-5pt}
+    \vspace{-8pt}
     \textrule{\textbf{Continuous Functions}}
-    \vspace{-5pt}
-    \begin{itemize}[leftmargin=*]
+    \vspace{-7pt}
+    \begin{itemize}[leftmargin=1.5em]
         \item Let $K \subseteq \mathbb{R}$ be compact, and $f : K \to \mathbb{R}$ continuous:
             \vspace{-5pt}
             \begin{itemize}
-                \item $f$ is bounded
-                \item $f$ has a maximum and minimum (EVT)
+                \item[\textbf{94}:] $f$ is bounded
+                \item[\textbf{95}:] $f$ has a maximum and minimum (EVT)
             \end{itemize}
         \vspace{-5pt}
         \item Let $(X, d)$ be a metric space, $K$ be a sequentially compact subset of $X$ and $f : K \to \mathbb{R}$ be a continous function:
             \vspace{-5pt}
             \begin{itemize}
-                \item $f$ has a maximum and a minimum. In particular, $f$ is bounded. (EVT ..again)
+                \item[\textbf{110}:] $f$ has a maximum and a minimum. In particular, $f$ is bounded. (EVT ..again)
             \end{itemize} 
     \end{itemize}
 
     \vspace{-5pt}
     \textrule{\textbf{Sequential compactness stuff}}
+    \vspace{-3pt}
 
     Let $(X, d)$ be a metric space, and $K \subseteq X$:
     \vspace{-5pt}
-    \begin{itemize}[leftmargin=*]
+    \begin{itemize}[leftmargin=1.5em]
         \item Let $K\ne\emptyset$, and let $d_{K}$ be the induced metric on $K$.
             \vspace{-3pt}
             \begin{itemize}
-                \item $K$ (sequentially) compact $\iff$ the metric space $(K, d_{K})$ is (sequentially) compact
+                \item[\textbf{Ex.39}:] $K$ (seq.) compact $\iff$ the M.S. $(K, d_{K})$ is (seq.) compact
             \end{itemize}
             
             \vspace{-2pt}
-    \item $K$ sequentially compact $\implies$ $K$ is closed and bounded
+        \item[\textbf{105}:] $K$ sequentially compact $\implies$ $K$ is closed and bounded
 
-    \item $(X, d)$ and $K$ are both sequentially compact $\iff$ $K$ is closed
+        \item[\textbf{107}:] $(X, d)$ and $K$ are both sequentially compact $\iff$ $K$ is closed
 
-    \item $(X, d)$ is sequentially compact $\implies$ $(X, d)$ is complete
-    \item $(X, d)$ is compact $\implies$ $(X, d)$ is sequentially compact
+        \item[\textbf{108}:] $(X, d)$ is sequentially compact $\implies$ $(X, d)$ is complete
 
-    \item $K$ is compact $\iff$ $K$ is sequentially compact
+    \item[\textbf{115}:] $K$ is compact $\iff$ $K$ is sequentially compact
 
-    \item $(X, d)$ is compact, and let $A$ be an infinite subset of $X$ $\implies$ $A$ has at least one limit point
+    \item[\textbf{x42}:] $(X, d)$ is compact $\implies$ $(X, d)$ is sequentially compact
+
+    \item[\textbf{x43}:] $(X, d)$ is compact, and let $A$ be an infinite subset of $X$ $\implies$ $A$ has at least one limit point
     \end{itemize}
 
     \vspace{-5pt}
-    \textrule{\textbf{Uniform Continuity}}
+    \textrule{\textbf{Thm 114 (Uniform Continuity)}}
+    \vspace{-2pt}
 
     Let $(X, d_{X})$ be a sequentially compact metric space, $(Y, d_{Y})$ be a metric space and $f : X\to Y$ be a continuous function. Then $f$ is uniformly continuous
-    
 
+    \vspace{-3pt}
     \textrule{\textbf{Totally Compact Spaces}}
 
     Let $(X, d)$ be a metric space:
     \vspace{-5pt}
-    \begin{itemize}[leftmargin=*]
-        \item $(X, d)$ is sequentially compact $\implies$ $(X, d)$ is totally bounded
-        \item $(X, d)$ is compact $\iff$ $(X, d)$ complete and totally bounded
+    \begin{itemize}[leftmargin=1.5em]
+        \item[\textbf{120}:] $(X, d)$ is sequentially compact $\implies$ $(X, d)$ is totally bounded
+        \item[\textbf{122}:] $(X, d)$ is compact $\iff$ $(X, d)$ complete and totally bounded
+        \item[\textbf{121}:] Every sequentially compact metric space is compact.
     \end{itemize}
-    \vspace{-5pt}
-    \textbf{Thm}: Every sequentially compact metric space is compact. (From now on, refer to sequentially compact spaces as compact)
 \end{thm}
+
+\newpage
+
 
 \begin{dfn}[Countable and Uncountable Sets]{dfn:countable-sets}{}
     A set $S$ is said to be:
@@ -1063,7 +1082,6 @@ Watch lecture recording 06/03 for more in-depth examples
     \end{itemize}
 \end{dfn}
 
-\newpage
 \begin{thm}[Dense Subset equivalence]{thm:dense-equivalence}{}
     Let $(X, d)$ be a metric space and $D \subseteq X$. The following are equivalent:
     \begin{enumerate}
@@ -1298,19 +1316,22 @@ Watch lecture recording 06/03 for more in-depth examples
     \[d_{Y}(f(x), f(x')) \le L d_{X}(x,x')\]
     If $L < 1$, $f$ is said to be a \textbf{contraction}
     
-    \longrule{0.08ex}
-    If $f : \mathbb{R} \to \mathbb{R}$ is a Lipschitz function and $x_{0}$ is any point in $\mathbb{R}$, then for any $x\in \mathbb{R}$ we have
-    \[\lvert f(x) - f(x_{0}) \rvert \le L\lvert x - x_{0} \rvert\]
-    For $x \ge x_{0}$ this can be expanded to
-    \[f(x_{0}) - L(x - x_{0}) \le f(x) \le f(x_{0}) + L(x - x_{0})\]
-
-    \longrule{0.08ex}
-    Let $(X, d_{X})$ and $(Y, d_{Y})$ be two metric spaces, and $f : X \to Y$ be a Lipschitz function. Then there exists a smallest Lipschitz constant of $f$
-
-    \longrule{0.08ex}
-    \textbf{Thm}: Let $I$ be a non-degenerate open interval on the real line and let $f : I \to \mathbb{R}$ be a differentiable function. Then $f$ is Lipschitz iff $f'$ is bounded. When that is the case,
-    \[\lvert f \rvert_{\text{Lip}} = \sup \{\lvert f'(x) \rvert : x\in I\}\]
 \end{dfn}
+
+\begin{xmp}[Examples of closure]{xmp:closure}{}
+    \begin{itemize}[leftmargin=*]
+        \item On the real line with the standard metric, $\overline{(a,b)} = [a,b]$
+        \item In $\mathbb{R}^{n}$ with the Euclidean metric $d_{2}$, the closure of the open ball $B(c,r)$ is the closed ball $\{x\in\mathbb{R}^{n}: d_{2}(x,c)\le r\}$
+        \item On the complex plane with its standard metric, the closure of an open disc is the corresponding closed disc
+        \item Let $X$ be a non-empty set with the discrete metric, $c\in X$ and $r =1$. Then $B(c,1) = \{c\}$, therefore $\overline{B(c,1)} - \overline{\{c\}} = \{c\}$, while
+            \[\{x\in X : d(x,c) \le 1\} = X\]
+            The closure of an open ball is not always equal to the corresponding closed ball
+        \item $X = \mathbb{R},\,d(x,y) = \lvert x - y \rvert$. $\overline{\mathbb{Q}} = \mathbb{R}$
+    \end{itemize}
+\end{xmp}
+
+
+
 
 \lipsum[1-12]
 \end{multicols}
