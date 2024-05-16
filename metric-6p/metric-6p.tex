@@ -336,7 +336,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \textbf{Ex 7}: Let $(X, d)$ be a metric space and $Y$ a non-empty subset of $X$. Define
     \begin{itemize}
         \item $d_{Y} : Y \times Y \to \mathbb{R}$
-        \item $d_{y}(y, y') = d(y, y')$
+        \item $d_{Y}(y, y') = d(y, y')$
     \end{itemize}
 
     Then $d_{Y}$ is a metric on $Y$. $d_{Y}$ is called the \textbf{induced} or \textbf{inherited} metric, and $(Y, d_{Y})$ is said to be a metric subspace of the metric space $(X, d)$
@@ -881,7 +881,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \vspace{-5pt}
     \textrule{\textbf{Thm 86 (Convergence)}}
 
-    Let $(X, d)$ be a metric space, let $(x_{k})_{k=1}^{\infty}$ be a sequence in $X^{\mathbb{N}}$ and let $x\in X^{\mathbb{N}}$. Write $x_{k} = (x_{k 1},\dots, x_{kn},\dots)$ and $x = (l_{1},\dots,l_{n},\dots)$. Then, $x_{k} \xrightarrow[k \to +\infty]{(X^{\mathbb{N}}, D)} x$ if and only if, for all $n$, $x_{kn}\xrightarrow[k \to +\infty]{(X^{\mathbb{N}} l_{n}}$
+    Let $(X, d)$ be a metric space, let $(x_{k})_{k=1}^{\infty}$ be a sequence in $X^{\mathbb{N}}$ and let $x\in X^{\mathbb{N}}$. Write $x_{k} = (x_{k 1},\dots, x_{kn},\dots)$ and $x = (l_{1},\dots,l_{n},\dots)$. Then, $x_{k} \xrightarrow[k \to +\infty]{(X^{\mathbb{N}}, D)} x$ if and only if, for all $n$, $x_{kn}\xrightarrow[k \to +\infty]{(X, d)} l_{n}$
 
     \textrule{\textbf{Thm 87 (Completeness)}}
 
@@ -943,18 +943,15 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 \begin{dfn}[Compacting Compactness]{dfn:compactness}{M}
     \vspace{-5pt}
-    \textrule{\textbf{Def 91 (Compactness)}}
+    \textrule{\textbf{Def 102 (Compactness and Sequential Compactness)}}
 
-    \vspace{-2pt}
-    Let $X = \mathbb{R}$ and $d$ be the standard metric. A subset $K$ of $\mathbb{R}$ is said to be \textbf{compact} iff every sequence of elements of $K$ has a subsequence that converges to an element of $K$
-
-    \textrule{\textbf{Def 102 (Sequential Compactness)}}
-    \vspace{-8pt}
+    Let $(X, d)$ be a metric space and $K \subseteq X$
+    \vspace{-5pt}
     \begin{enumerate}[leftmargin=*]
+        \item $K$ is \textbf{compact} iff every open cover of $K$ has a finite subcover
         \item $K$ is \textbf{sequentially compact} iff every sequence in $K$ has a subsequence that converges to an element of $K$
 
-            For the case $K = X$ it's just the definition $(1)$ defined above
-        \item $K$ is \textbf{compact} iff every open cover of $K$ has a finite subcover
+            For the case $K = X$, $X$ compact iff every sequence in $X$ has a convergent subsequence
     \end{enumerate}
 
     \vspace{-5pt}
@@ -1012,27 +1009,11 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \textrule{\textbf{Regular Compactness}}
     \vspace{-7pt}
     \begin{itemize}[leftmargin=1.5em]
-        \item For a set $K$ in $\mathbb{R}$ with the standard metric:
+        \item For a set $K$ in $\mathbb{R}$ with the standard metric, or $\mathbb{R}^{n}$ with the\newline Euclidean metric:
             \vspace{-5pt}
             \begin{itemize}
                 \item[\textbf{93}:] $K$ is compact $\iff$ $K$ is closed and bounded
-                \item[\textbf{100}:] $K$ is compact $\iff$ every open cover of $K$ has a finite cover
             \end{itemize}
-
-
-        \vspace{-5pt}
-        \item For a set $K$ in $\mathbb{R}^{n}$ with the Euclidean metric:
-            \vspace{-5pt}
-            \begin{itemize}
-                \item[\textbf{Ex.38}:] $K$ is compact $\iff$ $K$ is closed and bounded
-            \end{itemize}
-
-        \vspace{-5pt}
-        \item For a set $K$ in $\mathbb{R}$
-            \vspace{-5pt}
-            \begin{itemize}
-                \item[\textbf{101}:] Every open cover of $K$ has a finite subcover $\implies$ $K$ is closed and bounded $\implies$ $K$ is compact
-            \end{itemize} 
 
         \vspace{-5pt}
     \item[\textbf{99}:] Every open cover of the interval $[a, b]$, where $a, b\in \mathbb{R}$, $a \le b$ has a finite subcover
@@ -1078,9 +1059,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
         \item[\textbf{108}:] $(X, d)$ is sequentially compact $\implies$ $(X, d)$ is complete
 
-    \item[\textbf{115}:] $K$ is compact $\iff$ $K$ is sequentially compact
-
-    \item[\textbf{x42}:] $(X, d)$ is compact $\implies$ $(X, d)$ is sequentially compact
+    \item[\textbf{115}:] $(X, d)$ is compact $\implies$ $(X, d)$ is sequentially compact
 
     \item[\textbf{x43}:] $(X, d)$ is compact, and let $A$ be an infinite subset of $X$ $\implies$ $A$ has at least one limit point
     \end{itemize}
