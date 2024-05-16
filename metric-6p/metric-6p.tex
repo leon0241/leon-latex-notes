@@ -1357,16 +1357,65 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 \section{Applications}
 
-% TODO: newton and heron's method
+\textbf{Newton's Method:} We wish to `solve' $f(x) = 0$, where $f : \mathbb{R} \to \mathbb{R}$ smooth. Assume $f'(x) \ne 0$ $\forall x\in\mathbb{R}$ and $f(x^{*}) = 0$ for some real $x^{*}$. Then $x^{*}$ is unique.
+
+Define a sequence $(x_{n})_{n\in \mathbb{N}}$ as follows. Let $x_{0}$ be any real number and set
+\[x_{n+1} = x_{n} - \frac{f(x_{n})}{f'(x_{n})}, \quad n = 0,1,2,\dots\]
+This is of the form $x_{n+1} = F(x_{n})$ where $\displaystyle F(x) = x - \frac{f(x)}{f'(x)}$
+
+Observe that $f(x^{*}) = 0$ is equivalent to $F(x^{*}) = x^{*}$
+
+The derivative of $F$ is $\displaystyle F'(x) = 1 - \frac{f'(x)^{2} - f(x)f''(x)}{f'(x)^{2}} = \frac{f(x)f''(x)}{f'(x)^{2}}$
+
+Observe that $F'(x^{*}) = \frac{f(x^{*} f''(x))}{f'(x^{*})^{2}} = 0$
+
+Therefore there exists a $\delta >0$ s.t. for all $x\in [x^{*} - \delta, x^{*} + \delta],\,\lvert F'(x) \rvert \le \frac{1}{2}$ 
+
+$F$ maps $[x^{*} - \delta, x^{*} + \delta]$ into $[x^{*} - \delta, x^{*} + \delta]$. If $x\in [x^{*} - \delta, x^{*} + \delta]$ then
+\[\lvert F(x) - x^{*} \rvert = \lvert F(x) - F(x^{*}) \rvert \le \frac{1}{2} \lvert x - x^{*} \rvert \le \frac{1}{2}\delta \le \delta\]
+
+\vspace{-8pt}
+\begin{itemize}[leftmargin=*]
+    \item $F : [x^{*} - \delta, x^{*} + \delta] \to [x^{*} - \delta, x^{*} + \delta]$ is a contraction
+    \item $[x^{*} - \delta, x^{*} + \delta]$ is a complete metric space
+    \item If $x_{0}\in [x^{*} - \delta, x^{*} + \delta]$ and $x_{n+1} = F(x_{n}),\, n=1,2,\dots$ then all $x_{n}$ are in $[x^{*} - \delta, x^{*} + \delta]$
+    \item The sequence $(x_{n})_{n\in \mathbb{N}}$ converges to the fixed point of $F$ in $[x^{*} - \delta, x^{*} + \delta]$, namely $x^{*}$
+\end{itemize}
+\vspace{-12pt}
+\noindent\rule{0.3\textwidth}{0.5pt}
+
+\textbf{Order of Convergence}: By Taylor's Formula,
+\begin{align*}
+    F(x) &= F(x^{*}) + F'(x^{*})(x - x^{*}) + \frac{1}{2} F''(c)(x - x^{*})^{2} \\
+         &= x^{*} + \frac{1}{2} F''(c)(x - x^{*})^{*}
+\end{align*}
+Therefore, $\lvert F(x) - x^{*} \rvert = \frac{1}{2} \lvert F''(c) \rvert \lvert x - x^{*} \rvert^{2} \le C\lvert x - x^{*} \rvert^{2}$. Replace $x$ by $x_{n}$,
+\[\lvert x_{n + 1} - x^{*} \rvert \le C \lvert x_{n} - x^{*} \rvert^{2}\]
+If the $n$-th error is $\lvert x_{n} - x^{*} \rvert = \frac{1}{100}$ then the $(n+1)$-th error is
+\[\lvert x_{n+1} - x^{*} \rvert \le C\lvert x_{n} - x^{*} \rvert^{2} \le \frac{C}{10000}\]
+
+\vspace{-5pt}
+\noindent\rule{0.3\textwidth}{0.5pt}
 
 
+\textbf{Heron's Method}: Let $a > 0$. We wish to approximate $\sqrt{a}$ which is one of the two roots of $f(x) = x^{2} - a$. Let
+\[F : (0, \infty)\to \mathbb{R},\, F(x) = x - \frac{f(x)}{f'(x)} = \frac{1}{2}\left(x + \frac{a}{x}\right)\]
+Properties: $\displaystyle F(x) \ge f(\sqrt{a}) = \sqrt{a},\,F'(x) = \frac{1}{2}\left(1 - \frac{a}{x^{2}}\right) \le \frac{1}{2}$
 
-\begin{thm}[Picard's Theorem]{thm:picard}{}
+So, $F : [\sqrt{a}, +\infty) \to [\sqrt{a}, +\infty)$ is a contraction. The metric space $[\sqrt{a}, +\infty)$ is complete. Fix $x_{0}$ with $x_{0} \ge \sqrt{a}$ and define
+\[x_{n+1} = F(x_{n}) = \frac{1}{2}\left(x_{n} + \frac{a}{x_{n}}\right),\,n=0,1,2,\dots\]
+then $(x_{n})_{n\in\mathbb{N}}$ converges to the unique fixed point of $F$, namely $\sqrt{a}$
+
+Start with $0 < x_{0} < \sqrt{a}$, then $x_{1} = F(x_{0}) > \sqrt{a}$. So, $x_{n} \ge \sqrt{a},\,n=1,2,. .$
+
+
+\begin{thm}[Picard's Theorem]{thm:picard}{V}
     Let $f : \mathbb{R} \times \mathbb{R} \to \mathbb{R}$ be a continuous and boudned function, and $t_{0}, x_{0}$ be real numbers. Assume that there exists a positive constant $L$ s.t. for all real $t, x_{1}, x_{2}$ we have:
     \[\lvert f(t, x_{1}) - f(t, x_{2}) \rvert \le L\lvert x_{1} - x_{2} \rvert\]
     Then, there exists a positive $\delta$ and a unique differentiable function $x : [t_{0} - \delta, t_{0} + \delta]\to \mathbb{R}$ s.t. for all $t\in [t_{0}-\delta, t_{0} + \delta]$,
     \[x'(t) = f(t, x(t)) \quad \text{and} \quad x(t_{0}) = x_{0}\]
 \end{thm}
+
 
 % TODO: solving linear systems
 % TODO: Fredholm Intergral Equation
@@ -1382,6 +1431,24 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 %         \item $X = \mathbb{R},\,d(x,y) = \lvert x - y \rvert$. $\overline{\mathbb{Q}} = \mathbb{R}$
 %     \end{itemize}
 % \end{xmp}
+
+\begin{xmp}[Past Paper Questions]{xmp:ppqs}{X}
+    \textbf{Q}: Let $(X, d_{X}), (Y, d_{Y})$ be two metric spaces and $f : X \to Y$ cont. Prove that for every subset of $A$ of $X$ we have $f(\overline{X}) \subseteq \overline{f(A)}$
+
+    \textbf{A}: $A \subseteq f^{-1}(f(A)) \subseteq f^{-1}(\overline{f(A)})$. Moreover, the set $\overline{f(A)}$ is closed in $Y$, and $f$ cont. therefore $f^{-1}(\overline{f(A)})$ is closed in $X$. It follows that $\overline{A} \subseteq f^{-1}(\overline{f(A)})$, therefore $f(\overline{A}) \subseteq \overline{f(A)}$
+
+    \textbf{Q}: Give an example where $f(\overline{A}) \ne \overline{f(A)}$. Let $X = (0,1)$, $Y = \mathbb{R}$ with std. meric, and $A = (0,1)$. Define $f : X\to Y$ by $f(x) = x$. Then $\overline{A} = A$, therefore $f(\overline{A}) = f(A) = (0,1)$, while $\overline{f(A)} = \overline{(0,1)} = [0,1]$
+
+    \textbf{Q}: Prove that if $(X, d_{X})$ compact, then we have equality in the eq
+
+    \textbf{A}: We know that $f(\overline{A}) \subseteq \overline{f(A)}$, so now prove $\overline{f(A)} \subseteq f(\overline{A})$. $\overline{A}$ is closed in $X$, and $X$ compact, therefore $\overline{A}$ is compact in $X$. $f$ cont. therefore $f(\overline{A})$ is compact in $Y$, therefore $f(\overline{A})$ is closed in $Y$. Alos, $f(A) \subseteq f(\overline{A})$. It follows that $\overline{f(A)} \subseteq f(\overline{A})$
+
+    \longrule{0.08ex}
+    \textbf{Q}: Let $(X, d)$ be a metric space, $x\in X$ and $(x_{n})_{n\in \mathbb{N}}$, $(y_{n})_{n\in\mathbb{N}}$ be two seqs in $X$. If $x_{n}\to x$ and $d(x_{n}, y_{n})\to 0$, prove that $y_{n}\to x$.
+
+    \textbf{A}: By the triangle inequality, $d(y_{n}, x) \le d(y_{n}, x_{n}) + d(x_{n}, x) \forall n$. We have $d(x_{n}, x) \to 0$ coz $x_{n} \to x$, and we are assuming $d(y_{n}, x_{n})\to 0 \implies d(y_{n}, x_{n}) + d(x_{n}, x)\to 0 \implies d(y_{n}, x)\to 0 \implies y_{n} \to x$
+
+\end{xmp}
 
 
 
