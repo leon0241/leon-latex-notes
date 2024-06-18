@@ -14,7 +14,7 @@ LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and M
 
 - **Honours Algebra** everything - [click here!](algebra-10p/algebra-10p.pdf) *(it's 10 pages lol)*
 
-- Y3 **Geometry** - [click here!](Geometry/geometry_notes.pdf) *(they are really shit tho)*
+- Y3 **Geometry** - [click here!](Geometry/geometry_notes.pdf) *(they are terrible tho)*
 - **Introduction to Theoretical Computer Science** - [click here!](ITCS/itcs_notes.pdf) *(Adapted from Chris Dalziel's LaTeX notes)*
 
 ## Links to LaTeX Notes! (probably none of these are getting finished lol)
