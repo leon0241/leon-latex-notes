@@ -1,0 +1,200 @@
+\documentclass[a4paper, 11pt, BCOR = 0 pt, DIV = 13, oneside, french]{scrartcl}
+\usepackage{tikz}
+\usepackage{fancyvrb}
+\usetikzlibrary{arrows, shapes}
+\usepackage[light, largesmallcaps]{kpfonts}
+\usepackage{coffeestains}
+\usepackage[useregional]{datetime2}
+\usepackage{gitinfo2}
+\usepackage{scrlayer-scrpage}
+\usepackage{tcolorbox}
+\usepackage[french]{babel}
+\author{Patrick Bideault}
+\usepackage{varioref}
+\usepackage{hyperref}
+\hypersetup{
+	  pdftitle = LaTeX Coffee Stains,
+          colorlinks,
+	  linkcolor={brown!60!black},
+          citecolor={brown!60!black},
+          urlcolor={brown!60!black}
+        }
+\ifoot{\textsf{\textcolor{lightgray}{version \gitRel{} -- \DTMtoday}
+  }}
+\cfoot{}
+\ofoot{\textsf{\thepage}}
+
+\begin{document}
+
+\title{LaTeX Coffee Stains}
+\author{une extension de Hanno Rein\\
+  entretenue par Patrick Bideault\\
+  \texttt{pb-latex@gmx.fr}\\
+  ~\\
+  \url{https://framagit.org/Pathe/coffeestains}}
+\renewcommand{\today}{version \gitRel{} -- \DTMtoday{}}
+\maketitle
+
+\coffeestainA{0.9}{0.85}{-5}{6.5cm}{2.3cm}
+\label{stainA}
+\section{Introduction}
+Cette extension offre une fonctionnalité qui manquait à \LaTeX{} depuis
+lurette. Elle ajoute des taches de café aux documents. Plutôt que de
+d'ajouter manuellement ces taches, un temps précieux est
+économisé en les composant directement au sein des documents.
+
+Quatre modèles de taches sont proposés :
+
+\begin{itemize}
+\item \verb|\coffeestainA|, une tache ronde formant un arc de $270^\circ$, orné de deux petites
+  taches, comme \vpageref[sur la présente page]{stainA} ;
+\item \verb|\coffeestainB|, une tache formant un arc de $60^\circ$ environ, comme en
+    \vpageref{stainB} ;
+\item \verb|\coffeestainC|, deux taches de couleur pâle, visibles en \vpageref{stainC} ;
+\item \verb|\coffeestainD|, et une tache double, très colorée, que l'on admirera en \vpageref{stainD}.
+\end{itemize}
+
+\section{Utilisation}
+Pour utiliser cette extension, il suffit d'enregistrer le document
+\texttt{coffeestains.sty} dans le répertoire où vous souhaitez l'utiliser, aux
+côté des fichiers \texttt{.tex} que vous désirez orner de taches de café.
+
+Bien évidemment, il est possible de l'installer avec votre distribution \TeX{} ;
+pour ce faire, consultez son manuel d'utilisation.
+
+Une fois l'extension prête à l'emploi, ajoutez la ligne suivante dans le
+préambule de votre document :
+\begin{verbatim}
+\usepackage{coffeestains}
+\end{verbatim}
+\vfill{}
+
+\begin{tcolorbox}
+  La tache de café ci-dessus a été obtenue grâce à l'instruction suivante :
+
+  \verb|\coffeestainA{0.9}{0.85}{-5}{6.5cm}{2.3cm}|
+\end{tcolorbox}
+\newpage{}
+\coffeestainB{0.7}{1}{-30}{18 pt}{-135 pt}
+\label{stainB}
+
+Pour rehausser une page d'une tache de café, veuillez ajouter au code d'une page
+l'une des commandes suivantes :
+\begin{verbatim}
+\coffeestainA{transparence}{échelle}{angle}{abscisse}{ordonnée}
+\coffeestainB{transparence}{échelle}{angle}{abscisse}{ordonnée}
+\coffeestainC{transparence}{échelle}{angle}{abscisse}{ordonnée}
+\coffeestainD{transparence}{échelle}{angle}{abscisse}{ordonnée}
+\end{verbatim}
+
+\begin{itemize}
+\item le coefficient de \texttt{tranparence} est $\in [0,1]$;
+\item l'\texttt{échelle} est le facteur de proportionnalité ; s'il vaut \texttt{1},
+  la tache sera telle que créée par Hanno Rein en 2009 ;
+\item l'\texttt{angle} de la tache est relatif au centre de celle-ci ; il est exprimé en
+  degrés $\in [0,360]$ ;
+\item l'\texttt{abscisse} et l'\texttt{ordonnée} sont exprimées en
+  fonction du centre de la page, qui a pour coordonnées $(0, 0)$. Préciser une
+  unité de mesure semble être une bonne idée, mais nous ne saurions nous montrer
+  trop directifs.
+\end{itemize}
+
+\section{Droits d'auteur}
+Comme nous ne croyons guère au droit de propriété en ce qui concerne les
+créations intellectuelles, il vous est loisible de redistribuer cette extension
+comme bon vous semble. Toutes les taches sont faites maison, photographiées par
+Hanno Rein et traitées via les logiciels gimp et Inkscape. Les dons ne seront
+que de café et sont à adresser à :
+\begin{quote}
+Hanno Rein\\
+University of Toronto at Scarborough\\
+DPES Physics and Astrophysics\\
+1265 Military Trail\\
+Toronto, Ontario M1C 1A4\\
+Canada
+\end{quote}
+
+\section{Améliorations souhaitables}
+L'utilité de cette extension n'est pas à démontrer. Malheureusement, de
+nombreuses taches sont toujours ajoutées manuellement sur les documents : taches
+de cassoulet, de kimchi, de vin\dots{} à l'avenir, toutes devraient être composées directement.
+
+Par ailleurs, nous ne saurions nous cantonner aux taches que créent les
+liquides : combien de documents graisseux voient leurs taches ajoutées
+manuellement par des garagistes ? La communauté des utilisateurs de \LaTeX{}
+doit s'emparer de ce problème et procurer à ces professionnels les outils qui leur
+sont nécessaires.
+
+\vfill{}
+
+\begin{tcolorbox}
+  La tache de café ci-dessus a été obtenue grâce à la commande suivante :
+
+  \verb|\coffeestainB{0.7}{1}{-30}{18 pt}{-135 pt}|
+\end{tcolorbox}
+\newpage{}
+\section{Historique des modifications}
+\begin{itemize}
+\item 3 avril 2009 : tâche initiale accomplie par Hanno Rein. Cette version est
+  toujours disponible à l'adresse
+  \url{http://legacy.hanno-rein.de/hanno-rein.de/archives/349}. Dans le dépôt
+  git actuel, cette version a pour référence 0.1.
+\item 23 novembre 2010 : \texttt{coffee2.sty}, une version améliorée fonctionnant
+  avec pdflatex. Merci à \href{http://www.sultanik.com/}{Evan Sultanik}! Cette
+  version a de nos jours la référence 0.2.
+\item 24 mars 2011 : \texttt{coffee3}, une nouvelle version améliorée utilisant
+  pdflatex et permettant la mise à l'échelle et la rotation de chacune des
+  taches, sans compter le contrôle de leur transparence. Merci au \href{http://pcmap.unizar.es/~pilar/}{professeur Luis
+    Randez}! La référence de cette version est dorénavant 0.3.
+\item 25 mai 2012 : \texttt{coffee4}, une version encore améliorée, due à
+  \href{http://nepsweb.co.uk/homeapr/}{Adrian Robson}, qui écrit : « je constate
+  parvenir rarement à placer ma tasse de café au centre exact de mes documents.
+  C'est pourquoi j'ai amendé coffee3.sty de manière à permettre la composition
+  de taches de café autrement que centrées ». Cette
+  version porte désormais la référence 0.4.
+\item 1\textsuperscript{er} mai 2021 : le package \texttt{coffeestains} est
+  placé sur un dépôt git. La rotation des taches est désormais relative aux
+  taches elles-mêmes et non plus au centre de la page. Version 0.5 par Patrick Bideault.
+\end{itemize}
+\coffeestainC{1}{1}{180}{0}{-5 mm}
+\label{stainC}
+
+\section{Apophtegmes et maximes}
+\noindent
+Grand est le café.
+
+\vspace{5mm}
+
+\noindent
+Le café sauvera le monde.
+
+\vfill{}
+
+\begin{tcolorbox}
+  La tache de café ornant la présente page a été obtenue grâce à la commande suivante :
+
+  \verb|\coffeestainC{1}{1}{180}{0}{-5 mm}|
+\end{tcolorbox}
+
+\begin{tcolorbox}
+La page suivante a été enluminée grâce à l'instruction suivante :
+
+  \verb|\coffeestainD{0.4}{0.5}{90}{3 cm}{4 cm}|
+\end{tcolorbox}
+
+\newpage{}
+\pagestyle{empty}
+~\\
+
+\coffeestainD{0.4}{0.5}{90}{3 cm}{4 cm}
+\label{stainD}
+
+\vfill{}
+\begin{center}
+\textsc{C'est intentionnellement que cette page fut laissée vide}
+
+mais il nous a fallu vous le faire savoir.
+\end{center}
+
+\vfill{}
+\end{document}

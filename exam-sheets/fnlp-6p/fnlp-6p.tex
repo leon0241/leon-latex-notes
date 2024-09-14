@@ -1,0 +1,859 @@
+\documentclass[landscape, 8pt]{extarticle}
+\usepackage{geometry}
+% \usepackage{showframe}
+\usepackage[dvipsnames]{xcolor}
+
+\colorlet{colour1}{Red}
+\colorlet{colour2}{Green}
+\colorlet{colour3}{Cerulean}
+
+\geometry{
+    a4paper, 
+    margin=0.17in
+}
+
+\pretolerance=0
+\hyphenpenalty=0
+
+\usepackage{lmodern}
+
+\usepackage[fontsize=7pt]{scrextend}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+% \usepackage{preamble}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage[framemethod=TikZ]{mdframed}
+% \usepackage{../thmboxes_white}
+\usepackage{../../thmboxes_v2}
+\usepackage{float}
+% \usepackage{setspace}
+\usepackage[nodisplayskipstretch]{setspace}
+
+
+
+\newcommand*\ruleline[1]{\par\noindent\raisebox{.5ex}{\makebox[\linewidth]{\hrulefill\hspace{1ex}\raisebox{-.5ex}{\textbf{#1}}\hspace{1ex}\hrulefill}}}
+
+% \setlength{\parskip}{0pt}
+
+% Custom Definitions of operators
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+% \DeclareMathOperator{\im}{im}
+% \DeclareMathOperator{\Fix}{Fix}
+% \DeclareMathOperator{\Orb}{Orb}
+% \DeclareMathOperator{\Stab}{Stab}
+% \DeclareMathOperator{\send}{send}
+% \DeclareMathOperator{\dom}{dom}
+% \DeclareMathOperator{\Maps}{Maps}
+% \DeclareMathOperator{\sgn}{sgn}
+% \DeclareMathOperator{\Mat}{Mat}
+% \DeclareMathOperator{\scale}{sc}
+% \DeclareMathOperator{\Hom}{Hom}
+% \DeclareMathOperator{\id}{id}
+% \DeclareMathOperator{\rk}{rk}
+% \DeclareMathOperator{\Tr}{tr}
+% \DeclareMathOperator{\diag}{diag}
+% \DeclareMathOperator{\can}{can}
+
+\usepackage{hyperref} % note: this is the final package
+
+\parindent = 0pt
+
+\renewcommand\labelitemi{\tiny$\bullet$}
+
+\begin{document}
+
+\setlength{\abovedisplayskip}{3.5pt}
+\setlength{\belowdisplayskip}{3.5pt}
+\setlength{\abovedisplayshortskip}{3.5pt}
+\setlength{\belowdisplayshortskip}{3.5pt}
+
+\begin{multicols}{3}
+\raggedcolumns
+
+
+\section*{\huge FNLP Exam Notes}
+Made by Leon :) 
+\vspace{-5pt}
+\section{smooth and stuff}
+
+\begin{dfn}[Maximum Likelihood Estimates (MLE)]{dfn:mle}{}
+    \[P_{RF}(x) = \frac{C(x)}{N}\]
+    $C(x)$ is the count of $x$ in the dataset, and $N$ is the total number of items in the dataset
+
+    \begin{itemize}[leftmargin=*]
+        \setlength\itemsep{0em}
+        \item \textbf{Problem 1 (Sparse data problem)}: If the count of an item is $0$, then the probability will also be $0$ - you want the model to be able to calculate sentences with new words in them. \textbf{Solution}: Smoothing
+        \item \textbf{Problem 2}: Cannot reliably find probability of sentences (the chance of ``skibidi sigma gyatt rizz'' being already in a corpus is very low). \textbf{Solution}: use $n$-gram models
+    \end{itemize}
+\end{dfn}
+
+\begin{dfn}[n-gram models]{dfn:ngrams}{}
+    Turn a sentence $P(S = w_{1}\dots w_{n})$ into joint probabilities $P(w_{1},\dots,w_{n})$. We have $P(X, Y) = P(Y | X)P(X)$. So
+    \begin{align*}
+        P(a, b, c) &= P(c | a,b)P(a,b)\\
+                            &= P(c | a, b)P(b|a)P(a)
+    \end{align*}
+
+    n-gram model just estimates probability to $n$ probabilities
+    \begin{itemize}[leftmargin=*]
+        \setlength\itemsep{0em}
+        \item \textbf{Trigram}: $P(w_{i}|w_{1},w_{2},\dots,w_{i-1}) \approx P(w_{i}|w_{i-2}, w_{i-1})$
+        \item \textbf{Bigram}: $P(w_{i}|w_{1},w_{2},\dots,w_{i-1}) \approx P(w_{i}|w_{i-1})$
+        \item \textbf{Unigram}: $P(w_{i}|w_{1},w_{2},\dots,w_{i-1}) \approx P(w_{i})$
+    \end{itemize}
+
+    \noindent\rule{\textwidth}{0.2pt}
+    To be able to detect edges of sentences, add \texttt{<s>} and \texttt{<\symbol{92}s>} on sentence edges to be factored into the $n$-gram model
+    \[\text{\texttt{skibidi rizz}} \implies \text{\texttt{<s> skibidi rizz <\symbol{92}s>}}\]
+    therefore a bigram like $P(\text{\texttt{<\symbol{92}s>}} | \tt{rizz})$ will detect the end of a sentence 
+
+    Usually, \textbf{negative log probs} will be used instead of regular decimals, as the probabilities will get small fast and floating precision issues will happen.
+    \begin{itemize}[leftmargin=*]
+        \setlength\itemsep{0em}
+        \item Probabilities from 0 to 1, but negative log probs go from 0 to $\infty$
+        \item Log probs are added instead of multiplied like regular probabilities
+    \end{itemize}
+\end{dfn}
+
+\begin{dfn}[Entropy]{dfn:entropy}{}
+    \textbf{Entropy} of a random variable $X$:
+    \[H(X) = \sum_{x} - P(x) \log_{2}P(x)\]
+    also the expected value of $-\log_{2}P(X)$
+
+    Higher entropy means less predictable
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.6\linewidth]{images/2024-05-09-111807_hyprshot.png}
+    \end{figure}
+
+    For $w_{1}\dots w_{n}$ with large $n$, per-word cross-entropy is well approximated by
+    \[H_{M}(w_{1}\dots w_{n}) = -\frac{1}{n} \log_{2}P_{M}(w_{1}\dots w_{n})\]
+    Lower cross-entropy $\implies$ model is better at predicting next word
+
+    \textbf{Perplexity}: $2^{\text{cross-entropy}}$
+\end{dfn}
+
+
+\begin{dfn}[Add-one and Lidstone smoothing]{dfn:add-one-lidstone-smoothing}{}
+    \textbf{Add one smoothing}
+    \[P_{+1}(w_{i} | w_{i-2}, w_{i-1}) = \frac{C(w_{i-2}, w_{i-1}, w_{i}) + 1}{C(w_{i - 2}, w_{i-1}) + v}\]
+    where $v$ is the vocabulary size
+
+    \noindent\rule{\textwidth}{0.2pt}
+
+    \textbf{Add-$\alpha$ smoothing}
+    \[P_{+\alpha}(w_{i} | w_{i - 1}) = \frac{C(w_{i-1}, w+i) + \alpha}{C(w_{i-1}) + \alpha v}\]
+
+    Choosing an $\alpha$: Use a three-way data split: \textbf{training set} (80-90\%), \textbf{held-out/development set} (5-10\%), and \textbf{test set} (5-10\%)
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item Train model (estimate probabilities) on training set with different values of $\alpha$
+        \item Choose the $\alpha$ that minimizes cross-entropy on development set
+        \item Report final results on test set
+    \end{itemize}
+    More generally, use development set for evaluating different models, debugging, and optimizing choises. This avoids overfitting to the training set and even to the test set
+
+\end{dfn}
+
+\begin{dfn}[Good-Turing Smoothing]{dfn:good-turing}{}
+    \[c* = (c + 1) \frac{N_{c+1}}{N+c} \qquad P*_{c} = \frac{c*}{N} = (c + 1) \frac{\frac{N_{c+1}}{N_{c}}}{N}\]
+
+    \begin{itemize}[leftmargin=*]
+        \setlength\itemsep{0em}
+        \item $N_{c}$ is the number of occurances with count $c$
+        \item $P*_{c}$ is the probability of an item with count $c$
+        \item $c*$ is the good-turing smoothed version of count
+        \item $N$ is total count
+    \end{itemize}
+
+    \textbf{random items}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item Probability the next observation is new
+            \[P(unseen) = \frac{N_{1}}{N}\]
+        \item Probability the next observation is a specific new object
+            \[P_{GT} = \frac{1}{N_{0}} \frac{N_{1}}{N} \implies c* = \frac{N_{1}}{N_{0}}\]
+    \end{itemize}
+
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Problems with Good-Turing}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item Assumes we know the vocabulary size
+        \item Doesn't allow "holes" in the counts (if $N_{i}>0,N_{i-1}>0$)
+        \item Applies discounts even to high-frequency items
+        \item Assigns equal probability to all unseen events, same with add-$\alpha$, e.g. ``w rizz'' vs ``w indowpane'' shouldn't be equal
+    \end{itemize}
+\end{dfn}
+
+\begin{dfn}[Interpolation and backoff]{dfn:interpolation-backoff}{}
+    \textbf{Interpolation}: Combines higher and lower order $N$-gram models, since they have different strengths and weaknesses
+    \begin{itemize}[leftmargin=*]
+        \setlength\itemsep{0em}
+        \item high-order $N$-grams are sensitive to more context, but have sparse counts
+        \item low-order $N$-grams have limited context but robust counts
+    \end{itemize}
+
+    If $P_{N}$ is $N$-gram estimate
+    \[P_{\text{INT}}(w_{3}|w_{1},w_{2}) = \lambda_{1}P_{1}(w_{3}) + \lambda_{2}P_{2}(w_{3}|w_{2}) + \lambda_{3}P_{3}(w_{3}|w_{1},w_{2})\]
+
+    \textbf{Katz-backoff}: Trust the highest order language model that contains the $N$-gram. Requires an adjusted prediction model: $P*(w_{i}|w_{i-N+1},\dots,w_{i-1})$ and backoff weights: $\alpha(w_{1},\dots,w_{N-1})$
+        
+    \textbf{Kneser-Ney}: Takes diversities of histories into account
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item count of distinct histories for a word
+            \[N_{1+}(\circ w_{i}) = \lvert \{w_{i-1} : c(w_{i-1}, w_{i}) > 0\} \rvert\]
+        \item In $KN$ smoothing, replace raw counts with count of histories:
+            \[P_{\text{ML}}(w_{i}) = \frac{C(w_{i})}{\sum_{w}C(w)} \quad \implies P_{\text{KN}}(w_{i}) = \frac{N_{1+(\circ w_{i})}}{\sum_{w} N_{1+}(\circ w)}\]
+    \end{itemize}
+
+    \noindent\rule{\textwidth}{0.2pt}
+    Method use cases:
+    \begin{itemize}
+        \item Uniform probabilities - add-$\alpha$, Good-Turing
+        \item Probabilities from lower-order $n$-grams - interpolation, backoff
+        \item Probability of appearing in new contexts - Kneser-Ney
+    \end{itemize}
+\end{dfn}
+
+\newpage
+\section{Text Classification}
+\vspace{-5pt}
+Categorizing the \textit{content} of the text. e.g.
+\vspace{-2pt}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Spam detection (binary classification: spam/not spam)
+    \item Sentiment analysis (binary / multiway)
+        \vspace{-2pt}
+        \begin{itemize}
+            \setlength\itemsep{0em}
+            \item movie, restaurant, product reviews (pos/neg, or 1-5 stars)
+            \item political argument (pro/con or pro/con/neutral)
+        \end{itemize}
+    \item Topic classification (multiway: sport/finance/travel/etc)
+\end{itemize}
+Or, categorizing the \textit{author} of the text (authorship attribution)
+\vspace{-2pt}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Native language identification (e.g. to tailor language tutoring)
+    \item Diagnosis of disease (psychiatric or cognitive impairments)
+    \item Identification of gender/dialect/educational background (e.g. forensics [legal matters], advertising/marketing)
+\end{itemize}
+
+$n$-gram models are not as useful for classification - often we can just consider a \textbf{bag of words} and not worry about the order that the words come in
+
+\subsection{Naive Bayes}
+\begin{dfn}[Naive Bayes]{dfn:naive-bayes}{}
+    \vspace{-5pt}
+    Given document $d$ and set of categories $C$ we want to assign $d$ to the most probable category $\hat{c}$
+    \[\hat{c} = \argmax_{c\in C} P(c | d) = \argmax_{c\in C} P(d|c)P(c)\]
+
+    Represent $d$ as the set of features (words) it contains: $f_{1},f_{2},\dots,f_{n}$
+    \[P(d | c) = P(f_{1},f_{2},\dots,f_{n} | c)\]
+    Then make \textbf{naive Bayes assumption} that features are conditionally independent given the class
+    \[P(f_{1},f_{2},\dots,f_{n}|c) \approx P(f_{1}|c) P(f_{2}|c)\dots P(f_{n}|c)\]
+    i.e. the probability of a word happening depends \textbf{only} on the class, not on words occuring before/after (n-gram), or even what other words occurred at all. Basically we only care about the \textbf{count} of each feature in a document
+
+    \vspace{-5pt}
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Naive Bayes classifier}: Given a document with features $f_{1},f_{2},\dots,f_{n}$ and set of categories $C$, choose the class $\hat{c}$ where
+    \[\hat{c} = \argmax_{c\in C} P(c)\prod_{i=1}^{n}P(f_{i}|c)\]
+    \begin{itemize}[leftmargin=*]
+        \setlength\itemsep{0em}
+        \item $P(c)$ is the \textbf{prior probability} of class $c$ before observing any data. normally estimated with MLE:
+            \[\hat{P}(c) = \frac{N_{c}}{N}\]
+            \begin{itemize}
+                \setlength\itemsep{0em}
+                \item $N_{c}$ is the number of training documents in class $c$
+                \item $N$ is the total number of training documents. 
+            \end{itemize}
+            \vspace{-5pt}
+            Therefore, $\hat{P}(c)$ is the proportion of training documents in class $c$
+        \item $P(f_{i}|c)$ is the probability of seeing feature $f_{i}$ in class $c$. Normall estimated with simple smoothing:
+            \[\hat{P}(f_{i}|c) = \frac{\text{count}(f_{i}, c) + \alpha}{\sum_{f\in F}(\text{count}(f, c) + \alpha)}\]
+            \begin{itemize}
+                \setlength\itemsep{0em}
+                \item $\text{count}(f_{i}, c)$: the number of times $f_{i}$ occurs in class $c$
+                \item $F$: the set of possible features
+                \item $\alpha$: the smoothing parameter, optimized on held-out data
+            \end{itemize}
+
+    \end{itemize}
+\end{dfn}
+
+\columnbreak
+
+\subsubsection{Negative Log Probabilities}
+
+Same with $n$-gram models, usually uses \textbf{negative log probabilities} - adjusted equation:
+\[\hat{c} = \argmin_{c\in C} + (-\log P(x) + \sum_{i = 1}^{n} -\log P(f_{i} | c))\]
+This amounts to classification using a linear function (in log space) of the input features. Therefore Naive bayes is called a \textbf{linear classifier}
+
+\subsubsection{Issues with choosing features}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Sentiment analysis might need domain-specific non-sentiment words e.g. ``quiet'' or ``memory'' for computer reviews
+    \item Stopwords might be useful features for other tasks, e.g. People with schizophrenia use more 2nd-person pronouns, and people with depression use more 1st-person
+    \item Probably better to use too many irrelevant feaetures than not enough relevant ones
+\end{itemize}
+
+\subsubsection{Problems with annotation}
+Usually hard to come by already annotated text - ergo you need someone to label text. On the other hand there is usually a lot of unannotated texts.
+
+\textbf{Solution}: Use semi-supervised learning
+\begin{enumerate}
+    \setlength\itemsep{0em}
+    \item Train NB on labeled data alone
+    \item Predict labels on unlabelled data
+    \item Re-estimate NB, but now using also self-labelled data
+\end{enumerate}
+
+\subsubsection{Self Training}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item \textbf{Advantages}: Simplicity and applicable to any classifier
+    \item \textbf{Disadvantages}: Does not account for uncertainty of a classifier, and no theoretical motivation
+    \item To make it work needs discarding low-confidence predictions, and curriculum (start with examples similar to labeled data)
+\end{itemize}
+
+\subsubsection{Expectation Maximisation for Semi-supervised Learning}
+
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Train NB on labelled data alone
+    \item Make soft prediction on unlabelled data (``E-step'')
+    \item Recompute NB parameters using the soft counts
+\end{itemize}
+
+Self-training for NB is known as ``hard EM''
+
+\subsubsection{Advantages of Naive Bayes}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Very easy to implement
+    \item Very fast to train and classify new docs (good for huge datasets)
+    \item Doesn't require as much training data as some other methods (good for small datasets)
+    \item Usually works reasonably well
+    \item Should be the baseline method for any classification task
+\end{itemize}
+
+\subsubsection{Evolving past naive Bayes}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Assuming that all features are conditionally independent can have some issues, and often we have enough training data for a better model.
+    \item Adding multiple feature types (e.g. words and morphemes) often leads to even stronger correlations between features
+    \item Accuracy of classifier can sometimes still be ok, but it will be highly overconfident in its decision, e.g. NB sees 5 features that all point to class 1, treats them as 5 independent sources of evidence - like asking 5 friends for an opinion when some got theirs from each other
+\end{itemize}
+
+\begin{dfn}[Maximum Entropy / Logistic Regression]{dfn:maxent-logreg}{}
+    \vspace{-5pt}
+    Most commonly \textbf{multinomial logistic regression}. \textbf{multinomial} if more than two possible classes, otherwise just \textbf{logistic regression}
+
+    Like Naive Bayes, assign a document $x$ to class $\hat{c}$ where
+    \[\hat{c} = \argmax_{c\in C} P(c |x)\]
+    unlike Naive Bayes, model $P(c|x)$ directly instead of using Baye's rule
+
+    \vspace{-5pt}
+    \noindent\rule{\textwidth}{0.2pt}
+
+    \textbf{Discrimination}
+
+    \vspace{-5pt}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item Trained to discriminate correct vs wrong values of $c$ given input $x$
+        \item Need not be probabilistic
+        \item Examples: artificial neural networks, decision trees, nearest neighbour methods, support vector machines
+        \item Here we only consider one method: MaxEnt models which are probabilistic
+    \end{itemize}
+
+    \vspace{-10pt}
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Feature Functions}: Like Naive Bayes, MaxEnt models use \textbf{features} we think will be useful for classification.
+
+    However, features are treated different in the two models
+    \vspace{-5pt}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item NB: Features are \textbf{directly observed} (e.g. words in doc): no difference between features and data
+        \item MaxEnt: We will use $\vec{x}$ to represent the observed data. Features are \textbf{functions} that depend on both observations $\vec{x}$ and class $c$
+    \end{itemize}
+
+    \vspace{-10pt}
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Classification with MaxEnt}
+    
+    Choose the class that has highest probability according to
+    \[P(c | \vec{x}) = \frac{1}{Z} \exp\left(\sum_{i}w_{i}f_{i}(\vec{x}, c)\right)\]
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item Normalization constant $Z = \sum_{c'}\exp(\sum_{i}w_{i}f_{i}(\vec{x},c))$
+        \item Inside brackets is just a dot product $\vec{w} \cdot \vec{f}$
+        \item $P(c|\vec{x})$ is a \textbf{monotonic function} of this dot product
+        \item So, we will end up choosing the class for which $\vec{w} \cdot \vec{f}$ is highest
+    \end{itemize}
+
+    \vspace{-10pt}
+    \noindent\rule{\textwidth}{0.2pt}
+    \textbf{Training the model}
+    Given annotated data, choose weights that make the labels most probable under the model
+    That is, given items $x^{(1)}\dots x^{(N)}$ with labels $c^{(1)}\dots c^{(N)}$, choose
+    \[\hat{w} = \argmax_{\vec{w}} \sum_{j} \log P(c^{(j)} | x^{(j)})\]
+    This is called \textbf{conditional maximum likelihood estimation} (CMLE)
+
+    Like MLE, CMLE will overfit, so use \textbf{regularization} to avoid that
+
+\end{dfn}
+
+
+\subsubsection{Relation to Naive Bayes}
+Naive Bayes is also a linear classifier, and can be expressed in the same form. Should the features actually be independent they would converge to the same solution as the amount of training data increases
+
+\subsubsection{Downside to MaxEnt models}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Supervised MLE in generative models is easy - compute counts and normalize
+    \item Supervised CMLE in MaxEnt is not so easy
+        \begin{itemize}
+            \setlength\itemsep{0em}
+            \item requires multiple iterations over the data to gradually improve weights (using gradient ascent)
+            \item Each iteration computese $P(c^{(j)} | x^{(j)})$ for all $j$, and each possible $c^{(j)}$
+            \item This can be time-consuming, especially if there are a large number of classes and/or thousands of features to extract from each training example
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{Robustness: MaxEnt and Naive Bayes}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Imagine that in training there is one very frequent predictive feature, e.g. in training sentiment data contained emoticons but not at test time
+    \item The model can quickly learn to rely on this feature
+        \begin{itemize}
+            \setlength\itemsep{0em}
+            \item model is confident on examples with emoticons
+            \item the gradient on these examples gets close to zero
+            \item the model does not learn other features
+        \end{itemize}
+    \item In MAxEnt, a feature weight will depend on the precense of other predictive features
+    \item Naive Bayes will rely on all features - the weight of a feature is not affected by how predictive other features are
+    \item This makes NB more robust than (basic) MaxEnt when test data is (distributionally) different from training data
+\end{itemize}
+
+\section{POS Tagging and HMMs}
+\subsection{Intro}
+\subsubsection{Why do we care about POS tagging}
+First step towards syntactic analysis, which is useful for semantic analysis
+Simpler models and often faster than full parsing, but sometimes enough to be useful. e.g. POS tags can be useful features in text classification or word sense disambiguation
+
+\subsubsection{Word types}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Open class words (or content words)
+        \begin{itemize}
+            \setlength\itemsep{0em}
+            \item nouns, verbs, adjectives, adverbs
+            \item refers to objects, actions and features. Open class since there is no limit to the words
+        \end{itemize}
+    \item Closed class words (or function words)
+        \begin{itemize}
+            \setlength\itemsep{0em}
+            \item pronouns, determiners, prepositions, connectives
+            \item limited number, they mainly tie concepts of a sentence together
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{Why is POS tagging hard?}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Ambiguity - e.g. ``glass of water/NOUN'' vs ``water/VERB the plants''
+    \item Sparse data - words we haven't seen before, or word-tag pairs we haven't seen before
+\end{itemize}
+
+We want a model that decides tags based on:
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item The word itself
+        \begin{itemize}
+            \setlength\itemsep{0em}
+            \item Some words may only be nouns
+            \item Some words are ambiguous
+            \item Probabilities may help, if one tag is more likely than the other
+        \end{itemize}
+    \item Tags of surrounding words
+        \begin{itemize}
+            \setlength\itemsep{0em}
+            \item two determiners rarely follow each other
+            \item two base form verbs rarely follow each other
+            \item determiner is almost always followed by adj or noun
+        \end{itemize}
+\end{itemize}
+
+\subsection{Hidden Markov Models}
+viterbi lol
+
+\subsubsection{HMM adjacent}
+Using Viterbi, we can find the best tags for a sentence (decoding) and get $P(y, x|0)$
+
+We might also want to:
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Compute the likelihood i.e. the probability of a sentence regardless of its tags (a language model!) $P(x | \theta)$
+    \item Learn the best set of parameters $\hat{\theta}$ given only an unannotated corpus of sentences
+\end{itemize}
+
+We know that $P(x | \theta) = \sum_{y} P(x, y | \theta)$, but there are an exponential number of sequences $y$. By computing and storing partial results we can solve efficiently. This is the forward algorithm
+
+\begin{dfn}[Forward Algorithm]{dfn:forward-algo}{}
+    
+    \begin{align*}
+        \text{Initialise:}& v^{1}_{j} = a_{\text{START, j}b_{j}, x^{1}} & v^{1}_{j} &= a_{\text{START, j}b_{j}, x^{1}}\\
+        \text{Recomput:}& v^{t}_{j} = \left(\max_{i} v_{i}^{t - 1} a_{ij}\right) b_{j, x^{t}} & v_{j}^t &= \left(\textstyle\sum_{i} v_{i}^{t - 1} a_{ij}\right) b_{j, x^{t}} \\
+        \text{Final:}& v_{\text{STOP}}^{\lvert x \rvert + 1} = \max_{i} v_{i}^{\lvert x \rvert} a_{i, \text{STOP}} & v_{\text{STOP}}^{\lvert x \rvert + 1} &= \textstyle\sum_{i} v_{i}^{\lvert x \rvert} a_{i, \text{STOP}}
+    \end{align*}
+\end{dfn}
+
+\section{Syntax and Parsing}
+\subsection{Intro}
+\subsubsection{Intro intro}
+Various ways to model word behaviour:
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Bag-of-words: ignore word order entirely
+    \item N-gram model: capture a fixed length history to predict word sequences
+    \item HMM: Also capture fixed-length history using latent variables
+\end{itemize}
+
+Useful for various tasks but a really accurate model of language needs more than a fixed-length history
+
+\subsubsection{Constituents}
+\textbf{Substitutability} at the phrasal level - 
+\begin{itemize}[leftmargin=*]
+    \setlength\itemsep{0em}
+    \item POS categories indicate which words are substitutable e.g. sub adjectives
+        \[\text{I saw a \textcolor{red}{red} cat} \iff \text{I saw a \textcolor{red}{former} cat}\]
+    \item Phrasal categories indicate which phrases are substitutable. e.g. sub NP
+        \[\text{\textcolor{red}{Dogs} sleep soundly} \iff \text{\textcolor{red}{My next-door neighbours} sleep soundly}\]
+\end{itemize}
+
+\textbf{Constituent tests}
+
+``\textcolor{red}{The lecture} \textcolor{blue}{was absolutely brilliant}'' 
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item \textbf{Substitution}: replace constituent with base
+        \[\text{\textcolor{red}{it} \textcolor{blue}{was absolutely brilliant}}\]
+    \item \textbf{Clefing}: replace with ``it was \rule{15pt}{0.15pt} that \rule{15pt}{0.15pt}''
+        \[\text{it was \textcolor{red}{the lecture} that was \textcolor{blue}{absolutely brilliant}}\]
+    \item \textbf{Coordination}: Add word of same type with ``and/or/but''
+        \[\text{\textcolor{red}{the lecture} and the cheat sheet \textcolor{blue}{was absolutely brilliant}}\]
+    \item \textbf{Wh-movement}: Add a ``what/when/who/..'' question at the start
+        \[\text{what was \textcolor{blue}{absolutely brilliant}? \textcolor{red}{the lecture}}\]
+\end{itemize}
+
+\subsection{Theories of Syntax}
+A \textbf{theory of syntax} should explain which sentences are \textbf{well-formed} (grammatical) and which are not. Two theories: \textbf{Constituency structures}, and \textbf{Dependency structures}
+
+\begin{dfn}[Context Free Grammar]{dfn:cfg}{}
+    A CFG is a tuple of 4 elements $G = (V, \Sigma, R, S)$
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item $V$ - the set of non-terminals
+        \item $\Sigma$ - the set of terminals
+        \item $R$ - the set of rules of the form $X \to Y_{1}, y_{2},\dots,Y_{n}$ where $n\ge 0, X\in V, Y_{i}\in V \cup \Sigma$
+        \item $S$ is a dedicated start symbol
+    \end{itemize}
+    A CFG defines both a set of strings (a language), and structures used to represent sentences (constituent trees)
+\end{dfn}
+
+\subsubsection{Ambiguity}
+Some sentences have more than one parse: \textbf{structural ambiguity}.
+
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item The structure ambiguity can be caused by \textbf{PoS ambiguity} (both are types of syntactic ambiguity)
+    \item Some sentences have structural ambiguity even without PoS ambiguity. This is called \textbf{attachment ambiguity}
+        \begin{itemize}
+            \setlength\itemsep{0em}
+            \item Depends on where different phrases attach in the tree
+            \item Different attachments have different meanings
+        \end{itemize}
+\end{itemize}
+
+\textbf{Key problems}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item \textbf{Recognition problem}: does the sentence belong to the language defined by the CFG
+    \item \textbf{Parsing problem}: what is a (most plausible) derivation (tree) corresponding the sentence? (parsing encompasses recognition)
+\end{itemize}
+
+\subsubsection{Chomsky Normal form (chomp chomp)}
+
+\textbf{Converting to CNF form}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Get rid of empty (i.e. $\epsilon$) productions: $C \to \epsilon$
+    \item Get rid of unary rules: $C \to C_{1}$
+    \item N-ary rules: $C\to C_{1} C_{2} \dots C_{n} \quad(n > 2)$
+\end{itemize}
+
+e.g. $NP \to DT \hspace{5pt} NNP \hspace{5pt} VBG \hspace{5pt} NN$
+becomes
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item $NP \to DT\hspace{5pt} @NP|DT$
+    \item $@NP|DT \to N NP \hspace{5pt} @NP | DT\_N NP$
+    \item $@NP | DT\_N NP \to VBG \hspace{5pt} N N$
+\end{itemize}
+
+\begin{dfn}[Probabilistic CFG]{dfn:pcfg}{}
+    CFG where all the states have probabilities associated with them
+
+    Not all PCFGs give rise to a proper distribution over trees i.e. the sum over probabilities of all trees the grammar can generate may be less than $1 : \sum_{T} P(T) < 1$
+
+    Good news: any PCFG estimated with the maximum likelihood procedure are always proper
+\end{dfn}
+
+\newpage
+
+\subsection{Parsing}
+
+\subsubsection{Speeding up algorithm (approximate search)}
+\textbf{Basic Pruning (roughly)}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item for each span $(i, j)$ store only labels which have the probability at most $N$ times smaller than the probability of the most probably label for this span
+    \item Check not all rules but only rules yielding subtree labels having non-negligible probability
+\end{itemize}
+\textbf{Course to fine pruning}: parse with a smaller (simpler) grammar and precompute (posterior) probabilities for each spans, and use only the ones with non-negligible probability from the previous grammar
+
+\subsubsection{Parser Evaluation}
+\textbf{Intrinsic evaluation}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Automatic: evaluate against annotation provided by human experts (gold standard) according to some predefined measure
+    \item Manual: ... according to human judgement
+\end{itemize}
+\textbf{Extrinsic Evaluation}: score syntactic representation by comparing how well a system using this representation performs on some task. e.g. use syntactic representation as input ofr a semantic analyzer and compare results of the analyzer using syntax predicted by different parsers
+
+\subsubsection{Automatic Intrinsic Evaluation}
+the usual method, parsers are evaluated against gold standard provided by linguists
+
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Training set: used for estimation of model parameters
+    \item Dev set: used for tuning the model (initial experiments)
+    \item Test set: final experiments to compare against previous work
+\end{itemize}
+
+something else
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Exact match: percentage of trees predicted correctly
+    \item Bracket score: scores how well individual phrases (and their boundaries) are identified (this is the usual method)
+    \item Crossing brackets: percentage of phrases boundaries crossing
+\end{itemize}
+
+\begin{dfn}[Bracket score]{dfn:bracket-score}{}
+    Regards a tree as a collection of brackets: $[\text{min}, \text{max}, C]$
+    The set of brackets predicted by a parser is compared against the set of brackets in the tree annotated by alinguist
+    Precision, recall and F1 are used as scores
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item $\text{Pr} = \displaystyle\frac{\text{number of brackets the parser and annotation agree on}}{\text{number of brackets predicted by the parser}}$
+        \item $\text{Re} = \displaystyle\frac{\text{number of brackets the parser and annotation agree on}}{\text{number of brackets in annotation}}$
+        \item $\text{F1} = \displaystyle\frac{2 \times \text{Pr} \times \text{Re}}{\text{Pr} + \text{Re}}$
+    \end{itemize}
+\end{dfn}
+
+\subsubsection{Treebank PCFG}
+just reading off the treebank
+Weaknesses:
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item They do not encode lexical preferences
+    \item They do not encode structural properties (beyond single rules)
+\end{itemize}
+
+e.g. subject and object NPs are very different
+
+\begin{dfn}[Vertical and Horizontal Markovization]{dfn:markovization}{}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{images/2024-05-10-190351_hyprshot.png}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{images/2024-05-10-190523_hyprshot.png}
+    \end{figure}
+\end{dfn}
+
+
+\subsection{Lexicalisation}
+
+\subsubsection{random lexical things}
+
+Lexicalization: create new categories by adding the lexical head to patterns
+\noindent\rule{0.325\textwidth}{0.2pt}
+
+\textbf{Projectivitiy}: a sentence's dependency parse is projective if every subtree occupies a contiguous span of the sentence - doesn't cross any edges in the flat graph
+
+
+\subsubsection{Pros and Cons}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Adding category-splitting makes the grammar more specific (good)
+    \item Leads to huge grammar blowup and very sparse data (bad)
+    \item Ways to balance these issues
+        \begin{itemize}
+            \setlength\itemsep{0em}
+            \item Complex smoothing schemes (similar to $n$-gram interpolation/backoff)
+            \item More recently, increasing emphasis on automatically learned subcategories
+        \end{itemize}
+\end{itemize}
+
+
+\subsubsection{Head rules}
+
+Assign each rule a ``head'' to inherit from, and propage up the graph
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/2024-05-10-191207_hyprshot.png}
+\end{figure}
+
+
+\subsubsection{Shift reduce}
+it's sure a thing
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/2024-05-10-191702_hyprshot.png}
+\end{figure}
+
+\subsubsection{Critera for parser}
+
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Target representation: constituency or dependency?
+    \item Efficiency? in practice, both runtime and memory use
+    \item Incrementability: parse the whole sentence at one, or obtain partial ltr analyses/expectations
+    \item Retrainable system?
+\end{itemize}
+
+\subsubsection{Graph-based vs Transition-based vs Conversion-based}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item TB: Features in scoring function can look at any part of the stack; no optimality guarantees for search; linear time; (classically) projective only
+    \item GB: Features in scoring function limited by factorization; optimal search within that model; quadratic time; no projectivity constraint
+    \item CB: In terms of accuracy, sometimes best to first constituency-parse, then convert to dependencies. Slower than direct methods, some treebanks are available solely in dependency form
+\end{itemize}
+
+\subsubsection{summary}
+while constituency parses give heierarchically nested phrases, dependency parses represent syntax with trees whose edges connect words in the sentence (no abstract phrases like NP). Edges often labelled with relations like subj. Head rules govern how a lexicalised constituency grammar can be extracted from a treebank, and how a constituency parse can be converted to a dependency parse. Two main paradigms, graph-based and transition-based, with diff kinds of models and search algos
+
+\newpage
+\section{First order logic and semantic stuff}
+
+we can lambda calc our ass off to resolve some syntactic ambiguities. This doesn't resolve \textit{all} semantic ambiguity though - word sense, semantic scope, anaphoric expressions
+
+\subsection{First order Logic}
+\begin{xmp}[First order logic examples]{xmp:fol-ex}{}
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item Fred ate rice: $\exists e(\text{eat}(e, \text{fred}, \text{rice})\wedge e \prec n)$
+        \item Fred ate rice at midnight:
+            \begin{align*}
+                \exists e(\text{eat}(e, \text{fred}, \text{rice}) &\wedge e \prec n \wedge \exists x(\text{with}(e, x)  \\
+                                                                                             &\wedge \text{fork}(x)) \wedge \text{at}(e, \text{midnight}))
+            \end{align*}
+        \item Every dog had a bone
+            \begin{align*}
+                \forall x(\text{dog}(x) &\to \exists y(\text{bone}(y) \wedge \text{have}(x, y))) \\
+                \exists y(\text{bone}(y) &\wedge \forall x(\text{dog}(x) \to \text{have}(x, y)))
+            \end{align*}
+    \end{itemize}
+
+    \noindent\rule{\textwidth}{0.2pt}
+    Ambiguity in semantics: dog bone or ``every man loves a woman''
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item $\forall x(\text{man}(x) \to \exists y(\text{woman}(y) \wedge \exists e(\text{love}(e, x, y) \wedge n \subseteq e)))$
+            
+        ``for every man, there exists a woman where he loves her''
+
+        $\implies$ Every man can love a different woman
+        \item $\exists y(\text{woman}(y) \wedge \forall x(\text{man}(x) \to \exists e(\text{love}(e, x, y) \wedge n \subseteq e)))$
+
+            ``There exists a woman where every man loves her''
+
+            $\implies$ Same woman loved by all men
+    \end{itemize}
+\end{xmp}
+
+\subsubsection{Scope}
+
+The ambiguity arises because \textbf{every} and $a$ each has its own scope:
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Interpretation 1: \textbf{every} has scope over $a$
+    \item Interpretation 2: \textbf{a} has scope over \textbf{every}
+\end{itemize}
+
+Scope is not uniquely determined either by left-to-right order, or position in the parse tree. We therefore need more mechanisms to make sure it's reflected in the LF assigned to S. \textbf{Solution}: semantic underspecification (whatever that is)
+
+\newpage
+\begin{dfn}[Problems, Pros, Cons]{dfn:problems, pros, cons}{}
+    \textbf{Most general question: why is NLP Hard?} tl;dr ambiguity
+    \begin{itemize}[leftmargin=*]
+        \setlength\itemsep{0em}
+        \item Homophones: \textbf{blue} vs \textbf{blew}
+        \item Word senses: \textbf{bank} (finance or river?)
+        \item Part of Speech: \textbf{chair} (noun or verb?)
+        \item Syntactic structure: \textbf{I saw a girl with a telescope}
+        \item Quantifier scope: \textbf{Every child loves some movie}
+        \item Multiple: \textbf{I saw her duck}
+        \item Reference: John dropped the goblet onto the glass table and it broke
+        \item Discourse: The meeting is cancelled. Nicholaas isn't coming to the office today
+    \end{itemize}
+
+    \ruleline{Sentiment Analysis - simple counting of a lexicon}
+    \begin{itemize}[leftmargin=*]
+        \setlength\itemsep{0em}
+        \item Hard to know whether words that seem pos/neg are actually used that way - sarcasm/irony, or maybe mentioning opposing viewpoints
+        \item Opinion words may be describing the subject e.g. a characters actions/attitude
+        \item Some words act as semantic modifiers of other opinion-bearing words/phrases
+    \end{itemize}
+
+    \ruleline{Human Annotation}
+    \begin{itemize}[leftmargin=*]
+        \setlength\itemsep{0em}
+        \item Gray areas for annotation schemes, and we want consistency
+        \item Takes time and resources to get actual people
+        \item Annotation quality problems
+            \vspace{-15pt}
+            \begin{multicols}{2}
+            \begin{itemize}
+                \setlength\itemsep{0em}
+                \item Simple error
+                \item Not reading full context
+                \item Not noticing an erroneous pre-annotation
+                \item Forgetting a detail from the guidelines
+                \item Cases not anticipated by/specified in guidelines
+            \end{itemize}
+            \end{multicols}
+    \end{itemize}
+
+
+\end{dfn}
+
+\lipsum[1-12]
+\end{multicols}
+\end{document}

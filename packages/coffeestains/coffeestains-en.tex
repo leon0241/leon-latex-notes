@@ -1,0 +1,181 @@
+\documentclass[a4paper, 11pt, BCOR = 0 pt, oneside, english]{scrartcl}
+\usepackage{tikz}
+\usepackage{fancyvrb}
+\usetikzlibrary{arrows, shapes}
+\usepackage[light, largesmallcaps]{kpfonts}
+\usepackage{coffeestains}
+\usepackage[useregional]{datetime2}
+\usepackage{gitinfo2}
+\usepackage{scrlayer-scrpage}
+\usepackage{tcolorbox}
+\usepackage{varioref}
+\usepackage[english]{babel}
+\author{Patrick Bideault}
+\usepackage{hyperref}
+\hypersetup{
+	  pdftitle = LaTeX Coffee Stains,
+          colorlinks,
+	  linkcolor={brown!60!black},
+          citecolor={brown!60!black},
+          urlcolor={brown!60!black}
+        }
+\ifoot{\textsf{\textcolor{lightgray}{version \gitRel{} -- \DTMtoday}
+  }}
+\cfoot{}
+\ofoot{\textsf{\thepage}}
+
+\begin{document}
+
+\title{LaTeX Coffee Stains}
+\author{a package by Hanno Rein\\
+  maintained by Patrick Bideault\\
+  \texttt{pb-latex@gmx.fr}\\
+  ~\\
+  \url{https://framagit.org/Pathe/coffeestains}}
+\renewcommand{\today}{version \gitRel{} -- \DTMtoday{}}
+\maketitle
+
+\coffeestainA{0.9}{0.85}{-25}{5cm}{1.3cm}
+\label{stainA}
+\section{Introduction}
+This package provides an essential feature to \LaTeX~that has been missing for
+too long. It adds a coffee stain to your documents. A lot of time can be saved
+by printing stains directly on the page rather than adding them manually. You can
+choose from four different stain types:
+\begin{itemize}
+\item[A.] $270^\circ$ circle stain with two tiny splashes, like \vpageref{stainA}
+  \item[B.] $60^\circ$ circle stain, as \vpageref{stainB}
+  \item[C.] two splashes with light colours, as \vpageref{stainC}
+  \item[D.] and a colourful twin splash, as \vpageref{stainD}
+\end{itemize}
+
+\section{Usage}
+To use the package, simply place the \texttt{coffeestains.sty} file in the directory with all of your 
+other \texttt{.tex} files \textit{or} install it properly (consult your distribution's manual). 
+Then include the following line in the header of your document:
+\begin{verbatim}
+\usepackage{coffeestains}
+\end{verbatim}
+
+\vfill{}
+
+\begin{tcolorbox}
+  The command used for the above coffee stain is
+
+  \verb|\coffeestainA{0.9}{0.85}{-25}{5cm}{1.3cm}|
+\end{tcolorbox}
+\newpage{}
+\coffeestainB{0.7}{1}{-30}{18 pt}{-135 pt}
+\label{stainB}
+
+To place a coffee stain on a page, put one of the following commands in the source code of the relevant page: 
+\begin{verbatim}
+\coffeestainA{alpha}{scale}{angle}{xoff}{yoff}
+\coffeestainB{alpha}{scale}{angle}{xoff}{yoff}
+\coffeestainC{alpha}{scale}{angle}{xoff}{yoff}
+\coffeestainD{alpha}{scale}{angle}{xoff}{yoff}
+\end{verbatim}
+
+\begin{itemize}
+\item \texttt{alpha} is the transparency factor $\in [0,1]$;
+\item \texttt{scale} is the scale factor, and the standard is \texttt{scale}=1;
+\item \texttt{angle} is the angle of the stain, relative to its center. It is in
+  degrees $\in [0,360]$;
+\item the position relative to the centre of the page is given by x and
+  y offsets \texttt{xoff} and \texttt{yoff}. It is advisable to specify
+  a measurement unit.
+\end{itemize}
+
+
+\section{Copyright}
+You can freely distribute this package as we do not believe in imaginary
+property. All stains were self-made, photographed by Hanno Rein, processed with gimp
+and traced with Inkscape. Donations should be made in coffee only to
+\begin{quote}
+Hanno Rein\\
+University of Toronto at Scarborough\\
+DPES Physics and Astrophysics\\
+1265 Military Trail\\
+Toronto, Ontario M1C 1A4\\
+Canada
+\end{quote}
+
+\section{Desired improvements}
+This package obviously helps, but many stains are still manually added to
+documents: latte stains, tea stains, gazpacho stains\dots{} they all should be
+printed in the future.
+
+And our efforts shall go beyond the liquid stains: how many documents get their
+grease stains manually printed in repair shops? The \LaTeX{} community shall
+address this issue and create the adequate tools.
+
+\vfill{}
+
+\begin{tcolorbox}
+  The command used for the above coffee stain is
+
+  \verb|\coffeestainB{0.7}{1}{-30}{18 pt}{-135 pt}|
+\end{tcolorbox}
+\newpage{}
+\section{Change Log}
+\begin{itemize}
+\item April 3, 2009: initial coffee stain by Hanno Rein. This version is still
+  available at \url{http://legacy.hanno-rein.de/hanno-rein.de/archives/349}. In the actual git repository, this version is now tagged 0.1.
+\item November 23, 2010: \texttt{coffee2.sty}, an improved version that works
+  with pdflatex. Thanks to \href{http://www.sultanik.com/}{Evan Sultanik}! This
+  version is now tagged 0.2.
+\item March 24, 2011: \texttt{coffee3}, another improved version that works with
+  pdflatex and allows you to scale, rotate and change the transparency of any
+  coffee stain. Thanks to \href{http://pcmap.unizar.es/~pilar/}{Professor Luis
+    Randez}! This version is now tagged 0.3.
+\item May 25, 2012: \texttt{coffee4}, an improved version by
+  \href{http://nepsweb.co.uk/homeapr/}{Adrian Robson}, who writes: “I find
+  I rarely manage to put my coffee mug down exacly in the middle of my papers.
+  So I have amended coffee3.sty to support off centre coffee stains.” This
+  version is now tagged 0.4.
+\item May 1, 2021: the \texttt{coffeestains} package on a git repository. The
+  rotation of the stains is now relative to the centre of the stain itself, not
+  anymore to the centre of the page. Version 0.5 by Patrick Bideault.
+\end{itemize}
+\coffeestainC{1}{1}{180}{0}{-5 mm}
+\label{stainC}
+
+\section{Eternal mottos}
+
+Coffee is great.
+
+\vspace{5mm}
+
+\noindent
+Coffee will save the world.
+
+\vfill{}
+
+\begin{tcolorbox}
+  The command used for the above coffee stain is
+
+  \verb|\coffeestainC{1}{1}{180}{0}{-5 mm}|
+\end{tcolorbox}
+
+\begin{tcolorbox}
+  The command used for the coffee stain on the next page is
+
+  \verb|\coffeestainD{0.4}{0.5}{90}{3 cm}{4 cm}|
+\end{tcolorbox}
+
+\newpage{}
+\pagestyle{empty}
+~\\
+
+\coffeestainD{0.4}{0.5}{90}{3 cm}{4 cm}
+\label{stainD}
+
+\vfill{}
+\begin{center}
+\textsc{This page was intentionally left blank}
+
+but we had to ruin it by letting you know.
+\end{center}
+
+\vfill{}
+\end{document}
