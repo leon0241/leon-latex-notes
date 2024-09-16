@@ -28,6 +28,7 @@
 % tikz and theorem boxes
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{../../thmboxes_v2}
+\usepackage{../../customs}
 
 
 \usepackage{hyperref} % note: this is the final package
@@ -53,23 +54,131 @@
 \tableofcontents
 \newpage
 
-\section{}
-\subsection{}
+\section{Recapping from previous courses}
+\subsection{Groups, Subgroups, Cosets, oh my!}
 
-% \begin{dfn}[Name]{Label}{Number}
-%     
-% \end{dfn}
-%
-% \begin{thm}[Name]{Label}{Number}
-%     
-% \end{thm}
-%
-% \begin{xmp}[Name]{Label}{Number}
-%     
-% \end{xmp}
-%
-% \begin{rem}[Name]{Label}{Number}
-%     
-% \end{rem}
+\begin{dfn}[Group]{dfn:group}{1.1.1}
+    A \textbf{group} consists of a set $G$ together with a function $G \times G \to G$ which maps an ordered pair $(g, h)\in G \times G$ to an element $g * h \in G$. The following axioms must be satisfied:
+    \begin{enumerate}
+        \item \textbf{Associativity}: $(g * h) * k = g * (h * k)$ for each triple $(g, h, k)\in G \times G \times G$
+        \item \textbf{Identity}: There is an element $e \in G$ s.t. $e * g = g = g * e$ for each element $g\in G$
+        \item \textbf{Inverse}: To each element $g\in G$ there is an element $h\in G$ s.t. $gh = e = hg$ 
+    \end{enumerate}
+\end{dfn}
+
+Every single course seems to have its own definition for a group, this one is a bit more compact than others. FPM had the \textbf{closure} axiom, but that is satisfied by the definition of the function $G \times G \to G$
+
+\textbf{Note on notation}: Usually just write $gh$ instead of $g * h$. Additionally $g^{-1}$ is the inverse of $g$
+
+\begin{dfn}[Subgroups]{dfn:subgroup}{1.3.1}
+    If $H$ is a nonempty subset of $G$, then $H$ is a \textbf{subgroup} provided that
+    \begin{enumerate}
+        \item $hk \in H$ for all $h, k\in H$
+        \item $h^{-1}\in H$ for each $h\in H$
+    \end{enumerate}
+
+    Alternatively, we can say "$H$ is closed under the group operation"
+
+    \textrule{\textbf{Notation}}
+    \vspace{-5pt}
+    \begin{itemize}
+        \item $H \le G$ means $H$ is a subgroup of $G$, whereas $H \subseteq G$ means $H$ is a subset of $G$.
+        \item $H < G$ means that $H$ is a subgroup of $G$ and also $H \ne G$.
+        \item A subgroup is \textbf{proper} if $H \ne G$
+        \item A subgroup is \textbf{non-trivial} if $H \ne \{e\}$
+    \end{itemize}
+\end{dfn}
+
+
+
+\textbf{Note:} $e\in H$ follows from the definition, and associativity follows from the fact that $G$ is a group. Any subgroup $H$ of $G$ is a group using the same product as $G$
+
+\begin{dfn}[Cosets]{dfn:coset}{1.3.6}
+    Let $H \le G$ and let $g\in G$. Then the \textbf{left coset of $H$ determined by $g$} is the set $gH := \{gh : h\in H\}$. $Hg := \{hg : h\in H\}$ is the \textbf{right coset of $H$ determined by $g$}
+
+    \textrule{\textbf{Notation}}
+    \begin{itemize}
+        \item The set of left cosets of $H$ is denoted $G / H$, the set of right cosets is denoted $H \backslash G$.
+        \item The number of elements in a group $G$ is denoted by $\# G$ or $\lvert G \rvert$, and is known as the \textbf{order} of $G$. We will use $\lvert G \rvert$ in this course.
+        \item The number of left cosets of a subgroup $H$ of $G$ is the \textbf{index} of $H$ in $G$ and is denoted by $\lvert  G : H \rvert$ or $[ G : H]$ (That is, $[G : H] = \lvert G / H \rvert$). We will use $[G : H]$ in this course.
+    \end{itemize}
+\end{dfn}
+
+
+\begin{thm}[Lagrange's Theorem]{dfn:lagrange}{1.3.8}
+    Let $H$ be a subgroup of a finite group $G$. Then
+    \[\lvert G \rvert = [G : H] \cdot \lvert H \rvert\]
+
+    \textrule{\textbf{Consequences and Results}}
+    \begin{itemize}
+        \item The order of a subgroup must divide the order of the group, e.g. A group of order $12$ cannot have a subgroup of order $8$
+        \item The converse of Lagrange's Theorem is false, e.g. there is a group of order $12$ that doesn't have a subgroup of order $6$
+    \end{itemize}
+\end{thm}
+
+\begin{thm}[Cauchy's Theorem]{thm:cauchy-thm}{1.3.9}
+    If $G$ is a finite group and $p$ is a prime that divides the order of $G$, then $G$ has a subgroup of order $p$
+\end{thm}
+
+\begin{dfn}[Order of an element]{dfn:order-element}{1.3.10}
+    Let $g\in G$. The \textbf{order} of $g$ is the least positive integer such that $g^{n} = g$ or $\infty$ if such $n$ does not exist. We write the order of $g$ as $o(g)$. Note that $o(g) = \lvert \langle g \rangle \rvert$.
+
+    It thus follows from Lagrange's Theorem that the order of an element of $G$ must divide $\lvert G \rvert$, since if $o(g) = n$ then $\langle g \rangle = \{g, g^{2},\dots, g^{n} = e\}$ is a subgroup of $G$. We also have:
+
+    \longrule{0.08ex}
+
+    \textbf{Corollary 1.3.11}: If $\lvert G \rvert$ is prime, then $G$ is cyclic
+\end{dfn}
+
+\begin{xmp}[Examples of Groups and Subgroups]{xmp:groups}{A}
+    \begin{itemize}
+        \item[1.2.1] $S_{n}$, the \textbf{$n$-th symmetric group} is the group of permutations of $\{1,2,\dots,n\}$. The group operation is composition of fucntions
+        \item[1.2.6] A group $(G, *)$ is \textbf{abelian} if $g * h = h * g$ for all $g, h\in G$
+        \item Let $F$ be a field
+            \begin{itemize}
+                \item The \textbf{general linear group} $GL(n, F)$ is the set of all invertible $n \times n$ matrices
+                \item The \textbf{special linear group} $SL (n, F)$ is the set of all invertible $n \times n$ matrices with determinant equal to $1$
+            \end{itemize}
+        \item[1.3.5] Let $G$ be a group and let $g\in G$. Then $\langle g \rangle := \{g^{n} : n\in \mathbb{Z}\}$ is a subgroup of $G$. It is called the \textbf{subgroup generated by $g$}. If $G = \langle g \rangle$ for some $g\in G$, then $G$ is referred to as \textbf{cyclic}
+        \item[1.3.7] A \textit{subgroup} $H \le G$ is \textbf{normal} if $gH = Hg$ for all $g\in G$. In this case we write $H \unlhd G$
+    \end{itemize}
+\end{xmp}
+
+\newpage
+\subsection{Group Homomorphisms}
+
+\begin{dfn}[Group Homomorphism]{dfn:group-homo}{1.4.1}
+    Let $G, H$ be groups. A function $\phi : G \to H$ such that
+    \[\phi(ab) = \phi(a)\phi(b)\]
+    for all $a, b\in G$ is a \textbf{group homomorphism}
+\end{dfn}
+
+\begin{xmp}[Cyclic Group Homomorphisms]{xmp:cyclic-group}{1.4.2}
+    Let $C_{n}$ be the \textbf{cyclic group of order $n$}. We can think of $C_{n}$ as the set of rotations of an equilaterial $n$-gon. If $g$ is a rotation of $2\pi / n$ radians, then $C_{n} = \{g, g^{2},\dots,g^{n} = e\}$. The group $C_{n}$ is cyclic since all elements are powers of a single element $g$. Then
+    \begin{align*}
+        \phi : \mathbb{Z} &\to C_{n}\\
+        a & \mapsto g^{a}
+    \end{align*}
+    is a group homomorphism. (proof in lecture notes)
+\end{xmp}
+
+\begin{dfn}[Group Isomorphism]{dfn:group-iso}{1.4.3}
+    If $G$ and $H$ are groups and $\psi : G \to H$ is a bijective \textit{group homomorphism}, we say that $\psi$ is a \textbf{group isomorphism} and that $G$ and $H$ are \textbf{isomorphic}
+\end{dfn}
+
+\begin{dfn}[Kernel of a Homomorphism]{dfn:kernel}{1.4.5}
+    Let $\phi : G \to H$ be a group homomorphism. The \textbf{kernel} of $\phi$ is $\{g \to G : \phi(g) = e\}$
+\end{dfn}
+
+\begin{dfn}[Automorphisms]{dfn:automorphisms}{1.4.6}
+    Let $G$ be a group. The st of all isomorphisms $\phi : G \to G$ is also a group. It is called the \textbf{automorphism group of $G$}, and is written $\mathrm{Aut}(G)$. The group operation is composition of functions
+\end{dfn}
+
+\begin{dfn}[Direct Product]{dfn:direct-product}{1.4.8}
+    Let $G, H$ be groups. The \textbf{product} (or \textbf{direct product}) $G \times H$ is a group, with group operation $*$ given by
+    \[(g, h) * (g', h') = (g *_{G} g', h *_{G} h')\]
+
+    \textbf{Note}: we usually just say that $(g, h) * (g', h') = (gg', hh')$
+\end{dfn}
 
 \end{document}

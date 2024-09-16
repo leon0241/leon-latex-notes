@@ -22,12 +22,14 @@
 % \usepackage{preamble}
 \usepackage{multicol}
 \usepackage{lipsum}
+\usepackage{bbding}
 \usepackage{float}
 \usepackage[nodisplayskipstretch]{setspace}
 
 % tikz and theorem boxes
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{../../thmboxes_v2}
+\usepackage{../../customs}
 
 
 \usepackage{hyperref} % note: this is the final package
@@ -53,23 +55,33 @@
 \tableofcontents
 \newpage
 
-\section{}
-\subsection{}
+\section{Introduction to Concurrent Systems}
+\subsection{Lecture 1 - Specification and Implementation}
+The main topics that are covered in this course:
+\begin{itemize}
+    \item Formalising specifications as well as implementations of concurrent systems
+    \item Studying the criteria for deciding whether an implementation meets a specification
+    \item Techniques for proving whether an implementation meets a specification
+\end{itemize}
 
-% \begin{dfn}[Name]{Label}{Number}
-%     
-% \end{dfn}
-%
-% \begin{thm}[Name]{Label}{Number}
-%     
-% \end{thm}
-%
-% \begin{xmp}[Name]{Label}{Number}
-%     
-% \end{xmp}
-%
-% \begin{rem}[Name]{Label}{Number}
-%     
-% \end{rem}
+Both specifications and implementations can be represented by means of \textbf{models of concurrency} such as \textbf{Labelled Transition Systems (LTSs)} or \textbf{Process Graphs}.
+
+\begin{dfn}[Process Graphs and LTSs]{dfn:lts}{}
+    A \textbf{process graph} is a triple $(S, I, \to)$, defined by the following:
+
+    \begin{itemize}
+        \item $S$ is a set of \textbf{states}
+        \item $I\in S$ is an \textbf{initial state}
+        \item $\to$ is a set of triples $(s, a, t)$ with $s, t\in S$, and $a$ an \textbf{action} drawn from a set $\mathtt{Act}$
+    \end{itemize}
+
+    \longrule{0.08ex}
+
+    A \textbf{Labelled Transition System(LTS)} is a \textit{process graph} without the initial state (but sometimes LTS is used as a synonym for process graph i.e. with the initial state)
+
+    \longrule{0.08ex}
+
+    Sometimes we will use process graphs with a fourth component $\checkmark \subseteq S$ indicating the \textbf{final} states of the process: those in the system can terminate successfully
+\end{dfn}
 
 \end{document}
