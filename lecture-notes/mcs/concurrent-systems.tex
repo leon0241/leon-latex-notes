@@ -84,4 +84,61 @@ Both specifications and implementations can be represented by means of \textbf{m
     Sometimes we will use process graphs with a fourth component $\checkmark \subseteq S$ indicating the \textbf{final} states of the process: those in the system can terminate successfully
 \end{dfn}
 
+Specifications and implementations can not only be represented by LTSs or other models of concurrency, but also by \textbf{process algebraic expressions}, where complex processes are built up from constants for atomic actions using operators for \textit{sequential}, \textit{alternative}, and \textit{parallel composition}.
+
+The most popular process algebraic languages from literature are:
+\begin{itemize}
+    \item \textbf{CCS}: the Calculus of Communicating Systems
+    \item \textbf{CSP}: Communicating Sequential Processes
+    \item \textbf{ACP}: the Algebra of Communicating Processing
+\end{itemize}
+
+We will be using ACP, focusing on the \textit{partially synchronous parallel composition} operator
+
+\newpage
+\begin{dfn}[ACP]{dfn:acp}{}
+    The syntax of \textbf{ACP}, the \textbf{Algebra of Communicating Processes} features the operations
+    \begin{enumerate}
+        \item $\epsilon$: \textbf{Successful termination} (only in the optional extension $ACP_{\epsilon}$)
+        \item $\delta$: \textbf{Deadlock}
+        \item $a$: \textbf{Action constant} for each action $a$
+        \item $P\cdot Q$: \textbf{Sequential Composition}
+        \item $P + Q$: \textbf{Summation}, \textbf{Choice}, or \textbf{Alternative Composition}
+        \item $P | | Q$: \textbf{Parallel Composition}
+        \item $\partial_H(P)$: \textbf{Restriction}, or \textbf{Encapsulation} for each set of visible actions $H$
+        \item $\tau_{I}(P)$: \textbf{Abstraction} for each set of visible actions $I$ (only in the optional extension $ACT_{\tau}$)
+    \end{enumerate}
+\end{dfn}
+
+The atomic actions of ACP consist of all $a,b,c$ etc from a given set $A$ of visible actions, and one special action $\tau$, that is meant to be internal and invisible to the outside world.
+
+For each application, a partial \textbf{communication function} $\gamma : A \times A \to A$ is chosen that tells for each two visible actions $a$ and $b$ whether they synchronise (namely if $\gamma$ is defined), and if so, what is result of their synchronisation: $\gamma(a,b)$. The communication function is required to be commutative and associative. The invisible action cannot take part in synchronisations.
+
+
+\newpage
+\begin{dfn}[ACP in terms of Process Graphs]{dfn:acp-process}{}
+    Below is the \textbf{ACP} operations in terms of process graphs extended with a predicate $\checkmark$ that signals successful termination
+
+    \begin{itemize}
+        \item $\epsilon$ is the graph with one state and no transition. This one state is the initial state, and is marked with $\checkmark$
+        \item $\delta$ is the graph with one state and no transitions. This one state is the initial state. It is not makred as terminating.
+        \item $a$ is a graph with two states (and initial and a final one) and one transition between them, labelled $a$. The final state is marked with $\checkmark$
+        \item $G \cdot H$ is the process that first performs $G$, and upon successful termination of $G$ proceed with $H$. 
+        \item $G + H$ is obtained by taking the union of copies of $G$ and $H$ with disjoint sets of states, and adding a fresh state \textbf{root} which will be the initial state of $G + H$. For each transition $I_{G} \xrightarrow{a} s$ in $G$, where $I_{G}$ denotes the initial state of $G$, there will be an extra transition \textbf{root} $\xrightarrow{a} s$, and likewise, for each transition $I_{H} \xrightarrow{a} s$ in $H$, where $I_{H}$ denotes the initial state of $h$, there will be an extra transition \textbf{root} $\xrightarrow{a} s$
+
+            \textbf{root} is labelled with $\checkmark$ if either $I_{G}$ or $I_{H}$ is.
+        \item $G | | H$ is obtained by taking the Cartesian product of the states of $G$ and $H$; that is, the states of $G | H$ are pairs $(s, t)$ with $s$ a state from $G$ and $t$ a state from $H$. The initial state of $G | | H$ is the pair of initial states of $G$ and $H$. A state $(s, t)$ is labelled $\checkmark$ iff both $s$ and $t$ are labelled $\checkmark$. The transitions are
+            \begin{itemize}
+                \item $(s, t) \xrightarrow{a} (s', t)$ whenever $s \xrightarrow{a} s'$ is a transition in $G$
+                \item $(s, t) \xrightarrow{a} (s, t')$ whenever $t \xrightarrow{a} t'$ is a transition in $H$
+                \item $(s, t) \xrightarrow{c} (s', t')$ whenever $s \xrightarrow{a} s$ is a transition in $G$, and $t \xrightarrow{b} t'$ is a transition in $H$, and $\gamma(a,b) = c$
+            \end{itemize}
+        Intuitively, $G | | H$ allows all possible interleavings of actions from $G$ and actions from $H$. In addition, it enables actions to synchronise with their communication partners.
+        \item $\partial_{H}(G)$ is just $G$, but with all actions in $G$ omitted. It is used to remove the remnants of unsuccessful commmunication, so that the synchronisation that is enabled by parallel composition, is enforced.
+        \item $\tau_{I}(G)$ is just $G$, but with all actions in $I$ renamed into $\tau$.
+    \end{itemize}
+\end{dfn}
+
+These semantics are of the \textbf{denotional} kind. Here "denotional" entails that each constant denotes a process graph (up to \textbf{isomorphism}) and each ACP operator denotes an operation on process graphs (creating a new graph out of one or two argument graphs)
+
 \end{document}
