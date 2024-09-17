@@ -1,0 +1,4 @@
+\contentsline {section}{\numberline {1}Intro to Topology}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Why Topology?}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Topological Spaces and Examples}{3}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Examples of Topological Spaces}{3}{subsubsection.1.2.1}%

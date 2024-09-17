@@ -28,6 +28,7 @@
 % tikz and theorem boxes
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{../../thmboxes_v2}
+\usepackage{../../customs}
 
 
 \usepackage{hyperref} % note: this is the final package
@@ -53,23 +54,55 @@
 \tableofcontents
 \newpage
 
-\section{}
-\subsection{}
+\section{Intro to Topology}
+\subsection{Why Topology?}
 
-% \begin{dfn}[Name]{Label}{Number}
-%     
-% \end{dfn}
-%
-% \begin{thm}[Name]{Label}{Number}
-%     
-% \end{thm}
-%
-% \begin{xmp}[Name]{Label}{Number}
-%     
-% \end{xmp}
-%
-% \begin{rem}[Name]{Label}{Number}
-%     
-% \end{rem}
+Topology can appear where we least expect it...
+\begin{itemize}
+    \item Algebraic Number Theory - Next to Euclidean topology, can define other topologies on $\mathbb{Q}$ (related to how often primes divide a number). Extends to Adeles, Langlands programme, etc
+    \item Arithmetic Progressions in the Integers - An arithmetic progression of length $k$ is a set $\{a, a+d,\dots,a+(k-1)d\}$
+        Finding subsets of $\mathbb{N}$ that contain arbitrarily long APs:
+        \begin{itemize}
+            \item $2\mathbb{N}$ or $\mathbb{N}$
+            \item Primes (Green-Tao Theorem, 2007). Green-Tao theorem relies on \textbf{Szemeredi's Theorem}: Any dense enough subset of $\mathbb{N}$ contains arbitrarily long APs
+
+                Furstenburg's idea: Get from $A \subseteq\mathbb{N}$ to $(a_{i}\in \{0, 1\}^{\mathbb{N}})$ with $a_{i} \begin{cases}
+                    1 & i\in A \\
+                    0 & \text{else}
+                \end{cases}$
+
+                Use topological dynamics to study this: A topological dynamical system is a triple of $X$ cpt, $T : X \to X$ continuous, and a probability measure $\mu$ preserved by $T$ (what)
+        \end{itemize}
+\end{itemize}
+
+\subsection{Topological Spaces and Examples}
+\begin{dfn}[Topological Space]{dfn:top-space}{1.1}
+    A \textbf{topological space} is a pair $(X, \mathcal{T})$, where $X$ is a nonempty set, and $\mathcal{T}$ is a collection of subsets of $X$ which satisfies:
+    \begin{enumerate}
+        \item $\emptyset\in \mathcal{T}$ and $X\in \mathcal{T}$
+        \item if $U_{\lambda}\in \mathcal{T}$ for each $\lambda\in A$ (where $A$ is some indexing set), then $\bigcup\limits_{\lambda \in A} U_{\lambda}\in \mathcal{T}$
+        \item If $U_{1}, U_{2}\in \mathcal{T}$, then $U_{1} \cap U_{2}\in \mathcal{T}$
+    \end{enumerate}
+\end{dfn}
+
+\subsubsection{Examples of Topological Spaces}
+\begin{enumerate}
+    \item $\mathbb{R}^{n}$ with the Euclidean Topology - induced by the Euclidean Metric
+    \item For any set $X$, $\mathcal{T} = \mathcal{P}(X)$ (discrete topology)
+    \item For any set $X$, $\mathcal{T} = \{\emptyset, X\}$ (indiscrete topology)
+    \item $X = \{0,1,2\}$ with $\mathcal{T} = \{\emptyset, X, \{0\}, \{0,1\}, \{0,2\}\}$
+    \item $X = \mathbb{R}$ and $U$ open (aka, in $\mathcal{T}$) if $R \backslash U$ is finite or $U = \emptyset$
+\end{enumerate}
+Proof for $5$:
+\begin{enumerate}
+    \item $\emptyset\in \mathcal{T}$, $\emptyset$ is finite $\implies X \in \mathcal{T}$
+    \item Intersections of finite sets are finite
+    \item Unions of finite sets are finite
+\end{enumerate}
+
+reading for next time: 
+section 1.2 def 1.17 - 1.19
+section 1.4
+section 1.1
 
 \end{document}
