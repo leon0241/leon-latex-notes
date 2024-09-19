@@ -42,6 +42,7 @@
 \DeclareMathOperator{\Stab}{Stab}
 \DeclareMathOperator{\send}{send}
 \DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\Int}{int}
 
 \title{General Topology Math Notes}
 \author{Leon Lee}
@@ -100,9 +101,126 @@ Proof for $5$:
     \item Unions of finite sets are finite
 \end{enumerate}
 
-reading for next time: 
-section 1.2 def 1.17 - 1.19
-section 1.4
-section 1.1
+\begin{dfn}[Neighbourhood of a point]{dfn:neighbourhood}{1.5}
+    A \textbf{neighbourhood} of a point $x\in X$ is a subset $N \subseteq X$ s.t. $x\in U \subseteq N$ for some open subset $U \subseteq X$
+\end{dfn}
+
+\begin{dfn}[Metric Space]{dfn:metric-space}{1.8}
+    A \textbf{metric space} $(X, d)$ is a nonempty set $X$ together with a function
+    \[d : X \times X \to \mathbb{R}\]
+    with the following properties:
+    \begin{enumerate}
+        \item $d(x, y) \ge 0$ for all $x, y\in X$ and $d(x, y) = 0$ iff $x = y$
+        \item $d(x, y) = d(y, x)$ for all $x, y \in X$
+        \item $d(x, z) \le d(x, y) + d(y, z)$ for all $x,y,z\in X$
+    \end{enumerate}
+    The function $d$ is called the metric. Point $3$ is called the \textit{triangle inequality}
+
+    \longrule{0.08ex}
+    
+    For any $x\in X$ and any positive real number $r$ the \textbf{open ball} in $X$ with centre $x$ and radius $r$ is defined by
+    \[B(x, r) = \{y\in X | d(x, y) < r\}\]
+    We declare a subset $U$ of $X$ to be \textit{open in the metric topology given by d} iff for each $a\in U$ there is an $r > 0$ such that $B(a, r) \subseteq U$
+
+    \longrule{0.08ex}
+
+    If $(X, \mathcal{T})$ is a topological space, and if $X$ admits a metric whose metric topology is precisely $\mathcal{T}$ we say that $(X, \mathcal{T})$ is \textbf{metrisable}. Thus the euclidean spaces with their usual topologies are metrisable
+\end{dfn}
+
+\begin{dfn}[Subspace Topology]{dfn:subspace-topology}{1.16}
+    Let $(X, \mathcal{T})$ be a topological space, and let $A \subseteq X$ be any subset. Then the \textbf{subspace topology} on $A$ consists of all sets of the form $U \cap A$ where $U \in \mathcal{T}$
+\end{dfn}
+
+\begin{thm}[Topology Lemmas]{thm:topology-lemmas}{B}
+    \begin{itemize}
+        \item[\textbf{1.3}] If $(X, \mathcal{T})$ is a topological space and $U_{1},\dots,U_{n}$ are open sets, then the intersection $\bigcap_{i=1}^{n}u_{i}$ is also open
+        \item[1.6] In order to show that a set $U \subseteq X$ is open, it is enough to show that for every $x\in U$ there is an open set $V$ with $x\in V \subseteq U$
+        \item[1.6] A subset $U$ of $\mathbb{R}^{n}$ is \textit{open for the usual topology} iff for each $a\in U$ there exists an $r > 0$ s.t.
+            \[\lvert x -a \rvert < r \implies x \in U\]
+            The collection of open sets thus defined is called the \textbf{usual topology on $\mathbb{R}^{n}$}. Note that open balls are open sets under this definition
+    \end{itemize}
+\end{thm}
+
+\begin{dfn}[Topology Small Definitions]{dfn:topology-small-defs}{C}
+    \begin{itemize}
+        \item
+    \end{itemize}
+\end{dfn}
+
+
+\newpage
+
+\subsection{Closed sets, Closure, Interior, and Boundary}
+
+\begin{dfn}[Closed Subsets]{dfn:closed-subset}{1.17}
+    Let $(X, \mathcal{T})$ be a topological space. A subset $A \subseteq X$ is \textbf{closed} iff its complement $X \backslash A := \{x \in X \ x\not\in A\}$ is open in $X$
+\end{dfn}
+
+\textbf{Note}: A set being ``closed'' has no connection with ``not being open''
+
+\begin{thm}[]{thm:topology-union-lemmas}{1.19}
+    Let $(X, \mathcal{T})$ be a topological space. Then
+    \begin{enumerate}
+        \item $\emptyset$ and $X$ are closed.
+        \item The union of finitely many closed sets is a closed set
+        \item The intersection of any collection of closed sets is a closed set
+    \end{enumerate}
+\end{thm}
+
+\begin{dfn}[Closure, Interior, Boundary]{dfn:closure-interior-boundary}{1.20}
+    Let $(X, \mathcal{T})$ be a topological space.
+    \begin{enumerate}
+        \item The \textbf{closure} of a subset $A \subseteq X$ is
+            \[\overline{A} := \bigcap\limits_{C \subseteq X \text{closed};\,\, A \subseteq C} C\]
+        \item The \textbf{interior} of a subset $A \subseteq X$ is
+            \[\Int{A} = A^{\circ} := \bigcap\limits_{U \subseteq X \text{open};\,\, U \subseteq A} C\]
+        \item The \textbf{boundary} or \textbf{frontier} of a subset $A \subseteq X$ is
+            \[\partial A := \overline{A} \backslash A^{\circ}\]
+        \item A subset $A$ of $X$ is \textbf{dense} in $X$ iff $\overline{A} = X$
+    \end{enumerate}
+\end{dfn}
+
+\begin{thm}[Closure and Interior of Complement]{thm:complement-properties}{1.22}
+    Let $(X, \mathcal{T})$ be a topological space and $A \subseteq X$. Then
+    \begin{enumerate}
+        \item The closure of the complement is the complement of the interior:
+            \[\overline{X \backslash A} = X \backslash (A^{\circ})\]
+        \item the interior of the complement is the complement of the closure:
+            \[(X \backslash A)^{\circ} = X \backslash \overline{A}\]
+    \end{enumerate}
+\end{thm}
+
+\subsection{Open and closed sets in \texorpdfstring{$\mathbb{R}$}{R} with the usual topology}
+
+\newpage
+\subsection{Hausdorff Spaces}
+\begin{dfn}[Hausdorff Space]{dfn:hausdorff}{1.32}
+    A topological space $(X, \mathcal{T})$ is \textbf{Hausdorff} if for each $x, y\in X$ with $x\ne y$ there exist \textit{disjoint} open sets $U$ and $V$ s.t. $x\in U$ and $y\in V$
+\end{dfn}
+
+If $(X, d)$ is a metric space then it is automatically Hausdorff, so any metrisable space is Hausdorff. The trivial topology on a set with more than one element is not Hausdorff. Not every Hausdorff space is metrisable
+
+Non-Hausdorff spaces are a lot more annoying to work with - for example you can have multiple limits in non-Hausdorff spaces
+
+\begin{dfn}[Convergence of Hausdorff Spaces]{dfn:haursdoff-convergence}{1.33}
+    A sequence $(x_{n})$ of members of a topological space $X$ converges to $x\in X$ if for every open set $U$ containing $x$, there exists an $N$ such that $n\ge N \implies x_{n}\in U$
+\end{dfn}
+
+\begin{thm}[Haussdorf Convergence Uniqueness]{thm:hausdorff-conv-uniqueness}{1.34}
+    Suppose $(X, \mathcal{T})$ is Hausdorff. Then a sequence $(x_{n})$ can converge to at most one limit.
+\end{thm}
+
+Being Hausdorff is what's called a \textit{topological property}, which means whether or not it is true in a particular case depends only on the open sets of the space in question.
+
+In contrast, the property of \textit{completeness} of a metric space is not a topological property as there exist sets upon which one can put two distinct metrics, one complete and one not, yet for which the metric topologies coincide
+
+\begin{dfn}[Cauchy Sequences]{dfn:cauchy-seq}{1.36}
+    Let $(X, d)$ be a metric space
+    \begin{enumerate}
+        \item A \textbf{Cauchy Sequence} is a sequence $(x_{n})$ with each $x_{n}\in X$ with the property that for each $\epsilon > 0$, there exists an $N$ s.t. $m,n\ge N \implies d(x_{m}, x_{n}) < \epsilon$
+        \item $(X, d)$ is \textbf{complete} if every Cauchy Sequence converges
+    \end{enumerate}
+\end{dfn}
+
 
 \end{document}

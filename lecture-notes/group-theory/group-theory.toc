@@ -1,3 +1,3 @@
 \contentsline {section}{\numberline {1}Recapping from previous courses}{3}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Groups, Subgroups, Cosets, oh my!}{3}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Group Homomorphisms}{5}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.2}Group Homomorphisms}{6}{subsection.1.2}%

@@ -19,6 +19,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{amsthm}
 % \usepackage{preamble}
 \usepackage{multicol}
 \usepackage{lipsum}
@@ -104,6 +105,11 @@ Every single course seems to have its own definition for a group, this one is a 
     \end{itemize}
 \end{dfn}
 
+\begin{thm}[Coset Lemmas]{thm:coset-lemmas}{}
+    If $H$ if finite, $\lvert gH \rvert = \lvert H \rvert$
+
+    If $g_{1}H \cap g_{2}H \ne \emptyset$, then $g_{1}H = g_{2}H$
+\end{thm}
 
 \begin{thm}[Lagrange's Theorem]{dfn:lagrange}{1.3.8}
     Let $H$ be a subgroup of a finite group $G$. Then
@@ -115,6 +121,16 @@ Every single course seems to have its own definition for a group, this one is a 
         \item The converse of Lagrange's Theorem is false, e.g. there is a group of order $12$ that doesn't have a subgroup of order $6$
     \end{itemize}
 \end{thm}
+
+\textbf{Example}: If $G = S_{3}$ and $H = \{e, (12)\}$, what are the left cosets of $H$?
+
+\[H = eH = \{e, (12)\} \quad \{(23), (132)\} \quad \{(13), (123)\}\] 
+
+\textbf{Example}: If $H \triangle G$ then the left cosets are right cosets
+
+\begin{proof}
+    \[gH = \{gh : h\in H\} = \{(ghg^{-1})g : h\in H\} \subseteq Hg\]
+\end{proof}
 
 \begin{thm}[Cauchy's Theorem]{thm:cauchy-thm}{1.3.9}
     If $G$ is a finite group and $p$ is a prime that divides the order of $G$, then $G$ has a subgroup of order $p$
@@ -156,6 +172,25 @@ Every single course seems to have its own definition for a group, this one is a 
     for all $a, b\in G$ is a \textbf{group homomorphism}
 \end{dfn}
 
+\textbf{Example}: If $\phi$ is a group homomorphism then $\phi(e) = e$
+\begin{proof}
+    \begin{align*}
+        \phi(e \cdot e) &= \phi(e) \phi(e) \\
+        \implies \phi(e) &= \phi(e) \phi(e) \\
+        \text{\color{red}{multiply by $\phi(e)^{-1}$}} \quad e &= \phi(e)^{-1}\phi(e)\phi(e) = \phi(e)
+    \end{align*}
+\end{proof}
+
+\textbf{Example}: Show $\phi(g^{-1}) = \phi(g)^{-1}$
+\begin{proof}
+    \begin{align*}
+        \phi(g \cdot g^{-1}) &= \phi(g)\phi(g^{-1})\\
+        \phi(e) &= \phi(g)\phi(g^{-1})\\
+        \text{\color{red}{Multiply by $\phi(g)^{-1}$}} \quad \phi(g)^{-1} \phi(e) &= \phi(g)^{-1} \phi(g) \phi(g^{-1}) \\
+        \phi(g)^{-1} &= \phi(g^{-1})
+    \end{align*}
+\end{proof}
+
 \begin{xmp}[Cyclic Group Homomorphisms]{xmp:cyclic-group}{1.4.2}
     Let $C_{n}$ be the \textbf{cyclic group of order $n$}. We can think of $C_{n}$ as the set of rotations of an equilaterial $n$-gon. If $g$ is a rotation of $2\pi / n$ radians, then $C_{n} = \{g, g^{2},\dots,g^{n} = e\}$. The group $C_{n}$ is cyclic since all elements are powers of a single element $g$. Then
     \begin{align*}
@@ -176,6 +211,11 @@ Every single course seems to have its own definition for a group, this one is a 
 \begin{dfn}[Automorphisms]{dfn:automorphisms}{1.4.6}
     Let $G$ be a group. The st of all isomorphisms $\phi : G \to G$ is also a group. It is called the \textbf{automorphism group of $G$}, and is written $\mathrm{Aut}(G)$. The group operation is composition of functions
 \end{dfn}
+
+\textbf{Example}: What is $\mathrm{Aut}(C_{3})$?
+\begin{proof}
+    \[C_{3} = \{e, r, r^{-1}\}\]
+\end{proof}
 
 \begin{dfn}[Direct Product]{dfn:direct-product}{1.4.8}
     Let $G, H$ be groups. The \textbf{product} (or \textbf{direct product}) $G \times H$ is a group, with group operation $*$ given by

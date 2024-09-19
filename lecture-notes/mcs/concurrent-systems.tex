@@ -110,6 +110,8 @@ We will be using ACP, focusing on the \textit{partially synchronous parallel com
     \end{enumerate}
 \end{dfn}
 
+\textbf{Note}: There is also left and right parallel operators, $P $
+
 The atomic actions of ACP consist of all $a,b,c$ etc from a given set $A$ of visible actions, and one special action $\tau$, that is meant to be internal and invisible to the outside world.
 
 For each application, a partial \textbf{communication function} $\gamma : A \times A \to A$ is chosen that tells for each two visible actions $a$ and $b$ whether they synchronise (namely if $\gamma$ is defined), and if so, what is result of their synchronisation: $\gamma(a,b)$. The communication function is required to be commutative and associative. The invisible action cannot take part in synchronisations.
@@ -140,6 +142,12 @@ For each application, a partial \textbf{communication function} $\gamma : A \tim
 \end{dfn}
 
 These semantics are of the \textbf{denotional} kind. Here "denotional" entails that each constant denotes a process graph (up to \textbf{isomorphism}) and each ACP operator denotes an operation on process graphs (creating a new graph out of one or two argument graphs)
+
+\subsection{Deadlocks}
+Deadlock means that a process isn't ``terminated'' but it cannot go further
+
+ACP-$\epsilon$ is an alternative modele where non-finishing states can also terminate
+
 
 \newpage
 
