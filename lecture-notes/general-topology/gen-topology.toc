@@ -1,7 +1,11 @@
 \contentsline {section}{\numberline {1}Intro to Topology}{3}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Why Topology?}{3}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Topological Spaces and Examples}{3}{subsection.1.2}%
-\contentsline {subsubsection}{\numberline {1.2.1}Examples of Topological Spaces}{3}{subsubsection.1.2.1}%
-\contentsline {subsection}{\numberline {1.3}Closed sets, Closure, Interior, and Boundary}{6}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Open and closed sets in $\mathbb {R}$ with the usual topology}{6}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}Hausdorff Spaces}{7}{subsection.1.5}%
+\contentsline {subsubsection}{\numberline {1.2.2}Examples of Topological Spaces}{3}{subsubsection.1.2.2}%
+\contentsline {subsubsection}{\numberline {1.2.5}Examples of Metric Spaces}{4}{subsubsection.1.2.5}%
+\contentsline {subsubsection}{\numberline {1.2.6}Topologies on Metric spaces}{4}{subsubsection.1.2.6}%
+\contentsline {subsection}{\numberline {1.3}Closed sets, Closure, Interior, and Boundary}{7}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.2}Examples of open and closed sets}{7}{subsubsection.1.3.2}%
+\contentsline {subsubsection}{\numberline {1.3.4}Topological proof that there are infinitely many primes (Furstenberg)}{7}{subsubsection.1.3.4}%
+\contentsline {subsection}{\numberline {1.4}Open and closed sets in $\mathbb {R}$ with the usual topology}{8}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Hausdorff Spaces}{9}{subsection.1.5}%
