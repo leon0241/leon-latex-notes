@@ -239,7 +239,8 @@ $\bigcup_{i\in I} A_{i}$ is not necessarily closed.
         \item All open sets are infinite.
     \end{enumerate}
 
-    \longrule{0.08ex}
+    \vspace{-3pt}
+    \noindent\rule{\textwidth}{0.08ex}\vspace{-8pt}
 
     \begin{enumerate}
         \item $S(a,b) = \mathbb{Z} \backslash \bigcup_{i=1}^{a - 1} S(a, b-1)$
@@ -251,16 +252,21 @@ $\bigcup_{i\in I} A_{i}$ is not necessarily closed.
     If there were only finitely many primes, right hand side would be closed
 \end{proof}
 
+\newpage
+\subsection{Closure and stuff}
+
 \begin{dfn}[Closure, Interior, Boundary]{dfn:closure-interior-boundary}{}
     Let $(X, \mathcal{T})$ be a topological space.
     \begin{enumerate}
-        \item The \textbf{closure} of a subset $A \subseteq X$ is
-            \[\overline{A} := \bigcap\limits_{C \subseteq X \text{closed};\,\, A \subseteq C} C\]
-        \item The \textbf{interior} of a subset $A \subseteq X$ is
-            \[\Int{A} = A^{\circ} := \bigcap\limits_{U \subseteq X \text{open};\,\, U \subseteq A} C\]
+        \item The \textbf{closure} of a subset $A \subseteq X$ is the smallest closed set such that $A \subseteq \overline{A}$.
+            \[\overline{A} := \bigcap\limits_{\substack{C \subseteq X \text{closed} \\ A \subseteq C}} C\]
+        \item The (open) \textbf{interior} of a subset $A \subseteq X$ is the biggest open set $U$ contained in $A$
+            \[\Int{A} = A^{\circ} := \bigcap\limits_{\substack{U \subseteq X \text{open} \\ U \subseteq A}} C\]
         \item The \textbf{boundary} or \textbf{frontier} of a subset $A \subseteq X$ is
             \[\partial A := \overline{A} \backslash A^{\circ}\]
         \item A subset $A$ of $X$ is \textbf{dense} in $X$ iff $\overline{A} = X$
+
+            E.g.: $\mathbb{Q} \subseteq \mathbb{R}$ with the Euclidean topology
     \end{enumerate}
 \end{dfn}
 
@@ -274,17 +280,44 @@ $\bigcup_{i\in I} A_{i}$ is not necessarily closed.
     \end{enumerate}
 \end{thm}
 
-\subsection{Open and closed sets in \texorpdfstring{$\mathbb{R}$}{R} with the usual topology}
+\begin{dfn}[Limits in Topological spaces]{dfn:topological-limits}{}
+    A sequence $(x_{n})$ converges to $x\in X$ if $\forall U$ open with $x\in U$, $\exists N$ s.t. $x_{n}\in U$ for all $n \ge N$
+\end{dfn}
+
+\begin{dfn}[Limit Set]{dfn:limitset}{}
+    $\overline{A}$ can be thought as the set of limits. Formally define the \textbf{Limit Set} as
+    \[A' = \{x\in X : \forall U \subseteq X, x\in U, \text{ open } \exists a\in A,\,\text{s.t. } a\in U\}\]
+\end{dfn}
+
+But, limits in general are much worse behaved in topological spaces, e.g. no unique limit point
+
+\textbf{Example}: a topological space $X$ and a sequence $(x_{n})$ which does not have a unique limit (i.e. $\exists x\ne y$ s.t. $x_{n} \to x$ and $x_{n}\to y$ in the sense defined): Nontrivial $X$ with the indiscrete topology $\{\emptyset, X\}$
+
 
 \newpage
 \subsection{Hausdorff Spaces}
+
+\textbf{Problem}: Non-unique limits are nasty :(
+
 \begin{dfn}[Hausdorff Space]{dfn:hausdorff}{}
     A topological space $(X, \mathcal{T})$ is \textbf{Hausdorff} if for each $x, y\in X$ with $x\ne y$ there exist \textit{disjoint} open sets $U$ and $V$ s.t. $x\in U$ and $y\in V$
+
+    This space has \textit{unique limits}!
 \end{dfn}
 
 If $(X, d)$ is a metric space then it is automatically Hausdorff, so any metrisable space is Hausdorff. The trivial topology on a set with more than one element is not Hausdorff. Not every Hausdorff space is metrisable
 
 Non-Hausdorff spaces are a lot more annoying to work with - for example you can have multiple limits in non-Hausdorff spaces
+
+\begin{thm}[Open sets on \texorpdfstring{$\mathbb{R}$}{R} with Euclidean Topology]{thm:r-open-sets}{}
+    \begin{itemize}
+        \item A set $U$ is open iff there are open intervals $I_{j}$ s.t.
+    \[U = \bigcup_{j=1}^{\infty} I_{j}\]
+    \item A set $A$ is closed iff there are $F_{j}$ (union of two closed intervals) s.t.
+        \[A = \bigcap_{j = 1}^{\infty} F_{j}\]
+    \end{itemize}
+\end{thm}
+
 
 \begin{dfn}[Convergence of Hausdorff Spaces]{dfn:haursdoff-convergence}{}
     A sequence $(x_{n})$ of members of a topological space $X$ converges to $x\in X$ if for every open set $U$ containing $x$, there exists an $N$ such that $n\ge N \implies x_{n}\in U$
@@ -298,6 +331,7 @@ Being Hausdorff is what's called a \textit{topological property}, which means wh
 
 In contrast, the property of \textit{completeness} of a metric space is not a topological property as there exist sets upon which one can put two distinct metrics, one complete and one not, yet for which the metric topologies coincide
 
+\newpage
 \begin{dfn}[Cauchy Sequences]{dfn:cauchy-seq}{}
     Let $(X, d)$ be a metric space
     \begin{enumerate}
@@ -306,5 +340,16 @@ In contrast, the property of \textit{completeness} of a metric space is not a to
     \end{enumerate}
 \end{dfn}
 
+\textbf{Caveat}: In general, this does not have to converge to an $x\in X$
+
+\textbf{Example}: $\mathbb{Q}$ with the Euclidean metric. 
+
+\begin{dfn}[Complete Space]{dfn:complete-space}{}
+    A metric space is called \textbf{complete} if all Cauchy sequences converge to a point in the space
+\end{dfn}
+
+\begin{dfn}[Closure in Metric Spaces]{dfn:metric-closure}{}
+    Let $(X, d)$ be a complete metric space and $A \subseteq X$. A point $x$ is in the \textbf{closure} of $A \iff \exists x_{i} \to x$ with $x\in A$
+\end{dfn}
 
 \end{document}

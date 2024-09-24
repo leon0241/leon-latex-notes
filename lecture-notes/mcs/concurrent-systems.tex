@@ -148,10 +148,33 @@ Deadlock means that a process isn't ``terminated'' but it cannot go further
 
 ACP-$\epsilon$ is an alternative modele where non-finishing states can also terminate
 
-
 \newpage
 
+\subsection{Relations}
 
+\begin{dfn}[Equivalence Relation]{dfn:equivalence-relation}{}
+    A binary relation $\sim$ on a set $D$ is an \textbf{equivalence relation} if it is
+    \begin{itemize}
+        \item \textbf{Reflexive}: $p \sim p$ for all processes $p\in D$
+        \item \textbf{Symmetric}: If $p \sim q$ then $q \sim p$
+        \item \textbf{Transitive}: If $p \sim q$ and $q \sim r$ then $p \sim r$
+    \end{itemize}
+\end{dfn}
 
+\begin{dfn}[Equivalence Class]{dfn:equiv-class}{}
+    If $\sim$ is an equivalence relation on $D$, and $p$ is in $D$, then $[p]_{\sim}$ denotes the set of all processes in $D$ that are equivalent to $p$. Such a set is called an \textbf{equivalent class}
+
+    \longrule{0.08ex}
+
+    Equivalence relations that split a set into more sets are called \textbf{finer} or \textbf{more discriminating}, and equivalence relations that split a set into less sets are called \textbf{coarser} or \textbf{more identifying}. The finest relation is $e$ - every element has its own class, and the coarsest relation is the universal equivalence - everything is equivalent to itself
+\end{dfn}
+
+\begin{dfn}[Equivalence Relation]{dfn:preorder}{}
+    A binary relation on a set $D$ is a \textbf{preorder} ($\sqsubseteq$) if it is
+    \begin{itemize}
+        \item \textbf{Reflexive}: $p \sqsubseteq p$ for all processes $p\in D$
+        \item \textbf{Transitive}: If $p \sqsubseteq q$ and $q \sqsubseteq r$ then $p \sqsubseteq r$
+    \end{itemize}
+\end{dfn}
 
 \end{document}

@@ -1,0 +1,454 @@
+% inspired by
+% https://texblog.org/2015/09/30/fancy-boxes-for-theorem-lemma-and-proof-with-mdframed/
+% https://tex.stackexchange.com/questions/391443/new-theorem-environment-with-manual-theorem-number
+
+% notation: 
+
+% types: thm (theorem) / def (definition) / xmp (examples) / rem (remark)
+% \begin{thm}[Name]{Label}{Reference Number}
+
+% \end{thm}
+
+
+% ============= %
+%    THEOREM    %
+% ============= %
+
+% \newcounter{thm}[section]
+% \setcounter{thm}{0}
+
+% set up new environment theorem with 3 arguments
+% [Name]{reference}{number}
+\newenvironment{thm}[3][]{%
+    % Argument 3 is a custom number
+    \ifstrempty{#3}
+        {
+            % If argument 3 isn't provided, then use the subsubsection numbering
+            \refstepcounter{subsubsection}
+            \newcommand{\thethm}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+        }
+        {
+            \newcommand{\thethm}{#3}
+        }
+    % Set up bounding boxes in tikz
+    \ifstrempty{#1}%
+        {
+            % if there is no argument 1 (Title), then just a box
+            \mdfsetup{
+                frametitle={
+                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                    \node[anchor=east,rectangle,fill=blue!20]
+                    {\strut Theorem \thethm};
+                }
+            }
+        }
+        {
+            % if there is argument 1 (Title), then add title
+            \mdfsetup{
+                frametitle={
+                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                    \node[anchor=east,rectangle,fill=blue!20]
+                    {\strut Theorem \thethm:~#1};
+                }
+            }
+        }
+
+    % set bounds of box
+    \mdfsetup{innertopmargin=5pt,linecolor=blue!20,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+    }
+    % start environment with label as argument 2
+    \begin{mdframed}[backgroundcolor=blue!2]\relax\raggedright%
+        \label{#2}
+    }
+{\end{mdframed}}
+
+
+
+% ================ %
+%    DEFINITION    %
+% ================ %
+
+% \newcounter{thm}[section]
+% \setcounter{thm}{0}
+
+% set up new environment theorem with 3 arguments
+% [Name]{reference}{number}
+\newenvironment{dfn}[3][]{%
+    % Argument 3 is a custom number
+    \ifstrempty{#3}
+        {
+            % If argument 3 isn't provided, then use the subsubsection numbering
+            \refstepcounter{subsubsection}
+            \newcommand{\thedfn}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+        }
+        {
+            \newcommand{\thedfn}{#3}
+        }
+    % Set up bounding boxes in tikz
+    \ifstrempty{#1}%
+        {
+            % if there is no argument 1 (Title), then just a box
+            \mdfsetup{
+                frametitle={
+                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                    \node[anchor=east,rectangle,fill=green!20]
+                    {\strut Definition \thedfn};
+                }
+            }
+        }
+        {
+            % if there is argument 1 (Title), then add title
+            \mdfsetup{
+                frametitle={
+                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                    \node[anchor=east,rectangle,fill=green!20]
+                    {\strut Definition \thedfn:~#1};
+                }
+            }
+        }
+
+    % set bounds of box
+    \mdfsetup{innertopmargin=5pt,linecolor=green!20,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+    }
+    % start environment with label as argument 2
+    \begin{mdframed}[backgroundcolor=green!2]\relax\raggedright%
+        \label{#2}
+    }
+{\end{mdframed}}
+
+
+
+% ============= %
+%    EXAMPLE    %
+% ============= %
+
+% \newcounter{thm}[section]
+% \setcounter{thm}{0}
+
+% set up new environment theorem with 3 arguments
+% [Name]{reference}{number}
+\newenvironment{xmp}[3][]{%
+    % Argument 3 is a custom number
+    \ifstrempty{#3}
+        {
+            % If argument 3 isn't provided, then use the subsubsection numbering
+            \refstepcounter{subsubsection}
+            \newcommand{\thexmp}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+        }
+        {
+            \newcommand{\thexmp}{#3}
+        }
+    % Set up bounding boxes in tikz
+    \ifstrempty{#1}%
+        {
+            % if there is no argument 1 (Title), then just a box
+            \mdfsetup{
+                frametitle={
+                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                    \node[anchor=east,rectangle,fill=yellow!40]
+                    {\strut Example \thexmp};
+                }
+            }
+        }
+        {
+            % if there is argument 1 (Title), then add title
+            \mdfsetup{
+                frametitle={
+                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                    \node[anchor=east,rectangle,fill=yellow!40]
+                    {\strut Example \thexmp:~#1};
+                }
+            }
+        }
+
+    % set bounds of box
+    \mdfsetup{innertopmargin=5pt,linecolor=yellow!40,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+    }
+    % start environment with label as argument 2
+    \begin{mdframed}[backgroundcolor=yellow!2]\relax\raggedright%
+        \label{#2}
+    }
+{\end{mdframed}}
+
+
+% ============ %
+%    REMARK    %
+% ============ %
+
+% \newcounter{thm}[section]
+% \setcounter{thm}{0}
+
+% set up new environment theorem with 3 arguments
+% [Name]{reference}{number}
+\newenvironment{rem}[3][]{%
+    % Argument 3 is a custom number
+    \ifstrempty{#3}
+        {
+            % If argument 3 isn't provided, then use the subsubsection numbering
+            \refstepcounter{subsubsection}
+            \newcommand{\therem}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+        }
+        {
+            \newcommand{\therem}{#3}
+        }
+    % Set up bounding boxes in tikz
+    \ifstrempty{#1}%
+        {
+            % if there is no argument 1 (Title), then just a box
+            \mdfsetup{
+                frametitle={
+                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                    \node[anchor=east,rectangle,fill=red!30]
+                    {\strut Remark \therem};
+                }
+            }
+        }
+        {
+            % if there is argument 1 (Title), then add title
+            \mdfsetup{
+                frametitle={
+                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                    \node[anchor=east,rectangle,fill=red!30]
+                    {\strut Remark \therem:~#1};
+                }
+            }
+        }
+
+    % set bounds of box
+    \mdfsetup{innertopmargin=5pt,linecolor=red!30,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+    }
+    % start environment with label as argument 2
+    \begin{mdframed}[backgroundcolor=red!2]\relax\raggedright%
+        \label{#2}
+    }
+{\end{mdframed}}
+
+
+
+% ============ %
+%    RECALL    %
+% ============ %
+
+% \newcounter{thm}[section]
+% \setcounter{thm}{0}
+
+% set up new environment theorem with 3 arguments
+% [Name]{reference}{number}
+\newenvironment{rcl}[3][]{%
+    % Argument 3 is a custom number
+    \ifstrempty{#3}
+        {
+            % If argument 3 isn't provided, then use the subsubsection numbering
+            \refstepcounter{subsubsection}
+            \newcommand{\thercl}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+        }
+        {
+            \newcommand{\thercl}{#3}
+        }
+    % Set up bounding boxes in tikz
+    \ifstrempty{#1}%
+        {
+            % if there is no argument 1 (Title), then just a box
+            \mdfsetup{
+                frametitle={
+                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                    \node[anchor=east,rectangle,fill=magenta!30]
+                    {\strut Recall \thercl};
+                }
+            }
+        }
+        {
+            % if there is argument 1 (Title), then add title
+            \mdfsetup{
+                frametitle={
+                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                    \node[anchor=east,rectangle,fill=magenta!30]
+                    {\strut Recall \thercl:~#1};
+                }
+            }
+        }
+
+    % set bounds of box
+    \mdfsetup{innertopmargin=5pt,linecolor=magenta!20,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+    }
+    % start environment with label as argument 2
+    \begin{mdframed}[backgroundcolor=magenta!2]\relax\raggedright%
+        \label{#2}
+    }
+{\end{mdframed}}
+
+
+% =========== %
+%    LEMMA    %
+% =========== %
+
+% set up new environment theorem with 3 arguments
+% [Name]{reference}{number}
+\newenvironment{lma}[3][]{%
+    % Argument 3 is a custom number
+    \ifstrempty{#3}
+        {
+            % If argument 3 isn't provided, then use the subsubsection numbering
+            \refstepcounter{subsubsection}
+            \newcommand{\thelma}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+        }
+        {
+            \newcommand{\thelma}{#3}
+        }
+    % Set up bounding boxes in tikz
+    \ifstrempty{#1}%
+        {
+            % if there is no argument 1 (Title), then just a box
+            \mdfsetup{
+                frametitle={
+                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                    \node[anchor=east,rectangle,fill=orange!30]
+                    {\strut Lemma \thelma};
+                }
+            }
+        }
+        {
+            % if there is argument 1 (Title), then add title
+            \mdfsetup{
+                frametitle={
+                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                    \node[anchor=east,rectangle,fill=orange!30]
+                    {\strut Lemma \thelma:~#1};
+                }
+            }
+        }
+
+    % set bounds of box
+    \mdfsetup{innertopmargin=5pt,linecolor=orange!20,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+    }
+    % start environment with label as argument 2
+    \begin{mdframed}[backgroundcolor=orange!2]\relax\raggedright%
+        \label{#2}
+    }
+{\end{mdframed}}
+
+
+
+% ============== %
+%    QUESTION    %
+% ============== %
+
+% set up new environment theorem with 3 arguments
+% [Name]{reference}{number}
+\newenvironment{lma}[3][]{%
+    % Argument 3 is a custom number
+    \ifstrempty{#3}
+        {
+            % If argument 3 isn't provided, then use the subsubsection numbering
+            \refstepcounter{subsubsection}
+            \newcommand{\thelma}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+        }
+        {
+            \newcommand{\thelma}{#3}
+        }
+    % Set up bounding boxes in tikz
+    \ifstrempty{#1}%
+        {
+            % if there is no argument 1 (Title), then just a box
+            \mdfsetup{
+                frametitle={
+                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                    \node[anchor=east,rectangle,fill=orange!30]
+                    {\strut Lemma \thelma};
+                }
+            }
+        }
+        {
+            % if there is argument 1 (Title), then add title
+            \mdfsetup{
+                frametitle={
+                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                    \node[anchor=east,rectangle,fill=orange!30]
+                    {\strut Lemma \thelma:~#1};
+                }
+            }
+        }
+
+    % set bounds of box
+    \mdfsetup{innertopmargin=5pt,linecolor=orange!20,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+    }
+    % start environment with label as argument 2
+    \begin{mdframed}[backgroundcolor=orange!2]\relax\raggedright%
+        \label{#2}
+    }
+{\end{mdframed}}
+
+
+
+
+
+% ======================== %
+%    (small) DEFINITION    %
+% ======================== %
+
+% \newcounter{thm}[section]
+% \setcounter{thm}{0}
+
+% set up new environment theorem with 3 arguments
+% [Name]{reference}{number}
+\newenvironment{sdfn}[3][]{%
+    % Argument 3 is a custom number
+    \ifstrempty{#3}
+        {
+            % If argument 3 isn't provided, then use the subsubsection numbering
+            \refstepcounter{subsubsection}
+            \newcommand{\thesdfn}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+        }
+        {
+            \newcommand{\thesdfn}{#3}
+        }
+    % Set up bounding boxes in tikz
+    \ifstrempty{#1}%
+        {
+            % if there is no argument 1 (Title), then just a box
+            \mdfsetup{
+                frametitle={
+                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                    \node[anchor=east,rectangle,fill=green!20]
+                    {\strut Def \thesdfn};
+                }
+            }
+        }
+        {
+            % if there is argument 1 (Title), then add title
+            \mdfsetup{
+                frametitle={
+                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                    \node[anchor=east,rectangle,fill=green!20]
+                    {\strut Def \thesdfn:~#1};
+                }
+            }
+        }
+
+    % set bounds of box
+    \mdfsetup{innertopmargin=5pt,linecolor=green!20,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+    }
+    % start environment with label as argument 2
+    \begin{mdframed}[backgroundcolor=green!2]\relax\raggedright%
+        \label{#2}
+    }
+{\end{mdframed}}
+
+
+

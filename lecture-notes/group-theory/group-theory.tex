@@ -43,6 +43,7 @@
 \DeclareMathOperator{\Stab}{Stab}
 \DeclareMathOperator{\send}{send}
 \DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\can}{can}
 
 \title{Group Theory Notes}
 \author{Leon Lee}
@@ -162,6 +163,89 @@ Every single course seems to have its own definition for a group, this one is a 
         \item[1.3.7] A \textit{subgroup} $H \le G$ is \textbf{normal} if $gH = Hg$ for all $g\in G$. In this case we write $H \unlhd G$
     \end{itemize}
 \end{xmp}
+
+\subsubsection{something...}
+Let $H \le G$ ($H$ a subgroup of $G$). TFAE
+\begin{enumerate}
+    \item $\forall g\in G, h\in H,\, ghg^{-1}\in H$ 
+    \item $gHg^{-1} = H,\,\forall g\in G$
+    \item $gH = Hg,\, \forall g\in G$
+\end{enumerate}
+
+\begin{proof}
+    Show conditions imply each other
+    \begin{itemize}
+        \item $(2) \implies (1)$ immediately
+        \item $(1)$ says that $gHg^{-1} \subseteq H,\,\forall g\in G$
+
+            WTS: $gHg^{-1} \supseteq H$
+            \[H = g^{-1}gHg^{-1}g \subseteq g^{-1}Hg,\,\forall g\in G\]
+            replacing $g$ with $g^{-1}$:
+            \[H \subseteq gHg^{-1},\,\forall g\in G\]
+        \item $(2) \implies (3)$: Multiply by $g$ on right
+
+            $(3) \implies (2)$: Multiply by $g^{-1}$ on left
+    \end{itemize}
+\end{proof}
+
+\begin{thm}[lma]{thm:kernel-something}{}
+    If $\phi : G \to H$ is a group homomorphism, then $\ker \phi \triangle G$
+\end{thm}
+
+\begin{proof}
+    If $\phi(x) = e$, then
+    \[\phi(gxg^{-1}) = \phi(g)\phi(x)\phi(g) = \phi(g) e \phi(g)^{-1} = \phi(g)\phi(g)^{-1} = e\]
+\end{proof}
+
+\begin{thm}[]{thm:normal-thm}{}
+    If $N \le G$, then $N \triangleleft G$ iff $\exists \phi : G \to H$ s.t. $N = \ker \phi$
+\end{thm}
+
+\begin{proof}
+    $\ker \phi$ is normal by the above lemma
+    
+    Conversely, given $N \triangleleft G$, we can form \textbf{factor group} $G /N$
+
+    $G /N$ is the set of left cosets, with:
+    \begin{itemize}
+        \item Identity $N$
+        \item Inverses $(gN)^{-1} : g^{-1}N$
+        \item Multiplication: $(g_{1}N) \times (g_{2}N) := g_{1}g_{2}N$
+    \end{itemize}
+
+    Check that the group is well defined
+    \begin{enumerate}
+        \item If $gN = g'N$, then $g' = gx$ for $x\in N$
+            \[(g'N)^{-1} = (g')^{-1}N = (gx)^{-1}N = x^{-1}g^{-1}N\]
+            As $N$ is normal, $gx^{-1}g^{-1}\in N$
+            \[\implies x^{-1}g^{-1}N = g^{-1}(gx^{-1}g^{-1})N = g^{-1}N,\,\text{ as } gx^{-1}g^{-1}\in N\]
+        \item If $g_{1}N = g_{1}'N$ and $g_{2}N = g_{2}'N$, then $g_{1}' = g_{1}x$ and $g_{2}' = g_{2}y$ for $x, y\in N$
+            \[(g_{1}'N) \times (g_{2}'N) = g_{1}'g_{2}'N = g_{1}x g_{2}yN\]
+            \[yN = N,\quad\text{so}\quad g_{1}xg_{2}y_{1}N = g_{1}xg_{2}N\]
+            $N$ normal, so $g_{2}^{-1} x g_{2}\in N \implies g_{1}g_{2}(g_{2}^{-1}xg_{2})N = g_{1}g_{2}N$
+    \end{enumerate}
+
+    then prove the group axioms lol
+
+    \vspace{-3pt}
+    \noindent\rule{\textwidth}{0.08ex}
+
+    Define $\can : G \to G / N$, $g \mapsto gN$. This is a group homomorphism
+    \[\can(g_{1}g_{2}) = g_{1}g_{2}N = (g_{1}N) * (g_{2}N) = \can(g_{1}) * \can(g_{2})\]
+
+    Kernel of can
+    \[\ker(\can) = \{g\in G : \can(g) = N\} = \{g\in G : gN = N\} = N\]
+\end{proof}
+
+\textbf{Example}: If $G = \mathbb{Z}$, (normal) subgroups are $n\mathbb{Z} = \{ni : i \in \mathbb{Z}\}$. What is $\mathbb{Z} /n \mathbb{Z}$?
+
+Elements of $\mathbb{Z} / n\mathbb{Z}$ are cosets, $i + n\mathbb{Z}$ (fixed $i$), or $\{x\in \mathbb{Z} : x \equiv i \mod n\}$
+
+Group operation: $(i + n\mathbb{Z}) * (j + n\mathbb{Z}) = i + j + n\mathbb{Z} = i + j \mod n$
+
+soooo... $\mathbb{Z} /n\mathbb{Z} \cong \mathbb{Z} /n$, where elements are $n\mathbb{Z}, 1 + n\mathbb{Z},\dots,n-1 + n\mathbb{Z}$
+
+lol !
 
 \newpage
 \subsection{Group Homomorphisms}
