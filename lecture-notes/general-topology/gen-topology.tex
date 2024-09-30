@@ -20,6 +20,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{centernot}
 % \usepackage{preamble}
 \usepackage{multicol}
 \usepackage{lipsum}
@@ -44,6 +45,7 @@
 \DeclareMathOperator{\send}{send}
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\id}{id}
 
 \title{General Topology Math Notes}
 \author{Leon Lee}
@@ -351,5 +353,96 @@ In contrast, the property of \textit{completeness} of a metric space is not a to
 \begin{dfn}[Closure in Metric Spaces]{dfn:metric-closure}{}
     Let $(X, d)$ be a complete metric space and $A \subseteq X$. A point $x$ is in the \textbf{closure} of $A \iff \exists x_{i} \to x$ with $x\in A$
 \end{dfn}
+
+\subsection{Continuity}
+
+\begin{dfn}[Continuity]{dfn:continuity}{}
+    Let $(X, \mathcal{T}), (Y, \tilde{\mathcal{T}})$ be topological spaces and $f : X \to Y$. $f$ is \textbf{continuous} if for all $U\in \tilde{\mathcal{T}}$, $f^{-1}(U)\in \mathcal{T}$
+
+    \longrule{0.08ex}
+
+    Equivalently:
+    \begin{itemize}
+        \item $U \subseteq Y$ open $\implies$ $f^{-1}(U)$ open
+        \item $A \subseteq Y$ closed $\implies$ $f^{-1}(A)$ closed
+    \end{itemize}
+\end{dfn}
+
+\subsubsection{Why take \texorpdfstring{$f^{-1}$}{f-1}}
+
+\textbf{Properties}: For $U, V$ sets in $Y$,
+\begin{itemize}
+    \item $f^{-1}(U \cap V) = f^{-1}(U) \cap f^{-1}(U)$
+    \item $f^{-1}(U^{C}) = f^{-1}(U)^{C}$
+    \item $f^{-1}(U \cup U) = f^{-1}(U) \cup f^{-1}(U)$
+\end{itemize}
+
+\textbf{Example}: $\mathbb{R}$ with Euclidean Topology
+\begin{proof}
+    "Proof" that $[-1, 1]$ is open:
+
+    Take $[-1, 1]$ with the subspace topology $\mathcal{T} := \{[-1, 1] \cap U,\, U \subseteq \mathbb{R} \text{ open}\}$
+
+    Embedding $i : [-1, 1] \to \mathbb{R},\,x \mapsto x$ is continuous
+
+    $[-1, 1]$ open in subspace topology
+
+    $i$ cont $\implies$ $i([-1,1])$ is open $\quad$ \textcolor{red}{this is actually wrong! $U$ open $\centernot\implies f(U)$ open}
+
+    But $i([-1, 1]) = [-1, 1] \subseteq \mathbb{R}$
+\end{proof}
+
+\begin{dfn}[Formal Definition of Continuity]{dfn:e-d-continuity}{}
+    Let $(X, d), (Y, d)$ be metric spaces with the metric topology. $f: X \to Y$ is continuous as above iff $\forall x\in X$, $\forall \epsilon > 0$, $\exists \delta > 0$ s.t.
+    \[d(x, y) < \delta \implies d(f(x), f(y)) < \epsilon\]
+\end{dfn}
+
+\begin{proof} \textbf{$\implies$ Direction}
+
+    Recall: $U$ open in metric topology if $\forall x\in U,\, \exists r > 0$ s.t. $B_{r}(x) \subseteq U$, where $B_{r}(x) = \{y \in X : d(x, y) < r\}$
+
+    $\implies$ Let $x\in X$ be given, $\epsilon > 0$. Let $y = f(x)\in Y,\, U = B_{\epsilon}(y) = \{y'\in Y : \tilde{d}(y, y') < \epsilon\}$.
+
+    $f$ cont $\implies$ $f^{-1}(U)$ is open. $x\in f^{-1}(U) \implies \exists \delta > 0$ s.t. $B_{\delta}(x) \subseteq f^{-1}(U)$
+
+    $\implies \forall x'\in X$ s.t. $d(x, x') < \delta$, $x'\in B_{\delta}(x) \subseteq f^{-1}(U)$.
+
+    $\implies f(x') \in B_{\delta}(f(x)) \implies \tilde{d}(f(x), f(x')) < \epsilon$
+
+    \textbf{$\impliedby$ Direction}
+
+    Let $U$ be open in $Y$. WTS: $f^{-1}(U)$ is open.
+
+    So it is enough to show for all $x\in f^{-1}(U)$, $\exists \delta > 0$ s.t. $B_{\delta}(x) \subseteq f^{-1}(U)$.
+
+    Let $x$ be given, $y := f(x)\in U$. $U$ open $\implies \exists \epsilon > 0$ s.t. $B_{\epsilon}(y) \subseteq U$.
+
+    By assumption $\exists \delta > 0$ s.t.
+    \[d(x', x) < \delta \implies \tilde{d}(f(x'), f(x)) < \epsilon\]
+    But, $\{y' : d(y', f(x)) < \epsilon\} \subseteq U$ by choice of $\epsilon$.
+
+    $\implies B_{\delta}(x) \subseteq f^{-1}(U)$
+\end{proof}
+
+\subsection{Homeomorphisms}
+
+\begin{dfn}[Homeomorphism]{dfn:homoemorphism}{}
+    Let $(X, \mathcal{T}), (Y, \tilde{\mathcal{T}})$ be topological spaces. A function $f : X \to Y$ is a \textbf{homeomorphism} (or \textbf{bi-continuous}) if $f$ is bijective, $f$ is continuous, and $f^{-1} Y \to X$ is continuous
+\end{dfn}
+
+A ``Great goal of Topology'': Understand topological spaces up to homeomorphisms.
+
+Say that a property of a topological space is a \textbf{topological invariant} if it is preserved by homeomorphism. Example: Being Hausdorff
+
+\begin{xmp}[Examples of Homeomorphisms]{xmp:homoeomorphism}{}
+    \begin{itemize}
+        \item $(X, \mathcal{T})$ topological space, $\id : X \to X,\,x \mapsto x$
+        \item $X = \mathbb{R}^{n},\, A : \mathbb{R}^{n} \to \mathbb{R}^{n}$ Linear + Invertible
+        \item Example which is \textbf{not} a homeomorphism:
+            \[f : \underbrace{\mathbb{R}}_{\text{metric topology}} \to \underbrace{\mathbb{R}}_{\text{indiscrete topology $\{\emptyset, \mathbb{R}\}$}},\,x \mapsto x\]
+
+            Problem: $f^{-1}$ is not continuous
+    \end{itemize}
+\end{xmp}
 
 \end{document}

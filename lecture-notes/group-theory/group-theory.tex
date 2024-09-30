@@ -164,7 +164,69 @@ Every single course seems to have its own definition for a group, this one is a 
     \end{itemize}
 \end{xmp}
 
-\subsubsection{something...}
+
+\newpage
+\subsection{Group Homomorphisms}
+
+\begin{dfn}[Group Homomorphism]{dfn:group-homo}{1.4.1}
+    Let $G, H$ be groups. A function $\phi : G \to H$ such that
+    \[\phi(ab) = \phi(a)\phi(b)\]
+    for all $a, b\in G$ is a \textbf{group homomorphism}
+\end{dfn}
+
+\textbf{Example}: If $\phi$ is a group homomorphism then $\phi(e) = e$
+\begin{proof}
+    \begin{align*}
+        \phi(e \cdot e) &= \phi(e) \phi(e) \\
+        \implies \phi(e) &= \phi(e) \phi(e) \\
+        \text{\color{red}{multiply by $\phi(e)^{-1}$}} \quad e &= \phi(e)^{-1}\phi(e)\phi(e) = \phi(e)
+    \end{align*}
+\end{proof}
+
+\textbf{Example}: Show $\phi(g^{-1}) = \phi(g)^{-1}$
+\begin{proof}
+    \begin{align*}
+        \phi(g \cdot g^{-1}) &= \phi(g)\phi(g^{-1})\\
+        \phi(e) &= \phi(g)\phi(g^{-1})\\
+        \text{\color{red}{Multiply by $\phi(g)^{-1}$}} \quad \phi(g)^{-1} \phi(e) &= \phi(g)^{-1} \phi(g) \phi(g^{-1}) \\
+        \phi(g)^{-1} &= \phi(g^{-1})
+    \end{align*}
+\end{proof}
+
+\begin{xmp}[Cyclic Group Homomorphisms]{xmp:cyclic-group}{1.4.2}
+    Let $C_{n}$ be the \textbf{cyclic group of order $n$}. We can think of $C_{n}$ as the set of rotations of an equilaterial $n$-gon. If $g$ is a rotation of $2\pi / n$ radians, then $C_{n} = \{g, g^{2},\dots,g^{n} = e\}$. The group $C_{n}$ is cyclic since all elements are powers of a single element $g$. Then
+    \begin{align*}
+        \phi : \mathbb{Z} &\to C_{n}\\
+        a & \mapsto g^{a}
+    \end{align*}
+    is a group homomorphism. (proof in lecture notes)
+\end{xmp}
+
+\begin{dfn}[Group Isomorphism]{dfn:group-iso}{1.4.3}
+    If $G$ and $H$ are groups and $\psi : G \to H$ is a bijective \textit{group homomorphism}, we say that $\psi$ is a \textbf{group isomorphism} and that $G$ and $H$ are \textbf{isomorphic}
+\end{dfn}
+
+\begin{dfn}[Kernel of a Homomorphism]{dfn:kernel}{1.4.5}
+    Let $\phi : G \to H$ be a group homomorphism. The \textbf{kernel} of $\phi$ is $\{g \to G : \phi(g) = e\}$
+\end{dfn}
+
+\begin{dfn}[Automorphisms]{dfn:automorphisms}{1.4.6}
+    Let $G$ be a group. The st of all isomorphisms $\phi : G \to G$ is also a group. It is called the \textbf{automorphism group of $G$}, and is written $\mathrm{Aut}(G)$. The group operation is composition of functions
+\end{dfn}
+
+\textbf{Example}: What is $\mathrm{Aut}(C_{3})$?
+\begin{proof}
+    \[C_{3} = \{e, r, r^{-1}\}\]
+\end{proof}
+
+\begin{dfn}[Direct Product]{dfn:direct-product}{1.4.8}
+    Let $G, H$ be groups. The \textbf{product} (or \textbf{direct product}) $G \times H$ is a group, with group operation $*$ given by
+    \[(g, h) * (g', h') = (g *_{G} g', h *_{G} h')\]
+
+    \textbf{Note}: we usually just say that $(g, h) * (g', h') = (gg', hh')$
+\end{dfn}
+
+\subsection{something...}
 Let $H \le G$ ($H$ a subgroup of $G$). TFAE
 \begin{enumerate}
     \item $\forall g\in G, h\in H,\, ghg^{-1}\in H$ 
@@ -248,64 +310,46 @@ soooo... $\mathbb{Z} /n\mathbb{Z} \cong \mathbb{Z} /n$, where elements are $n\ma
 lol !
 
 \newpage
-\subsection{Group Homomorphisms}
+\subsection{First Isomorphism Theorem and stuff}
+\begin{thm}[First Isomorphism Theorem]{thm:fit}{}
+    If $\theta : G \to H$ a group homomorphism, then:
+    \begin{itemize}
+        \item $\Ima(\theta)$ is a subgroup of $H$
+        \item $\ker(\theta) \triangleleft G$
+        \item $\exists$ a group homomorphism $\overline{\theta} : \theta / \ker \theta \tilde{\to} \Ima(\theta)$
+    \end{itemize}
+\end{thm}
 
-\begin{dfn}[Group Homomorphism]{dfn:group-homo}{1.4.1}
-    Let $G, H$ be groups. A function $\phi : G \to H$ such that
-    \[\phi(ab) = \phi(a)\phi(b)\]
-    for all $a, b\in G$ is a \textbf{group homomorphism}
-\end{dfn}
-
-\textbf{Example}: If $\phi$ is a group homomorphism then $\phi(e) = e$
 \begin{proof}
-    \begin{align*}
-        \phi(e \cdot e) &= \phi(e) \phi(e) \\
-        \implies \phi(e) &= \phi(e) \phi(e) \\
-        \text{\color{red}{multiply by $\phi(e)^{-1}$}} \quad e &= \phi(e)^{-1}\phi(e)\phi(e) = \phi(e)
-    \end{align*}
+    Prove all 3
+
+    \begin{itemize}
+        \item If $\theta(a),\theta(b)\in \Ima(\theta)$, then $\theta(a)\theta(b) = \theta(ab)\in \Ima(\theta)$
+
+            $\theta(a)^{-1} = \theta(a^{-1})\in \Ima(\theta)$ thererfore $\Ima (\theta) \le H$
+        \item Already $\ker(\theta) \triangleleft G$
+        \item Let $N = \ker(\theta)$. Then $gN \in G /N$. Define $\overline{\theta}(gN) := \theta(g)$.
+
+            Well defined: If $gN = g'N$, then $g' = gx$ for some $x\in N$. Then $\overline{\theta}(g'N) = \theta(g') = \theta(g)\theta(x) = \theta(g)e$ as $x\in \ker(\theta) = \theta(g)$
+    \end{itemize}
 \end{proof}
 
-\textbf{Example}: Show $\phi(g^{-1}) = \phi(g)^{-1}$
-\begin{proof}
-    \begin{align*}
-        \phi(g \cdot g^{-1}) &= \phi(g)\phi(g^{-1})\\
-        \phi(e) &= \phi(g)\phi(g^{-1})\\
-        \text{\color{red}{Multiply by $\phi(g)^{-1}$}} \quad \phi(g)^{-1} \phi(e) &= \phi(g)^{-1} \phi(g) \phi(g^{-1}) \\
-        \phi(g)^{-1} &= \phi(g^{-1})
-    \end{align*}
-\end{proof}
+Ex 1: $\theta : \mathbb{C} \to \mathbb{C} \ \{0\}$
 
-\begin{xmp}[Cyclic Group Homomorphisms]{xmp:cyclic-group}{1.4.2}
-    Let $C_{n}$ be the \textbf{cyclic group of order $n$}. We can think of $C_{n}$ as the set of rotations of an equilaterial $n$-gon. If $g$ is a rotation of $2\pi / n$ radians, then $C_{n} = \{g, g^{2},\dots,g^{n} = e\}$. The group $C_{n}$ is cyclic since all elements are powers of a single element $g$. Then
-    \begin{align*}
-        \phi : \mathbb{Z} &\to C_{n}\\
-        a & \mapsto g^{a}
-    \end{align*}
-    is a group homomorphism. (proof in lecture notes)
-\end{xmp}
+\begin{thm}[Property of Finite Groups]{thm:finite-group-props}{}
+    Lf $N \triangleleft$, then for any homomorphism $\psi : G \to H$ with $N \subseteq \ker \psi$. $\exists$ a group homomorphism $\overline{\psi} : G /N \to H$ s.t. $\psi = \overline{\psi} \circ \can$
 
-\begin{dfn}[Group Isomorphism]{dfn:group-iso}{1.4.3}
-    If $G$ and $H$ are groups and $\psi : G \to H$ is a bijective \textit{group homomorphism}, we say that $\psi$ is a \textbf{group isomorphism} and that $G$ and $H$ are \textbf{isomorphic}
-\end{dfn}
+    \longrule{0.08ex}
 
-\begin{dfn}[Kernel of a Homomorphism]{dfn:kernel}{1.4.5}
-    Let $\phi : G \to H$ be a group homomorphism. The \textbf{kernel} of $\phi$ is $\{g \to G : \phi(g) = e\}$
-\end{dfn}
+    If $\psi : G \to K$ surjective...? $\psi : G \to H$ with $\ker \phi \subseteq \ker \psi$, then $@\exists$ $\overline{\psi} : K \to H$ s.t. $\psi = \overline{\psi} \circ \psi$
+\end{thm}
 
-\begin{dfn}[Automorphisms]{dfn:automorphisms}{1.4.6}
-    Let $G$ be a group. The st of all isomorphisms $\phi : G \to G$ is also a group. It is called the \textbf{automorphism group of $G$}, and is written $\mathrm{Aut}(G)$. The group operation is composition of functions
-\end{dfn}
-
-\textbf{Example}: What is $\mathrm{Aut}(C_{3})$?
-\begin{proof}
-    \[C_{3} = \{e, r, r^{-1}\}\]
-\end{proof}
-
-\begin{dfn}[Direct Product]{dfn:direct-product}{1.4.8}
-    Let $G, H$ be groups. The \textbf{product} (or \textbf{direct product}) $G \times H$ is a group, with group operation $*$ given by
-    \[(g, h) * (g', h') = (g *_{G} g', h *_{G} h')\]
-
-    \textbf{Note}: we usually just say that $(g, h) * (g', h') = (gg', hh')$
-\end{dfn}
+\begin{thm}[]{thm:fit-props}{}
+    Let $N \triangleleft G$, $\can$ $G \to G /N$ and $K \le G /N$
+    \begin{enumerate}
+        \item $\can^{-1}(K) \le G$ with $\can^{-1}(K) \ge N$
+        \item $\can^{-1}(K) \triangleleft G \iff K \triangleleft G /N$
+    \end{enumerate}
+\end{thm}
 
 \end{document}

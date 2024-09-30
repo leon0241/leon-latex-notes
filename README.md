@@ -38,7 +38,7 @@ Text
 \end{type}
 ```
 Where:
-- type can be of type: `thm` (theorem) / `dfn` (definition) / `xmp` (examples) / `rem` (remark) / `lma` (lemma) / `rcl` (recall - previous course def)
+- type can be of type: `thm` (theorem) / `lma` (lemma) / `dfn` (definition) / `xmp` (examples) / `rem` (remark) / `qst` (Question)
 
 `title` is what will be displayed after the type / number
 - `reference` is for cross-document hyperlinking
