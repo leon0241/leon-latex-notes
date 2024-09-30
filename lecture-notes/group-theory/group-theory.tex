@@ -416,4 +416,47 @@ some working out
     \[(G /N) / (H /N) \cong G /H\]
 \end{thm}
 
+\begin{proof}
+    $N \le \ker(\can_{H}) = H$, so $\exists !\pi$ by universal property of finite groups
+
+    $\pi$ is surjective, because $\can_{H}$ is isomorphic
+
+    Explicitly,
+    \[\pi(gN) = gH = \pi(\can_{N}(g)) = \can_{H}(g)\]
+
+    $\ker(\pi) = \{gN : g\in H\} = H /N$
+
+    By the first isomorphism theorem,
+    \[G /H \equiv (G /N) / \ker\pi = (G /N) / (H /N)\]
+\end{proof}
+
+\newpage
+\begin{thm}[Second Isormorphism Theorem]{thm:second-iso-thm}{}
+    Let $N \triangleleft G$ and $H \le G$. Then:
+    \begin{enumerate}
+        \item $HN \le G$
+        \item $N \triangleleft HN$
+        \item $H \cap N \triangleleft H$
+        \item $HN /N \equiv H / H\cap N$
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}
+    Let $h_{1}h_{2} \in H,\,n_{1}n_{2}\in N$
+    \begin{enumerate}
+        \item \[h_{1}n_{1} h_{2}n_{2} = \underbrace{h_{1}h_{2}}_{\in H}\underbrace{(h_{2}^{-1}n_{1}h_{2})n_{2}}_{\in N}\]
+            \[(hn)^{-1} = n^{-1}h^{-1} = \underbrace{h^{-1}}_{\in H}\underbrace{(hn^{-1}h^{-1})}_{\in N}\]
+    \item If $g\in HN$ and $n\in N$, then $g \cap g^{-1}\in n$ since $g\in G$
+    \item If $x\in H \cap N$ and $h\in H$, then $\underbrace{hxh^{-1}}_{N \triangleleft G}\in N$ and $\underbrace{hxh^{-1}}_{x\in H} \in H$
+    \item Need $\theta : H \to HN /N$ surjective with kernel $H \cap N$
+
+        Let $\theta(h) = hN$ i.e. $\theta = \can_{N}\big\rvert_{H}$, $(\can_{N} G \to G /N)$
+
+        Surjective: cosets of $HN /N$ are cosets $xN$ for $x\in HN$ but $x = hn$, $h\in H$, $n\in N$ and $xN = hN = \theta(n)$ (wtf?)
+
+        Kernel: If $\theta(h) = e,\, kN = N$, so $h\in N$, so $\ker \theta = H \cap N$, so by the correspondence theorem,
+        \[H / H \cap N \subseteq HN /N\]
+    \end{enumerate}
+\end{proof}
+
 \end{document}
