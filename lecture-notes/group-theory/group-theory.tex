@@ -28,7 +28,7 @@
 
 % tikz and theorem boxes
 \usepackage[framemethod=TikZ]{mdframed}
-\usepackage{../../thmboxes_v2}
+\usepackage{../../thmboxes_v3}
 \usepackage{../../customs}
 
 
@@ -350,6 +350,70 @@ Ex 1: $\theta : \mathbb{C} \to \mathbb{C} \ \{0\}$
         \item $\can^{-1}(K) \le G$ with $\can^{-1}(K) \ge N$
         \item $\can^{-1}(K) \triangleleft G \iff K \triangleleft G /N$
     \end{enumerate}
+\end{thm}
+
+\begin{thm}[Correspondence Theorem]{thm:correspondence}{}
+    If we have $N \triangleleft G$, $\can : G \to G /N$, then:
+    \begin{itemize}
+        \item $H \to \can(H)$ gives a bijection between subgroups of $G /N$ and subgroups of $G$ containing $N$
+        \item Normal subgroups of $G$ containing $N$ $\iff$ normal subgroups of $G /N$
+        \item If $A, B \le G$ with $N \subseteq A, N \subseteq B$, then: $A \subseteq B$ iff $\can(A) \subseteq \can(B)$
+    \end{itemize}
+\end{thm}
+
+\begin{proof}
+    Given $K < G /N$, $can^{-1} K \le G$ and $N \le \can^{-1} K$ since $\can^{-1}\{e\} = N$
+
+    Last prop says: $\can^{-1} \can (H) = H$ when $N \subseteq H$
+    \[\can(\can^{-1} K) \subseteq K\]
+
+    Since $\can$ is surjective, $\forall x\in K$, $\exists y\in G$ s.t. $\can(y) = x$. Then $y\in can^{-1} K$ so $x\in \can(\can^{-1} K)$
+
+    So, $\can(\can^{-1} K) = K$ since $\can$ is surjective. Therefore $\can$ \& $\can^{-1}$ give a bijection
+    \[\{\text{subgroups of $G$ containing $N$}\} \leftrightsquigarrow \{\text{subgroups of $G /N$}\}\]
+\end{proof}
+
+\subsubsection{Recap of last time (which is not on the notes)}
+
+\begin{itemize}
+    \item $\can(H) \triangleleft G /N \iff H \triangleleft G$
+    \item If $A \subseteq B$ then $\can(K) \subseteq \can (B)$
+
+        Conversely, if $\can(A) \subseteq \can(B)$ then $\can^{-1} \underbrace{\can}_{=A}(A) \subseteq can^{-1} \underbrace{\can}_{=B} (B)$
+\end{itemize}
+
+\begin{dfn}[Random notation]{dfn:exts-notation}{}
+    \begin{itemize}
+        \item $\exists$: There exists
+        \item $\exists!$: There exists unique
+        \item $\not \exists$: there does not exist
+    \end{itemize}
+\end{dfn}
+
+\textbf{Example}: Let $G = \mathbb{Z}$, $N = 12\mathbb{Z}$.
+\begin{itemize}
+    \item Find all subgroups of $G$ containing $N$ and all inclusions between them
+    \item Find all subgroups of $\mathbb{Z} / 12$
+\end{itemize}
+
+\textbf{Solution}: Subgroups of $\mathbb{Z}$ are of the form $n\mathbb{Z}$. $m\mathbb{Z} \subseteq n\mathbb{Z}$ iff $n / m$
+
+Therefore, subgroups of $\mathbb{Z}$ containing $12\mathbb{Z}$ are:
+\[\mathbb{Z},\,2\mathbb{Z},\,3\mathbb{Z},\,4\mathbb{Z},\,6\mathbb{Z},\,12\mathbb{Z}\]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{images/subgroup-diagram.jpg}
+\end{figure}
+
+\textbf{Subgroups of $\mathbb{Z} / 12\mathbb{Z}$}:
+\[12\mathbb{Z} /12\mathbb{Z},\, \mathbb{Z} / 12\mathbb{Z},\,2\mathbb{Z} /12\mathbb{Z},\,3\mathbb{Z} /12\mathbb{Z},\,4\mathbb{Z} /12\mathbb{Z},\,6\mathbb{Z} /12\mathbb{Z}\]
+
+some working out
+
+\begin{thm}[Third Isomorphism Theorem]{thm:third-iso-thm}{}
+    If $N, H \triangleleft G$, with $N \le H$, then
+    \[(G /N) / (H /N) \cong G /H\]
 \end{thm}
 
 \end{document}
