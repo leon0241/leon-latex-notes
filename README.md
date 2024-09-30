@@ -27,23 +27,7 @@ LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and M
 
 ### Theorem Boxes
 
-Theorem boxes are created using `thmboxes_v2.sty`. They are inspired by
-- [Fancy boxes with mdframed](https://texblog.org/2015/09/30/fancy-boxes-for-theorem-lemma-and-proof-with-mdframed/)
-- [Manual Theorem numbering](https://tex.stackexchange.com/questions/391443/new-theorem-environment-with-manual-theorem-number)
-
-Boxes are created using the following syntax
-```
-\begin{type}[title]{reference}{number}
-Text
-\end{type}
-```
-Where:
-- type can be of type: `thm` (theorem) / `lma` (lemma) / `dfn` (definition) / `xmp` (examples) / `rem` (remark) / `qst` (Question)
-
-`title` is what will be displayed after the type / number
-- `reference` is for cross-document hyperlinking
-- `number` is a custom text if filled. Does not have to be numeric
-    - If not filled, the number follows an automatic scheme on `\subsubsection` level
+Theorem boxes are created using `thmboxes_v2.sty`. Go to [leon-latex-thmboxes](https://github.com/leon0241/leon-latex-thmboxes) for more details
 
 The files `thmboxes_col` and `thmboxes_white` are legacy from the FPM notes. `thmboxes_v2.sty`  might be cross compatible but I'm not going to try. 
 
