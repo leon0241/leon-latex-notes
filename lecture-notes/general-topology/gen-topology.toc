@@ -9,6 +9,11 @@
 \contentsline {subsubsection}{\numberline {1.3.4}Topological proof that there are infinitely many primes (Furstenberg)}{7}{subsubsection.1.3.4}%
 \contentsline {subsection}{\numberline {1.4}Closure and stuff}{8}{subsection.1.4}%
 \contentsline {subsection}{\numberline {1.5}Hausdorff Spaces}{9}{subsection.1.5}%
-\contentsline {subsection}{\numberline {1.6}Continuity}{10}{subsection.1.6}%
-\contentsline {subsubsection}{\numberline {1.6.2}Why take $f^{-1}$}{10}{subsubsection.1.6.2}%
-\contentsline {subsection}{\numberline {1.7}Homeomorphisms}{11}{subsection.1.7}%
+\contentsline {section}{\numberline {2}Continuity}{10}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Continuity}{10}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Why take $f^{-1}$}{10}{subsubsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.2}Homeomorphisms}{11}{subsection.2.2}%
+\contentsline {section}{\numberline {3}The Clark Barwick Era}{13}{section.3}%
+\contentsline {subsection}{\numberline {3.1}More top}{13}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Something weird}{13}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.4}Topologising the above thing}{13}{subsubsection.3.1.4}%

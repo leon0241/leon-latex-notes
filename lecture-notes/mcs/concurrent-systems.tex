@@ -15,6 +15,16 @@
     % margin=70pt
 }
 
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -178,5 +188,8 @@ ACP-$\epsilon$ is an alternative modele where non-finishing states can also term
 \end{dfn}
 
 \subsection{Reactive Systems}
+
+\newpage
+\section{CCS}
 
 \end{document}

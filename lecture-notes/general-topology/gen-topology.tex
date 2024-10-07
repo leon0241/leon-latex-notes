@@ -15,12 +15,25 @@
     % margin=70pt
 }
 
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{stmaryrd}
 \usepackage{amsthm}
 \usepackage{centernot}
+\usepackage{mathtools}
 % \usepackage{preamble}
 \usepackage{multicol}
 \usepackage{lipsum}
@@ -29,7 +42,7 @@
 
 % tikz and theorem boxes
 \usepackage[framemethod=TikZ]{mdframed}
-\usepackage{../../thmboxes_v2}
+\usepackage{../../thmboxes_v3}
 \usepackage{../../customs}
 
 
@@ -329,7 +342,7 @@ Non-Hausdorff spaces are a lot more annoying to work with - for example you can 
     Suppose $(X, \mathcal{T})$ is Hausdorff. Then a sequence $(x_{n})$ can converge to at most one limit.
 \end{thm}
 
-Being Hausdorff is what's called a \textit{topological property}, which means whether or not it is true in a particular case depends only on the open sets of the space in question.
+Being Hausdorff is what's called a \textit{topological property}, which means whether it is true in a particular case depends only on the open sets of the space in question.
 
 In contrast, the property of \textit{completeness} of a metric space is not a topological property as there exist sets upon which one can put two distinct metrics, one complete and one not, yet for which the metric topologies coincide
 
@@ -353,6 +366,8 @@ In contrast, the property of \textit{completeness} of a metric space is not a to
 \begin{dfn}[Closure in Metric Spaces]{dfn:metric-closure}{}
     Let $(X, d)$ be a complete metric space and $A \subseteq X$. A point $x$ is in the \textbf{closure} of $A \iff \exists x_{i} \to x$ with $x\in A$
 \end{dfn}
+
+\section{Continuity}
 
 \subsection{Continuity}
 
@@ -444,5 +459,92 @@ Say that a property of a topological space is a \textbf{topological invariant} i
             Problem: $f^{-1}$ is not continuous
     \end{itemize}
 \end{xmp}
+
+\newpage
+
+\begin{dfn}[Another continuity definition]{dfn:continuity-2}{}
+    Let $(X, d), (Y, \tilde{d})$ be metric spaces with the metric topology. $f : X \to Y$ is continuous iff
+    \[\forall x\in X,\,\forall \epsilon > 0,\,\exists \delta > 0\,\, \text{ s.t. } \forall y\in X,\,d(x, y) < \delta \implies \tilde{d}(f(x),f(y)) < \epsilon\]
+\end{dfn}
+
+\textbf{Observe}: $\forall y\in X$ is equivalent to
+\[B_{\delta}(x) \subseteq f^{-1}(\tilde{B_{\epsilon}}(f(x)))\]
+
+Why? Let $A, B$ be things which can be true for $y\in X$. i.e.
+\[A \implies B \text{ is equivalent to } \{y : A \text{ true} \subseteq \{y : B \text{ true}\}\}\]
+
+Then: $B_{\delta}(x) = \{y, \underbrace{d(x,y) < \delta}_{A}\}$, $f^{-1}(\tilde{B_{\epsilon}}(f(x))) = \{y \in X : \underbrace{\tilde{d}(f(x), f(y)) < \epsilon}_{B}\}$
+
+WTS: $U$ open $\iff$ $\forall x\in U,\,\exists r > 0$ s.t. $B_{\delta}(x) \subseteq U$
+
+$\implies$ ``Let $x, \epsilon$ be given, WTS that $\exists \delta$ s.t. $B_{\delta}(x) \subseteq f^{-1}(\tilde{B_{\epsilon}}f(x))$
+
+\textbf{Example}: $f$ cont + bijective but not a homeomorphism:
+\[f : \underbrace{X}_{\mathclap{\text{discrete topology - every set is open}}} \to \overbrace{X}^{\mathclap{\text{indiscrete topology: only $\emptyset$ and $X$ are open}}} \text{ identity}\]
+
+\begin{lma}[Homeomorphism-condition]{thm:homeomorphism-condition}{}
+    For a set $X$ with topologies $\mathcal{T},\,\tilde{\mathcal{T}}$. The identity map $(X, \mathcal{T})\to (X, \tilde{\mathcal{T}}),\,x \mapsto x$ is
+    \begin{itemize}
+        \item continuous $\iff$ $\tilde{\mathcal{T}} \subseteq T$
+        \item a homeo $\iff$ $\tilde{\mathcal{T}} = \mathcal{T}$
+    \end{itemize}
+\end{lma}
+
+\begin{thm}[Mapping prop]{thm:mapping-prop}{}
+    \begin{itemize}
+        \item Let $f : X \to Y,\,g : Y \to Z$ continuous. The map $f \circ g$ is continuous
+            \[\text{As } (f \circ g)^{-1}(U) = f^{-1}(g^{-1}(U))\]
+        \item If $f : X \to Y$ is constant, then $f$ is continuous
+        \item In particular, $f, g$ homeo $\implies$ $f \circ g$ is a homeo
+    \end{itemize}
+\end{thm}
+
+\newpage
+
+\section{The Clark Barwick Era}
+
+\begin{thm}[Clark Barwick Quotes List]{thm:clark-quotes}{}
+    ``Shadows are harshest when there is only one lamp'' - $04 /10 /24$
+\end{thm}
+
+\subsection{More top}
+\subsubsection{Something weird}
+
+\begin{align*}
+    [0, 2\pi) & \to S^{1} = \{z \in \mathbb{Z} : \lVert z \rVert = 1\}\\
+    [0, 2\pi) & \to [0, 1) \quad \text{is open, and is also creepy}
+\end{align*}
+
+Not a homeomorphism
+
+\textbf{Claim}: A continuous bijection in which the \textbf{image} of every open set is open is a homeomorphism
+
+\begin{dfn}[Subspace Topology]{dfn:subspace}{}
+    For $X$ a topological space, and $T \subseteq X$, $\mathcal{U} \subseteq T$ is open iff $\exists V \subseteq X$ open and $\mathcal{U} = V \cap T$
+\end{dfn}
+
+\begin{dfn}[Impromptu Set Theory - Products]{dfn:infinite-products}{}
+    $\mathcal{F}$ is a family of sets. We can talk about a product
+    \[\bigsqcap_{x\in \mathcal{F}} X = \{(a_{x})_{x\in \mathcal{F}} : a_{X}\in X\}\]
+\end{dfn}
+
+Example:
+\[\mathbb{R}^{\infty} = \bigsqcap_{i=1}^{\infty} \mathbb{R} = \{(x_{1},x_{2},\dots) : x_{i}\in \mathbb{R}\}\]
+\[\bigsqcap_{x\in \mathcal{F}} = \{ \phi : \mathcal{F} \implies \bigcup_{x\in \mathcal{F}} X : \phi(X) \in X\}\]
+
+Note: the $\mathcal{F}$ notation is pretty creepy - Clark
+
+\subsubsection{Topologising the above thing}
+
+Metrisable
+
+\[\bigsqcap_{i\in I} X_{i} \to X_{j}\]
+
+\begin{figure}[ht]
+    \centering
+    \incfig{testt}
+    \caption{testt}
+    \label{fig:testt}
+\end{figure}
 
 \end{document}
