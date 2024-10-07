@@ -472,4 +472,42 @@ some working out
     \item $\mathbb{Z}^{2} = \langle x, y \mid xy = yx \rangle = \langle x, y \mid xyx^{-1}y^{-1} = e \rangle \cong \{x^{i}y^{i} = i, j \in \mathbb{Z}\}$
 \end{itemize}
 
+\begin{xmp}[Random group action E]{xmp:group-action-e}{}
+    Let
+    \[E = \langle a, b \mid a^{2}, b^{5}, (ab)^{2} \rangle\]
+\end{xmp}
+
+\begin{lma}[]{lma:action-lemma}{}
+    Any element $x\in E$ can be written $x = a^{i}b^{j}$, where $i\in \{0, 1\}$ and $j\in \{0,1,2,3,4\}$
+\end{lma}
+
+\begin{crl}[]{crl:action-crol}{}
+    Group homomorphisms
+    \[\phi : \langle  x_{1},\dots,x_{n} \mid r_{1}(\underline{x}),\dots,r_{n}(\underline{x}) \rangle \to G\]
+    correspond to multiples $(g_{1},\dots,g_{m})\in G^{m}$ s.t. $r_{1}(\underline{g}) = e,\dots,r_{n}(\underline{g})$
+\end{crl}
+
+\textbf{Example}: For $E = \langle a,b \mid a^{2},b^{5},(ab)^{2} \rangle$
+
+Group homomorphism - $Q : E \to G$ correspond to:
+\[(g,h)\in G \times G \quad\text{s.t.}\quad g^{2}=e,\,h^{5}=e,\,(gh)^{2}=e\]
+
+In particular, we have:
+\begin{align*}
+    \phi : E &\to D_{5}\\
+    b &\mapsto \text{rotation}\\
+    a &\mapsto \text{reflection}
+\end{align*}
+
+We also have that $\Ima(Q) = D_{5}$, and $Q$ surjective
+
+
+\begin{dfn}[Reduced Word]{dfn:reduced-word}{}
+    A word $x^{m_{1}}y^{n_{1}}x^{m_{2}}y^{n_{2}}\dots x^{m_{k}}y^{n_{k}}$ is \textbf{reduced} if no $m_{i},n_{j} = 0$ except possibly for $m_{1}$ or $n_{k}$ (That is, a word doesn't need to start with a power of $x$ or end with a power of $y$)
+\end{dfn}
+
+\begin{lma}[]{lma:reduced-word-expansion}{}
+    Every element of $\langle x, y \rangle$ has a unique expansion as a reduced word
+\end{lma}
+
 \end{document}
