@@ -1,54 +1,7 @@
 \documentclass{article}
 % \usepackage{showframe}
 
-% \usepackage[dvipsnames]{xcolor}
-% custom colour definitions
-% \colorlet{colour1}{Red}
-% \colorlet{colour2}{Green}
-% \colorlet{colour3}{Cerulean}
-
-\usepackage{geometry}
-% margins
-\geometry{
-    a4paper,
-    bottom=70pt,
-    % margin=70pt
-}
-
-\usepackage{import}
-\usepackage{pdfpages}
-\usepackage{transparent}
-\usepackage{xcolor}
-
-\newcommand{\incfig}[2][1]{%
-    \def\svgwidth{#1\columnwidth}
-    \import{./figures/}{#2.pdf_tex}
-}
-
-
-\usepackage{graphicx} % Required for inserting images
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{stmaryrd}
-\usepackage{amsthm}
-\usepackage{centernot}
-\usepackage{mathtools}
-% \usepackage{preamble}
-\usepackage{multicol}
-\usepackage{lipsum}
-\usepackage{float}
-\usepackage[nodisplayskipstretch]{setspace}
-
-% tikz and theorem boxes
-\usepackage[framemethod=TikZ]{mdframed}
-\usepackage{../../thmboxes_v3}
-\usepackage{../../customs}
-
-
-\usepackage{hyperref} % note: this is the final package
-\parindent = 0pt
-\linespread{1.1}
+\usepackage{../../preamble-notes}
 
 % Custom Definitions of operators
 \DeclareMathOperator{\Ima}{im}
@@ -536,15 +489,56 @@ Note: the $\mathcal{F}$ notation is pretty creepy - Clark
 
 \subsubsection{Topologising the above thing}
 
-Metrisable
-
 \[\bigsqcap_{i\in I} X_{i} \to X_{j}\]
 
-\begin{figure}[ht]
-    \centering
-    \incfig{testt}
-    \caption{testt}
-    \label{fig:testt}
-\end{figure}
+\subsection{Week 4 Lecture 1}
+
+\begin{dfn}[Quotient Topology]{dfn:quotient-top}{}
+    Define $X$ with $\sim$ a relation on $X$. We have a function
+    \begin{align*}
+        g : X &\to X /\sim\\
+        x &\mapsto [x]
+    \end{align*}
+    $\mathcal{U} \subseteq X /\sim$ is open iff $g^{-1}(\mathcal{U}) \subseteq X$ is open
+\end{dfn}
+
+\subsection{Week 4 Lecture 2}
+
+\begin{dfn}[Coarser and Finer]{dfn:coarse-fine}{}
+    \begin{itemize}
+        \item Coarse: There are more open sets
+    \end{itemize}
+\end{dfn}
+
+\begin{dfn}[Product Topology]{dfn:product-top}{}
+    % https://q.uiver.app/#q=WzAsMyxbMSwwLCJYIFxcdGltZXMgWSJdLFswLDEsIlgiXSxbMiwxLCJZIl0sWzAsMSwicHJfMSIsMl0sWzAsMiwicHJfMiJdXQ==
+    \[\begin{tikzcd}
+    & {X \times Y} \\
+        X && Y
+        \arrow["{pr_1}"', from=1-2, to=2-1]
+        \arrow["{pr_2}", from=1-2, to=2-3]
+    \end{tikzcd}\]
+
+    The \textbf{Product Topology} is the coarsest possible topology such that $pr_{1}$ and $pr_{2}$ are both continuous
+\end{dfn}
+
+\begin{dfn}[Quotient Topology]{dfn:quotient-top-cont}{}
+    For $X$ a topological space and $\sim$ a relation, define a function $q : X \to X /\sim$ where the quotient top is the finest topology such that $q$ is continuous
+\end{dfn}
+
+
+\begin{dfn}[Coarse and Fine Topologies]{dfn:coarse-fine-tops}{}
+    For $X$ a topological space and $Y$ a set:
+    \begin{itemize}
+        \item $f: X \to Y$ means there exists a unique finest topology s.t. $f$ is continuous
+        \item $g : Y \to X$ means that there exists a unique coarsest topology s.t. $g$ is continuous
+    \end{itemize}
+\end{dfn}
+
+\begin{lma}[Hausdorff Coarseness]{lma:hausdorff-coarseness}{}
+    $\tau_{1}$ is coarser than $\tau_{2}$ and $\tau_{1}$ is Hausdorff $\implies$ $\tau_{2}$ is Hausdorff
+\end{lma}
+
+
 
 \end{document}

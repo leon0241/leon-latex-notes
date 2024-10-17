@@ -4,3 +4,7 @@
 \contentsline {subsection}{\numberline {1.3}Relations}{6}{subsection.1.3}%
 \contentsline {subsection}{\numberline {1.4}Reactive Systems}{6}{subsection.1.4}%
 \contentsline {section}{\numberline {2}CCS}{7}{section.2}%
+\contentsline {section}{\numberline {3}Congruence Closure}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}}{8}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Showing Congruences}{8}{subsubsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.2}Equational Logic}{8}{subsection.3.2}%

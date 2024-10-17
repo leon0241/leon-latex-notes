@@ -19,12 +19,17 @@
 
 % LEMMA
 \newenvironment{lma}[3][]{
-    \begin{thmbox}[#1]{thm:#2}{#3}{cyan}{20}{Lemma}
+    \begin{thmbox}[#1]{lma:#2}{#3}{cyan}{20}{Lemma}
 } {\end{thmbox}}
 
 % COROLLARY
 \newenvironment{crl}[3][]{
-    \begin{thmbox}[#1]{thm:#2}{#3}{cyan}{20}{Lemma}
+    \begin{thmbox}[#1]{crl:#2}{#3}{cyan}{20}{Corollary}
+} {\end{thmbox}}
+
+% PROPOSITION
+\newenvironment{ppn}[3][]{
+    \begin{thmbox}[#1]{ppn:#2}{#3}{cyan}{20}{Prop}
 } {\end{thmbox}}
 
 % DEFINITION

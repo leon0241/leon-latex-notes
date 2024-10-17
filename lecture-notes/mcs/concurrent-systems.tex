@@ -19,6 +19,7 @@
 \usepackage{pdfpages}
 \usepackage{transparent}
 \usepackage{xcolor}
+\usepackage{quiver}
 
 \newcommand{\incfig}[2][1]{%
     \def\svgwidth{#1\columnwidth}
@@ -191,5 +192,107 @@ ACP-$\epsilon$ is an alternative modele where non-finishing states can also term
 
 \newpage
 \section{CCS}
+
+\newpage
+\section{Congruence Closure}
+\subsection{}
+
+\begin{dfn}[Congruence Closure]{dfn:congruence-closure}{}
+    For an equivalence $\sim$, we have $\sim^{c}$, its congruence closure where
+    \[P \sim^{c} Q \implies \forall C [],\, C[P] \sim C[Q]\]
+
+\end{dfn}
+
+% https://q.uiver.app/#q=WzAsOCxbMCwwLCJCIl0sWzMsMiwiQkIiXSxbMywzLCJXQiJdLFswLDQsIkNUXntDfSJdLFswLDUsIkNUXntcXGluZnR5fSJdLFszLDYsIkNUXnsqfSJdLFsyLDEsIkJCXntDfSJdLFsyLDIsIldCXntDfSJdLFs0LDNdLFsyLDFdLFszLDBdLFs1LDJdLFs1LDRdLFs2LDBdLFsxLDZdLFsyLDddLFs3LDZdXQ==
+\[\begin{tikzcd}
+	B \\
+	&& {BB^{C}} \\
+	&& {WB^{C}} & BB \\
+	&&& WB \\
+	{CT^{C}} \\
+	{CT^{\infty}} \\
+	&&& {CT^{*}}
+	\arrow[from=2-3, to=1-1]
+	\arrow[from=3-3, to=2-3]
+	\arrow[from=3-4, to=2-3]
+	\arrow[from=4-4, to=3-3]
+	\arrow[from=4-4, to=3-4]
+	\arrow[from=5-1, to=1-1]
+	\arrow[from=6-1, to=5-1]
+	\arrow[from=7-4, to=4-4]
+	\arrow[from=7-4, to=6-1]
+\end{tikzcd}\]
+
+\subsubsection{Showing Congruences}
+
+\textbf{Example}: Show that $=_{PT}$ is a congruence for $\partial_{H}$
+\[P =_{PT} Q \implies \partial_{H}(P) =_{PT} \partial_{H}(Q)\]
+WTS
+\[PT(P) = PT(Q) \implies PT(\partial_{H}(P)) = PT(\partial_{H}(Q))\]
+\[PT(\partial_{H}(P)) = \{\sigma \in PT(P) \mid \text{$\sigma$ does not contain any action from $H$}\}\]
+We can just replace $PT(P)$ with $PT(Q)$ and the implication follows automatically
+
+\textbf{Example}: Show that $=_{CT}$ is \textbf{not} a congruence for $\partial_{H}$
+
+For $P = ab + ac$, we have $CT(\partial_{b}(P)) = a + ac$
+
+For $Q = a(b + c)$, we have $CT(\partial_{b}(Q)) = ac$
+
+\subsection{Equational Logic}
+
+Equations - of the form $P = Q$
+
+Equational logic - comprised of axioms, and rules
+
+Rules use the rules listed below
+\begin{itemize}
+    \item Reflexive: $P = P$
+    \item Symmetric: $P = Q$ and $Q = P$
+    \item Transitive: $P = Q$ and $Q = R$ implies $P = R$
+    \item Substitution: $P = P + P$ implies $a.b = a.b + a.b$
+    \item Congruence: $P = Q \implies C[P] = C[Q]$
+\end{itemize}
+
+\[Ax \vdash P = Q \text{ if $P = Q$ follows from the ...} \]
+
+\begin{thm}[]{thm:}{}
+    \[P =_{B} Q \iff Ax \vdash P = Q\]
+\end{thm}
+
+You want proofs to be sound and complete
+
+Operations of the $+$ in CCS
+\begin{itemize}
+    \item $P + Q = Q + P$
+    \item $(P + Q) + R = R + (Q + R)$
+    \item $P + P = P$
+    \item $P + 0 = P$
+\end{itemize}
+
+Operations of $P | Q$:
+\[P = \sum_{i = 1}^{k} a_{i} P_{i} = a_{1}P_{1} + a_{2}P_{2}+\cdots+a_{k}P_{k}\]
+\[Q = \sum_{j = 1}^{l} b_{j} Q_{j}\]
+
+\begin{thm}[Expansion Law]{thm:expansion-law}{}
+    \[
+        P | Q = \sum_{i = 1}^{k} a_{i} . (P_{i} | Q) + \sum_{j = 1}^{l} b_{j} . (P | Q_{j}) + \underbrace{\sum_{i = 1}^{k}\sum_{j = 1}^{l}}_{(a_{i} = \overline{b}_{j})} \tau (P_{i} | Q_{j})
+    \]
+
+        \[\gamma : A \times A \to (A \uplus \{\delta\})\]
+        $\gamma(a_{i},b_{j}) = \delta$ if they do not communicate
+\end{thm}
+
+\begin{dfn}[Head normal form]{dfn:head-norml}{}
+    Something is in head normal form if it can be written in the form
+    \[P = \sum a_{i} . P_{i}\]
+\end{dfn}
+
+\textbf{Example}: We can write
+\begin{align*}
+    (a.b | c) &= a(b | c) + c(a .b) \\
+              &= a(bc + c b) + c(a .b)
+\end{align*}
+
+\textbf{Example}: $\partial_{H}(P + Q) = \partial_{H}(P) + \partial_{H}(Q)$
 
 \end{document}

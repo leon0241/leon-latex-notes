@@ -17,3 +17,5 @@
 \contentsline {subsection}{\numberline {3.1}More top}{13}{subsection.3.1}%
 \contentsline {subsubsection}{\numberline {3.1.1}Something weird}{13}{subsubsection.3.1.1}%
 \contentsline {subsubsection}{\numberline {3.1.4}Topologising the above thing}{13}{subsubsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.2}Week 4 Lecture 1}{13}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Week 4 Lecture 2}{14}{subsection.3.3}%

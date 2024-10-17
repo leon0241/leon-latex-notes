@@ -510,4 +510,96 @@ We also have that $\Ima(Q) = D_{5}$, and $Q$ surjective
     Every element of $\langle x, y \rangle$ has a unique expansion as a reduced word
 \end{lma}
 
+\subsection{Sylow Theorems}
+
+\begin{dfn}[Sylow Subgroups]{dfn:sylow}{}
+    Let $G$ be a finite group and let $p$ be a prime. A subgroup $H$ of $G$ is a \textbf{$p$-subgroup of $G$} if it is a $p$-group, that is it has order $p^{n}$ for some $n$, and it is a \textbf{Sylow $p$-subgroup of $G$} if its order is the highest power of $p$ that divides the order of $G$. We say that $H$ is a \textbf{Sylow subgroup of $G$} if it is s Sylow $p$-subgroup for some prime $p$
+\end{dfn}
+
+\begin{thm}[Cauchy]{thm:sylow-cauchy}{}
+    If a prime $p$ divides $\lvert G \rvert$, then $\exists$a (cyclic) subgroup of order $p$
+\end{thm}
+
+\begin{thm}[Sylow I]{thm:sylow-1}{}
+    Let $\lvert G \rvert = n$ and suppose that $p$ is a prime that divides $n$. Write $n = p^{m}r$ with $p$ not dividing $r$. Then there exists at least one subgroup of order $p^{m}$; that is, there is at least one Sylow $p$-subgroup
+\end{thm}
+
+\begin{thm}[Sylow II]{thm:sylow-2}{}
+    Let $\lvert G \rvert = n$ and suppose that $p$ is a prime that divides $n$. Write $n = p^{m}r$ with $p$ not dividing $r$. Suppose that $P$ is a Sylow $p$-subgroup and that $H \le G$ is any $p$-subgroup of $G$. Then there exists $x\in G$ with $H \subseteq xPx^{-1}$. In particular, any two Sylow $p$-subgroups of $G$ are conjugate in $G$
+\end{thm}
+
+\begin{thm}[Sylow III]{thm:sylow-3}{}
+    Let $\lvert G \rvert = n$ and suppose that $p$ is a prime that divides $n$. Write $n = p^{m}r$ with $p$ not dividing $r$. Let $n_{p}$ be the number of distinct Sylow $p$-subgroups of $G$. Then $n_{p}\mid r$ and $n_{p} \equiv 1 \mod p$
+\end{thm}
+
+\begin{lma}[]{lma:sylow-thing}{}
+    If $n_{p} = 1$, then the Sylow $p$-subgroup $P$ is normal in $G$.
+\end{lma}
+
+\begin{ppn}[]{prop:subgroup-30}{}
+    Every group $G$ with $\lvert G \rvert = 30$ has a normal subgroup
+\end{ppn}
+
+\subsection{Group Actions}
+
+\begin{dfn}[Group Action]{dfn:group-action}{}
+    An \textbf{action} of a group $G$ on a set $X$ is a function
+    \begin{align*}
+        G \times X &\to X\\
+        (g,x) &\mapsto g \cdot x
+    \end{align*}
+    such that
+    \begin{itemize}
+        \item $e \cdot x = x$ for all $x\in X$
+        \item $(gh) \cdot x = g \cdot (h \cdot x)$ for all $g,h\in X$ and $x\in X$
+    \end{itemize}
+\end{dfn}
+
+\textbf{Examples of actions}
+\begin{itemize}
+    \item $D_{n}$ acting on an $n$-gon
+    \item $S_{n}$ acting on $\{1,2,\dots,n\}$
+    \item $\mathrm{GL}_{n}(F)$ acting on $F^{n}$
+\end{itemize}
+
+\begin{dfn}[Orbits]{dfn:orbit}{}
+    Given a $G$ acting on $X$, and $x\in X$, define
+    \begin{itemize}
+        \item The \textbf{Orbit} $G \cdot x$ or $\Orb_{G}(x)$ is $\{g \cdot x : g\in X\} \subseteq X$
+        \item The \textbf{Stabiliser} $\Stab_{G}(x)$ is $\{h\in G : h \cdot x = x\} \subseteq G$
+    \end{itemize}
+\end{dfn}
+
+\begin{lma}[]{lma:stab-subgroup}{}
+    $\Stab_{G}(x)$ is a subgroup of $G$
+\end{lma}
+
+\begin{proof}
+    If $g_{1}h\in \Stab_{G}(x)$, then $(gh) \cdot x = g \cdot (h \cdot x) = g \cdot x = x$
+
+    $g^{-1} \cdot x = g^{-1} \cdot (g \cdot x) = (g^{-1}g) \cdot x = e \cdot x = x$
+\end{proof}
+
+\begin{thm}[Orbit-Stabiliser Theorem]{thm:orbit-stab}{}
+    Let $G$ be a finite group acting on a set $X$, and let $x\in x$. then
+    \[\lvert G \rvert = \lvert \Stab_{G}(x) \rvert \lvert G \cdot x \rvert\]
+    Or more cleanly,
+    \[G \cdot x \cong G / \Stab_{G}(x)\]
+\end{thm}
+
+\newpage
+\begin{lma}[]{lma:orb-stab}{}
+    Let $G$ act on $X$
+    \begin{enumerate}
+        \item An action defines an equivalence relation $X : x \sim y \iff \exists g\in G \text{ s.t. } g \cdot x = y$
+        \item Equivalence relations are orbits
+        \item The orbits partition $X$
+    \end{enumerate}
+\end{lma}
+
+[diagram of D3]
+
+
+\newpage
+
 \end{document}

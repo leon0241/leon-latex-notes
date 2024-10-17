@@ -5,3 +5,5 @@
 \contentsline {subsection}{\numberline {1.4}First Isomorphism Theorem and stuff}{9}{subsection.1.4}%
 \contentsline {subsubsection}{\numberline {1.4.5}Recap of last time (which is not on the notes)}{10}{subsubsection.1.4.5}%
 \contentsline {section}{\numberline {2}Group Actions}{13}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Sylow Theorems}{14}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Group Actions}{14}{subsection.2.2}%
