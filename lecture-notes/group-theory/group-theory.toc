@@ -7,3 +7,4 @@
 \contentsline {section}{\numberline {2}Group Actions}{13}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Sylow Theorems}{14}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Group Actions}{14}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Proofs of Sylow theorems}{17}{subsection.2.3}%

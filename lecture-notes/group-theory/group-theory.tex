@@ -602,4 +602,68 @@ We also have that $\Ima(Q) = D_{5}$, and $Q$ surjective
 
 \newpage
 
+\begin{thm}[Conjugacy Class]{thm:cong-class}{}
+    If $\lvert G \rvert = p^{n}$ for some $n$, then $Z(G) \ne \{e\}$
+    \[Z(G) = \{x \in G : xg = gx, \quad \forall g\in G\}\]
+\end{thm}
+
+\begin{proof}
+    Conjugacy classes partition $G$ and $x\in |(G) \iff Cl(x) = \{x\}$
+    \[G = Z(G) \sqcup Cl(g_{1}) \sqcup \dots \sqcup Cl(g_{n}) \text{ for conjugacy classes } \lvert Cl(g_{i}) \rvert < 1\]
+\end{proof}
+
+\subsection{Proofs of Sylow theorems}
+
+\begin{proof}
+    Sylow 1: Subgroups exist
+
+    Something about permutations. QED
+\end{proof}
+
+\begin{crl}[]{crl:sylow-normal}{}
+    A Sylow $p$-subgroup $P$ is \textbf{normal} $\iff$ $n_{p} = 1$ i.e. $P$ is the unique Sylow $p$-subgroup
+\end{crl}
+
+\begin{dfn}[Normalizer]{dfn:normalizer}{}
+    Let $G$ be a group and $H \le G$. The \textbf{normalizer} of $H$ is
+    \[N_{G}(H) = \{g \in G : gHg^{-1} = H\}\]
+\end{dfn}
+
+\textbf{Example}: Let $G = S_{4}$ and $H = \langle (123) \rangle$. ??
+
+\textbf{random properties}
+\begin{itemize}
+    \item $H \le N_{G}(H)$ since $hHh^{-1} = h$ and $H \lhd N_{G}(H)$
+    \item $N_{G}(H)$ is the largest subgroup in which $H$ is normal
+    \item $G$ acts by conjugation on its set of subgroups
+        \begin{itemize}
+            \item The orbit of $H$: $\{gHg^{-1} : g\in G\}$ is a conjugation of $H$
+            \item The stabiliser of $H$: $\{g\in G : gHg^{-1} = H\} = N_{G}(H)$ 
+            \item $ \implies \lvert G \rvert = \lvert N_{G}(H) \rvert \cdot \text{(no. of conjugations of $H$)}$
+        \end{itemize}
+\end{itemize}
+
+\begin{lma}[]{lma:cong-divides}{}
+    Let $G$ be a finite group.
+    \begin{enumerate}
+        \item For any subgroup $H \le G$, we have
+            \[[G : N_{G}(H)] = \text{the number of distinct conjugates of $H$}\]
+        \item Let $p\lvert \lvert G \rvert$ and let $P$ be a Sylow $p$-subgroup of $G$. Then $n_{p} = [G : N_{G}(P)]$
+    \end{enumerate}
+\end{lma}
+
+\begin{proof}
+    \textbf{Proof of Sylow III}: $n_{p} = \lvert X \rvert$ is congruent to $1 \mod p$. QED
+\end{proof}
+
+\textbf{Example}: For $S_{4}$, Since $\lvert S_{4} \rvert = 24 = 2^{3} \cdot 3$, we have
+\begin{itemize}
+    \item Sylow $2$-subgroups have order $8$
+    \item Sylow $3$-subgroups have order 3
+\end{itemize}
+\begin{align*}
+    n_{2} & \equiv 1 \mod 2 \quad \text{ and } n_{2} | 3\\
+    n_{2} & \equiv 1 \mod 3 \quad \text{ and } n_{2} | 8\\
+\end{align*}
+
 \end{document}
