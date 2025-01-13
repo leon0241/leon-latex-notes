@@ -30,10 +30,12 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{mathtools}
 % \usepackage{preamble}
 \usepackage{multicol}
 \usepackage{lipsum}
 \usepackage{bbding}
+\usepackage{prftree}
 \usepackage{float}
 \usepackage[nodisplayskipstretch]{setspace}
 
@@ -294,5 +296,62 @@ Operations of $P | Q$:
 \end{align*}
 
 \textbf{Example}: $\partial_{H}(P + Q) = \partial_{H}(P) + \partial_{H}(Q)$
+
+\newpage
+\subsection{General Structural Operational Semantics}
+
+\[\prftree{x \to w}{ f(x,y,z) \to g(h(v,w))}\]
+
+\subsection{Hennessy-Milner Logic}
+HML is a set of formulas in the following syntax:
+\[\phi ::= \top \mid \bot \mid \phi_{1} \wedge \phi_{2} \mid \phi_{1} \vee \phi_{2} \mid \neg \phi \mid \langle a \rangle\phi \mid [a]\phi\]
+\begin{itemize}
+    \item $P \models  \phi$: ``Process $P$ satisfies formula $\phi$ if $\phi$ holds for $P$''
+    \item $P \models \langle a \rangle\phi$: iff there is a $P'$ such that $P \prightarrow{a} P'$ and $P \models \phi$
+    \item $P \models [a]\phi$ iff for all $P \prightarrow{a} P'$ we have $P' \models \phi$
+\end{itemize}
+
+\newpage
+\subsection{Safety}
+
+\begin{dfn}[Canonical Safety Property]{dfn:can-safety}{}
+    A process $p$ satisfies the \textbf{canonical safety property}, notation $P \models \mathrm{safety}(b)$ if no trace of $P$ contains the action $b$
+\end{dfn}
+
+\[P \models \mathrm{safety}(B) \iff PT(P) \cup B = \emptyset\]
+
+\begin{dfn}[Safety Equivalence]{dfn:safety-equiv}{}
+    $P$ is a safety equivalence to $Q$ if for all safety properties, if $P \models \mathrm{safety}(B)$ then so does $Q$
+\end{dfn}
+
+\begin{thm}[]{thm:safety-pt}{}
+    \[P \equiv_{\mathrm{safety}} Q \iff P =_{PT} Q\]
+
+    \longrule{0.08ex}
+
+    \[P \sqsubseteq Q \iff PT(Q) \subseteq PT(P)\]
+\end{thm}
+
+% https://q.uiver.app/#q=WzAsMTksWzAsMCwiXFxidWxsZXQiXSxbMCwxLCJcXGJ1bGxldCJdLFswLDIsIlxcYnVsbGV0Il0sWzAsMywibm9ybWFsIFxcXFxwcm9jZXNzIl0sWzIsMCwiXFxidWxsZXQiXSxbMiwxLCJcXGJ1bGxldCJdLFsyLDIsIlxcYnVsbGV0Il0sWzIsMywiRGVhZGxvY2siXSxbMywxLCJcXGJ1bGxldCJdLFs1LDAsIlxcYnVsbGV0Il0sWzUsMSwiXFxidWxsZXQiXSxbNSwyLCJcXGJ1bGxldCJdLFs2LDEsIlxcYnVsbGV0Il0sWzgsMCwiXFxidWxsZXQiXSxbNSwzLCJMaXZlbG9jayBcXFxcIERpdmVyZ2VudCJdLFs4LDEsIlxcYnVsbGV0Il0sWzgsMiwiXFxidWxsZXQiXSxbOCwzLCJFc2NhcGFibGUgXFxcXCBEaXZlcmdlbmNlIl0sWzYsNCwiTm90IEJCRSJdLFswLDEsImEiXSxbMSwyLCJnIl0sWzQsNSwiYSJdLFs1LDYsImciXSxbNSw4LCJcXHRhdSJdLFs5LDEwLCJhIl0sWzEwLDExLCJnIl0sWzEwLDEyLCJcXHRhdSJdLFsxMiwxMiwiXFx0YXUiXSxbMTMsMTUsImEiXSxbMTUsMTYsImciXSxbMTUsMTUsIlxcdGF1IiwwLHsiYW5nbGUiOjkwfV1d
+\[\begin{tikzcd}[cramped]
+	\bullet && \bullet &&& \bullet &&& \bullet \\
+	\bullet && \bullet & \bullet && \bullet & \bullet && \bullet \\
+	\bullet && \bullet &&& \bullet &&& \bullet \\
+	\begin{array}{c} normal \\process \end{array} && Deadlock &&& \begin{array}{c} Livelock \\ Divergent \end{array} &&& \begin{array}{c} Escapable \\ Divergence \end{array} \\
+	&&&&&& {Not BBE}
+	\arrow["a", from=1-1, to=2-1]
+	\arrow["a", from=1-3, to=2-3]
+	\arrow["a", from=1-6, to=2-6]
+	\arrow["a", from=1-9, to=2-9]
+	\arrow["g", from=2-1, to=3-1]
+	\arrow["\tau", from=2-3, to=2-4]
+	\arrow["g", from=2-3, to=3-3]
+	\arrow["\tau", from=2-6, to=2-7]
+	\arrow["g", from=2-6, to=3-6]
+	\arrow["\tau", from=2-7, to=2-7, loop, in=55, out=125, distance=10mm]
+	\arrow["\tau", from=2-9, to=2-9, loop, in=325, out=35, distance=10mm]
+	\arrow["g", from=2-9, to=3-9]
+\end{tikzcd}\]
+
 
 \end{document}

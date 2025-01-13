@@ -1,0 +1,124 @@
+\documentclass{article}
+% \usepackage{showframe}
+
+% \usepackage[dvipsnames]{xcolor}
+% custom colour definitions
+% \colorlet{colour1}{Red}
+% \colorlet{colour2}{Green}
+% \colorlet{colour3}{Cerulean}
+
+\usepackage{geometry}
+% margins
+\geometry{
+    a4paper,
+    bottom=70pt,
+    % margin=70pt
+}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+% \usepackage{preamble}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage{float}
+\usepackage[nodisplayskipstretch]{setspace}
+
+% tikz and theorem boxes
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{../../thmboxes_v3}
+\usepackage{../../customs}
+
+
+\usepackage{hyperref} % note: this is the final package
+\parindent = 0pt
+\linespread{1.1}
+
+% Custom Definitions of operators
+\DeclareMathOperator{\Ima}{im}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\send}{send}
+\DeclareMathOperator{\dom}{dom}
+
+\title{Galois Theory Notes}
+\author{Leon Lee}
+\renewcommand\labelitemi{\tiny$\bullet$}
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction to Galois Theory}
+\subsection{Complex Numbers over \texorpdfstring{$\mathbb{R}$}{R}}
+
+Think of $\mathbb{C}$ as $\mathbb{C} = \{a + bi \mid a,b\in \mathbb{R}\}$ where the only thing you know about $i$ is that
+\[i^{2} + 1 = 0\]
+However, this equation has two roots (no way to distinguish $i$ and $-i$). ezample $z = i$
+
+\begin{dfn}[Conjugate]{dfn:complex-conj}{}
+    $z,z'\in \mathbb{Z}$ are \textbf{conjugate} over $\mathbb{R}$ if $\forall p(t) \in \mathbb{R}[t]$ (polynomials with coefficients in $\mathbb{R}$)
+    \[p(z) = 0 \iff p(z') = 0\]
+\end{dfn}
+
+\begin{lma}[Characterising Conjugates]{lma:charaterising-conjugates}{}
+    $z,z'\in \mathbb{C}$ are conjugate over $\mathbb{R}$ iff either $z = z'$ or $\overline{z} = z'$
+\end{lma}
+
+\begin{proof}
+    Assume $z,z'$ are conjugate.
+    \[z = x + iy \quad x,y\in \mathbb{R}\]
+    Take the equation
+    \begin{align*}(z - x) ^{2} + y^{2} &= 0 \\ p(t) = (t - x) ^{2} + y^{2} &\in \mathbb{R}[t]\end{align*}
+\end{proof}
+
+\subsection{Complex Numbers over \texorpdfstring{$\mathbb{Q}$}{Q}}
+\begin{dfn}[Conjugacy in \texorpdfstring{$\mathbb{Q}$}{Q}]{dfn:conj-q}{}
+    $z,z'\in \mathbb{C}$ are \textbf{conjugate over $\mathbb{Q}$} if $\forall p(t) \in \mathbb{Q}[t]$
+    \[p(z) = 0 \iff p(z') = 0\]
+\end{dfn}
+\textbf{Example}: $\sqrt{2}$ is not conjugate to $-\sqrt{2}$ over $\mathbb{R}$. e.g.
+\[p(t) = t - \sqrt{2}\in \mathbb{R}[t]\]
+
+\textbf{Example}: $\sqrt{2}$ is conjugate to $-\sqrt{2}$ over $\mathbb{Q}$
+
+Treat $\sqrt{2}$ like i
+\[\mathbb{Q}(\sqrt{2}) = \{a + b\sqrt{2} \mid a,b\in \mathbb{Q}\}\]
+This is also a field.
+
+We want the analogue of complex conjugates. Show it is well-defined:
+\[a + b \sqrt{2} = a' + b' \sqrt{2}, \quad a,b,a',b'\in \mathbb{Q}, \quad a - a' = (b ' - b) \sqrt{2}\]
+..some more stuff
+
+\textbf{Example}: $\sqrt{2}$ is not conjugate to $\sqrt{3}$ over $\mathbb{R}$
+\[p(t) = t^{2} - 2\]
+\textbf{Example}: $p$ prime, $\omega = \exp\left( \frac{z\pi i}{p} \right)$ (primitive $p$-th root of unity)
+\[\omega^{p} = 1\]
+
+$\omega^{k}$ is conjugate over $\mathbb{Q}$ to $\omega$, $\forall k = 1,\dots,p-1$
+
+$\omega^{k}$ is conjugate over $\mathbb{R}$ to $\omega$ iff $k \equiv 1, p - 1 \mod p$
+
+\begin{dfn}[Conjugacy for sets]{dfn:set-conjugacy}{}
+    $(z_{1},\dots,z_{n}), z_{i}, z_{i}' \in \mathbb{C}$
+    is conjugate over $\mathbb{Q}$ to $(z_{1}',\dots,z_{n}')$
+    if $\forall p(t_{1},\dots,t_{n})\in \mathbb{Q}[t_{1},\dots,t_{n}]$
+
+    \longrule{0.08ex}
+
+    Additionally, if $(z_{1},\dots,z_{n})$ conjugate to $(z_{1}',\dots,z_{n}')$, then $z_{i}$ is conjugate to $z_{i}'$ for all $i$
+\end{dfn}
+
+\begin{dfn}[Galois Group]{dfn:galois-group}{}
+    If we have a $f\in \mathbb{Q}[t]$ where $\alpha_{1},\dots,\alpha_{n}$ are roots, then the Galois group of $f$, $\mathrm{Gal}(f)$ is
+    \[\mathrm{Gal}(g) = \{\sigma \in S_{n} \mid (\alpha_{1},\dots,\alpha_{n}) \text{ conjugate to } \{\alpha_{S(1)},\dots,\alpha_{\sigma(n)}\}\}\]
+\end{dfn}
+
+
+\end{document}

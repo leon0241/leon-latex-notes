@@ -8,3 +8,6 @@
 \contentsline {subsection}{\numberline {3.1}}{8}{subsection.3.1}%
 \contentsline {subsubsection}{\numberline {3.1.2}Showing Congruences}{8}{subsubsection.3.1.2}%
 \contentsline {subsection}{\numberline {3.2}Equational Logic}{8}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}General Structural Operational Semantics}{10}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Hennessy-Milner Logic}{10}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Safety}{11}{subsection.3.5}%

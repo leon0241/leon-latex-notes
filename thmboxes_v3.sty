@@ -69,10 +69,18 @@
         {
             % If argument 3 isn't provided, then use the subsubsection numbering
             \refstepcounter{subsubsection}
-            \newcommand{\thethmbox}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+            \ifdefined\thethmbox
+                \renewcommand{\thethmbox}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+            \else
+                \newcommand{\thethmbox}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+            \fi
         }
         {
-            \newcommand{\thethmbox}{#3}
+            \ifdefined\thethmbox
+                \renewcommand{\thethmbox}{#3}
+            \else
+                \newcommand{\thethmbox}{#3}
+            \fi
         }
         % Set up bounding boxes in tikz
         \ifstrempty{#1}%

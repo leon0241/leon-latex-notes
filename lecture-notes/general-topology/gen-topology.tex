@@ -457,7 +457,13 @@ $\implies$ ``Let $x, \epsilon$ be given, WTS that $\exists \delta$ s.t. $B_{\del
 \section{The Clark Barwick Era}
 
 \begin{thm}[Clark Barwick Quotes List]{thm:clark-quotes}{}
-    ``Shadows are harshest when there is only one lamp'' - $04 /10 /24$
+    ``Shadows are harshest when there is only one lamp'' - 04/10/24
+
+    ``If one must choose between rigour and meaning, then I shall unhesitantly choose the latter'' - 25/10/24
+
+    ``Everyone knows what a curve is, until they have learned enough mathematics to have become confused'' - F. Klein (29/10/24)
+
+    ``You become what you give your attention to'' - (05/11/24)
 \end{thm}
 
 \subsection{More top}
@@ -539,6 +545,35 @@ Note: the $\mathcal{F}$ notation is pretty creepy - Clark
     $\tau_{1}$ is coarser than $\tau_{2}$ and $\tau_{1}$ is Hausdorff $\implies$ $\tau_{2}$ is Hausdorff
 \end{lma}
 
+\newpage
+\subsection{Connectedness}
+
+\begin{dfn}[Path Connected]{dfn:path-connected}{}
+    A space $X$ is \textbf{path-connected} if for all $x, y\in X$, there exists $\alpha : [0,1] \prightarrow{\text{cts}} X$ s.t. $\alpha(0) = x$ and $\alpha(1) = y$
+\end{dfn}
+
+\begin{thm}[]{thm:path-conn-implies-conn}{}
+    If a topological space $X$ is path-connected, then it is also connected
+\end{thm}
+
+\subsubsection{}
+\textbf{Claim}: $\mathbb{R}^{n} \not\cong \mathbb{R}$ for $n > 1$
+
+\newpage
+\section{Homotopy Theory}
+
+\subsection{Homotopies}
+
+Recall that for $X$ a topological space, it is path connected iff $\forall x, y\in X$, $\exists \gamma : [0,1] \to X$ such that
+\[\gamma(0) = x \quad \text{ and } \quad \gamma(1) = y\]
+
+\textbf{Sameness} $:=$ connectability by a path
+
+\begin{dfn}[Homotopy]{dfn:homotopy}{}
+    Let $f, g : X \to Y$ be two continuous maps. A \textbf{homotopy} between them is a continuous map
+    \[h : X \times I \to Y\]
+    such that $\forall x\in X$, $h(x,0) = f(x)$ and $h(x, 1) = g(x)$
+\end{dfn}
 
 
 \end{document}

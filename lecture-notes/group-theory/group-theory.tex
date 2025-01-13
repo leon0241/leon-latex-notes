@@ -1,41 +1,43 @@
 \documentclass{article}
 % \usepackage{showframe}
 
-% \usepackage[dvipsnames]{xcolor}
-% custom colour definitions
-% \colorlet{colour1}{Red}
-% \colorlet{colour2}{Green}
-% \colorlet{colour3}{Cerulean}
-
-\usepackage{geometry}
-% margins
-\geometry{
-    a4paper,
-    bottom=70pt,
-    % margin=70pt
-}
-
-\usepackage{graphicx} % Required for inserting images
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{amsthm}
-% \usepackage{preamble}
-\usepackage{multicol}
-\usepackage{lipsum}
-\usepackage{float}
-\usepackage[nodisplayskipstretch]{setspace}
+% % \usepackage[dvipsnames]{xcolor}
+% % custom colour definitions
+% % \colorlet{colour1}{Red}
+% % \colorlet{colour2}{Green}
+% % \colorlet{colour3}{Cerulean}
+%
+% \usepackage{geometry}
+% % margins
+% \geometry{
+%     a4paper,
+%     bottom=70pt,
+%     % margin=70pt
+% }
+%
+% \usepackage{graphicx} % Required for inserting images
+% \usepackage{amsmath}
+% \usepackage{amsfonts}
+% \usepackage{amssymb}
+% \usepackage{amsthm}
+% \usepackage{mathtools}
+% % \usepackage{preamble}
+% \usepackage{multicol}
+% \usepackage{lipsum}
+% \usepackage{float}
+% \usepackage[nodisplayskipstretch]{setspace}
 
 % tikz and theorem boxes
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{../../thmboxes_v3}
 \usepackage{../../customs}
+\usepackage{../../preamble-notes}
 
 
-\usepackage{hyperref} % note: this is the final package
-\parindent = 0pt
-\linespread{1.1}
-
+% \usepackage{hyperref} % note: this is the final package
+% \parindent = 0pt
+% \linespread{1.1}
+%
 % Custom Definitions of operators
 \DeclareMathOperator{\Ima}{im}
 \DeclareMathOperator{\Fix}{Fix}
@@ -95,6 +97,7 @@ Every single course seems to have its own definition for a group, this one is a 
 
 \textbf{Note:} $e\in H$ follows from the definition, and associativity follows from the fact that $G$ is a group. Any subgroup $H$ of $G$ is a group using the same product as $G$
 
+\newpage
 \begin{dfn}[Cosets]{dfn:coset}{1.3.6}
     Let $H \le G$ and let $g\in G$. Then the \textbf{left coset of $H$ determined by $g$} is the set $gH := \{gh : h\in H\}$. $Hg := \{hg : h\in H\}$ is the \textbf{right coset of $H$ determined by $g$}
 
@@ -510,18 +513,28 @@ We also have that $\Ima(Q) = D_{5}$, and $Q$ surjective
     Every element of $\langle x, y \rangle$ has a unique expansion as a reduced word
 \end{lma}
 
-\subsection{Sylow Theorems}
+
+\newpage
+\section{Sylow Theorems}
+
+The converse of Lagrange's Theorem doesn't hold - i.e. if $G$ is a group and $s | \langle G \rangle$ then there is no guarantee that $G$ contains a subgroup of order $s$. The closest thing we have is Cauchy's Theorem
+
+\begin{thm}[Cauchy's Theorem]{thm:sylow-thm}{}
+    If $p$ is a prime that divides the order of $G$, then $G$ has a (cyclic) subgroup of order $p$
+\end{thm}
+
+\subsection{Sylow Theorems - Statements}
 
 \begin{dfn}[Sylow Subgroups]{dfn:sylow}{}
     Let $G$ be a finite group and let $p$ be a prime. A subgroup $H$ of $G$ is a \textbf{$p$-subgroup of $G$} if it is a $p$-group, that is it has order $p^{n}$ for some $n$, and it is a \textbf{Sylow $p$-subgroup of $G$} if its order is the highest power of $p$ that divides the order of $G$. We say that $H$ is a \textbf{Sylow subgroup of $G$} if it is s Sylow $p$-subgroup for some prime $p$
 \end{dfn}
 
-\begin{thm}[Cauchy]{thm:sylow-cauchy}{}
-    If a prime $p$ divides $\lvert G \rvert$, then $\exists$a (cyclic) subgroup of order $p$
-\end{thm}
+If $p$ does not divide $\lvert G \rvert$ then the trivial subgroup $\{e\}$ is the Sylow $p$-subgroup of $G$. When we wish to consider only Sylow $p$-subgroups of $G$ for primes $p$ that divide $\lvert G \rvert$ then we refer to nontrivial Sylow $p$-subgroups
 
 \begin{thm}[Sylow I]{thm:sylow-1}{}
-    Let $\lvert G \rvert = n$ and suppose that $p$ is a prime that divides $n$. Write $n = p^{m}r$ with $p$ not dividing $r$. Then there exists at least one subgroup of order $p^{m}$; that is, there is at least one Sylow $p$-subgroup
+    Let $\lvert G \rvert = n$ and suppose that $p$ is a prime that divides $n$. Write $n = p^{m}r$ with $p$ not dividing $r$.
+
+    Then there exists at least one subgroup of order $p^{m}$. i.e., there is at least one Sylow $p$-subgroup
 \end{thm}
 
 \begin{thm}[Sylow II]{thm:sylow-2}{}
@@ -665,5 +678,215 @@ We also have that $\Ima(Q) = D_{5}$, and $Q$ surjective
     n_{2} & \equiv 1 \mod 2 \quad \text{ and } n_{2} | 3\\
     n_{2} & \equiv 1 \mod 3 \quad \text{ and } n_{2} | 8\\
 \end{align*}
+
+\textbf{2-subgroups}: Copies of $D_{4}$ e.g. $\langle (1234), (12)(34) \rangle$ or $\langle (1324), (13)(24) \rangle$
+
+$n_{2} = 3$ therefore not normal in $S_{4}$
+\[\lvert N_{S_{4}}(D_{4}) \rvert = \frac{\lvert S_{4} \rvert}{n_{2}} = \frac{24}{3} = 8\]
+
+\textbf{3-subgroups}: possibilities for $n_{3}: 1 \text{ or } 4$: $\langle (123) \rangle$ not normal in $n_{3} = 4$
+Groups are:
+\begin{itemize}
+    \item $\langle (123) \rangle$ $\lvert N_{S_{4}}(\langle 123 \rangle) \rvert = \frac{24}{4} = 6$
+    \item $\langle (124) \rangle$
+    \item $\langle (134) \rangle$
+    \item $\langle (234) \rangle$
+\end{itemize}
+
+\subsection{Finite Abelian Groups}
+
+\begin{thm}[]{thm:abelian-iso}{}
+    Every finite abelian group is isomorphic to the product of its Sylow Subgroups
+\end{thm}
+
+If $\lvert A \rvert = \prod_{i = 1}^{t} p_{i}^{s_{i}}$ and $A_{p_{i}}$ the Sylow $p_{i}$-subgroup $(\lvert A_{p_{i}} = p_{i}^{s_{i}} \rvert)$ then
+\begin{align*}
+    A \cong A_{p_{1}} \times A_{p_{2}} \times \cdots \times A_{p_{t}} &\to A\\
+    (a_{1},a_{2},\dots,a_{t}) &\to a_{1},a_{2},a_{3}
+\end{align*}
+
+\begin{thm}[]{thm:abelian-iso2}{}
+    If $A$ is an abelian $p$-group (i.e. $\lvert A \rvert = p^{m}$), then
+    \[A \cong C_{p^{e_{1}}} \times C_{p^{e_{2}}} \times \cdots C_{p^{e_{m}}} \quad \text{ s.t. } \sum_{i = 1}^{n} e_{i} = m\]
+\end{thm}
+
+\begin{thm}[Chinese Remainder Theorem]{thm:chinese-remainder}{}
+    Let $m,n$ be nonzero coprime integers. then
+    \[C_{mn} \cong C_{m} \times C_{n}\]
+\end{thm}
+
+\begin{crl}[Fundamental Theorem of Finite Abelian Groups II]{crl:finite-abelian-group-iso}{}
+    Every finite abelian group is isomorphic to
+    \[C_{n_{1}} \times C_{n_{2}} \times \cdots \times C_{n_{s}}\]
+    where $n_{i}$ divides $n_{i+1}$ for each $i = 1,2,\dots,s - 1$ and $n_{1}n_{2}\dots n_{s} = n$. This product is unique up to reordering the factors
+\end{crl}
+
+\begin{thm}[]{thm:cyclic-fields}{}
+    If $A$ is a finite subgroup of multiplicative group $K \backslash \{0\}$, with $K$ a field, then $A$ is cyclic.
+\end{thm}
+
+\newpage
+
+\subsection{Linear Algebra over \texorpdfstring{$\mathbb{Z}$}{Z}}
+
+\begin{dfn}[Module]{dfn:module}{}
+    Let $R$ be a ring. An $R$-module is an abelian group $(M, +)$ together with a mapping
+    \begin{align*}
+        R \times M &\to M\\
+        (r, a) &\mapsto ra
+    \end{align*}
+    such that
+    \begin{multicols}{2}
+    \begin{itemize}
+        \item $1 \cdot m = m$
+        \item $r \cdot (m + n) = r \cdot m + r \cdot n$
+        \item $(r + s) \cdot m = r\cdot m + s\cdot m$
+        \item $(rs) \cdot m = r \cdot (s \cdot m)$
+    \end{itemize}
+    \end{multicols}
+\end{dfn}
+
+\begin{dfn}[Free Module]{dfn:free-module}{}
+    The free $R$-module $R^{m}$ is the abelian group $(R^{m}, +)$ with
+    \[r \cdot (a_{1},\dots,a_{m}) = (ra_{1},\dots,ra_{m})\]
+\end{dfn}
+
+\begin{lma}[Abelian Groups and \texorpdfstring{$\mathbb{Z}$}{Z} modules]{lma:abelian-module}{}
+    An abelian group is the same as a $\mathbb{Z}$-module
+\end{lma}
+
+\begin{proof}
+    Every $\mathbb{Z}$-module has an underlying abelian group
+
+    Conversely, given an abelian group $(A, +)$, there is a unique $\mathbb{Z}$-module structure:
+
+    We know $1 \cdot a = a$ for all $a\in A$, and so for $n > 0$
+    \[n \cdot a = (\underbrace{1 + 1 + \dots + 1}_{n}) \cdot a = \underbrace{a + a + \dots + a}_{n}\]
+    Random axiom: $0 \cdot a = 0$
+    \[0 \cdot a = (1 + (-1)) \cdot a = 1 \cdot a + (-1) \cdot a ,\,\therefore (-1) \cdot a = -a \text{ and so for } n > 0, \quad (-n) \cdot a = -(\underbrace{a+\cdots+a}_{n})\]
+
+    \[a = 1 \cdot a = (0 + 1) \cdot a = 0 \cdot a + 1 \cdot a = 0 \cdot a + a ,\,\therefore (-a) \text{ gives } 0 = 0 \cdot a\]
+\end{proof}
+
+
+
+\begin{thm}[Fundamental Theorem of Finite Abelian Groups]{thm:ft-finite-abelian}{}
+    Every finite abelian group $A$ is of the form
+    \[A \cong \mathbb{Z} /r_{1} \mathbb{Z} \times \mathbb{Z} /r_{2}\mathbb{Z} \times \cdots \times \mathbb{Z} / r_{k}\mathbb{Z} \times \mathbb{Z}^{\ell}\]
+    for some $k,\ell \in \mathbb{N}$ and $r_{1},\dots,r_{k}$ nonzero elements of $\mathbb{Z}$ with $r_{1} | r_{2} | \dots | r_{k}$
+\end{thm}
+
+\textbf{Important Fact}: Every submodule of $\mathbb{Z}^{s}$ is finitely generated (no proof included)
+
+A finitely generated abelian group $A$ has generators $a_{1},\dots,a_{s}$, say
+\[
+    A = \langle a_{1},\dots,a_{s} \rangle
+\]
+Which is equivalent to a surjective map $\theta$
+\begin{align*}
+    \mathbb{Z}^{s} &\prightarrow{\theta} A \\
+    e_{i} &\mapsto a_{i}\\
+    \sum a_{i}s_{i} &\mapsto \sum a_{i}s_{i}
+\end{align*}
+
+Therefore, by FIT for modules, $A \cong \mathbb{Z}^{s} /\ker\theta$
+
+\section{Alternating Groups}
+
+\subsection{Symmetric Groups}
+
+Permutations are written in cycle notation
+\[\begin{pmatrix}
+    1 & 1 & 3 & 4\\
+    2& 4& 1& 3
+\end{pmatrix}\]
+means ``the permutation that sends $1\mapsto 2$, $2 \mapsto 4$, $3\mapsto 1$, and $4\mapsto 3$
+
+\begin{dfn}[Disjoint Cycle]{dfn:disjoint-cycle}{}
+    Two cycles are disjoint if no integer appears in both cycles. For example, $(214)(35)$ is a product of disjoint cycles, and is the permutation
+    \[\begin{pmatrix}
+        1& 2& 3& 4& 5\\
+        4& 1& 5& 2& 3
+    \end{pmatrix}\]
+\end{dfn}
+
+\begin{lma}[Uniqueness of Disjoint permutations]{lma:disjoint-perms-uniqueness}{}
+    Every permutation can be written as a product of disjoint cycles, and the product is unique up to reordering the factors
+\end{lma}
+
+\textbf{Example}: The permutation
+\[\begin{pmatrix}
+    1& 2& 3& 4& 5& 6\\
+    4& 1& 6& 2& 5& 3
+\end{pmatrix}\]
+is written as $(142)(36)(5)$ but can also be written as $(36)(5)(142)$
+
+bunch of other stuff
+
+\subsection{Alternating Groups}
+\begin{dfn}[Even permutations]{dfn:even-perm}{}
+    A permutation is \textbf{even} if 
+\end{dfn}
+
+\newpage
+\section{Solvable Groups}
+\begin{dfn}[Subnormal series]{dfn:subnormal-series}{}
+    A \textbf{subnormal series} is a sequence
+    \[\{e\} = G_{0} \lhd G_{1} \lhd \dots \lhd G_{s} = G\]
+\end{dfn}
+
+\begin{dfn}[Solvable Group]{dfn:solvable-group}{}
+    A group is \textbf{solvable} if it has a subnormal series with all $G_{i+1} /G_{i}$ abelian
+\end{dfn}
+
+\textbf{Examples}
+\begin{itemize}
+    \item Abelian groups are solvable, $\{e\} \lhd G$
+    \item $D_{n}$ is solvable, $\{e\} \lhd C_{n} \lhd D_{n},\,D_{n} / C_{n} \cong C_{2},\,C_{n} /\{e\} \cong C_{n}$
+    \item $A_{5}$ is not solvable because it is simple, so $\{e\}$ is the only solvable normal subgroup and $A_{5} /\{e\} \cong A_{5}$ not abelian
+    \item $S_{4}$ is solvable
+    \item Every $p$-group is solvable
+\end{itemize}
+
+\begin{thm}[Solvable and Cyclic Groups]{thm:solvable-cyclic}{}
+    A group is solvable $\iff$ all its composition factors are cyclic
+\end{thm}
+
+\begin{proof}
+    $ $\newline
+    $(\impliedby)$ Composition series is a subnormal series with cyclic factors. Cyclic $\implies$ abelian, so $G$ is solvable
+
+    $(\implies)$ The result that composition factors of $G$ are those of $N$ and $G /N$ for $N \lhd G$
+
+    Since $G$ is solvable, $\{e\} = G_{0} \lhd G_{1} \lhd G_{2} \lhd \cdots \lhd C_{n} = G$ and $G_{i+1} /G_{i}$ abelian
+
+    Composition factors for $G$ are those for $G_{n} /G_{n+1}$ and those for $G_{n-1}$ so by induction, composition factors for $G$ are the disjoint union of all composition factors for $G_{i} /G_{i-1}$
+\end{proof}
+
+\begin{lma}[]{lma:composition-cyclic}{}
+    All composition factors of an abelian group are cyclic. Therefore all composition factors of $G_{i} /G_{i-1}$ are cyclic, so all composition factors of $G$ are cyclic
+\end{lma}
+
+\textbf{Example}: 
+\begin{itemize}
+    \item Any group of order $<60$ is solvable. This is because its composition factors have order of $<60$ and are simple, and therefore cyclic ($A_{5}$ is the smallest non-cyclic simple group)
+    \item $S_{5},S_{6},S_{7},\dots$ are not solvable as composition factors of $S_{n}$ are $A_{n}$ and $C_{2}$ for $n>5$, and $A_{n}$ is not cyclic
+\end{itemize}
+
+\begin{thm}[Solvable subgroups]{thm:solvable-subgroups}{}
+    Every subgroup of a solvable group is solvable
+\end{thm}
+
+\begin{proof}
+    Let $G$ be solvabel and $G \le G$. So we have
+    \[\{e\} = G_{0} \lhd G_{1} \lhd G_{2} \lhd \cdots \lhd G_{n} = G\]
+    with $G_{i+1} / G_{i}$ abelian. Let $H_{i} = H \cup G_{i}$. Note that $G_{i} \cup H \lhd G_{i+1} \cup H$ since $\forall n \in G_{iH} \cup H$ and all $x\in G_{i} \cup / H$ we have $hxh^{-1}\in G_{i}$ as $G_{i} \lhd G_{i+1}$ and $hxh^{-1} \in H$ as $h_{1}x\in H$
+
+    $\{e\} = H_{0} \lhd H_{1} \lhd \cdots \lhd H_{n} = H$ is a subnormal series
+\end{proof}
+
+note: idk if this proof makees sense
+
+
 
 \end{document}
