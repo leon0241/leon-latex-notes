@@ -1,0 +1,4 @@
+\contentsline {section}{\numberline {1}Introduction to Algebraic Topology}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Topologies to Algebra}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Connected Spaces}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Path-Connectedness}{4}{subsection.1.3}%
