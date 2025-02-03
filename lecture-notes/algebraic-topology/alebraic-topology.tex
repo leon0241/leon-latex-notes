@@ -21,7 +21,7 @@
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{mathtools}
-% \usepackage{preamble}
+\usepackage{../../preamble-notes}
 \usepackage{multicol}
 \usepackage{lipsum}
 \usepackage{float}
@@ -176,5 +176,107 @@ $x \sim y$ is an equivalence relation due to the following operations on paths:
         \[X = \{(x, \sin(\frac{1}{x})) \mid 0 < x < 1\}\]
         is connected but not path connected
 \end{itemize}
+
+\begin{dfn}[Homotopy]{dfn:homotopy}{}
+    Let $f, g : X \to Y$ continuous maps. A \textbf{homotopy} from $f$ to $g$ is a continuous map $h : X \times I \to Y$ s.t.
+    \begin{align*}
+        h(-, 0) &= f \iff h(x,0) = f(x),\, \forall x \\
+        h(-, 1) &= g
+    \end{align*}
+\end{dfn}
+
+\textbf{Terminology}: $f$ is homotopy equivalent to $g$ if there exists a homotopy $h$
+
+homotopies on homotopies - horizontal composition
+
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzIsMCwiWSJdLFs0LDAsIloiXSxbMCwxLCJmIiwyXSxbMSwyLCJnIiwyXSxbMCwxLCJmJyIsMCx7Im9mZnNldCI6LTMsImN1cnZlIjotM31dLFsxLDIsImcnIiwwLHsib2Zmc2V0IjotMywiY3VydmUiOi0zfV0sWzMsNSwiaF8xIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFs0LDYsImhfMiIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+\[\begin{tikzcd}[cramped]
+	X && Y && Z
+	\arrow[""{name=0, anchor=center, inner sep=0}, "f"', from=1-1, to=1-3]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "{f'}", shift left=3, curve={height=-18pt}, from=1-1, to=1-3]
+	\arrow[""{name=2, anchor=center, inner sep=0}, "g"', from=1-3, to=1-5]
+	\arrow[""{name=3, anchor=center, inner sep=0}, "{g'}", shift left=3, curve={height=-18pt}, from=1-3, to=1-5]
+	\arrow["{h_1}"', shorten <=3pt, shorten >=3pt, Rightarrow, from=0, to=1]
+	\arrow["{h_2}"', shorten <=3pt, shorten >=3pt, Rightarrow, from=2, to=3]
+\end{tikzcd}\]
+
+Vertical composition
+% https://q.uiver.app/#q=WzAsMixbMCwwLCJYIl0sWzIsMCwiWSJdLFswLDEsImciLDAseyJsYWJlbF9wb3NpdGlvbiI6NzB9XSxbMCwxLCJmIiwwLHsib2Zmc2V0IjotMywiY3VydmUiOi0zfV0sWzAsMSwiayIsMix7Im9mZnNldCI6MywiY3VydmUiOjN9XSxbMywyLCJoXzEiLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV0sWzIsNCwiaF8yIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dXQ==
+
+\[\begin{tikzcd}[cramped]
+	X && Y
+	\arrow[""{name=0, anchor=center, inner sep=0}, "g"{pos=0.7}, from=1-1, to=1-3]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "f", shift left=3, curve={height=-18pt}, from=1-1, to=1-3]
+	\arrow[""{name=2, anchor=center, inner sep=0}, "k"', shift right=3, curve={height=18pt}, from=1-1, to=1-3]
+	\arrow["{h_1}"', shorten <=3pt, shorten >=3pt, Rightarrow, from=1, to=0]
+	\arrow["{h_2}"', shorten <=3pt, shorten >=3pt, Rightarrow, from=0, to=2]
+\end{tikzcd}\]
+
+\newpage
+\subsection{Homotopy Equivalence}
+
+\begin{dfn}[Homotopy Equivalence]{dfn:homotopy-equivalence}{}
+    Two spaces $X$, $Y$ are called \textbf{homotopy equivalent} or \textbf{of the same homotopy type}, and denoted by $X \simeq Y$, if there exists a homotopy equivalence $f : X \to Y$
+\end{dfn}
+
+\textbf{Note}: We use $\cong$ for homeomorphisms and $\simeq$ for homotopy equivalences.
+
+\begin{lma}[Homotopy inverses]{lma:homotopy-inverses}{}
+    Let $f : X \to Y$ and $g : Y \to Z$ with homotopy inverses $\tilde{f} : Y \to X$ and $\tilde{g} : Z \to Y$ respectively. Then, $\tilde{f} \circ \tilde{g} : Z \to X$ is a homotopy inverse of $g \circ f : X \to Z$.
+
+    In particular, $X \simeq Y$ and $Y \simeq Z$ implies $X \simeq Z$.
+\end{lma}
+
+\begin{dfn}[Contractible Spaces]{dfn:contractible}{}
+    A space $X$ is called \textbf{contractible} if it is homotopy equivalent to a point, i.e. $X\simeq *$
+\end{dfn}
+
+\textbf{Example}: $\mathbb{R}^{n}$ is contractible. Let $x_{0}$ be a fixed point in $\mathbb{R}^{n}$ and define the (straight line) homotopy $h : c_{x_{0}}\simeq \mathrm{id}_{\mathbb{R}^{n}}$ by
+\[h(x, t) = (1 - t)x_{0} + tx\]
+
+\begin{rem}[]{rem:contractible-pc}{}
+    \begin{enumerate}
+        \item Contractible spaces are path-connected
+        \item The converse does not hold. For example $X = \mathbb{S}^{1}$ will lead to a counterexample.
+        \item A contractible space $X$ is contractible at any point $x_{0}$. Since $X$ is path-connected a path from $x$ to $x'$ defines a homotopy $c_{x} \simeq c_{x'}$
+        \item Any two maps $f, g : X \to Y$ are homotopic if $Y$ is contractible.
+    \end{enumerate}
+\end{rem}
+
+\newpage
+
+\begin{dfn}[Retractions and Detractions]{dfn:retract-detract}{}
+    \begin{itemize}
+        \item A \textbf{retract} of $X$ onto a subspace $A \subset X$ is a map $r : X \to A$ such that $r |_{A} = \mathrm{id}_{A}$. Equivalently, this is a map $r : X \to X$ such that $r^{2} = r$ and $r(X) = A$
+        \item A \textbf{deformation retract} of $X$ onto $A$ is the additional datum of a homotopy $h : \mathrm{id}_{X} \simeq i \circ r$, where $i : A \hookrightarrow X$ denotes the inclusion
+    \end{itemize}
+\end{dfn}
+
+In other words, a deformation retract is a homotopy $h : X \times I \to X$ such that $h(x, 0) = x$ and $h(x, 1)\in A$ for all $x\in X$ and $h(a,1) = a$ for all $a\in A$
+
+Not all retracts can form deformation retracts. For instance, notice that the retract $X$ onto a point $\{x_{0}\}$ can be a deformation retract if and only if $X$ is contractible.
+
+
+
+\newpage
+
+
+\begin{rem}[]{rem:path-homotopy-properties}{}
+    Ordinary tomotopy are not interesting for paths, e.g. $\alpha : I \to X$ is homotopic to a constant path
+\end{rem}
+
+\begin{ppn}[]{ppn:path-concat-unital}{}
+    Path concatenation is unital and asssociative up to relative union
+\end{ppn}
+
+\begin{lma}[]{lma:}{}
+    Let $\alpha : I \to X$ be a path, and $\lambda : I \to I$ continuous s.t. $\lambda(0) = 0$ and $\lambda(1) = 1$.
+
+    Then, $\alpha \circ \lambda \cong \alpha$ (relative to $\{0,1\}$)
+\end{lma}
+
+\begin{dfn}[Fundamental Group]{dfn:fundamental-group}{}
+    The fundamental group of $X$ at $x_{0}\in X$ is the homotophy equivalence class of ``loops'' at $x_{0}$. i.e. paths in $X$ s.t. $\alpha(0) = \alpha(0) = x$
+\end{dfn}
 
 \end{document}
