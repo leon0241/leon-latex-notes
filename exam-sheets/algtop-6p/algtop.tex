@@ -1,0 +1,108 @@
+\documentclass[landscape, 8pt]{extarticle}
+\usepackage{geometry}
+% \usepackage{showframe}
+\usepackage[dvipsnames]{xcolor}
+
+\colorlet{colour1}{Red}
+\colorlet{colour2}{Green}
+\colorlet{colour3}{Cerulean}
+
+\geometry{
+    a4paper, 
+    margin=0.17in
+}
+
+\pretolerance=0
+\hyphenpenalty=0
+
+\usepackage{lmodern}
+
+\usepackage[fontsize=7pt]{scrextend}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+% \usepackage{preamble}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage[framemethod=TikZ]{mdframed}
+% \usepackage{../thmboxes_white}
+\usepackage{../../thmboxes_v3}
+\usepackage{float}
+% \usepackage{setspace}
+\usepackage[nodisplayskipstretch]{setspace}
+
+
+
+
+
+% \setlength{\parskip}{0pt}
+
+% Custom Definitions of operators
+% \DeclareMathOperator{\im}{im}
+% \DeclareMathOperator{\Fix}{Fix}
+% \DeclareMathOperator{\Orb}{Orb}
+% \DeclareMathOperator{\Stab}{Stab}
+% \DeclareMathOperator{\send}{send}
+% \DeclareMathOperator{\dom}{dom}
+% \DeclareMathOperator{\Maps}{Maps}
+% \DeclareMathOperator{\sgn}{sgn}
+% \DeclareMathOperator{\Mat}{Mat}
+% \DeclareMathOperator{\scale}{sc}
+% \DeclareMathOperator{\Hom}{Hom}
+% \DeclareMathOperator{\id}{id}
+% \DeclareMathOperator{\rk}{rk}
+% \DeclareMathOperator{\Tr}{tr}
+% \DeclareMathOperator{\diag}{diag}
+% \DeclareMathOperator{\can}{can}
+
+\usepackage{hyperref} % note: this is the final package
+
+\parindent = 0pt
+
+\renewcommand\labelitemi{\tiny$\bullet$}
+
+\begin{document}
+
+\setlength{\abovedisplayskip}{3.5pt}
+\setlength{\belowdisplayskip}{3.5pt}
+\setlength{\abovedisplayshortskip}{3.5pt}
+\setlength{\belowdisplayshortskip}{3.5pt}
+
+\begin{multicols}{3}
+\raggedcolumns
+
+
+\section*{\huge Galois Theory Notes}
+Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
+
+\section{Topologies and Connectedness}\setcounter{subsection}{1}
+\begin{rcl}[Topology]{rcl:topology}{}
+    An (open) topology on $X$ is a collection of subsets $\tau \subset P(X)$ such that
+    \begin{enumerate}[leftmargin=*]
+        \item $\emptyset, X \in \tau$,
+        \item Closed under finite intersections: If $\{U_{1},\dots,U_{n}\} \subset \tau$ then $\bigcap_{i=1,\dots,n} U_{i} \in \tau$
+        \item Closed under arbitrary unions: If $\{U_{i}\}_{i\in I} \subset \tau$ is a family of opens, then $\bigcup_{i\in I} U_{i}\in \tau$
+    \end{enumerate}
+    The subsets $U\in \tau$ are called \textbf{open} and their complements in $X$ define \textbf{closed} subsets
+
+    A subset $A \subset X $ is called \textbf{clopen} if it is both closed and open
+\end{rcl}
+
+\begin{dfn}[Connected spaces]{dfn:connectedness}{}
+    A topological space $X$ is \textbf{connected} if $X = A \amalg B$ with $A, B \subset X$ open implies that $A = \emptyset$ or $A = X$
+\end{dfn}
+
+\begin{ppn}[Connectedness relations]{ppn:connectedness-clopen}{}
+    \begin{itemize}
+        \item A topological space $X$ is connected iff the only copens are $\emptyset$ and $X$
+        \item Let $f : X \to Y$ be a continuous map of topological spaces and let $X$ be connected. Then $f(X)$ is connected.
+    \end{itemize}
+\end{ppn}
+
+
+\lipsum[1-12]
+\end{multicols}
+\end{document}

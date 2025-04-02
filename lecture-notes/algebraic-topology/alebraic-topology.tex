@@ -245,6 +245,8 @@ Vertical composition
 
 \newpage
 
+\section{Retractions and Deformations}
+
 \begin{dfn}[Retractions and Detractions]{dfn:retract-detract}{}
     \begin{itemize}
         \item A \textbf{retract} of $X$ onto a subspace $A \subset X$ is a map $r : X \to A$ such that $r |_{A} = \mathrm{id}_{A}$. Equivalently, this is a map $r : X \to X$ such that $r^{2} = r$ and $r(X) = A$
@@ -256,7 +258,67 @@ In other words, a deformation retract is a homotopy $h : X \times I \to X$ such 
 
 Not all retracts can form deformation retracts. For instance, notice that the retract $X$ onto a point $\{x_{0}\}$ can be a deformation retract if and only if $X$ is contractible.
 
+\begin{ppn}[Deformation Retracts cause Homotopy Equivalence]{ppn:retracts-to-homotopy-equivalence}{}
+    A deformation retract of $X$ onto $A$ induces a homotopy equivalence $X \simeq A$.
+\end{ppn}
 
+\subsection{Quotient spaces}
+\begin{dfn}[Quotient Space]{dfn:quotient-space}{}
+    Let $X$ be a topological space and let $\sim$ be an equivalence relation on $X$. Then $X / \sim$ is equipped with the quotient topology and called a \textbf{quotient space}. If $Z$ is a closed subset in $X$, then we can also define the quotient space $X / Z$.
+\end{dfn}
+
+\textbf{Examples of Quotient Spaces}
+\begin{itemize}
+    \item The quotient of the $n$-dimensional closed disk by its boundary is the $n$-sphere, i.e. 
+        \[ \mathbb{D}^{n} / \partial \mathbb{D}^{n} \cong \mathbb{S}^{n} \]
+    \item The $2$-torus: $\mathbb{R}^{2} / \mathbb{Z}^{2}$
+    \item The projective space $\mathbb{R}P^{n} = \mathbb{R}^{n+1} - \{0\} / \sim$ by the relation $x \sim y$ iff there exists some $\lambda\in \mathbb{R}^{\times}$ such that $x = \lambda y$. This corresponds to the space of lines through the origin in $\mathbb{R}^{n+1}$.
+\end{itemize}
+
+\begin{dfn}[Alternate Quotient Space]{dfn:alternate-quotient-space}{}
+    Let $f : Z \to Y$ be a continuous map between a closed subset $Z \subset X$ and $Y$. Then
+    \[X \amalg_{f} Y = X \amalg Y / f(z) \sim y\]
+
+    Additionally,
+    \begin{itemize}
+        \item Its \textbf{mapping cylinder} is defined as the topological space
+            \[M_{f} := (X \times I) \amalg Y / \sim\]
+            where the quotient identifies $(x, 0) \sim f(x)$ for any $x\in X$
+        \item Its \textbf{cone} is the further quotient
+            \[C_{f} := M_{f} / X \times \{1\}\]
+        \item The \textbf{cone} of a topological space $X$ is:
+            \[C_{X} := C_{\mathrm{id}_{X}} = X \times I / X \times \{1\}\]
+    \end{itemize}
+\end{dfn}
+
+\begin{rem}[Commutative Diagram of the Mapping Cylinder]{rem:cylinder-cd}{}
+    In other words, the mapping cylinder of $f : X \times Y$ is the pushout of the diagram
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIFxcdGltZXMgXFx7MFxcfSJdLFswLDIsIlggXFx0aW1lcyBJIl0sWzIsMiwiTV9mIl0sWzIsMCwiWSJdLFswLDMsImYiXSxbMCwxXSxbMywyXSxbMSwyXV0=
+\[\begin{tikzcd}[cramped]
+	{X \times \{0\}} && Y \\
+	\\
+	{X \times I} && {M_f}
+	\arrow["f", from=1-1, to=1-3]
+	\arrow[from=1-1, to=3-1]
+	\arrow[from=1-3, to=3-3]
+	\arrow[from=3-1, to=3-3]
+\end{tikzcd}\]
+\end{rem}
+
+\begin{lma}[Iclusion Map of the Mapping Cylinder]{lma:cylinder-iclusion}{}
+    Let $f : X \to Y$ and $M_{f}$ its mapping cylinder. The iclusion map $i : Y \hookrightarrow M_{f}$ is a strong deformation retract.
+\end{lma}
+
+\subsection{Examples of Deformation Retracts}
+\begin{xmp}[Shhere]{xmp:sphere-deformation}{}
+    Consider the $n$-sphere $\mathbb{S}^{n}$ with the standard embedding $\mathbb{R}^{n+1} \backslash \{ 0\}$. Then the map
+    \[r : \mathbb{R}^{n+1} \backslash_{0} \{0\} \to \mathbb{S}^{n},\, x \mapsto \frac{x}{\lvert x \rvert}\]
+    is a retract. Indeed, if $x$ has norm $\lvert x \rvert = 1$, then $r(x) = x$. For a deformation retract one needs to find a homotopy $h : i \circ r \simeq \mathrm{id}_{X}$. this can easily be realized by the following straight line homotopy:
+    \[h : \mathbb{R}^{n+1} \backslash \{0\} \times I \to \mathbb{R}^{n+1} \backslash \{0\}, \quad (x, t) \mapsto (1-t) \frac{x}{\lvert x \rvert} + tx\]
+    Indeed $h(x,0) = r(x)$ and $h(x, 1) = x$ for all $x$
+
+    In fact, one can easily check that the above forms a strong deformation retract as $h(x, t) = x$ for all $x\in \mathbb{S}^{n}$ and $t\in I$. Note that one could have also constructed a deformation retract that is not strong, for example by rotating in time.
+\end{xmp}
 
 \newpage
 

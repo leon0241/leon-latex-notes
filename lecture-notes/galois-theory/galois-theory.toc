@@ -1,0 +1,4 @@
+\contentsline {section}{\numberline {1}Introduction to Galois Theory}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Complex Numbers over $\mathbb {R}$}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Complex Numbers over $\mathbb {Q}$}{3}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Groups, Rings, and Fields}{4}{section.2}%

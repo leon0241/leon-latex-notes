@@ -1,0 +1,233 @@
+\documentclass[landscape, 8pt]{extarticle}
+\usepackage{geometry}
+% \usepackage{showframe}
+\usepackage[dvipsnames]{xcolor}
+
+\colorlet{colour1}{Red}
+\colorlet{colour2}{Green}
+\colorlet{colour3}{Cerulean}
+
+\geometry{
+    a4paper, 
+    margin=0.17in
+}
+
+\pretolerance=0
+\hyphenpenalty=0
+
+\usepackage{lmodern}
+
+% \usepackage[fontsize=8pt]{scrextend}
+
+\usepackage{quiver}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{symbols}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+% \usepackage{preamble}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage[framemethod=TikZ]{mdframed}
+% \usepackage{../thmboxes_white}
+\usepackage{../../thmboxes_v3}
+\usepackage{customs}
+\usepackage{float}
+% \usepackage{setspace}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\usepackage{hyperref} % note: this is the final package
+
+\parindent = 0pt
+
+\renewcommand\labelitemi{\tiny$\bullet$}
+
+\begin{document}
+
+\setlength{\abovedisplayskip}{3.5pt}
+\setlength{\belowdisplayskip}{3.5pt}
+\setlength{\abovedisplayshortskip}{3.5pt}
+\setlength{\belowdisplayshortskip}{3.5pt}
+
+\begin{multicols}{3}
+\raggedcolumns
+
+
+\section*{\huge Modelling Concurrent Systems Notes}
+Made by Leon :)
+
+
+\vspace{-5pt}
+\section{Process Algebras}
+\setcounter{subsection}{1}
+
+\centering
+\begin{dfn}[ACP, CCS, CSP]{dfn:acp-ccs-csp}{}
+    The syntax of ACP, CCS, and CSP is defined as:
+    \begin{tabular}{ |r|c|c|c|}
+        \hline
+        \textbf{Operation} & \textbf{ACP} & \textbf{CCS} & \textbf{CSP} \\
+        \hline
+        Termination & $\epsilon$ & $0$ & $\mathrm{STOP}$ \\ 
+        \hline
+        Deadlock & $\delta$ & &\\
+        \hline
+        Action & a & &\\
+        Sequential Composition & $P.Q$ & & \\
+        Action Prefixing &  & $a.P$& $a \to P$\\
+        \hline
+        Alternative Choice & $P + Q$ & $P + Q$ & \\
+        External Choice & & & $P \extchoice Q$ \\
+        Internal Choice &  & & $P \intchoice Q$ \\
+        \hline
+        Parallel Composition & $P \merge Q$ & $P \mid Q$ & $P \pcomp Q$ \\
+        \hline
+        Restriction & $\restrict(P)$ & $P \backslash a$ & \\
+        \hline
+        Abstraction & $\abstract(P)$ & & $P / a$ \\
+        \hline
+        Relabelling & & $P[f]$ & $P[f]$ \\
+        \hline
+
+    \end{tabular}
+
+    \vspace{10pt}
+    \longrule{0.08ex}
+
+    \textbf{Differences between ACP, CCS, and CSP}
+    \begin{itemize}
+        \item \textbf{Action}: CCS and CSP require Action Prefixing, while ACP can perform sequential composition on any process. This also requires CCS and CSP processes to feature the inaction $0$/$\mathrm{STOP}$, while ACP is not restricted to this.
+        \item \textbf{Choice}: ACP and CCS have an operator which can perform both External and Internal Choice. CSP Differentiates internal choices from external ones, and internal actions within $\extchoice$ do not count as a choice in CSP.
+        \item \textbf{Parallel Composition}:
+            \begin{itemize}
+                \item  ACP actions follow a communication function to decide what to synchronise, i.e. $\gamma(a, b)$
+                \item CCS actions can only synchronise with its conjugate counterpart, i.e. $a$ and $\overline{a}$
+                \item CSP actions can only synchronise over the same action, i.e. $a$ and $a$
+            \end{itemize}
+        \item \textbf{Restriction, Abstraction, Relabelling}:
+            \begin{itemize}
+                \item Relabelling just doesn't exist in base ACP, lol
+                \item CCS combines communication and abstraction into one step - every synchronisation results in a $\tau$.
+                \item CSP combines Parallel Composition and Restriction into one step, as CSP Parallel Composition doesn't feature left-over Left Merges.
+            \end{itemize}
+    \end{itemize}
+\end{dfn}
+
+\begin{dfn}[The GSOS Format]{dfn:gsos}{}
+    General Structured Operational Semantics (GSOS) operations are compositional.
+
+    \textbf{Rules of GSOS}
+    \begin{itemize}
+        \item Its source has the form $f(x_{1},\dots,x_{ar(f)})$ with $f\in \Sigma$ and $x_{i}\in V$
+        \item The left hand sides of its premises are variables $x_{i}$ with $1\le i \le ar(f)$
+        \item The right hand sides of its positive premises are variables that are all distinct, and that do not occur in its source
+        \item Its target only contains variables that also occur in its source or premises
+    \end{itemize}
+
+
+\textbf{GSOS Semantics of ACP}
+
+\framebox{$\begin{array}{ccccc}
+(a. P) \prightarrow{\alpha} P &
+P + Q \prightarrow{\alpha} P &
+P + Q \prightarrow{\alpha} Q \\[2ex]
+% \displaystyle\frac{P \prightarrow{\alpha} P'}{f(P) \prightarrow{f(\alpha)} f(P')} \\[4ex]
+\displaystyle\frac{P\prightarrow{\alpha} P'}{P \merge Q \prightarrow{\alpha} P' \merge Q} &
+
+\multicolumn{2}{c}{\displaystyle\frac{P\prightarrow{a} P'~~Q\prightarrow{b} Q'~~ \scriptstyle{a \mid b = c}}{P \merge Q \prightarrow{a} P' \merge Q'}} \\[4ex]
+
+\displaystyle\frac{Q\prightarrow{\alpha} Q'}{P \merge Q \prightarrow{\alpha} P \merge Q'} &
+
+\displaystyle\frac{P \prightarrow{\alpha} P'~~{\scriptstyle(\alpha\notin A)}}{\restrict(P) \prightarrow{\alpha} \restrict(P')} &
+
+\displaystyle\frac{\langle \mathcal{S}_{X} \mid \mathcal{S} \rangle \prightarrow{a} P'}{\langle X \mid \mathcal{S} \rangle \prightarrow{a} P'}
+
+
+\end{array}$}
+
+\textbf{GSOS Semantics of CSP}
+\begin{center}
+\framebox{$\begin{array}{ccc}
+(a\rightarrow P) \prightarrow{a} P &
+P \intchoice Q \prightarrow{\tau} P &
+P \intchoice Q \prightarrow{\tau} Q \\[2ex]
+\displaystyle\frac{P\prightarrow{a} P'}{P\extchoice Q \prightarrow{a} P'} &
+\displaystyle\frac{P\prightarrow{\tau} P'}{P\extchoice Q \prightarrow{\tau} P'\extchoice Q} &
+\displaystyle\frac{Q\prightarrow{a} Q'}{P\extchoice Q \prightarrow{a} Q'} \\[4ex]
+\displaystyle\frac{Q\prightarrow{\tau} Q'}{P\extchoice Q \prightarrow{\tau} P\extchoice Q'} &
+\displaystyle\frac{P \prightarrow{\alpha} P'}{f(P) \prightarrow{f(\alpha)} f(P')} &
+\displaystyle\frac{P\prightarrow{\alpha} P'~~{\scriptstyle(\alpha\notin A)}}{P\|_AQ \prightarrow{\alpha} P'\|_AQ} \\[4ex]
+
+\multicolumn{2}{c}{
+\displaystyle\frac{P\prightarrow{a} P'~~Q\prightarrow{a} Q'~~{\scriptstyle(a\in A)}}{P\|_AQ \prightarrow{a} P'\|_AQ'}} &
+\displaystyle\frac{Q\prightarrow{\alpha} Q'~~{\scriptstyle(\alpha\notin A)}}{P\|_AQ \prightarrow{\alpha} P\|_AQ'} \\[4ex]
+\multicolumn{3}{c}{\mu p.P \xrightarrow{\mathmakebox[10pt]{\tau}} P[\mu p.P/p]}
+\end{array}$}
+\end{center}
+
+\end{dfn}
+
+\begin{dfn}[CSP Expansion Theorem]{dfn:expansion-theorem}{}
+    Let $P := \sum_{i\in I} \alpha_{i} P_{i}$ and $Q := \sum_{j\in J} \beta_{j}. Q_{j}$. Then
+    \[P \mid Q = \sum_{i\in I} \alpha_{i}(P_{i} \mid Q) + \sum_{j\in J} \beta_{j}(P \mid Q_{j}) + \sum_{\substack{i\in I, j\in J \\ \alpha_{i} = \overline{b}_{j}}} \tau.(P_{i} \mid Q_{j})\]
+    Any guarded CCS expression can be written into a bisimulation equivalent CCS expression of the form $\sum_{i\in I} \alpha_{i}.P_{i}$. This is called \textbf{head normal form}
+\end{dfn}
+
+\newpage
+\section{Semantics and shit like that}
+\begin{dfn}[Trace Semantice]{dfn:trace-semantics}{}
+    \begin{itemize}
+        \item \textbf{Completed Trace}: A start to finish trace of a process.
+        \item \textbf{Partial Trace}: From the start of a process to any point, including the end. Clearly, $CT(P) \subseteq PT(Q)$
+        \item \textbf{Strong vs Weak}: Weak PT and CT means that two processes are equivalent with all instances of $\tau$ omitted.
+        \item \textbf{Infinite Trace Semantics}: Differs from different types of divergence. Stronger than CT and PT
+    \end{itemize}
+\end{dfn}
+
+\begin{dfn}[Bisimulation Semantice]{dfn:bisimulation}{}
+    \begin{itemize}
+        \item True Bisimulation
+        \item Weak Bisimilarity
+        \item Branching Bisimilarity
+        \item Rooted Branching Bisimilarity
+    \end{itemize}    
+\end{dfn}
+
+\begin{dfn}[The GOAT of Process algebra]{dfn:bisim-counterexample}{}
+% https://q.uiver.app/#q=WzAsMTEsWzUsMSwiXFxjaXJjIl0sWzQsMiwiXFxidWxsZXQiXSxbNiwyLCJcXGJ1bGxldCJdLFs2LDMsIlxcYnVsbGV0Il0sWzQsMywiXFxidWxsZXQiXSxbMSwxLCJcXGNpcmMiXSxbMSwyLCJcXGJ1bGxldCJdLFsyLDMsIlxcYnVsbGV0Il0sWzAsMywiXFxidWxsZXQiXSxbNSwwXSxbMSwwXSxbMCwxLCJhIl0sWzAsMiwiYSIsMl0sWzIsMywiYyIsMl0sWzEsNCwiYiJdLFs1LDYsImEiXSxbNiw3LCJjIl0sWzYsOCwiYiJdLFs5LDAsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjo1MH19XSxbMTAsNSwiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjUwfX1dXQ==
+\[\begin{tikzcd}[cramped]
+	& {} &&&& {} \\
+	& \circ &&&& \circ \\
+	& \bullet &&& \bullet && \bullet \\
+	\bullet && \bullet && \bullet && \bullet
+	\arrow[shorten <=5pt, from=1-2, to=2-2]
+	\arrow[shorten <=5pt, from=1-6, to=2-6]
+	\arrow["a", from=2-2, to=3-2]
+	\arrow["a", from=2-6, to=3-5]
+	\arrow["a"', from=2-6, to=3-7]
+	\arrow["b", from=3-2, to=4-1]
+	\arrow["c", from=3-2, to=4-3]
+	\arrow["b", from=3-5, to=4-5]
+	\arrow["c"', from=3-7, to=4-7]
+\end{tikzcd}\]
+\end{dfn}
+
+\begin{dfn}[Failure Semantics]{dfn:failure}{}
+    
+\end{dfn}
+
+
+\begin{dfn}[Consistent Colouring]{dfn:colouring}{}
+    
+\end{dfn}
+
+\begin{dfn}[Safety]{dfn:}{}
+    
+\end{dfn}
+
+\lipsum[1-12]
+\end{multicols}
+\end{document}
