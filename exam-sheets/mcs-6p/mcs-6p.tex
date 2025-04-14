@@ -316,8 +316,28 @@ HML in set form. If a process $P$ has a property $\Phi$, we write $P \models \Ph
 Deadlock can be represented as $P \models [\mathrm{Act}] \bot$, where $\mathrm{Act}$ is the set of all actions.
 \end{dfn}
 
+\begin{dfn}[Preorder]{dfn:preorder}{}
+	A \textbf{preorder} is a relation that is \textit{transitive} and \textit{reflexive}, but not \textit{symmetric}. Preorders are denoted with $\sqsubseteq$.
+
+	Preorders are used just like equivalence relations to compare specifications and implementations. We write
+	\[\text{\textit{Spec}} \sqsubseteq \text{\textit{Impl}}\]
+	For each preorder $\sqsubseteq$, there exists an associated equivalence relation $\equiv$ called its \textbf{kernel}, defined by
+	\[P \equiv Q \iff (P \sqsubseteq Q \wedge Q \sqsubseteq P)\]
+\end{dfn}
+
+\begin{dfn}[Simulation Equivalence]{dfn:simulation}{}
+	One process simulates the other when $P$ can do all the same moves as $Q$. We write $P \sqsubseteq_{S} Q$ if $Q$ can be simulated by $P$. Two processes are \textbf{simulation equivalent}, $P =_{S} Q$ if one simulates the other, and vice versa. This is two one-sided equivalences, and therefore is not the same as bisimulation, which needs both processes to be equivalent at the same time
+\end{dfn}
+
 \begin{dfn}[Kripke Structure]{dfn:kripke}{}
-	states instead of actions. wip
+	Kripke Structures are defined on states rather than actions, called \textbf{atomic predicates}.
+
+	Let $AP$ be a set of \textbf{atomic predicates}. A \textbf{Kripke structure} over $AP$ is a tuple $(S,\, \to,\, \models)$ with $S$ a set of states, $\to \subseteq S \times S$, the \textbf{transition relation}, and $\models \subseteq S \times AP$. The relation $s \models p$ says that predicate $p\in AP$ \textbf{holds in state $s\in S$}.
+
+	\longrule{0.08ex}
+	A \textbf{path} in a Kriple structure is a nonempty finite or infinite sequence $s_{0},\,s_{1} ,\dots$ of states, such as $(s_{i}, s_{i+1})\in \to$ for each adjacent pair of states $s_{i}, s_{i+1}$ in the sequence. A path is \textbf{complete} if it is either infinite or ends in deadlock (a state without outgoing transitions)
+
+
 \end{dfn}
 
 \begin{dfn}[Petri Nets]{dfn:petris}{}
@@ -377,6 +397,19 @@ $s \models \phi$ iff $\pi \models \phi$ for all complete paths $\pi$ starting in
 	LTL and CTL can be shown to be incomparable by proving that there cannot exist an LTL formula that is equivalent to the CTL formula $\mathrm{\mathbf{AG}} \mathrm{\mathbf{EF}} a$, and by showing that there cannot exist a CTL formula equivalent to the LTL formula $\mathrm{\mathbf{FG}} a$
 \end{lma}
 
+\begin{thm}[Satisfaction of Strong Bisimilarity]{thm:hml-sb}{}
+	\begin{itemize-zero}
+	    \item Two processes are strongly bisimlar iff they satisfy the same infinitary HML formulas. Therefore, to show that two processes are not strongly bisimilar, it suffices to find an infinitary HML formula that is satisfied by one, but not the other.
+	    \item Two processes $P$ and $Q$ satisfy the same CTL formulas if they are strongly bisimilar. For finitely branching processes, we have ``iff''. For general processes, we have ``iff'' if we use CTL with infinite conjunctions.
+	    \item Two divergence-free processes satisfy the same CTL$_{-X}$ formulas if they are branching bisimulation equivalent. We have ``iff'' if we use CTL$_{-X}$ with infinite conjunctions.
+	\end{itemize-zero}
+\end{thm}
+
+\begin{thm}[De Nicola-Vaandrager]{thm:}{}
+	Translates Krikpe structures :D
+	
+\end{thm}
+
 \begin{dfn}[Partition Refining]{dfn:partition-refining}{}
 	it exists
 \end{dfn}
@@ -427,9 +460,9 @@ $s \models \phi$ iff $\pi \models \phi$ for all complete paths $\pi$ starting in
 
 \begin{xmp}[Bisimulation Semantics]{xmp:bisim-semantics}{}
 
-	A process that is Branching Bisimulation equivalent
+	Two processes that are Branching Bisimulation equivalent
 	% https://q.uiver.app/#q=WzAsNyxbMSwyLCJcXGJ1bGxldCJdLFszLDIsIlxcYnVsbGV0Il0sWzEsMCwiXFxidWxsZXQiXSxbMywwLCJcXGJ1bGxldCJdLFs1LDIsIlxcYnVsbGV0Il0sWzAsMl0sWzAsMF0sWzAsMSwiYSIsMl0sWzIsMywiYSJdLFs1LDAsIiIsMix7InNob3J0ZW4iOnsic291cmNlIjo1MH19XSxbNiwyLCIiLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6NTB9fV0sWzAsMiwiIiwwLHsiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSw0LCJcXHRhdSJdLFszLDEsIiIsMCx7ImNvbG91ciI6WzI0MCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNCwiIiwwLHsiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
-	\[\begin{tikzcd}[cramped]
+	\[\begin{tikzcd}[cramped, column sep=scriptsize]
 			{} & \bullet && \bullet \\
 			\\
 			{} & \bullet && \bullet && \bullet
@@ -443,9 +476,9 @@ $s \models \phi$ iff $\pi \models \phi$ for all complete paths $\pi$ starting in
 			\arrow["\tau", from=3-4, to=3-6]
 		\end{tikzcd}\]
 
-		A process that is Branching Bisimulation equivalent but not Rooted BB equivalent
+		Two processes that are Branching Bisimulation equivalent but not Rooted BB equivalent
 % https://q.uiver.app/#q=WzAsNyxbMSwyLCJcXGJ1bGxldCJdLFszLDIsIlxcYnVsbGV0Il0sWzEsMCwiXFxidWxsZXQiXSxbMywwLCJcXGJ1bGxldCJdLFs1LDIsIlxcYnVsbGV0Il0sWzAsMl0sWzAsMF0sWzAsMSwiXFx0YXUiLDJdLFsyLDMsImEiXSxbNSwwLCIiLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6NTB9fV0sWzYsMiwiIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjUwfX1dLFswLDIsIiIsMCx7ImNvbG91ciI6WzI0MCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsNCwiYSJdLFszLDQsIiIsMCx7ImNvbG91ciI6WzI0MCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMSwiIiwwLHsiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
-\[\begin{tikzcd}[cramped]
+\[\begin{tikzcd}[cramped, column sep=scriptsize]
 	{} & \bullet && \bullet \\
 	\\
 	{} & \bullet && \bullet && \bullet
@@ -460,7 +493,7 @@ $s \models \phi$ iff $\pi \models \phi$ for all complete paths $\pi$ starting in
 \end{tikzcd}\]
 
 	
-	A process that is Weak Bisimulation equivalent but not Branching Bisimulation equivalent?
+	Two processes that are Weak Bisimulation equivalent but not Branching Bisimulation equivalent?
 	% https://q.uiver.app/#q=WzAsOSxbMSwwLCJcXGJ1bGxldCJdLFsxLDEsIlxcYnVsbGV0Il0sWzAsMiwiXFxidWxsZXQiXSxbMiwyLCJcXGJ1bGxldCJdLFs1LDAsIlxcYnVsbGV0Il0sWzQsMSwiXFxidWxsZXQiXSxbNiwxLCJcXGJ1bGxldCJdLFs0LDIsIlxcYnVsbGV0Il0sWzYsMiwiXFxidWxsZXQiXSxbMCwxLCJcXHRhdSJdLFsxLDIsImEiLDJdLFsxLDMsImIiXSxbNCw1LCJcXHRhdSIsMl0sWzQsNiwiXFx0YXUiXSxbNSw3LCJhIiwyXSxbNiw4LCJiIl0sWzAsNCwiIiwyLHsiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw3LCIiLDEseyJjdXJ2ZSI6MiwiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMyw4LCIiLDEseyJjdXJ2ZSI6MiwiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSw1LCIiLDEseyJjb2xvdXIiOlsyNDAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDEsIiIsMSx7ImN1cnZlIjotMiwiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
 	\[\begin{tikzcd}[cramped, column sep=scriptsize]
 			& \bullet &&&& \bullet \\
@@ -479,6 +512,49 @@ $s \models \phi$ iff $\pi \models \phi$ for all complete paths $\pi$ starting in
 			\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=12pt}, dashed, no head, from=3-1, to=3-5]
 			\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=12pt}, dashed, no head, from=3-3, to=3-7]
 		\end{tikzcd}\]
+
+		Two processes that are Simulation equivalent but not Bisimulation equivalent
+% https://q.uiver.app/#q=WzAsMjQsWzUsMiwiXFxidWxsZXQiXSxbNCwzLCJcXGJ1bGxldCJdLFs1LDEsIlxcYnVsbGV0Il0sWzYsMywiXFxidWxsZXQiXSxbMiwyLCJcXGJ1bGxldCJdLFszLDMsIlxcYnVsbGV0Il0sWzEsMywiXFxidWxsZXQiXSxbMSwxLCJcXGJ1bGxldCJdLFswLDIsIlxcYnVsbGV0Il0sWzAsMywiXFxidWxsZXQiXSxbMSwwXSxbNSwwXSxbMSw0XSxbMSw1LCJcXGJ1bGxldCJdLFsyLDYsIlxcYnVsbGV0Il0sWzMsNywiXFxidWxsZXQiXSxbMSw3LCJcXGJ1bGxldCJdLFswLDYsIlxcYnVsbGV0Il0sWzAsNywiXFxidWxsZXQiXSxbNSw0XSxbNSw1LCJcXGJ1bGxldCJdLFs1LDYsIlxcYnVsbGV0Il0sWzQsNywiXFxidWxsZXQiXSxbNiw3LCJcXGJ1bGxldCJdLFswLDEsImIiLDJdLFsyLDAsImEiXSxbMCwzLCJjIl0sWzQsNSwiYyJdLFs0LDYsImIiLDJdLFs3LDQsImEiXSxbNyw4LCJhIiwyXSxbOCw5LCJiIiwyXSxbMTAsNywiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjUwfX1dLFsxMSwyLCIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6NTB9fV0sWzcsMiwiIiwwLHsiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzQsMCwiIiwwLHsiY3VydmUiOjIsImNvbG91ciI6WzI0MCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs4LDAsIiIsMCx7ImN1cnZlIjotMiwiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzksMSwiIiwyLHsiY3VydmUiOjMsImNvbG91ciI6WzI0MCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs1LDMsIiIsMSx7ImN1cnZlIjozLCJjb2xvdXIiOlsyNDAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNiwxLCIiLDEseyJjdXJ2ZSI6LTIsImNvbG91ciI6WzI0MCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxMiwxMywiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjUwfX1dLFsxMywxNCwiYSJdLFsxNCwxNSwiYyJdLFsxNCwxNiwiYiIsMl0sWzEzLDE3LCJhIiwyXSxbMTcsMTgsImIiLDJdLFsxOSwyMCwiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjUwfX1dLFsyMCwyMSwiYSJdLFsyMSwyMiwiYiIsMl0sWzIxLDIzLCJjIl0sWzIwLDEzLCIiLDAseyJjb2xvdXIiOlsyNDAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMjEsMTQsIiIsMSx7ImNvbG91ciI6WzI0MCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsyMiwxNiwiIiwxLHsiY3VydmUiOi0yLCJjb2xvdXIiOlsyNDAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMjMsMTUsIiIsMSx7ImN1cnZlIjotMiwiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+\[\begin{tikzcd}[cramped, column sep=scriptsize]
+	& {} &&&& {} \\
+	& \bullet &&&& \bullet \\
+	\bullet && \bullet &&& \bullet \\
+	\bullet & \bullet && \bullet & \bullet && \bullet \\
+	& {} &&&& {} \\
+	& \bullet &&&& \bullet \\
+	\bullet && \bullet &&& \bullet \\
+	\bullet & \bullet && \bullet & \bullet && \bullet
+	\arrow[shorten <=5pt, from=1-2, to=2-2]
+	\arrow[shorten <=5pt, from=1-6, to=2-6]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, dashed, from=2-2, to=2-6]
+	\arrow["a"', from=2-2, to=3-1]
+	\arrow["a", from=2-2, to=3-3]
+	\arrow["a", from=2-6, to=3-6]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=-12pt}, dashed, from=3-1, to=3-6]
+	\arrow["b"', from=3-1, to=4-1]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=12pt}, dashed, from=3-3, to=3-6]
+	\arrow["b"', from=3-3, to=4-2]
+	\arrow["c", from=3-3, to=4-4]
+	\arrow["b"', from=3-6, to=4-5]
+	\arrow["c", from=3-6, to=4-7]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=18pt}, dashed, from=4-1, to=4-5]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=-12pt}, dashed, from=4-2, to=4-5]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=18pt}, dashed, from=4-4, to=4-7]
+	\arrow[shorten <=5pt, from=5-2, to=6-2]
+	\arrow[shorten <=5pt, from=5-6, to=6-6]
+	\arrow["a"', from=6-2, to=7-1]
+	\arrow["a", from=6-2, to=7-3]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, dashed, from=6-6, to=6-2]
+	\arrow["a", from=6-6, to=7-6]
+	\arrow["b"', from=7-1, to=8-1]
+	\arrow["b"', from=7-3, to=8-2]
+	\arrow["c", from=7-3, to=8-4]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, dashed, from=7-6, to=7-3]
+	\arrow["b"', from=7-6, to=8-5]
+	\arrow["c", from=7-6, to=8-7]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=-12pt}, dashed, from=8-5, to=8-2]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=-12pt}, dashed, from=8-7, to=8-4]
+\end{tikzcd}\]
 \end{xmp}
 
 \lipsum[1-12]
