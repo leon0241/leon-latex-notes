@@ -1,17 +1,73 @@
-% CSP operations
-\renewcommand{\div}{\rm{div}}
-\newcommand{\oper}{\llbracket \,\, \rrbracket}
-\newcommand{\intchoice}{\sqcap}
-\newcommand{\sliding}{\triangleright}
-\newcommand{\conceal}{\backslash}
-\newcommand{\extchoice}{\,\square\,}
-\newcommand{\pcomp}{\vert\vert_{A}}
-\newcommand{\stopping}{\triangle}
-\newcommand{\interrupt}{\,\Theta_{A}\,}
-\newcommand{\fdef}[1]{f_{\mathtt{#1}}}
+% ╭──────────────────────────────────────────────────────────╮
+% │                  Equivalence Semantics                   │
+% ╰──────────────────────────────────────────────────────────╯
 
-% ACP operations
-\newcommand{\merge}{\vert\vert}
+%% Bisimilarity
+\newcommand{\bisim}{\leftrightarroweq}
+
+%% Branching Bisimilarity
+\newcommand{\brb}{=_{\mathit{BB}}}
+
+%% Rooted Branching Bisimilarity
+\newcommand{\rbrb}{=_{\mathit{RBB}}}
+
+% ╭──────────────────────────────────────────────────────────╮
+% │                        Languages                         │
+% ╰──────────────────────────────────────────────────────────╯
+
+% ACP
+\newcommand{\acp}{\mathrm{ACP}}
+
+% ACP_tau
+\newcommand{\acpt}{\mathrm{ACP}_{\tau}}
+
+% CSP
+\newcommand{\csp}{\mathrm{CSP}}
+
+% ╭──────────────────────────────────────────────────────────╮
+% │                      CSP operations                      │
+% ╰──────────────────────────────────────────────────────────╯
+
+% Div
+\renewcommand{\div}{\rm{div}}
+
+% Internal Choice
+\newcommand{\intchoice}{\sqcap}
+
+% External Choice
+\newcommand{\extchoice}{\,\square\,}
+
+% Sliding choice
+\newcommand{\sliding}{\triangleright}
+
+% Conceal
+\newcommand{\conceal}{\backslash}
+
+% Parallel Composition
+\newcommand{\pcomp}{\,\vert\vert_{A}\,}
+
+% Stopping
+\newcommand{\interrupt}{\triangle}
+
+% Interrupt
+\newcommand{\throw}{\,\Theta_{A}\,}
+
+
+% ╭──────────────────────────────────────────────────────────╮
+% │                      ACP operations                      │
+% ╰──────────────────────────────────────────────────────────╯
+
+% Merge 
+\renewcommand{\merge}{\,\vert\vert\,}
+
+% Left Merge
 \newcommand{\leftmerge}{\vert\vert\hspace{-0.435em}\raisebox{-0.29ex}{\underline{\hspace{0.6em}}}}
+
+% Restriction
 \newcommand{\restrict}{\partial_{H}}
-\renewcommand{\abstract}{\tau_{I}}
+
+% Abstraction
+\newcommand{\abtau}{\tau_{I}}
+
+% Tau Kleene Closure
+\newcommand{\taus}{\tau^{*}}

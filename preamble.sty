@@ -1,0 +1,103 @@
+% ╭──────────────────────────────────────────────────────────╮
+% │                     General Packages                     │
+% ╰──────────────────────────────────────────────────────────╯
+
+% Lipsum Filler text package
+\usepackage{lipsum}
+
+% Import Diagrams
+\usepackage{import}
+
+% Show frame borders
+% \usepackage{showframe}
+
+% Page margins
+\usepackage{geometry}
+\geometry{
+    a4paper, 
+    margin=0.17in
+}
+
+% ╭──────────────────────────────────────────────────────────╮
+% │                   Diagrams and Visual                    │
+% ╰──────────────────────────────────────────────────────────╯
+
+% Quiver for Tikz-cd diagrams
+\usepackage{quiver}
+% Proof Trees
+\usepackage{prftree}
+% Required for inserting images
+\usepackage{graphicx, atbegshi}
+% Needed for \mathmakebox for Arrow symbols
+\usepackage{mathtools}
+% Needed for Fixed Table widths
+\usepackage{array}
+% Fixed float figure insertion
+\usepackage{float}
+
+
+% ╭──────────────────────────────────────────────────────────╮
+% │                 Import Fonts and Symbols                 │
+% ╰──────────────────────────────────────────────────────────╯
+
+% recommended, but you can remove if it causes problems
+\usepackage[final, nopatch=footnote]{microtype} 
+% AMS packages. Note: AMSThm for proof env.
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+% Provides \mathscr font
+\usepackage{mathrsfs}
+% Provides Bisimulation Symbol
+\usepackage{stmaryrd}
+% Underscore compatability
+\usepackage{underscore}
+% More colours
+\usepackage[dvipsnames]{xcolor}
+
+
+% ╭──────────────────────────────────────────────────────────╮
+% │                   Import Environments                    │
+% ╰──────────────────────────────────────────────────────────╯
+
+% Multiple columns
+\usepackage{multicol}
+% Multiple rows
+\usepackage{multirow}
+% Subfigures and Subcaptions
+\usepackage{subcaption}
+% Adds functionality for Enumerate
+\usepackage{enumitem}
+% Better Tables
+\usepackage{tabularx}
+
+
+% ╭──────────────────────────────────────────────────────────╮
+% │                     Custom Packages                      │
+% ╰──────────────────────────────────────────────────────────╯
+
+% MDFramed on Tikz-cd - Required for Thmboxes
+\usepackage[framemethod=TikZ]{mdframed}
+% Theorem Boxes
+\usepackage{../../rss/thmboxes_v3}
+% Custom Environments and Objects
+\usepackage{../../rss/customs}
+
+% Hyper References
+\usepackage{hyperref}
+% Better References
+\usepackage[capitalise, noabbrev]{cleveref}
+
+
+% ╭──────────────────────────────────────────────────────────╮
+% │                         Options                          │
+% ╰──────────────────────────────────────────────────────────╯
+
+\pretolerance=0
+\hyphenpenalty=0
+
+
+
+\usepackage[nodisplayskipstretch]{setspace}
+
+\parindent = 0pt
+
+\renewcommand\labelitemi{\tiny$\bullet$}

@@ -1,0 +1,39 @@
+% ╭──────────────────────────────────────────────────────────╮
+% │                     Custom Commands                      │
+% ╰──────────────────────────────────────────────────────────╯
+
+\newcommand*{\prightarrow}[1]{\xrightarrow{\mathmakebox[6pt]{#1}}}
+
+\def\textrule#1{
+    \parbox\textwidth{\hrulefill\hspace{0.5em}\lower.3ex\hbox{#1}\hspace{0.5em}\hrulefill}\vspace{-2ex}
+    \newline
+}
+
+\newcommand\longrule[1]{
+    \noindent\rule{\textwidth}{#1}
+}
+
+\newcommand\ctl[1]{\mathrm{\mathbf{#1}}}
+
+
+% ╭──────────────────────────────────────────────────────────╮
+% │                  Redefine Environments                   │
+% ╰──────────────────────────────────────────────────────────╯
+
+% Set lists to have zero spacing between items to squeeze more in
+\newenvironment{enumerate-tight}{
+    \begin{enumerate}\setlength\itemsep{0em}
+} {\end{enumerate}}
+
+% Version with zero left bullet padding
+\newenvironment{enumerate-zero}{
+    \begin{enumerate}[leftmargin=*]\setlength\itemsep{0em}
+} {\end{enumerate}}
+
+\newenvironment{itemize-tight}{
+    \begin{itemize} \setlength\itemsep{0em}
+} {\end{itemize}}
+
+\newenvironment{itemize-zero}{
+    \begin{itemize}[leftmargin=*]\setlength\itemsep{0em}
+} {\end{itemize}}

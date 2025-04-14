@@ -1,49 +1,7 @@
 \documentclass[landscape, 8pt]{extarticle}
-\usepackage{geometry}
-% \usepackage{showframe}
-\usepackage[dvipsnames]{xcolor}
 
-\colorlet{colour1}{Red}
-\colorlet{colour2}{Green}
-\colorlet{colour3}{Cerulean}
-
-\geometry{
-    a4paper, 
-    margin=0.17in
-}
-
-\pretolerance=0
-\hyphenpenalty=0
-
-\usepackage{lmodern}
-
-% \usepackage[fontsize=8pt]{scrextend}
-
-\usepackage{quiver}
-\usepackage{mathtools}
-\usepackage{multirow}
+\usepackage{../../preamble}
 \usepackage{symbols}
-\usepackage{graphicx} % Required for inserting images
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-% \usepackage{preamble}
-\usepackage{enumitem}
-\usepackage{multicol}
-\usepackage{lipsum}
-\usepackage[framemethod=TikZ]{mdframed}
-% \usepackage{../thmboxes_white}
-\usepackage{../../thmboxes_v3}
-\usepackage{customs}
-\usepackage{float}
-% \usepackage{setspace}
-\usepackage[nodisplayskipstretch]{setspace}
-
-\usepackage{hyperref} % note: this is the final package
-
-\parindent = 0pt
-
-\renewcommand\labelitemi{\tiny$\bullet$}
 
 \begin{document}
 
@@ -66,168 +24,464 @@ Made by Leon :)
 
 \centering
 \begin{dfn}[ACP, CCS, CSP]{dfn:acp-ccs-csp}{}
-    The syntax of ACP, CCS, and CSP is defined as:
-    \begin{tabular}{ |r|c|c|c|}
-        \hline
-        \textbf{Operation} & \textbf{ACP} & \textbf{CCS} & \textbf{CSP} \\
-        \hline
-        Termination & $\epsilon$ & $0$ & $\mathrm{STOP}$ \\ 
-        \hline
-        Deadlock & $\delta$ & &\\
-        \hline
-        Action & a & &\\
-        Sequential Composition & $P.Q$ & & \\
-        Action Prefixing &  & $a.P$& $a \to P$\\
-        \hline
-        Alternative Choice & $P + Q$ & $P + Q$ & \\
-        External Choice & & & $P \extchoice Q$ \\
-        Internal Choice &  & & $P \intchoice Q$ \\
-        \hline
-        Parallel Composition & $P \merge Q$ & $P \mid Q$ & $P \pcomp Q$ \\
-        \hline
-        Restriction & $\restrict(P)$ & $P \backslash a$ & \\
-        \hline
-        Abstraction & $\abstract(P)$ & & $P / a$ \\
-        \hline
-        Relabelling & & $P[f]$ & $P[f]$ \\
-        \hline
+The syntax of ACP, CCS, and CSP is defined as:
+\begin{tabular}{ |r|c|c|c|}
+	\hline
+	\textbf{Operation}     & \textbf{ACP}   & \textbf{CCS}     & \textbf{CSP}     \\
+	\hline
+	Termination            & $\epsilon$     & $0$              & $\mathrm{STOP}$  \\
+	\hline
+	Deadlock               & $\delta$       &                  &                  \\
+	\hline
+	Action                 & a              &                  &                  \\
+	Sequential Composition & $P.Q$          &                  &                  \\
+	Action Prefixing       &                & $a.P$            & $a \to P$        \\
+	\hline
+	Alternative Choice     & $P + Q$        & $P + Q$          &                  \\
+	External Choice        &                &                  & $P \extchoice Q$ \\
+	Internal Choice        &                &                  & $P \intchoice Q$ \\
+	\hline
+	Parallel Composition   & $P \merge Q$   & $P \mid Q$       & $P \pcomp Q$     \\
+	\hline
+	Restriction            & $\restrict(P)$ & $P \backslash a$ &                  \\
+	\hline
+	Abstraction            & $\abtau(P)$    &                  & $P / a$          \\
+	\hline
+	Relabelling            &                & $P[f]$           & $P[f]$           \\
+	\hline
+\end{tabular}
 
-    \end{tabular}
+\vspace{10pt}
+\longrule{0.08ex}
 
-    \vspace{10pt}
-    \longrule{0.08ex}
-
-    \textbf{Differences between ACP, CCS, and CSP}
-    \begin{itemize}
-        \item \textbf{Action}: CCS and CSP require Action Prefixing, while ACP can perform sequential composition on any process. This also requires CCS and CSP processes to feature the inaction $0$/$\mathrm{STOP}$, while ACP is not restricted to this.
-        \item \textbf{Choice}: ACP and CCS have an operator which can perform both External and Internal Choice. CSP Differentiates internal choices from external ones, and internal actions within $\extchoice$ do not count as a choice in CSP.
-        \item \textbf{Parallel Composition}:
-            \begin{itemize}
-                \item  ACP actions follow a communication function to decide what to synchronise, i.e. $\gamma(a, b)$
-                \item CCS actions can only synchronise with its conjugate counterpart, i.e. $a$ and $\overline{a}$
-                \item CSP actions can only synchronise over the same action, i.e. $a$ and $a$
-            \end{itemize}
-        \item \textbf{Restriction, Abstraction, Relabelling}:
-            \begin{itemize}
-                \item Relabelling just doesn't exist in base ACP, lol
-                \item CCS combines communication and abstraction into one step - every synchronisation results in a $\tau$.
-                \item CSP combines Parallel Composition and Restriction into one step, as CSP Parallel Composition doesn't feature left-over Left Merges.
-            \end{itemize}
-    \end{itemize}
+\textbf{Differences between ACP, CCS, and CSP}
+\begin{itemize-zero}
+\item \textbf{Action}: CCS and CSP require Action Prefixing, while ACP can perform sequential composition on any process. This also requires CCS and CSP processes to feature the inaction $0$/$\mathrm{STOP}$, while ACP is not restricted to this.
+\item \textbf{Choice}: ACP and CCS have an operator which can perform both External and Internal Choice. CSP Differentiates internal choices from external ones, and internal actions within $\extchoice$ do not count as a choice in CSP.
+\item \textbf{Parallel Composition}:
+\begin{itemize-tight}
+\item  ACP actions follow a communication function to decide what to synchronise, i.e. $\gamma(a, b)$
+\item CCS actions can only synchronise with its conjugate counterpart, i.e. $a$ and $\overline{a}$
+\item CSP actions can only synchronise over the same action, i.e. $a$ and $a$
+\end{itemize-tight}
+\item \textbf{Restriction, Abstraction, Relabelling}:
+\begin{itemize-tight}
+\item Relabelling just doesn't exist in base ACP, lol
+\item CCS combines communication and abstraction into one step - every synchronisation results in a $\tau$.
+\item CSP combines Parallel Composition and Restriction into one step, as CSP Parallel Composition doesn't feature left-over Left Merges.
+\end{itemize-tight}
+\end{itemize-zero}
 \end{dfn}
 
 \begin{dfn}[The GSOS Format]{dfn:gsos}{}
-    General Structured Operational Semantics (GSOS) operations are compositional.
+General Structured Operational Semantics (GSOS) operations are compositional.
 
-    \textbf{Rules of GSOS}
-    \begin{itemize}
-        \item Its source has the form $f(x_{1},\dots,x_{ar(f)})$ with $f\in \Sigma$ and $x_{i}\in V$
-        \item The left hand sides of its premises are variables $x_{i}$ with $1\le i \le ar(f)$
-        \item The right hand sides of its positive premises are variables that are all distinct, and that do not occur in its source
-        \item Its target only contains variables that also occur in its source or premises
-    \end{itemize}
+\textbf{Rules of GSOS}
+\begin{itemize-zero}
+\item Its source has the form $f(x_{1},\dots,x_{ar(f)})$ with $f\in \Sigma$ and $x_{i}\in V$
+\item The left hand sides of its premises are variables $x_{i}$ with $1\le i \le ar(f)$
+\item The right hand sides of its positive premises are variables that are all distinct, and that do not occur in its source
+\item Its target only contains variables that also occur in its source or premises
+\end{itemize-zero}
 
 
 \textbf{GSOS Semantics of ACP}
 
 \framebox{$\begin{array}{ccccc}
-(a. P) \prightarrow{\alpha} P &
-P + Q \prightarrow{\alpha} P &
-P + Q \prightarrow{\alpha} Q \\[2ex]
-% \displaystyle\frac{P \prightarrow{\alpha} P'}{f(P) \prightarrow{f(\alpha)} f(P')} \\[4ex]
-\displaystyle\frac{P\prightarrow{\alpha} P'}{P \merge Q \prightarrow{\alpha} P' \merge Q} &
+			(a. P) \prightarrow{\alpha} P                                                                                                  &
+			P + Q \prightarrow{\alpha} P                                                                                                   &
+			P + Q \prightarrow{\alpha} Q                                                                                                                           \\[2ex]
+			% \displaystyle\frac{P \prightarrow{\alpha} P'}{f(P) \prightarrow{f(\alpha)} f(P')} \\[4ex]
+			\displaystyle\frac{P\prightarrow{\alpha} P'}{P \merge Q \prightarrow{\alpha} P' \merge Q}                                      &
 
-\multicolumn{2}{c}{\displaystyle\frac{P\prightarrow{a} P'~~Q\prightarrow{b} Q'~~ \scriptstyle{a \mid b = c}}{P \merge Q \prightarrow{a} P' \merge Q'}} \\[4ex]
+			\multicolumn{2}{c}{\displaystyle\frac{P\prightarrow{a} P'~~Q\prightarrow{b} Q'~~ \scriptstyle{a \mid b = c}}{P \merge Q \prightarrow{a} P' \merge Q'}} \\[4ex]
 
-\displaystyle\frac{Q\prightarrow{\alpha} Q'}{P \merge Q \prightarrow{\alpha} P \merge Q'} &
+			\displaystyle\frac{Q\prightarrow{\alpha} Q'}{P \merge Q \prightarrow{\alpha} P \merge Q'}                                      &
 
-\displaystyle\frac{P \prightarrow{\alpha} P'~~{\scriptstyle(\alpha\notin A)}}{\restrict(P) \prightarrow{\alpha} \restrict(P')} &
+			\displaystyle\frac{P \prightarrow{\alpha} P'~~{\scriptstyle(\alpha\notin A)}}{\restrict(P) \prightarrow{\alpha} \restrict(P')} &
 
-\displaystyle\frac{\langle \mathcal{S}_{X} \mid \mathcal{S} \rangle \prightarrow{a} P'}{\langle X \mid \mathcal{S} \rangle \prightarrow{a} P'}
-
-
-\end{array}$}
+			\displaystyle\frac{\langle \mathcal{S}_{X} \mid \mathcal{S} \rangle \prightarrow{a} P'}{\langle X \mid \mathcal{S} \rangle \prightarrow{a} P'}
+		\end{array}$}
 
 \textbf{GSOS Semantics of CSP}
 \begin{center}
-\framebox{$\begin{array}{ccc}
-(a\rightarrow P) \prightarrow{a} P &
-P \intchoice Q \prightarrow{\tau} P &
-P \intchoice Q \prightarrow{\tau} Q \\[2ex]
-\displaystyle\frac{P\prightarrow{a} P'}{P\extchoice Q \prightarrow{a} P'} &
-\displaystyle\frac{P\prightarrow{\tau} P'}{P\extchoice Q \prightarrow{\tau} P'\extchoice Q} &
-\displaystyle\frac{Q\prightarrow{a} Q'}{P\extchoice Q \prightarrow{a} Q'} \\[4ex]
-\displaystyle\frac{Q\prightarrow{\tau} Q'}{P\extchoice Q \prightarrow{\tau} P\extchoice Q'} &
-\displaystyle\frac{P \prightarrow{\alpha} P'}{f(P) \prightarrow{f(\alpha)} f(P')} &
-\displaystyle\frac{P\prightarrow{\alpha} P'~~{\scriptstyle(\alpha\notin A)}}{P\|_AQ \prightarrow{\alpha} P'\|_AQ} \\[4ex]
+	\framebox{$\begin{array}{ccc}
+				(a\rightarrow P) \prightarrow{a} P                                                                                     &
+				P \intchoice Q \prightarrow{\tau} P                                                                                    &
+				P \intchoice Q \prightarrow{\tau} Q                                                                                      \\[2ex]
+				\displaystyle\frac{P\prightarrow{a} P'}{P\extchoice Q \prightarrow{a} P'}                                              &
+				\displaystyle\frac{P\prightarrow{\tau} P'}{P\extchoice Q \prightarrow{\tau} P'\extchoice Q}                            &
+				\displaystyle\frac{Q\prightarrow{a} Q'}{P\extchoice Q \prightarrow{a} Q'}                                                \\[4ex]
+				\displaystyle\frac{Q\prightarrow{\tau} Q'}{P\extchoice Q \prightarrow{\tau} P\extchoice Q'}                            &
+				\displaystyle\frac{P \prightarrow{\alpha} P'}{f(P) \prightarrow{f(\alpha)} f(P')}                                      &
+				\displaystyle\frac{P\prightarrow{\alpha} P'~~{\scriptstyle(\alpha\notin A)}}{P\|_AQ \prightarrow{\alpha} P'\|_AQ}        \\[4ex]
 
-\multicolumn{2}{c}{
-\displaystyle\frac{P\prightarrow{a} P'~~Q\prightarrow{a} Q'~~{\scriptstyle(a\in A)}}{P\|_AQ \prightarrow{a} P'\|_AQ'}} &
-\displaystyle\frac{Q\prightarrow{\alpha} Q'~~{\scriptstyle(\alpha\notin A)}}{P\|_AQ \prightarrow{\alpha} P\|_AQ'} \\[4ex]
-\multicolumn{3}{c}{\mu p.P \xrightarrow{\mathmakebox[10pt]{\tau}} P[\mu p.P/p]}
-\end{array}$}
+				\multicolumn{2}{c}{
+				\displaystyle\frac{P\prightarrow{a} P'~~Q\prightarrow{a} Q'~~{\scriptstyle(a\in A)}}{P\|_AQ \prightarrow{a} P'\|_AQ'}} &
+				\displaystyle\frac{Q\prightarrow{\alpha} Q'~~{\scriptstyle(\alpha\notin A)}}{P\|_AQ \prightarrow{\alpha} P\|_AQ'}        \\[4ex]
+				\multicolumn{3}{c}{\mu p.P \xrightarrow{\mathmakebox[10pt]{\tau}} P[\mu p.P/p]}
+			\end{array}$}
 \end{center}
 
 \end{dfn}
 
 \begin{dfn}[CSP Expansion Theorem]{dfn:expansion-theorem}{}
-    Let $P := \sum_{i\in I} \alpha_{i} P_{i}$ and $Q := \sum_{j\in J} \beta_{j}. Q_{j}$. Then
-    \[P \mid Q = \sum_{i\in I} \alpha_{i}(P_{i} \mid Q) + \sum_{j\in J} \beta_{j}(P \mid Q_{j}) + \sum_{\substack{i\in I, j\in J \\ \alpha_{i} = \overline{b}_{j}}} \tau.(P_{i} \mid Q_{j})\]
-    Any guarded CCS expression can be written into a bisimulation equivalent CCS expression of the form $\sum_{i\in I} \alpha_{i}.P_{i}$. This is called \textbf{head normal form}
+	Let $P := \sum_{i\in I} \alpha_{i} P_{i}$ and $Q := \sum_{j\in J} \beta_{j}. Q_{j}$. Then
+	\[P \mid Q = \sum_{i\in I} \alpha_{i}(P_{i} \mid Q) + \sum_{j\in J} \beta_{j}(P \mid Q_{j}) + \sum_{\substack{i\in I, j\in J \\ \alpha_{i} = \overline{b}_{j}}} \tau.(P_{i} \mid Q_{j})\]
+	Any guarded CCS expression can be written into a bisimulation equivalent CCS expression of the form $\sum_{i\in I} \alpha_{i}.P_{i}$. This is called \textbf{head normal form}
+\end{dfn}
+
+\begin{dfn}[CCS Axioms]{dfn:csp-axions}{}
+\begin{itemize-tight}
+\item Axioms of CCS
+\begin{align*}
+	(P + Q ) + R & = P + (Q + R) \tag{associativity}  \\
+	P + Q        & = Q + Q \tag{commutativity}        \\
+	P + P        & = P \tag{idempotence}              \\
+	P + 0        & = P \tag{$0$ is a neutral element}
+\end{align*}
+\item Axiomatisation of Rooted Weak Bisimulation
+\begin{align*}
+	\alpha . \tau . P       & = \alpha.P \tag{T1}                       \\
+	\tau . P                & = \tau.P + P \tag{T2}                     \\
+	\alpha . (\tau . P + Q) & = \alpha.(\tau.P + Q) + \alpha.P \tag{T3}
+\end{align*}
+\item Axiomatisation of Branching Bisimularity
+\begin{align*}
+	\alpha . (\tau . (P + Q) + Q) & = \alpha.(P + Q) \tag{P}
+\end{align*}
+\item Axiomatisation of strong partial trace equivalence
+\[\alpha . (P + Q) = \alpha . P + \alpha . Q\]
+\item Axiomatisation of weak partial trace equivalence
+\[\tau.P = P\]
+\end{itemize-tight}
+\end{dfn}
+
+\begin{dfn}[Axioms of ACP]{dfn:acp-axioms}{}
+	is this really necessary.. who knows
 \end{dfn}
 
 \newpage
 \section{Semantics and shit like that}
 \begin{dfn}[Trace Semantice]{dfn:trace-semantics}{}
-    \begin{itemize}
-        \item \textbf{Completed Trace}: A start to finish trace of a process.
-        \item \textbf{Partial Trace}: From the start of a process to any point, including the end. Clearly, $CT(P) \subseteq PT(Q)$
-        \item \textbf{Strong vs Weak}: Weak PT and CT means that two processes are equivalent with all instances of $\tau$ omitted.
-        \item \textbf{Infinite Trace Semantics}: Differs from different types of divergence. Stronger than CT and PT
-    \end{itemize}
+\begin{itemize-zero}
+\item \textbf{Completed Trace}: A start to finish trace of a process.
+\item \textbf{Partial Trace}: From the start of a process to any point, including the end. Clearly, $CT(P) \subseteq PT(Q)$
+\item \textbf{Strong vs Weak}: Weak PT and CT means that two processes are equivalent with all instances of $\tau$ omitted.
+\item \textbf{Infinite Trace Semantics}: Differs from different types of divergence. Stronger than CT and PT
+\end{itemize-zero}
 \end{dfn}
 
 \begin{dfn}[Bisimulation Semantice]{dfn:bisimulation}{}
-    \begin{itemize}
-        \item True Bisimulation
-        \item Weak Bisimilarity
-        \item Branching Bisimilarity
-        \item Rooted Branching Bisimilarity
-    \end{itemize}    
+\begin{itemize-zero}
+\item \textbf{True Bisimulation} ($\leftrightarroweq$):
+\begin{itemize-tight}
+\item if $sRt$ and $s \prightarrow{a} s'$ then $\exists t'$ s.t. $t \prightarrow{a} t'$ and $s' R t'$
+\item if $sRt$ and $t \prightarrow{a} t'$ then $\exists s'$ s.t. $s \prightarrow{a} s'$ and $s' R t'$
+\item if $sRt$ then $s\models p \iff t \models p$ for all $p\in P$
+\end{itemize-tight}
+\item \textbf{Branching Bisimilarity} ($\rbrb$)
+\begin{itemize-tight}
+\item if $sRt$ and $s \prightarrow{a} s'$ then either:
+\begin{itemize-tight}
+\item $a = \tau$ and $s' R t$
+\item $\exists t_{1},\,t'$ such that $t \Rightarrow t_{1} \prightarrow{a} t'$, $s R t_{1}$ and $s' R t'$
+\end{itemize-tight}
+\item if $sRt$ and $t \prightarrow{a} t'$ then either:
+\begin{itemize-tight}
+\item $a = \tau$ and $t' R s$
+\item $\exists s_{1},\,s'$ such that $s \Rightarrow s_{1} \prightarrow{a} s'$, $s_{1} R t$ and $s' R t'$
+\end{itemize-tight}
+\item if $sRt$ and $s\models p$ then $\exists t_{1}$ s.t. $t \Rightarrow t_{1} \models p$, and $sRt_{1}$
+\item if $sRt$ and $t\models p$ then $\exists s_{1}$ s.t. $s \Rightarrow s_{1} \models p$, and $s_{1}Rt$
+\end{itemize-tight}
+\item Other notions:
+\begin{itemize-tight}
+\item \textbf{Rooted Branching Bisimilarity}: The same as Branching Bisimilarity except the first action is Strongly bisimilar. (This makes RBB a congruence on $+$)
+\item \textbf{Delay Bisimilarity}: Same as \textit{branching bisimilarity}, but with the requirements $sRt_{1}$ and $s_{1}Rt$ dropped.
+\item \textbf{Weak Bisimilarity}: The same as \textit{delay bisimularity} except the action requirements are also relaxed:
+\begin{itemize-tight}
+\item If $sRt$ and $s \prightarrow{a} s'$ then either:
+\begin{itemize-tight}
+\item $a = \tau$ and $s' R t$
+\item $\exists t_{1},\,t_{2},\,t'$ such that $t \Rightarrow t_{1} \prightarrow{a} t_{2} \Rightarrow t'$ and $s'Rt'$
+\end{itemize-tight}
+\item If $sRt$ and $t \prightarrow{a} t'$ then either:
+\begin{itemize-tight}
+\item $a = \tau$ and $s R t'$
+\item $\exists s_{1},\,s_{2},\,s'$ such that $s \Rightarrow s_{1} \prightarrow{a} s_{2} \Rightarrow s'$ and $s'Rt'$
+\end{itemize-tight}
+\end{itemize-tight}
+\end{itemize-tight}
+
+\end{itemize-zero}
 \end{dfn}
 
+\begin{dfn}[Compositionality, Congruence]{dfn:congruence}{}
+	An equivalence $\sim$ is a \textbf{congruence}\footnote{We can also say \textbf{the language is compositional for the equivalence}} for a language $L$ if $P \sim Q$ implies that $C[P] \sim C[Q]$ for every context $C[\ ]$, where $C[\ ]$ is an $L$-expression with a \textbf{hole} in it, and $C[P]$ is the result of plugging in $P$ for the hole. An alternative definition for a congruence $\sim$ is if every $n$-ary operator $f$ of $L$, we have
+	\[P_{i} \sim Q_{i} \text{ for } i = 1,\dots, n \text{ implies } f(P_{1},\dots,P_{n}) \sim f(Q_{1} ,\dots, Q_{n})\]
+	\longrule{0.08ex}
+	The \textbf{Congruence closure} of a language, denoted $\sim^{c}$ of a language is a modification to a language that isn't compositional to turn it compositional. The \textit{congruence closure} of Branching Bisimilarity is Rooted Branching Bisimilarity.
+\end{dfn}
+
+\begin{thm}[Semantic Equivalence Spectrum]{thm:spectrum}{}
+	% https://q.uiver.app/#q=WzAsMTQsWzQsNiwiXFxtYXRocm17Q1R9Il0sWzQsMTAsIlxcbWF0aHJte1BUfSJdLFs0LDMsIlxcbWF0aHJte1dCfSJdLFsxLDAsIlxcbWF0aHJte0JCfSJdLFszLDgsIlxcbWF0aHJte1dDVH0iXSxbMywxMiwiXFxtYXRocm17V1BUfSJdLFswLDExLCJcXG1hdGhybXtXUFR9XlxcaW5mdHkiXSxbMSw1LCJcXG1hdGhybXtDVH1eXFxpbmZ0eSJdLFsxLDksIlxcbWF0aHJte1BUfV5cXGluZnR5Il0sWzAsNywiXFxtYXRocm17V0NUfV5cXGluZnR5Il0sWzMsMiwiXFxtYXRocm17QkJ9Il0sWzQsMiwiXFxtYXRocm17V0J9XkNcXFxcKFxcbWF0aHJte1JXQn0pIl0sWzMsMSwiXFxtYXRocm17QkJ9XkNcXFxcKFxcbWF0aHJte1JCQn0pIl0sWzEsNCwiXFxtYXRocm17Q1R9XkMiXSxbNSw0XSxbNCwwLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMCwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDFdLFswLDIsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw2LCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsNywiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDgsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw5LCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksNywiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs5LDYsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw4LCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsOCwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDEwLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzExLDIsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTEsMTIsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTAsMTIsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNywxM10sWzEzLDMsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTIsM11d
+	\[\begin{tikzcd}[cramped, row sep=small]
+			& {\mathrm{BB}} \\
+			&&& \begin{array}{c} \mathrm{BB}^C\\(\mathrm{RBB}) \end{array} \\
+			&&& {\mathrm{BB}} & \begin{array}{c} \mathrm{WB}^C\\(\mathrm{RWB}) \end{array} \\
+			&&&& {\mathrm{WB}} \\
+			& {\mathrm{CT}^C} \\
+			& {\mathrm{CT}^\infty} \\
+			&&&& {\mathrm{CT}} \\
+			{\mathrm{WCT}^\infty} \\
+			&&& {\mathrm{WCT}} \\
+			& {\mathrm{PT}^\infty} \\
+			&&&& {\mathrm{PT}} \\
+			{\mathrm{WPT}^\infty} \\
+			&&& {\mathrm{WPT}}
+			\arrow[from=2-4, to=1-2]
+			\arrow[no head, from=3-4, to=2-4]
+			\arrow[no head, from=3-5, to=2-4]
+			\arrow[no head, from=3-5, to=4-5]
+			\arrow[no head, from=4-5, to=3-4]
+			\arrow[no head, from=5-2, to=1-2]
+			\arrow[from=6-2, to=5-2]
+			\arrow[no head, from=6-2, to=10-2]
+			\arrow[no head, from=7-5, to=4-5]
+			\arrow[no head, from=7-5, to=6-2]
+			\arrow[no head, from=8-1, to=6-2]
+			\arrow[no head, from=8-1, to=12-1]
+			\arrow[no head, from=9-4, to=7-5]
+			\arrow[no head, from=9-4, to=8-1]
+			\arrow[no head, from=11-5, to=7-5]
+			\arrow[no head, from=11-5, to=10-2]
+			\arrow[no head, from=12-1, to=10-2]
+			\arrow[from=13-4, to=9-4]
+			\arrow[from=13-4, to=11-5]
+			\arrow[no head, from=13-4, to=12-1]
+		\end{tikzcd}\]
+\end{thm}
+
 \begin{dfn}[The GOAT of Process algebra]{dfn:bisim-counterexample}{}
-% https://q.uiver.app/#q=WzAsMTEsWzUsMSwiXFxjaXJjIl0sWzQsMiwiXFxidWxsZXQiXSxbNiwyLCJcXGJ1bGxldCJdLFs2LDMsIlxcYnVsbGV0Il0sWzQsMywiXFxidWxsZXQiXSxbMSwxLCJcXGNpcmMiXSxbMSwyLCJcXGJ1bGxldCJdLFsyLDMsIlxcYnVsbGV0Il0sWzAsMywiXFxidWxsZXQiXSxbNSwwXSxbMSwwXSxbMCwxLCJhIl0sWzAsMiwiYSIsMl0sWzIsMywiYyIsMl0sWzEsNCwiYiJdLFs1LDYsImEiXSxbNiw3LCJjIl0sWzYsOCwiYiJdLFs5LDAsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjo1MH19XSxbMTAsNSwiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjUwfX1dXQ==
-\[\begin{tikzcd}[cramped]
-	& {} &&&& {} \\
-	& \circ &&&& \circ \\
-	& \bullet &&& \bullet && \bullet \\
-	\bullet && \bullet && \bullet && \bullet
-	\arrow[shorten <=5pt, from=1-2, to=2-2]
-	\arrow[shorten <=5pt, from=1-6, to=2-6]
-	\arrow["a", from=2-2, to=3-2]
-	\arrow["a", from=2-6, to=3-5]
-	\arrow["a"', from=2-6, to=3-7]
-	\arrow["b", from=3-2, to=4-1]
-	\arrow["c", from=3-2, to=4-3]
-	\arrow["b", from=3-5, to=4-5]
-	\arrow["c"', from=3-7, to=4-7]
-\end{tikzcd}\]
+	% https://q.uiver.app/#q=WzAsMTEsWzUsMSwiXFxjaXJjIl0sWzQsMiwiXFxidWxsZXQiXSxbNiwyLCJcXGJ1bGxldCJdLFs2LDMsIlxcYnVsbGV0Il0sWzQsMywiXFxidWxsZXQiXSxbMSwxLCJcXGNpcmMiXSxbMSwyLCJcXGJ1bGxldCJdLFsyLDMsIlxcYnVsbGV0Il0sWzAsMywiXFxidWxsZXQiXSxbNSwwXSxbMSwwXSxbMCwxLCJhIl0sWzAsMiwiYSIsMl0sWzIsMywiYyIsMl0sWzEsNCwiYiJdLFs1LDYsImEiXSxbNiw3LCJjIl0sWzYsOCwiYiJdLFs5LDAsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjo1MH19XSxbMTAsNSwiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjUwfX1dXQ==
+	\[\begin{tikzcd}[cramped]
+			& {} &&&& {} \\
+			& \circ &&&& \circ \\
+			& \bullet &&& \bullet && \bullet \\
+			\bullet && \bullet && \bullet && \bullet
+			\arrow[shorten <=5pt, from=1-2, to=2-2]
+			\arrow[shorten <=5pt, from=1-6, to=2-6]
+			\arrow["a", from=2-2, to=3-2]
+			\arrow["a", from=2-6, to=3-5]
+			\arrow["a"', from=2-6, to=3-7]
+			\arrow["b", from=3-2, to=4-1]
+			\arrow["c", from=3-2, to=4-3]
+			\arrow["b", from=3-5, to=4-5]
+			\arrow["c"', from=3-7, to=4-7]
+		\end{tikzcd}\]
 \end{dfn}
 
 \begin{dfn}[Failure Semantics]{dfn:failure}{}
-    
+
 \end{dfn}
 
 
 \begin{dfn}[Consistent Colouring]{dfn:colouring}{}
-    
+
 \end{dfn}
 
 \begin{dfn}[Safety]{dfn:}{}
-    
+
 \end{dfn}
 
+
+\newpage
+
+\section{Other models of Concurrency}
+\begin{dfn}[Hennessy-Milner Logic]{dfn:hml}{}
+The syntax of HML is given by:
+\[\phi,\,\psi ::= \top \mid \bot \mid \phi \wedge \psi \mid \phi \vee \psi \mid \neg \phi \mid \langle \alpha \rangle \phi \mid [\alpha] \phi\]
+Infinitary HML (HML$^{\infty}$) has an infinitary conjunction: $\bigwedge_{i\in I} \phi_{i}$
+HML in set form. If a process $P$ has a property $\Phi$, we write $P \models \Phi$.
+\begin{itemize-tight}
+\item $P \models \top$
+\item $P \not\models \bot$
+\item $P \models \Phi \wedge \Psi$ iff $P \models \Phi$ and $P \models \Psi$
+\item $P \models \Phi \vee \Psi$ iff $P \models \Phi$ or $P \models \Psi$
+\item $P \models [K]\Phi$ iff $\forall Q \in \{P' : P \prightarrow{a} P' \text{ and } a\in K\}$. $Q \models \Phi$
+\item $P \models \langle K \rangle\Phi$ iff $\exists Q \in \{P' : P \prightarrow{a} P' \text{ and } a\in K\}$. $Q \models \Phi$
+\end{itemize-tight}
+
+Deadlock can be represented as $P \models [\mathrm{Act}] \bot$, where $\mathrm{Act}$ is the set of all actions.
+\end{dfn}
+
+\begin{dfn}[Kripke Structure]{dfn:kripke}{}
+	states instead of actions. wip
+\end{dfn}
+
+\begin{dfn}[Petri Nets]{dfn:petris}{}
+	they exist
+\end{dfn}
+
+\begin{dfn}[CTL]{dfn:ctl}{}
+Computational Tree Logic is defined on
+\begin{multline*}
+	\phi,\,\psi ::= p \mid \top \mid \bot \mid \neg\phi \mid \phi \wedge \psi \mid \phi \vee \psi \mid \neg \phi \mid \phi \to \psi  \mid \\
+	\ctl{EX}\phi \mid \ctl{AX}\phi \mid \ctl{EF}\phi \mid \ctl{AF}\phi \mid \ctl{EG} \phi \mid \ctl{AG} \phi \mid \ctl{E}\psi \ctl{U} \phi \mid \ctl{A}\psi \ctl{U}\phi
+\end{multline*}
+$p\in AP$ is an atomic predicate. CTL is defined on states, the relation $\models$ between states $s$ in a Kripke structure and CTL formulae $\phi$ is inductively defined by
+\begin{itemize-zero}
+\item $s \models p$, $p\in AP$ iff $(s, p) \in \models$
+\item $s \models \top$ always holds, and $s \models \bot$ never
+\item $s \models \neg \phi$ iff $s \not\models \phi$
+\item $s \models \phi \wedge \psi$ iff $s \models \phi$ and $s \models \psi$
+\item $s \models \phi \vee \psi$ iff $s \models \phi$ or $s \models \psi$
+\item $s \models \phi \to \psi$ iff $s \not\models \phi$ or $s \models \psi$
+\item $s \models \ctl{EX}\phi$ iff there is a state $s'$ with $s\to s'$ and $s' \models \psi$
+\item $s \models \ctl{AX}\phi$ iff for each state $s'$ with $s\to s'$ one has $s' \models \psi$
+\item $s \models \ctl{EF}\phi$ iff some complete path starting in $s$ contains a state $s'$ with $s\models \phi$
+\item $s \models \ctl{AF}\phi$ iff each complete path starting in $s$ contains a state $s'$ with $s\models \phi$
+\item $s \models \ctl{EG}\phi$ iff all states $s'$ on some complete path starting in $s$ satisfy $s' \models \phi$
+\item $s \models \ctl{AG}\phi$ iff all states $s'$ on all complete path starting in $s$ satisfy $s' \models \phi$
+\item $s \models \ctl{E}\psi \ctl{U}\phi$ iff some complete path $\pi$ starting in $s$ contains a state $s'$ with $s'\models \phi$, and each state $s''$ on $\pi$ prior to $s'$ satisfies $s'' \models \phi$
+\item $s \models \ctl{A}\psi \ctl{U}\phi$ iff each complete path $\pi$ starting in $s$ contains a state $s'$ with $s'\models \phi$, and each state $s''$ on $\pi$ prior to $s'$ satisfies $s'' \models \phi$
+\end{itemize-zero}
+\end{dfn}
+
+\begin{dfn}[LTL]{dfn:ltl}{}
+Linear-Time Temporal Logic is defined on
+\begin{multline*}
+	\phi,\,\psi ::= p \mid \top \mid \bot \mid \neg\phi \mid \phi \wedge \psi \mid \phi \vee \psi \mid \neg \phi \mid \phi \to \psi  \mid \\
+	\ctl{X}\phi \mid \ctl{F}\phi \mid \ctl{G} \phi \mid \psi \ctl{U} \phi \mid
+\end{multline*}
+$p\in AP$ is an atomic predicate. The modalities $X,F,G,U$ are called \textbf{next-state}, \textbf{eventually}, \textbf{globally}, and \textbf{until}. The relation $\models$ between paths and LTL formulae, with $\pi \models \phi$ saying that the path $\pi$ satisfies the formula $\phi$, or that $\phi$ is valid on $\pi$, or \textbf{holds} on $\pi$, is inductively defined by
+\begin{itemize-tight}
+\item $\pi \models p$, $p\in AP$ iff $(s, p) \in \models$
+\item $\pi \models \top$ always holds, and $\pi \models \bot$ never
+\item $\pi \models \neg \phi$ iff $s \not\models \phi$
+\item $\pi \models \phi \wedge \psi$ iff $\pi \models \phi$ and $\pi \models \psi$
+\item $\pi \models \phi \vee \psi$ iff $\pi \models \phi$ or $\pi \models \psi$
+\item $\pi \models \phi \to \psi$ iff $s \not\models \phi$ or $\pi \models \psi$
+\item $\pi \models \ctl{X}\phi$ iff $\pi' \models \phi$, where $\pi'$ is the suffix of $\pi$ obtained by omitting the first state
+\item $\pi \models \ctl{F}\phi$ iff $\pi' \models \phi$ for some suffix $\pi'$
+\item $\pi \models \ctl{G}\phi$ iff $\pi' \models \phi$ for each suffix $\pi'$
+\item $\pi \models \psi \ctl{U}\phi$ iff $\pi' \models \phi$ for some suffix $\pi'$ of $\pi$, and $\pi'' \models \phi$ for each path $\pi'' \ne \pi'$ with $\pi \Rightarrow \pi'' \Rightarrow \pi'$
+\end{itemize-tight}
+Here a path is seen as a state, namely the first staet on that path, together with a future that has been chosen already when evaluating an LTL formula on that state. Traditionally, these judgements $\pi\models \phi$ were defined only for infinite paths $\pi$. When also applying them to finite paths, we only have to make one adaptation, namely $\pi \models \mathrm{\mathbf{X}} \phi$ never holds if $\pi$ has only one state. So $\mathrm{\mathbf{X}} \phi$ says that there is a next state, and that $\phi$ holds in it.
+
+$s \models \phi$ iff $\pi \models \phi$ for all complete paths $\pi$ starting in state $s$. Here a path is \textbf{complete} if it is either infinite or ends in deadlock.
+\end{dfn}
+
+\begin{lma}[Comparing LTL to CTL]{lma:ltl-to-ctl}{}
+	LTL and CTL can be shown to be incomparable by proving that there cannot exist an LTL formula that is equivalent to the CTL formula $\mathrm{\mathbf{AG}} \mathrm{\mathbf{EF}} a$, and by showing that there cannot exist a CTL formula equivalent to the LTL formula $\mathrm{\mathbf{FG}} a$
+\end{lma}
+
+\begin{dfn}[Partition Refining]{dfn:partition-refining}{}
+	it exists
+\end{dfn}
+
+\newpage
+
+\section{Example Catalogue}
+
+\begin{xmp}[Trace Semantics]{xmp:trace-semantics}{}
+	A process that is PT equivalent but not CT equivalent
+	% https://q.uiver.app/#q=WzAsOSxbMSwxLCJcXGJ1bGxldCJdLFswLDIsIlxcYnVsbGV0Il0sWzAsMywiXFxidWxsZXQiXSxbMiwyLCJcXGJ1bGxldCJdLFs0LDEsIlxcYnVsbGV0Il0sWzQsMiwiXFxidWxsZXQiXSxbNCwzLCJcXGJ1bGxldCJdLFsxLDBdLFs0LDBdLFswLDEsImEiLDJdLFsxLDIsImEiXSxbMCwzLCJhIl0sWzQsNSwiYSIsMl0sWzUsNiwiYSIsMl0sWzcsMCwiIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjUwfX1dLFs4LDQsIiIsMix7InNob3J0ZW4iOnsic291cmNlIjo1MH19XV0=
+	\[\begin{tikzcd}[cramped, column sep=scriptsize]
+			& {} &&& {} \\
+			& \bullet &&& \bullet \\
+			\bullet && \bullet && \bullet \\
+			\bullet &&&& \bullet
+			\arrow[shorten <=5pt, from=1-2, to=2-2]
+			\arrow[shorten <=5pt, from=1-5, to=2-5]
+			\arrow["a"', from=2-2, to=3-1]
+			\arrow["a", from=2-2, to=3-3]
+			\arrow["a"', from=2-5, to=3-5]
+			\arrow["a", from=3-1, to=4-1]
+			\arrow["a"', from=3-5, to=4-5]
+		\end{tikzcd}\]
+
+	A process that is CT equivalent but not Bisimulation equivalent
+
+	% https://q.uiver.app/#q=WzAsMTEsWzUsMSwiXFxjaXJjIl0sWzQsMiwiXFxidWxsZXQiXSxbNiwyLCJcXGJ1bGxldCJdLFs2LDMsIlxcYnVsbGV0Il0sWzQsMywiXFxidWxsZXQiXSxbMSwxLCJcXGNpcmMiXSxbMSwyLCJcXGJ1bGxldCJdLFsyLDMsIlxcYnVsbGV0Il0sWzAsMywiXFxidWxsZXQiXSxbNSwwXSxbMSwwXSxbMCwxLCJhIl0sWzAsMiwiYSIsMl0sWzIsMywiYyIsMl0sWzEsNCwiYiJdLFs1LDYsImEiXSxbNiw3LCJjIl0sWzYsOCwiYiJdLFs5LDAsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjo1MH19XSxbMTAsNSwiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjUwfX1dXQ==
+	\[\begin{tikzcd}[cramped]
+			& {} &&&& {} \\
+			& \circ &&&& \circ \\
+			& \bullet &&& \bullet && \bullet \\
+			\bullet && \bullet && \bullet && \bullet
+			\arrow[shorten <=5pt, from=1-2, to=2-2]
+			\arrow[shorten <=5pt, from=1-6, to=2-6]
+			\arrow["a", from=2-2, to=3-2]
+			\arrow["a", from=2-6, to=3-5]
+			\arrow["a"', from=2-6, to=3-7]
+			\arrow["b", from=3-2, to=4-1]
+			\arrow["c", from=3-2, to=4-3]
+			\arrow["b", from=3-5, to=4-5]
+			\arrow["c"', from=3-7, to=4-7]
+		\end{tikzcd}\]
+
+\end{xmp}
+
+
+
+\begin{xmp}[Bisimulation Semantics]{xmp:bisim-semantics}{}
+
+	A process that is Branching Bisimulation equivalent
+	% https://q.uiver.app/#q=WzAsNyxbMSwyLCJcXGJ1bGxldCJdLFszLDIsIlxcYnVsbGV0Il0sWzEsMCwiXFxidWxsZXQiXSxbMywwLCJcXGJ1bGxldCJdLFs1LDIsIlxcYnVsbGV0Il0sWzAsMl0sWzAsMF0sWzAsMSwiYSIsMl0sWzIsMywiYSJdLFs1LDAsIiIsMix7InNob3J0ZW4iOnsic291cmNlIjo1MH19XSxbNiwyLCIiLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6NTB9fV0sWzAsMiwiIiwwLHsiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSw0LCJcXHRhdSJdLFszLDEsIiIsMCx7ImNvbG91ciI6WzI0MCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNCwiIiwwLHsiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+	\[\begin{tikzcd}[cramped]
+			{} & \bullet && \bullet \\
+			\\
+			{} & \bullet && \bullet && \bullet
+			\arrow[shorten <=8pt, from=1-1, to=1-2]
+			\arrow["a", from=1-2, to=1-4]
+			\arrow[color={rgb,255:red,92;green,92;blue,214}, dashed, no head, from=1-4, to=3-4]
+			\arrow[color={rgb,255:red,92;green,92;blue,214}, dashed, no head, from=1-4, to=3-6]
+			\arrow[shorten <=8pt, from=3-1, to=3-2]
+			\arrow[color={rgb,255:red,92;green,92;blue,214}, dashed, no head, from=3-2, to=1-2]
+			\arrow["a"', from=3-2, to=3-4]
+			\arrow["\tau", from=3-4, to=3-6]
+		\end{tikzcd}\]
+
+		A process that is Branching Bisimulation equivalent but not Rooted BB equivalent
+% https://q.uiver.app/#q=WzAsNyxbMSwyLCJcXGJ1bGxldCJdLFszLDIsIlxcYnVsbGV0Il0sWzEsMCwiXFxidWxsZXQiXSxbMywwLCJcXGJ1bGxldCJdLFs1LDIsIlxcYnVsbGV0Il0sWzAsMl0sWzAsMF0sWzAsMSwiXFx0YXUiLDJdLFsyLDMsImEiXSxbNSwwLCIiLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6NTB9fV0sWzYsMiwiIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjUwfX1dLFswLDIsIiIsMCx7ImNvbG91ciI6WzI0MCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsNCwiYSJdLFszLDQsIiIsMCx7ImNvbG91ciI6WzI0MCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMSwiIiwwLHsiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+\[\begin{tikzcd}[cramped]
+	{} & \bullet && \bullet \\
+	\\
+	{} & \bullet && \bullet && \bullet
+	\arrow[shorten <=8pt, from=1-1, to=1-2]
+	\arrow["a", from=1-2, to=1-4]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, dashed, no head, from=1-2, to=3-4]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, dashed, no head, from=1-4, to=3-6]
+	\arrow[shorten <=8pt, from=3-1, to=3-2]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, dashed, no head, from=3-2, to=1-2]
+	\arrow["\tau"', from=3-2, to=3-4]
+	\arrow["a", from=3-4, to=3-6]
+\end{tikzcd}\]
+
+	
+	A process that is Weak Bisimulation equivalent but not Branching Bisimulation equivalent?
+	% https://q.uiver.app/#q=WzAsOSxbMSwwLCJcXGJ1bGxldCJdLFsxLDEsIlxcYnVsbGV0Il0sWzAsMiwiXFxidWxsZXQiXSxbMiwyLCJcXGJ1bGxldCJdLFs1LDAsIlxcYnVsbGV0Il0sWzQsMSwiXFxidWxsZXQiXSxbNiwxLCJcXGJ1bGxldCJdLFs0LDIsIlxcYnVsbGV0Il0sWzYsMiwiXFxidWxsZXQiXSxbMCwxLCJcXHRhdSJdLFsxLDIsImEiLDJdLFsxLDMsImIiXSxbNCw1LCJcXHRhdSIsMl0sWzQsNiwiXFx0YXUiXSxbNSw3LCJhIiwyXSxbNiw4LCJiIl0sWzAsNCwiIiwyLHsiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw3LCIiLDEseyJjdXJ2ZSI6MiwiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMyw4LCIiLDEseyJjdXJ2ZSI6MiwiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSw1LCIiLDEseyJjb2xvdXIiOlsyNDAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDEsIiIsMSx7ImN1cnZlIjotMiwiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+	\[\begin{tikzcd}[cramped, column sep=scriptsize]
+			& \bullet &&&& \bullet \\
+			& \bullet &&& \bullet && \bullet \\
+			\bullet && \bullet && \bullet && \bullet
+			\arrow[color={rgb,255:red,92;green,92;blue,214}, dashed, no head, from=1-2, to=1-6]
+			\arrow["\tau", from=1-2, to=2-2]
+			\arrow["\tau"', from=1-6, to=2-5]
+			\arrow["\tau", from=1-6, to=2-7]
+			\arrow[color={rgb,255:red,92;green,92;blue,214}, dashed, no head, from=2-2, to=2-5]
+			\arrow["a"', from=2-2, to=3-1]
+			\arrow["b", from=2-2, to=3-3]
+			\arrow["a"', from=2-5, to=3-5]
+			\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=-12pt}, dashed, no head, from=2-7, to=2-2]
+			\arrow["b", from=2-7, to=3-7]
+			\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=12pt}, dashed, no head, from=3-1, to=3-5]
+			\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=12pt}, dashed, no head, from=3-3, to=3-7]
+		\end{tikzcd}\]
+\end{xmp}
+
 \lipsum[1-12]
+
 \end{multicols}
 \end{document}
