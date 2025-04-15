@@ -397,6 +397,7 @@ $s \models \phi$ iff $\pi \models \phi$ for all complete paths $\pi$ starting in
 	LTL and CTL can be shown to be incomparable by proving that there cannot exist an LTL formula that is equivalent to the CTL formula $\mathrm{\mathbf{AG}} \mathrm{\mathbf{EF}} a$, and by showing that there cannot exist a CTL formula equivalent to the LTL formula $\mathrm{\mathbf{FG}} a$
 \end{lma}
 
+\newpage
 \begin{thm}[Satisfaction of Strong Bisimilarity]{thm:hml-sb}{}
 	\begin{itemize-zero}
 	    \item Two processes are strongly bisimlar iff they satisfy the same infinitary HML formulas. Therefore, to show that two processes are not strongly bisimilar, it suffices to find an infinitary HML formula that is satisfied by one, but not the other.
@@ -411,7 +412,48 @@ $s \models \phi$ iff $\pi \models \phi$ for all complete paths $\pi$ starting in
 \end{thm}
 
 \begin{dfn}[Partition Refining]{dfn:partition-refining}{}
-	it exists
+	Partition refining is an algorithm to turn a process into its minimal state, making it easier to compare bisimularity. Works with
+	\[\mathtt{split}(B, a, P)\]
+	where $B$ is an equivalence class, $a$ is an action, and $P$ is the process. $\mathtt{split}$ splits an equivalence class into two, ones with the action and ones without it.
+	\[[\{s \prightarrow{a} \bullet\}]_{P}\]
+	means ``state $s$ does action $a$ outside the equivalence class in process $P$''
+
+	\begin{lstlisting}[escapeinside={(*}{*)}, caption={Pseudocode for \texttt{split}}]
+	split(B, a, P) (*$\to$*) ((*$\{B_i\}$*) a set of blocks)
+	   choose (*$s\in B$*)
+	   (*$B_1 = \emptyset$*) (*$\color{red}(B_1\text{\textrm{ contains states equivalent to }} s*\,)$*)
+	   (*$B_2 = \emptyset$*) (*$\color{red}(B_2 \text{\textrm{ contains states inequivalent to }} s*\,)$*)
+	   for each (*$s'\in B$*) do
+	   begin
+	      if (*$[\{s \prightarrow{a} \bullet\}]_P = [\{s' \prightarrow{a} \bullet\}]_P$*) then
+		(*$B_1 = B_1 \cup \{s'\}$*)
+	      else
+		(*$B_2 = B_2 \cup \{s'\}$*)
+	   end
+	   if (*$B_2 = \emptyset$*) then
+	      return (*$\{B_1\}$*)
+	   else
+	      return (*$\{B_1,\, B_2\}$*)
+
+	\end{lstlisting}
+	Methodology:
+	\begin{itemize-tight}
+	    \item Start with one equivalence class for all states
+	    \item Run \texttt{split} on the outermost states, this now splits into $R_{1}$ and $R_{2}$, where $R_{2}$ are outside states
+	    \item Run \texttt{split} on states with outgoing actions to states in $R_{2}$, this now splits $R_{1}$ into $R_{1}$ and $R_{3}$, where $R_{3}$ are second-most outer states
+	    \item Keep on running until root state is partitioned
+		\item If needed, the minimal graph will have exactly one of each equivalence class
+	\end{itemize-tight}
+	
+	\longrule{0.08ex}
+	Running partition refinement for Branching Bisimularity
+	\begin{itemize}
+	    \item When checking whether a state in block $B$ has an $\alpha$ transition to block $C$, it is okay if we can move through block $B$ by doing only $\tau$-transitions, and then reach a state with an $\alpha$ transition to block $C$
+	    \item We never check $\tau$-transitions from block $B$ to block $B$ ($\tau$-transitions to another block are fair game though)
+	\end{itemize}
+	This implies running the rule on
+	\[[\{s \Rightarrow\prightarrow{a} \bullet\}]_{P}\]
+
 \end{dfn}
 
 \newpage

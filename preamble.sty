@@ -14,8 +14,8 @@
 % Page margins
 \usepackage{geometry}
 \geometry{
-    a4paper, 
-    margin=0.17in
+	a4paper,
+	margin=0.17in
 }
 
 % ╭──────────────────────────────────────────────────────────╮
@@ -41,7 +41,7 @@
 % ╰──────────────────────────────────────────────────────────╯
 
 % recommended, but you can remove if it causes problems
-\usepackage[final, nopatch=footnote]{microtype} 
+\usepackage[final, nopatch=footnote]{microtype}
 % AMS packages. Note: AMSThm for proof env.
 \usepackage{amsmath, amsthm, amsfonts, amssymb}
 % Provides \mathscr font
@@ -68,6 +68,8 @@
 \usepackage{enumitem}
 % Better Tables
 \usepackage{tabularx}
+% Code blocs
+\usepackage{listings}
 
 
 % ╭──────────────────────────────────────────────────────────╮
@@ -101,3 +103,14 @@
 \parindent = 0pt
 
 \renewcommand\labelitemi{\tiny$\bullet$}
+
+
+\lstset{ %this is the stype
+mathescape=true,
+frame=tb,
+columns=fullflexible,
+basicstyle=\ttfamily,
+keywordstyle=\color{black}\bfseries\em,
+keywords={split} %add the keywords you want, or load a language as Rubens explains in his comment above.
+morecomment=[l][\color{red}]{#}
+}
