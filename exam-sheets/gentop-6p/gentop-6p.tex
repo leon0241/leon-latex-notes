@@ -1,76 +1,193 @@
-\documentclass{article}
-% \usepackage{showframe}
+\documentclass[landscape, 8pt]{extarticle}
 
-% \usepackage[dvipsnames]{xcolor}
-% custom colour definitions
-% \colorlet{colour1}{Red}
-% \colorlet{colour2}{Green}
-% \colorlet{colour3}{Cerulean}
+\usepackage{../../preamble}
+\usepackage{symbols}
 
-\usepackage{geometry}
-% margins
-\geometry{
-    a4paper,
-    bottom=70pt,
-    % margin=70pt
-}
-
-\usepackage{graphicx} % Required for inserting images
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-% \usepackage{preamble}
-\usepackage{multicol}
-\usepackage{lipsum}
-\usepackage{float}
-\usepackage[nodisplayskipstretch]{setspace}
-
-% tikz and theorem boxes
-\usepackage[framemethod=TikZ]{mdframed}
-\usepackage{../../thmboxes_v3}
-\usepackage{../../customs}
-
-
-\usepackage{hyperref} % note: this is the final package
-\parindent = 0pt
-\linespread{1.1}
-
-% Custom Definitions of operators
-\DeclareMathOperator{\Ima}{im}
-\DeclareMathOperator{\Fix}{Fix}
-\DeclareMathOperator{\Orb}{Orb}
-\DeclareMathOperator{\Stab}{Stab}
-\DeclareMathOperator{\send}{send}
-\DeclareMathOperator{\dom}{dom}
-
-\title{Math Notes}
-\author{Leon Lee}
-\renewcommand\labelitemi{\tiny$\bullet$}
 
 \begin{document}
+\setlength{\abovedisplayskip}{3.5pt}
+\setlength{\belowdisplayskip}{3.5pt}
+\setlength{\abovedisplayshortskip}{3.5pt}
+\setlength{\belowdisplayshortskip}{3.5pt}
 
-\maketitle
+\begin{multicols}{3}
+\raggedcolumns
+
+
+\section*{\huge General Topology Notes}
+Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
+
+\section{Topological Spaces and Examples}
+
+\begin{dfn}[Topological Space]{dfn:topology}{1.1}
+    A \textbf{topological space} is a pair $(X, \mathcal{T})$, where $X$ is a nonempty set, and $\mathcal{T}$ is a collection of subsets of $X$ which satisfies:
+    \begin{enumerate-a-tight}
+        \item $\emptyset \in \mathcal{T}$ and $X \in \mathcal{T}$
+        \item if $U_{\lambda}\in \mathcal{T}$ for each $\lambda\in \Lambda$ (where $\Lambda$ is some indexing set), then $\bigcup_{\lambda\in \Lambda} U_{\lambda} \in \mathcal{T}$
+        \item if $U_{1},\,U_{2}\in \mathcal{T}$, then $U_{1} \cap U_{2} \in \mathcal{T}$
+    \end{enumerate-a-tight}
+    The collection $\mathcal{T}$ is called the \textbf{topology} of the topological space, and the members of $\mathcal{T}$ are called the \textbf{open sets} of the topology
+\end{dfn}
+
+\begin{xmp}[Euclidean Spaces]{dfn:euclidean-spaces}{1.7}
+    Let $\mathbb{R}^{n}$ enote the $n$-dimensional Euclidean vector space with elements $x = (x_{1},\,x_{2},\dots,x_{n})$ and $x_{i}\in\mathbb{R}$, and let
+    \[\lvert x \rvert = \sqrt{\sum_{i = 1}^{n} x_{i}^{2}} \ge 0\]
+    be the length of $x$. ($\mathbb{R}^{1} = \mathbb{R}$ is the real line). A subset $U$ of $\mathbb{R}^{n}$ is \textbf{open (for the usual topology)} iff for each $a\in U$ there exists an $r > 0$ such that
+    \[\lvert x - a \rvert < r \implies x \in U.\]
+    The collection of open sets thus defined is called the \textbf{usual topology} on $\mathbb{R}^{n}$. Note that open balls $B(y, \rho) = \{x\in \mathbb{R}^{n} : \lvert x - y \rvert < \rho\}$ are open sets under this definition.
+\end{xmp}
+
+
+\begin{xmp}[Metric Spaces]{def:metric}{1.8}
+    A \textbf{metric space} $(X, d)$ is a nonempty set $X$ together with a function $d : X \times X \to \mathbb{R}$ with the following properties:
+    \begin{enumerate-a-tight}
+        \item $d(x,y)\ge 0$ and $d(x,y)=0 \iff x = y$
+        \item $d(x,y)=d(y,x)$
+        \item $d(x,y)\le d(x,z)+d(z,y)$ (Triangle Inequality)
+    \end{enumerate-a-tight}
+    The function $d$ is called the \textbf{metric}.
+    \longrule{0.08ex}
+    Let $(X, d)$ be a metric space, $x$ be a point in $X$, and $r > 0$. The \textbf{open ball} with center $x$ and radius $r$ is defined by
+    \[B(x,r) = \{y,,\in X: d(x,y) < r\}.\]
+    A subset $U$ of $X$ is \textbf{open (in the metric topology given by d)} iff for each $a\in U$ there is an $r > 0$ such that $B(a,r) \subseteq U$. Just like euclidean spaces, open balls are open in this sense.
+\end{xmp}
+
+\begin{xmp}[Other Topologies and Metrics]{xmp:standard-tops-and-metrics}{}
+    If $(X, \mathcal{T})$ is a topological space, and if $X$ admits a metric whose metric topology is precisely $\mathcal{T}$, then we say that $(X, \mathcal{T})$ is \textbf{metrisable}
+    \begin{itemize-tight}
+        \item Euclidean spaces with their usual topologies are metrisable.
+        \item[\textbf{1.9)}] The \textbf{Discrete Topology} is the topology of all subsets of a set $X$. We can define the \textbf{discrete metric} of $X$ to be
+            \[d(x, y) = \begin{cases}
+                0 & \text{if } x = y \\
+                1 & \text{otherwise}
+            \end{cases}.\]
+        \item[\textbf{1.10)}] The \textbf{Trivial} or \textbf{Indiscrete Topology} is the topology $\mathcal{T} := \{\emptyset, X\}$ for a set $X$. This is a non-metrisable topology when $X$ has more than one member.
+        \item[\textbf{1.14)}] Let $X = \{a,\,b,\,c\}$, where $a,\,b,\,c$ are distinct. Then
+            \[\mathcal{T} = \{\emptyset, X, \{a\},\,\{a,b\},\,\{a,c\}\}\]
+            is a topology on $X$
+        \item[\textbf{1.15)}] Give $\mathbb{R}$ the topolgoy whose open subsets $U \subseteq \mathbb{R}$ are precisesly the subsets with finite complement $\mathbb{R} \backslash U$, or $U = \emptyset$. Then $\mathbb{R}$ with this topology is not metrisable. This is an example of a \textbf{Zariski Topology}
+    \end{itemize-tight}
+\end{xmp}
+
+\begin{ppn}[Topology Equality]{ppn:topology-equality}{1.11}
+    Let $d,\,d'$ be metrics on the same set $X$, and let $\mathcal{T},\,\mathcal{T}'$ be the corresponding metric topologies. If for real numbers $A,\, B > 0$ we have
+    \[d(x, y) \le Ad'(x, y),\, d'(x, y) \le Bd(x, y) \text{ for all } x,\,y\in X,\]
+    then $\mathcal{T} = \mathcal{T}'$.
+\end{ppn}
+
+\begin{xmp}[Example of Topology Equality]{xmp:topology-equality}{1.12}
+    \begin{itemize-tight}
+        \item The \textbf{Euclidean metric} on $\mathbb{R}^{n}$ is defined as:
+            \[d\bigl((x_{1},x_{2},\dots,x_{n}),\, (y_{1},y_{2},\dots,y_{n})\bigr) = \sqrt{\sum_{i = 1}^{n}(x_{i} - y_{i})^{2}}\]
+        \item The \textbf{Box metric} on $\mathbb{R}^{n}$ is defined as:
+            \[d(x, y) \le \sqrt{n} d'(x,y),\, d'(x,y) \le d(x, y)\]
+    \end{itemize-tight}
+    By \ref{ppn:ppn:topology-equality}, these have the same topology.
+\end{xmp}
+
+\begin{dfn}[Subspace Topology]{dfn:subspace-topology}{1.16}
+    Let $(X, \mathcal{T})$ be a topological space, and let $A \subseteq X$ be any subset. Then teh \textbf{subspace topology} on $A$ consists of all sets of the form $U \cap A$ where $U \in \mathcal{T}$.
+\end{dfn}
+
+\begin{dfn}[Closed Set]{dfn:closed-set}{1.17}
+    Let $(X, \mathcal{T})$ be a topological space. A subset $A \subseteq X$ is \textbf{closed} iff its complement $X \backslash A := \{x \in X \mid x \not\in A\}$ is open in $X$. Note that a set being \textit{closed} does not mean it isn't \textit{open}. Sets that are both \textit{closed} and \textit{open} are called \textbf{clopen}.
+\end{dfn}
+
+\begin{thm}[Properties of open and closed sets]{thm:open-set-props}{1.19}
+    \vspace{-5pt}
+    Let $(X,\mathcal{T})$ be a topological space.
+    \vspace{-5pt}
+    \begin{enumerate-zero}
+        \item $\emptyset$ and $X$ are closed.
+        \item The union of \textbf{finitely many} closed sets is an closed set.
+        \item The intersection of \textbf{any collection} of closed sets is a closed set.
+        \item The union of \textbf{any collection} of open sets is an open set.
+        \item The intersection of \textbf{finitely many} open sets is an open set
+\end{enumerate-zero}
+\end{thm}
+
+\begin{dfn}[Properties of Topological Spaces]{dfn:topological-props}{1.20}
+    \begin{enumerate-tight}
+        \item The \textbf{closure} of a set $A \subseteq X$ is
+            \[\overline{A} := \bigcap_{C \subseteq X \text{ closed; }A \subseteq C} C.\]
+        \item The \textbf{interior} of a set $A \subseteq X$ is
+            \[\Int A = A^{\circ} := \bigcap_{C \subseteq X \text{ open; }A \subseteq C} C.\]
+        \item The \textbf{boundary} (or \textbf{frontier}) of a subset $A \subseteq X$ is
+            \[\partial A := \overline{A} \backslash A^{\circ}.\]
+        \item A subset $A$ of $X$ is \textbf{dense} in $X$ iff $\overline{A} = X$.
+    \end{enumerate-tight}
+    $\overline{A}$ is closed, and contains $A$ and is the smallest set with this property. So $A$ is closed iff $\overline{A} = A$.
+
+    $A^{\circ}$ is open, and is contained in $A$, and is the largest set with this proprety. So $A$ is open iff $A^{\circ} = A$.
+
+    % way more compact version
+    % $A$ is closed iff $\overline{A} = A$, and $A$ is open iff $A^{\circ} = A$.
+\end{dfn}
+
+\begin{ppn}[Relating Topological Properties]{ppn:topological-prop-relations}{1.22}
+    The closure of the complement is the complement of the interior:
+    \[\overline{X \backslash A} = X \backslash (A^{\circ}).\]
+
+    The interior of the complement is the complement of the closure:
+    \[(X \backslash A)^{\circ} = X \backslash \overline{A}.\]
+\end{ppn}
+
+\begin{dfn}[Limit Points]{dfn:limit-points}{1.23}
+    Let $(X, \mathcal{T})$ be a topological space, and let $A \subseteq X$ be a subset. A \textbf{limit point} of $A$ is a point $x\in X$ s.t. for every open subset $U \subseteq X$ with $x\in U$ there exists an element $a\in A \cup U$ with $a \ne x$. Let $A'$ be the set of limit points of $A$.\newline
+    Note that this has nothing to do with limits of sequences.
+\end{dfn}
+
 \newpage
-\tableofcontents
-\newpage
+\begin{lma}[Limit Points and Open Balls]{lma:limit-point-balls}{1.24}
+    An element $x\in X$ in a metric space $(X, d)$ is a limit point of a subset $A \subseteq X$ iff for every $\epsilon > 0$ there exists $a\in A$ with $0<d(x,a)<\epsilon$, or iff there exists a sequence $a_{1},\,a_{2},\,a_{3},\cdots$ of elements $a_{i}\in A$, with $a_{i}  \ne x$ for all $i$, such that $d(x_{i}, a_{i}) \to 0$ as $i \to\infty$. This interpretation does not extend to general topological spaces.
+\end{lma}
 
-\section{}
-\subsection{}
+\begin{xmp}[Examples of limit points]{xmp:}{}
+    P7 in the notes
+\end{xmp}
 
-% \begin{dfn}[Name]{Label}{Number}
-%     
-% \end{dfn}
-%
-% \begin{thm}[Name]{Label}{Number}
-%     
-% \end{thm}
-%
-% \begin{xmp}[Name]{Label}{Number}
-%     
-% \end{xmp}
-%
-% \begin{rem}[Name]{Label}{Number}
-%     
-% \end{rem}
+\begin{ppn}[Union of Limit points]{ppn:limit-point-unions}{1.26}
+    Let $(X, \mathcal{T})$ be a topological space, and suppose $A \subseteq X$. Then
+    \[\overline{A} = A \cup A'\]
+\end{ppn}
 
+\begin{crl}[]{crl:closed-limit-points}{1.27}
+    A subset $A \subseteq X$ is closed iff it contains all its limit points.
+\end{crl}
+
+\begin{thm}[Open and Closed sets in \texorpdfstring{$\mathbb{R}$}{R}]{thm:open-closed-sets-in-R}{1.30}
+    Consider $\mathbb{R}$ with the usual topology.
+    \begin{enumerate-zero}
+        \item A nonempty set $U$ is open iff it can be written as a countable union of disjoint nonempty open intervals $I_{j}$:
+            \[U = \bigcup_{j=1}^{\infty} I_{j}.\]
+        \item A set $F$ is closed iff it can be written as a countable intersection
+            \[F = \bigcap_{j=1}^{\infty} F_{j}\]
+            where each $F_{j}$ is a finite union of closed intervals.
+    \end{enumerate-zero}
+\end{thm}
+
+\begin{dfn}[Hausdorff Spaces]{dfn:hausdorff}{1.32}
+    A topological space $(X, \mathcal{T})$ is \textbf{Hausdorff} if for each $x,\,y\in X$ with $x \ne y$ there exist \textbf{disjoint} open sets $U$ and $V$ such that $x\in U$ and $y\in V$.
+    \longrule{0.08ex}
+    Any metrisable space is Hausdorff, The trivial topology n a set with more than one element is not Hausdorff.
+\end{dfn}
+
+\begin{dfn}[Convergence of a Topological space]{dfn:convergence-topological}{1.33}
+    A sequence $(x_{n})$ of members of a topological space $X$ converges to $x\in X$ if for every open set $U$ containing $x$, there exists an $N$ such that $n \ge N \implies x_{n} \in U$
+\end{dfn}
+
+\begin{ppn}[Convergence of Hausdorff Spaces]{ppn:convergence-hausdorff}{1.34}
+    Suppose $(X, \mathcal{T})$ is Hausdorff. Then a sequence $(x_{n})$ can converge to at most one limit.
+\end{ppn}
+
+\begin{dfn}[Cauchy and Completeness]{dfn:cauchy-completeness}{1.36}
+    Let $(X, d)$ be a metric space.
+    \begin{enumerate-tight}
+        \item A \textbf{Cauchy sequence} is a sequence $(x_{n})$ with each $x_{n}\in X$ with the property that for each $\epsilon > 0$, there exists an $N$ such that $m,\,n\in N \implies d(x_{m},\,x_{n})< \epsilon$
+        \item $(X, d)$ is \textbf{complete} if every Cauchy sequence converges.
+    \end{enumerate-tight}
+\end{dfn}
+
+\lipsum[1-12]
+\end{multicols}
 \end{document}

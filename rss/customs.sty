@@ -30,6 +30,17 @@
     \begin{enumerate}[leftmargin=*]\setlength\itemsep{0em}
 } {\end{enumerate}}
 
+% Alternative versions with alpha numbering
+\newenvironment{enumerate-a-tight}{
+    \begin{enumerate}[label=\alph*)]
+        \setlength\itemsep{0em}
+} {\end{enumerate}}
+
+\newenvironment{enumerate-a-zero}{
+\begin{enumerate}[leftmargin=*,label=\alph*)]
+    \setlength\itemsep{0em}
+} {\end{enumerate}}
+
 \newenvironment{itemize-tight}{
     \begin{itemize} \setlength\itemsep{0em}
 } {\end{itemize}}
