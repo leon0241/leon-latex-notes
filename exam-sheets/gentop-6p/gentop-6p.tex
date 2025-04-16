@@ -20,247 +20,247 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \section{Topological Spaces and Examples}
 
 \begin{dfn}[Topological Space]{dfn:topology}{1.1}
-    A \textbf{topological space} is a pair $(X, \mathcal{T})$, where $X$ is a nonempty set, and $\mathcal{T}$ is a collection of subsets of $X$ which satisfies:
-    \begin{enumerate-a-tight}
-        \item $\emptyset \in \mathcal{T}$ and $X \in \mathcal{T}$
-        \item if $U_{\lambda}\in \mathcal{T}$ for each $\lambda\in \Lambda$ (where $\Lambda$ is some indexing set), then $\bigcup_{\lambda\in \Lambda} U_{\lambda} \in \mathcal{T}$
-        \item if $U_{1},\,U_{2}\in \mathcal{T}$, then $U_{1} \cap U_{2} \in \mathcal{T}$
-    \end{enumerate-a-tight}
-    The collection $\mathcal{T}$ is called the \textbf{topology} of the topological space, and the members of $\mathcal{T}$ are called the \textbf{open sets} of the topology
+A \textbf{topological space} is a pair $(X, \mathcal{T})$, where $X$ is a nonempty set, and $\mathcal{T}$ is a collection of subsets of $X$ which satisfies:
+\begin{enumerate-a-tight}
+\item $\emptyset \in \mathcal{T}$ and $X \in \mathcal{T}$
+\item if $U_{\lambda}\in \mathcal{T}$ for each $\lambda\in \Lambda$ (where $\Lambda$ is some indexing set), then $\bigcup_{\lambda\in \Lambda} U_{\lambda} \in \mathcal{T}$
+\item if $U_{1},\,U_{2}\in \mathcal{T}$, then $U_{1} \cap U_{2} \in \mathcal{T}$
+\end{enumerate-a-tight}
+The collection $\mathcal{T}$ is called the \textbf{topology} of the topological space, and the members of $\mathcal{T}$ are called the \textbf{open sets} of the topology
 \end{dfn}
 
 \begin{xmp}[Euclidean Spaces]{dfn:euclidean-spaces}{1.7}
-    Let $\mathbb{R}^{n}$ enote the $n$-dimensional Euclidean vector space with elements $x = (x_{1},\,x_{2},\dots,x_{n})$ and $x_{i}\in\mathbb{R}$, and let
-    \[\lvert x \rvert = \sqrt{\sum_{i = 1}^{n} x_{i}^{2}} \ge 0\]
-    be the length of $x$. ($\mathbb{R}^{1} = \mathbb{R}$ is the real line). A subset $U$ of $\mathbb{R}^{n}$ is \textbf{open (for the usual topology)} iff for each $a\in U$ there exists an $r > 0$ such that
-    \[\lvert x - a \rvert < r \implies x \in U.\]
-    The collection of open sets thus defined is called the \textbf{usual topology} on $\mathbb{R}^{n}$. Note that open balls $B(y, \rho) = \{x\in \mathbb{R}^{n} : \lvert x - y \rvert < \rho\}$ are open sets under this definition.
+	Let $\mathbb{R}^{n}$ enote the $n$-dimensional Euclidean vector space with elements $x = (x_{1},\,x_{2},\dots,x_{n})$ and $x_{i}\in\mathbb{R}$, and let
+	\[\lvert x \rvert = \sqrt{\sum_{i = 1}^{n} x_{i}^{2}} \ge 0\]
+	be the length of $x$. ($\mathbb{R}^{1} = \mathbb{R}$ is the real line). A subset $U$ of $\mathbb{R}^{n}$ is \textbf{open (for the usual topology)} iff for each $a\in U$ there exists an $r > 0$ such that
+	\[\lvert x - a \rvert < r \implies x \in U.\]
+	The collection of open sets thus defined is called the \textbf{usual topology} on $\mathbb{R}^{n}$. Note that open balls $B(y, \rho) = \{x\in \mathbb{R}^{n} : \lvert x - y \rvert < \rho\}$ are open sets under this definition.
 \end{xmp}
 
 
 \begin{xmp}[Metric Spaces]{def:metric}{1.8}
-    A \textbf{metric space} $(X, d)$ is a nonempty set $X$ together with a function $d : X \times X \to \mathbb{R}$ with the following properties:
-    \begin{enumerate-a-tight}
-        \item $d(x,y)\ge 0$ and $d(x,y)=0 \iff x = y$
-        \item $d(x,y)=d(y,x)$
-        \item $d(x,y)\le d(x,z)+d(z,y)$ (Triangle Inequality)
-    \end{enumerate-a-tight}
-    The function $d$ is called the \textbf{metric}.
-    \longrule{0.08ex}
-    Let $(X, d)$ be a metric space, $x$ be a point in $X$, and $r > 0$. The \textbf{open ball} with center $x$ and radius $r$ is defined by
-    \[B(x,r) = \{y,,\in X: d(x,y) < r\}.\]
-    A subset $U$ of $X$ is \textbf{open (in the metric topology given by d)} iff for each $a\in U$ there is an $r > 0$ such that $B(a,r) \subseteq U$. Just like euclidean spaces, open balls are open in this sense.
+A \textbf{metric space} $(X, d)$ is a nonempty set $X$ together with a function $d : X \times X \to \mathbb{R}$ with the following properties:
+\begin{enumerate-a-tight}
+\item $d(x,y)\ge 0$ and $d(x,y)=0 \iff x = y$
+\item $d(x,y)=d(y,x)$
+\item $d(x,y)\le d(x,z)+d(z,y)$ (Triangle Inequality)
+\end{enumerate-a-tight}
+The function $d$ is called the \textbf{metric}.
+\longrule{0.08ex}
+Let $(X, d)$ be a metric space, $x$ be a point in $X$, and $r > 0$. The \textbf{open ball} with center $x$ and radius $r$ is defined by
+\[B(x,r) = \{y,,\in X: d(x,y) < r\}.\]
+A subset $U$ of $X$ is \textbf{open (in the metric topology given by d)} iff for each $a\in U$ there is an $r > 0$ such that $B(a,r) \subseteq U$. Just like euclidean spaces, open balls are open in this sense.
 \end{xmp}
 
 \begin{xmp}[Other Topologies and Metrics]{xmp:standard-tops-and-metrics}{}
-    If $(X, \mathcal{T})$ is a topological space, and if $X$ admits a metric whose metric topology is precisely $\mathcal{T}$, then we say that $(X, \mathcal{T})$ is \textbf{metrisable}
-    \begin{itemize-tight}
-        \item Euclidean spaces with their usual topologies are metrisable.
-        \item[\textbf{1.9)}] The \textbf{Discrete Topology} is the topology of all subsets of a set $X$. We can define the \textbf{discrete metric} of $X$ to be
-            \[d(x, y) = \begin{cases}
-                0 & \text{if } x = y \\
-                1 & \text{otherwise}
-            \end{cases}.\]
-        \item[\textbf{1.10)}] The \textbf{Trivial} or \textbf{Indiscrete Topology} is the topology $\mathcal{T} := \{\emptyset, X\}$ for a set $X$. This is a non-metrisable topology when $X$ has more than one member.
-        \item[\textbf{1.14)}] Let $X = \{a,\,b,\,c\}$, where $a,\,b,\,c$ are distinct. Then
-            \[\mathcal{T} = \{\emptyset, X, \{a\},\,\{a,b\},\,\{a,c\}\}\]
-            is a topology on $X$
-        \item[\textbf{1.15)}] Give $\mathbb{R}$ the topolgoy whose open subsets $U \subseteq \mathbb{R}$ are precisesly the subsets with finite complement $\mathbb{R} \backslash U$, or $U = \emptyset$. Then $\mathbb{R}$ with this topology is not metrisable. This is an example of a \textbf{Zariski Topology}
-    \end{itemize-tight}
+If $(X, \mathcal{T})$ is a topological space, and if $X$ admits a metric whose metric topology is precisely $\mathcal{T}$, then we say that $(X, \mathcal{T})$ is \textbf{metrisable}
+\begin{itemize-tight}
+\item Euclidean spaces with their usual topologies are metrisable.
+\item[\textbf{1.9)}] The \textbf{Discrete Topology} is the topology of all subsets of a set $X$. We can define the \textbf{discrete metric} of $X$ to be
+\[d(x, y) = \begin{cases}
+		0 & \text{if } x = y \\
+		1 & \text{otherwise}
+	\end{cases}.\]
+\item[\textbf{1.10)}] The \textbf{Trivial} or \textbf{Indiscrete Topology} is the topology $\mathcal{T} := \{\emptyset, X\}$ for a set $X$. This is a non-metrisable topology when $X$ has more than one member.
+\item[\textbf{1.14)}] Let $X = \{a,\,b,\,c\}$, where $a,\,b,\,c$ are distinct. Then
+\[\mathcal{T} = \{\emptyset, X, \{a\},\,\{a,b\},\,\{a,c\}\}\]
+is a topology on $X$
+\item[\textbf{1.15)}] Give $\mathbb{R}$ the topolgoy whose open subsets $U \subseteq \mathbb{R}$ are precisesly the subsets with finite complement $\mathbb{R} \backslash U$, or $U = \emptyset$. Then $\mathbb{R}$ with this topology is not metrisable. This is an example of a \textbf{Zariski Topology}
+\end{itemize-tight}
 \end{xmp}
 
 \begin{ppn}[Topology Equality]{ppn:topology-equality}{1.11}
-    Let $d,\,d'$ be metrics on the same set $X$, and let $\mathcal{T},\,\mathcal{T}'$ be the corresponding metric topologies. If for real numbers $A,\, B > 0$ we have
-    \[d(x, y) \le Ad'(x, y),\, d'(x, y) \le Bd(x, y) \text{ for all } x,\,y\in X,\]
-    then $\mathcal{T} = \mathcal{T}'$.
+	Let $d,\,d'$ be metrics on the same set $X$, and let $\mathcal{T},\,\mathcal{T}'$ be the corresponding metric topologies. If for real numbers $A,\, B > 0$ we have
+	\[d(x, y) \le Ad'(x, y),\, d'(x, y) \le Bd(x, y) \text{ for all } x,\,y\in X,\]
+	then $\mathcal{T} = \mathcal{T}'$.
 \end{ppn}
 
 \begin{xmp}[Example of Topology Equality]{xmp:topology-equality}{1.12}
-    \begin{itemize-tight}
-        \item The \textbf{Euclidean metric} on $\mathbb{R}^{n}$ is defined as:
-            \[d\bigl((x_{1},x_{2},\dots,x_{n}),\, (y_{1},y_{2},\dots,y_{n})\bigr) = \sqrt{\sum_{i = 1}^{n}(x_{i} - y_{i})^{2}}\]
-        \item The \textbf{Box metric} on $\mathbb{R}^{n}$ is defined as:
-            \[d(x, y) \le \sqrt{n} d'(x,y),\, d'(x,y) \le d(x, y)\]
-    \end{itemize-tight}
-    By \ref{ppn:ppn:topology-equality}, these have the same topology.
+\begin{itemize-tight}
+\item The \textbf{Euclidean metric} on $\mathbb{R}^{n}$ is defined as:
+\[d\bigl((x_{1},x_{2},\dots,x_{n}),\, (y_{1},y_{2},\dots,y_{n})\bigr) = \sqrt{\sum_{i = 1}^{n}(x_{i} - y_{i})^{2}}\]
+\item The \textbf{Box metric} on $\mathbb{R}^{n}$ is defined as:
+\[d(x, y) \le \sqrt{n} d'(x,y),\, d'(x,y) \le d(x, y)\]
+\end{itemize-tight}
+By \ref{ppn:ppn:topology-equality}, these have the same topology.
 \end{xmp}
 
 \begin{dfn}[Subspace Topology]{dfn:subspace-topology}{1.16}
-    Let $(X, \mathcal{T})$ be a topological space, and let $A \subseteq X$ be any subset. Then teh \textbf{subspace topology} on $A$ consists of all sets of the form $U \cap A$ where $U \in \mathcal{T}$.
+	Let $(X, \mathcal{T})$ be a topological space, and let $A \subseteq X$ be any subset. Then teh \textbf{subspace topology} on $A$ consists of all sets of the form $U \cap A$ where $U \in \mathcal{T}$.
 \end{dfn}
 
 \begin{dfn}[Closed Set]{dfn:closed-set}{1.17}
-    Let $(X, \mathcal{T})$ be a topological space. A subset $A \subseteq X$ is \textbf{closed} iff its complement $X \backslash A := \{x \in X \mid x \not\in A\}$ is open in $X$. Note that a set being \textit{closed} does not mean it isn't \textit{open}. Sets that are both \textit{closed} and \textit{open} are called \textbf{clopen}.
+	Let $(X, \mathcal{T})$ be a topological space. A subset $A \subseteq X$ is \textbf{closed} iff its complement $X \backslash A := \{x \in X \mid x \not\in A\}$ is open in $X$. Note that a set being \textit{closed} does not mean it isn't \textit{open}. Sets that are both \textit{closed} and \textit{open} are called \textbf{clopen}.
 \end{dfn}
 
 \begin{thm}[Properties of open and closed sets]{thm:open-set-props}{1.19}
-    \vspace{-5pt}
-    Let $(X,\mathcal{T})$ be a topological space.
-    \vspace{-5pt}
-    \begin{enumerate-zero}
-        \item $\emptyset$ and $X$ are closed.
-        \item The union of \textbf{finitely many} closed sets is an closed set.
-        \item The intersection of \textbf{any collection} of closed sets is a closed set.
-        \item The union of \textbf{any collection} of open sets is an open set.
-        \item The intersection of \textbf{finitely many} open sets is an open set
+\vspace{-5pt}
+Let $(X,\mathcal{T})$ be a topological space.
+\vspace{-5pt}
+\begin{enumerate-zero}
+\item $\emptyset$ and $X$ are closed.
+\item The union of \textbf{finitely many} closed sets is an closed set.
+\item The intersection of \textbf{any collection} of closed sets is a closed set.
+\item The union of \textbf{any collection} of open sets is an open set.
+\item The intersection of \textbf{finitely many} open sets is an open set
 \end{enumerate-zero}
 \end{thm}
 
 \begin{dfn}[Properties of Topological Spaces]{dfn:topological-props}{1.20}
-    \begin{enumerate-tight}
-        \item The \textbf{closure} of a set $A \subseteq X$ is
-            \[\overline{A} := \bigcap_{C \subseteq X \text{ closed; }A \subseteq C} C.\]
-        \item The \textbf{interior} of a set $A \subseteq X$ is
-            \[\Int A = A^{\circ} := \bigcap_{C \subseteq X \text{ open; }A \subseteq C} C.\]
-        \item The \textbf{boundary} (or \textbf{frontier}) of a subset $A \subseteq X$ is
-            \[\partial A := \overline{A} \backslash A^{\circ}.\]
-        \item A subset $A$ of $X$ is \textbf{dense} in $X$ iff $\overline{A} = X$.
-    \end{enumerate-tight}
-    $\overline{A}$ is closed, and contains $A$ and is the smallest set with this property. So $A$ is closed iff $\overline{A} = A$.
+\begin{enumerate-tight}
+\item The \textbf{closure} of a set $A \subseteq X$ is
+\[\overline{A} := \bigcap_{C \subseteq X \text{ closed; }A \subseteq C} C.\]
+\item The \textbf{interior} of a set $A \subseteq X$ is
+\[\Int A = A^{\circ} := \bigcap_{C \subseteq X \text{ open; }A \subseteq C} C.\]
+\item The \textbf{boundary} (or \textbf{frontier}) of a subset $A \subseteq X$ is
+\[\partial A := \overline{A} \backslash A^{\circ}.\]
+\item A subset $A$ of $X$ is \textbf{dense} in $X$ iff $\overline{A} = X$.
+\end{enumerate-tight}
+$\overline{A}$ is closed, and contains $A$ and is the smallest set with this property. So $A$ is closed iff $\overline{A} = A$.
 
-    $A^{\circ}$ is open, and is contained in $A$, and is the largest set with this proprety. So $A$ is open iff $A^{\circ} = A$.
+$A^{\circ}$ is open, and is contained in $A$, and is the largest set with this proprety. So $A$ is open iff $A^{\circ} = A$.
 
-    % way more compact version
-    % $A$ is closed iff $\overline{A} = A$, and $A$ is open iff $A^{\circ} = A$.
+% way more compact version
+% $A$ is closed iff $\overline{A} = A$, and $A$ is open iff $A^{\circ} = A$.
 \end{dfn}
 
 \begin{ppn}[Relating Topological Properties]{ppn:topological-prop-relations}{1.22}
-    The closure of the complement is the complement of the interior:
-    \[\overline{X \backslash A} = X \backslash (A^{\circ}).\]
+	The closure of the complement is the complement of the interior:
+	\[\overline{X \backslash A} = X \backslash (A^{\circ}).\]
 
-    The interior of the complement is the complement of the closure:
-    \[(X \backslash A)^{\circ} = X \backslash \overline{A}.\]
+	The interior of the complement is the complement of the closure:
+	\[(X \backslash A)^{\circ} = X \backslash \overline{A}.\]
 \end{ppn}
 
 \begin{dfn}[Limit Points]{dfn:limit-points}{1.23}
-    Let $(X, \mathcal{T})$ be a topological space, and let $A \subseteq X$ be a subset. A \textbf{limit point} of $A$ is a point $x\in X$ s.t. for every open subset $U \subseteq X$ with $x\in U$ there exists an element $a\in A \cup U$ with $a \ne x$. Let $A'$ be the set of limit points of $A$.\newline
-    Note that this has nothing to do with limits of sequences.
+	Let $(X, \mathcal{T})$ be a topological space, and let $A \subseteq X$ be a subset. A \textbf{limit point} of $A$ is a point $x\in X$ s.t. for every open subset $U \subseteq X$ with $x\in U$ there exists an element $a\in A \cup U$ with $a \ne x$. Let $A'$ be the set of limit points of $A$.\newline
+	Note that this has nothing to do with limits of sequences.
 \end{dfn}
 
 \newpage
 \begin{lma}[Limit Points and Open Balls]{lma:limit-point-balls}{1.24}
-    An element $x\in X$ in a metric space $(X, d)$ is a limit point of a subset $A \subseteq X$ iff for every $\epsilon > 0$ there exists $a\in A$ with $0<d(x,a)<\epsilon$, or iff there exists a sequence $a_{1},\,a_{2},\,a_{3},\cdots$ of elements $a_{i}\in A$, with $a_{i}  \ne x$ for all $i$, such that $d(x_{i}, a_{i}) \to 0$ as $i \to\infty$. This interpretation does not extend to general topological spaces.
+	An element $x\in X$ in a metric space $(X, d)$ is a limit point of a subset $A \subseteq X$ iff for every $\epsilon > 0$ there exists $a\in A$ with $0<d(x,a)<\epsilon$, or iff there exists a sequence $a_{1},\,a_{2},\,a_{3},\cdots$ of elements $a_{i}\in A$, with $a_{i}  \ne x$ for all $i$, such that $d(x_{i}, a_{i}) \to 0$ as $i \to\infty$. This interpretation does not extend to general topological spaces.
 \end{lma}
 
 \begin{xmp}[Examples of limit points]{xmp:}{}
-    P7 in the notes
+	P7 in the notes
 \end{xmp}
 
 \begin{ppn}[Union of Limit points]{ppn:limit-point-unions}{1.26}
-    Let $(X, \mathcal{T})$ be a topological space, and suppose $A \subseteq X$. Then
-    \[\overline{A} = A \cup A'\]
+	Let $(X, \mathcal{T})$ be a topological space, and suppose $A \subseteq X$. Then
+	\[\overline{A} = A \cup A'\]
 \end{ppn}
 
 \begin{crl}[]{crl:closed-limit-points}{1.27}
-    A subset $A \subseteq X$ is closed iff it contains all its limit points.
+	A subset $A \subseteq X$ is closed iff it contains all its limit points.
 \end{crl}
 
 \begin{thm}[Open and Closed sets in \texorpdfstring{$\mathbb{R}$}{R}]{thm:open-closed-sets-in-R}{1.30}
-    Consider $\mathbb{R}$ with the usual topology.
-    \begin{enumerate-zero}
-        \item A nonempty set $U$ is open iff it can be written as a countable union of disjoint nonempty open intervals $I_{j}$:
-            \[U = \bigcup_{j=1}^{\infty} I_{j}.\]
-        \item A set $F$ is closed iff it can be written as a countable intersection
-            \[F = \bigcap_{j=1}^{\infty} F_{j}\]
-            where each $F_{j}$ is a finite union of closed intervals.
-    \end{enumerate-zero}
+Consider $\mathbb{R}$ with the usual topology.
+\begin{enumerate-zero}
+\item A nonempty set $U$ is open iff it can be written as a countable union of disjoint nonempty open intervals $I_{j}$:
+\[U = \bigcup_{j=1}^{\infty} I_{j}.\]
+\item A set $F$ is closed iff it can be written as a countable intersection
+\[F = \bigcap_{j=1}^{\infty} F_{j}\]
+where each $F_{j}$ is a finite union of closed intervals.
+\end{enumerate-zero}
 \end{thm}
 
 \begin{dfn}[Hausdorff Spaces]{dfn:hausdorff}{1.32}
-    A topological space $(X, \mathcal{T})$ is \textbf{Hausdorff} if for each $x,\,y\in X$ with $x \ne y$ there exist \textbf{disjoint} open sets $U$ and $V$ such that $x\in U$ and $y\in V$.
-    \longrule{0.08ex}
-    Any metrisable space is Hausdorff, The trivial topology n a set with more than one element is not Hausdorff.
+	A topological space $(X, \mathcal{T})$ is \textbf{Hausdorff} if for each $x,\,y\in X$ with $x \ne y$ there exist \textbf{disjoint} open sets $U$ and $V$ such that $x\in U$ and $y\in V$.
+	\longrule{0.08ex}
+	Any metrisable space is Hausdorff, The trivial topology n a set with more than one element is not Hausdorff.
 \end{dfn}
 
 \begin{dfn}[Convergence of a Topological space]{dfn:convergence-topological}{1.33}
-    A sequence $(x_{n})$ of members of a topological space $X$ converges to $x\in X$ if for every open set $U$ containing $x$, there exists an $N$ such that $n \ge N \implies x_{n} \in U$
+	A sequence $(x_{n})$ of members of a topological space $X$ converges to $x\in X$ if for every open set $U$ containing $x$, there exists an $N$ such that $n \ge N \implies x_{n} \in U$
 \end{dfn}
 
 \begin{ppn}[Convergence of Hausdorff Spaces]{ppn:convergence-hausdorff}{1.34}
-    Suppose $(X, \mathcal{T})$ is Hausdorff. Then a sequence $(x_{n})$ can converge to at most one limit.
+	Suppose $(X, \mathcal{T})$ is Hausdorff. Then a sequence $(x_{n})$ can converge to at most one limit.
 \end{ppn}
 
 \begin{dfn}[Cauchy and Completeness]{dfn:cauchy-completeness}{1.36}
-    Let $(X, d)$ be a metric space.
-    \begin{enumerate-tight}
-        \item A \textbf{Cauchy sequence} is a sequence $(x_{n})$ with each $x_{n}\in X$ with the property that for each $\epsilon > 0$, there exists an $N$ such that $m,\,n\in N \implies d(x_{m},\,x_{n})< \epsilon$
-        \item $(X, d)$ is \textbf{complete} if every Cauchy sequence converges.
-    \end{enumerate-tight}
+Let $(X, d)$ be a metric space.
+\begin{enumerate-tight}
+\item A \textbf{Cauchy sequence} is a sequence $(x_{n})$ with each $x_{n}\in X$ with the property that for each $\epsilon > 0$, there exists an $N$ such that $m,\,n\in N \implies d(x_{m},\,x_{n})< \epsilon$
+\item $(X, d)$ is \textbf{complete} if every Cauchy sequence converges.
+\end{enumerate-tight}
 \end{dfn}
 
 \begin{dfn}[Topology Basis]{dfn:topology-basis}{1.37}
-    A \textbf{basis for a topology} on a set $X$ is a collection $\mathcal{B}$ of subsets $B \subseteq X$ such that:
-    \begin{enumerate-tight}
-        \item $X = \bigcup_{B\in \mathcal{B}} B$
-        \item The intersection of sets $B_{1},\,B_{2}\in \mathcal{B}$ in a set $B_{1} \cap B_{2} \in \mathcal{B}$
-    \end{enumerate-tight}
+A \textbf{basis for a topology} on a set $X$ is a collection $\mathcal{B}$ of subsets $B \subseteq X$ such that:
+\begin{enumerate-tight}
+\item $X = \bigcup_{B\in \mathcal{B}} B$
+\item The intersection of sets $B_{1},\,B_{2}\in \mathcal{B}$ in a set $B_{1} \cap B_{2} \in \mathcal{B}$
+\end{enumerate-tight}
 
-    \longrule{0.08ex}
-    The \textbf{topology $\mathcal{T}$ generated by a basis $\mathcal{B}$} has open sets the arbitrary unions of basis elements $B_{\lambda} \in \mathcal{B}$:
-    \[U = \bigcup_{\lambda\in \Lambda} B_{\lambda}\]
-    (Don't forget to check that this really is a topology)
+\longrule{0.08ex}
+The \textbf{topology $\mathcal{T}$ generated by a basis $\mathcal{B}$} has open sets the arbitrary unions of basis elements $B_{\lambda} \in \mathcal{B}$:
+\[U = \bigcup_{\lambda\in \Lambda} B_{\lambda}\]
+(Don't forget to check that this really is a topology)
 \end{dfn}
 
 \begin{xmp}[Finite Intersections of open balls]{xmp:open-balls-finite-intersections}{1.38}
-    For any metric space $(X, \mathcal{T})$ the finite intersections of open balls
-    \[B(x,r) = \{y \in X \mid d(x, y) < r\} \subseteq X \quad (r > 0,\, x\in X)\]
-    constitute a basis for the metric topology on $X$
-    \begin{multline*}
-        \mathcal{B} = \{B(x_{1},r_{1}) \cap B(x_{2},r_{2}) \cap \cdots \cap B(x_{k}, r_{k}) \mid \\
-        x_{1},x_{2},\dots,x_{k}\in X,\,r_{1},r_{2},\dots,r_{k}>0\}
-    \end{multline*}
+	For any metric space $(X, \mathcal{T})$ the finite intersections of open balls
+	\[B(x,r) = \{y \in X \mid d(x, y) < r\} \subseteq X \quad (r > 0,\, x\in X)\]
+	constitute a basis for the metric topology on $X$
+	\begin{multline*}
+		\mathcal{B} = \{B(x_{1},r_{1}) \cap B(x_{2},r_{2}) \cap \cdots \cap B(x_{k}, r_{k}) \mid \\
+		x_{1},x_{2},\dots,x_{k}\in X,\,r_{1},r_{2},\dots,r_{k}>0\}
+	\end{multline*}
 \end{xmp}
 
 \section{Continuous functions and Homeomorphisms}
 
 \begin{dfn}[Continuity]{dfn:continuity}{2.1}
-    Let $(X, \mathcal{T})$, $(Y, \mathcal{U})$ be topological spaces. A function $f : X \to Y$ is \textbf{continuous} iff
-    \[U \in \mathcal{U} \text{ implies } f^{-1}(U) \in \mathcal{T}.\]
-    That is, \textbf{inverse} images of open sets are open. Continuous functions are often called \textbf{maps} or \textbf{mappings} of topological spaces.
+	Let $(X, \mathcal{T})$, $(Y, \mathcal{U})$ be topological spaces. A function $f : X \to Y$ is \textbf{continuous} iff
+	\[U \in \mathcal{U} \text{ implies } f^{-1}(U) \in \mathcal{T}.\]
+	That is, \textbf{inverse} images of open sets are open. Continuous functions are often called \textbf{maps} or \textbf{mappings} of topological spaces.
 \end{dfn}
 
 \begin{ppn}[Topological and Analytic Continuity]{ppn:topological-analytic-continuity}{2.6}
-    Let $(X, d)$ and $(Y, \rho)$ be metric spaces with their induced topologies $\mathcal{T}$ and $\mathcal{U}$ respectively. A function $f: X \to Y $ is continuous (topologically) iff it is continuous analytically: for every $a\in X$ and every $\epsilon > 0$ there exists $\delta > 0$ such that
-    \[d(x, a) < \delta \implies \rho(f(x), f(a)) < \epsilon\]
+	Let $(X, d)$ and $(Y, \rho)$ be metric spaces with their induced topologies $\mathcal{T}$ and $\mathcal{U}$ respectively. A function $f: X \to Y $ is continuous (topologically) iff it is continuous analytically: for every $a\in X$ and every $\epsilon > 0$ there exists $\delta > 0$ such that
+	\[d(x, a) < \delta \implies \rho(f(x), f(a)) < \epsilon\]
 \end{ppn}
 
 \begin{dfn}[Homeomorphism]{dfn:homeomorphism}{2.7}
-    Let $(X, \mathcal{T})$ and $(Y, \mathcal{U})$ be topological spaces. A \textbf{homeomorphism} is a bijection $f: X \to Y$ such that both $f$ and $f^{-1}$ are continuous. Two topological spaces are \textbf{homeomorphic} if there is a homeomorphism between them.
+	Let $(X, \mathcal{T})$ and $(Y, \mathcal{U})$ be topological spaces. A \textbf{homeomorphism} is a bijection $f: X \to Y$ such that both $f$ and $f^{-1}$ are continuous. Two topological spaces are \textbf{homeomorphic} if there is a homeomorphism between them.
 \end{dfn}
 
 \begin{ppn}[Open Homeomorphisms]{ppn:open-homeomorphisms}{2.8}
-    Let $f : (X, \mathcal{T}) \to (Y, \mathcal{U})$ be a homeomorphism. Then $U$ is open in $Y$ iff $f^{-1}(U)$ is open in $X$.
+	Let $f : (X, \mathcal{T}) \to (Y, \mathcal{U})$ be a homeomorphism. Then $U$ is open in $Y$ iff $f^{-1}(U)$ is open in $X$.
 \end{ppn}
 
 %TODO: Some stuff on topological invariants
 
 \begin{xmp}[Examples of homeomorphisms]{xmp:homeomorphisms}{2.10}
-    \begin{enumerate-tight}
-        \item Let $(X, \mathcal{T})$ be an arbitrary topological space. Then the identity map
-            \[\iota : X \to X \,;\quad x \mapsto x\]
-            is continuous, and indeed a homeomorphism.
-        \item Suppose $(X, \mathcal{T})$, $(Y, \mathcal{U})$, and $(Z, \mathcal{W})$ are topological spaces, and that $f : X \to Y$ and $g : Y \to Z$ are continuous functions. Then their composition
-            \[g \circ f : X \to Z \,; \quad x \mapsto g(f(x))\]
-            is continuous.
-        \item For any topological spaces $X$, $Y$, and any element $y_{0} \in Y$ the constant function
-            \[f_{0} : X \to Y \,; \quad x \mapsto y_{0}\]
-            is continuous.
-    \end{enumerate-tight}
+\begin{enumerate-tight}
+\item Let $(X, \mathcal{T})$ be an arbitrary topological space. Then the identity map
+\[\iota : X \to X \,;\quad x \mapsto x\]
+is continuous, and indeed a homeomorphism.
+\item Suppose $(X, \mathcal{T})$, $(Y, \mathcal{U})$, and $(Z, \mathcal{W})$ are topological spaces, and that $f : X \to Y$ and $g : Y \to Z$ are continuous functions. Then their composition
+\[g \circ f : X \to Z \,; \quad x \mapsto g(f(x))\]
+is continuous.
+\item For any topological spaces $X$, $Y$, and any element $y_{0} \in Y$ the constant function
+\[f_{0} : X \to Y \,; \quad x \mapsto y_{0}\]
+is continuous.
+\end{enumerate-tight}
 \end{xmp}
 
 \begin{ppn}[Continuity and Closed sets]{ppn:continuity-closed}{2.14}
-    \begin{itemize-zero}
-        \item Suppose $(X, \mathcal{T})$ and $(Y, \mathcal{U})$ are topological spaces and that $f : X \to Y$. Then $f$ is continuous iff for every closed subset $F \subseteq Y$ its inverse image $f^{-1}(F)$ is closed in $X$.
-        \item $f$ is continuous iff the image of the closure of every subset $A \subseteq X$ is contained in the closure of the image, i.e., $\forall A \subseteq X$,
-            \[f(\overline{A}) \subseteq \overline{f(A)}\]
-    \end{itemize-zero}
+\begin{itemize-zero}
+\item Suppose $(X, \mathcal{T})$ and $(Y, \mathcal{U})$ are topological spaces and that $f : X \to Y$. Then $f$ is continuous iff for every closed subset $F \subseteq Y$ its inverse image $f^{-1}(F)$ is closed in $X$.
+\item $f$ is continuous iff the image of the closure of every subset $A \subseteq X$ is contained in the closure of the image, i.e., $\forall A \subseteq X$,
+\[f(\overline{A}) \subseteq \overline{f(A)}\]
+\end{itemize-zero}
 \end{ppn}
 
 \newpage
 \begin{ppn}[The Punctured Sphere]{ppn:punctured-sphere}{2.18}
-    Consider the $n$-dimensional sphere
-    \[\mathbb{S}^{n} = \{x\in \mathbb{R}^{n+1} : \lvert x \rvert = 1\}\]
-    with the metric topology inherited from $\mathbb{R}^{n+1}$. Let $x_{0} \in \mathbb{S}^{n}$. Then $\mathbb{S}^{n} \backslash \{x_{0}\}$ is homeomorphic to $\mathbb{R}^{n}$.
+	Consider the $n$-dimensional sphere
+	\[\mathbb{S}^{n} = \{x\in \mathbb{R}^{n+1} : \lvert x \rvert = 1\}\]
+	with the metric topology inherited from $\mathbb{R}^{n+1}$. Let $x_{0} \in \mathbb{S}^{n}$. Then $\mathbb{S}^{n} \backslash \{x_{0}\}$ is homeomorphic to $\mathbb{R}^{n}$.
 \end{ppn}
 
 % TODO: whole proof
@@ -270,56 +270,275 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \section{Subspaces Revisited}
 
 \begin{ppn}[Hausdorff and Subspaces]{ppn:hausdorff-subspaces}{3.4}
-    Suppose $(X, \mathcal{T})$ is a Hausdorff topological space and suppose $A$ is a subspace. Then $A$ is Hausdorff.
+	Suppose $(X, \mathcal{T})$ is a Hausdorff topological space and suppose $A$ is a subspace. Then $A$ is Hausdorff.
 \end{ppn}
 
 \begin{ppn}[Continuity and Subspaces]{ppn:continuity-subspaces}{3.5}
-    Suppose $(X, \mathcal{T})$ and $(Y, \mathcal{U})$ are topological spaces and suppose $A$ is a subspace of $X$. Let $f: X \to Y $ be continuous. Then $f \rvert_{A} : A \to Y$ is continuous.
+	Suppose $(X, \mathcal{T})$ and $(Y, \mathcal{U})$ are topological spaces and suppose $A$ is a subspace of $X$. Let $f: X \to Y $ be continuous. Then $f \rvert_{A} : A \to Y$ is continuous.
 \end{ppn}
 
 \begin{crl}[Homeomorphisms and Exclusions]{crl:homeomorphisms-exclusion}{3.6}
-    Suppose $(X, \mathcal{T})$ and $(Y, \mathcal{U})$ are homeomorphic via $f$. Then $X \backslash \{x_{0}\}$ is homeomorphic to $Y \backslash \{f(x_{0})\}$
+	Suppose $(X, \mathcal{T})$ and $(Y, \mathcal{U})$ are homeomorphic via $f$. Then $X \backslash \{x_{0}\}$ is homeomorphic to $Y \backslash \{f(x_{0})\}$
 \end{crl}
 
 \begin{dfn}[Disjoint Unions]{dfn:disjoint-union}{3.65}
-    Let $(X, \mathcal{T})$ and $(Y, \mathcal{U})$ be topological spaces. Their \textbf{disjoint union} $X + Y$ is the set $(X \times \{0\}) \cup (Y \times \{1\})$ with the topology consisting of all sets of the form
-    \[(T \times \{0\}) \cup (U \times \{1\})\text{ such that }T \in \mathcal{T},\,U \in \mathcal{U}\]
+	Let $(X, \mathcal{T})$ and $(Y, \mathcal{U})$ be topological spaces. Their \textbf{disjoint union} $X + Y$ is the set $(X \times \{0\}) \cup (Y \times \{1\})$ with the topology consisting of all sets of the form
+	\[(T \times \{0\}) \cup (U \times \{1\})\text{ such that }T \in \mathcal{T},\,U \in \mathcal{U}\]
 \end{dfn}
 
 \begin{dfn}[Product Topology]{dfn:product-topology}{3.8}
-    Let $(X, \mathcal{T})$, $(Y, \mathcal{U})$ be topological spaces. The \textbf{product topology} on their product $X \times Y$ consists of all sets of the form
-    \[T = \bigcup_{\alpha\in A} (U_{\alpha} \times V_{\alpha})\]
-    where $\mathcal{A}$ is an arbitrary indexing set, and $U_{\alpha}\in \mathcal{U}$ and $V_{\alpha}\in \mathcal{V}$.
+	Let $(X, \mathcal{T})$, $(Y, \mathcal{U})$ be topological spaces. The \textbf{product topology} on their product $X \times Y$ consists of all sets of the form
+	\[T = \bigcup_{\alpha\in A} (U_{\alpha} \times V_{\alpha})\]
+	where $\mathcal{A}$ is an arbitrary indexing set, and $U_{\alpha}\in \mathcal{U}$ and $V_{\alpha}\in \mathcal{V}$.
 \end{dfn}
 
 \begin{lma}[Openness in Product Topologies]{lma:product-topology-open}{3.9}
-    Let $(X, \mathcal{T})$ $(Y, \mathcal{U})$ be topological spaces. Then $T \subseteq X \times Y$ is open in the product topology if and only if for all $t\in T$ there exists $U \in \mathcal{U}$ and $V \in \mathcal{V}$ such that $t \in U \times V$ and $U \times V \subseteq T$.
+	Let $(X, \mathcal{T})$ $(Y, \mathcal{U})$ be topological spaces. Then $T \subseteq X \times Y$ is open in the product topology if and only if for all $t\in T$ there exists $U \in \mathcal{U}$ and $V \in \mathcal{V}$ such that $t \in U \times V$ and $U \times V \subseteq T$.
 \end{lma}
 
 \begin{lma}[Product Topology is a topology]{lma:product-topology-topology}{3.10}
-    The product topology is indeed a topology. (lol)
+	The product topology is indeed a topology. (lol)
 \end{lma}
 
 \begin{dfn}[Projection Maps]{dfn:projection-maps}{3.11.5}
-    Let $(X, \mathcal{T})$ and $(Y, \mathcal{U})$ be topological spaces, and consider their product $X \times Y$ with the product topology. There are two natural maps $\Pi_{X}$ and $\Pi_{Y}$, the projections of $X \times Y$ onto $X$ and $Y$ respectively, given by
-    \[\Pi_{X} : X \times Y \to X, \quad (x, y) \mapsto x\]
-    and
-    \[\Pi_{Y} : X \times Y \to Y, \quad (x, y) \mapsto y.\]
+	Let $(X, \mathcal{T})$ and $(Y, \mathcal{U})$ be topological spaces, and consider their product $X \times Y$ with the product topology. There are two natural maps $\Pi_{X}$ and $\Pi_{Y}$, the projections of $X \times Y$ onto $X$ and $Y$ respectively, given by
+	\[\Pi_{X} : X \times Y \to X, \quad (x, y) \mapsto x\]
+	and
+	\[\Pi_{Y} : X \times Y \to Y, \quad (x, y) \mapsto y.\]
 \end{dfn}
 
 \begin{thm}[Continuity of Projection Maps]{thm:projection-map-continuity}{3.12}
-    Let $(X, \mathcal{T})$ and $(Y, \mathcal{U})$ be topological spaces and $\mathcal{T}$ the product topology on $X \times Y$. Then the projection maps $\Pi_{X}$ and $\Pi_{Y}$ are continuous. Moreover, $\mathcal{T}$ is the smallest topology on $X \times Y$ such that the projection maps are continuous.
+	Let $(X, \mathcal{T})$ and $(Y, \mathcal{U})$ be topological spaces and $\mathcal{T}$ the product topology on $X \times Y$. Then the projection maps $\Pi_{X}$ and $\Pi_{Y}$ are continuous. Moreover, $\mathcal{T}$ is the smallest topology on $X \times Y$ such that the projection maps are continuous.
 \end{thm}
 
 \begin{ppn}[Continuity of compositions]{ppn:composition-continuity}{3.13}
-    Let $X,\,Y,\,Z$ be topological spaces. Endow $X \times Y$ with the product topology. A function $f : Z \to X \times Y$ is continuous iff the functions $\Pi_{X} \circ f : Z \to X$ and $\Pi_{Y} \circ f : Z \to Y$ are both continuous.
+	Let $X,\,Y,\,Z$ be topological spaces. Endow $X \times Y$ with the product topology. A function $f : Z \to X \times Y$ is continuous iff the functions $\Pi_{X} \circ f : Z \to X$ and $\Pi_{Y} \circ f : Z \to Y$ are both continuous.
 \end{ppn}
 
 \begin{dfn}[Weak Topology]{dfn:weak-topology}{3.14}
-    Suppose that $X$ is a set. $(X_{\lambda}, \mathcal{T}_{\lambda})$ is a family of topological spaces, and that $f_{\lambda} : X \to X_{\lambda}$ are functions. The \textbf{weak topology generated by $\{f_{\lambda}\}$} is the smallest topology on $X$ making all the $f_{\lambda}$ continuous.
+	Suppose that $X$ is a set. $(X_{\lambda}, \mathcal{T}_{\lambda})$ is a family of topological spaces, and that $f_{\lambda} : X \to X_{\lambda}$ are functions. The \textbf{weak topology generated by $\{f_{\lambda}\}$} is the smallest topology on $X$ making all the $f_{\lambda}$ continuous.
 
-    Thus the product topology on $X \times Y$ is the weak topology generated by the two maps $\Pi_{X}$ and $\Pi_{Y}$
+	Thus the product topology on $X \times Y$ is the weak topology generated by the two maps $\Pi_{X}$ and $\Pi_{Y}$
 \end{dfn}
+
+\begin{dfn}[Cartesian Product Topology]{dfn:cartesian-product}{3.15}
+	If $X_{\lambda}$ is a topological space, (with $\lambda$ in some arbitrary indexing set $\Lambda$), the product topology on the cartesian product $\Pi_{\lambda\in \Lambda} X_{Ll}$ is defined to be the weak topology generated by the projections
+	\[
+		\Pi_{\lambda} : \prod_{\mu\in \Lambda} X_{\mu} \to X_{\lambda}
+	\]
+\end{dfn}
+
+\begin{dfn}[Equivalence Relation]{dfn:equivalence-relation}{3.5.0}
+An \textbf{equivalence} relation on a set $X$ is a binary operation $\sim$ on $X$ which is:
+\begin{enumerate-tight}
+\item \textbf{Reflexive}: $x \sim x$ for all $x\in X$.
+\item \textbf{Symmetric}: if $x \sim y$ then $y \sim x$.
+\item \textbf{Transitive}: if $x \sim y$ and $y \sim z$ then $x \sim z$.
+\end{enumerate-tight}
+The \textbf{equivalence class} of any element $x\in X$ is the set
+\[[x] = \{y \in X \mid x \sim y\},\]
+and the set of equivalence classes is denoted by $X / \sim$. The function which assigns to each $x\in X$ the equivalence class $[x] \in X / \sim$ is a surjection
+\[p : X \to X / \sim \,; \quad x \to [x]\]
+\end{dfn}
+
+\begin{dfn}[Quotient Space]{dfn:quotient-space}{3.17}
+	Given a topological space $(X, \mathcal{T})$, and an equivalence relation $\sim$ on $X$, the \textbf{quotient space} or \textbf{identification space} is the set of equivalence classes $X / \sim$ together with the topology
+	\[\{ U \subseteq X / \sim : p^{-1} (U) \in \mathcal{T}\}\]
+\end{dfn}
+
+\begin{xmp}[Circle as an Interval]{xmp:circle-interval}{3.18}
+	The circle $S^{1}$ is homeomorphic to an identification space of the unit interval $I = [0,1]$. The topology on $I$ is defined by regarding $I$ as a subspace of $\mathbb{R}$: a subset $Y \subseteq I$ is open iff $Y = I \cup U$ for an open subset $U \subseteq \mathbb{R}$. Define an equivalence relation $\sim$ on $I$ by
+	\[x \sim y \text{ if } x = y \text{ or if } (x, y) = (1,0) \text{ or if } (x,y) = (0,1)\]
+	The identification space $I / \sim$ tying the two endpoints of $I$ together is homeomorphic to $S^{1}$, with a homeomorphism
+	\[I / \sim \to S^{1}\,; \quad t \mapsto (\cos 2\pi t,\, \sin 2\pi t).\]
+	The subset $Y = [0,1 /2) \subseteq I$ is open, since $Y = I \cup (-\infty,\,1 /2)$ with $(-\infty,\,1 /2)$ is open in $\mathbb{R}$. The image $p(Y) \subseteq I /\sim$ is not open. In fact, the open subsets $Y \subseteq I$ such that $p(Y) \subseteq I /\sim$ is open are those for which $\{0,1\} \subseteq Y$ or $\{0,1\} \cap Y = \emptyset$.
+\end{xmp}
+
+\begin{dfn}[Generated Topological Spaces]{dfn:generator}{3.25}
+	Let $X$ be a topological space, and let $Y_{0},\,Y_{1} \subseteq X$ be subspaces, which are related by a continuous function $f: Y_{0} \to Y_{1} $. Let $\sim_{f}$ be the equivalence relation on $X$ \textbf{generated by $f$}, the intersection of all the equivalence relations on $X$ (regarded as subsets of $X \times X $) containing the pairs $(y_{0}, f(y_{0}))$ with $y_{0}\in Y_{0}$. The identification space
+	\[X /\sim_{f} = X / \{ y_{1} = f(y_{0})\}\]
+	is obtained by identifying each $y_{0}\in Y_{0} \subseteq X$ with $y_{1} = f(y_{0}) \in Y_{1} \subseteq X$.
+\end{dfn}
+
+% TODO: Lots of random shapes like klein bottles and tori
+
+\newpage
+\begin{ppn}[Continuity of Relations]{ppn:relation-continuity}{3.33}
+Let $X$ be a topological space with an equivalence relation $\sim$.
+\begin{enumerate-zero}
+\item The function $p: X \to X / \sim \,; \quad x \mapsto [x] $ is continuous.
+\item A continuous function $f : X \to Y$ such that $f(x) = f(x')\in Y$ for all $x,\,x\in X$ with $x \sim x'$ determines a continuous function
+\[g : X / \sim \to Y\,;\quad [x] \mapsto f(x)\]
+such that
+\[f = g \circ p : X \prightarrow{p} X /\sim \prightarrow{g} Y\]
+\end{enumerate-zero}
+$f = g \circ p$ is best described by a commutative triangle:
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzQsMCwiWSJdLFsyLDIsIlggL1xcc2ltIl0sWzAsMiwicCJdLFsyLDEsImciXSxbMCwxLCJmIl1d
+\[\begin{tikzcd}[cramped, column sep=small, row sep=scriptsize]
+		X &&&& Y \\
+		\\
+		&& {X /\sim}
+		\arrow["f", from=1-1, to=1-5]
+		\arrow["p", from=1-1, to=3-3]
+		\arrow["g", from=3-3, to=1-5]
+	\end{tikzcd}\]
+In fact, every continuous function on $X$ determines an equivalence relation.
+\end{ppn}
+
+\begin{ppn}[Homeomorphisms of Relations]{ppn:relation-homeomorphisms}{3.34}
+	Given a continuous function $f : X \to Y$ let $\sim$ be the equivalence relation defined on $X$ by $x \sim x'$ if $f(x) = f(x') \in Y$. The function
+	\[g : X /\sim \to Y\,; [x] \to f(x)\]
+	is continuous and injective, with
+	\[f = g \circ p : X \prightarrow{p} X / \sim \prightarrow{g} Y.\]
+	If $f$ is onto, and such that $f(U) \subseteq Y$ is open for every oopen subset $U \subseteq X$ then $g$ is a homeomorphism.
+\end{ppn}
+
+\section{Compact Spaces}
+
+\begin{dfn}[Open Covers and Compct Spaces]{dfn:open-cover-compact}{4.1}
+    \begin{enumerate-tight}
+        \item An \textbf{open cover} of a topological space $X$ is a collection $\{U_{\lambda} \mid \lambda\in \Lambda\}$ of open subsets $U_{\lambda}$ of $X$ such that
+            \[\bigcup_{\lambda\in \Lambda} U_{\lambda} = X\]
+
+        \item A topological space $X$ is \textbf{compact} if every open cover $\{U_{\lambda} \mid \lambda\in\Lambda\}$ of $X$ has a finite subcover, i.e. there exists $\lambda_{1},\dots,\lambda_{n}\in \Lambda$ such that
+            \[X = \bigcup_{j = 1}^{n} U_{\lambda_{j}}.\]
+    \end{enumerate-tight}
+\end{dfn}
+
+\begin{dfn}[Open Covers as Collections]{dfn:open-cover-collection}{4.2}
+\begin{enumerate-tight}
+\item If $A \subseteq X$ is a subset of a topological space $X$, an \textbf{open cover} of $A$ is a collection $\{V_{\lambda} \mid \lambda\in\Lambda\}$ of subsets $V_{\lambda}$ which are open in $X$ such that
+\[X = \bigcup_{\lambda\in\Lambda}V_{\lambda}\]
+\item A subset $A$ of a toplogical space $X$ is \textbf{compact} if it is compact as a subspace of $X$.
+\end{enumerate-tight}
+\end{dfn}
+
+\begin{ppn}[Compactness and Subcoverings]{ppn:compactness-subcoverings}{4.3}
+    Let $X$ be a topological space and $A \subseteq X$. Then $A$ is compact iff every open cover of $A$ has a finite subcover.
+\end{ppn}
+
+\begin{thm}[Heine-Borel Theorem]{thm:heine-borel}{4.5}
+    A subset $F \subseteq \mathbb{R}^{n}$ is compact iff it is closed and bounded.
+\end{thm}
+
+\begin{ppn}[Properties of Compact Spaces]{ppn:compact-props}{4.6}
+    Let $X$ be a topological space.
+    \begin{enumerate-tight}
+        \item If $X$ is compact and $A \subseteq X$ is closed, then $A$ is compact
+        \item If $X$ is Hausdorff and $A \subseteq X$ is compact, then $A$ is closed.
+    \end{enumerate-tight}
+\end{ppn}
+
+\begin{ppn}[Boundedness of Compact Spaces]{ppn:compact-bounded}{4.7}
+    A compact metric space $(X, d)$ is bounded, i.e. there exists a number $K \ge 0$ such that $d(x,y) \le K$ for all $x,\,y\in X$.
+\end{ppn}
+
+\begin{ppn}[Compactness of Products]{ppn:compact-product}{4.8}
+    A product of closed bounded intervals $R = [a_{1},b_{1}] \times \cdots \times [a_{n}, b_{n}] \subseteq \mathbb{R}^{n}$ is compact in the usual topology.
+
+    A collection of subsets of a set $X$ has the \textbf{finite intersection property} if every finite intersection of their members is nonempty.
+\end{ppn}
+
+\begin{thm}[Compactness of Functions]{thm:compact-functions}{4.10}
+    Let $f : X \to Y$ be a continuous map between topological spaces. If $X$ is compact, so is $f(X)$.
+\end{thm}
+
+\begin{crl}[]{crl:compactness-invariant}{4.11}
+    Compactness is a topological invariant. For example, $\mathbb{S}$ and $\mathbb{R}^{n}$ are not homeomorphic as the former is compact while the latter is not.
+\end{crl}
+
+\begin{crl}[Limit Property of Compactness]{crl:compact-limit}{4.12}
+    Suppose that $f : X \to \mathbb{R}^{n}$ is a continuous map and that $X$ is compact. Then there exists an $M$ such that
+    \[\lvert f(x) \rvert \le M \text{ for all } x\in X.\]
+	Moreover, there exists an $x\in X$ such that
+	\[\lvert f(x) \rvert = \sup_{y\in X} \lvert f(y) \rvert.\]
+	If $n = 1$ there are $x_{0}$ and $x_{1}\in X$ such that
+	\[f(x_{0}) = \min_{x\in X} f(x) \quad \text{ and } \quad f(x_{1}) = \max_{x\in X} f(x).\]
+\end{crl}
+
+\begin{thm}[Compact,Hausdorff,Bijection, Oh My!]{thm:compact-hausdorff-bijection}{4.13}
+	Suppose $X$ is compact, $Y$ is Hausdorff, and that $f : X \to Y$ is a continuous bijection. Then it is a homeomorphism.
+\end{thm}
+
+\begin{thm}[Lebesgue Numbers]{thm:lebesgue-numbers}{4.14}
+	Let $X$ be a compact metric space and $\{U_{\lambda} \mid \lambda\in\Lambda\}$ an open cover of $X$. Then there exists a positive number $\delta>0$ (the \textbf{Lebesgue number} of the cover) such that for all $x\in X$, $B(x, \delta)$ lies \textit{entirely inside some single $U_{\lambda}$}.
+\end{thm}
+
+\begin{crl}[Compactness of Identification Spaces]{crl:compact-id-spaces}{4.17}
+	\begin{enumerate-tight}
+	    \item An identification space $X /\sim$ of a compact space $X$ is compact.
+	    \item If $f: X \to Y $ is a map from a compact space $X$ to a Hausdorff space $Y$ and $\sim$ is the equivalence relation on $X$ defined by $x \sim x'$ if $f(x) = f(x') \in Y$, then the continuous bijection
+			\[g : X / \sim \to f(X)\,;\quad [x] \mapsto f(x)\]
+		is a homeomorphism.
+	\end{enumerate-tight}
+\end{crl}
+
+\begin{thm}[Tychonoff's Theorem - Two Products]{thm:tychonoff-simple}{4.18}
+	Suppose $X$ and $Y$ are compact spaces. Then their product $X \times Y$ is compact. The converse is also true.
+\end{thm}
+
+\begin{lma}[Open sets in Product spaces]{lma:product-space-open-sets}{4.20}
+	Let $X$ be a topological space, $Y$ a compact space, $x\in X$, $N$ an open set in $X \times Y$ such that $\{x\} \times Y \subseteq N$. Then there is an open set $W \subseteq X$ such that $x \in W$ and $W \times Y \subseteq N$.
+\end{lma}
+
+\begin{thm}[Tychonoff's Theorem]{thm:tychonoff}{4.21}
+	Suppose that $\mathcal{A}$ is an indexing set and that for ech $\alpha\in \mathcal{A}$, $X_{\alpha}$ is a compact topological space. Then the product $\prod_{\alpha\in \mathcal{A}} X_{\alpha}$ is compact.
+\end{thm}
+
+\newpage
+
+\begin{lma}[Collections and Intersections]{lma:collections-finite-intersections}{4.22 - 4.23}
+	\begin{enumerate-tight}
+		\item[\textbf{4.22})] Let $X$ be a set, and suppose that $\mathcal{C}$ is a collection of subsets of $X$ which has the finite intersection property. Then there is a collection $\mathcal{B}$ of subsets of $X$, with $\mathcal{C} \subseteq \mathcal{B}$, such that $\mathcal{B}$ has the finite intersection property, and such that $\mathcal{B}$ is maximal with respect to this property: i.e. no collection containing $\mathcal{B}$ as a propert subcollection has the finite intersection property.
+		\item[\textbf{4.23})] Let $X$ be a set, and suppose that $\mathcal{B}$ is a collection of subsets of $X$ which is maximal with respect to the finite intersection property. Then $\mathcal{B}$ is closed under finite intersections, and any set which meets all members of $\mathcal{B}$ is also in $\mathcal{B}$.
+	\end{enumerate-tight}
+\end{lma}
+
+\begin{dfn}[Compactifications]{dfn:compactifications}{4.24}
+	\begin{enumerate-tight}
+	    \item A \textbf{compactification} of a topological space $X$ is a compact space $Y$ which contains a homeomorphic copy of $X$ as a subspace, i.e. such that there is a one-one map $f : X \to Y$ such that $X \to f(X)\,;\quad x \mapsto f(x)$ is a homeomorphism.
+	    \item A compactification $Y$ is \textbf{dense} if $X$ is dense in $Y$, i.e. $\overline{X} = Y$.
+	\end{enumerate-tight}
+\end{dfn}
+
+% TODO: Examples
+
+\begin{dfn}[One-point compactification]{dfn:one-point-compactification}{4.27}
+	the \textbf{one-point compactification} of a topological space $X$ is the set
+	\[X^{\infty} = X \cup \{\infty\}\]
+	obtained by adjoining a ``point at infinity'' $\infty$, where $\infty$ is a symbol \textit{not} in $X$, with open sets of the form either
+	\begin{enumerate-tight}
+	    \item $U$, where $U \subseteq X$ is open, or 
+	    \item $X^{\infty} \backslash K$, where $K \subseteq X$ is compact and closed.
+	\end{enumerate-tight}
+
+	\textrule{Lemma 4.28}
+	\begin{enumerate-tight}
+	    \item The collection of open sets just defined does form a topology
+	    \item The subspace topology on $X$ induced by this topology coincides with its original topology.
+	\end{enumerate-tight}
+\end{dfn}
+
+\begin{ppn}[Compactness of OPC]{ppn:opc-compactness}{4.30}
+	\begin{enumerate-tight}
+	    \item $X^{\infty}$ is compact
+	    \item If $X$ is not compact, then $X$ is dense in $X^{\infty}$
+	\end{enumerate-tight}
+\end{ppn}
+
+\begin{dfn}[Local Compactness]{dfn:local-compactness}{4.32}
+	A topological space $X$ is \textbf{locally compact} if for each
+	\[x\in X \subseteq (X, \mathcal{T}) \frac{1}{2} \]
+	there exists an open subset $U \subseteq X$ and a compact $C$ such that $x\in U \subseteq C$.
+
+	\textrule{Remark 4.33}
+
+	When $X$ is Hausdorff, it is locally compact iff for each $x\in X$ there exists an open subset $U \subseteq X$ and a compact $x \in U$ and the closure $\overline{U}$ is compact.
+\end{dfn}
+
+\begin{ppn}[Hausdorff OPC]{ppn:hausdorff-opc}{4.34}
+	The one-point compactification $X^{\infty}$ of a space $X$ is Hausdorff iff $X$ is Hausdorff and locally compact.
+\end{ppn}
 
 \lipsum[1-12]
 \end{multicols}
