@@ -1,76 +1,185 @@
-\documentclass{article}
-% \usepackage{showframe}
+\documentclass[landscape, 8pt]{extarticle}
 
-% \usepackage[dvipsnames]{xcolor}
-% custom colour definitions
-% \colorlet{colour1}{Red}
-% \colorlet{colour2}{Green}
-% \colorlet{colour3}{Cerulean}
-
-\usepackage{geometry}
-% margins
-\geometry{
-    a4paper,
-    bottom=70pt,
-    % margin=70pt
-}
-
-\usepackage{graphicx} % Required for inserting images
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-% \usepackage{preamble}
-\usepackage{multicol}
-\usepackage{lipsum}
-\usepackage{float}
-\usepackage[nodisplayskipstretch]{setspace}
-
-% tikz and theorem boxes
-\usepackage[framemethod=TikZ]{mdframed}
-\usepackage{../../thmboxes_v3}
-\usepackage{../../customs}
-
-
-\usepackage{hyperref} % note: this is the final package
-\parindent = 0pt
-\linespread{1.1}
-
-% Custom Definitions of operators
-\DeclareMathOperator{\Ima}{im}
-\DeclareMathOperator{\Fix}{Fix}
-\DeclareMathOperator{\Orb}{Orb}
-\DeclareMathOperator{\Stab}{Stab}
-\DeclareMathOperator{\send}{send}
-\DeclareMathOperator{\dom}{dom}
-
-\title{Math Notes}
-\author{Leon Lee}
-\renewcommand\labelitemi{\tiny$\bullet$}
+\usepackage{../../preamble}
+\usepackage{symbols}
 
 \begin{document}
 
-\maketitle
+\setlength{\abovedisplayskip}{3.5pt}
+\setlength{\belowdisplayskip}{3.5pt}
+\setlength{\abovedisplayshortskip}{3.5pt}
+\setlength{\belowdisplayshortskip}{3.5pt}
+
+\begin{multicols}{3}
+\raggedcolumns
+
+\section*{\huge Galois Theory Notes}
+Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
+
+\section{Galois Groups}
+
+\begin{dfn}[Conjugate Numbers]{dfn:conjugate-numbers}{1.1.1}
+    Two complex numbers $z$ and $z'$ are \textbf{conjugate over $\mathbb{R}$} if for all polynomials $p$ with coefficients in $\mathbb{R}$,
+    \[p(z) = 0 \iff p(z') = 0\]
+\end{dfn}
+
+\begin{lma}[Characterising Conjugates]{lma:charaterising-conjugates}{1.1.2}
+    $z,z'\in \mathbb{C}$ are conjugate over $\mathbb{R}$ iff either $z = z'$ or $\overline{z} = z'$
+\end{lma}
+
+\begin{dfn}[Conjugacy in \texorpdfstring{$\mathbb{Q}$}{Q}]{dfn:conj-q}{1.1.9}
+    $z,z'\in \mathbb{C}$ are \textbf{conjugate over $\mathbb{Q}$} if $\forall p(t) \in \mathbb{Q}[t]$
+    \[p(z) = 0 \iff p(z') = 0\]
+\end{dfn}
+
+\begin{dfn}[Conjugacy for sets]{dfn:set-conjugacy}{1.1.9}
+    $(z_{1},\dots,z_{n}), z_{i}, z_{i}' \in \mathbb{C}$
+    is conjugate over $\mathbb{Q}$ to $(z_{1}',\dots,z_{n}')$
+    if $\forall p(t_{1},\dots,t_{n})\in \mathbb{Q}[t_{1},\dots,t_{n}]$
+
+    \longrule{0.08ex}
+
+    Additionally, if $(z_{1},\dots,z_{n})$ conjugate to $(z_{1}',\dots,z_{n}')$, then $z_{i}$ is conjugate to $z_{i}'$ for all $i$
+\end{dfn}
+
+% TODO: idk what's happening here
+
+\begin{dfn}[Galois Group]{dfn:galois-group}{1.2.1}
+    Let $f$ be a polynomia lwith coefficients in $\mathbb{Q}$. Write $\alpha_{1},\dots,\alpha_{k}$ for its distinct roots in $\mathbb{C}$. The \textbf{Galois group} of $f$ is
+    \[\mathrm{Gal}(g) = \{\sigma \in S_{n} \mid (\alpha_{1},\dots,\alpha_{n}) \text{ conjugate to } (\alpha_{S(1)},\dots,\alpha_{\sigma(n)})\}\]
+    \textbf{Note}: distinct roots mean that we ignore any repetition of roots.
+\end{dfn}
+
+\begin{dfn}[Solvability (Simple Definition)]{dfn:solvability}{1.3.0}
+    A complex number is \textbf{radical} if it can be obtained from the rationals using only the usual arithmetic operations and $k$th roots. A polynomial over $\mathbb{Q}$ is \textbf{solvable (or soluble) by radicals} if all of its complex roots are radical.
+\end{dfn}
+
+\begin{thm}[Galois]{thm:galois}{1.3.5}
+    Let $f$ be a polynomial over $\mathbb{Q}$. Then
+    \[f \text{ is solvable by radicals} \iff \mathrm{Gal}(f) \text{ is a solvable group.}\]
+\end{thm}
+
+\section{Groups, Rings, and Fields}
+
+\begin{dfn}[Group Action]{dfn:group-action}{2.1.1}
+    Let $G$ be a group and $X$ a set. An \textbf{action} of $G$ on $X$ is a function $G \times X \to X$, written as $(g,x)\mapsto gx$ such that
+    \[(gh)x = g(hx)\]
+    for all $g, h\in G$ and $x\in X$ and
+    \[1x = x\]
+    for all $x\in X$, where $1$ is the identity of $G$
+\end{dfn}
+
+\begin{dfn}[Faithful Actions]{dfn:faithful-actions}{2.1.7}
+    An action of a group $G$ on a set $X$ is \textbf{faithful} if for $g,\,h\in G$,
+    \[gx = hx \text{ for all } x\in X \implies g = h\]
+    Faithfulness means that if two elements of the group \textit{do} the same, they \textit{are} the same.
+\end{dfn}
+
+\begin{lma}[Faithful Properties]{lma:faithful-props}{2.1.8}
+    For an action of a group $G$ on a set $X$, the following are equivalent:
+    \begin{enumerate-tight}
+        \item The action is faithful
+        \item For $g\in G$, if $gx = x$ for all $x\in X$ then $g = 1$
+        \item The homomorphism $\Sigma : G \to \sym(X)$ is injective
+        \item $\ker \Sigma$ is trivial.
+    \end{enumerate-tight}
+\end{lma}
+
+% Actions examples
+
+\begin{lma}[Isomorphisms of Faithful Groups]{lma:faith-isos}{2.1.11}
+    Let $G$ be a group acting faithfully on a set $X$. then $G$ is isomorphic to the subgroup
+    \[\im \Sigma = \{\overline{g} \mid g\in G\}\]
+    of $\sym(X)$, where $\Sigma : G \to \sym(X)$ and $\overline{g}$ are defined as above.
+\end{lma}
+
+\begin{dfn}[Fixed Set]{dfn:fixed-set}{2.1.1}
+    Let $G$ be a group acting on a set $X$. Let $S \subseteq G$. The \textbf{fixed set} of $S$ is
+    \[\fix(S) = \{ x\in X \mid sx = x \text{ for all } s\in S\}\]
+\end{dfn}
+
+\begin{lma}[Normal Fixed Sets]{lma:normal-fixed}{2.1.15}
+    Let $G$ be a group acting on a set $X$, let $S \subseteq G$, and let $g\in G$. Then $\fix(gSg^{-1}) = g\fix(S)$.
+
+    Here, $gSg^{-1} = \{gs g^{-1} \mid s\in S\}$ and $g\fix(S) = \{gx \mid x \in \fix(S)\}$
+\end{lma}
+
+\begin{dfn}[Ring Homomorphism]{dfn:ring-homomorphism}{2.2.1}
+    Given rings $R$ and $S$, a \textbf{homomorphism} from $R$ to $S$ is a function $\phi : R \to S$ satisfying the following equations for all $r,\,r'\in R$:
+    \begin{multicols}{2}
+    \begin{itemize-tight}
+        \item $\phi(r+r') = \phi(r) + \phi(r')$
+        \item $\phi(rr') = \phi(r)\phi(r')$
+        \item $\phi(0) = 0$, $\phi(1) = 1$
+        \item $\phi(-r) = -\phi(r)$
+    \end{itemize-tight}
+    \end{multicols}
+
+    \longrule{0.08ex}
+    A \textbf{subring} of a ring $R$ is a subset $S \subseteq R$ that contains $0$ and $1$ and is closed under addition, multiplication, and negatives. Whenever $S$ is a subring of $R$, the inclusion $\iota : S \to R$ (defined by $\iota(s) = s$) is a homomorphism.
+\end{dfn}
+
+\begin{lma}[Intersection of Subrings]{lma:subring-intersections}{2.2.3}
+    Let $R$ be a ring and let $\mathcal{S}$ be any set (perhaps infinite) of subrings of $R$. Then their intersection $\bigcap_{S\in \mathcal{S}} S$ is also a subring of $R$.
+\end{lma}
+
+% TODO: ExaPLE 2.2
+
+\begin{rcl}[Ideals and Quotient Rings]{rcl:ideal}{}
+    Let $R$ be a ring. $I \subseteq R$ is an \textbf{ideal}, $I \unlhd R$, if the following hold:
+    \begin{enumerate}
+        \setlength\itemsep{0em}
+        \item $I \ne \emptyset$
+        \item $I$ is closed under subtraction
+        \item for all $i\in I$ and $r\in R$ we have $ri, ir\in I$
+    \end{enumerate}
+    Every ring homomorphism $\phi : R \to S$ has an image $\im \phi$, which is a subring of $S$, and a kernel $\ker \phi$, which is an ideal of $R$.
+
+    \longrule{0.08ex}
+
+    Given an ideal $I \unlhd R$, we obtain the quotient ring $R / I$ and the canonical homomorphism $\pi_{I} : R \to R /I$ which is surjective and hs kernel $I$. 
+
+    \textbf{Universal Prop}: Given any ring $S$ and any homomorphism $\phi : R \to S$ satisfying $\ker \phi \supseteq I$, there is exactly one homomorphism $\overline{\phi} : R /I \to S$ such that this diagram communutes.
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJSIl0sWzAsMiwiUiAvIEkiXSxbMiwyLCJTIl0sWzAsMSwiXFxwaV9JIiwyXSxbMSwyLCJcXG92ZXJsaW5le1xccGhpfSIsMl0sWzAsMiwiXFxwaGkiXV0=
+\[\begin{tikzcd}[cramped,column sep=scriptsize]
+	R \\
+	\\
+	{R / I} && S
+	\arrow["{\pi_I}"', from=1-1, to=3-1]
+	\arrow["\phi", from=1-1, to=3-3]
+	\arrow["{\overline{\phi}}"', from=3-1, to=3-3]
+\end{tikzcd}\]
+\end{rcl}
+
+\begin{rcl}[Integral Domain]{rcl:integral-domain}{}
+    An \textbf{integral domain} is a ring $R$ such that $0_{R} \ne 1_{R}$ and for $r,\,r'\in R$,
+    \[rr' = 0 \implies r = 0 \text{ or } r' = 0\]
+\end{rcl}
+
 \newpage
-\tableofcontents
-\newpage
+\begin{rcl}[Generated Ideal]{rcl:generated-ideal}{}
+    Let $Y$ be a subset of a ring $R$. The \textbf{ideal $\langle Y \rangle$ generated by $Y$} is defined as the intersection of all the ideals of $R$ containing $Y$.
 
-\section{}
-\subsection{}
+    \longrule{0.08ex}
+    \begin{itemize-zero}
+        \item Ideals of the form $\langle r \rangle$ are called \textbf{principal ideals}. A \textbf{principle ideal domain} is an integral domain where every ideal is principal.
+        \item Let $r$ and $s$ be elements of a ring $R$. We say that $r$ \textbf{divides} $s$, and write $r \mid s$ if there exists $a\in R$ such that $s = ar$. This condition is equivalent to $s\in \langle r \rangle$, and to $\langle s \rangle \supseteq \langle r \rangle$.
+        \item An element $u\in R$ is a \textbf{unit} if it has a multiplicative inverse, or equivalently, if $\langle u \rangle = R$. The units form a group $R^{\times}$ under multiplication.
+        \item Elements $r$ and $s$ of a ring are \textbf{coprime} if for $a\in R$,
+            \[a \mid r \text{ and } a \mid s \implies a \text{ is a unit}\]
+    \end{itemize-zero}
+\end{rcl}
 
-% \begin{dfn}[Name]{Label}{Number}
-%     
-% \end{dfn}
-%
-% \begin{thm}[Name]{Label}{Number}
-%     
-% \end{thm}
-%
-% \begin{xmp}[Name]{Label}{Number}
-%     
-% \end{xmp}
-%
-% \begin{rem}[Name]{Label}{Number}
-%     
-% \end{rem}
+\begin{lma}[Characterisation of Generated Ideals]{lma:generated-ideal}{2.2.11}
+    Let $R$ be a ring and let $Y = \{r_{1},\dots,r_{n}\}$ be a finite subset. Then
+    \[\langle Y \rangle = \{a_{1}r_{1} + \cdots + a_{n}r_{n} : a_{1},\dots, a_{n} \in R\}\]
+\end{lma}
 
+\begin{ppn}[Coprime and PIDs]{ppn:coprime-pid}{2.2.16}
+    Let $R$ be a principal ideal domain and $r,\,s\in R$. Then
+    \[r \text{ and } s \text{ are coprime} \iff ar + bs = 1 \text{ for some } a,\,b\in R\]
+\end{ppn}
+
+\lipsum[1-12]
+\end{multicols}
 \end{document}
