@@ -22,6 +22,17 @@
 % │                   Diagrams and Visual                    │
 % ╰──────────────────────────────────────────────────────────╯
 
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[1]{%
+    \import{./figures/}{#1.pdf_tex}
+}
+
+
+
 % Quiver for Tikz-cd diagrams
 \usepackage{quiver}
 % Proof Trees

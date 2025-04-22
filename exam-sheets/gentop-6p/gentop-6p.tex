@@ -549,7 +549,7 @@ where $A$ and $B$ are disjoint nonempty open subsets of $X$
 \[X = A \cup B\]
 where $A$ and $B$ are disjoint nonempty open subsets of $X$
 \end{enumerate-tight}
-Connectedness is a \textbf{Topological Property}. See \ref{ppn:ppn:invariants}
+Connectedness is a \textbf{Topological Property} (See P6).
 \end{dfn}
 
 % \begin{rem}[]{rem:connected-clopen}{5.2}
@@ -740,24 +740,39 @@ Define a path (equivalence) relation
 
 	\begin{itemize}
 		\item[\textbf{2.8})] $\mathcal{U}$ is open in $Y$ iff $f^{-1}(\mathcal{U})$ is open in $X$.
-		\item If $X$ is Hausdorff, then so is $Y$
-		\item[\textbf{3.6})] $X \backslash \{x_{0}\}$ is homeomorphic to $Y \backslash \{f(x_{0})\}$
-		\item[\textbf{4.11})] If $X$ is Compact, then so is $Y$
+		\item $X$ is Hausdorff iff $Y$ is Hausdorff.
+		\item[\textbf{3.6})] $X \backslash \{x_{0}\}$ is homeomorphic to $Y \backslash \{f(x_{0})\}$.
+		\item[\textbf{4.11})] $X$ is compact, iff $Y$ is compact.
 		\item[\textbf{5.6})] $X$ is connected iff $Y$ is connected.
 		\item[\textbf{5.21})] $X$ is path-connected iff $Y$ is path-connected.
 		\item[\textbf{5.37})] There exists a bijection between the set of path compomements $\pi_{0}(X)$ and $\pi_{0}(Y)$. However, existence of a bijection between $\pi_{0}(X)$ and $\pi_{0}(Y)$ does \textit{not} necessarily imply that $X$ and $Y$ are homeomorphic.
 	\end{itemize}
 \end{ppn}
 
-\begin{ppn}[Hausdorff if...]{ppn:if-hausdorff}{E}
+\begin{ppn}[Hausdorff if...]{ppn:if-hausdorff}{B}
 	\begin{itemize-tight}
 		\item[\textbf{3.4})] Suppose $(X, \mathcal{T})$ is a Hausdorff topological space and suppose $A$ is a subspace. Then $A$ is Hausdorff.
-		\item The one-point compactification $X^{\infty}$ of a space $X$ is Hausdorff iff $X$ is Hausdorff and locally compact.
+		\item[\textbf{4.34})] The one-point compactification $X^{\infty}$ of a space $X$ is Hausdorff iff $X$ is Hausdorff and locally compact.
 	\end{itemize-tight}
 \end{ppn}
 
+\begin{ppn}[Compact if...]{ppn:then-compact}{C}
+	\begin{itemize-tight}
+		\item[\textbf{4.3})] Let $X$ be a topological space and $A \subseteq X$. Then $A$ is compact iff every open cover of $A$ has a finite subcover.
+		\item[\textbf{4.5})] \textbf{Heine-Borel Theorem}: A subset $F \subseteq \mathbb{R}^{n}$ is compact iff it is closed and bounded.
+		\item[\textbf{4.6})] Let $X$ be a topological space and $A \subseteq X$.
+			\begin{enumerate-zero}
+				\item If $X$ is compact and $A$ is closed, then $A$ is compact
+				\item If $X$ is Hausdorff and $A$ is compact, then $A$ is closed.
+			\end{enumerate-zero}
+		\item[\textbf{4.10})] Let $f : X \to Y$ be a continuous map between topological spaces. If $X$ is compact, so is $f(X)$.
+		\item[\textbf{4.18})] \textbf{Tychonoff's Theorem}: Suppose $X$ and $Y$ are compact spaces. Then their product $X \times Y$ is compact. The converse is also true.
+		\item[\textbf{4.21})] \textbf{Tychonoff's Theorem (General)}: Suppose that $\mathcal{A}$ is an indexing set and that for ech $\alpha\in \mathcal{A}$, $X_{\alpha}$ is a compact topological space. Then the product $\prod_{\alpha\in \mathcal{A}} X_{\alpha}$ is compact.
+		\item[\textbf{4.30})] Suppose $X^{\infty} = X \cup \{\infty\}$ is the \textit{one-point compactification} of $X$. Then either $X^{\infty}$ is compact, or $X$ is dense in $X^{\infty}$
+	\end{itemize-tight}
+\end{ppn}
 
-\begin{ppn}[Continuous if..]{ppn:continuity-properties}{B}
+\begin{ppn}[Continuous if..]{ppn:continuity-properties}{D}
 	\begin{itemize}
 		\item[\textbf{2.14})] Suppose $(X, \mathcal{T})$ and $(Y, \mathcal{U})$ are topological spaces and that $f : X \to Y$. Then $f$ is continuous iff for every closed subset $F \subseteq Y$ its inverse image $f^{-1}(F)$ is closed in $X$.
 		\item[\textbf{2.14})] $f$ is continuous iff the image of the closure of every subset $A \subseteq X$ is contained in the closure of the image, i.e., $\forall A \subseteq X$,
@@ -790,23 +805,8 @@ $f = g \circ p$ is best described by a commutative triangle:
 In fact, every continuous function on $X$ determines an equivalence relation.
 \end{ppn}
 
-\begin{ppn}[Compact if...]{ppn:then-compact}{4.3}
-	\begin{itemize-tight}
-		\item[\textbf{4.3})] Let $X$ be a topological space and $A \subseteq X$. Then $A$ is compact iff every open cover of $A$ has a finite subcover.
-		\item[\textbf{4.5})] \textbf{Heine-Borel Theorem}: A subset $F \subseteq \mathbb{R}^{n}$ is compact iff it is closed and bounded.
-		\item[\textbf{4.6})] Let $X$ be a topological space and $A \subseteq X$.
-			\begin{enumerate-zero}
-				\item If $X$ is compact and $A$ is closed, then $A$ is compact
-				\item If $X$ is Hausdorff and $A$ is compact, then $A$ is closed.
-			\end{enumerate-zero}
-		\item[\textbf{4.10})] Let $f : X \to Y$ be a continuous map between topological spaces. If $X$ is compact, so is $f(X)$.
-		\item[\textbf{4.18})] \textbf{Tychonoff's Theorem}: Suppose $X$ and $Y$ are compact spaces. Then their product $X \times Y$ is compact. The converse is also true.
-		\item[\textbf{4.21})] \textbf{Tychonoff's Theorem (General)}: Suppose that $\mathcal{A}$ is an indexing set and that for ech $\alpha\in \mathcal{A}$, $X_{\alpha}$ is a compact topological space. Then the product $\prod_{\alpha\in \mathcal{A}} X_{\alpha}$ is compact.
-		\item[\textbf{4.30})] Suppose $X^{\infty} = X \cup \{\infty\}$ is the \textit{one-point compactification} of $X$. Then either $X^{\infty}$ is compact, or $X$ is dense in $X^{\infty}$
-	\end{itemize-tight}
-\end{ppn}
 
-\begin{ppn}[Connected if...]{ppn:if-connected}{C}
+\begin{ppn}[Connected if...]{ppn:if-connected}{E}
 	\begin{itemize-tight}
 		\item[\textbf{5.2})] $X$ is connected iff the only subsets of $X$ which are clopen are $\emptyset$ and $X$
 		\item[\textbf{5.4})] $\mathbb{R}$ with the usual topology is connected.
@@ -818,7 +818,7 @@ In fact, every continuous function on $X$ determines an equivalence relation.
 	\end{itemize-tight}
 \end{ppn}
 
-\begin{ppn}[Path-Connected if...]{ppn:if-pathconnected}{D}
+\begin{ppn}[Path-Connected if...]{ppn:if-pathconnected}{F}
 	\begin{itemize-tight}
 	    \item Suppose $f : X \to Y$ is a continuous map between topological spaces and that $X$ is path-connected. Then $f(X)$ is path-connected as a subspace of $Y$.
 		\item For any equivalence relation $\sim$ on a path-connected space $X$ the identification space $Y = X / \sim$ is path-connected.
@@ -847,6 +847,60 @@ is a topology on $X$
 \end{itemize-tight}
 \end{xmp}
 
+\begin{xmp}[The Punctured Sphere]{xmp:punctured-sphere}{B}
+	\begin{figure}[H]
+	    \centering
+    \def\svgwidth{\columnwidth}
+	\import{./figures}{punctured-sphere.pdf_tex}
+	    \caption{Homeomorphism of $\mathbb{S}^{2}$ to $\mathbb{R}$}
+	\end{figure}
+\end{xmp}
+
+\begin{xmp}[Topological Objects]{xmp:topological objects}{C}
+	\begin{figure}[H]
+	    \centering
+	    \includegraphics[width=\linewidth]{./figures/topological-objects.png}
+	    \caption{Standard Topological Objects}
+	\end{figure}
+
+	\begin{multicols}{4}
+	\captionsetup[figure]{name={Fig}}
+
+	\begin{figure}[H]
+		\centering
+		\def\svgwidth{\columnwidth}
+		\import{./figures}{mobius-construction.pdf_tex}
+		\caption{M\"{o}bius Strip}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\def\svgwidth{\columnwidth}
+		\import{./figures}{torus-construction.pdf_tex}
+		\caption{Torus}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\def\svgwidth{\columnwidth}
+		\import{./figures}{klein-construction.pdf_tex}
+		\caption{Klein Bottle}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\def\svgwidth{\columnwidth}
+		\import{./figures}{rp2-construction.pdf_tex}
+		\caption{$\mathbb{R}\mathbb{P}^{2}$}
+	\end{figure}
+	    
+	\end{multicols}
+
+\end{xmp}
+
 \lipsum[1-12]
 \end{multicols}
+
+
+
 \end{document}
