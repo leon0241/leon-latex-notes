@@ -180,6 +180,294 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \[r \text{ and } s \text{ are coprime} \iff ar + bs = 1 \text{ for some } a,\,b\in R\]
 \end{ppn}
 
+\begin{rcl}[Field]{rcl:field}{2.3.0}
+    A \textbf{field} is a ring $K$ in which $0 \ne 1$ and every nonzero element is a unit. Equivalently, it is a ring such that $K^{\times} = K \backslash \{0\}$. Every field is an integral domain.
+
+    A field $K$ has exactly two ideals: $\{0\}$ and $K$.
+
+    A \textbf{subfield} of a field $K$ is a subring that is a field
+\end{rcl}
+
+\begin{xmp}[Rational Expressions]{xmp:rational-expressions}{2.3.2}
+    Let $K$ be a field. A \textbf{rational expression} over $K$ is a ratio of two polynomials
+    \[\frac{f(t)}{g(t)}\]
+    where $f(t),\,g(t)\in K[t]$ with $g\ne 0$. Two such expressions, $f_{1} /g_{1}$ and $f_{2} /g_{2}$ are regarded as equal if $f_{1}g_{2} = f_{2}g_{1}$ in $K[t]$. i.e. equivalence class. The set of rational expressions over $K$ is denoted by $K(t)$
+\end{xmp}
+
+\begin{lma}[Homomorphisms between fields]{lma:homomorphisms-fields}{2.3.3}
+    Every (ring) homomorphism between fields is injective.
+\end{lma}
+
+\begin{lma}[Images of Subfields]{lma:subfield-images}{2.3.6}
+    Let $\phi : K \to L$ be a homomorphism between fields.
+    \begin{enumerate-tight}
+        \item For any subfield $K'$ of $K$, the image $\phi K'$ is a subfield of $L$
+        \item For any subfield $L'$ of $L$, the preimage $\phi^{-1}L'$ is a subfield of $K$
+    \end{enumerate-tight}
+\end{lma}
+
+\begin{dfn}[Equaliser]{dfn:equaliser}{2.3.7}
+    Let $X$ and $Y$ be sets, and let $S \subseteq \{ \text{ functions } X \to Y\}$. The \textbf{equalizer} of $S$ is
+    \[\eq(S) = \{x\in X \mid f(x) = g(x) \text{ for all } f,\,g\in S\}\]
+    i.e., it is the part of $X$ where all the functions in $S$ are equal.
+\end{dfn}
+
+\begin{lma}[Equalisers are Subfields]{lma:equaliser-subfield}{2.3.8}
+    Let $K$ and $L$ be fields, and let $S \subseteq \{\text{homomorphisms} K \to L\}$. Then $\eq(S)$ is a subfield of $K$.
+\end{lma}
+
+\begin{rcl}[Characteristic]{rcl:characteristic}{2.3.9}
+    Let $R$ be any ring. There is a unique homomorphism $\chi : \mathbb{Z} \to R$. Its kernel is an ideal of the principal ideal domain $\mathbb{Z}$. Hence $\ker \chi = \langle n \rangle$ for a unique integer $n \ge 0$. This $n$ is called the \textbf{characteristic} of $R$, and written as $\Char R$. So for $m\in \mathbb{Z}$, we have that $m \cdot 1_{R} = 0$ iff $m$ is a multiple of $\Char R$. Or equivalently,
+    \[\Char R = \begin{cases}
+        \text{the least $n > 0$ s.t. $n \cdot 1_{R} = 0_{R}$}, & \text{if such an $n$ exists}\\
+        0 & \text{otherwise}
+    \end{cases}\]
+\end{rcl}
+
+\begin{lma}[Characteristic of Integral Domains]{lma:integral-domain-char}{2.3.11}
+    The characteristic of an integral domain is $0$ or a prime number.
+\end{lma}
+
+\begin{lma}[Characteristics of Homomorphisms]{lma:homomorphism-characteristic}{2.3.12}
+    Let $\phi : K \to L$ be a homomorphism of fields. Then $\Char K = \Char L$.
+\end{lma}
+
+\begin{rcl}[Prime Subfield]{rcl:prime-subfield}{2.3.C}
+    The \textbf{prime subfield} of $K$ is the inersection of all the subfields of $K$. Any intersection of subfields is a subfield, and is the smallest subfield of $K$, in teh sense that any other subfield of $K$ contains it. Concretely, the prime subfield of $K$ is
+    \[\left\{ \frac{m \cdot 1_{K}}{n \cdot 1_{K}} \mid m,\,n\in \mathbb{Z} \text{ with } n \cdot 1_{K} \ne 0\right\}\]
+\end{rcl}
+
+\begin{lma}[Prime Subfields]{lma:only-prime-subfields}{2.3.16}
+    Let $K$ be a field.
+    \begin{itemize-tight}
+        \item If $\Char K = 0$ then the prime subfield of $K$ is (iso to) $\mathbb{Q}$.
+        \item If $\Char K = p > 0$ then the prime subfield of $K$ is (iso to) $\mathbb{F}_{p}$
+    \end{itemize-tight}
+\end{lma}
+
+\begin{lma}[Characteristic of Finite Fields]{lma:finite-field-characteristic}{2.3.17}
+    Every finite field has positive characteristic.
+\end{lma}
+
+\begin{lma}[Prime Division]{lma:prime-division}{2.3.19}
+    Let $p$ be a prime and $0 < i < p$. Then $p \mid \binom{p}{i}$
+\end{lma}
+
+\begin{ppn}[Characteristics and Primes]{ppn:characteristics-prime}{2.3.20}
+    Let $p$ be a prime number and $R$ a ring of characteristic $p$.
+    \begin{enumerate-tight}
+        \item The function
+            \[\theta : R \to R \quad r \mapsto r^{p}\]
+            is a homomorphism.
+        \item If $R$ is a field then $\theta$ is injective.
+        \item If $R$ is a finite field then $\theta$ is an automorphism of $R$
+    \end{enumerate-tight}
+
+    \longrule{0.08ex}
+    The homomorphism $\theta : r \mapsto r^{p}$ is called the \textbf{Frobenius map}, or, in the case of finite fields, the \textbf{Frobenius Automorphism}.
+\end{ppn}
+
+\begin{crl}[Roots by Characteristic]{crl:root-characteristic}{2.3.22}
+    Let $p$ be a prime number.
+    \begin{enumerate-tight}
+        \item In a field of characteristic $p$, every element has \textit{at most} one $p$th root.
+        \item In a finite field of characteristic $p$, every element has \textit{exactly} one $p$th root.
+    \end{enumerate-tight}
+\end{crl}
+
+% TODO: examples
+
+\begin{rcl}[Reducible Elements]{rcl:reducible-element}{2.3.D}
+    An element $r$ of a ring $R$ is \textbf{irreducible} if $r$ is not $0$ or a unit, and if for $a,\,b\in R$.
+    \[r = ab \implies a \text{ or } b \text{ is a tu}\]
+    For example, the irreducibles in $\mathbb{Z}$ are $\pm 2,\,\pm 3,\,\pm 5,\dots$. An element of a ring is \textbf{reducible} if it is not $0$, a unit, or irreducible.
+
+    \longrule{0.08ex}
+    \textbf{Warning}: The $0$ and units of a ring are neither reducible nor irreducible, in much the same way that the integers $0$ and $1$ are neither prime nor composite.
+\end{rcl}
+
+\newpage
+
+\begin{ppn}[]{ppn:irreducible-generated-field}{2.3.26}
+    Let $R$ be a principal ideal domain and $0 \ne r \in R$. Then
+    \[r \text{ is irreducible } \iff R / \langle r \rangle \text{ is a field}\]
+    This lets us construct fields from irreducible elements of a PID.
+\end{ppn}
+
+\section{Polynomials}
+
+\begin{dfn}[Polynomial Ring]{dfn:polynomial-ring}{3.1.1}
+    Let $R$ be a ring. A \textbf{polynomial over $R$} is an infinite sequence $(a_{0},a_{1},a_{2},\dots)$ of elements of $R$ s.t. $\{i \mid a_{i} \ne 0\}$ is finite.
+
+    The set of polynomials over $R$ forms a ring as follows:
+    \begin{align*}
+        (a_{0},\, a_{1} ,\dots) + (b_{0},b_{1},\dots) &= (a_{0}+ b_{0},a_{1}+b_{1},\dots), \\
+        (a_{0},\, a_{1} ,\dots) \cdot (b_{0},b_{1},\dots) &= (c_{0},c_{1},\dots), \\
+        \text{where } c_{k} &= \sum_{i,j : i + j = k} a_{i}b_{j}
+    \end{align*}
+    The zero is $(0,0,\dots)$ and the mult. identity is $(1,0,0,\dots)$.
+
+    The set of polynomials over $R$ is written as $R[t]$. Since $R[t]$ is itself a ring $S$, we can consider the ring $S[u] = (R[t,u])[v]$, etc.
+
+    Polynomials are typically written as $f$ or $f(t)$, interchangeable. A polynomial $f = (a_{0},a_{1},\dots)$ over $R$ gives rise to a function
+    \begin{align*}
+        R &\to R \\
+        r &\mapsto a_{0}+a_{1}r+a_{2}r^{2}+\cdots.
+    \end{align*}
+\end{dfn}
+
+% warnings
+
+\begin{rem}[Rational Functions vs Expressions]{rem:rational-function-expression}{3.1.5}
+    $K(t)$ is the field of \textit{rational expressions} over a field $K$. These are \textbf{not} functions, e.g. $1 /(t - 1)$ is a totally respectable element of $K(t)$, and you don't need to worry about $t=1$.
+\end{rem}
+
+\begin{ppn}[Universal Property of the Polyring]{ppn:uniprop-polyring}{3.1.6}
+    Let $R$ and $B$ be rings. For every homomorphism $\phi : R \to B$ and every $b\in B$, there is exactly one homomorphism $\theta : R[t] \to B$ such that
+    \begin{align*}
+        \theta(a) &= \phi(a) \text{ for all } a\in R\\
+        \theta(t) &= b
+    \end{align*}
+\end{ppn}
+
+\begin{dfn}[Induced Homomorphism]{dfn:induced-homomorphism}{3.1.7}
+    Let $\phi : R \to S$ be a ring homomorphism. The \textbf{induced homomorphism}
+    \[\phi_{\ast} : R[t] \to S[t]\]
+    is the unique homomorphism $R[t] \to S[t]$ s.t. $\phi_{\ast} = \phi(a)$ for all $a\in R$ and $\phi_{\ast}(t) = t$
+\end{dfn}
+
+% TODO: Explanationfor this, and evaluation.
+
+\begin{dfn}[Degree]{dfn:degree}{3.1.9}
+    The \textbf{degree}, $\deg(f)$, of a nonzero polynomial $f(t) = \sum a_{i}t^{i}$ is the largest $n \ge 0$ s.t. $a_{n}\ne 0$. By convention, $\deg(0) = -\infty$, where $-\infty$ is a formal symbol which we give the properties
+    \[-\infty < n, \quad (-\infty) + n = -\infty, \quad (-\infty) + (-\infty) = -\infty\]
+    for all integers $n$
+\end{dfn}
+
+\begin{lma}[Degree and Integral Domains]{lma:degree-intdoms}{3.1.11}
+    Let $R$ be an integral domain. Then:
+    \begin{enumerate-tight}
+        \item $\deg(fg) = \deg(f) + \deg(g)$ for all $f,\,g\in R[t]$
+        \item $R[t]$ is an integral domain.
+    \end{enumerate-tight}
+
+    \longrule{0.08ex}
+    The one and only polynomial of degree $-\infty$ is the zero polynomial. The polynomials of degree $0$ are the nonzero constants. The polynomials of degree $>0$ are therefore the nonconstant polynomials.
+\end{lma}
+
+\begin{lma}[]{lma:nonzero-constant-stuff}{3.1.14}
+    Let $K$ be a field. Then
+    \begin{enumerate-tight}
+        \item The units in $K[t]$ are the nonzero constants
+        \item $f\in K[t]$ is irreducible iff $f$ is nonconstant and cannot be expressed as a product of two nonconstant polynomials.
+    \end{enumerate-tight}
+\end{lma}
+
+\begin{ppn}[Uniqueness of Poly Division]{ppn:poly-division-uniqueness}{3.2.1}
+    Let $K$ be a field and $f,\,g\in K[t]$ with $g\ne 0$. Then there is exactly one pair of polynomials $q,\,r\in K[t]$ such that $f = qg + r$ and $\deg(r) < \deg(g)$
+\end{ppn}
+
+\begin{ppn}[Polynomial PIDs]{ppn:polynomial-pid}{3.2.2}
+    Let $K$ be a field. Then $K[t]$ is a principal ideal domain.
+\end{ppn}
+
+\begin{crl}[Irreducibility and Fields]{crl:irreducible-fields}{3.2.5}
+    Let $K$ be a field and let $0 \ne f \in K[t]$. Then
+    \[f \text{ is irreducible} \iff K[t] / \langle f \rangle \text{ is a field.}\]
+\end{crl}
+
+\begin{lma}[Divisibility by Irreducibles]{lma:divisibility-by-irreducibles}{3.2.6}
+    Let $K$ be a field and let $f(t) \in K[t]$ be a nonconstant polynomial. Then $f(t)$ is divisible by some irreducible in $K[t]$
+\end{lma}
+
+\begin{lma}[Divisibility of Products]{lma:divisibility-by-products}{3.2.7}
+    Let $K$ be a field and $f,\,g,\,h\in K[t]$. Suppose that $f$ is irreducible and $f \mid gh$. Then $f \mid g$ or $f \mid h$
+\end{lma}
+
+\begin{thm}[Unique Determination of Polys]{thm:poly-unique-determination}{3.2.8}
+    Let $K$ be a field and $0 \ne f \in K[t]$. Then
+    \[f = af_{1}f_{2}\cdots f_{n}\]
+    for some $n \ge 0$, $a\in K$, and monic irreducibles $f_{1},\dots,f_{n}\in K[t]$. Moreover, $n$ and $a$ are uniquely determined by $f$, and $f_{1},\dots,f_{n}$ are uniquely determind up to reordering.
+
+    \longrule{0.08ex}
+    \textbf{Monic} means that the leading coefficient is $1$
+\end{thm}
+
+\begin{lma}[Root Finding]{lma:root-finding}{3.2.9}
+    One way to find an irreducible factor of a polynomial $f(t)\in K[t]$ is to find a \textbf{root}. Let $K$ be a field, $f(t) \in K[t]$, and $a\in K$. Then
+    \[f(a) = 0 \iff (t - a) \mid f(t).\]
+
+    \longrule{0.08ex}
+    A field is \textbf{algebraically closed} if every nonconstant polynomial has at least one root.
+\end{lma}
+
+\begin{lma}[Algebraically Closed Field]{lma:algebraically-closed-field}{3.2.10}
+    Let $K$ be an algebraically closed field and $0 \ne f \in K[t]$. then
+    \[f(t) = c(t - a_{1})^{m_{1}} \cdots (t - a_{k})^{m_{k}},\]
+    where $c$ is the leading coefficient of $f$, and $a_{1},\dots,a_{k}$ are the distinct roots of $f$ in $K$, and $m_{1},\dots,m_{k}\ge 1$
+\end{lma}
+
+\begin{lma}[Degrees and Irreducibility]{lma:degrees-irreducibility}{3.3.1}
+    Let $K$ be a field and $f \in K[t]$.
+    \begin{enumerate-tight}
+        \item If $f$ is constant then $f$ is not irreducible.
+        \item If $\deg(f) = 1$ then $f$ is irreducible.
+        \item If $\deg(f) \ge 2$ and $f$ has a root then $f$ is reducible.
+        \item If $\deg(f)\in \{2,3\}$ and $f$ has no root then $f$ is irreducible.
+    \end{enumerate-tight}
+
+    \textbf{Warning}: To show a polynomial is irreducible, it's generally \textit{not} enough to show it has no root. The converse of $3$ is false!
+\end{lma}
+
+\begin{dfn}[Primitive Polynomial]{dfn:primitive-polynomial}{3.3.6}
+    A polynomial over $\mathbb{Z}$ is \textbf{primitive} if its coefficients have no common divisor except for $\pm 1$.
+\end{dfn}
+
+\begin{lma}[Existence of Primitive Polynomials]{lma:primitive-existence}{3.3.7}
+    Let $f(t)\in \mathbb{Q}[t]$. Then there exists a primitive polynomial $F(t)\in \mathbb{Z}[t]$ and $\alpha\in \mathbb{Q}$ such that $f = \alpha F$.
+\end{lma}
+
+\newpage
+
+\begin{rem}[Irreducibility over]{rem:irreducibility-over}{3.3.7A}
+    If the coefficients of a polynomial $f(t)\in \mathbb{Q}[t]$ happen to all be integers, the word ``irreducible'' could mean two things: irreducibility in the ring $\mathbb{Q}[t]$ or in the ring $\mathbb{Z}[t]$. We say that $f$ is irreducible \textbf{over} $\mathbb{Q}$ or $\mathbb{Z}$ to distinguish between the two.
+\end{rem}
+
+\begin{lma}[Gauss' Lemma]{lma:gauss-lemma}{3.3.8}
+    \begin{enumerate-tight}
+        \item The product of two primitive polynomials over $\mathbb{Z}$ is primitive.
+        \item If a nonconstant polynomial over $\mathbb{Z}$ is irreducible over $\mathbb{Z}$, it is irreducible over $\mathbb{Q}$
+    \end{enumerate-tight}
+\end{lma}
+
+\begin{ppn}[Mod \texorpdfstring{$p$}{p} method]{ppn:mod-p-method}{3.3.9}
+    Let $f(t) = a_{0} + a_{1}t + \cdots + a_{n}t^{n}\in \mathbb{Z}[t]$. If there is some prime $p$ such that $p \nmid a_{n}$ and $\overline{f} \in \mathbb{F}_{p}[t]$ is irreducible, then $f$ is irreducible over $\mathbb{Q}$.
+
+    \textbf{Warning}: This only tells you that a polynomial is \textit{irreducible} over $\mathbb{Q}$ and says nothing about whether it is \textit{reducible}.
+\end{ppn}
+
+\begin{ppn}[Eisenstein's Criterion]{ppn:eisenstein}{3.3.12}
+    Let $f(t) = a_{0}+\cdots + a_{n}t^{n}\in \mathbb{Z}[t]$, with $n \ge 1$. Suppose there exists a prime $p$ such that
+    \begin{itemize-tight}
+        \item $p\nmid a_{n}$
+        \item $p \mid a_{i}$ for all $i\in \{0,\dots, n - 1\}$
+        \item $p^{2} \nmid a_{0}$
+    \end{itemize-tight}
+    Then $f$ is irreducible over $\mathbb{Q}$.
+\end{ppn}
+
+% TODO: codegree
+
+\begin{xmp}[Cyclotomic Polynomial]{xmp:cyclotoic}{3.3.16}
+    Let $p$ be a prime. The \textbf{$p$th cyclotomic polynomial} is
+    \[\Phi_{p}(t) = 1 + t + \cdots + t^{p-1} = \frac{t^{p} - 1}{t - 1}\]
+    $\Phi_{p}$ is irreducible.
+\end{xmp}
+
+\section{Field Extensions}
+
+
+
 \lipsum[1-12]
 \end{multicols}
 \end{document}
