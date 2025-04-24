@@ -625,7 +625,190 @@ commutes.
     \end{enumerate-tight}
 \end{thm}
 
-% Page 64
+\begin{rem}[Field Extension Explanation]{rem:field-extension-explanation}{4.3.C}
+    Given any field $K$ and any monic irreducible $m(t) \in K[t]$, we can say the words ``adjoin to $K$ a root $\alpha$ of $m$'', and this unambiguously defines an extension $K(\alpha) : K$. Similarly, we can unambiguously adjoin to $K$ a transcendental element.
+\end{rem}
+
+\begin{rem}[Field Extensions as Vector Spaces]{rem:field-extensions-as-vector-spaces}{5.1.A}
+    Let $M : K$ be a field extension. Then $M$ is a vector space over $K$ in a natural way. Addition and subtraction in the vector space $M$ are the same as in the field $M$. Scalar multiplication in the vector space is just multiplication of elements of $M$ by elements of $K$, which makes sen because $K$ is embedded as a subfield of $M$.
+
+    \longrule{0.08ex}
+    When we view $M$ as a vector space over $K$ rather than an extension, we forget how to multiply together elements of $M$ that aren't in $K$.
+\end{rem}
+
+\begin{dfn}[Degree of a Field Extension]{dfn:field-extension-degree}{5.1.1}
+    The \textbf{degree $[M : K]$} of a field extension $M : K$ is the dimension of $M$ as a vector space over $K$.
+
+    If $M$ is an \textit{infinite-dimensional} vector space over $K$, we write $[M : K] = \infty$, where $\infty$ is a formal symbol which we give the properties
+    \[n < \infty, \quad n \cdot \infty = \infty\:(n \ge 1), \quad \infty \cdot \infty = \infty\]
+    for integers $n$. An extension $M : K$ is \textbf{finite} if $[M : K] < \infty$.
+\end{dfn}
+
+\begin{rem}[Degree over itself]{rem:degree-over-itself}{5.1.4}
+    The degree $[K : K]$ of $K$ over itself is $1$, not $0$. Degrees of extensions are never $0$.
+\end{rem}
+
+\begin{thm}[Basis of Field Extensions]{thm:field-extension-basis}{5.1.5}
+    Let $K(\alpha) : K$ be a simple extension.
+    \begin{enumerate-zero}
+        \item Suppose that $\alpha$ is algebraic over $K$. Write $m\in K[t]$ for the minimal polynomial of $\alpha$ and $n = \deg(m)$. Then
+            \[1,\alpha,\dots,\alpha^{n-1}\]
+            is a basis of $K(\alpha)$ over $K$. In particular, $[K(\alpha) : K] = \deg(m)$
+        \item Suppose that $\alpha$ is transcendental over $K$. Then $1,\alpha,\alpha^{2},\dots$ are linearly independent over $K$. In particular, $[K(\alpha) : K] = \infty$
+    \end{enumerate-zero}
+\end{thm}
+
+%TODO: Example
+
+\begin{crl}[Degree and Alegebraicness]{crl:degree-algebraic}{5.1.10}
+    Let $M : K$ be a field extension and $\alpha\in M$, the \textbf{degree} of $\alpha$ over $K$ is $[K(\alpha) : K]$. We write it as $\deg_{K}(\alpha)$. Then
+    \[\deg_{K}(\alpha) < \infty \iff \alpha \text{ is algebraic over $K$.}\]
+    If $\alpha$ is algebraic over $K$ then the degree of $\alpha$ over $K$ is the degree of the minimal polynomial of $\alpha$ over $K$.
+\end{crl}
+
+% TODO: visualization of 5.1.12
+
+\begin{crl}[Size of Nested Extensions]{crl:nested-extension-size}{5.1.12}
+    Let $M : L : K$ be a field extension and $\beta \in M$. Then
+    \[
+        [L(\beta) : L] \le [K(\beta) : K]
+    \]
+\end{crl}
+
+\begin{crl}[Polynomial Form for Extensions]{crl:extension-poly-form}{5.1.14}
+    Let $M : K$ be a field extension. Let $\alpha_{1},\dots, \alpha_{n}\in M$, when $\alpha_{i}$ algebraic over $K$ of degree $d_{i}$. Then every element $\alpha\in K(\alpha_{1},\dots,\alpha_{n})$ can be expressed as a polynomial in $\alpha_{1},\dots,\alpha_{n}$ over $K$. More exactly,
+    \[\alpha = \sum_{r_{1},\dots,r_{n}} c_{r_{1},\dots,r_{n}}a^{r_{1}}_{1} \cdots a^{r_{n}}_{n}\]
+    for some $c_{r_{1},\dots,r_{n}}\in K$, where $r_{i}$ ranges over $0,\dots,d_{i}-1$.
+\end{crl}
+
+\newpage
+\begin{thm}[Tower Law]{thm:tower-law}{5.1.17}
+    Let $M : L : K$ be field extensions.
+    \begin{enumerate-tight}
+        \item If $(\alpha_{i})_{i\in I}$ is a basis of $L$ over $K$ and $(\beta_{j})_{j\in J}$ is a basis of $M$ over $L$, then $(\alpha_{i}\beta_{j})_{(i,j)\in I \times J}$ is a basis of $M$ over $K$.
+        \item $M : K$ is finite $\iff$ $M : L$ and $L : K$ are finite.
+        \item $[M : K] = [M : L][L : K]$
+    \end{enumerate-tight}
+    The sets $I$ and $J$ here could be infinite. A family $(\alpha_{i})_{i\in I}$ of elements of a field is \textbf{finitely supported} if the set $\{i\in I \mid \alpha_{i} \ne 0\}$ is finite.
+\end{thm}
+
+% examples
+
+\begin{crl}[Dividing Extensions]{crl:dividing-extensions}{5.1.19}
+    Let $M : L' : L : K$ be field extensions. If $M : K$ is finite, then $[L' : L]$ divides $[M : K]$
+\end{crl}
+
+\begin{crl}[Triangle Tower Inequality]{crl:triangle-tower}{5.1.21}
+    Let $M : K$ be a field extension and $\alpha_{1},\dots,\alpha_{n}\in M$. Then
+    \[[K(\alpha_{1},\dots,\alpha_{n}) : K] \le [K(\alpha_{1}) : K] \cdots [K(\alpha_{n}) : K].\]
+\end{crl}
+
+% TODO: the diagram thing
+
+\begin{dfn}[Finitely Generated Extensions]{dfn:finitely-generated}{5.2.1}
+    A field extension $M : K$ is \textbf{finitely generated} if $M = K(Y)$ for some finite subset $Y \subseteq M$.
+\end{dfn}
+
+\begin{dfn}[Algebraic Extensions]{dfn:algebraic-extensions}{5.2.2}
+    A field extension $M : K$ is \textbf{algebraic} if every element of $M$ is algebraic over $K$.
+\end{dfn}
+
+\begin{ppn}[Algebraic and Finiteness]{ppn:algebraic-finite-extension}{5.2.4}
+    The following conditions on a field extension $M : K$ are equivalent:
+    \begin{enumerate-tight}
+        \item $M : K$ is finite
+        \item $M : K$ is finitely generated and algebraic
+        \item $M = K(\alpha_{1},\dots,\alpha_{n})$ for some finite set $\{\alpha_{1},\dots,\alpha_{n}\}$ of elements of $M$ algebraic over $K$.
+    \end{enumerate-tight}
+\end{ppn}
+
+\begin{crl}[Algebraic and Finiteness (SEs)]{crl:algebraic-finite-simple}{5.2.6}
+    Let $K(\alpha) : K$ be a simple extension. The following are equivalent:
+    \begin{enumerate-tight}
+        \item $K(\alpha) : K$ is finite
+        \item $K(\alpha) : K$ is algebraic
+        \item $\alpha$ is algebraic over $K$.
+    \end{enumerate-tight}
+
+\end{crl}
+
+\begin{ppn}[]{ppn:qbar-subfield-c}{5.2.7}
+    $\overline{\mathbb{Q}}$ is a subfield of $\mathbb{C}$.
+\end{ppn}
+
+\begin{rem}[Iterated Quadratic]{rem:iterated-quadratic}{5.3.A}
+    For a subfield $K \subseteq \mathbb{R}$, an extension $K : \mathbb{Q}$ is \textbf{iterated quadratic} if there is some finite sequence of subfields
+    \[\mathbb{Q} = K_{0} \subseteq K_{1} \subseteq \cdots \subseteq K_{n} = K\]
+    such that $[K_{i} : K_{i-1}] = 2$ for all $i\in \{1,\dots,n\}$
+\end{rem}
+
+\begin{dfn}[Compositum]{dfn:compositum}{5.3.3}
+    Let $L$ and $L'$ be subfields of a field $M$. The \textbf{compositum $LL'$} of $L$ and $L'$ is the subfield of $M$ generated by $L \cup L'$
+
+    That is, $LL'$ is the smallest subfield of $M$ containing both $L$ and $L'$.
+\end{dfn}
+
+\begin{lma}[]{lma:compositum-two}{5.3.6}
+    Let $M : K$ be a field extension and let $L,\, L'$ be subfields of $M$ containing $K$. If $[L : K] = 2$ then $[LL':L'] \in \{1,2\}$.
+    %TODO: generality of this
+\end{lma}
+
+\begin{lma}[]{lma:encompassing-iterated-quad}{5.3.8}
+    Let $K$ and $L$ be subfields of $\mathbb{R}$ such that the extensions $K : \mathbb{Q}$ and $L : \mathbb{Q}$ are iterated quadratic. Then there is some subfield $M$ of $\mathbb{R}$ such that the extension $M : \mathbb{Q}$ is iterated quadratic and $K,\, L \subseteq M$.
+\end{lma}
+
+\begin{ppn}[Iteratic Quadratics from Points]{ppn:iterated-quadratic-point}{5.3.9}
+    Let $(x,y)\in \mathbb{R}^{2}$. If $(x,y)$ is constructable from $\{(0,0),\, (1,0)\}$ then there is an iterated quadratic extension of $\mathbb{Q}$ containing $x$ and $y$.
+\end{ppn}
+
+\begin{thm}[Quadratics and Constructability]{thm:}{5.3.10}
+    Let $(x,y)\in \mathbb{R}^{2}$. If $(x,y)$ is constructible from $\{(0,0),\, (1,0)\}$ then $x$ and $y$ are algebraic over $\mathbb{Q}$, and their degrees over $\mathbb{Q}$ are powers of $2$.
+\end{thm}
+
+\begin{dfn}[Extending Homomorphism]{dfn:extending-homomorphism}{6.1.1}
+    Let $\iota : K \to M$ and $\iota : K' \to M'$ be field extensions. Let $\psi : K \to K'$ be a homomorphism of fields. A homomorphism $\phi : M \to M'$ \textbf{extends} $\psi$ if the square
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJNIl0sWzIsMCwiTSciXSxbMCwyLCJLJyJdLFsyLDIsIksiXSxbMiwzLCJcXHBzaSIsMl0sWzIsMCwiXFxpb3RhIl0sWzAsMSwiXFxwaGkiXSxbMywxLCJcXGlvdGEnIiwyXV0=
+\[\begin{tikzcd}[cramped, column sep=scriptsize]
+	M && {M'} \\
+	\\
+	{K'} && K
+	\arrow["\phi", from=1-1, to=1-3]
+	\arrow["\iota", from=3-1, to=1-1]
+	\arrow["\psi"', from=3-1, to=3-3]
+	\arrow["{\iota'}"', from=3-3, to=1-3]
+\end{tikzcd}\]
+commutes $(\phi \circ \iota = \iota' \circ \psi)$. Most of the time we view $K$ as a subset of $M$, and $K'$ as a subset of $M'$, with $\iota$ and $\iota'$ be the inclusions. In this case, for $\phi$ to extend $\psi$ just means that
+\[\pi(a) = \psi(a) \text{ for all } a\in K\]
+\end{dfn}
+
+\begin{lma}[Induced Homomorphism as sum]{lma:induced-homomorphism-sum}{6.1.3}
+    Let $M : K$ and $M' : K'$ be field extensions, let $\phi : K \to K'$ be a homomorphism, and let $\phi : M \to M'$ be a homomorphism extending $\psi$. Let $\alpha\in M$ and $f(t) \in K[t]$. Then
+    \[f(\alpha) = 0 \iff (\psi_{\ast} f)(\phi(\alpha)) = 0.\]
+\end{lma}
+
+\begin{ppn}[Unique Extending Isomorphisms]{ppn:extending-isomorphisms}{6.1.6}
+    Let $\psi : K \to K'$ be an isomorphism of fields. Let $K(\alpha) : K$ be a simple extension where $\alpha$ has minimal polynomial $m$ over $K$, and let $K'(\alpha') : K'$ be a simple extension where $\alpha'$ has minimal polynomial $\psi_{\ast}m$ over $K'$. Then there is exactly one isomorphism $\phi : K(\alpha) \to K'(\alpha')$ that extends $\psi$ and satisfies $\phi(\alpha) = \alpha'$.
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJLKFxcYWxwaGEpIl0sWzIsMCwiSycoXFxhbHBoYScpIl0sWzAsMSwiSyciXSxbMiwxLCJLJyJdLFsyLDMsIlxccHNpLCBcXGNvbmcnIiwyXSxbMiwwXSxbMCwxLCJcXHBoaSwgXFxjb25nJyIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFszLDFdXQ==
+\[\begin{tikzcd}[cramped]
+	{K(\alpha)} && {K'(\alpha')} \\
+	{K'} && {K'}
+    \arrow["{\phi}", "\cong"', dotted, from=1-1, to=1-3]
+	\arrow[from=2-1, to=1-1]
+	\arrow["\psi"', "\cong", from=2-1, to=2-3]
+	\arrow[from=2-3, to=1-3]
+\end{tikzcd}\]
+A dotted arrow is used to denote a map whose existence is part of the conclusion of a theorem.
+\end{ppn}
+
+\begin{dfn}[Splitting Field]{dfn:splitting-field}{6.2.2}
+    Let $f$ be a polynomial over a field $M$. Then $f$ \textbf{splits} in $M$ if
+    \[f(t) = \beta(t - \alpha_{1}) \cdots (t - a_{n})\]
+    for some $n \ne 0$ and $\beta, \alpha_{1},\dots,\alpha_{n}\in M$.
+
+    Equivalently, $f$ splits in $M$ if all its irreducible factors in $M[t]$ are linear.
+\end{dfn}
+
+% Example 6.2.3
 
 \lipsum[1-6]
 \end{multicols}
