@@ -912,7 +912,71 @@ A dotted arrow is used to denote a map whose existence is part of the conclusion
 
 % TODO: actually read page 97 lol
 
+\begin{dfn}[Normal Extensions]{dfn:normal-extension}{7.1.1}
+    An algebraic field extension $M : K$ is \textbf{normal} if for all $\alpha\in M$, the minimal polynomial of $\alpha$ splits in $M$.
 
+    We also say \textbf{$M$ is normal over $K$} to mean that $M : K$ is normal
+\end{dfn}
+
+\begin{lma}[Irreducibility and Normality]{lma:irreducible-normal}{7.1.2}
+    Let $M : K$ be an algebraic extension. Then $M : K$ is normal iff every irreducible polynomial over $K$ either has no roots in $M$ or splits in $M$.
+
+    Put another way, normality means that any irreducible polynomial over $K$ with \textit{at least one} root in $M$ has \textit{all} its roots in $M$.
+\end{lma}
+
+\begin{thm}[Splitting and Normality]{thm:splitting-normal}{7.1.5}
+    Let $M : K$ be a field extension. Then
+    \begin{multline*}
+        M = \SF_{K}(f) \text{ for some nonzero } f \in K[t] \iff \\
+        M : K \text{ is finite and normal}
+    \end{multline*}
+% https://q.uiver.app/#q=WzAsNixbMSwzLCJLIl0sWzAsMiwiSyhcXGRlbHRhKSJdLFswLDEsIk0gPSBLKFxcYWxwaGFfMSxcXGRvdHMsXFxhbHBoYV9uKSJdLFsyLDEsIk0gPSBLKFxcYWxwaGFfMSxcXGRvdHMsXFxhbHBoYV9uKSJdLFsyLDIsIksoXFxlcHNpbG9uKSJdLFsyLDAsIlxcU0ZfTShtKSJdLFswLDFdLFsxLDJdLFsyLDMsIlxccGhpIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzQsM10sWzAsNF0sWzEsNCwiXFx0aGV0YSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFszLDVdXQ==
+\[\begin{tikzcd}[cramped]
+	&& {\SF_M(m)} \\
+	{M = K(\alpha_1,\dots,\alpha_n)} && {M = K(\alpha_1,\dots,\alpha_n)} \\
+	{K(\delta)} && {K(\epsilon)} \\
+	& K
+	\arrow["\phi", "\cong"', dotted, from=2-1, to=2-3]
+	\arrow[from=2-3, to=1-3]
+	\arrow[from=3-1, to=2-1]
+	\arrow["\theta"', "\cong", dotted, from=3-1, to=3-3]
+	\arrow[from=3-3, to=2-3]
+	\arrow[from=4-2, to=3-1]
+	\arrow[from=4-2, to=3-3]
+\end{tikzcd}\]
+\end{thm}
+
+\newpage
+\begin{crl}[Normality and Further Extensions]{crl:normal-further-ext}{7.1.6}
+    Let $M : L : K$ be field extensions. If $M : K$ is finite and normal then so is $M : L$.
+
+    \longrule{0.08ex}
+    \textbf{Warning}: This does \textit{not} follow that $L : K$ is normal.
+    % TODO: warning 7.1.8
+\end{crl}
+
+\begin{ppn}[Conjugacy and Orbits]{ppn:conjugacy-orbits}{7.1.9}
+    Let $M : K$ be a finite normal extension and $\alpha,\, \alpha'\in M$. Then
+    \begin{multline*}
+        \alpha \text{ and } \alpha' \text{ are conjugate over }K \iff \\
+        \alpha' = \phi(\alpha) \text{ for some } \phi \in \Gal(M : K)
+    \end{multline*}
+\end{ppn}
+
+\begin{crl}[Transitivity of Actions]{crl:transitive-actions}{7.1.11}
+    Let $f$ be an irreducible polynomial over a field $K$. Then the action of $\Gal_{K}(f)$ on the roots of $f$ in $\SF_{K}(f)$ is transitive, i.e. for all $x, x'\in X$ there exists $g\in G$ such that $gx = x'$
+\end{crl}
+
+% TODO: why is this spectactular?! also the fact at the end right before 7.1.14
+
+\begin{thm}[something]{thm:l-k-field-extension}{7.1.16}
+    Let $M : L : K$ be field extensions with $M : K$ finite and normal.
+    \begin{enumerate-tight}
+        \item $L : K$ is a normal extension $\iff$ $\phi L = L$ for all $\phi \in \Gal(M : K)$
+        \item If $L : K$ is a normal extension then $\Gal(M : L)$ is a normal subgroup of $\Gal(M : K)$ and
+            \[\frac{\Gal(M : K)}{\Gal(M : L)} \cong \Gal(L : K)\]
+    \end{enumerate-tight}
+\end{thm}
 
 \lipsum[1-6]
 \end{multicols}
