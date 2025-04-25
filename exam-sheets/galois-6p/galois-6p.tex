@@ -95,13 +95,13 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 \begin{dfn}[Fixed Set]{dfn:fixed-set}{2.1.1}
     Let $G$ be a group acting on a set $X$. Let $S \subseteq G$. The \textbf{fixed set} of $S$ is
-    \[\fix(S) = \{ x\in X \mid sx = x \text{ for all } s\in S\}\]
+    \[\Fix(S) = \{ x\in X \mid sx = x \text{ for all } s\in S\}\]
 \end{dfn}
 
 \begin{lma}[Normal Fixed Sets]{lma:normal-fixed}{2.1.15}
-    Let $G$ be a group acting on a set $X$, let $S \subseteq G$, and let $g\in G$. Then $\fix(gSg^{-1}) = g\fix(S)$.
+    Let $G$ be a group acting on a set $X$, let $S \subseteq G$, and let $g\in G$. Then $\Fix(gSg^{-1}) = g\Fix(S)$.
 
-    Here, $gSg^{-1} = \{gs g^{-1} \mid s\in S\}$ and $g\fix(S) = \{gx \mid x \in \fix(S)\}$
+    Here, $gSg^{-1} = \{gs g^{-1} \mid s\in S\}$ and $g\Fix(S) = \{gx \mid x \in \Fix(S)\}$
 \end{lma}
 
 \begin{dfn}[Ring Homomorphism]{dfn:ring-homomorphism}{2.2.1}
@@ -977,6 +977,375 @@ A dotted arrow is used to denote a map whose existence is part of the conclusion
             \[\frac{\Gal(M : K)}{\Gal(M : L)} \cong \Gal(L : K)\]
     \end{enumerate-tight}
 \end{thm}
+
+\begin{rem}[Repeated Root]{rem:repeated-root}{7.1.A}
+    For a polynomial $f(t)\in K[t]$ and a root $\alpha$ of $f$ in some extension $M$ of $K$, we say that $\alpha$ is a \textbf{repeated} root if $(t - a)^{2} \mid f(t)$ in $M[t]$.
+\end{rem}
+
+\begin{dfn}[Separable Polynomial]{dfn:separable}{7.2.2}
+    An irreducible polynomial over a field is \textbf{separable} if it has no repeated roots in its splitting field.
+
+    Equivalently, an irreducible polynomial $f\in K[t]$ is separable if it splits into \textit{distinct} linear factors in $\SF_{K}(f)$:
+    \[f(t) = a(t - \alpha_{1}) \cdots (t - a_{n})\]
+    for some $a\in K$ and \textit{distinct} $\alpha_{1},\dots,\alpha_{n}\in \SF_{K}(f)$. Put another way, an irreducible $f$ is separable iff it has $\deg(f)$ distinct roots in its splitting field.
+
+    \textbf{Warning}: this only works for \textit{irreducible polynomials}.
+\end{dfn}
+
+\begin{dfn}[Formal Derivative]{dfn:formal-derivative}{7.2.6}
+    Let $K$ be a field and let $f(t) = \sum_{i = 0}^{n} i_{i}t^{i}\in K[t]$. The \textbf{formal derivative} of $f$ is
+    \[(Df)(t) = \sum_{i = 1}^{n} i a_{i}t^{i-1} \in K[t]\]
+\end{dfn}
+
+\begin{lma}[Basic Derivative Rules]{lma:derivative-fules}{7.2.7}
+    Let $K$ be a field. Then
+    \[D(f + g) = Df + Dg, \quad D(fg) = f \cdot Dg + Df \cdot g, \quad Da=0\]
+    for all $f,\,g\in K[t]$ and $\alpha\in K$
+\end{lma}
+
+\begin{lma}[Repeated Roots]{lma:repeated-roots}{7.2.9}
+    Let $f$ be a nonzero polynomial over a field $K$. The following are equivalent:
+    \begin{enumerate-tight}
+        \item $f$ has a repeated root in $\SF_{K}(f)$
+        \item $f$ and $Df$ have a common root in $\SF_{K}(f)$
+        \item $f$ and $Df$ have a nonconstant common factor in $K[t]$
+    \end{enumerate-tight}
+\end{lma}
+
+\begin{ppn}[Inseparability of Zero]{ppn:inseparability-zero}{7.2.10}
+    Let $f$ be an irreducible polynomial over a field. Then $f$ is inseparable iff $Df = 0$
+\end{ppn}
+
+\begin{crl}[Separability of Irreducibles]{crl:separability-irreducible}{7.2.11}
+    Let $K$ be a field.
+    \begin{enumerate-tight}
+        \item If $\Char K = 0$ then every irreducible polynomial over $K$ is separable.
+        \item If $\Char K = p > 0$ then an irreducible polynomial $f\in K[t]$ is inseparable iff
+            \[f(t) = b_{0} + b_{1}t^{p} + \cdots + b_{r}t^{rp}\]
+            for some $b_{0},\dots,b_{r}\in K$
+    \end{enumerate-tight}
+
+    In other words, the only irreducible polynomials that are inseparable are the polynomials in $t^{p}$ in characteristic $p$.
+\end{crl}
+
+\begin{dfn}[Separable Elements]{dfn:separable-element}{7.2.13}
+    Let $M : K$ be an algebraic extension. An element of $M$ is \textbf{separable} over $K$ if its miminal polynomial over $K$ is separable. The extension $M : K$ is \textbf{separable} if every element of $M$ is separable over $K$.
+\end{dfn}
+
+\begin{lma}[Separable Further Extensions]{lma:separable-further-extensions}{7.2.16}
+    Let $M : L : K$ be field extensions, with $M : K$ algebraic. If $M : K$ is separable then so are $M : L$ and $L : K$.
+\end{lma}
+
+\begin{ppn}[Splitting Field Isomorphisms]{ppn:splitting-isos}{7.2.17}
+    Let $\phi : K \to K'$ be an isomorphism of fields, let $0 \ne f \in K[t]$, let $M$ be a splitting field of $f$ over $K$, and let $M'$ be a splitting field of $\phi_{\ast}f$ over $K'$. Suppose that the extension $M' : K'$ is separable. Then there are exactly $[M : K]$ isomorphisms $\phi : M \to M'$ extensing $\psi$.
+\end{ppn}
+
+\begin{thm}[Size of Galois Extensions]{thm:galois-extension-size}{7.2.18}
+    $\lvert \Gal(M : K) \rvert = [M : K]$ for every finite normal separable extension $M : K$
+\end{thm}
+
+\begin{rem}[Fixed Field]{rem:fixed-field}{7.3.A}
+    Write $\Aut(M)$ for the group of automorphisms of a field $M$. Then $\Aut(M)$ acts naturally on $M$. Given a subset $S$ of $\Aut(M)$, we can consider the set $\Fix(S)$ of elements of $M$ fixed by $S$.
+\end{rem}
+
+\begin{lma}[Fixed Field is a Subfield]{lma:fixer-subfield}{7.3.1}
+    $\Fix(S)$ is a subfield of $M$, for any $S \subseteq \Aut(M)$.
+\end{lma}
+
+\begin{thm}[Size of Fixed Field]{thm:fixed-field-size}{7.3.3}
+    Let $M$ be a field and $H$ a finite subgroup of $\Aut(M)$. Then $[M : \Fix(H)] \le \lvert H \rvert$.
+    This is actually an equality.
+\end{thm}
+
+\begin{ppn}[Fixed Field Normal Extension]{ppn:fixed-field-normal-ext}{7.3.7}
+    Let $M : K$ be a finite normal extension and $H$ a normal subgroup of $\Gal(M : K)$. Then $\Fix(H)$ is a normal extension of $K$.
+\end{ppn}
+
+\newpage
+\section{The Fundamental Theorem of Galois Theory!}
+
+\begin{rem}[Intermediate Field]{rem:intermediate-field}{8.1.A}
+    Let $M : K$ be a field extension, with $K$ viewed as a subfield of $M$. An \textbf{intermediate field} of $M : K$ is a subfield of $M$ containing $K$. Write
+    \[\mathscr{F} = \{\text{intermediate fields of } M : K\}\]
+    For $L \in \mathscr{F}$, we draw diagrams like this:
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJNIl0sWzAsMSwiTCJdLFswLDIsIksiXSxbMSwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+\[\begin{tikzcd}[cramped]
+	M \\
+	L \\
+	K
+	\arrow[no head, from=1-1, to=2-1]
+	\arrow[no head, from=2-1, to=3-1]
+\end{tikzcd}\]
+with the bigger fields higher up. We also write
+\[\mathscr{G} = \{\text{subgroups of }\Gal(M : K)\}\]
+For $H \in \mathscr{G}$, we draw diagrams like this:
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJJIl0sWzAsMSwiSCJdLFswLDIsIlxcR2FsKE0gOiBLKSJdLFsxLDIsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+\[\begin{tikzcd}[cramped]
+	I \\
+	H \\
+	{\Gal(M : K)}
+	\arrow[no head, from=1-1, to=2-1]
+	\arrow[no head, from=2-1, to=3-1]
+\end{tikzcd}\]
+
+For $L \in \mathscr{F}$, the group $\Gal(M : K)$ consists of all automorphisms $\phi$ of $M$ that fix each element of $L$. Since $K \subseteq L$, any such $\phi$ certainly fixes each element of $K$. Hence $\Gal(M : L)$ is a subgroup of $\Gal(M : K)$. this process defines a function
+\begin{align*}
+    \Gal(M : -) : \mathscr{F} &\mapsto \mathscr{G} \\
+    L &\mapsto \Gal(M : L)
+\end{align*}
+In the expression $\Gal(M : -)$, the symbol $-$ should be seen as a blank space into which arguments can be inserted.
+
+In the other direction, for $H \in \mathscr{G}$, the subfield $\Fix(H)$ of $M$ contains $K$. Indeed $H \subseteq \Gal(M : K)$, and by definition, every element of $\Gal(M : K)$ fixes every element of $K$, so $\Fix(H) \supseteq K$. Hence $\Fix(H)$ is an intermediate field of $M : K$. This process defines a function
+\begin{align*}
+    \Fix : \mathscr{G} &\mapsto \mathscr{F} \\
+    H &\mapsto \Fix(H)
+\end{align*}
+We have now defined functions
+% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXG1hdGhzY3J7Rn0iXSxbMiwwLCJcXG1hdGhzY3J7R30iXSxbMCwxLCJcXEdhbChNIDogLSkiLDAseyJvZmZzZXQiOi0xfV0sWzEsMCwiXFxGaXgiLDAseyJvZmZzZXQiOi0xfV1d
+\[\begin{tikzcd}[cramped]
+	{\mathscr{F}} && {\mathscr{G}}
+	\arrow["{\Gal(M : -)}", shift left, from=1-1, to=1-3]
+	\arrow["\Fix", shift left, from=1-3, to=1-1]
+\end{tikzcd}\]
+\[\]
+\end{rem}
+
+% TODO: warning 8.1.1
+
+\begin{lma}[Ordering of Intermediates]{lma:intermediate-ordering}{8.1.2}
+% https://q.uiver.app/#q=WzAsOCxbMCwwLCJNIl0sWzAsMSwiTF8yIl0sWzAsMiwiTF8xIl0sWzAsMywiSyJdLFsyLDMsIlxcR2FsKE0gOiBLKSJdLFsyLDIsIlxcR2FsKE0gOiBMXzEpIl0sWzIsMSwiXFxHYWwoTSA6IExfMikiXSxbMiwwLCIxIl0sWzAsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDIsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwzLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsNSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDYsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw3LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+\[\begin{tikzcd}[cramped]
+	M && 1 \\
+	{L_2} && {\Gal(M : L_2)} \\
+	{L_1} && {\Gal(M : L_1)} \\
+	K && {\Gal(M : K)}
+	\arrow[no head, from=1-1, to=2-1]
+	\arrow[no head, from=2-1, to=3-1]
+	\arrow[no head, from=2-3, to=1-3]
+	\arrow[no head, from=3-1, to=4-1]
+	\arrow[no head, from=3-3, to=2-3]
+	\arrow[no head, from=4-3, to=3-3]
+\end{tikzcd}\]
+    Let $M : K$ be a field extension, and define $\mathscr{F}$ and $\mathscr{G}$ as above.
+    \begin{enumerate-tight}
+        \item For $L_{1},\,L_{2}\in \mathscr{F}$,
+            \[L_{1} \subseteq L_{2} \implies \Gal(M : L_{1}) \supseteq \Gal(M : L_{2})\]
+            For $H_{1},\,H_{2}\in \mathscr{G}$,
+            \[H_{1} \subseteq H_{2} \implies \Fix(H_{1}) \supseteq \Fix(H_{2})\]
+        \item For $L \in \mathscr{F}$ and $H \in \mathscr{G}$,
+            \[L \subseteq \Fix(H) \iff H \supseteq \Gal(M : L)\]
+        \item For all $L\in \mathscr{F}$,
+            \[L \subseteq \Fix(\Gal(M : L))\]
+            For all $H\in \mathscr{G}$,
+            \[H \subseteq \Gal(M : \Fix(H))\]
+    \end{enumerate-tight}
+
+    % Warning 8.1.3
+\end{lma}
+
+\begin{rem}[Galois Correspondence]{rem:galois-correspondence}{8.1.B}
+    The functions
+% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXG1hdGhzY3J7Rn0iXSxbMiwwLCJcXG1hdGhzY3J7R30iXSxbMCwxLCJcXEdhbChNIDogLSkiLDAseyJvZmZzZXQiOi0xfV0sWzEsMCwiXFxGaXgiLDAseyJvZmZzZXQiOi0xfV1d
+\[\begin{tikzcd}[cramped]
+	{\mathscr{F}} && {\mathscr{G}}
+	\arrow["{\Gal(M : -)}", shift left, from=1-1, to=1-3]
+	\arrow["\Fix", shift left, from=1-3, to=1-1]
+\end{tikzcd}\]
+    are called the \textbf{Galois correspondence} for $M : K$. This terminology is mostly used in the case where the functions are \textbf{mutually inverse}, meaning that
+    \[L = \Fix(\Gal(M : L)), \quad H = \Gal(M : \Fix(H))\]
+    for all $L\in \mathscr{F}$ and $H\in \mathscr{G}$. In both cases, the LHS is a subset of the RHS. But they are not always equal.
+
+    If $\Gal(M : -)$ and $\Fix$ \textit{are} mutually inverse then they set up a one-to-one corresponence between $\mathscr{F}$ and $\mathscr{G}$.
+\end{rem}
+
+\begin{thm-s}[Fundamental Theorem of Galois Theory]{thm:the-theorem}{8.2.1}
+    Let $M : K$ be a finite normal separable extension. Write
+    \begin{align*}
+        \mathscr{F} &= \{\text{intermediate fields of } M : K\}\\
+        \mathscr{G} &= \{\text{subgroups of } \Gal(M : K)\}\\
+    \end{align*}
+    \begin{enumerate-zero}
+        \item The functions $\begin{tikzcd}[cramped]
+                {\mathscr{F}} && {\mathscr{G}}
+                \arrow["{\Gal(M : -)}", shift left, from=1-1, to=1-3]
+                \arrow["\Fix", shift left, from=1-3, to=1-1]
+            \end{tikzcd}$ are mutually inverse.
+        \item $\lvert \Gal(M : L) \rvert = [M : L]$ for all $L\in \mathscr{F}$ and $[M : \Fix(H)] = \lvert H \rvert$ for all $H\in \mathscr{G}$
+        \item Let $L\in \mathscr{F}$. Then
+            \begin{multline*}
+                L \text{ is a normal extension of } K \iff \\
+                \Gal(M : L) \text{ is a normal subgroup of } \Gal(M : K).
+            \end{multline*}
+            and in that case,
+            \[\frac{\Gal(M : K)}{\Gal(M : L)} \cong \Gal(L : K)\]
+    \end{enumerate-zero}
+\end{thm-s}
+
+\begin{rem}[Useful Results]{rem:useful-results}{8.2.3}
+    \begin{enumerate-tight}
+        \item Lemmas 6.3.7 and 6.3.8 say that $\Gal_{K}(f)$ acts faithfully on the set of roots of $f$ in $\SF_{K}(f)$. i.e. an element of the Galois group can be understood as a permutation of the roots
+        \item Corollary $6.3.14$ states that $\lvert \Gal_{K}(f) \rvert$ divides $k!$, where $k$ is the number of distinct foots of $f$ in its splitting field.
+        \item Let $\alpha$ and $\beta$ be roots of $f$ in $\SF_{K}(f)$. Then there is an element of the Galois group mapping $\alpha$ to $\beta$ iff $\alpha$ and $\beta$ are conjugate over $K$ (have the same minimal polynomial). This follows from Prop 7.1.9.
+        \item In particular, when $f$ is irreducible, the action of the Galois group on the roots is transitive (Corollary 7.1.11).
+    \end{enumerate-tight}
+\end{rem}
+
+\begin{crl}[Automorphisms with FTGT]{crl:automorphisms-ftgt}{8.2.7}
+    Let $M : K$ be a finite normal separable extension. Then for every $\alpha\in M \backslash K$, there is some automorphism $\phi$ of $M$ over $K$ such that $\phi(\alpha) \ne \alpha$
+\end{crl}
+
+% 8.3
+
+% Warning 9.1.1
+
+\begin{dfn}[Radical Number]{dfn:radical-number}{9.1.2}
+    Let $\Qrad$ be the smallest subfield of $\mathbb{C}$ such that for $\alpha\in \mathbb{C}$,
+    \[\alpha^{n} \in \Qrad \text{ for some }n \ge 1 \implies \alpha\in \Qrad.\]
+    A complex number is \textbf{radical} if it belongs to $\Qrad$
+\end{dfn}
+
+\begin{dfn}[Solvability by Radicals]{dfn:solvability-by-radicals}{9.1.5}
+    A nonzero polynomial over $\mathbb{Q}$ is \textbf{solvable by radicals} if all of its complex roots are radical.
+\end{dfn}
+
+\newpage
+\begin{lma}[Rational Galois Group is Abelian]{lma:rational-galois-group-abelian}{9.1.6}
+    For all $n \ge 1$, the group $\Gal_{\mathbb{Q}}(t^{n} - 1)$ is abelian.
+\end{lma}
+
+\begin{lma}[Splitting Galois Group is Abelian]{lma:splitting-galois-group-abelian}{9.1.8}
+    Let $K$ be a field and $n\ge 1$. Suppose that $t^{n} - 1$ splits in $K$. Then $\Gal_{K}(t^{n} - a)$ is abelian for all $a\in K$.
+\end{lma}
+
+\begin{rem}[Path of a Solvable Polynomial]{rem:solvable-poly-path}{9.1.A}
+    Roughly, the diagram of solvable polynomials is
+    \[\text{solvable polynomial} \longmapsto \text{solvable extension} \longmapsto \text{solvable group}\]
+    In other words, we define ``solvable extension'' in such a way that
+    \begin{enumerate-tight}
+        \item If $f\in \mathbb{Q}[t]$ is a polynomial solvable by radicals then $\SF_{\mathbb{Q}}(f) : \mathbb{Q}$ is a solvable extension
+        \item If $M : K$ is a solvable extension then $\Gal(M : K)$ is a solvable group. Hence if $f$ is solvable by radicals then $\Gal_{\mathbb{Q}}(f)$ is solvable.
+    \end{enumerate-tight}
+\end{rem}
+
+\begin{dfn}[Solvable Extension]{dfn:solvable-extension}{9.2.1}
+    Let $M : K$ be a finite normal separable extension. Then $M : K$ is \textbf{solvable} (or $M$ is \textbf{solvable over $K$}) if there exist $r \ge 0$ and intermediate fields
+    \[K = L_{0} \subseteq L_{1} \subseteq \cdots \subseteq L_{r} = M\]
+    such that $L_{i} : L_{i - 1}$ is normal and $\Gal(L_{i} : L_{i - 1})$ is abelian for each $i\in \{1,\dots,r\}$.
+\end{dfn}
+
+\begin{lma}[Solvable Galois and Extensions]{lma:solvable-galois-extensions}{9.2.4}
+    Let $M : K$ be a finite normal separable extension. Then
+    \[M : K \text{ is solvable } \iff \Gal(M : K) \text{ is solvable}\]
+\end{lma}
+
+\begin{lma}[Finite Normal Results]{lma:finite-normal-results}{9.2.6}
+    Let $M : K$ be a field extension and let $L$ and $L'$ be intermediate fields.
+    \begin{enumerate-tight}
+        \item If $L : K$ and $L' : K$ are finite and normal, then so is $LL' : K$.
+        \item If $L : K$ is finite and normal, then so is $LL' : L'$.
+        \item If $K : K$ is finite and normal with abelian Galois group, then so is $LL' : L'$
+    \end{enumerate-tight}
+    % TODO: the diagram
+\end{lma}
+
+\begin{lma}[Iterated Subfields]{lma:iterated-subfields}{9.2.7}
+    Let $L$ and $M$ be subfields of $\mathbb{C}$ such that the extensions $L : \mathbb{Q}$ and $M : \mathbb{Q}$ are finite, normal, and solvable. Then there is some subfield $M$ of $\mathbb{C}$ such that $N : \mathbb{Q}$ is finite, normal, and solvable and $L,\, M \subseteq N$.
+\end{lma}
+
+\begin{lma}[\texorpdfstring{$\Qsol$}{Qsol} is a subfield of \texorpdfstring{$\mathbb{C}$}{C}]{lma:qsol-c}{9.2.8}
+   Let $\Qsol$ be defined as
+   \begin{multline*}
+       \Qsol = \{\alpha\in \mathbb{C} \mid \alpha\in L \text{ for some subfield } L \subseteq \mathbb{C} \\\text{that is finite, normal, and solvable over } \mathbb{Q}\}.
+   \end{multline*}
+   Then $\Qsol$ is a subfield of $\mathbb{C}$.
+\end{lma}
+
+\begin{lma}[Powers in \texorpdfstring{$\Qsol$}{Qsol}]{lma:qsol-powers}{9.2.9}
+    Let $\alpha\in \mathbb{C}$ and $n \ge 1$. If $\alpha^{n}\in \Qsol$ then $\alpha\in \Qsol$.
+\end{lma}
+
+\begin{ppn}[\texorpdfstring{$\Qrad$}{Qrad} and \texorpdfstring{$\Qsol$}{Qsol}]{ppn:qrad-qsol}{9.2.12}
+    $\Qrad \subseteq \Qsol$. That is, every radical number is contained in some subfield of $\mathbb{C}$ that is a finite, normal, solvable extension of $\mathbb{Q}$.
+\end{ppn}
+
+\begin{thm}[Solvability of Galois Group]{thm:poly-implies-gal-solvable}{9.2.13}
+    Let $0 \ne f \in \mathbb{Q}[t]$. If the polynomial $f$ is solvable by radicals then the group $\Gal_{\mathbb{Q}}(f)$ is solvable.
+\end{thm}
+
+\begin{lma}[Irreducible Polynomials and Degrees]{lma:irreducible-degree}{9.3.1}
+    Let $f$ be an irreducible polynomial over a field $K$, with $\SF_{K}(f) : K$ separable. Then $\deg(f)$ divides $\lvert \Gal_{K}(f) \rvert.$
+\end{lma}
+
+\begin{lma}[Generating the Symmetric Group]{lma:generating-sn}{9.3.2}
+    For $n\ge 2$, the symmetric group $S_{n}$ is generated by $(12)$ and $(12 \dots n)$.
+\end{lma}
+
+\begin{lma}[Isomorphism to Symmetric Group]{lma:galois-iso-sn}{9.3.3}
+    Let $p$ be a prime number, and let $f\in \mathbb{Q}[t]$ be an irreducible polynomial of degree $p$ with exactly $p - 2$ real roots. Then $\Gal_{\mathbb{Q}}(f) \cong S_{p}$.
+\end{lma}
+
+\begin{thm}[Unsolvability of the Quintics]{thm:quintics-are-unsolvable}{9.3.5}
+    Not every polynomial over $\mathbb{Q}$ of degree $5$ is solvable by radicals.
+\end{thm}
+
+\begin{lma}[Characteristic of a Finite Field]{lma:finite-field-char}{10.1.1}
+    Let $M$ be a finite field. Then $\Char M$ is a prime number $p$, and $\lvert M \rvert = p^{n}$ where $n = [M : \mathbb{F}_{p}] \ge 1$.
+
+    In particular, the order of a finite field is a prime power.
+\end{lma}
+
+\begin{lma}[Splitting Prime Polynomials]{lma:splitting-prime-poly}{10.1.5}
+    Let $p$ be a prime number and $n \ge 1$. Then the splitting field of $t^{p^{n}} - t$ over $\mathbb{F}_{p}$ has order $p^{n}$.
+\end{lma}
+
+\begin{lma}[Prime Powers are Equal]{lma:prime-powers-equal}{10.1.6}
+    Let $M$ be a finite field of order $q$. Then $\alpha^{q} = \alpha$ for all $\alpha\in M$.
+\end{lma}
+
+\begin{lma}[Every Finite Field Splits]{lma:every-finite-field-splits}{10.1.8}
+    Every finite field of order $q$ is a splitting field of $t^{q} - t$ over $\mathbb{F}_{p}$
+\end{lma}
+
+\begin{thm}[Classification of Finite Fields]{thm:classification-of-finite-fields}{10.1.9}
+    \begin{enumerate-tight}
+        \item Every finite field has order $p^{n}$ for some prime $p$ and integer $n\ge 1$.
+        \item For each prime $p$ and integer $n \ge 1$, there is exactly one field of order $p^{n}$, up to isomorphism. It has characterstic $p$ and is a splitting field for $t^{p^{n}} - t$ over $\mathbb{F}_{p}$.
+    \end{enumerate-tight}
+\end{thm}
+
+\begin{ppn}[Cyclic Finite Subgroups]{ppn:cyclic-finite-subgroups}{10.2.1}
+    For an arbitrary field $K$, every finite subgroup of $K^{\times}$ is cyclic. In particular, if $K$ is finite, then $K^{\times}$ is cyclic.
+\end{ppn}
+
+\begin{crl}[Finite Field Extensions are Simple]{crl:fin-field-ext-is-simp}{10.2.5}
+    Every extension of one finite field over another is simple.
+\end{crl}
+
+\begin{crl}[Existence of Irreducibles]{crl:existence-of-irreducibles}{10.2.8}
+    For every prime number $p$ and integer $n\ge 1$, there exists an irreducible polynomial over $\mathbb{F}_{p}$ of degree $n$.
+\end{crl}
+
+\begin{lma}[Properties of Finite Field Extensions]{lma:separability-fin-field}{10.3.2}
+    Let $M : K$ be a field extension.
+    \begin{enumerate-tight}
+        \item If $K$ is finite then $M : K$ is separable.
+        \item If $M$ is also finite then $M : K$ is finite and normal.
+    \end{enumerate-tight}
+\end{lma}
+
+\newpage
+\begin{ppn}[Frobenius Automorphism]{ppn:frobenius-auto}{10.3.3}
+    Let $p$ be a prime and $n \ge 1$. Then $\Gal(\mathbb{F}_{p^{n}} : \mathbb{F}_{p})$ is cyclic of order $n$, generated by the Frobenius Automorphism of $\mathbb{F}_{p^{n}}$
+\end{ppn}
+
+\begin{ppn}[Uniqueness of Finite Subfield]{ppn:uniqueness-finite-subfield}{10.3.6}
+    Let $p$ be a prime and $n \ge 1$. Then $\mathbb{F}_{p^{n}}$ has exactly one subfield of order $p^{m}$ for each divisor $m$ of $n$, and no others. It is
+    \[\{\alpha \in \mathbb{F}_{p^{n}} : \alpha^{p^{m}} = \alpha\}\]
+\end{ppn}
+
+\begin{ppn}[Cyclic Galois Groups]{ppn:cyclic-galois}{10.3.8}
+    Let $M : K$ be a field extension with $M$ finite. Then $\Gal(M : K)$ is cyclic of order $[M : K]$.
+\end{ppn}
 
 \lipsum[1-6]
 \end{multicols}
