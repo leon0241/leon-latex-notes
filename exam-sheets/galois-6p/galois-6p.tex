@@ -800,7 +800,7 @@ commutes $(\phi \circ \iota = \iota' \circ \psi)$. Most of the time we view $K$ 
 A dotted arrow is used to denote a map whose existence is part of the conclusion of a theorem.
 \end{ppn}
 
-\begin{dfn}[Splitting Field]{dfn:splitting-field}{6.2.2}
+\begin{dfn}[Splitting Polynomial]{dfn:splitting-polynomial}{6.2.2}
     Let $f$ be a polynomial over a field $M$. Then $f$ \textbf{splits} in $M$ if
     \[f(t) = \beta(t - \alpha_{1}) \cdots (t - a_{n})\]
     for some $n \ne 0$ and $\beta, \alpha_{1},\dots,\alpha_{n}\in M$.
@@ -809,6 +809,110 @@ A dotted arrow is used to denote a map whose existence is part of the conclusion
 \end{dfn}
 
 % Example 6.2.3
+
+
+\newpage
+\begin{dfn}[Splitting Field]{dfn:splitting-field}{6.2.6}
+    Let $f$ be a nonzero polynomial over a field $K$. A \textbf{splitting field} of $f$ over $K$ is an extension $M$ of $K$ such that:
+    \begin{enumerate-tight}
+        \item $f$ splits in $M$
+        \item $M = K(\alpha_{1},\dots,\alpha_{n})$, where $\alpha_{1},\dots,\alpha_{n}$ are the roots of $f$ in $M$.
+    \end{enumerate-tight}
+
+    $2$ can be replaced by ``If $L$ is a subfield of $M$ containing $K$, and $f$ splits in $L$, then $L = M$''
+\end{dfn}
+
+\begin{lma}[Size Limits of Splitting Fields]{lma:splitting-field-deg}{6.2.10}
+    Let $f\ne 0$ be a polynomial over a field $K$. Then there exists a splitting field $M$ of $f$ over $K$ such that $[M : K] \le \deg(f)!$
+\end{lma}
+
+\begin{ppn}[Splitting Fields and Isomorphisms]{ppn:splitting-field-iso}{6.2.11}
+    Let $\psi : K \to K'$ be an isomorphism of fields, let $0 \ne f \in K[t]$, let $M$ be a splitting field of $f$ over $K$, and let $M'$ be a splitting field of $\psi_{\ast}f$ over $K'$. Then
+    \begin{enumerate-tight}
+        \item There exists an isomorphism $\phi : M \to M'$ extending $\psi$.
+        \item There are at most $[M : K]$ such extensions $\phi$.
+    \end{enumerate-tight}
+    We often use this result when $K' = K$ and $\psi = \id_{K}$.
+\end{ppn}
+
+\begin{thm}[Isos and Autos of a Splitting Field]{thm:isos-autos-splitting-field}{6.2.13}
+    Let $f$ be a nonzero polynomial over a field $K$. Then
+    \begin{enumerate-zero}
+        \item There exists a splitting field of $f$ over $K$
+        \item Any two splitting fields of $f$ are isomorphic over $K$
+        \item When $M$ is a splitting field of $f$ over $K$,
+            \[\text{number of automorphisms of $M$ over $K$}\le [M : K] \le \deg(f)\]
+    \end{enumerate-zero}
+\end{thm}
+
+\begin{lma}[]{lma:something-splitting}{6.2.14}
+    \begin{enumerate-tight}
+        \item Let $M : S : K$ be field extensions, $0 \ne f \in K[t]$, and $Y \subseteq M$. Suppose that $S$ is the splitting field of $f$ over $K$. Then $S(Y)$ is the splitting field of $f$ over $K(Y)$
+        \item Let $f\ne 0$ be a polynomial over a field $K$, and let $L$ be a subfield of $\mathrm{SF}_{K}(f)$ containing $K$ (so that $\mathrm{SF}_{K}(f) : L : K$). Then $\mathrm{SF}_{K}(f)$ is the splitting field of $f$ over $L$.
+    \end{enumerate-tight}
+\end{lma}
+
+\begin{dfn}[Galois Group of an Extension]{dfn:galois-group-extension}{6.3.1}
+    The \textbf{Galois Group} $\Gal(M : K)$ of a field extension $M : K$ is the group of automorphisms of $M$ over $K$, with composition as the group operation.
+
+    In other words, an element of $\Gal(M : K)$ is an isomorphism $\theta : M \to M$ such that $\theta(a) = a$ for all $a\in K$.
+\end{dfn}
+
+\begin{dfn}[Galois Group of a Polynomial]{dfn:galois-group-polynomial}{6.3.5}
+    Let $f$ be a nonzero polynomial over a field $K$. The \textbf{Galois Group} $\Gal_{K}(f)$ of $f$ over $K$ is $\Gal(\SF_{K}(f) : K)$
+
+    So the definitions fit together like this:
+    \[\text{polynomial} \quad \longmapsto\quad \text{field extension}\quad\longmapsto\quad\text{group}\]
+\end{dfn}
+
+\begin{rem}[Degree Size of Galois Group]{rem:degree-size-galois}{6.3.A}
+    Via Theoerem $6.2.13$,
+    \[\lvert \Gal_{K}(f) \rvert \le [\SF_{K}(f) :0K] \le \deg(f)!\]
+    In particular, $\Gal_{K}(f)$ is always a finite group.
+\end{rem}
+
+\begin{lma}[Restriction of Actions on GGs]{lma:action-restriction}{6.3.7}
+    Let $f$ be a nonzero polynomial over a field $K$. Then the action of $\Gal_{K}(f)$ on $\SF_{K}(f)$ restricts to an action on the st of roots of $f$ in $\SF_{K}(f)$.
+
+    \longrule{0.08ex}
+    \textbf{Terminology}: Given a group $G$ acting on a set $X$ and a subset $A \subseteq X$, the action \textbf{restricts} to $A$ if $ga \in A$ for all $g\in G$ and $a\in A$.
+\end{lma}
+
+\begin{lma}[Faithful Action of Galois Groups]{lma:faithful-actions}{6.3.8}
+    Let $f$ be a nonzero polynomial over a field $K$. Then the action of $\Gal_{K}(f)$ on the roots of $f$ is \textbf{faithful}.
+\end{lma}
+
+\begin{rem}[What Galois Group Means]{rem:what-galois-group-means}{6.3.B}
+    An element of the Galois group of $f$ is completely determined by how it permutes the roots of $f$. So you can view elements of the Galois group as \textit{being} permutations of the roots.
+
+    However, not every permutation of the roots belongs to the Galois group. Suppose $f\in K[t]$ has distinct roots $\alpha_{1},\dots,\alpha_{k}$ in its splitting field. For each $\Theta\in \Gal_{K}(f)$ there is a permutation $\sigma_{\theta}\in S_{k}$ defined by
+    \[\theta(\alpha_{i}) = \alpha_{\sigma_{\theta}(i)} \quad\text{ for } i\in \{1,\dots,k\}\]
+    Then $\Gal_{K}(f)$ is isomorphic to the subgroup $\{\sigma_{\theta} \mid \theta \in \Gal_{K}(f)\}$ of $S_{K}$. The isomorphism is given by $\theta \mapsto \sigma_{\theta}$.
+\end{rem}
+
+\begin{dfn}[Conjugacy]{dfn:conjugacy}{6.3.9}
+    Let $M : K$ be a field extension, let $k \ge 0$, and let $(\alpha_{1},\dots,\alpha_{k})$ and $(\alpha_{1}',\dots,\alpha_{k}')$ be $k$-tuples of elements of $M$. Then $(\alpha_{1},\dots,\alpha_{k})$ and $(\alpha_{1}',\dots,\alpha_{k}')$ are \textbf{conjugate} over $K$ if for all $p\in K[t_{1},\dots,t_{k}]$,
+    \[p(\alpha_{1},\dots,\alpha_{k})= 0 \iff p(\alpha_{1}',\dots,\alpha_{k}') = 0\]
+    If $k=1$ we omit the brackets and say $\alpha$ and $\alpha'$ are conjugate.
+\end{dfn}
+
+\begin{ppn}[Permutation Definition of GG]{ppn:permutation-galois-group}{6.3.10}
+    Let $f$ be a nonzero polynomial over a field $K$ with distinct roots $\alpha_{1},\dots,\alpha_{k}$ in $\SF_{k}(f)$. Then
+    \[\{\sigma\in S_{k} \mid (\alpha_{1},\dots,\alpha_{k})\text{ and }(\alpha_{\sigma(1)},\dots,\alpha_{\sigma(k)}) \text{ are conj. over $K$}\}\]
+    is a subgroup of $S_{k}$ isomorphic to $\Gal_{K}(f)$
+\end{ppn}
+
+\begin{crl}[Galois Groups and Extensions]{crl:gal-group-extension}{6.3.12}
+    Let $L : K$ be a field extension and $0 \ne f \in K[t]$. Then $\Gal_{L}(f)$ is isomorphic to a subgroup of $\Gal_{K}(f)$.
+\end{crl}
+
+\begin{crl}[Division of Roots and GGs]{crl:gal-group-division-roots}{6.3.14}
+    Let $f$ be a nonzero polynomial over a field $K$, with $k$ distinct roots in $\SF_{K}(f)$. Then $\lvert \Gal_{K}(f) \rvert$ divides $k!$.
+\end{crl}
+
+% TODO: actually read page 97 lol
+
+
 
 \lipsum[1-6]
 \end{multicols}
