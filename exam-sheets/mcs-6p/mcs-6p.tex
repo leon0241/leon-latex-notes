@@ -157,12 +157,24 @@ General Structured Operational Semantics (GSOS) operations are compositional.
 \end{itemize-tight}
 \end{dfn}
 
-\begin{dfn}[Axioms of ACP]{dfn:acp-axioms}{}
-	is this really necessary.. who knows
+% \begin{dfn}[Axioms of ACP]{dfn:acp-axioms}{}
+% 	is this really necessary.. who knows
+% \end{dfn}
+
+\begin{dfn}[The Recursive Specification]{dfn:rsp}{}
+	The \textbf{recursive definition principle} (RDP) says that a system satisfies its recursive definition. The \textbf{recursive specification principle} (RSP) says that two processes satisfying the same \textbf{guarded} recursive equation must be equal. It holds for SB and Strong Finite PT.
+
+	\longrule{0.08ex}
+	If $S$ is a recursive specification, i.e. a set of equations $X_{i} = S_{i}$ for each $i\in I$ where $I$ is some index set, then $S[P_{i} /X_{i}]_{i\in I}$ consists of the equations $P_{i} = S_{i}[P_{i} /X_{i}]_{i\in I}$ for $i\in I$. The family $(P_{i})_{i\in I}$ of processes $P_{i}$ constitutes a \textbf{solution} of $S$, up to a semantic equivalence $\sim$ iff the equations in $S[P_{i} /X_{i}]_{i\in I}$ become true when interpreting $=$ as $\sim$
+
+	\longrule{0.08ex}
+	RDP says that each recursive specification has a solution (up to $\sim$), and RSP says that two solutions (up to $\sim$) of the same guarded recursive specification must be $\sim$-equivalent. Thus RSP can be formulated as the following proof rule
+	\[\prftree{P_{i} = S_{i}[P_{i} /X_{i}]_{i\in I} \quad Q_{i} = S_{i}[Q_{i} /X_{i}]_{i\in I} \quad \text{ for } i\in I}{P_{i} = Q_{i} \quad \text{ for } i \in I}\]
 \end{dfn}
 
 \newpage
 \section{Semantics and shit like that}
+\setcounter{subsection}{1}
 \begin{dfn}[Trace Semantice]{dfn:trace-semantics}{}
 \begin{itemize-zero}
 \item \textbf{Completed Trace}: A start to finish trace of a process.
@@ -212,6 +224,7 @@ General Structured Operational Semantics (GSOS) operations are compositional.
 \item $\exists s_{1},\,s_{2},\,s'$ such that $s \Rightarrow s_{1} \prightarrow{a} s_{2} \Rightarrow s'$ and $s'Rt'$
 \end{itemize-tight}
 \end{itemize-tight}
+\item \textbf{Simulation}: One process simulates the other when $P$ can do all the same moves as $Q$. We write $P \sqsubseteq_{S} Q$ if $Q$ can be simulated by $P$. Two processes are \textbf{simulation equivalent}, $P =_{S} Q$ if one simulates the other, and vice versa. This is two one-sided equivalences, and therefore is not the same as bisimulation, which needs both processes to be equivalent at the same time
 \end{itemize-tight}
 
 \end{itemize-zero}
@@ -226,7 +239,7 @@ General Structured Operational Semantics (GSOS) operations are compositional.
 
 \begin{thm}[Semantic Equivalence Spectrum]{thm:spectrum}{}
 	% https://q.uiver.app/#q=WzAsMTQsWzQsNiwiXFxtYXRocm17Q1R9Il0sWzQsMTAsIlxcbWF0aHJte1BUfSJdLFs0LDMsIlxcbWF0aHJte1dCfSJdLFsxLDAsIlxcbWF0aHJte0JCfSJdLFszLDgsIlxcbWF0aHJte1dDVH0iXSxbMywxMiwiXFxtYXRocm17V1BUfSJdLFswLDExLCJcXG1hdGhybXtXUFR9XlxcaW5mdHkiXSxbMSw1LCJcXG1hdGhybXtDVH1eXFxpbmZ0eSJdLFsxLDksIlxcbWF0aHJte1BUfV5cXGluZnR5Il0sWzAsNywiXFxtYXRocm17V0NUfV5cXGluZnR5Il0sWzMsMiwiXFxtYXRocm17QkJ9Il0sWzQsMiwiXFxtYXRocm17V0J9XkNcXFxcKFxcbWF0aHJte1JXQn0pIl0sWzMsMSwiXFxtYXRocm17QkJ9XkNcXFxcKFxcbWF0aHJte1JCQn0pIl0sWzEsNCwiXFxtYXRocm17Q1R9XkMiXSxbNSw0XSxbNCwwLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMCwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDFdLFswLDIsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw2LCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsNywiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDgsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw5LCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksNywiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs5LDYsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw4LCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsOCwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDEwLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzExLDIsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTEsMTIsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTAsMTIsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNywxM10sWzEzLDMsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTIsM11d
-	\[\begin{tikzcd}[cramped, row sep=small]
+	\[\begin{tikzcd}[cramped, row sep=tiny, column sep=scriptsize]
 			& {\mathrm{BB}} \\
 			&&& \begin{array}{c} \mathrm{BB}^C\\(\mathrm{RBB}) \end{array} \\
 			&&& {\mathrm{BB}} & \begin{array}{c} \mathrm{WB}^C\\(\mathrm{RWB}) \end{array} \\
@@ -261,44 +274,114 @@ General Structured Operational Semantics (GSOS) operations are compositional.
 			\arrow[from=13-4, to=11-5]
 			\arrow[no head, from=13-4, to=12-1]
 		\end{tikzcd}\]
+	Simulation is finer than PT, coarser than B, incomparable to CT.
 \end{thm}
 
-\begin{dfn}[The GOAT of Process algebra]{dfn:bisim-counterexample}{}
-	% https://q.uiver.app/#q=WzAsMTEsWzUsMSwiXFxjaXJjIl0sWzQsMiwiXFxidWxsZXQiXSxbNiwyLCJcXGJ1bGxldCJdLFs2LDMsIlxcYnVsbGV0Il0sWzQsMywiXFxidWxsZXQiXSxbMSwxLCJcXGNpcmMiXSxbMSwyLCJcXGJ1bGxldCJdLFsyLDMsIlxcYnVsbGV0Il0sWzAsMywiXFxidWxsZXQiXSxbNSwwXSxbMSwwXSxbMCwxLCJhIl0sWzAsMiwiYSIsMl0sWzIsMywiYyIsMl0sWzEsNCwiYiJdLFs1LDYsImEiXSxbNiw3LCJjIl0sWzYsOCwiYiJdLFs5LDAsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjo1MH19XSxbMTAsNSwiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjUwfX1dXQ==
-	\[\begin{tikzcd}[cramped]
-			& {} &&&& {} \\
-			& \circ &&&& \circ \\
-			& \bullet &&& \bullet && \bullet \\
-			\bullet && \bullet && \bullet && \bullet
-			\arrow[shorten <=5pt, from=1-2, to=2-2]
-			\arrow[shorten <=5pt, from=1-6, to=2-6]
-			\arrow["a", from=2-2, to=3-2]
-			\arrow["a", from=2-6, to=3-5]
-			\arrow["a"', from=2-6, to=3-7]
-			\arrow["b", from=3-2, to=4-1]
-			\arrow["c", from=3-2, to=4-3]
-			\arrow["b", from=3-5, to=4-5]
-			\arrow["c"', from=3-7, to=4-7]
-		\end{tikzcd}\]
-\end{dfn}
-
-\begin{dfn}[Failure Semantics]{dfn:failure}{}
-
-\end{dfn}
-
-
-\begin{dfn}[Consistent Colouring]{dfn:colouring}{}
-
-\end{dfn}
-
+% \begin{dfn}[The GOAT of Process algebra]{dfn:bisim-counterexample}{}
+% 	% https://q.uiver.app/#q=WzAsMTEsWzUsMSwiXFxjaXJjIl0sWzQsMiwiXFxidWxsZXQiXSxbNiwyLCJcXGJ1bGxldCJdLFs2LDMsIlxcYnVsbGV0Il0sWzQsMywiXFxidWxsZXQiXSxbMSwxLCJcXGNpcmMiXSxbMSwyLCJcXGJ1bGxldCJdLFsyLDMsIlxcYnVsbGV0Il0sWzAsMywiXFxidWxsZXQiXSxbNSwwXSxbMSwwXSxbMCwxLCJhIl0sWzAsMiwiYSIsMl0sWzIsMywiYyIsMl0sWzEsNCwiYiJdLFs1LDYsImEiXSxbNiw3LCJjIl0sWzYsOCwiYiJdLFs5LDAsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjo1MH19XSxbMTAsNSwiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjUwfX1dXQ==
+% 	\[\begin{tikzcd}[cramped]
+% 			& {} &&&& {} \\
+% 			& \circ &&&& \circ \\
+% 			& \bullet &&& \bullet && \bullet \\
+% 			\bullet && \bullet && \bullet && \bullet
+% 			\arrow[shorten <=5pt, from=1-2, to=2-2]
+% 			\arrow[shorten <=5pt, from=1-6, to=2-6]
+% 			\arrow["a", from=2-2, to=3-2]
+% 			\arrow["a", from=2-6, to=3-5]
+% 			\arrow["a"', from=2-6, to=3-7]
+% 			\arrow["b", from=3-2, to=4-1]
+% 			\arrow["c", from=3-2, to=4-3]
+% 			\arrow["b", from=3-5, to=4-5]
+% 			\arrow["c"', from=3-7, to=4-7]
+% 		\end{tikzcd}\]
+% \end{dfn}
+% %
+% \begin{dfn}[Failure Semantics]{dfn:failure}{}
+%
+% \end{dfn}
+%
+% %
+% % \begin{dfn}[Consistent Colouring]{dfn:colouring}{}
+% %
+% % \end{dfn}
+%
 \begin{dfn}[Safety]{dfn:}{}
+	A process $p$ satisfies the \textbf{canonical safety property}, $P \models \mathrm{safety}(b)$ if no trace of $P$ contains $B$
 
+	\longrule{0.08ex}
+	A \textbf{safety property} of processes in an LTS is given by a set $B \subseteq A^{*}$. A process $p$ satisfies this safety property, $P \models \mathrm{safety}(B)$ when $\mathrm{WPT}(P) \cap B = \emptyset.$
+
+	\longrule{0.08ex}
+	If $P =_{\mathrm{WPT}} Q$ and $P \models \mathrm{safety}(B)$ for some $B \subseteq A^{*}$ then $Q \models \mathrm{safety}(B)$.
 \end{dfn}
 
+\begin{dfn}[Deadlock Types]{dfn:deadlock}{}
+	\vspace{-10pt}
+% https://q.uiver.app/#q=WzAsMTgsWzAsMCwiXFxidWxsZXQiXSxbMCwxLCJcXGJ1bGxldCJdLFswLDIsIlxcYnVsbGV0Il0sWzAsMywibm9ybWFsIFxcXFxwcm9jZXNzIl0sWzEsMCwiXFxidWxsZXQiXSxbMSwxLCJcXGJ1bGxldCJdLFsxLDIsIlxcYnVsbGV0Il0sWzEsMywiRGVhZGxvY2siXSxbMiwxLCJcXGJ1bGxldCJdLFszLDAsIlxcYnVsbGV0Il0sWzMsMSwiXFxidWxsZXQiXSxbMywyLCJcXGJ1bGxldCJdLFs0LDEsIlxcYnVsbGV0Il0sWzUsMCwiXFxidWxsZXQiXSxbMywzLCJMaXZlbG9jayBcXFxcIERpdmVyZ2VudCJdLFs1LDEsIlxcYnVsbGV0Il0sWzUsMiwiXFxidWxsZXQiXSxbNSwzLCJFc2NhcGFibGUgXFxcXCBEaXZlcmdlbmNlIl0sWzAsMSwiYSJdLFsxLDIsImciXSxbNCw1LCJhIl0sWzUsNiwiZyJdLFs1LDgsIlxcdGF1Il0sWzksMTAsImEiXSxbMTAsMTEsImciXSxbMTAsMTIsIlxcdGF1Il0sWzEyLDEyLCJcXHRhdSJdLFsxMywxNSwiYSJdLFsxNSwxNiwiZyJdLFsxNSwxNSwiXFx0YXUiLDAseyJhbmdsZSI6OTB9XV0=
+\[\begin{tikzcd}[cramped,column sep=tiny,row sep=small]
+	\bullet & \bullet && \bullet && \bullet \\
+	\bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
+	\bullet & \bullet && \bullet && \bullet \\
+	\begin{array}{c} normal \\process \end{array} & Deadlock && \begin{array}{c} Livelock \\ Divergent \end{array} && \begin{array}{c} Escapable \\ Divergence \end{array}
+	\arrow["a", from=1-1, to=2-1]
+	\arrow["a", from=1-2, to=2-2]
+	\arrow["a", from=1-4, to=2-4]
+	\arrow["a", from=1-6, to=2-6]
+	\arrow["g", from=2-1, to=3-1]
+	\arrow["\tau", from=2-2, to=2-3]
+	\arrow["g", from=2-2, to=3-2]
+	\arrow["\tau", from=2-4, to=2-5]
+	\arrow["g", from=2-4, to=3-4]
+	\arrow["\tau", from=2-5, to=2-5, loop, in=55, out=125, distance=10mm]
+	\arrow["\tau", from=2-6, to=2-6, loop, in=325, out=35, distance=10mm]
+	\arrow["g", from=2-6, to=3-6]
+\end{tikzcd}\]
+NP: $a.g.0$, ED: $a.\triangle g.0$, LL: $a.(g.0+\tau.\triangle 0)$, DL: $\alpha .(g.0 + \tau.0)$
+\end{dfn}
+
+\begin{dfn}[Distinguishing Interleaving]{dfn:distinguishing-interleaving}{}
+	\vspace{-5pt}
+	When using Petri nets we take into account \textbf{interleaving semantics}, which doesn't distinguish $a \merge b = ab+ba$. This is rejected in causal semantics because in $a \merge b$, $a$ and $b$ are causally independent, whereas in $ab+ba$, either $a$ depends on $b$ or vice versa.
+	
+	\longrule{0.08ex}
+	\textbf{Interval Semantics} lie between step semantics and causal semantics. It takes causality into account only to the extent that it manifests itself by durational actions overlapping in time.
+\end{dfn}
+
+\begin{dfn}[Step Bisimulation]{dfn:step-bisim}{}
+	A \textbf{step bisimulation} is a binary relation $B$ on the markings of two petri nets, such that
+	\begin{itemize-tight}
+	    \item the initial markings of the nets are related
+	    \item If $M_{1} B M_{2}$ and $M_{1} \prightarrow{L} M_{1}'$ then there is a marking $M_{2}'$ such that $M_{2} \prightarrow{L} M_{2}'$ and $M_{1}' B M_{2}'$
+	    \item If $M_{1} B M_{2}$ and $M_{2} \prightarrow{L} M_{2}'$ then there is a marking $M_{1}'$ such that $M_{1} \prightarrow{L} M_{1}'$ and $M_{1}' B M_{2}'$
+	\end{itemize-tight}
+	Two nets are \textbf{step bisimilar} if there exists a step bisimulation between them.
+
+% https://q.uiver.app/#q=WzAsOCxbMSwwLCJhIFxcbWVyZ2UgYiJdLFswLDEsIjAgXFxtZXJnZSBiIl0sWzIsMSwiYSBcXG1lcmdlIDAiXSxbMSwyLCIwIG1lcmdlIDAiXSxbNCwwLCJcXGJ1bGxldCJdLFszLDEsIlxcYnVsbGV0Il0sWzUsMSwiXFxidWxsZXQiXSxbNCwyLCJcXGJ1bGxldCJdLFswLDEsImEiLDJdLFswLDIsImIiXSxbMiwzLCJhIl0sWzEsMywiYiIsMl0sWzQsNSwiYSIsMl0sWzQsNiwiYiJdLFs1LDcsImIiLDJdLFs2LDcsImEiXSxbMCwzLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJzcXVpZ2dseSJ9fX1dXQ==
+\[\begin{tikzcd}[cramped, column sep=small, row sep=small]
+	& {a \merge b} &&& \bullet \\
+	{0 \merge b} && {a \merge 0} & \bullet && \bullet \\
+	& {0 \merge 0} &&& \bullet
+	\arrow["a"', from=1-2, to=2-1]
+	\arrow["b", from=1-2, to=2-3]
+	\arrow[squiggly, from=1-2, to=3-2]
+	\arrow["a"', from=1-5, to=2-4]
+	\arrow["b", from=1-5, to=2-6]
+	\arrow["b"', from=2-1, to=3-2]
+	\arrow["a", from=2-3, to=3-2]
+	\arrow["b"', from=2-4, to=3-5]
+	\arrow["a", from=2-6, to=3-5]
+\end{tikzcd}\]
+% In this definition, a \textbf{marking} is a global state of the Petri net; it is given by a function that tells for each place how many tokens it contains. We write $M \prightarrow{L} M'$ if a net can go from state/marking $M$ to state/marking $M'$ be simultaneously firing the transitions in a multiset $U$ of transitions, such that $L$ is the multiset of labels of the transitions in $U$. If a place is the preplace of $k$ transitions in $U$, it needs to contain $k$ tokens for this multiset to fire.
+\end{dfn}
+
+\begin{dfn}[Pomset]{dfn:pomset}{}
+	Causal trace semantics can be represented in terms of \textbf{pomsets}, partially ordered multisets. The process $a(b \merge (c + de))$ has two completed pomsets, $b \leftarrow a \to c$ and $b \leftarrow a \to d \to e$.
+\end{dfn}
 
 \newpage
 
 \section{Other models of Concurrency}
+\setcounter{subsection}{1}
 \begin{dfn}[Hennessy-Milner Logic]{dfn:hml}{}
 The syntax of HML is given by:
 \[\phi,\,\psi ::= \top \mid \bot \mid \phi \wedge \psi \mid \phi \vee \psi \mid \neg \phi \mid \langle \alpha \rangle \phi \mid [\alpha] \phi\]
@@ -325,8 +408,13 @@ Deadlock can be represented as $P \models [\mathrm{Act}] \bot$, where $\mathrm{A
 	\[P \equiv Q \iff (P \sqsubseteq Q \wedge Q \sqsubseteq P)\]
 \end{dfn}
 
-\begin{dfn}[Simulation Equivalence]{dfn:simulation}{}
-	One process simulates the other when $P$ can do all the same moves as $Q$. We write $P \sqsubseteq_{S} Q$ if $Q$ can be simulated by $P$. Two processes are \textbf{simulation equivalent}, $P =_{S} Q$ if one simulates the other, and vice versa. This is two one-sided equivalences, and therefore is not the same as bisimulation, which needs both processes to be equivalent at the same time
+
+\begin{dfn}[Petri Nets]{dfn:petris}{}
+	Petri Nets are defined with actions as squares. Initial states have a number of markings that can transfer to other states.
+
+	Parallel Composition adds a new state, and replaces both actions with the new one.
+
+
 \end{dfn}
 
 \begin{dfn}[Kripke Structure]{dfn:kripke}{}
@@ -336,13 +424,8 @@ Deadlock can be represented as $P \models [\mathrm{Act}] \bot$, where $\mathrm{A
 
 	\longrule{0.08ex}
 	A \textbf{path} in a Kriple structure is a nonempty finite or infinite sequence $s_{0},\,s_{1} ,\dots$ of states, such as $(s_{i}, s_{i+1})\in \to$ for each adjacent pair of states $s_{i}, s_{i+1}$ in the sequence. A path is \textbf{complete} if it is either infinite or ends in deadlock (a state without outgoing transitions)
-
-
 \end{dfn}
 
-\begin{dfn}[Petri Nets]{dfn:petris}{}
-	they exist
-\end{dfn}
 
 \begin{dfn}[CTL]{dfn:ctl}{}
 Computational Tree Logic is defined on
@@ -357,19 +440,61 @@ $p\in AP$ is an atomic predicate. CTL is defined on states, the relation $\model
 \item $s \models \neg \phi$ iff $s \not\models \phi$
 \item $s \models \phi \wedge \psi$ iff $s \models \phi$ and $s \models \psi$
 \item $s \models \phi \vee \psi$ iff $s \models \phi$ or $s \models \psi$
-\item $s \models \phi \to \psi$ iff $s \not\models \phi$ or $s \models \psi$
-\item $s \models \ctl{EX}\phi$ iff there is a state $s'$ with $s\to s'$ and $s' \models \psi$
-\item $s \models \ctl{AX}\phi$ iff for each state $s'$ with $s\to s'$ one has $s' \models \psi$
-\item $s \models \ctl{EF}\phi$ iff some complete path starting in $s$ contains a state $s'$ with $s\models \phi$
-\item $s \models \ctl{AF}\phi$ iff each complete path starting in $s$ contains a state $s'$ with $s\models \phi$
+\item $s \models \phi \to \psi$ iff $s \not\models \phi$ or $s \models \psi$. aka $\phi$ implies $\psi$
+\item $s \models \ctl{EX}\phi$ iff there is a state $s'$ with $s\to s'$ and $s' \models \phi$
+\item $s \models \ctl{AX}\phi$ iff for each state $s'$ with $s\to s'$ one has $s' \models \phi$
+\item $s \models \ctl{EF}\phi$ iff some complete path starting in $s$ contains a $s'$ with $s\models \phi$
+\item $s \models \ctl{AF}\phi$ iff each complete path starting in $s$ contains an $s'$ with $s;\models \phi$
 \item $s \models \ctl{EG}\phi$ iff all states $s'$ on some complete path starting in $s$ satisfy $s' \models \phi$
 \item $s \models \ctl{AG}\phi$ iff all states $s'$ on all complete path starting in $s$ satisfy $s' \models \phi$
-\item $s \models \ctl{E}\psi \ctl{U}\phi$ iff some complete path $\pi$ starting in $s$ contains a state $s'$ with $s'\models \phi$, and each state $s''$ on $\pi$ prior to $s'$ satisfies $s'' \models \phi$
-\item $s \models \ctl{A}\psi \ctl{U}\phi$ iff each complete path $\pi$ starting in $s$ contains a state $s'$ with $s'\models \phi$, and each state $s''$ on $\pi$ prior to $s'$ satisfies $s'' \models \phi$
+\item $s \models \ctl{E}\psi \ctl{U}\phi$ iff some complete path $\pi$ starting in $s$ contains an $s'$ with $s'\models \phi$, and each state $s''$ on $\pi$ prior to $s'$ satisfies $s'' \models \phi$
+\item $s \models \ctl{A}\psi \ctl{U}\phi$ iff each complete path $\pi$ starting in $s$ contains an $s'$ with $s'\models \phi$, and each state $s''$ on $\pi$ prior to $s'$ satisfies $s'' \models \phi$
 \end{itemize-zero}
 \end{dfn}
 
+\begin{xmp}[]{xmp:ctl}{2}
+	Examples of CTL formulae that hold in the initial state:
+	\vspace{-10pt}
+	\begin{multicols}{2}
+		\begin{enumerate-zero}
+			\item $\mathrm{AF}(p \wedge q)$
+			\item $\mathrm{AF}\,\mathrm{AG}(p \vee q)$
+			\item $\mathrm{AF}(\mathrm{EG} p \wedge \mathrm{EG} q)$
+			\item $\mathrm{AG}(q \to \mathrm{A}(q \mathrm{U} p))$
+			\item $\mathrm{A}(\mathrm{E}(\neg q \mathrm{U} p) \mathrm{U} q)$
+			\item $\mathrm{AG}((p \wedge q) \to \mathrm{AX}\,\mathrm{E}(q \mathrm{U} p))$
+		\end{enumerate-zero}
+
+
+		\[\begin{tikzcd}[cramped, column sep=scriptsize, row sep=scriptsize]
+	& {} \\
+	& \circ \\
+			p && q \\
+			p & {q,p} & q \\
+			  & {p,q}
+			  \arrow[shorten <=5pt, from=1-2, to=2-2]
+			  \arrow[from=2-2, to=3-1]
+			  \arrow[from=2-2, to=3-3]
+			  \arrow[from=3-1, to=4-1]
+			  \arrow[from=3-3, to=4-3]
+			  \arrow[from=4-1, to=5-2]
+			  \arrow[from=4-2, to=3-1]
+			  \arrow[from=4-2, to=3-3]
+			  \arrow[from=4-3, to=5-2]
+			  \arrow[from=5-2, to=4-2]
+		\end{tikzcd}\]
+		\vspace{5pt}
+
+	\end{multicols}
+\end{xmp}
+
+\begin{lma}[Comparing LTL to CTL]{lma:ltl-to-ctl}{}
+	LTL and CTL can be shown to be incomparable by proving that there cannot exist an LTL formula that is equivalent to the CTL formula $\mathrm{\mathbf{AG}} \mathrm{\mathbf{EF}} a$, and by showing that there cannot exist a CTL formula equivalent to the LTL formula $\mathrm{\mathbf{FG}} a$
+\end{lma}
+
+
 \begin{dfn}[LTL]{dfn:ltl}{}
+	\vspace{-5pt}
 Linear-Time Temporal Logic is defined on
 \begin{multline*}
 	\phi,\,\psi ::= p \mid \top \mid \bot \mid \neg\phi \mid \phi \wedge \psi \mid \phi \vee \psi \mid \neg \phi \mid \phi \to \psi  \mid \\
@@ -388,17 +513,21 @@ $p\in AP$ is an atomic predicate. The modalities $X,F,G,U$ are called \textbf{ne
 \item $\pi \models \ctl{G}\phi$ iff $\pi' \models \phi$ for each suffix $\pi'$
 \item $\pi \models \psi \ctl{U}\phi$ iff $\pi' \models \phi$ for some suffix $\pi'$ of $\pi$, and $\pi'' \models \phi$ for each path $\pi'' \ne \pi'$ with $\pi \Rightarrow \pi'' \Rightarrow \pi'$
 \end{itemize-tight}
-Here a path is seen as a state, namely the first staet on that path, together with a future that has been chosen already when evaluating an LTL formula on that state. Traditionally, these judgements $\pi\models \phi$ were defined only for infinite paths $\pi$. When also applying them to finite paths, we only have to make one adaptation, namely $\pi \models \mathrm{\mathbf{X}} \phi$ never holds if $\pi$ has only one state. So $\mathrm{\mathbf{X}} \phi$ says that there is a next state, and that $\phi$ holds in it.
+Here a path is seen as a state, namely the first state on that path, together with a future that has been chosen already when evaluating an LTL formula on that state. When applying to finite paths, we have to make one adaptation, namely $\pi \models \mathrm{\mathbf{X}} \phi$ never holds if $\pi$ has only one state. So $\mathrm{\mathbf{X}} \phi$ says that there is a next state, and that $\phi$ holds in it.
 
+\longrule{0.08ex}
 $s \models \phi$ iff $\pi \models \phi$ for all complete paths $\pi$ starting in state $s$. Here a path is \textbf{complete} if it is either infinite or ends in deadlock.
 \end{dfn}
 
-\begin{lma}[Comparing LTL to CTL]{lma:ltl-to-ctl}{}
-	LTL and CTL can be shown to be incomparable by proving that there cannot exist an LTL formula that is equivalent to the CTL formula $\mathrm{\mathbf{AG}} \mathrm{\mathbf{EF}} a$, and by showing that there cannot exist a CTL formula equivalent to the LTL formula $\mathrm{\mathbf{FG}} a$
-\end{lma}
 
-\newpage
+
+\begin{dfn}[X variants]{dfn:x-variant}{}
+	\vspace{-5pt}
+	The variants $\mathrm{CTL}_{-X}$ and $\mathrm{LTL}_{-X}$ are the same thing but without the $X$ operators.
+\end{dfn}
+
 \begin{thm}[Satisfaction of Strong Bisimilarity]{thm:hml-sb}{}
+	\vspace{-5pt}
 	\begin{itemize-zero}
 	    \item Two processes are strongly bisimlar iff they satisfy the same infinitary HML formulas. Therefore, to show that two processes are not strongly bisimilar, it suffices to find an infinitary HML formula that is satisfied by one, but not the other.
 	    \item Two processes $P$ and $Q$ satisfy the same CTL formulas if they are strongly bisimilar. For finitely branching processes, we have ``iff''. For general processes, we have ``iff'' if we use CTL with infinite conjunctions.
@@ -406,10 +535,51 @@ $s \models \phi$ iff $\pi \models \phi$ for all complete paths $\pi$ starting in
 	\end{itemize-zero}
 \end{thm}
 
-\begin{thm}[De Nicola-Vaandrager]{thm:}{}
-	Translates Krikpe structures :D
-	
+\newpage
+
+\section{Other stuff and Algorithms}
+\setcounter{subsection}{1}
+
+\begin{dfn}[Completeness Criteria]{dfn:completeness-criteria}{}
+	\vspace{-5pt}
+	A completeness criterion $D$ is \textbf{stronger} than a criterion $C$ if it rules out more paths as incomplete, i.e. if the set of complete paths according to $D$ is a subset of the set of complete paths according to $C$. If $D$ is stronger than $C$, then $P \models^{c} \phi$ implies $P \models^{D} \phi$ but not necessarily vice versa. For to check $P \models^{D} \phi$ we have to check that $\phi$ holds for all complete paths, and under $D$ there are fewer complete paths than under $C$, so there is less to check.
+\end{dfn}
+
+\begin{thm}[The Completeness Hierarchy]{thm:completeness-hierarchy}{}
+	\vspace{-5pt}
+	The strongest completeness criteron says that no path is complete. We have $P \models^{\infty} \phi$ for all processes $P$ and properties $\phi$.
+
+	The weakest completeness criterion says that all paths are complete, which we call $\emptyset$.
+
+	\vspace{-5pt}
+	\longrule{0.08ex}
+	We define a \textbf{task} as a set of transitions in a Kripke structure. A task $T$ is \textbf{enabled} in a state $s\in S$ if $s$ has an outgoing transition that belongs to the task, \textbf{perpetually enabled} on a path $\pi$ if it is enabled in every state of $\pi$, \textbf{occurs} in $\pi$ if $\pi$ contains a transition that belongs to $T$, and \textbf{relentlessly enabled} on $\pi$ if each suffix of $\pi$ contains a state in which it is enabled. This is the case if the task is enabled in infinitely many states of $\pi$, in a state that occurs infinitely often in $\pi$, or in the last state of a finite $\pi$.
+
+	\vspace{-5pt}
+	\longrule{0.08ex}
+	A \textbf{finite prefix} of a path $\pi$ is the part of $\pi$ from its beginning until a given state. A \textbf{suffix} of a path $\pi$ is the path that remains after you remove a finite prefix of it. Note that if $\pi$ is infinite, then all its suffixes are infinite as well.
+
+	\begin{enumerate-tight}
+	    \item \textbf{Progress}: A path is complete if it is either infinite, or ends in a state in deadlock. Used for CTL/LTL formulae, and for CT semantics.
+		\item \textbf{Justness}: A path is complete 
+		\item \textbf{Weak Fairness}: A path is \textbf{weakly fair} if, for each suffix $\pi'$ of $\pi$, each task that is perpetually enabled on $\pi'$, occurs in $\pi'$. Equivalently, if each task that from some state onwards is perpetually enabled on $\pi'$, occurs infinitely often in $\pi$.
+
+			Weak fairness can be expressed by the LTL formula
+			\[\G(\G(\text{enabled}(T)) \implies \F(\text{occurs}(T)))\]
+			for each task $T$.
+		\item \textbf{Strong Fairness}: A path $\pi$ is \textbf{strongly fair} if for every suffix $\pi'$ of $\pi$, each task that is relentlessly enabled on $\pi'$ occurs on $\pi'$. Equivalently, a path $\pi$ is \textbf{strongly fair} if each task that is relentless enabled on $\pi$ occurs infinitely often in $\pi$.
+
+			Strong fairness can be expressed in LTL as
+			\[\G(\G\F(\text{enabled}(T)) \implies \F(\text{occurs}(T)))\]
+		\item \textbf{Full Fairness}: Rooted BB..? Doesn't count as a completeness criterion though.
+	\end{enumerate-tight}
 \end{thm}
+
+
+% \begin{thm}[De Nicola-Vaandrager]{thm:}{}
+% 	Translates Krikpe structures :D
+%
+% \end{thm}
 
 \begin{dfn}[Partition Refining]{dfn:partition-refining}{}
 	Partition refining is an algorithm to turn a process into its minimal state, making it easier to compare bisimularity. Works with
@@ -457,13 +627,102 @@ $s \models \phi$ iff $\pi \models \phi$ for all complete paths $\pi$ starting in
 \end{dfn}
 
 \begin{dfn}[Alternating Bit Protocol]{dfn:alternating-bit-protocol}{}
-	no idea this works tbh
+% https://q.uiver.app/#q=WzAsMTIsWzAsMiwiMSJdLFswLDQsIjIiXSxbMCw2LCIzIl0sWzIsNCwiNCJdLFs0LDQsIjUiXSxbNiw0LCI3Il0sWzQsNiwiNiJdLFs2LDIsIjgiXSxbNiwwLCI5Il0sWzQsMiwiMTAiXSxbMiwyLCIxMSJdLFsyLDAsIjEyIl0sWzAsMSwicl9BKGQpIiwyXSxbMSwyLCJjX0J6KFxcYm90KSIsMix7ImN1cnZlIjoyfV0sWzIsMSwiY19EKFxcYm90KSBcXFxcY19EKDEpIiwyLHsiY3VydmUiOjJ9XSxbMSwzLCJjX0IoZCwgMCkiXSxbMyw0LCJzX0MoZCkiXSxbNCw1LCJjX0QoMCkiXSxbNCw2LCJjX0QoXFxib3QpIiwyLHsiY3VydmUiOjJ9XSxbNiw0LCJjX0QoXFxib3QpIFxcXFxjX0QoZCwwKSIsMix7ImN1cnZlIjoyfV0sWzUsNywicl9BKGQpIiwyXSxbOCw3LCJjX0QoXFxib3QpIFxcXFxjX0QoMCkiLDAseyJjdXJ2ZSI6LTJ9XSxbNyw4LCJjX0IoXFxib3QpIiwwLHsiY3VydmUiOi0yfV0sWzcsOSwiY19CKGQsMSkiXSxbOSwxMCwic19DKGQpIl0sWzExLDEwLCJjX0QoXFxib3QpIFxcXFxjX0IoZCwxKSIsMCx7ImN1cnZlIjotMn1dLFsxMCwxMSwiY19EKFxcYm90KSIsMCx7ImN1cnZlIjotMn1dLFsxMCwwLCJjX0QoMSkiXV0=
+\[\begin{tikzcd}[cramped]
+	&& 12 &&&& 9 \\
+	\\
+	1 && 11 && 10 && 8 \\
+	\\
+	2 && 4 && 5 && 7 \\
+	\\
+	3 &&&& 6
+	\arrow["\substack{{c} c_D(\bot) \\c_B(d,1) }", curve={height=-12pt}, from=1-3, to=3-3]
+	\arrow["\substack{{c} c_D(\bot) \\c_D(0) }", curve={height=-12pt}, from=1-7, to=3-7]
+	\arrow["{r_A(d)}"', from=3-1, to=5-1]
+	\arrow["{c_D(\bot)}", curve={height=-12pt}, from=3-3, to=1-3]
+	\arrow["{c_D(1)}", from=3-3, to=3-1]
+	\arrow["{s_C(d)}", from=3-5, to=3-3]
+	\arrow["{c_B(\bot)}", curve={height=-12pt}, from=3-7, to=1-7]
+	\arrow["{c_B(d,1)}", from=3-7, to=3-5]
+	\arrow["{c_B(d, 0)}", from=5-1, to=5-3]
+	\arrow["{c_Bz(\bot)}"', curve={height=12pt}, from=5-1, to=7-1]
+	\arrow["{s_C(d)}", from=5-3, to=5-5]
+	\arrow["{c_D(0)}", from=5-5, to=5-7]
+	\arrow["{c_D(\bot)}"', curve={height=12pt}, from=5-5, to=7-5]
+	\arrow["{r_A(d)}"', from=5-7, to=3-7]
+	\arrow["\substack{{c} c_D(\bot) \\c_D(1) }"', curve={height=12pt}, from=7-1, to=5-1]
+	\arrow["\substack{{c} c_D(\bot) \\c_D(d,0) }"', curve={height=12pt}, from=7-5, to=5-5]
+\end{tikzcd}\]
+\textbf{Specification for the Sender}
+\begin{align*}
+	S_{b} &= \sum_{d\in \Delta} r_{A}(d) \cdot T_{db} \\
+	T_{db} &= (s_{B}(d, b) + s_{B}(\bot)) \cdot U_{db}\\
+	U_{db} &= r_{D}(b) \cdot S_{1 - b} + (r_{D}(1-b) + r_{D}(\bot)) \cdot T_{db}
+\end{align*}
+\footnotesize
+In state $S_{b}$, the Sender reads a datum $d$ from channel $A$. Then it proceeds to state $T_{db}$, in which it sends datum $d$ into channel $B$, with the bit $b$ attached to it. However, the pair $(d, b)$ may be distorted by the channel, so that it becomes the error message $\bot$. Next, the system proceeds to state $U_{db}$, in which it expects to receive the acknowledgement $b$ through channel $D$, ensuring that the pair $(d, b)$ has reached the Receiver unscathed. If the correct acknowledgement $b$ is received, then the system proceeds to state $S_{1-b}$, in which it is going to send out a datum with the bit $1 - b$ attached to it. If the acknowledgement is either the wrong bit, $1 - b$ or the error message $\bot$, then the system proceeds to state $T_{db}$, to send the pair $(d, b)$ into channel $B$ once more.
+
+\normalsize
+\textbf{Specification for the Reciever}
+\begin{align*}
+	\begin{split}
+		R_{b} &= \sum_{d'\in \Delta} \{r_{B}(d',b) \cdot s_{C}(d')\cdot Q_{b} + r_{B}(d', 1-b) \cdot Q_{1-b}\}\\
+			  &\qquad+ r_{B}(\bot) \cdot Q_{1-b}
+	\end{split} \\
+	Q_{b} &= (s_{D}(b) + s_{D}(\bot) \cdot R_{1-b})
+\end{align*}
+
+\footnotesize
+\begin{enumerate-zero}
+    \item If in Rb the Receiver reads a pair $(d', b)$ from channel $B$, then this constitutes new information, so the datum $d'$ is sent into channel $C$. Then the Receiver proceeds to state $Q_{b}$, in which it sends acknowledgement $b$ to the Sender via channel $D$. However, this acknowledgement may be distorted by the channel, so that it becomes the error message $\bot$. Next, the Receiver proceeds to state $R_{1-b}$, in which it is expecting to receive a datum with the bit $1 - b$ attached to it.
+	\item If in $R_{b}$ the Receiver reads a pair $(d', 1 - b)$ or an error message $\bot$ from channel $B$, then this does not constitute new information. So then the Receiver proceeds to state $Q_{1-b}$ straight away, to send acknowledgement $1 - b$ to the Sender via channel $D$. However, this acknowledgement may be distorted by the channel, so that it becomes the error message $\bot$. Next, the Receiver proceeds to state $R_{b}$ again.
+\end{enumerate-zero}
+
+
 \end{dfn}
 
 
 \newpage
 
 \section{Example Catalogue}
+
+\begin{xmp}[LTL]{xmp:ltl}{1}
+	\vspace{-5pt}
+    Examples of LTL that hold in the initial state:
+    
+	\vspace{-15pt}
+    \begin{multicols}{2}
+    \begin{enumerate-zero}
+        \item $\G(p \vee q)$ \textcolor{red}{false!}
+        \item $\F\G(p \vee q)$
+        \item $\F(\G p \vee \G q)$ \textcolor{red}{false!}
+        \item $\G(q \to q \U p)$
+        \item $\G((p \wedge \neg q) \to \X q)$ \textcolor{red}{false!}
+        \item $\G((p \wedge q) \to \X (q \U p))$
+    \end{enumerate-zero}
+    
+    \columnbreak
+
+\[\begin{tikzcd}[cramped, column sep=scriptsize, row sep=scriptsize]
+	& {} \\
+	& \circ \\
+	p_{1} && q_{1} \\
+	p_{2} & {q,p} & q_{2} \\
+	& {p,q}
+	\arrow[shorten <=5pt, from=1-2, to=2-2]
+	\arrow[from=2-2, to=3-1]
+	\arrow[from=2-2, to=3-3]
+	\arrow[from=3-1, to=4-1]
+	\arrow[from=3-3, to=4-3]
+	\arrow[from=4-1, to=5-2]
+	\arrow[from=4-2, to=3-1]
+	\arrow[from=4-2, to=3-3]
+	\arrow[from=4-3, to=5-2]
+	\arrow[from=5-2, to=4-2]
+\end{tikzcd}\]
+\vspace{5pt}
+    \end{multicols}
+\end{xmp}
 
 \begin{xmp}[Trace Semantics]{xmp:trace-semantics}{}
 	A process that is PT equivalent but not CT equivalent
@@ -603,6 +862,137 @@ $s \models \phi$ iff $\pi \models \phi$ for all complete paths $\pi$ starting in
 	\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=-12pt}, dashed, from=8-7, to=8-4]
 \end{tikzcd}\]
 \end{xmp}
+
+\begin{xmp}[ACP Represented in Petri Nets]{xmp:petri-nets}{}
+	\textbf{Sequential Composition}
+% https://q.uiver.app/#q=WzAsMjUsWzAsMCwiKFxcYnVsbGV0KSJdLFswLDEsIlthXSJdLFsxLDAsIihcXGJ1bGxldCkiXSxbMSwxLCJbYl0iXSxbMiwxLCJbY10iXSxbMiwwLCIoXFxxdWFkKSJdLFs0LDAsIihcXGJ1bGxldCkiXSxbNCwxLCJbZF0iXSxbNSwwLCIoXFxidWxsZXQpIl0sWzUsMSwiW2VdIl0sWzMsMCwiXFxjZG90Il0sWzEsMiwiKFxcYnVsbGV0KSJdLFsxLDMsIlthXSJdLFsyLDIsIihcXGJ1bGxldCkiXSxbMiwzLCJbYl0iXSxbMywzLCJbY10iXSxbMywyLCIoXFw6XFw6KSJdLFsxLDQsIihcXDpcXDopIl0sWzIsNCwiKFxcOlxcOikiXSxbMyw0LCIoXFw6XFw6KSJdLFsyLDYsIltkXSJdLFszLDYsIltlXSJdLFswLDQsIihcXDpcXDopIl0sWzQsMywiKFxcYnVsbGV0KSJdLFs0LDQsIihcXGJ1bGxldCkiXSxbMCwxXSxbMiwzXSxbMiw0XSxbNCw1XSxbNiw3XSxbOCw5XSxbMTEsMTJdLFsxMywxNF0sWzEzLDE1XSxbMTUsMTZdLFsxMiwxN10sWzE0LDE4XSxbMTUsMTldLFsxNSwxOF0sWzE0LDE5XSxbMTgsMjBdLFsxOSwyMV0sWzEyLDIyXSxbMjIsMjAsIiIsMSx7ImN1cnZlIjoxfV0sWzE3LDIxLCIiLDEseyJjdXJ2ZSI6MX1dLFsyMywxNV0sWzI0LDE1XSxbMjQsMjAsIiIsMSx7ImN1cnZlIjotMX1dLFsyMywyMSwiIiwxLHsiY3VydmUiOi01fV1d
+\[\begin{tikzcd}[cramped, column sep=tiny, row sep=small]
+	{(\bullet)} & {(\bullet)} & {(\quad)} & \cdot & {(\bullet)} & {(\bullet)} \\
+	{[a]} & {[b]} & {[c]} && {[d]} & {[e]} \\
+	& {(\bullet)} & {(\bullet)} & {(\:\:)} \\
+	& {[a]} & {[b]} & {[c]} & {(\bullet)} \\
+	{(\:\:)} & {(\:\:)} & {(\:\:)} & {(\:\:)} & {(\bullet)} \\
+	\\
+	&& {[d]} & {[e]}
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-2, to=2-3]
+	\arrow[from=1-5, to=2-5]
+	\arrow[from=1-6, to=2-6]
+	\arrow[from=2-3, to=1-3]
+	\arrow[from=3-2, to=4-2]
+	\arrow[from=3-3, to=4-3]
+	\arrow[from=3-3, to=4-4]
+	\arrow[from=4-2, to=5-1]
+	\arrow[from=4-2, to=5-2]
+	\arrow[from=4-3, to=5-3]
+	\arrow[from=4-3, to=5-4]
+	\arrow[from=4-4, to=3-4]
+	\arrow[from=4-4, to=5-3]
+	\arrow[from=4-4, to=5-4]
+	\arrow[from=4-5, to=4-4]
+	\arrow[curve={height=-30pt}, from=4-5, to=7-4]
+	\arrow[curve={height=6pt}, from=5-1, to=7-3]
+	\arrow[curve={height=6pt}, from=5-2, to=7-4]
+	\arrow[from=5-3, to=7-3]
+	\arrow[from=5-4, to=7-4]
+	\arrow[from=5-5, to=4-4]
+	\arrow[curve={height=-6pt}, from=5-5, to=7-3]
+\end{tikzcd}\]
+
+\textbf{Alternative Composition}
+% https://q.uiver.app/#q=WzAsMzAsWzMsMCwiKFxcYnVsbGV0KSJdLFsyLDAsIlthXSJdLFs1LDAsIihcXGJ1bGxldCkiXSxbNSwxLCJbYl0iXSxbNiwxLCJbYl0iXSxbNiwwLCIoXFxidWxsZXQpIl0sWzgsNCwiKFxcYnVsbGV0KSJdLFs3LDQsIlthXSJdLFs5LDQsIihcXGJ1bGxldCkiXSxbOSw1LCJbY10iXSxbOCw1LCJbYl0iXSxbNyw1LCIoXFw6XFw6KSJdLFs5LDYsIihcXDpcXDopIl0sWzYsMiwiKFxcOlxcOikiXSxbNiwzLCJbYV0iXSxbNCwwLCIrIl0sWzYsNSwiW2FdIl0sWzksNywiW2FdIl0sWzUsNCwiPSJdLFsxLDQsIihcXGJ1bGxldCkiXSxbMSw1LCJbYV0iXSxbMSw2LCIoXFw6XFw6KSJdLFswLDYsIlthXSJdLFszLDQsIihcXGJ1bGxldCkiXSxbMyw1LCJbYl0iXSxbNCw0LCIoXFxidWxsZXQpIl0sWzQsNSwiW2JdIl0sWzQsNiwiKFxcOlxcOikiXSxbNCw3LCJbYV0iXSxbMiw0LCIrIl0sWzAsMSwiIiwwLHsiY3VydmUiOi0yfV0sWzIsM10sWzYsNywiIiwyLHsiY3VydmUiOjJ9XSxbOCw5XSxbNywxMV0sWzksMTJdLFs1LDRdLFs0LDEzXSxbMTMsMTRdLFsxMSwxNiwiIiwwLHsiY3VydmUiOi0yfV0sWzEsMCwiIiwwLHsiY3VydmUiOi0yfV0sWzE5LDIwXSxbMjEsMjIsIiIsMCx7ImN1cnZlIjotMn1dLFsyMiwyMSwiIiwwLHsiY3VydmUiOi0yfV0sWzIzLDI0XSxbMjYsMjddLFsyNywyOF0sWzYsMTBdLFsxMiwxN10sWzE2LDExLCIiLDAseyJjdXJ2ZSI6LTJ9XSxbOCw3LCIiLDIseyJjdXJ2ZSI6NH1dLFsyMCwyMV0sWzI1LDI2XV0=
+\[\begin{tikzcd}[cramped,column sep=tiny,row sep=small]
+	&& {[a]} & {(\bullet)} & {+} & {(\bullet)} & {(\bullet)} \\
+	&&&&& {[b]} & {[b]} \\
+	&&&&&& {(\:\:)} \\
+	&&&&&& {[a]} \\
+	& {(\bullet)} & {+} & {(\bullet)} & {(\bullet)} & {=} && {[a]} & {(\bullet)} & {(\bullet)} \\
+	& {[a]} && {[b]} & {[b]} && {[a]} & {(\:\:)} & {[b]} & {[c]} \\
+	{[a]} & {(\:\:)} &&& {(\:\:)} &&&&& {(\:\:)} \\
+	&&&& {[a]} &&&&& {[a]}
+	\arrow[curve={height=-12pt}, from=1-3, to=1-4]
+	\arrow[curve={height=-12pt}, from=1-4, to=1-3]
+	\arrow[from=1-6, to=2-6]
+	\arrow[from=1-7, to=2-7]
+	\arrow[from=2-7, to=3-7]
+	\arrow[from=3-7, to=4-7]
+	\arrow[from=5-2, to=6-2]
+	\arrow[from=5-4, to=6-4]
+	\arrow[from=5-5, to=6-5]
+	\arrow[from=5-8, to=6-8]
+	\arrow[curve={height=12pt}, from=5-9, to=5-8]
+	\arrow[from=5-9, to=6-9]
+	\arrow[curve={height=24pt}, from=5-10, to=5-8]
+	\arrow[from=5-10, to=6-10]
+	\arrow[from=6-2, to=7-2]
+	\arrow[from=6-5, to=7-5]
+	\arrow[curve={height=-12pt}, from=6-7, to=6-8]
+	\arrow[curve={height=-12pt}, from=6-8, to=6-7]
+	\arrow[from=6-10, to=7-10]
+	\arrow[curve={height=-12pt}, from=7-1, to=7-2]
+	\arrow[curve={height=-12pt}, from=7-2, to=7-1]
+	\arrow[from=7-5, to=8-5]
+	\arrow[from=7-10, to=8-10]
+\end{tikzcd}\]
+
+\textbf{Parallel Composition}
+% https://q.uiver.app/#q=WzAsMzUsWzEsMCwiKFxcYnVsbGV0KSJdLFsxLDEsIlthXSJdLFszLDAsIihcXGJ1bGxldCkiXSxbMywxLCJbYl0iXSxbMywzLCJbYl0iXSxbMywyLCIoXFw6XFw6KSJdLFswLDQsIihcXGJ1bGxldCkiXSxbMCw1LCJbYV0iXSxbMiw0LCIoXFxidWxsZXQpIl0sWzEsNSwiW2NdIl0sWzIsNSwiW2JdIl0sWzAsNiwiKFxcOlxcOikiXSxbMiw2LCIoXFw6XFw6KSJdLFsxLDgsIltjXSJdLFsyLDcsIltiXSJdLFsxLDIsIihcXDpcXDopIl0sWzEsMywiW2JdIl0sWzQsMywiKFxcOlxcOikiXSxbNSwzLCJbYV0iXSxbMiwwLCJcXG1pZFxcbWlkIl0sWzAsNywiW2JdIl0sWzEsNywiW2NdIl0sWzIsOCwiKFxcOlxcOikiXSxbMiw5LCJbYV0iXSxbNCw0LCIoXFxidWxsZXQpIl0sWzUsNSwiW2NdIl0sWzYsNCwiKFxcYnVsbGV0KSJdLFs1LDcsIltjXSJdLFs0LDYsIihcXDpcXDopIl0sWzYsNiwiKFxcOlxcOikiXSxbNiw4LCIoXFw6XFw6KSJdLFs1LDgsIltjXSJdLFszLDQsIj0iXSxbMCwwLCJcXHBhcnRpYWxfSCgiXSxbNCwwLCIpIl0sWzAsMV0sWzIsM10sWzYsN10sWzgsOV0sWzgsMTBdLFs3LDExXSxbMTAsMTJdLFs5LDEyXSxbMTIsMTRdLFsxLDE1XSxbMTUsMTZdLFszLDVdLFs1LDRdLFs0LDE3XSxbMTcsMThdLFs2LDldLFs5LDExXSxbMTEsMjBdLFsxMiwyMV0sWzExLDEzXSxbMjEsMTFdLFsxNCwyMl0sWzIyLDEzXSxbMjIsMjNdLFsyMSwyMl0sWzYsMjFdLFsyNCwyNV0sWzI2LDI1XSxbMjQsMjddLFsyNywyOF0sWzI1LDI4XSxbMjUsMjldLFsyOSwyN10sWzI3LDMwXSxbMzAsMzFdLFsyOCwzMV1d
+\[\begin{tikzcd}[cramped,column sep=tiny,row sep=small]
+	{\partial_H(} & {(\bullet)} & {\mid\mid} & {(\bullet)} & {)} \\
+	& {[a]} && {[b]} \\
+	& {(\:\:)} && {(\:\:)} \\
+	& {[b]} && {[b]} & {(\:\:)} & {[a]} \\
+	{(\bullet)} && {(\bullet)} & {=} & {(\bullet)} && {(\bullet)} \\
+	{[a]} & {[c]} & {[b]} &&& {[c]} \\
+	{(\:\:)} && {(\:\:)} && {(\:\:)} && {(\:\:)} \\
+	{[b]} & {[c]} & {[b]} &&& {[c]} \\
+	& {[c]} & {(\:\:)} &&& {[c]} & {(\:\:)} \\
+	&& {[a]}
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-4, to=2-4]
+	\arrow[from=2-2, to=3-2]
+	\arrow[from=2-4, to=3-4]
+	\arrow[from=3-2, to=4-2]
+	\arrow[from=3-4, to=4-4]
+	\arrow[from=4-4, to=4-5]
+	\arrow[from=4-5, to=4-6]
+	\arrow[from=5-1, to=6-1]
+	\arrow[from=5-1, to=6-2]
+	\arrow[from=5-1, to=8-2]
+	\arrow[from=5-3, to=6-2]
+	\arrow[from=5-3, to=6-3]
+	\arrow[from=5-5, to=6-6]
+	\arrow[from=5-5, to=8-6]
+	\arrow[from=5-7, to=6-6]
+	\arrow[from=6-1, to=7-1]
+	\arrow[from=6-2, to=7-1]
+	\arrow[from=6-2, to=7-3]
+	\arrow[from=6-3, to=7-3]
+	\arrow[from=6-6, to=7-5]
+	\arrow[from=6-6, to=7-7]
+	\arrow[from=7-1, to=8-1]
+	\arrow[from=7-1, to=9-2]
+	\arrow[from=7-3, to=8-2]
+	\arrow[from=7-3, to=8-3]
+	\arrow[from=7-5, to=9-6]
+	\arrow[from=7-7, to=8-6]
+	\arrow[from=8-2, to=7-1]
+	\arrow[from=8-2, to=9-3]
+	\arrow[from=8-3, to=9-3]
+	\arrow[from=8-6, to=7-5]
+	\arrow[from=8-6, to=9-7]
+	\arrow[from=9-3, to=9-2]
+	\arrow[from=9-3, to=10-3]
+	\arrow[from=9-7, to=9-6]
+\end{tikzcd}\]
+
+\end{xmp}
+
+
+
+\newpage
+
 
 \lipsum[1-12]
 
