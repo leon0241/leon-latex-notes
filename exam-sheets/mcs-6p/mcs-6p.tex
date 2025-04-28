@@ -724,10 +724,13 @@ In state $S_{b}$, the Sender reads a datum $d$ from channel $A$. Then it proceed
     \end{multicols}
 \end{xmp}
 
-\begin{xmp}[Trace Semantics]{xmp:trace-semantics}{}
-	A process that is PT equivalent but not CT equivalent
+\vspace{-7pt}
+\begin{xmp}[Trace and Bisimulation Semantics]{xmp:trace-semantics}{}
+	\vspace{-15pt}
+	\begin{multicols}{2}
+	PT but not CT
 	% https://q.uiver.app/#q=WzAsOSxbMSwxLCJcXGJ1bGxldCJdLFswLDIsIlxcYnVsbGV0Il0sWzAsMywiXFxidWxsZXQiXSxbMiwyLCJcXGJ1bGxldCJdLFs0LDEsIlxcYnVsbGV0Il0sWzQsMiwiXFxidWxsZXQiXSxbNCwzLCJcXGJ1bGxldCJdLFsxLDBdLFs0LDBdLFswLDEsImEiLDJdLFsxLDIsImEiXSxbMCwzLCJhIl0sWzQsNSwiYSIsMl0sWzUsNiwiYSIsMl0sWzcsMCwiIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjUwfX1dLFs4LDQsIiIsMix7InNob3J0ZW4iOnsic291cmNlIjo1MH19XV0=
-	\[\begin{tikzcd}[cramped, column sep=scriptsize]
+	\[\begin{tikzcd}[cramped, column sep=small, row sep=scriptsize]
 			& {} &&& {} \\
 			& \bullet &&& \bullet \\
 			\bullet && \bullet && \bullet \\
@@ -741,10 +744,10 @@ In state $S_{b}$, the Sender reads a datum $d$ from channel $A$. Then it proceed
 			\arrow["a"', from=3-5, to=4-5]
 		\end{tikzcd}\]
 
-	A process that is CT equivalent but not Bisimulation equivalent
+	CT but not Bisimulation
 
 	% https://q.uiver.app/#q=WzAsMTEsWzUsMSwiXFxjaXJjIl0sWzQsMiwiXFxidWxsZXQiXSxbNiwyLCJcXGJ1bGxldCJdLFs2LDMsIlxcYnVsbGV0Il0sWzQsMywiXFxidWxsZXQiXSxbMSwxLCJcXGNpcmMiXSxbMSwyLCJcXGJ1bGxldCJdLFsyLDMsIlxcYnVsbGV0Il0sWzAsMywiXFxidWxsZXQiXSxbNSwwXSxbMSwwXSxbMCwxLCJhIl0sWzAsMiwiYSIsMl0sWzIsMywiYyIsMl0sWzEsNCwiYiJdLFs1LDYsImEiXSxbNiw3LCJjIl0sWzYsOCwiYiJdLFs5LDAsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjo1MH19XSxbMTAsNSwiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjUwfX1dXQ==
-	\[\begin{tikzcd}[cramped]
+	\[\begin{tikzcd}[cramped, column sep=small, row sep=scriptsize]
 			& {} &&&& {} \\
 			& \circ &&&& \circ \\
 			& \bullet &&& \bullet && \bullet \\
@@ -759,16 +762,12 @@ In state $S_{b}$, the Sender reads a datum $d$ from channel $A$. Then it proceed
 			\arrow["b", from=3-5, to=4-5]
 			\arrow["c"', from=3-7, to=4-7]
 		\end{tikzcd}\]
+	\end{multicols}
 
-\end{xmp}
-
-
-
-\begin{xmp}[Bisimulation Semantics]{xmp:bisim-semantics}{}
-
-	Two processes that are Branching Bisimulation equivalent
+	\begin{multicols}{2}
+	BB and RBB
 	% https://q.uiver.app/#q=WzAsNyxbMSwyLCJcXGJ1bGxldCJdLFszLDIsIlxcYnVsbGV0Il0sWzEsMCwiXFxidWxsZXQiXSxbMywwLCJcXGJ1bGxldCJdLFs1LDIsIlxcYnVsbGV0Il0sWzAsMl0sWzAsMF0sWzAsMSwiYSIsMl0sWzIsMywiYSJdLFs1LDAsIiIsMix7InNob3J0ZW4iOnsic291cmNlIjo1MH19XSxbNiwyLCIiLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6NTB9fV0sWzAsMiwiIiwwLHsiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSw0LCJcXHRhdSJdLFszLDEsIiIsMCx7ImNvbG91ciI6WzI0MCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNCwiIiwwLHsiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
-	\[\begin{tikzcd}[cramped, column sep=scriptsize]
+	\[\begin{tikzcd}[cramped, column sep=scriptsize, row sep=scriptsize]
 			{} & \bullet && \bullet \\
 			\\
 			{} & \bullet && \bullet && \bullet
@@ -782,9 +781,9 @@ In state $S_{b}$, the Sender reads a datum $d$ from channel $A$. Then it proceed
 			\arrow["\tau", from=3-4, to=3-6]
 		\end{tikzcd}\]
 
-		Two processes that are Branching Bisimulation equivalent but not Rooted BB equivalent
+		BB but not RBB
 % https://q.uiver.app/#q=WzAsNyxbMSwyLCJcXGJ1bGxldCJdLFszLDIsIlxcYnVsbGV0Il0sWzEsMCwiXFxidWxsZXQiXSxbMywwLCJcXGJ1bGxldCJdLFs1LDIsIlxcYnVsbGV0Il0sWzAsMl0sWzAsMF0sWzAsMSwiXFx0YXUiLDJdLFsyLDMsImEiXSxbNSwwLCIiLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6NTB9fV0sWzYsMiwiIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjUwfX1dLFswLDIsIiIsMCx7ImNvbG91ciI6WzI0MCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsNCwiYSJdLFszLDQsIiIsMCx7ImNvbG91ciI6WzI0MCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMSwiIiwwLHsiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
-\[\begin{tikzcd}[cramped, column sep=scriptsize]
+\[\begin{tikzcd}[cramped, column sep=scriptsize, row sep=scriptsize]
 	{} & \bullet && \bullet \\
 	\\
 	{} & \bullet && \bullet && \bullet
@@ -797,31 +796,30 @@ In state $S_{b}$, the Sender reads a datum $d$ from channel $A$. Then it proceed
 	\arrow["\tau"', from=3-2, to=3-4]
 	\arrow["a", from=3-4, to=3-6]
 \end{tikzcd}\]
+	\end{multicols}
 
-	
-	Two processes that are Weak Bisimulation equivalent but not Branching Bisimulation equivalent?
-	% https://q.uiver.app/#q=WzAsOSxbMSwwLCJcXGJ1bGxldCJdLFsxLDEsIlxcYnVsbGV0Il0sWzAsMiwiXFxidWxsZXQiXSxbMiwyLCJcXGJ1bGxldCJdLFs1LDAsIlxcYnVsbGV0Il0sWzQsMSwiXFxidWxsZXQiXSxbNiwxLCJcXGJ1bGxldCJdLFs0LDIsIlxcYnVsbGV0Il0sWzYsMiwiXFxidWxsZXQiXSxbMCwxLCJcXHRhdSJdLFsxLDIsImEiLDJdLFsxLDMsImIiXSxbNCw1LCJcXHRhdSIsMl0sWzQsNiwiXFx0YXUiXSxbNSw3LCJhIiwyXSxbNiw4LCJiIl0sWzAsNCwiIiwyLHsiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw3LCIiLDEseyJjdXJ2ZSI6MiwiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMyw4LCIiLDEseyJjdXJ2ZSI6MiwiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSw1LCIiLDEseyJjb2xvdXIiOlsyNDAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDEsIiIsMSx7ImN1cnZlIjotMiwiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
-	\[\begin{tikzcd}[cramped, column sep=scriptsize]
-			& \bullet &&&& \bullet \\
-			& \bullet &&& \bullet && \bullet \\
-			\bullet && \bullet && \bullet && \bullet
-			\arrow[color={rgb,255:red,92;green,92;blue,214}, dashed, no head, from=1-2, to=1-6]
-			\arrow["\tau", from=1-2, to=2-2]
-			\arrow["\tau"', from=1-6, to=2-5]
-			\arrow["\tau", from=1-6, to=2-7]
-			\arrow[color={rgb,255:red,92;green,92;blue,214}, dashed, no head, from=2-2, to=2-5]
-			\arrow["a"', from=2-2, to=3-1]
-			\arrow["b", from=2-2, to=3-3]
-			\arrow["a"', from=2-5, to=3-5]
-			\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=-12pt}, dashed, no head, from=2-7, to=2-2]
-			\arrow["b", from=2-7, to=3-7]
-			\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=12pt}, dashed, no head, from=3-1, to=3-5]
-			\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=12pt}, dashed, no head, from=3-3, to=3-7]
-		\end{tikzcd}\]
+	\vspace{-5pt}
+	Weak Bisimulation and Branching Bisimulation Counterexample
+% https://q.uiver.app/#q=WzAsOCxbMCwwLCJcXGJ1bGxldCJdLFswLDIsIlxcYnVsbGV0Il0sWzIsMCwiXFxidWxsZXQiXSxbMiwyLCJcXGJ1bGxldCJdLFs0LDAsIlxcYnVsbGV0Il0sWzQsMiwiXFxidWxsZXQiXSxbNiwwLCJcXGJ1bGxldCJdLFs2LDIsIlxcYnVsbGV0Il0sWzAsMSwiZCJdLFswLDIsImEiLDJdLFsyLDMsImUiLDJdLFsyLDQsIlxcdGF1IiwyXSxbNCw1LCJmIiwyXSxbNCw2LCJiIiwyXSxbNiw3LCJnIiwyXSxbMCw0LCJhIiwwLHsiY3VydmUiOi00LCJjb2xvdXIiOlswLDYwLDYwXX0sWzAsNjAsNjAsMV1dLFsyLDYsImIiLDAseyJjdXJ2ZSI6LTQsImNvbG91ciI6WzAsNjAsNjBdfSxbMCw2MCw2MCwxXV1d
+\[\begin{tikzcd}[cramped, column sep=scriptsize, row sep=scriptsize]
+	\bullet && \bullet && \bullet && \bullet \\
+	\\
+	\bullet && \bullet && \bullet && \bullet
+	\arrow["a"', from=1-1, to=1-3]
+	\arrow["a", color={rgb,255:red,214;green,92;blue,92}, curve={height=-24pt}, from=1-1, to=1-5]
+	\arrow["d", from=1-1, to=3-1]
+	\arrow["\tau"', from=1-3, to=1-5]
+	\arrow["b", color={rgb,255:red,214;green,92;blue,92}, curve={height=-24pt}, from=1-3, to=1-7]
+	\arrow["e"', from=1-3, to=3-3]
+	\arrow["b"', from=1-5, to=1-7]
+	\arrow["f"', from=1-5, to=3-5]
+	\arrow["g"', from=1-7, to=3-7]
+\end{tikzcd}\]
 
-		Two processes that are Simulation equivalent but not Bisimulation equivalent
+		Simulation equivalent but not Bisimulation equivalent
+		\vspace{-5pt}
 % https://q.uiver.app/#q=WzAsMjQsWzUsMiwiXFxidWxsZXQiXSxbNCwzLCJcXGJ1bGxldCJdLFs1LDEsIlxcYnVsbGV0Il0sWzYsMywiXFxidWxsZXQiXSxbMiwyLCJcXGJ1bGxldCJdLFszLDMsIlxcYnVsbGV0Il0sWzEsMywiXFxidWxsZXQiXSxbMSwxLCJcXGJ1bGxldCJdLFswLDIsIlxcYnVsbGV0Il0sWzAsMywiXFxidWxsZXQiXSxbMSwwXSxbNSwwXSxbMSw0XSxbMSw1LCJcXGJ1bGxldCJdLFsyLDYsIlxcYnVsbGV0Il0sWzMsNywiXFxidWxsZXQiXSxbMSw3LCJcXGJ1bGxldCJdLFswLDYsIlxcYnVsbGV0Il0sWzAsNywiXFxidWxsZXQiXSxbNSw0XSxbNSw1LCJcXGJ1bGxldCJdLFs1LDYsIlxcYnVsbGV0Il0sWzQsNywiXFxidWxsZXQiXSxbNiw3LCJcXGJ1bGxldCJdLFswLDEsImIiLDJdLFsyLDAsImEiXSxbMCwzLCJjIl0sWzQsNSwiYyJdLFs0LDYsImIiLDJdLFs3LDQsImEiXSxbNyw4LCJhIiwyXSxbOCw5LCJiIiwyXSxbMTAsNywiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjUwfX1dLFsxMSwyLCIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6NTB9fV0sWzcsMiwiIiwwLHsiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzQsMCwiIiwwLHsiY3VydmUiOjIsImNvbG91ciI6WzI0MCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs4LDAsIiIsMCx7ImN1cnZlIjotMiwiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzksMSwiIiwyLHsiY3VydmUiOjMsImNvbG91ciI6WzI0MCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs1LDMsIiIsMSx7ImN1cnZlIjozLCJjb2xvdXIiOlsyNDAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNiwxLCIiLDEseyJjdXJ2ZSI6LTIsImNvbG91ciI6WzI0MCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxMiwxMywiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjUwfX1dLFsxMywxNCwiYSJdLFsxNCwxNSwiYyJdLFsxNCwxNiwiYiIsMl0sWzEzLDE3LCJhIiwyXSxbMTcsMTgsImIiLDJdLFsxOSwyMCwiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjUwfX1dLFsyMCwyMSwiYSJdLFsyMSwyMiwiYiIsMl0sWzIxLDIzLCJjIl0sWzIwLDEzLCIiLDAseyJjb2xvdXIiOlsyNDAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMjEsMTQsIiIsMSx7ImNvbG91ciI6WzI0MCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsyMiwxNiwiIiwxLHsiY3VydmUiOi0yLCJjb2xvdXIiOlsyNDAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMjMsMTUsIiIsMSx7ImN1cnZlIjotMiwiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
-\[\begin{tikzcd}[cramped, column sep=scriptsize]
+\[\begin{tikzcd}[cramped, column sep=small, row sep=scriptsize]
 	& {} &&&& {} \\
 	& \bullet &&&& \bullet \\
 	\bullet && \bullet &&& \bullet \\
@@ -989,12 +987,263 @@ In state $S_{b}$, the Sender reads a datum $d$ from channel $A$. Then it proceed
 
 \end{xmp}
 
+\begin{xmp}[HML]{xmp:hml}{}
+    Consider the HML formula
+    \[\phi = [a]([b]\langle c \rangle \top \wedge \langle b \rangle[a]\bot)\]
+    \begin{itemize}
+        \item An example process $P$ that satisfies $\phi$ and an example process $Q$ that does not is shown
+% https://q.uiver.app/#q=WzAsOCxbMSwwLCJcXGNpcmMiXSxbMiwwLCJcXGJ1bGxldCJdLFszLDAsIlxcYnVsbGV0Il0sWzQsMCwiXFxidWxsZXQiXSxbMCwwLCJQIl0sWzYsMCwiUSJdLFs3LDAsIlxcY2lyYyJdLFs4LDAsIlxcYnVsbGV0Il0sWzAsMSwiYSJdLFsxLDIsImIiXSxbMiwzLCJjIl0sWzYsNywiYSJdXQ==
+\[\begin{tikzcd}[cramped, column sep=scriptsize]
+	P & \circ & \bullet & \bullet & \bullet && Q & \circ & \bullet
+	\arrow["a", from=1-2, to=1-3]
+	\arrow["b", from=1-3, to=1-4]
+	\arrow["c", from=1-4, to=1-5]
+	\arrow["a", from=1-8, to=1-9]
+\end{tikzcd}\]
+        \item Another HML formula without the negation symbol, that holds for all processes for which $\phi$ does not hold:
+\[\phi' = [a](\langle b \rangle \langle c \rangle \bot \vee [b]\langle a \rangle \top)\]
+i.e. ``For all $a$ traces, either there exists no $b$ action followed by a $c$ action, or all $b$ actions aren't followed by an $a$ action''
+    \end{itemize}
+\end{xmp}
 
+\begin{xmp}[More HML]{xmp:more-hml}{}
+	The following counterexamples work in the LHS but not the RHS.
+
+	\begin{multicols}{2}
+		Counterexample 2
+\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=small]
+                \& \circ \&\&\& \circ \\
+                \bullet \&\& \bullet \&\& \bullet \\
+                \bullet \&\&\&\& \bullet
+                \arrow["a"', from=1-2, to=2-1]
+                \arrow["a", from=1-2, to=2-3]
+                \arrow["a"', from=1-5, to=2-5]
+                \arrow["b"', from=2-1, to=3-1]
+                \arrow["b"', from=2-5, to=3-5]
+        \end{tikzcd}
+
+		Counterexample 3
+\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=tiny]
+                \& \circ \&\&\&\&\& \circ \\
+                \bullet \&\& \bullet \&\&\&\& \bullet \\
+                \bullet \& \bullet \&\& \bullet \&\& \bullet \&\& \bullet
+                \arrow["a"', from=1-2, to=2-1]
+                \arrow["a", from=1-2, to=2-3]
+                \arrow["a"', from=1-7, to=2-7]
+                \arrow["b"', from=2-1, to=3-1]
+                \arrow["b"', from=2-3, to=3-2]
+                \arrow["c", from=2-3, to=3-4]
+                \arrow["b"', from=2-7, to=3-6]
+                \arrow["c", from=2-7, to=3-8]
+        \end{tikzcd}
+	\end{multicols}
+
+\textbf{Counterexample 2}: $\langle a \rangle [b] \bot$
+
+\textbf{Counterexample 3}: $\langle a \rangle[c] \bot$
+
+\[\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=small]
+	\bullet \&\& \circ \& \dots \&\&\& \circ \& \dots \\
+	\& \bullet \& \bullet \& \bullet \&\& \bullet \& \bullet \& \bullet \\
+	\& \bullet \& \bullet \& \bullet \&\& \bullet \& \bullet \& \bullet
+	\arrow["a"', from=1-3, to=1-1]
+	\arrow["a"', from=1-3, to=2-2]
+	\arrow["a", from=1-3, to=2-3]
+	\arrow[dashed, from=1-3, to=2-4]
+	\arrow["a"', from=1-7, to=2-6]
+	\arrow["a"', from=1-7, to=2-7]
+	\arrow[dashed, from=1-7, to=2-8]
+	\arrow["{b_1}"', from=2-2, to=3-2]
+	\arrow["{b_2}"', from=2-3, to=3-3]
+	\arrow[dashed, from=2-4, to=3-4]
+	\arrow["{b_1}"', from=2-6, to=3-6]
+	\arrow["{b_2}"', from=2-7, to=3-7]
+	\arrow[dashed, from=2-8, to=3-8]
+\end{tikzcd}\]
+
+\textbf{Counterexample 4}: $\langle a \rangle [\mathrm{Act}] \bot$
+
+\[\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=tiny]
+	\&\& \circ \&\&\&\&\& \circ \\
+	\& \bullet \&\& \bullet \&\&\& \bullet \&\& \bullet \\
+	\bullet \& \bullet \&\& \bullet \& \bullet \& \bullet \& \bullet \&\& \bullet \& \bullet \\
+	\& \bullet \&\& \bullet \&\&\& \bullet \&\& \bullet
+	\arrow["a"', from=1-3, to=2-2]
+	\arrow["a", from=1-3, to=2-4]
+	\arrow["a"', from=1-8, to=2-7]
+	\arrow["a", from=1-8, to=2-9]
+	\arrow["b"', from=2-2, to=3-1]
+	\arrow["c", from=2-2, to=3-2]
+	\arrow["c", from=2-4, to=3-4]
+	\arrow["f", from=2-4, to=3-5]
+	\arrow["b"', from=2-7, to=3-6]
+	\arrow["c", from=2-7, to=3-7]
+	\arrow["c", from=2-9, to=3-9]
+	\arrow["f", from=2-9, to=3-10]
+	\arrow["d", from=3-2, to=4-2]
+	\arrow["e", from=3-4, to=4-4]
+	\arrow["e", from=3-7, to=4-7]
+	\arrow["d", from=3-9, to=4-9]
+\end{tikzcd}\]
+ 
+\textbf{Counterexample 5}: $\langle a \rangle (\langle b \rangle \top \wedge \langle c \rangle \langle d \rangle \top)$
+
+\[\begin{tikzcd}[cramped,column sep=small]
+	& \circ &&&& \circ \\
+	\bullet && \bullet && \bullet & \bullet & \bullet \\
+	\bullet && \bullet && \bullet && \bullet
+	\arrow["a"', from=1-2, to=2-1]
+	\arrow["a", from=1-2, to=2-3]
+	\arrow["a"', from=1-6, to=2-5]
+	\arrow["a", from=1-6, to=2-6]
+	\arrow["a", from=1-6, to=2-7]
+	\arrow["b"', from=2-1, to=3-1]
+	\arrow["c", from=2-3, to=3-3]
+	\arrow["b"', from=2-5, to=3-5]
+	\arrow["b"', from=2-6, to=3-5]
+	\arrow["c", from=2-6, to=3-7]
+	\arrow["c", from=2-7, to=3-7]
+\end{tikzcd}\]
+
+\textbf{Counterexample 6}: $ [a]([b]\bot \vee [c]\bot) $
+
+\end{xmp}
 
 \newpage
 
+\begin{xmp}[Specification of 2-bit buffer]{xmp:2bitbuffer}{}
+	\setlength{\columnseprule}{0.5pt}
+	\begin{multicols}{2}
+	The $2$-bit buffer is defined as so:
+	\begin{align*}
+		Q_{\epsilon} &= \sum_{d\in D} r(d). Q_{d} \\
+		Q_{e} &= \sum_{d\in D} r(d). Q_{de} + \overline{s}(d) . Q_{\epsilon} \\
+		Q_{de} &= \overline{s}(e) . Q_{d}
+	\end{align*}
 
-\lipsum[1-12]
+	\columnbreak
+
+	The $1$-bit buffer is defined as so:
+	\begin{align*}
+		B_{\epsilon} &= \sum_{d\in D} r(d). B_{d} \\
+		B_{d} &= \overline{s}(d) . B_{\epsilon}
+	\end{align*}
+	\end{multicols}
+
+	An implementation of $Q_{\epsilon}$ in term of a one bit bufffer is
+	\[Q_{\epsilon} := (B_{\epsilon}[c / s] \mid B_{\epsilon} [c / r]) \backslash c\]
+	where $[c / s]$ is all actions of $s$ replaced with $c$.
+
+	\textbf{Petri Net of 2-bit Protocol}
+% https://q.uiver.app/#q=WzAsMTksWzAsMywiXFxlcHNpbG9uOiAoXFxidWxsZXQpIl0sWzIsMiwiW3IoMCldIixbMjQwLDYwLDYwLDFdXSxbMywyLCJcXGVwc2lsb24wOihcXDpcXDopIl0sWzIsNCwiW3IoMSldIixbMjQwLDYwLDYwLDFdXSxbMyw0LCJcXGVwc2lsb24xOiAoXFw6XFw6KSJdLFsyLDEsIltcXG92ZXJsaW5le3N9KDApXSIsWzAsNjAsNjAsMV1dLFsyLDUsIltcXG92ZXJsaW5le3N9KDEpXSIsWzAsNjAsNjAsMV1dLFs0LDIsIltyKDApXSIsWzI0MCw2MCw2MCwxXV0sWzUsMSwiMDA6KFxcOlxcOikiXSxbNCwxLCJbXFxvdmVybGluZXtzfSgwKV0iLFswLDYwLDYwLDFdXSxbNCw0LCJbcigxKV0iLFsyNDAsNjAsNjAsMV1dLFs1LDUsIjExOihcXDpcXDopIl0sWzQsNSwiW1xcb3ZlcmxpbmV7c30oMSldIixbMCw2MCw2MCwxXV0sWzQsMCwiW3IoMSldIixbMjQwLDYwLDYwLDFdXSxbNiwyLCIxMDooXFw6XFw6KSJdLFs1LDIsIltcXG92ZXJsaW5le3N9KDEpXSIsWzAsNjAsNjAsMV1dLFs0LDYsIltyKDApXSIsWzI0MCw2MCw2MCwxXV0sWzYsNCwiMDE6KFxcOlxcOikiXSxbNSw0LCJbXFxvdmVybGluZXtzfSgwKV0iLFswLDYwLDYwLDFdXSxbMCwxLCIiLDAseyJjb2xvdXIiOlsyNDAsNjAsNjBdfV0sWzEsMiwiIiwwLHsiY29sb3VyIjpbMjQwLDYwLDYwXX1dLFswLDMsIiIsMix7ImNvbG91ciI6WzI0MCw2MCw2MF19XSxbMyw0LCIiLDIseyJjb2xvdXIiOlsyNDAsNjAsNjBdfV0sWzIsNSwiIiwwLHsiY29sb3VyIjpbMCw2MCw2MF19XSxbNSwwLCIiLDAseyJjdXJ2ZSI6MiwiY29sb3VyIjpbMCw2MCw2MF19XSxbNiwwLCIiLDIseyJjdXJ2ZSI6LTMsImNvbG91ciI6WzAsNjAsNjBdfV0sWzIsNywiIiwyLHsiY29sb3VyIjpbMjQwLDYwLDYwXX1dLFs3LDgsIiIsMix7ImNvbG91ciI6WzI0MCw2MCw2MF19XSxbOCw5LCIiLDIseyJjb2xvdXIiOlswLDYwLDYwXX1dLFs5LDIsIiIsMix7ImNvbG91ciI6WzAsNjAsNjBdfV0sWzQsMTAsIiIsMix7ImNvbG91ciI6WzI0MCw2MCw2MF19XSxbMTAsMTEsIiIsMix7ImNvbG91ciI6WzI0MCw2MCw2MF19XSxbMTEsMTIsIiIsMix7ImNvbG91ciI6WzAsNjAsNjBdfV0sWzEyLDQsIiIsMix7ImNvbG91ciI6WzAsNjAsNjBdfV0sWzIsMTMsIiIsMix7ImN1cnZlIjotMiwiY29sb3VyIjpbMjQwLDYwLDYwXX1dLFsxMywxNCwiIiwyLHsiY3VydmUiOi0zLCJjb2xvdXIiOlsyNDAsNjAsNjBdfV0sWzQsNiwiIiwyLHsiY29sb3VyIjpbMCw2MCw2MF19XSxbMTQsMTUsIiIsMix7ImNvbG91ciI6WzAsNjAsNjBdfV0sWzE1LDQsIiIsMix7ImN1cnZlIjoyLCJjb2xvdXIiOlswLDYwLDYwXX1dLFs0LDE2LCIiLDIseyJjdXJ2ZSI6MiwiY29sb3VyIjpbMjQwLDYwLDYwXX1dLFsxNiwxNywiIiwyLHsiY3VydmUiOjMsImNvbG91ciI6WzI0MCw2MCw2MF19XSxbMTcsMTgsIiIsMix7ImNvbG91ciI6WzAsNjAsNjBdfV0sWzE4LDIsIiIsMix7ImN1cnZlIjotMiwiY29sb3VyIjpbMCw2MCw2MF19XV0=
+\[\begin{tikzcd}[cramped,column sep=small]
+	&&&& \textcolor{rgb,255:red,92;green,92;blue,214}{{[r(1)]}} \\
+	&& \textcolor{rgb,255:red,214;green,92;blue,92}{{[\overline{s}(0)]}} && \textcolor{rgb,255:red,214;green,92;blue,92}{{[\overline{s}(0)]}} & {00:(\:\:)} \\
+	&& \textcolor{rgb,255:red,92;green,92;blue,214}{{[r(0)]}} & {\epsilon0:(\:\:)} & \textcolor{rgb,255:red,92;green,92;blue,214}{{[r(0)]}} & \textcolor{rgb,255:red,214;green,92;blue,92}{{[\overline{s}(1)]}} & {10:(\:\:)} \\
+	{\epsilon: (\bullet)} \\
+	&& \textcolor{rgb,255:red,92;green,92;blue,214}{{[r(1)]}} & {\epsilon1: (\:\:)} & \textcolor{rgb,255:red,92;green,92;blue,214}{{[r(1)]}} & \textcolor{rgb,255:red,214;green,92;blue,92}{{[\overline{s}(0)]}} & {01:(\:\:)} \\
+	&& \textcolor{rgb,255:red,214;green,92;blue,92}{{[\overline{s}(1)]}} && \textcolor{rgb,255:red,214;green,92;blue,92}{{[\overline{s}(1)]}} & {11:(\:\:)} \\
+	&&&& \textcolor{rgb,255:red,92;green,92;blue,214}{{[r(0)]}}
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=-18pt}, from=1-5, to=3-7]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=12pt}, from=2-3, to=4-1]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, from=2-5, to=3-4]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, from=2-6, to=2-5]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, from=3-3, to=3-4]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=-12pt}, from=3-4, to=1-5]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, from=3-4, to=2-3]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, from=3-4, to=3-5]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, from=3-5, to=2-6]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=12pt}, from=3-6, to=5-4]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, from=3-7, to=3-6]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, from=4-1, to=3-3]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, from=4-1, to=5-3]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, from=5-3, to=5-4]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, from=5-4, to=5-5]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, from=5-4, to=6-3]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=12pt}, from=5-4, to=7-5]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, from=5-5, to=6-6]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-12pt}, from=5-6, to=3-4]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, from=5-7, to=5-6]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-18pt}, from=6-3, to=4-1]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, from=6-5, to=5-4]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, from=6-6, to=6-5]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=18pt}, from=7-5, to=5-7]
+\end{tikzcd}\]
+
+\textbf{Petri Net of 1-bit Protocol}
+% https://q.uiver.app/#q=WzAsMTYsWzAsMywiXFxlcHNpbG9uOlxcYnVsbGV0Il0sWzIsMiwiW3IoMCldIixbMjQwLDYwLDYwLDFdXSxbMywyLCIwOihcXDpcXDopIl0sWzIsNCwiW3IoMSldIixbMjQwLDYwLDYwLDFdXSxbMyw0LCIxOihcXDpcXDopIl0sWzMsMCwiXFx0YXU6W2MoMCldIixbMjQwLDYwLDYwLDFdXSxbNCwzLCJcXGVwc2lsb246KFxcYnVsbGV0KSJdLFs1LDEsIltzKDApXSIsWzI0MCw2MCw2MCwxXV0sWzUsNCwiW2MoMSldIixbMCw2MCw2MCwxXV0sWzYsMSwiMDooXFw6XFw6KSJdLFs2LDUsIjE6KFxcOlxcOikiXSxbMiwxLCJcXG92ZXJsaW5le2N9WzBdIixbMCw2MCw2MCwxXV0sWzMsNiwiXFx0YXU6W2MoMSldIixbMjQwLDYwLDYwLDFdXSxbNSwyLCJbYygwKV0iLFswLDYwLDYwLDFdXSxbNSw1LCJbcygxKV0iLFsyNDAsNjAsNjAsMV1dLFsyLDUsIlxcb3ZlcmxpbmV7Y31bMV0iLFswLDYwLDYwLDFdXSxbMCwxLCIiLDIseyJjb2xvdXIiOlsyNDAsNjAsNjBdfV0sWzEsMiwiIiwyLHsiY29sb3VyIjpbMjQwLDYwLDYwXX1dLFswLDMsIiIsMCx7ImNvbG91ciI6WzI0MCw2MCw2MF19XSxbMyw0LCIiLDAseyJjb2xvdXIiOlsyNDAsNjAsNjBdfV0sWzIsNSwiIiwyLHsiY3VydmUiOi0xLCJjb2xvdXIiOlsyNDAsNjAsNjBdfV0sWzcsNiwiIiwyLHsiY3VydmUiOjEsImNvbG91ciI6WzI0MCw2MCw2MF19XSxbNiw4LCIiLDAseyJjb2xvdXIiOlswLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzksNywiIiwyLHsiY29sb3VyIjpbMjQwLDYwLDYwXX1dLFs4LDEwLCIiLDAseyJjb2xvdXIiOlswLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzIsMTEsIiIsMCx7ImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMTEsMCwiIiwwLHsiY3VydmUiOjEsImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNSwwLCIiLDAseyJjdXJ2ZSI6NSwiY29sb3VyIjpbMjQwLDYwLDYwXX1dLFs2LDEyLCIiLDEseyJjb2xvdXIiOlsyNDAsNjAsNjBdfV0sWzYsNSwiIiwxLHsiY29sb3VyIjpbMjQwLDYwLDYwXX1dLFs2LDEzLCIiLDEseyJjb2xvdXIiOlswLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzEzLDksIiIsMSx7ImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNSw5LCIiLDIseyJjdXJ2ZSI6LTIsImNvbG91ciI6WzI0MCw2MCw2MF19XSxbMTIsMTAsIiIsMSx7ImN1cnZlIjoyLCJjb2xvdXIiOlsyNDAsNjAsNjBdfV0sWzE0LDYsIiIsMSx7ImNvbG91ciI6WzI0MCw2MCw2MF19XSxbMTAsMTQsIiIsMSx7ImNvbG91ciI6WzI0MCw2MCw2MF19XSxbNCwxNSwiIiwxLHsiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxNSwwLCIiLDEseyJjdXJ2ZSI6LTEsImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNCwxMiwiIiwwLHsiY29sb3VyIjpbMjQwLDYwLDYwXX1dLFsxMiwwLCIiLDEseyJjdXJ2ZSI6LTUsImNvbG91ciI6WzI0MCw2MCw2MF19XV0=
+\[\begin{tikzcd}[cramped,column sep=small,row sep=scriptsize]
+	&&& \textcolor{rgb,255:red,92;green,92;blue,214}{{\tau:[c(0)]}} \\
+	&& \textcolor{rgb,255:red,214;green,92;blue,92}{{\overline{c}[0]}} &&& \textcolor{rgb,255:red,92;green,92;blue,214}{{[s(0)]}} & {0:(\:\:)} \\
+	&& \textcolor{rgb,255:red,92;green,92;blue,214}{{[r(0)]}} & {0:(\:\:)} && \textcolor{rgb,255:red,214;green,92;blue,92}{{[c(0)]}} \\
+	{\epsilon:(\bullet)} &&&& {\epsilon:(\bullet)} \\
+	&& \textcolor{rgb,255:red,92;green,92;blue,214}{{[r(1)]}} & {1:(\:\:)} && \textcolor{rgb,255:red,214;green,92;blue,92}{{[c(1)]}} \\
+	&& \textcolor{rgb,255:red,214;green,92;blue,92}{{\overline{c}[1]}} &&& \textcolor{rgb,255:red,92;green,92;blue,214}{{[s(1)]}} & {1:(\:\:)} \\
+	&&& \textcolor{rgb,255:red,92;green,92;blue,214}{{\tau:[c(1)]}}
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=-12pt}, from=1-4, to=2-7]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=30pt}, from=1-4, to=4-1]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, dashed, from=2-3, to=4-1]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=6pt}, from=2-6, to=4-5]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, from=2-7, to=2-6]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, from=3-3, to=3-4]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=-6pt}, from=3-4, to=1-4]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, dashed, from=3-4, to=2-3]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, dashed, from=3-6, to=2-7]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, from=4-1, to=3-3]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, from=4-1, to=5-3]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, from=4-5, to=1-4]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, dashed, from=4-5, to=3-6]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, dashed, from=4-5, to=5-6]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, from=4-5, to=7-4]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, from=5-3, to=5-4]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, dashed, from=5-4, to=6-3]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, from=5-4, to=7-4]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, dashed, from=5-6, to=6-7]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, dashed, from=6-3, to=4-1]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, from=6-6, to=4-5]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, from=6-7, to=6-6]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=-30pt}, from=7-4, to=4-1]
+	\arrow[color={rgb,255:red,92;green,92;blue,214}, curve={height=12pt}, from=7-4, to=6-7]
+\end{tikzcd}\]
+\end{xmp}
+
+\begin{xmp}[Congruence]{xmp:congruence}{}
+	The \textbf{congruence closure} $\sim_{L}$ is defined by
+	\[P \sim_{L} Q \text{ if and only if } C[P] \sim C[Q] \text{ for any $L$-context } C[\:\:]\]
+
+	Prove that $\sim_{L}$ is the coarsest congruence finer than $\sim$.
+
+
+\longrule{0.08ex}
+
+We need to show three things:
+\begin{enumerate-tight}
+    \item $\sim_{L}$ is a congruence
+	\item $\sim_{L}$ is finer than (or equal to) $\sim$
+	\item Any other congruence that is finer than $\sim$ is also finer than (or equal to) $\sim_{L}$. 
+\end{enumerate-tight}
+    
+\begin{proof}
+	$ $\newline
+\begin{enumerate}
+    \item We need to show that if $P \sim_{L} Q$ and is a context, then $D[P] \sim_{L} D[Q]$. So suppose $P \sim_{L} Q$. This means that for any $L$-context $C[\:\:]$ we have $C[P] \sim C[Q]$. What we have to show is that for any $L$-context $C[\:\:]$ we have $C[D[P]]\sim C[D[Q]]$, because that's the definition of $D[P] \sim_{L} Q[D]$. But this holds, because a context is just a context.
+	\item Suppose $P \sim_{L} Q$. This means that for any $L$-context $C[\:\:]$ we have $C[P] \sim C[Q]$. This holds in particular for the trivial context, consisting of one single hole. If $T[\:\:]$ is the trivial context, then $T[P] = P$. Thus $P \sim_{L} Q$ implies $P \sim Q$, which was to be shown.
+	\item Let be any other congruence that is finer then $\sim$. Suppose $P \approx Q$ Then, for any context $C[\:\:]$ we have $C[P] \approx C[Q]$, using that $\approx$ is a congruence, and thus $C[P] \sim C[Q]$, using that $\approx$ is finer than $\sim$. By definition this means that $P \sim_{L} Q$, which had to be shown.
+\end{enumerate}
+\end{proof}
+\end{xmp}
+
+\begin{xmp}[GSOS]{xmp:gsos}{}
+	GSOS for sequencing
+	\[\prftree{P \prightarrow{a} P' \quad \scriptstyle{(P'\ne 0)}}{P; Q \prightarrow{a} P';Q} \qquad \prftree{P \prightarrow{a} 0}{P;Q \prightarrow{a} Q}\]
+	Is this in GSOS format?
+
+	\begin{proof}
+		No, it is not in GSOS format. The second rule fails this format because the right-hand side of its premise features a constant. (The first rule also fails this format, because it has a side-condition that cannot be expanded away.)
+
+		To show that strong bisimulation is not a congruence, consider the processes $P = a.0$, $Q = a.(0+0) $ and $R = b.0$. Now $P$ and $Q$ are strongly bisimilar, but $P ; R$ and $Q ; R$ are not. In fact $P ; R$ has a trace $ab$, whereas $Q ; R$ can never do a $b$. Here it is important that to match the second rule for ;, being equal to $0$ is taken literally; not up to bisimilarity or so.
+\end{proof}
+\end{xmp}
 
 \end{multicols}
 \end{document}
