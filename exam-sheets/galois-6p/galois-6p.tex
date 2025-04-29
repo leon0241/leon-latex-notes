@@ -3,8 +3,11 @@
 \usepackage{../../preamble}
 \usepackage{symbols}
 
+\setlength{\parskip}{3pt}
+
 \begin{document}
 
+% No idea what this thing actually does lmao but it compacts stuff slightly
 \setlength{\abovedisplayskip}{3.5pt}
 \setlength{\belowdisplayskip}{3.5pt}
 \setlength{\abovedisplayshortskip}{3.5pt}
@@ -16,96 +19,81 @@
 \section*{\huge Galois Theory Notes}
 Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
+\vspace{-7pt}
 \section{Galois Groups}
 
 \begin{dfn}[Conjugate Numbers]{dfn:conjugate-numbers}{1.1.1}
-    Two complex numbers $z$ and $z'$ are \textbf{conjugate over $\mathbb{R}$} if for all polynomials $p$ with coefficients in $\mathbb{R}$,
+    \vspace{-5pt}
+    Two complex numbers $z$ and $z'$ are \textbf{conjugate over $\mathbb{Q}$} \textit{(exact same def. for $\mathbb{R}$ but we usually use $\mathbb{Q}$)} iff either $z = z'$ or $\overline{z} = z'$. Alternatively, if for all polynomials $p$ with coefficients in $\mathbb{Q}$,
     \[p(z) = 0 \iff p(z') = 0\]
-\end{dfn}
-
-\begin{lma}[Characterising Conjugates]{lma:charaterising-conjugates}{1.1.2}
-    $z,z'\in \mathbb{C}$ are conjugate over $\mathbb{R}$ iff either $z = z'$ or $\overline{z} = z'$
-\end{lma}
-
-\begin{dfn}[Conjugacy in \texorpdfstring{$\mathbb{Q}$}{Q}]{dfn:conj-q}{1.1.9}
-    $z,z'\in \mathbb{C}$ are \textbf{conjugate over $\mathbb{Q}$} if $\forall p(t) \in \mathbb{Q}[t]$
-    \[p(z) = 0 \iff p(z') = 0\]
-\end{dfn}
-
-\begin{dfn}[Conjugacy for sets]{dfn:set-conjugacy}{1.1.9}
-    $(z_{1},\dots,z_{n}), z_{i}, z_{i}' \in \mathbb{C}$
-    is conjugate over $\mathbb{Q}$ to $(z_{1}',\dots,z_{n}')$
-    if $\forall p(t_{1},\dots,t_{n})\in \mathbb{Q}[t_{1},\dots,t_{n}]$
-
+    $(z_{1},\dots,z_{k})$, and $(z_{1}',\dots,z_{k}')$ $k$-tuples in $\mathbb{C}$ are \textbf{conjugate over $\mathbb{Q}$} if for all polynomials $p(t_{1},\dots,z_{k})$ over $\mathbb{Q}$ in $k$ variables,
+    \[p(z_{1},\dots,z_{k}) = 0 \iff p(z_{1}',\dots,z_{k}') = 0\]
+    \vspace{-15pt}
     \longrule{0.08ex}
-
     Additionally, if $(z_{1},\dots,z_{n})$ conjugate to $(z_{1}',\dots,z_{n}')$, then $z_{i}$ is conjugate to $z_{i}'$ for all $i$
 \end{dfn}
 
 % TODO: idk what's happening here
 
-\begin{dfn}[Galois Group]{dfn:galois-group}{1.2.1}
-    Let $f$ be a polynomial with coefficients in $\mathbb{Q}$. Write $\alpha_{1},\dots,\alpha_{k}$ for its distinct roots in $\mathbb{C}$. The \textbf{Galois group} of $f$ is
-    \[\mathrm{Gal}(g) = \{\sigma \in S_{n} \mid (\alpha_{1},\dots,\alpha_{n}) \text{ conjugate to } (\alpha_{S(1)},\dots,\alpha_{\sigma(n)})\}\]
-    \textbf{Note}: distinct roots mean that we ignore any repetition of roots.
-\end{dfn}
+% \begin{dfn}[Galois (Overview)]{dfn:galois-group}{1.2.1}
+%     Let $f$ be a polynomial with coefficients in $\mathbb{Q}$. Write $\alpha_{1},\dots,\alpha_{k}$ for its distinct roots in $\mathbb{C}$. The \textbf{Galois group} of $f$ is
+%     \[\mathrm{Gal}(g) = \{\sigma \in S_{n} \mid (\alpha_{1},\dots,\alpha_{n}) \text{ conjugate to } (\alpha_{S(1)},\dots,\alpha_{\sigma(n)})\}\]
+%     \textbf{Note}: distinct roots mean that we ignore any repetition of roots.
+%
+%     \textrule{Solvability}
+%     A complex number is \textbf{radical} if it can be obtained from the rationals using only the usual arithmetic operations and $k$th roots. A polynomial over $\mathbb{Q}$ is \textbf{solvable (or soluble) by radicals} if all of its complex roots are radical.
+%
+%     \textrule{The Fundamental Theorem of Galois Theory}
+%     Let $f$ be a polynomial over $\mathbb{Q}$. Then
+%     \[f \text{ is solvable by radicals} \iff \mathrm{Gal}(f) \text{ is a solvable group.}\]
+% \end{dfn}
 
-\begin{dfn}[Solvability (Simple Definition)]{dfn:solvability}{1.3.0}
-    A complex number is \textbf{radical} if it can be obtained from the rationals using only the usual arithmetic operations and $k$th roots. A polynomial over $\mathbb{Q}$ is \textbf{solvable (or soluble) by radicals} if all of its complex roots are radical.
-\end{dfn}
-
-\begin{thm}[Galois]{thm:galois}{1.3.5}
-    Let $f$ be a polynomial over $\mathbb{Q}$. Then
-    \[f \text{ is solvable by radicals} \iff \mathrm{Gal}(f) \text{ is a solvable group.}\]
-\end{thm}
-
+\vspace{-15pt}
 \section{Groups, Rings, and Fields}
 
 \begin{dfn}[Group Action]{dfn:group-action}{2.1.1}
+    \vspace{-5pt}
     Let $G$ be a group and $X$ a set. An \textbf{action} of $G$ on $X$ is a function $G \times X \to X$, written as $(g,x)\mapsto gx$ such that
-    \[(gh)x = g(hx)\]
-    for all $g, h\in G$ and $x\in X$ and
-    \[1x = x\]
-    for all $x\in X$, where $1$ is the identity of $G$
+    \[(gh)x = g(hx) \text{ and } 1x = x\]
+    for all $g, h\in G$ and $x\in X$, where $1$ is the identity of $G$
 \end{dfn}
 
+\vspace{-5pt}
 \begin{dfn}[Faithful Actions]{dfn:faithful-actions}{2.1.7}
+    \vspace{-5pt}
     An action of a group $G$ on a set $X$ is \textbf{faithful} if for $g,\,h\in G$,
     \[gx = hx \text{ for all } x\in X \implies g = h\]
-    Faithfulness means that if two elements of the group \textit{do} the same, they \textit{are} the same.
-\end{dfn}
-
-\begin{lma}[Faithful Properties]{lma:faithful-props}{2.1.8}
-    For an action of a group $G$ on a set $X$, the following are equivalent:
+    \textit{``If two elements of the group \textit{do} the same, they \textit{are} the same.''}
+    \textrule{Lemma 2.1.8: Properties of Faithful Actions}
+    For an action of a group $G$ on a set $X$, the following are equal:
+    \vspace{-5pt}
     \begin{enumerate-tight}
         \item The action is faithful
         \item For $g\in G$, if $gx = x$ for all $x\in X$ then $g = 1$
         \item The homomorphism $\Sigma : G \to \sym(X)$ is injective
         \item $\ker \Sigma$ is trivial.
     \end{enumerate-tight}
-\end{lma}
-
-% Actions examples
-
-\begin{lma}[Isomorphisms of Faithful Groups]{lma:faith-isos}{2.1.11}
-    Let $G$ be a group acting faithfully on a set $X$. then $G$ is isomorphic to the subgroup
-    \[\im \Sigma = \{\overline{g} \mid g\in G\}\]
-    of $\sym(X)$, where $\Sigma : G \to \sym(X)$ and $\overline{g}$ are defined as above.
-\end{lma}
-
-\begin{dfn}[Fixed Set]{dfn:fixed-set}{2.1.1}
-    Let $G$ be a group acting on a set $X$. Let $S \subseteq G$. The \textbf{fixed set} of $S$ is
-    \[\Fix(S) = \{ x\in X \mid sx = x \text{ for all } s\in S\}\]
+    \vspace{-5pt}
+    \textrule{Lemma 2.1.11: Isomorphisms of Faithful Groups}
+    Let $G$ be a group acting faithfully on a set $X$. then $G$ is isomorphic to the subgroup of $\sym(X)$, where $\Sigma : G \to \sym(X)$
+    \[\im \Sigma = \{\overline{g} \mid g\in G\}, \text{ where } \overline{g} : X \to X \text{ and } \overline{g}(x) = gx\]
 \end{dfn}
 
-\begin{lma}[Normal Fixed Sets]{lma:normal-fixed}{2.1.15}
+\vspace{-5pt}
+\begin{dfn}[Fixed Set]{dfn:fixed-set}{2.1.1}
+    \vspace{-5pt}
+    For a group $G$ acting on a set $X$, let $S \subseteq G$. The \textbf{fixed set} of $S$ is
+    \[\Fix(S) = \{ x\in X \mid sx = x \text{ for all } s\in S\}\]
+    \textrule{Lemma 2.1.15: Normal Fixed Sets}
     Let $G$ be a group acting on a set $X$, let $S \subseteq G$, and let $g\in G$. Then $\Fix(gSg^{-1}) = g\Fix(S)$.
 
     Here, $gSg^{-1} = \{gs g^{-1} \mid s\in S\}$ and $g\Fix(S) = \{gx \mid x \in \Fix(S)\}$
-\end{lma}
+\end{dfn}
 
 \begin{dfn}[Ring Homomorphism]{dfn:ring-homomorphism}{2.2.1}
+    \vspace{-5pt}
     Given rings $R$ and $S$, a \textbf{homomorphism} from $R$ to $S$ is a function $\phi : R \to S$ satisfying the following equations for all $r,\,r'\in R$:
+    \vspace{-15pt}
     \begin{multicols}{2}
     \begin{itemize-tight}
         \item $\phi(r+r') = \phi(r) + \phi(r')$
@@ -114,70 +102,79 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
         \item $\phi(-r) = -\phi(r)$
     \end{itemize-tight}
     \end{multicols}
-
+    \vspace{-15pt}
     \longrule{0.08ex}
     A \textbf{subring} of a ring $R$ is a subset $S \subseteq R$ that contains $0$ and $1$ and is closed under addition, multiplication, and negatives. Whenever $S$ is a subring of $R$, the inclusion $\iota : S \to R$ (defined by $\iota(s) = s$) is a homomorphism.
+
+    \textrule{Lemma 2.2.3: Intersection of Subrings}
+    Let $R$ be a ring and let $\mathcal{S}$ be any set (perhaps infinite) of subrings of $R$. Then their intersection $\bigcap_{S\in \mathcal{S}} S$ is also a subring of $R$.
 \end{dfn}
 
-\begin{lma}[Intersection of Subrings]{lma:subring-intersections}{2.2.3}
-    Let $R$ be a ring and let $\mathcal{S}$ be any set (perhaps infinite) of subrings of $R$. Then their intersection $\bigcap_{S\in \mathcal{S}} S$ is also a subring of $R$.
-\end{lma}
-
-% TODO: ExaPLE 2.2
+% TODO: Example 2.2
 
 \begin{rcl}[Ideals and Quotient Rings]{rcl:ideal}{}
+    \vspace{-5pt}
     Let $R$ be a ring. $I \subseteq R$ is an \textbf{ideal}, $I \unlhd R$, if the following hold:
-    \begin{enumerate}
+    \vspace{-5pt}
+    \begin{enumerate-tight}
         \setlength\itemsep{0em}
         \item $I \ne \emptyset$
         \item $I$ is closed under subtraction
         \item for all $i\in I$ and $r\in R$ we have $ri, ir\in I$
-    \end{enumerate}
+    \end{enumerate-tight}
+    \vspace{-5pt}
     Every ring homomorphism $\phi : R \to S$ has an image $\im \phi$, which is a subring of $S$, and a kernel $\ker \phi$, which is an ideal of $R$.
-
     \longrule{0.08ex}
+    Given an ideal $I \unlhd R$, define the quotient ring $R / I$ and canonical homomorphism $\pi_{I} : R \to R /I$ which is surjective and has kernel $I$. 
 
-    Given an ideal $I \unlhd R$, we obtain the quotient ring $R / I$ and the canonical homomorphism $\pi_{I} : R \to R /I$ which is surjective and hs kernel $I$. 
 
-    \textbf{Universal Prop}: Given any ring $S$ and any homomorphism $\phi : R \to S$ satisfying $\ker \phi \supseteq I$, there is exactly one homomorphism $\overline{\phi} : R /I \to S$ such that this diagram communutes.
+    \begin{vwcol}[widths={0.7,0.3}, rule=0pt]
+    \textbf{Universal Property of Factor Rings}: 
+        Given a ring $S$ and any homomorphism $\phi : R \to S$ satisfying $\ker \phi \supseteq I$, there is exactly one homomorphism $\overline{\phi} : R /I \to S$ s.t. this diagram commutes.
+        \columnbreak
 % https://q.uiver.app/#q=WzAsMyxbMCwwLCJSIl0sWzAsMiwiUiAvIEkiXSxbMiwyLCJTIl0sWzAsMSwiXFxwaV9JIiwyXSxbMSwyLCJcXG92ZXJsaW5le1xccGhpfSIsMl0sWzAsMiwiXFxwaGkiXV0=
-\[\begin{tikzcd}[cramped,column sep=scriptsize]
+\[\begin{tikzcd}[ampersand replacement=\&,cramped, column sep=small, row sep=scriptsize]
 	R \\
 	\\
-	{R / I} && S
+	{R / I} \&\& S
 	\arrow["{\pi_I}"', from=1-1, to=3-1]
 	\arrow["\phi", from=1-1, to=3-3]
 	\arrow["{\overline{\phi}}"', from=3-1, to=3-3]
-\end{tikzcd}\]
+    \end{tikzcd}\]
+    \end{vwcol}
+    \vspace{-10pt}
 \end{rcl}
 
 \begin{rcl}[Integral Domain]{rcl:integral-domain}{}
-    An \textbf{integral domain} is a ring $R$ such that $0_{R} \ne 1_{R}$ and for $r,\,r'\in R$,
-    \[rr' = 0 \implies r = 0 \text{ or } r' = 0\]
+    \vspace{-5pt}
+    An \textbf{integral domain} is a ring $R$ s.t. $0_{R} \ne 1_{R}$, and for $r,\,r'\in R$,
+    \[rr' = 0 \implies r = 0 \text{ or } r' = 0.\]
 \end{rcl}
 
-\newpage
 \begin{rcl}[Generated Ideal]{rcl:generated-ideal}{}
+    \vspace{-5pt}
     Let $Y$ be a subset of a ring $R$. The \textbf{ideal $\langle Y \rangle$ generated by $Y$} is defined as the intersection of all the ideals of $R$ containing $Y$.
-
     \longrule{0.08ex}
+    \vspace{-15pt}
     \begin{itemize-zero}
-        \item Ideals of the form $\langle r \rangle$ are called \textbf{principal ideals}. A \textbf{principle ideal domain} is an integral domain where every ideal is principal.
+        \item \textbf{Principal ideals} are ideals of the form $\langle r \rangle$. A \textbf{principle ideal domain} is an integral domain where every ideal is principal.
         \item Let $r$ and $s$ be elements of a ring $R$. We say that $r$ \textbf{divides} $s$, and write $r \mid s$ if there exists $a\in R$ such that $s = ar$. This condition is equivalent to $s\in \langle r \rangle$, and to $\langle s \rangle \supseteq \langle r \rangle$.
-        \item An element $u\in R$ is a \textbf{unit} if it has a multiplicative inverse, or equivalently, if $\langle u \rangle = R$. The units form a group $R^{\times}$ under multiplication.
+        \item An element $u\in R$ is a \textbf{unit} if it has a multiplicative inverse, i.e. if $\langle u \rangle = R$. The units form a group $R^{\times}$ under multiplication.
         \item Elements $r$ and $s$ of a ring are \textbf{coprime} if for $a\in R$,
             \[a \mid r \text{ and } a \mid s \implies a \text{ is a unit}\]
     \end{itemize-zero}
+    \begin{enumerate-tight}
+        \item[\textbf{2.2.11})] Let $R$ be a ring and let $Y = \{r_{1},\dots,r_{n}\}$ be a finite subset. Then
+    \[\langle Y \rangle = \{a_{1}r_{1} + \cdots + a_{n}r_{n} : a_{1},\dots, a_{n} \in R\}\]
+\item[\textbf{2.2.16})] Let $R$ be a principal ideal domain and $r,\,s\in R$. Then
+        \[r \text{ and } s \text{ are coprime} \iff ar + bs = 1 \text{ for some } a,\,b\in R\]
+    \end{itemize-tight}
 \end{rcl}
 
 \begin{lma}[Characterisation of Generated Ideals]{lma:generated-ideal}{2.2.11}
-    Let $R$ be a ring and let $Y = \{r_{1},\dots,r_{n}\}$ be a finite subset. Then
-    \[\langle Y \rangle = \{a_{1}r_{1} + \cdots + a_{n}r_{n} : a_{1},\dots, a_{n} \in R\}\]
 \end{lma}
 
 \begin{ppn}[Coprime and PIDs]{ppn:coprime-pid}{2.2.16}
-    Let $R$ be a principal ideal domain and $r,\,s\in R$. Then
-    \[r \text{ and } s \text{ are coprime} \iff ar + bs = 1 \text{ for some } a,\,b\in R\]
 \end{ppn}
 
 \begin{rcl}[Field]{rcl:field}{2.3.0}
@@ -465,80 +462,80 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     $\Phi_{p}$ is irreducible.
 \end{xmp}
 
+\newpage
 \section{Field Extensions}
 
 \begin{rem}[Inclusion Funtion]{rem:inclusion-function}{4.1.A}
-    Given a set $A$ and a subset $B \subseteq A$, there is an \textbf{inclusion} function $\iota : B \to A$ defined by $\iota(b) = b$ for all $b\in B$.
-
-    On the other hand, given any injective funtion between sets, say $\phi : X \to A$, the image $\im A$ is a subset of $A$, and there is a bijection $\phi' : X \to \im \phi$ given by $\phi'(x) = \phi(x)$ $(x\in X)$. Hence the set $X$ is isomorphic to (in bijection with) the subset $\im \phi$ of $A$.
-
-    So given any subset of $A$, we get an injection into $A$, and vice versa. These two back-and-forth processes are mutually inverse (up to iso), so subsets and injections are more or less the same thing. (wtf?)
+    It is sometimes easier to think of a subset as an injection. Given a set $A$ and a subset $B \subseteq A$, define an \textbf{inclusion} function
+    \[
+        \iota : B \to A \text{ defined by } \iota(b) = b \text{ for all } b\in B.
+    \]
 \end{rem}
 
-% TODO: what does this mean
-
 \begin{dfn}[Field Extension]{dfn:field-extension}{4.1.1}
-    Let $K$ be a field. An \textbf{extension} of $K$ is a field $M$ together with a homomorphism $\iota : K \to M$.
-
-    We can write $M : K$ to mean that $M$ is an extension of $K$, not bothering to mention $\iota$.
+    Let $K$ be a field. An \textbf{extension} of $K$ is a field $M$ together with a homomorphism $\iota : K \to M$, where $K$ is the small field and $M$ is the large field. We write $M : K$ to mean that $M$ is an extension of $K$, not bothering to mention $\iota$.
 \end{dfn}
+
+\begin{xmp}[Examples of Field Extensions]{xmp:examples of field extensions}{4.1.2}
+    \vspace{-10pt}
+    \[\iota_{1}: \mathbb{Q} \to \mathbb{R}, \quad \iota_{2} : \mathbb{R} \to \mathbb{C}, \quad \iota_{3} : \mathbb{Q} \to \mathbb{C}\]
+    $\iota_{4} : Q \to K$, where $K = \{a + b\sqrt{2} \mid a,\,b\in \mathbb{Q}\}$ (we call this $\mathbb{Q}(\sqrt{2})$)
+\end{xmp}
 
 % TODO: examples
 
-\begin{dfn}[Generated Subfield]{dfn:generated-subfield}{4.1.4}
-    Let $K$ be a field and $X$ a subset of $K$. The subfield of $K$ \textbf{generated by} $X$ is the intersection of all the subfields of $K$ containing $X$.
+\begin{dfn}[Generated Subfields]{dfn:generated-subfield}{4.1.4}
+    For a field $K$, and $X$ a subset of $K$, the subfield of $K$ \textbf{generated by} $X$ is the intersection of all subfields of $K$ containing $X$.
 
-    Let $F$ be the subfield of $K$ generated by $X$. $F$ contains $X$, and $F$ is also the \textit{smallest} subfield of $K$ containing $X$ (in the sense that any subfield of $K$ containing $X$ contains $F$)
-\end{dfn}
+    Let $F$ be the subfield of $K$ generated by $X$. $F$ contains $X$, and $F$ is also the \textit{smallest} subfield of $K$ containing $X$ (i.e. any subfield of $K$ containing $X$ contains $F$)
 
-% TODO: examples
-
-\begin{dfn}[Adjoined Subfields]{dfn:adjointed-subfield}{4.1.8}
-    Let $M : K$ be a field extension and $Y \subseteq M$. We write $K(Y)$ for the subfield of $M$ generated by $K \cup Y$. We call it $K$ with $Y$ \textbf{adjoined}, or the subfield of $M$ \textbf{generated by $Y$ over $K$}
-
+    \textrule{Definition 4.1.8: Adjoined Subfields}
+    For a field extension $M : K$, and $Y \subseteq M$, we write $K(Y)$ for the subfield of $M$ generated by $K \cup Y$. We call it the subfield of $M$ \textbf{generated by $Y$ over $K$}, or $K$ with $Y$ \textbf{adjoined}.
     \longrule{0.08ex}
-    So, $K(Y)$ is the smallest subfield of $M$ containing both $K$ and $Y$. When $Y$ is a finite set $\{\alpha_{1},\dots,\alpha_{n}\}$, we write $K(\{\alpha_{1},\dots,\alpha_{n}\})$ as $K(\alpha_{1},\dots,\alpha_{n})$
+    $K(Y)$ is the smallest subfield of $M$ containing both $K,\,Y$. If $Y$ is a finite set $\{\alpha_{1},\dots,\alpha_{n}\}$, write $K(\{\alpha_{1},\dots,\alpha_{n}\})$ as $K(\alpha_{1},\dots,\alpha_{n})$
 \end{dfn}
 
 % TODO: examples
 
 % TODO: warning 4.1.10
 
-\begin{rem}[Algebraic Number]{rem:algebraic-number}{4.2.A}
-    A complex number $\alpha$ is said to be ``algebraic'' if
+\begin{dfn}[Algebraic Numbers]{dfn:algebraic-extension}{4.2.1}
+    A complex number $\alpha\in \mathbb{C}$ is said to be ``algebraic'' if
     \[a_{0} + a_{1}\alpha + \cdots + a_{n}a^{n} = 0\]
-    for some rational numbers $a_{i}$, not all zero. This concept generalises to arbitrary field extensions:
-\end{rem}
+    for some rational numbers $a_{i}$, not all zero
 
-\begin{dfn}[Algebraic Numbers for Extensions]{dfn:algebraic-extension}{4.2.1}
-    Let $M : K$ be a field extension and $\alpha\in M$. Then $\alpha$ is \textbf{algebraic} over $K$ if there exists $f \in K[t]$ s.t. $f(\alpha) = 0$ but $f \ne 0$, and \textbf{transcendental} otherwise.
-
-    \longrule{0.08ex}
-    Let $M : K$ be a field extension and $\alpha\in M$. An \textbf{annihilating polynomial} of $\alpha$ is a polynomial $f \in K[t]$ such that $f(\alpha)=0$. So, $\alpha$ is algebraic iff it has some nonzero annihilating polynomial.
+    \textrule{Algebraic Numbers for Arbitrary Fields}
+    For a field extension $M : K$, and $\alpha\in M$, $\alpha$ is \textbf{algebraic} over $K$ if $\exists f \in K[t]$ s.t. $f(\alpha) = 0$ but $f \ne 0$, \textbf{transcendental} otherwise.
 \end{dfn}
 
 % TODO: transcendental numbers examples
 
-\begin{lma}[Annihilaters]{lma:annihilator}{4.2.6}
-    Let $M : K$ be a field extension and $\alpha\in M$. Then there is a polynomial $m(t) \in K[t]$ such that
-    \begin{equation}\label{eq:annihilator}\langle m \rangle = \{\text{annihilating polynomials of $\alpha$ over $K$}\}.\end{equation}
+\begin{lma}[Annihilators]{lma:annihilator}{4.2.6}
+    Let $M : K$ be a field extension and $\alpha\in M$. An \textbf{annihilating polynomial} of $\alpha$ is a polynomial $f \in K[t]$ such that $f(\alpha)=0$. So, $\alpha$ is algebraic iff it has some nonzero annihilating polynomial.
+    \longrule{0.08ex}
+    For a field extension $M : K$ and $\alpha\in M$, there is a polynomial $m(t) \in K[t]$ such that
+    \begin{equation}\label{eq:annihilator}\tag{4.2}
+        \langle m \rangle = \{\text{annihilating polynomials of $\alpha$ over $K$}\}.
+    \end{equation}
     If $\alpha$ is transcendental over $K$ then $m = 0$. If $\alpha$ is algebraic over $K$ then there is a unique monic polynomial $m$ satisfying \eqref{eq:annihilator}.
 \end{lma}
 
 \begin{dfn}[Minimal Polynomial]{dfn:minimal-polynomial}{4.2.7}
-    Let $M : K$ be a field extension and let $\alpha\in M$ be algebraic over $K$. The \textbf{minimal polynomial} of $\alpha$ is the unique monic polynomial satisfying \eqref{eq:annihilator}.
+    Let $M : K$ be a field extension and let $\alpha\in M$ be \textit{algebraic} over $K$. The \textbf{minimal polynomial} of $\alpha$ is the unique monic\footnote{Monic means that the highest order element has coefficient $1$.} polynomial satisfying \eqref{eq:annihilator}.
 
-    \textbf{Warning}: We do not define the minimal polynomial for a transcendental element. Therefore, some elements of $M$ may have no minimal polynomial
+    \textbf{Warning}: This isn't defined over transcendentals, therefore some elements of $M$ might not have a minimal polynomial.
 \end{dfn}
 
 \begin{lma}[Minimal Polynomial Conditions]{lma:minimal-polynomial-conds}{4.2.10}
-    Let $M : K$ be a field extension, let $\alpha \in M$ be algebraic over $K$ and let $m\in K[t]$ be a monic polynomial. The following are equivalent:
+    Let $M : K$ be a field extension, let $\alpha \in M$ be algebraic over $K$ and let $m\in K[t]$ be a monic polynomial. The following are equivalent
+    \vspace{-5pt}
     \begin{enumerate-tight}
         \item $m$ is the minimal polynomial of $\alpha$ over $K$
         \item $m(\alpha) = 0$ and $m \mid f$ for all annihilating polynomials $f$ of $\alpha$ over $K$
         \item $m(\alpha) = 0$ and $\deg(m) \le \deg (f)$ for all nonzero annihilating polynomials.
         \item $m(\alpha) = 0$ and $m$ is irreducible over $K$.
     \end{enumerate-tight}
+    \vspace{-5pt}
     Part $3$ says the minimal polynomial is a monic annihilating polynomial of least degree.
 \end{lma}
 
@@ -546,14 +543,13 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 \begin{dfn}[]{dfn:minimal-polynomial-element}{4.3.1}
     Let $K$ be a field.
-    \begin{enumerate-tight}
-        \item Let $m\in K[t]$ be monic and irreducible. Write $\alpha\in K[t] /\langle m \rangle$ for the imge of $t$ under the canonical homomorphism $K[t] \to K[t] / \langle m \rangle$. Then $\alpha$ has minimal polynomial $m$ over $K$, and $K[t] /\langle m \rangle$ is generated by $\alpha$ over $K$.
+    \begin{enumerate-zero}
+        \item Let $m\in K[t]$ be monic and irreducible. Write $\alpha\in K[t] /\langle m \rangle$ for the image of $t$ under the canonical homomorphism $K[t] \to K[t] / \langle m \rangle$. Then $\alpha$ has minimal polynomial $m$ over $K$, and $K[t] /\langle m \rangle$ is generated by $\alpha$ over $K$.
         \item The element $t$ of the field $K(t)$ of rational expressions over $K$ is transcendental over $K$, and $K(t)$ is generated by $t$ over $K$
-    \end{enumerate-tight}
+    \end{enumerate-zero}
     In part $1$, we are viewing $K[t] / \langle m \rangle$ as an extension of $K$.
 \end{dfn}
 
-\newpage
 \begin{dfn}[Homomorphism over Fields]{dfn:homomorphism-over-field}{4.3.3}
     Let $K$ be a field, and let $\iota : K \to M$, and $\iota' : K \to M'$ be extensions of $K$. A homomorphism $\phi : M \to M'$ is said to be a \textbf{homomorphism over $K$} if
 % https://q.uiver.app/#q=WzAsMyxbMCwwLCJNIl0sWzIsMCwiTSwiXSxbMSwxLCJLIl0sWzAsMSwiXFxwaGkiXSxbMiwwLCJcXGlvdGEiXSxbMiwxLCJcXGlvdGEnIiwyXV0=
