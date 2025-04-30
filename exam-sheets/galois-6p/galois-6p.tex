@@ -689,13 +689,16 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \end{thm}
 
 \vspace{-7pt}
+\section{Degree}
 \begin{dfn}[Degree of a Field Extension]{dfn:field-extension-degree}{5.1.1}
     \vspace{-5pt}
     Let $M : K$ be a field extension. Then $M$ can be seen as a vector space over $K$. When we view $M$ as a vector space over $K$ rather than an extension, we forget how to multiply together elements of $M$ that aren't in $K$.
     \par\vspace{-9pt}
     \longrule{0.08ex}
-    The \textbf{degree $[M : K]$} of a field extension $M : K$ is the dimension of $M$ as a vector space over $K$. If $M$ is an \textit{infinite-dimensional} vector space over $K$, we write $[M : K] = \infty$, where $\infty$ is a formal symbol which we give the properties
+    The \textbf{degree $[M : K]$} of a field extension $M : K$ is the dimension of $M$ as a vector space over $K$. If $M$ is an \textit{infinite-dimensional} vector space over $K$, we write $[M : K] = \infty$, where $\infty$ is a formal symbol with the properties
+    \vspace{-3pt}
     \[n < \infty, \quad n \cdot \infty = \infty\:(n \ge 1), \quad \infty \cdot \infty = \infty\]
+    \par\vspace{-5pt}
     for integers $n$. An extension $M : K$ is \textbf{finite} if $[M : K] < \infty$.
     \vspace{-5pt}
     \textrule{Warning 5.1.4}
@@ -722,6 +725,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 %TODO: Example
 
+\vspace{-5pt}
 \begin{thm}[Tower Law]{thm:tower-law}{5.1.17}
     \vspace{-5pt}
     For field extensions $M : L : K$ and (potentially infinite) sets $I,\,J$,
@@ -825,17 +829,17 @@ Let $M : K$ be a field extension and $\alpha_{1},\dots,\alpha_{n}\in M$. Then
 
     \vspace{-3pt}
     \textbf{Lemma 5.3.8}: Let $K$ and $L$ be subfields of $\mathbb{R}$ s.t. the extensions $K : \mathbb{Q}$ and $L : \mathbb{Q}$ are iterated quadratic. Then there is some subfield $M$ of $\mathbb{R}$ s.t. the $M : \mathbb{Q}$ is iterated quadratic and $K,\, L \subseteq M$.
-
     \textrule{Proposition 5.3.9: Iterated Quadratics from Points}
     \par\vspace{-12pt}
     Let $(x,y)\in \mathbb{R}^{2}$. If $(x,y)$ is constructable from $\{(0,0),\, (1,0)\}$ then there is an iterated quadratic extension of $\mathbb{Q}$ containing $x$ and $y$.
-
     \textrule{Theorem 5.3.10: Quadratics and Constructability}
     \par\vspace{-12pt}
     Let $(x,y)\in \mathbb{R}^{2}$. If $(x,y)$ is constructible from $\{(0,0),\, (1,0)\}$ then $x,\,y$ are algebraic over $\mathbb{Q}$, and their degrees over $\mathbb{Q}$ are powers of $2$.
 \end{lma}
 
-\vspace{-7pt}
+\vspace{-17pt}
+\section{Splitting Fields}
+\vspace{-3pt}
 \begin{dfn}[Extending Homomorphism]{dfn:extending-homomorphism}{6.1.1}
     \vspace{-5pt}
     \begin{vwcol}[widths={0.75,0.25}, rule=0pt]
@@ -999,7 +1003,7 @@ Usually we view $K$ as a subset of $M$, and $K'$ as a subset of $M'$, with inclu
     Then $\Gal_{K}(f)$ is isomorphic to the subgroup $\{\sigma_{\theta} \mid \theta \in \Gal_{K}(f)\}$ of $S_{K}$. The isomorphism is given by $\theta \mapsto \sigma_{\theta}$.
 \end{rem}
 
-\vspace{-7pt}
+\vspace{-8pt}
 \begin{ppn}[Permutation Definition of Galois]{ppn:permutation-galois-group}{6.3.10}
     \vspace{-5pt}
     Let $f$ be a nonzero polynomial over a field $K$ with distinct roots $\alpha_{1},\dots,\alpha_{k}$ in $\SF_{k}(f)$. Then
@@ -1014,7 +1018,8 @@ Usually we view $K$ as a subset of $M$, and $K'$ as a subset of $M'$, with inclu
 \end{ppn}
 
 % TODO: actually read page 97 lol
-
+\vspace{-18pt}
+\section{Preparation for the Fundamental Theorem}
 \vspace{-5pt}
 \begin{minipage}[c]{0.65\linewidth}
 \begin{dfn}[Normal Extensions]{dfn:normal-extension}{7.1.1}
@@ -1026,7 +1031,7 @@ Usually we view $K$ as a subset of $M$, and $K'$ as a subset of $M'$, with inclu
     Let $M : K$ be an algebraic extension. Then $M : K$ is normal iff every irreducible polynomial over $K$ either has no roots in $M$ or splits in $M$. Put another way, normality means that any irreducible polynomial over $K$ with \textit{at least one} root in $M$ has \textit{all} its roots in $M$.
 \end{dfn}
 
-\vspace{-8pt}
+\vspace{-9pt}
 \begin{thm-s}[Splitting and Normality]{thm:splitting-normal}{7.1.5}
     \vspace{-5pt}
     Let $M : K$ be a field extension. Then
@@ -1087,11 +1092,11 @@ Usually we view $K$ as a subset of $M$, and $K'$ as a subset of $M'$, with inclu
 \begin{thm}[Quotients of Normal Extensions]{thm:quotient-field-extension}{7.1.15}
     \vspace{-5pt}
     Let $M : L : K$ be field extensions with $M : K$ finite and normal.
-    \vspace{-5pt}
+    \vspace{-7pt}
     \begin{enumerate-tight}
         \item $L : K$ is a normal extension $\iff$ $\phi L = L$ for all $\phi \in \Gal(M : K)$
         \item If $L : K$ is a normal extension then $\Gal(M : L)$ is a normal subgroup of $\Gal(M : K)$ and
-            \vspace{-2pt}
+            \vspace{-4pt}
             \[\frac{\Gal(M : K)}{\Gal(M : L)} \cong \Gal(L : K)\]
     \end{enumerate-tight}
 \end{thm}
@@ -1312,7 +1317,7 @@ We have now defined functions
                 {\mathscr{F}} && {\mathscr{G}}
                 \arrow["{\Gal(M : -)}", shift left, from=1-1, to=1-3]
                 \arrow["\Fix", shift left, from=1-3, to=1-1]
-            \end{tikzcd}$ are mutually inverse.
+            \end{tikzcd}$ are mutually inverse.\vspace{-1pt}
         \item $\lvert \Gal(M : L) \rvert = [M : L]$ for all $L\in \mathscr{F}$ and $[M : \Fix(H)] = \lvert H \rvert$ for all $H\in \mathscr{G}$
         \item Let $L\in \mathscr{F}$. Then
             \vspace{-5pt}
@@ -1320,12 +1325,14 @@ We have now defined functions
                 L \text{ is a normal extension of } K \iff \\
                 \Gal(M : L) \text{ is a normal subgroup of } \Gal(M : K).
             \end{multline*}
+            \par\vspace{-5pt}
             and in that case,
+            \vspace{-3pt}
             \[\frac{\Gal(M : K)}{\Gal(M : L)} \cong \Gal(L : K)\]
     \end{enumerate-zero}
 \end{thm-s}
 
-\vspace{-5pt}
+\vspace{-7pt}
 \begin{rem}[Useful Results]{rem:useful-results}{8.2.3}
     \vspace{-5pt}
     \begin{enumerate-tight}
@@ -1336,7 +1343,7 @@ We have now defined functions
     \end{enumerate-tight}
 \end{rem}
 
-\vspace{-5pt}
+\vspace{-7pt}
 \begin{crl}[Automorphisms with FTGT]{crl:automorphisms-ftgt}{8.2.7}
     \vspace{-5pt}
     Let $M : K$ be a finite normal separable extension. Then for every $\alpha\in M \backslash K$, there is some automorphism $\phi$ of $M$ over $K$ such that $\phi(\alpha) \ne \alpha$
@@ -1346,7 +1353,9 @@ We have now defined functions
 
 % Warning 9.1.1
 
-\vspace{-5pt}
+\vspace{-18pt}
+\section{Solvability by Radicals}
+\vspace{-3pt}
 \begin{dfn}[Radical Number]{dfn:radical-number}{9.1.2}
     \vspace{-5pt}
     Let $\Qrad$ be the smallest subfield of $\mathbb{C}$ such that for $\alpha\in \mathbb{C}$,
@@ -1358,7 +1367,7 @@ We have now defined functions
     A nonzero polynomial over $\mathbb{Q}$ is \textbf{solvable by radicals} if all of its complex roots are radical.
 \end{dfn}
 
-\vspace{-5pt}
+\vspace{-7pt}
 \begin{lma}[Abelian Groups]{lma:abelian-groups}{9.1.6}
     \vspace{-5pt}
     \textbf{Lemma 9.1.6}: For all $n \ge 1$, the group $\Gal_{\mathbb{Q}}(t^{n} - 1)$ is abelian.
@@ -1366,18 +1375,18 @@ We have now defined functions
     \textbf{Lemma 9.1.8}: Let $K$ be a field and $n\ge 1$. Suppose that $t^{n} - 1$ splits in $K$. Then $\Gal_{K}(t^{n} - a)$ is abelian for all $a\in K$.
 \end{lma}
 
-\vspace{-5pt}
+\vspace{-7pt}
 \begin{dfn}[Solvable Extension]{dfn:solvable-extension}{9.2.1}
     \vspace{-5pt}
     Roughly, the diagram of solvable polynomials is
     \[\text{solvable polynomial} \longmapsto \text{solvable extension} \longmapsto \text{solvable group}\]
     In other words, we define ``solvable extension'' in such a way that
-    \vspace{-5pt}
+    \vspace{-7pt}
     \begin{enumerate-tight}
-        \item If $f\in \mathbb{Q}[t]$ is a polynomial solvable by radicals then $\SF_{\mathbb{Q}}(f) : \mathbb{Q}$ is a solvable extension.
+        \item If $f\in \mathbb{Q}[t]$ is a polynomial solvable by radicals then $\SF_{\mathbb{Q}}(f) : \mathbb{Q}$ is a solvable extension.\vspace{-3pt}
         \item If $M : K$ is a solvable extension then $\Gal(M : K)$ is a solvable group. Hence if $f$ is solvable by radicals then $\Gal_{\mathbb{Q}}(f)$ is solvable.
     \end{enumerate-tight}
-    \vspace{-10pt}
+    \vspace{-12pt}
     \longrule{0.08ex}
     Let $M : K$ be a finite normal separable extension. Then $M : K$ is \textbf{solvable} (or $M$ is \textbf{solvable over $K$}) if there exist $r \ge 0$ and intermediate fields
     \[K = L_{0} \subseteq L_{1} \subseteq \cdots \subseteq L_{r} = M\]
@@ -1405,6 +1414,7 @@ We have now defined functions
     Let $L$ and $M$ be subfields of $\mathbb{C}$ such that the extensions $L : \mathbb{Q}$ and $M : \mathbb{Q}$ are finite, normal, and solvable. Then there is some subfield $M$ of $\mathbb{C}$ such that $N : \mathbb{Q}$ is finite, normal, and solvable and $L,\, M \subseteq N$.
     \textrule{Working with the Rationals}
     \textbf{Lemma 9.2.8}: Let $\Qsol$ be defined as
+    \vspace{-5pt}
    \begin{multline*}
        \Qsol = \{\alpha\in \mathbb{C} \mid \alpha\in L \text{ for some subfield } L \subseteq \mathbb{C} \\\text{that is finite, normal, and solvable over } \mathbb{Q}\}.
    \end{multline*}
@@ -1437,7 +1447,9 @@ We have now defined functions
     Not every polynomial over $\mathbb{Q}$ of degree $5$ is solvable by radicals.
 \end{thm}
 
-\vspace{-5pt}
+\vspace{-18pt}
+\section{Finite Fields}
+\vspace{-3pt}
 \begin{lma}[Classification of the Finite Fields]{lma:fin-fields}{10.1}
     \vspace{-5pt}
     \textbf{Lemma 10.1.1}: Let $M$ be a finite field. Then $\Char M$ is a prime number $p$, and $\lvert M \rvert = p^{n}$ where $n = [M : \mathbb{F}_{p}] \ge 1$. In particular, the order of a finite field is a prime power.
