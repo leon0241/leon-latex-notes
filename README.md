@@ -14,23 +14,24 @@ LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and M
 <details>
     <summary>Year 3</summary>
     <ul>
+        <li> <b>Geometry</b> - <a href="exam-sheets/Geometry/geometry_notes.pdf">click here!</a> <i>(they are terrible tho)</i> </li>
         <li> <b>Honours Algebra</b> - <a href="exam-sheets/algebra-6p/algebra-6p.pdf">click here!</a> </li>
+        <li> <b>Honours Algebra</b> everything - <a href="exam-sheets/algebra-10p/algebra-10p.pdf">click here!</a> <i>*(10 pages)*</i> </li>
         <li> <b>Honours Analysis</b> - <a href="exam-sheets/analysis-6p/analysis-6p.pdf">click here!</a> <i>(without examples - basically 5 pages)</i> </li> 
         <li> <b>Honours Analysis</b> - <a href="exam-sheets/analysis-6p/analysis-6p-no-examples.pdf">click here!</a> <i>*(without examples or applications - 5 and a bit pages)*</i> </li>
-        <li> <b>Metric Spaces</b> - <a href="exam-sheets/metric-6p/metric-6p.pdf">click here!</a> </li>
-        <li> <b>Honours Algebra</b> everything - <a href="exam-sheets/algebra-10p/algebra-10p.pdf">click here!</a> <i>*(10 pages)*</i> </li>
-        <li> <b>Geometry</b> - <a href="exam-sheets/Geometry/geometry_notes.pdf">click here!</a> <i>(they are terrible tho)</i> </li>
         <li> <b>Introduction to Theoretical CS</b> - <a href="exam-sheets/ITCS/itcs_notes.pdf">click here!</a> <i>(Adapted from Chris Dalziel's LaTeX notes)</i> </li>
+        <li> <b>Metric Spaces</b> - <a href="exam-sheets/metric-6p/metric-6p.pdf">click here!</a> </li>
     </ul>
 </details>
 
 <details>
     <summary>Year 4</summary>
     <ul>
-        <li> <b>General Topology</b> - <a href="exam-sheets/gentop-6p/gentop-6p.pdf">click here!</a> </li>
-        <li> <b>Group Theory</b> - <a href="exam-sheets/group-theory-6p/group-theory-6p.pdf">click here!</a> </li>
         <li> <b>Algebraic Topology</b> - <a href="exam-sheets/algtop-6p/algtop-6p.pdf">click here!</a> </li>
         <li> <b>Galois Theory</b> - <a href="exam-sheets/galois-6p/galois-6p.pdf">click here!</a> </li>
+        <li> <b>General Topology</b> - <a href="exam-sheets/gentop-6p/gentop-6p.pdf">click here!</a> </li>
+        <li> <b>Group Theory</b> - <a href="exam-sheets/group-theory-6p/group-theory-6p.pdf">click here!</a> </li>
+        <li> <b>Modelling Concurrent Systme</b> - <a href="exam-sheets/mcs-6p/mcs-6p.pdf">click here!</a> </li>
     </ul>
 </details>
 
