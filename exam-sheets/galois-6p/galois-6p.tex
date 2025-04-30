@@ -4,6 +4,7 @@
 \usepackage{symbols}
 
 \setlength{\parskip}{3pt}
+\usepackage[fontsize=6.5pt]{scrextend}
 
 \begin{document}
 
@@ -50,7 +51,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 \vspace{-15pt}
 \section{Groups, Rings, and Fields}
-
+\vspace{-3pt}
 \begin{dfn}[Group Action]{dfn:group-action}{2.1.1}
     \vspace{-5pt}
     Let $G$ be a group and $X$ a set. An \textbf{action} of $G$ on $X$ is a function $G \times X \to X$, written as $(g,x)\mapsto gx$ such that
@@ -58,38 +59,45 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     for all $g, h\in G$ and $x\in X$, where $1$ is the identity of $G$
 \end{dfn}
 
-\vspace{-5pt}
+\vspace{-6pt}
 \begin{dfn}[Faithful Actions]{dfn:faithful-actions}{2.1.7}
     \vspace{-5pt}
     An action of a group $G$ on a set $X$ is \textbf{faithful} if for $g,\,h\in G$,
     \[gx = hx \text{ for all } x\in X \implies g = h\]
+    \par\vspace{-7pt}
     \textit{``If two elements of the group \textit{do} the same, they \textit{are} the same.''}
     \textrule{Lemma 2.1.8: Properties of Faithful Actions}
+    \par\vspace{-12pt}
     For an action of a group $G$ on a set $X$, the following are equal:
-    \vspace{-5pt}
+    \vspace{-7pt}
     \begin{enumerate-tight}
-        \item The action is faithful
-        \item For $g\in G$, if $gx = x$ for all $x\in X$ then $g = 1$
-        \item The homomorphism $\Sigma : G \to \sym(X)$ is injective
+        \item The action is faithful\vspace{-2pt}
+        \item For $g\in G$, if $gx = x$ for all $x\in X$ then $g = 1$\vspace{-2pt}
+        \item The homomorphism $\Sigma : G \to \sym(X)$ is injective\vspace{-2pt}
         \item $\ker \Sigma$ is trivial.
     \end{enumerate-tight}
     \vspace{-5pt}
     \textrule{Lemma 2.1.11: Isomorphisms of Faithful Groups}
+    \par\vspace{-12pt}
     Let $G$ be a group acting faithfully on a set $X$. then $G$ is isomorphic to the subgroup of $\sym(X)$, where $\Sigma : G \to \sym(X)$
     \[\im \Sigma = \{\overline{g} \mid g\in G\}, \text{ where } \overline{g} : X \to X \text{ and } \overline{g}(x) = gx\]
 \end{dfn}
 
-\vspace{-5pt}
+\vspace{-6pt}
 \begin{dfn}[Fixed Set]{dfn:fixed-set}{2.1.1}
     \vspace{-5pt}
     For a group $G$ acting on a set $X$, let $S \subseteq G$. The \textbf{fixed set} of $S$ is
+    \vspace{-2pt}
     \[\Fix(S) = \{ x\in X \mid sx = x \text{ for all } s\in S\}\]
+    \vspace{-10pt}
     \textrule{Lemma 2.1.15: Normal Fixed Sets}
+    \par\vspace{-12pt}
     Let $G$ be a group acting on a set $X$, let $S \subseteq G$, and let $g\in G$. Then $\Fix(gSg^{-1}) = g\Fix(S)$.
 
     Here, $gSg^{-1} = \{gs g^{-1} \mid s\in S\}$ and $g\Fix(S) = \{gx \mid x \in \Fix(S)\}$
 \end{dfn}
 
+\vspace{-6pt}
 \begin{dfn}[Ring Homomorphism]{dfn:ring-homomorphism}{2.2.1}
     \vspace{-5pt}
     Given rings $R$ and $S$, a \textbf{homomorphism} from $R$ to $S$ is a function $\phi : R \to S$ satisfying the following equations for all $r,\,r'\in R$:
@@ -151,13 +159,14 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	\arrow["{\overline{\phi}}"', from=3-1, to=3-3]
     \end{tikzcd}\]
     \end{vwcol}
-    \vspace{-10pt}
+    \vspace{-28pt}
 \end{rcl}
 
 \vspace{-6pt}
 \begin{rcl}[Integral Domains and Generators]{rcl:generated-ideal}{}
-    \vspace{-5pt}
+    \vspace{-7pt}
     An \textbf{integral domain} is a ring $R$ s.t. $0_{R} \ne 1_{R}$, and for $r,\,r'\in R$,
+    \vspace{-3pt}
     \[rr' = 0 \implies r = 0 \text{ or } r' = 0.\]
     \vspace{-13pt}
     \textrule{Generated Ideals}
@@ -184,13 +193,13 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{enumerate}
 \end{rcl}
 
-\vspace{-5pt}
+\vspace{-7pt}
 \begin{rcl}[Fields, Fieldeals, and Subfields]{rcl:field}{2.3.A}
     \vspace{-5pt}
     A \textbf{field} is a ring $K$ in which $0 \ne 1$ and every nonzero element is a unit. Equivalently, it is a ring such that $K^{\times} = K \backslash \{0\}$. Every field is an integral domain. A field $K$ has exactly two ideals: $\{0\}$ and $K$. A \textbf{subfield} of a field $K$ is a subring that is a field
 \end{rcl}
 
-\vspace{-5pt}
+\vspace{-7pt}
 \begin{xmp}[Rational Expressions]{xmp:rational-expressions}{2.3.2}
     \vspace{-5pt}
     Let $K$ be a field. A \textbf{rational expression} over $K$ is a ratio of two polynomials
@@ -200,30 +209,32 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \vspace{-5pt}
 \end{xmp}
 
-\vspace{-5pt}
+\vspace{-7pt}
 \begin{dfn}[Equaliser]{dfn:equaliser}{2.3.7}
     \vspace{-5pt}
     For sets $X$ and $Y$, and $S \subseteq \{ \text{ functions } X \to Y\}$, the \textbf{equalizer} of $S$ is \textit{``the part of $X$ where all the functions in $S$ are equal''}, i.e.
     \[\eq(S) = \{x\in X \mid f(x) = g(x) \text{ for all } f,\,g\in S\}\]
 \end{dfn}
 
-\vspace{-5pt}
+\vspace{-7pt}
 \begin{lma}[Ring Homomorphism Properties]{lma:homomorphisms-fields}{2.3.B}
     \vspace{-5pt}
     \begin{itemize-tight}
         \item[\textbf{2.3.3})] Every (ring) homomorphism between fields is injective.
         \item[\textbf{2.3.6})] Let $\phi : K \to L$ be a homomorphism between fields.
             \begin{enumerate}[leftmargin=0em]
-                \vspace{-7pt}
+                \vspace{-6pt}
                 \setlength\itemsep{0em}
-                \item For a subfield $K'$ of $K$, the image $\phi K'$ is a subfield of $L$
+                \item For a subfield $K'$ of $K$, the image $\phi K'$ is a subfield of $L$\vspace{-1pt}
                 \item For a subfield $L'$ of $L$, the preimage $\phi^{-1}L'$ is a subfield of $K$
             \end{enumerate}
             \vspace{-5pt}
         \item[\textbf{2.3.8})] Let $K$ and $L$ be fields, and let
+            \vspace{-2pt}
             \[
                 S \subseteq \{\text{homomorphisms } K \to L\}
             \]
+            \par\vspace{-5pt}
             Then $\eq(S)$ is a subfield of $K$.
     \end{itemize-tight}
 \end{lma}
@@ -308,7 +319,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     This lets us construct fields from irreducible elements of a PID.
 \end{ppn}
 
-\vspace{-15pt}
+\newpage
 \section{Polynomials}
 \vspace{-2pt}
 \begin{dfn}[Polynomial Ring]{dfn:polynomial-ring}{3.1.1}
@@ -454,28 +465,22 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \begin{lma}[Irreducibility Tests]{lma:irreducibility-tests}{3.3.B}
     \vspace{-5pt}
     \textrule{Lemma 3.3.8: Gauss' Lemma}
-    \vspace{-20pt}
+    \par\vspace{-20pt}
     \begin{enumerate-zero}
         \item The product of two primitive polynomials over $\mathbb{Z}$ is primitive.\vspace{-3pt}
         \item If a nonconstant polynomial over $\mathbb{Z}$ is irreducible over $\mathbb{Z}$, it is irreducible over $\mathbb{Q}$
     \end{enumerate-zero}
-    \vspace{-7pt}
+    \vspace{-9pt}
     \textrule{Lemma 3.3.9: Mod-$p$ Method}
+    \par\vspace{-12pt}
     Let $f(t) = a_{0} + a_{1}t + \cdots + a_{n}t^{n}\in \mathbb{Z}[t]$. If there is some prime $p$ s.t. $p \nmid a_{n}$ and $\overline{f} \in \mathbb{F}_{p}[t]$ is irreducible, then $f$ is irreducible over $\mathbb{Q}$.
 
     \textbf{Warning}: This only tells you that a polynomial is \textit{irreducible} over $\mathbb{Q}$ and says nothing about whether it is \textit{reducible}.
     \vspace{-2pt}
     \textrule{Lemma 3.3.12: Eisenstein's Criterion}
     Let $f(t) = a_{0}+\cdots + a_{n}t^{n}\in \mathbb{Z}[t]$, with $n \ge 1$. Suppose there exists a prime $p$ such that
-    \vspace{-5pt}
-    \begin{itemize-tight}
-        \item $p\nmid a_{n}$
-        \item $p \mid a_{i}$ for all $i\in \{0,\dots, n - 1\}$
-        \item $p^{2} \nmid a_{0}$
-    \end{itemize-tight}
-    \vspace{-5pt}
+    \[\bullet \: p\nmid a_{n} \qquad\quad \bullet\: p \mid a_{i},\,\forall i\in \{0,\dots, n - 1\} \qquad\quad \bullet\:p^{2} \nmid a_{0} \]
     Then $f$ is irreducible over $\mathbb{Q}$.
-    \vspace{-4pt}
 \end{lma}
 
 % TODO: co-degree
@@ -487,42 +492,41 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 %     $\Phi_{p}$ is irreducible.
 % \end{xmp}
 
-\newpage
-\section{Field Extensions}
+% ╭──────────────────────────────────────────────────────────╮
+% │                          PAGE 3                          │
+% ╰──────────────────────────────────────────────────────────╯
 
-\begin{rem}[Inclusion Funtion]{rem:inclusion-function}{4.1.A}
+\section{Field Extensions}
+\vspace{-3pt}
+\begin{dfn}[Field Extension]{dfn:field-extension}{4.1.1}
     \vspace{-5pt}
     It is sometimes easier to think of a subset as an injection. Given a set $A$ and a subset $B \subseteq A$, define an \textbf{inclusion} function
+    \vspace{-2pt}
     \[
         \iota : B \to A \text{ defined by } \iota(b) = b \text{ for all } b\in B.
     \]
-\end{rem}
-
-\vspace{-5pt}
-\begin{dfn}[Field Extension]{dfn:field-extension}{4.1.1}
-    \vspace{-5pt}
-    Let $K$ be a field. An \textbf{extension} of $K$ is a field $M$ together with a homomorphism $\iota : K \to M$, where $K$ is the small field and $M$ is the large field. We write $M : K$ to mean that $M$ is an extension of $K$, not bothering to mention $\iota$.
+    Let $K$ be a field. An \textbf{extension} of $K$ is a field $M$ together with a homomorphism $\iota : K \to M$. We write $M : K$ to mean that $M$ is an extension of $K$, not bothering to mention $\iota$.
 \end{dfn}
 
-\vspace{-5pt}
+\vspace{-8pt}
 \begin{xmp}[Examples of Field Extensions]{xmp:examples of field extensions}{4.1.2}
-    \vspace{-10pt}
+    \vspace{-12pt}
     \[\iota_{1}: \mathbb{Q} \to \mathbb{R}, \quad \iota_{2} : \mathbb{R} \to \mathbb{C}, \quad \iota_{3} : \mathbb{Q} \to \mathbb{C}\]
     $\iota_{4} : Q \to K$, where $K = \{a + b\sqrt{2} \mid a,\,b\in \mathbb{Q}\}$ (we call this $\mathbb{Q}(\sqrt{2})$)
 \end{xmp}
 
 % TODO: examples
 
-\vspace{-5pt}
+\vspace{-8pt}
 \begin{dfn}[Generated Subfields]{dfn:generated-subfield}{4.1.4}
     \vspace{-5pt}
-    For a field $K$, and $X$ a subset of $K$, the subfield of $K$ \textbf{generated by} $X$ is the intersection of all subfields of $K$ containing $X$.
+    For a field $K$, and $X$ a subset of $K$, the subfield of $K$ \textbf{generated by} $X$ is the intersection of all subfields of $K$ containing $X$. Let $F$ be the subfield of $K$ generated by $X$. $F$ contains $X$, and $F$ is also the \textit{smallest} subfield of $K$ containing $X$ (i.e. any subfield of $K$ containing $X$ contains $F$)
 
-    Let $F$ be the subfield of $K$ generated by $X$. $F$ contains $X$, and $F$ is also the \textit{smallest} subfield of $K$ containing $X$ (i.e. any subfield of $K$ containing $X$ contains $F$)
-
+    \vspace{-3pt}
     \textrule{Definition 4.1.8: Adjoined Subfields}
+    \par\vspace{-13pt}
     For a field extension $M : K$, and $Y \subseteq M$, we write $K(Y)$ for the subfield of $M$ generated by $K \cup Y$. We call it the subfield of $M$ \textbf{generated by $Y$ over $K$}, or $K$ with $Y$ \textbf{adjoined}.
-    \par\vspace{-5pt}
+    \par\vspace{-7pt}
     \longrule{0.08ex}
     $K(Y)$ is the smallest subfield of $M$ containing both $K,\,Y$. If $Y$ is a finite set $\{\alpha_{1},\dots,\alpha_{n}\}$, write $K(\{\alpha_{1},\dots,\alpha_{n}\})$ as $K(\alpha_{1},\dots,\alpha_{n})$
 \end{dfn}
@@ -531,61 +535,65 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 % TODO: warning 4.1.10
 
-\vspace{-5pt}
+\vspace{-8pt}
 \begin{dfn}[Algebraic Numbers]{dfn:algebraic-extension}{4.2.1}
     \vspace{-5pt}
     A complex number $\alpha\in \mathbb{C}$ is said to be ``algebraic'' if
+    \vspace{-3pt}
     \[a_{0} + a_{1}\alpha + \cdots + a_{n}a^{n} = 0\]
+    \par\vspace{-5pt}
     for some rational numbers $a_{i}$, not all zero
-
     \textrule{Algebraic Numbers for Arbitrary Fields}
+    \par\vspace{-14pt}
     For a field extension $M : K$, and $\alpha\in M$, $\alpha$ is \textbf{algebraic} over $K$ if $\exists f \in K[t]$ s.t. $f(\alpha) = 0$ but $f \ne 0$, \textbf{transcendental} otherwise.
 \end{dfn}
 
 % TODO: transcendental numbers examples
 
-\vspace{-5pt}
+\vspace{-6pt}
 \begin{lma}[Annihilators]{lma:annihilator}{4.2.6}
     \vspace{-5pt}
     Let $M : K$ be a field extension and $\alpha\in M$. An \textbf{annihilating polynomial} of $\alpha$ is a polynomial $f \in K[t]$ such that $f(\alpha)=0$. So, $\alpha$ is algebraic iff it has some nonzero annihilating polynomial.
-    \par\vspace{-5pt}
+    \par\vspace{-7pt}
     \longrule{0.08ex}
     For a field extension $M : K$ and $\alpha\in M$, there is a polynomial $m(t) \in K[t]$ such that
+    \vspace{-5pt}
     \begin{equation}\label{eq:annihilator}\tag{4.2}
         \langle m \rangle = \{\text{annihilating polynomials of $\alpha$ over $K$}\}.
     \end{equation}
+    \par\vspace{-5pt}
     If $\alpha$ is transcendental over $K$ then $m = 0$. If $\alpha$ is algebraic over $K$ then there is a unique monic polynomial $m$ satisfying \eqref{eq:annihilator}.
 \end{lma}
 
+\vspace{-6pt}
 \begin{dfn}[Minimal Polynomial]{dfn:minimal-polynomial}{4.2.7}
     \vspace{-5pt}
     Let $M : K$ be a field extension and let $\alpha\in M$ be \textit{algebraic} over $K$. The \textbf{minimal polynomial} of $\alpha$ is the unique monic polynomial satisfying \eqref{eq:annihilator}.
-
-    \vspace{-1pt}
-    \textbf{Warning}: This isn't defined over transcendentals, therefore some elements of $M$ might not have a minimal polynomial.
-
+    \newline\textbf{Warning}: This isn't defined over transcendentals, therefore some elements of $M$ might not have a minimal polynomial.
     \textrule{Lemma 4.2.10: Minimal Polynomial Conditions}
-    Let $M : K$ be a field extension, let $\alpha \in M$ be algebraic over $K$ and let $m\in K[t]$ be a monic polynomial. The following are equivalent
-    \vspace{-5pt}
+    \par\vspace{-13pt}
+    Let $M : K$ be a field extension, let $\alpha \in M$ be algebraic over $K$ and let $m\in K[t]$ be a monic polynomial. The following are equivalent:
+    \vspace{-7pt}
     \begin{enumerate-zero}
-        \item $m$ is the minimal polynomial of $\alpha$ over $K$
-        \item $m(\alpha) = 0$, $m \mid f$ for all annihilating polynomials $f$ of $\alpha$ over $K$
-        \item $m(\alpha) = 0$ and $\deg(m) \le \deg (f)$ for all nonzero annihilating polynomials. \textit{``monic annihilating polynomial of least degree.''}\vspace{-2pt} 
+        \item $m$ is the minimal polynomial of $\alpha$ over $K$\vspace{-2pt}
+        \item $m(\alpha) = 0$, $m \mid f$ for all annihilating polynomials $f$ of $\alpha$ over $K$\vspace{-2pt}
+        \item $m(\alpha) = 0$ and $\deg(m) \le \deg (f)$ for all nonzero annihilating polynomials. \textit{``monic annihilating polynomial of least degree.''}\vspace{-2pt}\vspace{-1pt}
         \item $m(\alpha) = 0$ and $m$ is irreducible over $K$.
     \end{enumerate-zero}
 \end{dfn}
 
 %TODO: examples, these are probably important
 
+\newpage
 \vspace{-7pt}
 \begin{dfn}[]{dfn:minimal-polynomial-element}{4.3.1}
     \vspace{-5pt}
     Let $K$ be a field.
     \vspace{-7pt}
-    \begin{enumerate-zero}
+    \begin{enumerate}[leftmargin=1.5ex]
         \item Let $m\in K[t]$ be monic and irreducible. Write $\alpha\in K[t] /\langle m \rangle$ for the image of $t$ under the canonical homomorphism $K[t] \to K[t] / \langle m \rangle$. Then $\alpha$ has minimal polynomial $m$ over $K$, and $K[t] /\langle m \rangle$ is generated by $\alpha$ over $K$.\vspace{-3pt}
         \item The element $t$ of the field $K(t)$ of rational expressions over $K$ is transcendental over $K$, and $K(t)$ is generated by $t$ over $K$
-    \end{enumerate-zero}
+    \end{enumerate}
 \end{dfn}
 
 \vspace{-7pt}
@@ -624,6 +632,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
             \item $L : K$ an extension of $K$
             \item $\beta\in L$ with minimal polynomial $m$
             \item Write $\alpha$ for the image of $t$ under the canonical homomorphism $K[t] \to K[t] / \langle m \rangle$.
+            \item Then there is exactly one homomorphism $\phi : K[t] / \langle m \rangle \to L$ over $K$ such that $\phi(a) = \beta$.
         \end{itemize}
         \columnbreak
 % https://q.uiver.app/#q=WzAsNSxbMCwyLCJLW3RdL1xcbGFuZ2xlIG0gXFxyYW5nbGUiXSxbMiwxLCJMIl0sWzEsMywiSyJdLFswLDEsIlxcYWxwaGEiXSxbMiwwLCJcXGJldGEiXSxbMCwxLCJcXHBoaSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFsyLDBdLFsyLDFdLFszLDQsIiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifSwiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV1d
@@ -638,11 +647,9 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
             \arrow[from=4-2, to=3-1]
         \end{tikzcd}\]
     \end{vwcol}
-    \vspace{-17pt}
-    Then there is exactly one homomorphism $\phi : K[t] / \langle m \rangle \to L$ over $K$ such that $\phi(a) = \beta$.
-    \vspace{0.1pt}
+    \vspace{-18pt}
     \textrule{Universal Property of $K(t)$}
-    \vspace{-15pt}
+    \vspace{-12pt}
 
         For $L : K$ an extension of $K$, and transcendental $\beta\in L$, there is exactly one homomorphism $\phi : K(t) \to L$ over $K$ s.t. $\phi(t) = \beta$.
 
@@ -650,7 +657,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \end{ppn}
 
 % TODO: example - LOOK AT THIS!!!
-
+\vspace{-5pt}
 \begin{crl}[Isomorphisms and Uniqueness]{crl:isomorphism-uniqueness}{4.3.11}
     \vspace{-5pt}
     Let $M$ and $M'$ be extensions of a field $K$. A homomorphism $\phi : M \to M'$ is an \textbf{isomorphism over $K$} if it is a homomorphism over $K$ and an isomorphism of fields. If such a $\phi$ exists, we say that $M$ and $M'$ are \textbf{isomorphic over $K$}.
@@ -709,7 +716,10 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{enumerate-zero}
 \end{thm}
 
-\newpage
+% ╭──────────────────────────────────────────────────────────╮
+% │                          PAGE 4                          │
+% ╰──────────────────────────────────────────────────────────╯
+
 %TODO: Example
 
 \begin{thm}[Tower Law]{thm:tower-law}{5.1.17}
@@ -731,28 +741,28 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \begin{crl}[Degree Results]{crl:degree-results}{5.1.A}
     \vspace{-5pt}
     \textrule{Corollary 5.1.10: Degree means Algebraic}
-    \par\vspace{-15pt}
+    \par\vspace{-12pt}
     Let $M : K$ be a field extension and $\alpha\in M$, the \textbf{degree} of $\alpha$ over $K$ is $[K(\alpha) : K]$. We write it as $\deg_{K}(\alpha)$. Then
     \vspace{-3pt}\[\deg_{K}(\alpha) < \infty \iff \alpha \text{ is algebraic over $K$.}\]\par\vspace{-5pt}
     If $\alpha$ is algebraic over $K$ then the degree of $\alpha$ over $K$ is the degree of the minimal polynomial of $\alpha$ over $K$.
     \textrule{Corollary 5.1.12: Size of Nested Extension}
-    \par\vspace{-15pt}
+    \par\vspace{-12pt}
     Let $M : L : K$ be a field extension and $\beta \in M$. Then
     \[ [L(\beta) : L] \le [K(\beta) : K] \]
 % TODO: visualization of 5.1.12
     \textrule{Corollary 5.1.14: Polynomial Form of Extensions}
-    \par\vspace{-15pt}
+    \par\vspace{-12pt}
     Let $M : K$ be an extension and $\alpha_{1},\dots, \alpha_{n}\in M$, with $\alpha_{i}$ algebraic over $K$ of degree $d_{i}$. Then every element $\alpha\in K(\alpha_{1},\dots,\alpha_{n})$ can be expressed as a polynomial in $\alpha_{1},\dots,\alpha_{n}$ over $K$. More exactly,
     \[\alpha = \sum_{r_{1},\dots,r_{n}} c_{r_{1},\dots,r_{n}}a^{r_{1}}_{1} \cdots a^{r_{n}}_{n}\]
     for some $c_{r_{1},\dots,r_{n}}\in K$, where $r_{i}$ ranges over $0,\dots,d_{i}-1$.
 
     \textrule{Corollary 5.1.19: Dividing Extensions}
-    \par\vspace{-15pt}
+    \par\vspace{-12pt}
 Let $M : L' : L : K$ be field extensions. If $M : K$ is finite, then $[L' : L]$ divides $[M : K]$
 
 \vspace{-5pt}
 \textrule{Corollary 5.1.21: Triangle Tower Inequality}
-    \par\vspace{-15pt}
+    \par\vspace{-12pt}
 Let $M : K$ be a field extension and $\alpha_{1},\dots,\alpha_{n}\in M$. Then
     \[[K(\alpha_{1},\dots,\alpha_{n}) : K] \le [K(\alpha_{1}) : K] \cdots [K(\alpha_{n}) : K].\]
 \end{crl}
@@ -763,8 +773,8 @@ Let $M : K$ be a field extension and $\alpha_{1},\dots,\alpha_{n}\in M$. Then
     \vspace{-5pt}
     A field extension $M : K$ is \textbf{finitely generated} if $M = K(Y)$ for some finite subset $Y \subseteq M$.
     \textrule{Definition 5.2.2: Algebraic Extension}
-    \par\vspace{-15pt}
-    A field extension $M : K$ is \textbf{algebraic} if every element of $M$ is algebraic over $K$.
+    \par\vspace{-12pt}
+    A field ext. $M\hspace{-0.7ex}:\hspace{-0.7ex} K$ is \textbf{algebraic} if all elements of $M$ are algebraic over $K$
 \end{dfn}
 
 \vspace{-7pt}
@@ -777,11 +787,11 @@ Let $M : K$ be a field extension and $\alpha_{1},\dots,\alpha_{n}\in M$. Then
         \item $M : K$ is finitely generated and algebraic\vspace{-2pt}
         \item $M = K(\alpha_{1},\dots,\alpha_{n})$ for some finite set $\{\alpha_{1},\dots,\alpha_{n}\}$ of elements of $M$ algebraic over $K$.
     \end{enumerate-tight}
-    \vspace{-9pt}
+    \vspace{-8pt}
     \textrule{Corollary 5.2.6: Variation for Simple Extensions}
-    \par\vspace{-17pt}
+    \par\vspace{-13pt}
     Let $K(\alpha) : K$ be a simple extension. The following are equivalent:
-    \vspace{-18pt}
+    \vspace{-5pt}
     \begin{enumerate-tight}
         \vspace{-10pt}\begin{multicols}{2}
         \item $K(\alpha) : K$ is finite
@@ -789,24 +799,26 @@ Let $M : K$ be a field extension and $\alpha_{1},\dots,\alpha_{n}\in M$. Then
         \end{multicols}\vspace{-15pt}
         \item $\alpha$ is algebraic over $K$.
     \end{enumerate-tight}
-    \vspace{-5pt}
+    \vspace{-7pt}
     \textbf{Corollary 5.2.7}: $\overline{\mathbb{Q}}$ is a subfield of $\mathbb{C}$.
 \end{ppn}
 
+\vspace{-7pt}
 \begin{dfn-s}[Ruler and Compass Constructions]{dfn:compositum}{5.3.3}
     \vspace{-5pt}
-    A point $C$ in the plane is \textbf{immediately constructible} from $\Sigma$ if it is a point of intersection between two distinct lines, or two distinct circles, or a line and a circle. $C$ is \textbf{constructible} from $\Sigma$ if there is a finite sequence $C_{1},\dots,C_{n}=C$ of points such that $C_{i}$ is immediately constructible from $\Sigma \cup \{C_{1},\dots,C_{i-1}\}$ for each $i$.
-    \par\vspace{-5pt}
+    A point $C$ in the plane is \textbf{immediately constructible} from $\Sigma$ if it is a point of intersection between lines or circles. $C$ is \textbf{constructible} from $\Sigma$ if there is a finite sequence $C_{1},\dots,C_{n}=C$ of points such that $C_{i}$ is immediately constructible from $\Sigma \cup \{C_{1},\dots,C_{i-1}\}$ for each $i$.
+    \par\vspace{-8pt}
     \longrule{0.08ex}
     For a subfield $K \subseteq \mathbb{R}$, an extension $K : \mathbb{Q}$ is \textbf{iterated quadratic} if there is some finite sequence of subfields
+    \vspace{-2pt}
     \[\mathbb{Q} = K_{0} \subseteq K_{1} \subseteq \cdots \subseteq K_{n} = K\]
     such that $[K_{i} : K_{i-1}] = 2$ for all $i\in \{1,\dots,n\}$
-    \par\vspace{-5pt}
+    \par\vspace{-8pt}
     \longrule{0.08ex}
     Let $L$ and $L'$ be subfields of a field $M$. The \textbf{compositum $LL'$} of $L$ and $L'$ is the subfield of $M$ generated by $L \cup L'$. That is, $LL'$ is the smallest subfield of $M$ containing both $L$ and $L'$.
 \end{dfn-s}
 
-\vspace{-5pt}
+\vspace{-7pt}
 \begin{lma}[Ruler and Compass Results]{lma:ruler-compass}{5.3.B}
     \vspace{-5pt}
     \textbf{Lemma 5.3.6}: For a field extension $M : K$ and $L,\, L'$ subfields of $M$ containing $K$, if $[L : K] = 2$ then $[LL':L'] \in \{1,2\}$.
@@ -815,75 +827,84 @@ Let $M : K$ be a field extension and $\alpha_{1},\dots,\alpha_{n}\in M$. Then
     \textbf{Lemma 5.3.8}: Let $K$ and $L$ be subfields of $\mathbb{R}$ s.t. the extensions $K : \mathbb{Q}$ and $L : \mathbb{Q}$ are iterated quadratic. Then there is some subfield $M$ of $\mathbb{R}$ s.t. the $M : \mathbb{Q}$ is iterated quadratic and $K,\, L \subseteq M$.
 
     \textrule{Proposition 5.3.9: Iterated Quadratics from Points}
-    \par\vspace{-15pt}
+    \par\vspace{-12pt}
     Let $(x,y)\in \mathbb{R}^{2}$. If $(x,y)$ is constructable from $\{(0,0),\, (1,0)\}$ then there is an iterated quadratic extension of $\mathbb{Q}$ containing $x$ and $y$.
 
     \textrule{Theorem 5.3.10: Quadratics and Constructability}
-    \par\vspace{-15pt}
+    \par\vspace{-12pt}
     Let $(x,y)\in \mathbb{R}^{2}$. If $(x,y)$ is constructible from $\{(0,0),\, (1,0)\}$ then $x,\,y$ are algebraic over $\mathbb{Q}$, and their degrees over $\mathbb{Q}$ are powers of $2$.
 \end{lma}
 
-\vspace{-5pt}
+\vspace{-7pt}
 \begin{dfn}[Extending Homomorphism]{dfn:extending-homomorphism}{6.1.1}
     \vspace{-5pt}
-    \begin{vwcol}[widths={0.77,0.23}, rule=0pt]
+    \begin{vwcol}[widths={0.75,0.25}, rule=0pt]
     Let $\iota : K \to M$ and $\iota : K' \to M'$ be field extensions. Let $\psi : K \to K'$ be a homomorphism of fields. A homomorphism $\phi : M \to M'$ \textbf{extends} $\psi$ if the square commutes $(\phi \circ \iota = \iota' \circ \psi)$. 
+
     \columnbreak
 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJNIl0sWzEsMCwiTSciXSxbMCwxLCJLJyJdLFsxLDEsIksiXSxbMiwzLCJcXHBzaSIsMl0sWzIsMCwiXFxpb3RhIl0sWzAsMSwiXFxwaGkiXSxbMywxLCJcXGlvdGEnIiwyXV0=
-\[\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=scriptsize]
+$\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=scriptsize]
 	M \& {M'} \\
 	{K'} \& K
 	\arrow["\phi", from=1-1, to=1-2]
 	\arrow["\iota", from=2-1, to=1-1]
 	\arrow["\psi", from=2-1, to=2-2]
 	\arrow["{\iota'}"', from=2-2, to=1-2]
-\end{tikzcd}\]
+\end{tikzcd}$
 
     \end{vwcol}
-    \vspace{-20pt}
+    \vspace{-22pt}
 Usually we view $K$ as a subset of $M$, and $K'$ as a subset of $M'$, with inclusions $\iota$ and $\iota'$. In this case, for $\phi$ to extend $\psi$ means that
 \[\pi(a) = \psi(a) \text{ for all } a\in K\]
 \end{dfn}
 
-\vspace{-5pt}
-\begin{lma}[Induced Homomorphism as sum]{lma:induced-homomorphism-sum}{6.1.3}
-    \vspace{-5pt}
-    Let $M : K$ and $M' : K'$ be field extensions, let $\phi : K \to K'$ be a homomorphism, and let $\phi : M \to M'$ be a homomorphism extending $\psi$. Let $\alpha\in M$ and $f(t) \in K[t]$. Then
-    \[f(\alpha) = 0 \iff (\psi_{\ast} f)(\phi(\alpha)) = 0.\]
-\end{lma}
-
-\vspace{-5pt}
-\begin{ppn}[Unique Extending Isomorphisms]{ppn:extending-isomorphisms}{6.1.6}
-    \vspace{-5pt}
+\vspace{-7pt}
+\begin{figure}[H]
+    \begin{lma}[Extending Isomorphisms]{lma:induced-homomorphism-sum}{6.1.3}
+        \vspace{-5pt}
+        \textbf{Induced Homomorphism 2}: Let $M : K$ and $M' : K'$ be field extensions, let $\phi : K \to K'$ be a homomorphism, and let $\phi : M \to M'$ be a homomorphism extending $\psi$. Let $\alpha\in M$ and $f(t) \in K[t]$. Then
+        \vspace{-5pt}
+        \[f(\alpha) = 0 \iff (\psi_{\ast} f)(\phi(\alpha)) = 0.\]
+        \vspace{-12pt}
+        \textrule{Prop 6.1.6: Extending Isomorphisms}
+        \par\vspace{-10pt}
         Let $\psi : K \to K'$ be an isomorphism of fields, $K(\alpha) : K$ a simple extension where $\alpha$ has minimal polynomial $m$ over $K$, and $K'(\alpha') : K'$ a simple extension where $\alpha'$ has minimal polynomial $\psi_{\ast}m$ over $K'$.
-    \begin{vwcol}[widths={0.7,0.3}, rule=0pt]
-Then there is exactly one isomorphism $\phi : K(\alpha) \to K'(\alpha')$ that extends $\psi$ and satisfies $\phi(\alpha) = \alpha'$. \textit{(Dotted arrow: a map whose existence is part of the conclusion.)}
-        \columnbreak
+        \begin{vwcol}[widths={0.63,0.37}, rule=0pt]
+            Then there is exactly one isomorphism $\phi : K(\alpha) \to K'(\alpha')$ that extends $\psi$ and satisfies $\phi(\alpha) = \alpha'$. \textit{(Dotted arrow: a map whose existence is part of the conclusion.)}
+            \columnbreak
 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJLKFxcYWxwaGEpIl0sWzIsMCwiSycoXFxhbHBoYScpIl0sWzAsMSwiSyciXSxbMiwxLCJLJyJdLFsyLDMsIlxccHNpLCBcXGNvbmcnIiwyXSxbMiwwXSxbMCwxLCJcXHBoaSwgXFxjb25nJyIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFszLDFdXQ==
-\[\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=small, row sep=scriptsize]
-	{K(\alpha)} \& {K'(\alpha')} \\
-	{K'} \& {K'}
-    \arrow["{\phi}", "\cong"', dotted, from=1-1, to=1-2]
-	\arrow[from=2-1, to=1-1]
-	\arrow["\psi"', "\cong", from=2-1, to=2-2]
-	\arrow[from=2-2, to=1-2]
-\end{tikzcd}\]
-    \end{vwcol}
-    \vspace{-10pt}
-\end{ppn}
+            \[\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=scriptsize, row sep=scriptsize]
+                {K(\alpha)} \& {K'(\alpha')} \\
+                {K'} \& {K'}
+                \arrow["{\phi}", "\cong"', dotted, from=1-1, to=1-2]
+                \arrow[from=2-1, to=1-1]
+                \arrow["\psi"', "\cong", from=2-1, to=2-2]
+                \arrow[from=2-2, to=1-2]
+            \end{tikzcd}\]
+        \end{vwcol}
+        \vspace{-10pt}
+    \end{lma}
+\end{figure}
+
+\newpage
+
+% ╭──────────────────────────────────────────────────────────╮
+% │                          PAGE 4                          │
+% ╰──────────────────────────────────────────────────────────╯
 
 \begin{dfn}[Splitting Polynomial]{dfn:splitting-polynomial}{6.2.2}
-    \vspace{-5pt}
+    \vspace{-6pt}
     Let $f$ be a polynomial over a field $M$. Then $f$ \textbf{splits} in $M$ if
     \[f(t) = \beta(t - \alpha_{1}) \cdots (t - a_{n})\]
+    \par\vspace{-5pt}
     for some $n \ne 0$ and $\beta, \alpha_{1},\dots,\alpha_{n}\in M$. Equivalently, $f$ splits in $M$ if all its irreducible factors in $M[t]$ are linear.
     \textrule{Definition 6.2.6: Splitting Field}
-    \par\vspace{-15pt}
+    \par\vspace{-14pt}
     Let $f$ be a nonzero polynomial over a field $K$. A \textbf{splitting field} of $f$ over $K$ is an extension $M$ of $K$ such that:
-    \vspace{-5pt}
+    \vspace{-7pt}
     \begin{enumerate-zero}
         \item $f$ splits in $M$
-        \item $M = K(\alpha_{1},\dots,\alpha_{n})$, where $\alpha_{1},\dots,\alpha_{n}$ are the roots of $f$ in $M$. Alternatively, \textit{``If $L$ is a subfield of $M$ containing $K$, and $f$ splits in $L$, then $L = M$''}
+        \item $M = K(\alpha_{1},\dots,\alpha_{n})$, where $\alpha_{1},\dots,\alpha_{n}$ are the roots of $f$ in $M$. \textit{``If $L$ is a subfield of $M$ containing $K$, and $f$ splits in $L$, then $L = M$''}
     \end{enumerate-zero}
 \end{dfn}
 
@@ -894,18 +915,18 @@ Then there is exactly one isomorphism $\phi : K(\alpha) \to K'(\alpha')$ that ex
 
     \vspace{-2pt}
     \textrule{Prop 6.2.11: Splitting Fields and Isomorphisms}
-    \par\vspace{-15pt}
-    Let $\psi : K \to K'$ be an isomorphism of fields, let $0 \ne f \in K[t]$, let $M$ be a splitting field of $f$ over $K$, and let $M'$ be a splitting field of $\psi_{\ast}f$ over $K'$. Then
+    \par\vspace{-12pt}
+    Let $\psi : K \to K'$ be an isomorphism of fields, $0 \ne f \in K[t]$, $M$ be a splitting field of $f$ over $K$, and $M'$ be a splitting field of $\psi_{\ast}f$ over $K'$. Then
     \vspace{-7pt}
     \begin{enumerate-tight}
         \item There exists an isomorphism $\phi : M \to M'$ extending $\psi$.\vspace{-2pt}
         \item There are at most $[M : K]$ such extensions $\phi$.
     \end{enumerate-tight}
-    \vspace{-9pt}
+    \vspace{-7pt}
     We often use this result when $K' = K$ and $\psi = \id_{K}$.
-
+    \vspace{-1pt}
     \textrule{Theorem 6.2.13: Isos and Autos of a Splitting Field}
-    \par\vspace{-15pt}
+    \par\vspace{-12pt}
     Let $f$ be a nonzero polynomial over a field $K$. Then
     \vspace{-7pt}
     \begin{enumerate-zero}
@@ -929,7 +950,7 @@ Then there is exactly one isomorphism $\phi : K(\alpha) \to K'(\alpha')$ that ex
     \vspace{-5pt}
     The \textbf{Galois Group} $\Gal(M : K)$ of a field extension $M : K$ is the group of automorphisms of $M$ over $K$, with composition as the group operation. In other words, an element of $\Gal(M : K)$ is an isomorphism $\theta : M \to M$ such that $\theta(a) = a$ for all $a\in K$.
     \textrule{Definition 6.3.5: Galois Group of a Polynomial}
-    \par\vspace{-15pt}
+    \par\vspace{-12pt}
     Let $f$ be a nonzero polynomial over a field $K$. The \textbf{Galois Group} $\Gal_{K}(f)$ of $f$ over $K$ is $\Gal(\SF_{K}(f) : K)$.
     \vspace{-2pt}
     \[\text{polynomial} \quad \longmapsto\quad \text{field extension}\quad\longmapsto\quad\text{group}\]
@@ -939,234 +960,272 @@ Then there is exactly one isomorphism $\phi : K(\alpha) \to K'(\alpha')$ that ex
     \vspace{-2pt}
     \[\lvert \Gal_{K}(f) \rvert \le [\SF_{K}(f) :0K] \le \deg(f)!\]
     In particular, $\Gal_{K}(f)$ is always a finite group.
-\end{lma}
+\end{dfn}
 
-\newpage
+% ╭──────────────────────────────────────────────────────────╮
+% │                          PAGE 5                          │
+% ╰──────────────────────────────────────────────────────────╯
 
+\vspace{-7pt}
 \begin{lma}[Restriction of Actions on GGs]{lma:action-restriction}{6.3.7}
-    Let $f$ be a nonzero polynomial over a field $K$. Then the action of $\Gal_{K}(f)$ on $\SF_{K}(f)$ restricts to an action on the st of roots of $f$ in $\SF_{K}(f)$.
+    \vspace{-5pt}
+    For a nonzero polynom $F$ over a field $K$, the action of $\Gal_{K}(f)$ on $\SF_{K}(f)$ \textbf{restricts} to an action on the set of roots of $f$ in $\SF_{K}(f)$.
 
+    \par\vspace{-7pt}
     \longrule{0.08ex}
-    \textbf{Terminology}: Given a group $G$ acting on a set $X$ and a subset $A \subseteq X$, the action \textbf{restricts} to $A$ if $ga \in A$ for all $g\in G$ and $a\in A$.
-\end{lma}
+    \textbf{Terminology}: Given a group $G$ acting on a set $X$ and a subset $A \subseteq X$, the action \textbf{restricts} to $A$ if $ga \in A$,  $\forall g\in G$ and $a\in A$.
 
-\begin{lma}[Faithful Action of Galois Groups]{lma:faithful-actions}{6.3.8}
+    \vspace{-3pt}
+    \textrule{Lemma 6.3.8: Galois Actions are Faithful}
+    \par\vspace{-12pt}
     Let $f$ be a nonzero polynomial over a field $K$. Then the action of $\Gal_{K}(f)$ on the roots of $f$ is \textbf{faithful}.
 \end{lma}
 
-\begin{rem}[What Galois Group Means]{rem:what-galois-group-means}{6.3.B}
-    An element of the Galois group of $f$ is completely determined by how it permutes the roots of $f$. So you can view elements of the Galois group as \textit{being} permutations of the roots.
+\vspace{-7pt}
+\begin{dfn}[Conjugacy for real this time]{dfn:conjugacy-2}{6.3.9}
+    \vspace{-5pt}
+    Let $M : K$ be a field extension, let $k \ge 0$, and let $(\alpha_{1},\dots,\alpha_{k})$ and $(\alpha_{1}',\dots,\alpha_{k}')$ be $k$-tuples of elements of $M$. Then $(\alpha_{1},\dots,\alpha_{k})$ and $(\alpha_{1}',\dots,\alpha_{k}')$ are \textbf{conjugate} over $K$ if for all $p\in K[t_{1},\dots,t_{k}]$,
+    \vspace{-2pt}
+    \[p(\alpha_{1},\dots,\alpha_{k})= 0 \iff p(\alpha_{1}',\dots,\alpha_{k}') = 0\]
+    \par\vspace{-3pt}
+    If $k=1$ we omit the brackets and say $\alpha$ and $\alpha'$ are conjugate.
+\end{dfn}
 
-    However, not every permutation of the roots belongs to the Galois group. Suppose $f\in K[t]$ has distinct roots $\alpha_{1},\dots,\alpha_{k}$ in its splitting field. For each $\Theta\in \Gal_{K}(f)$ there is a permutation $\sigma_{\theta}\in S_{k}$ defined by
+\vspace{-7pt}
+\begin{rem}[What The Galois Group Actually Means]{rem:what-galois-group-means}{6.3.B}
+    \vspace{-5pt}
+    An element of $\Gal_{K}(f)$ is completely determined by how it permutes the roots of $f$. So you can view elements of $\Gal_{K}(f)$ as \textit{being} permutations of the roots. However, not every permutation of the roots belongs to the Galois group. Suppose $f\in K[t]$ has distinct roots $\alpha_{1},\dots,\alpha_{k}$ in its splitting field. For each $\theta\in \Gal_{K}(f)$ there is a permutation $\sigma_{\theta}\in S_{k}$ defined by
     \[\theta(\alpha_{i}) = \alpha_{\sigma_{\theta}(i)} \quad\text{ for } i\in \{1,\dots,k\}\]
     Then $\Gal_{K}(f)$ is isomorphic to the subgroup $\{\sigma_{\theta} \mid \theta \in \Gal_{K}(f)\}$ of $S_{K}$. The isomorphism is given by $\theta \mapsto \sigma_{\theta}$.
 \end{rem}
 
-\begin{dfn}[Conjugacy]{dfn:conjugacy}{6.3.9}
-    Let $M : K$ be a field extension, let $k \ge 0$, and let $(\alpha_{1},\dots,\alpha_{k})$ and $(\alpha_{1}',\dots,\alpha_{k}')$ be $k$-tuples of elements of $M$. Then $(\alpha_{1},\dots,\alpha_{k})$ and $(\alpha_{1}',\dots,\alpha_{k}')$ are \textbf{conjugate} over $K$ if for all $p\in K[t_{1},\dots,t_{k}]$,
-    \[p(\alpha_{1},\dots,\alpha_{k})= 0 \iff p(\alpha_{1}',\dots,\alpha_{k}') = 0\]
-    If $k=1$ we omit the brackets and say $\alpha$ and $\alpha'$ are conjugate.
-\end{dfn}
-
-\begin{ppn}[Permutation Definition of GG]{ppn:permutation-galois-group}{6.3.10}
+\vspace{-7pt}
+\begin{ppn}[Permutation Definition of Galois]{ppn:permutation-galois-group}{6.3.10}
+    \vspace{-5pt}
     Let $f$ be a nonzero polynomial over a field $K$ with distinct roots $\alpha_{1},\dots,\alpha_{k}$ in $\SF_{k}(f)$. Then
     \[\{\sigma\in S_{k} \mid (\alpha_{1},\dots,\alpha_{k})\text{ and }(\alpha_{\sigma(1)},\dots,\alpha_{\sigma(k)}) \text{ are conj. over $K$}\}\]
     is a subgroup of $S_{k}$ isomorphic to $\Gal_{K}(f)$
-\end{ppn}
-
-\begin{crl}[Galois Groups and Extensions]{crl:gal-group-extension}{6.3.12}
+    \textrule{Corollary 6.3.12: Galois Groups and Extensions}
+    \par\vspace{-12pt}
     Let $L : K$ be a field extension and $0 \ne f \in K[t]$. Then $\Gal_{L}(f)$ is isomorphic to a subgroup of $\Gal_{K}(f)$.
-\end{crl}
-
-\begin{crl}[Division of Roots and GGs]{crl:gal-group-division-roots}{6.3.14}
+    \textrule{Corollary 6.3.14: Division of Roots in Galois}
+    \par\vspace{-12pt}
     Let $f$ be a nonzero polynomial over a field $K$, with $k$ distinct roots in $\SF_{K}(f)$. Then $\lvert \Gal_{K}(f) \rvert$ divides $k!$.
-\end{crl}
+\end{ppn}
 
 % TODO: actually read page 97 lol
 
+\vspace{-5pt}
+\begin{minipage}[c]{0.65\linewidth}
 \begin{dfn}[Normal Extensions]{dfn:normal-extension}{7.1.1}
-    An algebraic field extension $M : K$ is \textbf{normal} if for all $\alpha\in M$, the minimal polynomial of $\alpha$ splits in $M$.
+    \vspace{-5pt}
+    An algebraic field extension $M : K$ is \textbf{normal} if for all $\alpha\in M$, the minimal polynomial of $\alpha$ splits in $M$. We also say \textbf{$M$ is normal over $K$} to mean that $M : K$ is normal.
 
-    We also say \textbf{$M$ is normal over $K$} to mean that $M : K$ is normal
+    \textrule{Lemma 7.1.2}
+    \par\vspace{-10pt}
+    Let $M : K$ be an algebraic extension. Then $M : K$ is normal iff every irreducible polynomial over $K$ either has no roots in $M$ or splits in $M$. Put another way, normality means that any irreducible polynomial over $K$ with \textit{at least one} root in $M$ has \textit{all} its roots in $M$.
 \end{dfn}
 
-\begin{lma}[Irreducibility and Normality]{lma:irreducible-normal}{7.1.2}
-    Let $M : K$ be an algebraic extension. Then $M : K$ is normal iff every irreducible polynomial over $K$ either has no roots in $M$ or splits in $M$.
-
-    Put another way, normality means that any irreducible polynomial over $K$ with \textit{at least one} root in $M$ has \textit{all} its roots in $M$.
-\end{lma}
-
-\begin{thm}[Splitting and Normality]{thm:splitting-normal}{7.1.5}
+\vspace{-8pt}
+\begin{thm-s}[Splitting and Normality]{thm:splitting-normal}{7.1.5}
+    \vspace{-5pt}
     Let $M : K$ be a field extension. Then
+    \vspace{-5pt}
     \begin{multline*}
-        M = \SF_{K}(f) \text{ for some nonzero } f \in K[t] \iff \\
-        M : K \text{ is finite and normal}
+        M = \SF_{K}(f) \text{ for some nonzero } f \in K[t]\\
+        \iff M : K \text{ is finite and normal}
     \end{multline*}
-% https://q.uiver.app/#q=WzAsNixbMSwzLCJLIl0sWzAsMiwiSyhcXGRlbHRhKSJdLFswLDEsIk0gPSBLKFxcYWxwaGFfMSxcXGRvdHMsXFxhbHBoYV9uKSJdLFsyLDEsIk0gPSBLKFxcYWxwaGFfMSxcXGRvdHMsXFxhbHBoYV9uKSJdLFsyLDIsIksoXFxlcHNpbG9uKSJdLFsyLDAsIlxcU0ZfTShtKSJdLFswLDFdLFsxLDJdLFsyLDMsIlxccGhpIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzQsM10sWzAsNF0sWzEsNCwiXFx0aGV0YSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFszLDVdXQ==
-\[\begin{tikzcd}[cramped]
-	&& {\SF_M(m)} \\
-	{M = K(\alpha_1,\dots,\alpha_n)} && {M = K(\alpha_1,\dots,\alpha_n)} \\
-	{K(\delta)} && {K(\epsilon)} \\
-	& K
-	\arrow["\phi", "\cong"', dotted, from=2-1, to=2-3]
-	\arrow[from=2-3, to=1-3]
-	\arrow[from=3-1, to=2-1]
-	\arrow["\theta"', "\cong", dotted, from=3-1, to=3-3]
-	\arrow[from=3-3, to=2-3]
-	\arrow[from=4-2, to=3-1]
-	\arrow[from=4-2, to=3-3]
-\end{tikzcd}\]
-\end{thm}
-
-\begin{crl}[Normality and Further Extensions]{crl:normal-further-ext}{7.1.6}
+    \vspace{-10pt}
+    \textrule{Corollary 7.1.6}
     Let $M : L : K$ be field extensions. If $M : K$ is finite and normal then so is $M : L$.
-
+    \par\vspace{-5pt}
     \longrule{0.08ex}
     \textbf{Warning}: This does \textit{not} follow that $L : K$ is normal.
     % TODO: warning 7.1.8
-\end{crl}
+\end{thm-s}
 
+\end{minipage} \begin{minipage}[c]{0.35\linewidth}
+    \begin{thm-s}[Maps]{thm:thing}{7.1.5}
+        \begin{sideways}
+% https://q.uiver.app/#q=WzAsNixbMSwzLCJLIl0sWzAsMiwiSyhcXGRlbHRhKSJdLFswLDEsIk0gPSBLKFxcYWxwaGFfMSxcXGRvdHMsXFxhbHBoYV9uKSJdLFsyLDEsIk0gPSBLKFxcYWxwaGFfMSxcXGRvdHMsXFxhbHBoYV9uLFxcZXBzaWxvbikiXSxbMiwyLCJLKFxcZXBzaWxvbikiXSxbMiwwLCJcXFNGX00obSkiXSxbMCwxXSxbMSwyXSxbMiwzLCJcXHBoaSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFs0LDNdLFswLDRdLFsxLDQsIlxcdGhldGEiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbMyw1XV0=
+            \begin{tikzcd}[ampersand replacement=\&,cramped,column sep=small, row sep=scriptsize]
+                \&\& {\SF_M(m)} \\
+                {M = K(\alpha_1,\dots,\alpha_n)} \&\& {M = K(\alpha_1,\dots,\alpha_n,\epsilon)} \\
+                {K(\delta)} \&\& {K(\epsilon)} \\
+                \& K
+                \arrow["\phi", dotted, from=2-1, to=2-3]
+                \arrow[from=2-3, to=1-3]
+                \arrow[from=3-1, to=2-1]
+                \arrow["\theta"', dotted, from=3-1, to=3-3]
+                \arrow[from=3-3, to=2-3]
+                \arrow[from=4-2, to=3-1]
+                \arrow[from=4-2, to=3-3]
+            \end{tikzcd}
+        \end{sideways}
+\end{thm-s}
+\end{minipage}
+
+\vspace{-2pt}
 \begin{ppn}[Conjugacy and Orbits]{ppn:conjugacy-orbits}{7.1.9}
+    \vspace{-5pt}
     Let $M : K$ be a finite normal extension and $\alpha,\, \alpha'\in M$. Then
-    \begin{multline*}
-        \alpha \text{ and } \alpha' \text{ are conjugate over }K \iff \\
-        \alpha' = \phi(\alpha) \text{ for some } \phi \in \Gal(M : K)
-    \end{multline*}
-\end{ppn}
+    \setlength{\jot}{0pt}
+    \begin{equation*}
+        \alpha \text{ and } \alpha' \text{ conjugate over }K
+        \iff \alpha' = \phi(\alpha) \text{ for some } \phi \in \Gal(M : K)
+    \end{equation*}
 
-\begin{crl}[Transitivity of Actions]{crl:transitive-actions}{7.1.11}
+    \vspace{-5pt}
+    \textrule{Corollary 7.1.11: Transitivity of Actions}
+    \par\vspace{-12pt}
     Let $f$ be an irreducible polynomial over a field $K$. Then the action of $\Gal_{K}(f)$ on the roots of $f$ in $\SF_{K}(f)$ is transitive, i.e. for all $x, x'\in X$ there exists $g\in G$ such that $gx = x'$
-\end{crl}
+\end{ppn}
 
 % TODO: why is this spectactular?! also the fact at the end right before 7.1.14
 
-\begin{thm}[something]{thm:l-k-field-extension}{7.1.16}
+\vspace{-7pt}
+\begin{thm}[Quotients of Normal Extensions]{thm:quotient-field-extension}{7.1.15}
+    \vspace{-5pt}
     Let $M : L : K$ be field extensions with $M : K$ finite and normal.
+    \vspace{-5pt}
     \begin{enumerate-tight}
         \item $L : K$ is a normal extension $\iff$ $\phi L = L$ for all $\phi \in \Gal(M : K)$
         \item If $L : K$ is a normal extension then $\Gal(M : L)$ is a normal subgroup of $\Gal(M : K)$ and
+            \vspace{-2pt}
             \[\frac{\Gal(M : K)}{\Gal(M : L)} \cong \Gal(L : K)\]
     \end{enumerate-tight}
 \end{thm}
 
-\begin{rem}[Repeated Root]{rem:repeated-root}{7.1.A}
-    For a polynomial $f(t)\in K[t]$ and a root $\alpha$ of $f$ in some extension $M$ of $K$, we say that $\alpha$ is a \textbf{repeated} root if $(t - a)^{2} \mid f(t)$ in $M[t]$.
-\end{rem}
-
-\newpage
-
+\vspace{-8pt}
 \begin{dfn}[Separable Polynomial]{dfn:separable}{7.2.2}
-    An irreducible polynomial over a field is \textbf{separable} if it has no repeated roots in its splitting field.
-
-    Equivalently, an irreducible polynomial $f\in K[t]$ is separable if it splits into \textit{distinct} linear factors in $\SF_{K}(f)$:
+    \vspace{-7pt}
+    For a polynomial $f(t)\in K[t]$ and a root $\alpha$ of $f$ in some extension $M$ of $K$, we say that $\alpha$ is a \textbf{repeated} root if $(t - a)^{2} \mid f(t)$ in $M[t]$.
+    \par\vspace{-7pt}
+    \longrule{0.08ex}
+    An irreducible polynomial over a field is \textbf{separable} if it has no repeated roots in its splitting field. Equivalently, an irreducible polynomial $f\in K[t]$ is separable if it splits into \textit{distinct} linear factors in $\SF_{K}(f)$:
+    \vspace{-2pt}
     \[f(t) = a(t - \alpha_{1}) \cdots (t - a_{n})\]
+    \vspace{-2pt}
     for some $a\in K$ and \textit{distinct} $\alpha_{1},\dots,\alpha_{n}\in \SF_{K}(f)$. Put another way, an irreducible $f$ is separable iff it has $\deg(f)$ distinct roots in its splitting field.
-
-    \textbf{Warning}: this only works for \textit{irreducible polynomials}.
+    \newline\textbf{Warning}: this only works for \textit{irreducible polynomials}.
 \end{dfn}
 
+\vspace{-7pt}
 \begin{dfn}[Formal Derivative]{dfn:formal-derivative}{7.2.6}
-    Let $K$ be a field and let $f(t) = \sum_{i = 0}^{n} i_{i}t^{i}\in K[t]$. The \textbf{formal derivative} of $f$ is
+    \vspace{-7pt}
+    For a field $K$ and $f(t) = \sum_{i = 0}^{n} i_{i}t^{i}\in K[t]$, the \textbf{formal derivative} of $f$ is
+    \vspace{-7pt}
     \[(Df)(t) = \sum_{i = 1}^{n} i a_{i}t^{i-1} \in K[t]\]
+    \vspace{-5pt}
+    \textrule{Lemma 7.2.7: Basic Derivative Rules}
+    Let $K$ be a field. Then
+    \vspace{-2pt}
+    \[D(f + g) = Df + Dg, \quad D(fg) = f \cdot Dg + Df \cdot g, \quad Da=0\]
+    \par\vspace{-4pt}
+    for all $f,\,g\in K[t]$ and $\alpha\in K$.
 \end{dfn}
 
-\begin{lma}[Basic Derivative Rules]{lma:derivative-fules}{7.2.7}
-    Let $K$ be a field. Then
-    \[D(f + g) = Df + Dg, \quad D(fg) = f \cdot Dg + Df \cdot g, \quad Da=0\]
-    for all $f,\,g\in K[t]$ and $\alpha\in K$
-\end{lma}
-
-\begin{lma}[Repeated Roots]{lma:repeated-roots}{7.2.9}
+\vspace{-7pt}
+\begin{lma}[Separability Results]{lma:separability-results}{7.2.9}
+    \vspace{-7pt}
+    \textrule{Lemma 7.2.9: Repeated Roots}
+    \par\vspace{-12pt}
     Let $f$ be a nonzero polynomial over a field $K$. The following are equivalent:
+    \vspace{-5pt}
     \begin{enumerate-tight}
-        \item $f$ has a repeated root in $\SF_{K}(f)$
-        \item $f$ and $Df$ have a common root in $\SF_{K}(f)$
+        \item $f$ has a repeated root in $\SF_{K}(f)$\vspace{-2pt}
+        \item $f$ and $Df$ have a common root in $\SF_{K}(f)$\vspace{-2pt}
         \item $f$ and $Df$ have a nonconstant common factor in $K[t]$
     \end{enumerate-tight}
+    \vspace{-5pt}
+    \textrule{Lemma 7.2.10: Inseparability of Zero}
+    \par\vspace{-12pt}
+    Let $f$ be an irreducible polynomial over a field. $f$ is inseparable iff $Df = 0$
+    \textrule{Corollary 7.2.11: Separability of Irreducibles}
+    \par\vspace{-12pt}
+    Let $K$ be a field.
+    \vspace{-7pt}
+    \begin{enumerate-zero}
+        \item If $\Char K = 0$, every irreducible polynomial over $K$ is separable.\vspace{-2pt}
+        \item If $\Char K = p > 0$, an irreducible polynomial $f\in K[t]$ is inseparable iff\vspace{-2pt}
+            \[f(t) = b_{0} + b_{1}t^{p} + \cdots + b_{r}t^{rp}\]
+            \vspace{-2pt}for some $b_{0},\dots,b_{r}\in K$
+    \end{enumerate-zero}
+    \vspace{-7pt}
+    i.e. the only irreducible inseparable polynomials are ones in $t^{p}$ in $\Char p$.
 \end{lma}
 
-\begin{ppn}[Inseparability of Zero]{ppn:inseparability-zero}{7.2.10}
-    Let $f$ be an irreducible polynomial over a field. Then $f$ is inseparable iff $Df = 0$
-\end{ppn}
-
-\begin{crl}[Separability of Irreducibles]{crl:separability-irreducible}{7.2.11}
-    Let $K$ be a field.
-    \begin{enumerate-tight}
-        \item If $\Char K = 0$ then every irreducible polynomial over $K$ is separable.
-        \item If $\Char K = p > 0$ then an irreducible polynomial $f\in K[t]$ is inseparable iff
-            \[f(t) = b_{0} + b_{1}t^{p} + \cdots + b_{r}t^{rp}\]
-            for some $b_{0},\dots,b_{r}\in K$
-    \end{enumerate-tight}
-
-    In other words, the only irreducible polynomials that are inseparable are the polynomials in $t^{p}$ in characteristic $p$.
-\end{crl}
-
+\vspace{-7pt}
 \begin{dfn}[Separable Elements]{dfn:separable-element}{7.2.13}
-    \vspace{-5pt}
+    \vspace{-7pt}
     Let $M : K$ be an algebraic extension. An element of $M$ is \textbf{separable} over $K$ if its miminal polynomial over $K$ is separable. The extension $M : K$ is \textbf{separable} if every element of $M$ is separable over $K$.
+    \par\vspace{-7pt}
+    \longrule{0.08ex}
+    \textbf{Lemma 7.2.16}: Let $M : L : K$ be field extensions, with $M : K$ algebraic. If $M : K$ is separable then so are $M : L$ and $L : K$.
+    \textrule{Proposition 7.2.17: Splitting Field Isomorphisms}
+    \par\vspace{-12pt}
+    Let $\phi : K \to K'$ be an isomorphism of fields, let $0 \ne f \in K[t]$, let $M$ be a splitting field of $f$ over $K$, and let $M'$ be a splitting field of $\phi_{\ast}f$ over $K'$. Suppose that the extension $M' : K'$ is separable. Then there are exactly $[M : K]$ isomorphisms $\phi : M \to M'$ extending $\psi$.
+    \textrule{Theorem 7.2.18: Size of Galois Extensions}
+    \par\vspace{-12pt}
+    $\lvert \Gal(M : K) \rvert = [M : K]$ for every finite normal separable extension $M : K$
 \end{dfn}
 
-\begin{lma}[Separable Further Extensions]{lma:separable-further-extensions}{7.2.16}
-    \vspace{-5pt}
-    Let $M : L : K$ be field extensions, with $M : K$ algebraic. If $M : K$ is separable then so are $M : L$ and $L : K$.
-\end{lma}
-
-\begin{ppn}[Splitting Field Isomorphisms]{ppn:splitting-isos}{7.2.17}
-    \vspace{-5pt}
-    Let $\phi : K \to K'$ be an isomorphism of fields, let $0 \ne f \in K[t]$, let $M$ be a splitting field of $f$ over $K$, and let $M'$ be a splitting field of $\phi_{\ast}f$ over $K'$. Suppose that the extension $M' : K'$ is separable. Then there are exactly $[M : K]$ isomorphisms $\phi : M \to M'$ extensing $\psi$.
-\end{ppn}
-
-\begin{thm}[Size of Galois Extensions]{thm:galois-extension-size}{7.2.18}
-    \vspace{-5pt}
-    $\lvert \Gal(M : K) \rvert = [M : K]$ for every finite normal separable extension $M : K$
-\end{thm}
-
-\begin{rem}[Fixed Field]{rem:fixed-field}{7.3.A}
-    \vspace{-5pt}
-    Write $\Aut(M)$ for the group of automorphisms of a field $M$. Then $\Aut(M)$ acts naturally on $M$. Given a subset $S$ of $\Aut(M)$, we can consider the set $\Fix(S)$ of elements of $M$ fixed by $S$.
-\end{rem}
-
-\begin{lma}[Fixed Field is a Subfield]{lma:fixer-subfield}{7.3.1}
-    \vspace{-5pt}
+\vspace{-9pt}
+\begin{figure}[H]
+\begin{lma}[Fixed Fields]{lma:fixer-subfield}{7.3.1}
+    \vspace{-7pt}
+    $\Aut(M)$ is the group of automorphisms of a field $M$, which acts naturally on $M$. Given $S \subseteq \Aut(M)$, $\Fix(S)$ is the set of elements of $M$ fixed by $S$.
+    \par\vspace{-5pt}
+    \longrule{0.08ex}
     $\Fix(S)$ is a subfield of $M$, for any $S \subseteq \Aut(M)$.
-\end{lma}
-
-\begin{thm}[Size of Fixed Field]{thm:fixed-field-size}{7.3.3}
-    \vspace{-5pt}
+    \textrule{Thm 7.3.3: Size of Fixed Field}
+    \par\vspace{-12pt}
     Let $M$ be a field and $H$ a finite subgroup of $\Aut(M)$. Then $[M : \Fix(H)] \le \lvert H \rvert$.
     This is actually an equality.
-\end{thm}
-
-\begin{ppn}[Fixed Field Normal Extension]{ppn:fixed-field-normal-ext}{7.3.7}
+    \textrule{Fixed Field Normal Extensions}
+    \par\vspace{-12pt}
     Let $M : K$ be a finite normal extension and $H$ a normal subgroup of $\Gal(M : K)$. Then $\Fix(H)$ is a normal extension of $K$.
-\end{ppn}
+\end{lma}
+\end{figure}
 
+\newpage
 \section{The Fundamental Theorem of Galois Theory!}
 
 \begin{rem}[Intermediate Field]{rem:intermediate-field}{8.1.A}
-    Let $M : K$ be a field extension, with $K$ viewed as a subfield of $M$. An \textbf{intermediate field} of $M : K$ is a subfield of $M$ containing $K$. Write
+    \vspace{-5pt}
+    Let $M : K$ be a field extension, with $K$ viewed as a subfield of $M$. An \newline\textbf{intermediate field} of $M : K$ is a subfield of $M$ containing $K$. 
+    \vspace{-15pt}
+    \setlength{\columnseprule}{0.5pt}
+    \begin{multicols}{2}
+        Write
     \[\mathscr{F} = \{\text{intermediate fields of } M : K\}\]
+        
     For $L \in \mathscr{F}$, we draw diagrams like this:
 % https://q.uiver.app/#q=WzAsMyxbMCwwLCJNIl0sWzAsMSwiTCJdLFswLDIsIksiXSxbMSwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
-\[\begin{tikzcd}[cramped]
+\[\begin{tikzcd}[cramped, row sep=small]
 	M \\
 	L \\
 	K
 	\arrow[no head, from=1-1, to=2-1]
 	\arrow[no head, from=2-1, to=3-1]
 \end{tikzcd}\]
-with the bigger fields higher up. We also write
+with the bigger fields \textit{higher up}.
+\columnbreak
+
+We also write
 \[\mathscr{G} = \{\text{subgroups of }\Gal(M : K)\}\]
 For $H \in \mathscr{G}$, we draw diagrams like this:
 % https://q.uiver.app/#q=WzAsMyxbMCwwLCJJIl0sWzAsMSwiSCJdLFswLDIsIlxcR2FsKE0gOiBLKSJdLFsxLDIsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
-\[\begin{tikzcd}[cramped]
+\[\begin{tikzcd}[cramped, row sep=small]
 	I \\
 	H \\
 	{\Gal(M : K)}
 	\arrow[no head, from=1-1, to=2-1]
 	\arrow[no head, from=2-1, to=3-1]
 \end{tikzcd}\]
-
+with the bigger groups \textit{lower down}.
+    \end{multicols}
+\vspace{-10pt}
 For $L \in \mathscr{F}$, the group $\Gal(M : K)$ consists of all automorphisms $\phi$ of $M$ that fix each element of $L$. Since $K \subseteq L$, any such $\phi$ certainly fixes each element of $K$. Hence $\Gal(M : L)$ is a subgroup of $\Gal(M : K)$. this process defines a function
 \begin{align*}
     \Gal(M : -) : \mathscr{F} &\mapsto \mathscr{G} \\
@@ -1190,59 +1249,64 @@ We have now defined functions
 \end{rem}
 
 % TODO: warning 8.1.1
-\newpage
+
 \begin{lma}[Ordering of Intermediates]{lma:intermediate-ordering}{8.1.2}
-% https://q.uiver.app/#q=WzAsOCxbMCwwLCJNIl0sWzAsMSwiTF8yIl0sWzAsMiwiTF8xIl0sWzAsMywiSyJdLFsyLDMsIlxcR2FsKE0gOiBLKSJdLFsyLDIsIlxcR2FsKE0gOiBMXzEpIl0sWzIsMSwiXFxHYWwoTSA6IExfMikiXSxbMiwwLCIxIl0sWzAsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDIsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwzLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsNSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDYsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw3LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
-\[\begin{tikzcd}[cramped]
-	M && 1 \\
-	{L_2} && {\Gal(M : L_2)} \\
-	{L_1} && {\Gal(M : L_1)} \\
-	K && {\Gal(M : K)}
-	\arrow[no head, from=1-1, to=2-1]
-	\arrow[no head, from=2-1, to=3-1]
-	\arrow[no head, from=2-3, to=1-3]
-	\arrow[no head, from=3-1, to=4-1]
-	\arrow[no head, from=3-3, to=2-3]
-	\arrow[no head, from=4-3, to=3-3]
-\end{tikzcd}\]
+    \vspace{-5pt}
     Let $M : K$ be a field extension, and define $\mathscr{F}$ and $\mathscr{G}$ as above.
-    \begin{enumerate-tight}
+
+    \begin{minipage}[c]{0.65\linewidth}
+    \begin{enumerate-zero}
         \item For $L_{1},\,L_{2}\in \mathscr{F}$,
             \[L_{1} \subseteq L_{2} \implies \Gal(M : L_{1}) \supseteq \Gal(M : L_{2})\]
             For $H_{1},\,H_{2}\in \mathscr{G}$,
             \[H_{1} \subseteq H_{2} \implies \Fix(H_{1}) \supseteq \Fix(H_{2})\]
         \item For $L \in \mathscr{F}$ and $H \in \mathscr{G}$,
             \[L \subseteq \Fix(H) \iff H \supseteq \Gal(M : L)\]
-        \item For all $L\in \mathscr{F}$,
-            \[L \subseteq \Fix(\Gal(M : L))\]
-            For all $H\in \mathscr{G}$,
-            \[H \subseteq \Gal(M : \Fix(H))\]
-    \end{enumerate-tight}
-
+        \item For all $L\in \mathscr{F}$, $L \subseteq \Fix(\Gal(M : L))$ \newline
+            For all $H\in \mathscr{G}$, $H \subseteq \Gal(M : \Fix(H))$
+    \end{enumerate-zero}
+    \end{minipage}\vline\begin{minipage}[c]{0.35\linewidth}
+% https://q.uiver.app/#q=WzAsOCxbMCwwLCJNIl0sWzAsMSwiTF8yIl0sWzAsMiwiTF8xIl0sWzAsMywiSyJdLFsxLDMsIlxcR2FsKE0gOiBLKSJdLFsxLDIsIlxcR2FsKE0gOiBMXzEpIl0sWzEsMSwiXFxHYWwoTSA6IExfMikiXSxbMSwwLCIxIl0sWzAsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDIsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwzLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsNSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDYsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw3LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+\[\begin{tikzcd}[ampersand replacement=\&,cramped, column sep=scriptsize]
+	M \& 1 \\
+	{L_2} \& {\Gal(M : L_2)} \\
+	{L_1} \& {\Gal(M : L_1)} \\
+	K \& {\Gal(M : K)}
+	\arrow[no head, from=1-1, to=2-1]
+	\arrow[no head, from=2-1, to=3-1]
+	\arrow[no head, from=2-2, to=1-2]
+	\arrow[no head, from=3-1, to=4-1]
+	\arrow[no head, from=3-2, to=2-2]
+	\arrow[no head, from=4-2, to=3-2]
+\end{tikzcd}\]
+        
+    \end{minipage}
     % Warning 8.1.3
 \end{lma}
 
 \begin{rem}[Galois Correspondence]{rem:galois-correspondence}{8.1.B}
+    \vspace{-5pt}
     The functions
+    \vspace{-2pt}
 % https://q.uiver.app/#q=WzAsMixbMCwwLCJcXG1hdGhzY3J7Rn0iXSxbMiwwLCJcXG1hdGhzY3J7R30iXSxbMCwxLCJcXEdhbChNIDogLSkiLDAseyJvZmZzZXQiOi0xfV0sWzEsMCwiXFxGaXgiLDAseyJvZmZzZXQiOi0xfV1d
 \[\begin{tikzcd}[cramped]
 	{\mathscr{F}} && {\mathscr{G}}
 	\arrow["{\Gal(M : -)}", shift left, from=1-1, to=1-3]
 	\arrow["\Fix", shift left, from=1-3, to=1-1]
 \end{tikzcd}\]
-    are called the \textbf{Galois correspondence} for $M : K$. This terminology is mostly used in the case where the functions are \textbf{mutually inverse}, meaning that
+    are called the \textbf{Galois correspondence} for $M : K$. This terminology is mostly used in the case where the functions are \textbf{mutually inverse}, i.e.
     \[L = \Fix(\Gal(M : L)), \quad H = \Gal(M : \Fix(H))\]
-    for all $L\in \mathscr{F}$ and $H\in \mathscr{G}$. In both cases, the LHS is a subset of the RHS. But they are not always equal.
-
-    If $\Gal(M : -)$ and $\Fix$ \textit{are} mutually inverse then they set up a one-to-one corresponence between $\mathscr{F}$ and $\mathscr{G}$.
+    for all $L\in \mathscr{F}$ and $H\in \mathscr{G}$. In both cases, the LHS is a subset of the RHS. (But they are not always equal.) If $\Gal(M : -)$ and $\Fix$ \textit{are} mutually inverse then they set up a one-to-one correspondence between $\mathscr{F}$ and $\mathscr{G}$.
 \end{rem}
 
-\begin{thm-s}[Fundamental Theorem of Galois Theory]{thm:the-theorem}{8.2.1}
+\begin{thm-s}[The Fundamental Theorem of Galois Theory]{thm:the-theorem}{8.2.1}
+    \vspace{-5pt}
     Let $M : K$ be a finite normal separable extension. Write
     \begin{align*}
         \mathscr{F} &= \{\text{intermediate fields of } M : K\}\\
         \mathscr{G} &= \{\text{subgroups of } \Gal(M : K)\}\\
     \end{align*}
+    \vspace{-25pt}
     \begin{enumerate-zero}
         \item The functions $\begin{tikzcd}[cramped]
                 {\mathscr{F}} && {\mathscr{G}}
@@ -1251,6 +1315,7 @@ We have now defined functions
             \end{tikzcd}$ are mutually inverse.
         \item $\lvert \Gal(M : L) \rvert = [M : L]$ for all $L\in \mathscr{F}$ and $[M : \Fix(H)] = \lvert H \rvert$ for all $H\in \mathscr{G}$
         \item Let $L\in \mathscr{F}$. Then
+            \vspace{-5pt}
             \begin{multline*}
                 L \text{ is a normal extension of } K \iff \\
                 \Gal(M : L) \text{ is a normal subgroup of } \Gal(M : K).
@@ -1260,7 +1325,9 @@ We have now defined functions
     \end{enumerate-zero}
 \end{thm-s}
 
+\vspace{-5pt}
 \begin{rem}[Useful Results]{rem:useful-results}{8.2.3}
+    \vspace{-5pt}
     \begin{enumerate-tight}
         \item Lemmas 6.3.7 and 6.3.8 say that $\Gal_{K}(f)$ acts faithfully on the set of roots of $f$ in $\SF_{K}(f)$. i.e. an element of the Galois group can be understood as a permutation of the roots
         \item Corollary $6.3.14$ states that $\lvert \Gal_{K}(f) \rvert$ divides $k!$, where $k$ is the number of distinct foots of $f$ in its splitting field.
@@ -1269,7 +1336,9 @@ We have now defined functions
     \end{enumerate-tight}
 \end{rem}
 
+\vspace{-5pt}
 \begin{crl}[Automorphisms with FTGT]{crl:automorphisms-ftgt}{8.2.7}
+    \vspace{-5pt}
     Let $M : K$ be a finite normal separable extension. Then for every $\alpha\in M \backslash K$, there is some automorphism $\phi$ of $M$ over $K$ such that $\phi(\alpha) \ne \alpha$
 \end{crl}
 
@@ -1277,154 +1346,138 @@ We have now defined functions
 
 % Warning 9.1.1
 
+\vspace{-5pt}
 \begin{dfn}[Radical Number]{dfn:radical-number}{9.1.2}
+    \vspace{-5pt}
     Let $\Qrad$ be the smallest subfield of $\mathbb{C}$ such that for $\alpha\in \mathbb{C}$,
     \[\alpha^{n} \in \Qrad \text{ for some }n \ge 1 \implies \alpha\in \Qrad.\]
     A complex number is \textbf{radical} if it belongs to $\Qrad$
-\end{dfn}
 
-\begin{dfn}[Solvability by Radicals]{dfn:solvability-by-radicals}{9.1.5}
+    \textrule{Definition 9.1.5: Solvability by Radicals}
+    \par\vspace{-12pt}
     A nonzero polynomial over $\mathbb{Q}$ is \textbf{solvable by radicals} if all of its complex roots are radical.
 \end{dfn}
 
-\begin{lma}[Rational Galois Group is Abelian]{lma:rational-galois-group-abelian}{9.1.6}
-    For all $n \ge 1$, the group $\Gal_{\mathbb{Q}}(t^{n} - 1)$ is abelian.
+\vspace{-5pt}
+\begin{lma}[Abelian Groups]{lma:abelian-groups}{9.1.6}
+    \vspace{-5pt}
+    \textbf{Lemma 9.1.6}: For all $n \ge 1$, the group $\Gal_{\mathbb{Q}}(t^{n} - 1)$ is abelian.
+
+    \textbf{Lemma 9.1.8}: Let $K$ be a field and $n\ge 1$. Suppose that $t^{n} - 1$ splits in $K$. Then $\Gal_{K}(t^{n} - a)$ is abelian for all $a\in K$.
 \end{lma}
 
-\begin{lma}[Splitting Galois Group is Abelian]{lma:splitting-galois-group-abelian}{9.1.8}
-    Let $K$ be a field and $n\ge 1$. Suppose that $t^{n} - 1$ splits in $K$. Then $\Gal_{K}(t^{n} - a)$ is abelian for all $a\in K$.
-\end{lma}
-
-\begin{rem}[Path of a Solvable Polynomial]{rem:solvable-poly-path}{9.1.A}
+\vspace{-5pt}
+\begin{dfn}[Solvable Extension]{dfn:solvable-extension}{9.2.1}
+    \vspace{-5pt}
     Roughly, the diagram of solvable polynomials is
     \[\text{solvable polynomial} \longmapsto \text{solvable extension} \longmapsto \text{solvable group}\]
     In other words, we define ``solvable extension'' in such a way that
+    \vspace{-5pt}
     \begin{enumerate-tight}
-        \item If $f\in \mathbb{Q}[t]$ is a polynomial solvable by radicals then $\SF_{\mathbb{Q}}(f) : \mathbb{Q}$ is a solvable extension
+        \item If $f\in \mathbb{Q}[t]$ is a polynomial solvable by radicals then $\SF_{\mathbb{Q}}(f) : \mathbb{Q}$ is a solvable extension.
         \item If $M : K$ is a solvable extension then $\Gal(M : K)$ is a solvable group. Hence if $f$ is solvable by radicals then $\Gal_{\mathbb{Q}}(f)$ is solvable.
     \end{enumerate-tight}
-\end{rem}
-
-\begin{dfn}[Solvable Extension]{dfn:solvable-extension}{9.2.1}
+    \vspace{-10pt}
+    \longrule{0.08ex}
     Let $M : K$ be a finite normal separable extension. Then $M : K$ is \textbf{solvable} (or $M$ is \textbf{solvable over $K$}) if there exist $r \ge 0$ and intermediate fields
     \[K = L_{0} \subseteq L_{1} \subseteq \cdots \subseteq L_{r} = M\]
-    such that $L_{i} : L_{i - 1}$ is normal and $\Gal(L_{i} : L_{i - 1})$ is abelian for each $i\in \{1,\dots,r\}$.
+    s.t. $L_{i} : L_{i - 1}$ is normal and $\Gal(L_{i} : L_{i - 1})$ is abelian for each $i\in \{1,. .,r\}$.
 \end{dfn}
 
-\begin{lma}[Solvable Galois and Extensions]{lma:solvable-galois-extensions}{9.2.4}
+\begin{lma}[Solvable Results]{lma:solvable-results}{9.2.A}
+    \vspace{-5pt}
+    \textrule{Lemma 9.2.4: Solvable Galois and Extensions}
+    \par\vspace{-12pt}
     Let $M : K$ be a finite normal separable extension. Then
     \[M : K \text{ is solvable } \iff \Gal(M : K) \text{ is solvable}\]
-\end{lma}
-
-\begin{lma}[Finite Normal Results]{lma:finite-normal-results}{9.2.6}
+    \vspace{-8pt}
+    \textrule{Lemma 9.2.6: Finite Normal Results}
     Let $M : K$ be a field extension and let $L$ and $L'$ be intermediate fields.
-    \begin{enumerate-tight}
+    \vspace{-5pt}
+    \begin{enumerate-zero}
         \item If $L : K$ and $L' : K$ are finite and normal, then so is $LL' : K$.
         \item If $L : K$ is finite and normal, then so is $LL' : L'$.
-        \item If $K : K$ is finite and normal with abelian Galois group, then so is $LL' : L'$
-    \end{enumerate-tight}
+        \item If $K : K$ is finite, normal with abelian Galois group, then so is $LL' : L'$
+    \end{enumerate-zero}
     % TODO: the diagram
-\end{lma}
-
-\newpage
-\begin{lma}[Iterated Subfields]{lma:iterated-subfields}{9.2.7}
+    \vspace{-5pt}
+    \textrule{Lemma 9.2.7: Iterated Subfields}
     Let $L$ and $M$ be subfields of $\mathbb{C}$ such that the extensions $L : \mathbb{Q}$ and $M : \mathbb{Q}$ are finite, normal, and solvable. Then there is some subfield $M$ of $\mathbb{C}$ such that $N : \mathbb{Q}$ is finite, normal, and solvable and $L,\, M \subseteq N$.
-\end{lma}
-
-\begin{lma}[\texorpdfstring{$\Qsol$}{Qsol} is a subfield of \texorpdfstring{$\mathbb{C}$}{C}]{lma:qsol-c}{9.2.8}
-   Let $\Qsol$ be defined as
+    \textrule{Working with the Rationals}
+    \textbf{Lemma 9.2.8}: Let $\Qsol$ be defined as
    \begin{multline*}
        \Qsol = \{\alpha\in \mathbb{C} \mid \alpha\in L \text{ for some subfield } L \subseteq \mathbb{C} \\\text{that is finite, normal, and solvable over } \mathbb{Q}\}.
    \end{multline*}
    Then $\Qsol$ is a subfield of $\mathbb{C}$.
+
+   \textbf{Lemma 9.2.9}: Let $\alpha\in \mathbb{C}$ and $n \ge 1$. If $\alpha^{n}\in \Qsol$ then $\alpha\in \Qsol$.
+
+   \textbf{Proposition 9.2.12}: $\Qrad \subseteq \Qsol$. That is, every radical number is contained in some subfield of $\mathbb{C}$ that is a finite, normal, solvable extension of $\mathbb{Q}$.
 \end{lma}
 
-\begin{lma}[Powers in \texorpdfstring{$\Qsol$}{Qsol}]{lma:qsol-powers}{9.2.9}
-    Let $\alpha\in \mathbb{C}$ and $n \ge 1$. If $\alpha^{n}\in \Qsol$ then $\alpha\in \Qsol$.
-\end{lma}
-
-\begin{ppn}[\texorpdfstring{$\Qrad$}{Qrad} and \texorpdfstring{$\Qsol$}{Qsol}]{ppn:qrad-qsol}{9.2.12}
-    $\Qrad \subseteq \Qsol$. That is, every radical number is contained in some subfield of $\mathbb{C}$ that is a finite, normal, solvable extension of $\mathbb{Q}$.
-\end{ppn}
-
+\vspace{-5pt}
 \begin{thm}[Solvability of Galois Group]{thm:poly-implies-gal-solvable}{9.2.13}
+    \vspace{-5pt}
     Let $0 \ne f \in \mathbb{Q}[t]$. If the polynomial $f$ is solvable by radicals then the group $\Gal_{\mathbb{Q}}(f)$ is solvable.
 \end{thm}
 
-\begin{lma}[Irreducible Polynomials and Degrees]{lma:irreducible-degree}{9.3.1}
-    Let $f$ be an irreducible polynomial over a field $K$, with $\SF_{K}(f) : K$ separable. Then $\deg(f)$ divides $\lvert \Gal_{K}(f) \rvert.$
+\vspace{-5pt}
+\begin{lma}[Unsolvable Polynomials]{lma:unsolvable-polynomials}{9.3}
+    \vspace{-5pt}
+    \textbf{Lemma 9.3.1}: Let $f$ be an irreducible polynomial over a field $K$, with $\SF_{K}(f) : K$ separable. Then $\deg(f)$ divides $\lvert \Gal_{K}(f) \rvert.$
+    
+    \textbf{Lemma 9.3.2}: For $n\ge 2$, the symmetric group $S_{n}$ is generated by $(12)$ and $(12 \dots n)$.
+
+    \textbf{Lemma 9.3.3}: Let $p$ be a prime number, and let $f\in \mathbb{Q}[t]$ be an irreducible polynomial of degree $p$ with exactly $p - 2$ real roots. Then $\Gal_{\mathbb{Q}}(f) \cong S_{p}$.
 \end{lma}
 
-\begin{lma}[Generating the Symmetric Group]{lma:generating-sn}{9.3.2}
-    For $n\ge 2$, the symmetric group $S_{n}$ is generated by $(12)$ and $(12 \dots n)$.
-\end{lma}
-
-\begin{lma}[Isomorphism to Symmetric Group]{lma:galois-iso-sn}{9.3.3}
-    Let $p$ be a prime number, and let $f\in \mathbb{Q}[t]$ be an irreducible polynomial of degree $p$ with exactly $p - 2$ real roots. Then $\Gal_{\mathbb{Q}}(f) \cong S_{p}$.
-\end{lma}
-
+\vspace{-5pt}
 \begin{thm}[Unsolvability of the Quintics]{thm:quintics-are-unsolvable}{9.3.5}
+    \vspace{-5pt}
     Not every polynomial over $\mathbb{Q}$ of degree $5$ is solvable by radicals.
 \end{thm}
 
-\begin{lma}[Characteristic of a Finite Field]{lma:finite-field-char}{10.1.1}
-    Let $M$ be a finite field. Then $\Char M$ is a prime number $p$, and $\lvert M \rvert = p^{n}$ where $n = [M : \mathbb{F}_{p}] \ge 1$.
+\vspace{-5pt}
+\begin{lma}[Classification of the Finite Fields]{lma:fin-fields}{10.1}
+    \vspace{-5pt}
+    \textbf{Lemma 10.1.1}: Let $M$ be a finite field. Then $\Char M$ is a prime number $p$, and $\lvert M \rvert = p^{n}$ where $n = [M : \mathbb{F}_{p}] \ge 1$. In particular, the order of a finite field is a prime power.
 
-    In particular, the order of a finite field is a prime power.
-\end{lma}
+    \textbf{Lemma 10.1.5}: Let $p$ be a prime number and $n \ge 1$. Then the splitting field of $t^{p^{n}} - t$ over $\mathbb{F}_{p}$ has order $p^{n}$.
 
-\begin{lma}[Splitting Prime Polynomials]{lma:splitting-prime-poly}{10.1.5}
-    Let $p$ be a prime number and $n \ge 1$. Then the splitting field of $t^{p^{n}} - t$ over $\mathbb{F}_{p}$ has order $p^{n}$.
-\end{lma}
+    \textbf{Lemma 10.1.6} Let $M$ be a finite field of order $q$. Then $\alpha^{q} = \alpha$ for all $\alpha\in M$.
 
-\begin{lma}[Prime Powers are Equal]{lma:prime-powers-equal}{10.1.6}
-    Let $M$ be a finite field of order $q$. Then $\alpha^{q} = \alpha$ for all $\alpha\in M$.
-\end{lma}
-
-\begin{lma}[Every Finite Field Splits]{lma:every-finite-field-splits}{10.1.8}
-    Every finite field of order $q$ is a splitting field of $t^{q} - t$ over $\mathbb{F}_{p}$
-\end{lma}
-
-\begin{thm}[Classification of Finite Fields]{thm:classification-of-finite-fields}{10.1.9}
+    \textbf{Lemma 10.1.8}: Every finite field of order $q$ is a splitting field of $t^{q} - t$ over $\mathbb{F}_{p}$
+    \textrule{Theorem 10.1.9: Classification of Finite Fields}
+    \vspace{-18pt}
     \begin{enumerate-tight}
         \item Every finite field has order $p^{n}$ for some prime $p$ and integer $n\ge 1$.
         \item For each prime $p$ and integer $n \ge 1$, there is exactly one field of order $p^{n}$, up to isomorphism. It has characterstic $p$ and is a splitting field for $t^{p^{n}} - t$ over $\mathbb{F}_{p}$.
     \end{enumerate-tight}
-\end{thm}
+\end{lma}
 
-\begin{ppn}[Cyclic Finite Subgroups]{ppn:cyclic-finite-subgroups}{10.2.1}
-    For an arbitrary field $K$, every finite subgroup of $K^{\times}$ is cyclic. In particular, if $K$ is finite, then $K^{\times}$ is cyclic.
-\end{ppn}
+\begin{lma}[Multiplicative Structure]{lma:multiplicative-structure}{10.2}
+    \textbf{Proposition 10.2.1}: For an arbitrary field $K$, every finite subgroup of $K^{\times}$ is cyclic. In particular, if $K$ is finite, then $K^{\times}$ is cyclic.
 
-\begin{crl}[Finite Field Extensions are Simple]{crl:fin-field-ext-is-simp}{10.2.5}
-    Every extension of one finite field over another is simple.
-\end{crl}
+    \textbf{Corollary 10.2.5}: Every extension of one finite field over another is simple.
 
-\begin{crl}[Existence of Irreducibles]{crl:existence-of-irreducibles}{10.2.8}
-    For every prime number $p$ and integer $n\ge 1$, there exists an irreducible polynomial over $\mathbb{F}_{p}$ of degree $n$.
-\end{crl}
+    \textbf{Corollary 10.2.8}: For every prime number $p$ and integer $n\ge 1$, there exists an irreducible polynomial over $\mathbb{F}_{p}$ of degree $n$.
+\end{lma}
 
-\begin{lma}[Properties of Finite Field Extensions]{lma:separability-fin-field}{10.3.2}
-    Let $M : K$ be a field extension.
+\begin{lma}[Galois Groups for Finite Fields]{lma:finfield-galois}{10.3}
+    \textbf{Lemma 10.3.2}: Let $M : K$ be a field extension.
     \begin{enumerate-tight}
         \item If $K$ is finite then $M : K$ is separable.
         \item If $M$ is also finite then $M : K$ is finite and normal.
     \end{enumerate-tight}
+
+    \textbf{Proposition 10.3.3}: Let $p$ be a prime and $n \ge 1$. Then $\Gal(\mathbb{F}_{p^{n}} : \mathbb{F}_{p})$ is cyclic of order $n$, generated by the Frobenius Automorphism of $\mathbb{F}_{p^{n}}$
+
+    \textbf{Proposition 10.3.6}: Let $p$ be a prime and $n \ge 1$. Then $\mathbb{F}_{p^{n}}$ has exactly one subfield of order $p^{m}$ for each divisor $m$ of $n$, and no others. It is
+    \[\{\alpha \in \mathbb{F}_{p^{n}} : \alpha^{p^{m}} = \alpha\}\]
+
+    \textbf{Proposition 10.3.8}: Let $M : K$ be a field extension with $M$ finite. Then $\Gal(M : K)$ is cyclic of order $[M : K]$.
 \end{lma}
 
-\begin{ppn}[Frobenius Automorphism]{ppn:frobenius-auto}{10.3.3}
-    Let $p$ be a prime and $n \ge 1$. Then $\Gal(\mathbb{F}_{p^{n}} : \mathbb{F}_{p})$ is cyclic of order $n$, generated by the Frobenius Automorphism of $\mathbb{F}_{p^{n}}$
-\end{ppn}
 
-\begin{ppn}[Uniqueness of Finite Subfield]{ppn:uniqueness-finite-subfield}{10.3.6}
-    Let $p$ be a prime and $n \ge 1$. Then $\mathbb{F}_{p^{n}}$ has exactly one subfield of order $p^{m}$ for each divisor $m$ of $n$, and no others. It is
-    \[\{\alpha \in \mathbb{F}_{p^{n}} : \alpha^{p^{m}} = \alpha\}\]
-\end{ppn}
-
-\begin{ppn}[Cyclic Galois Groups]{ppn:cyclic-galois}{10.3.8}
-    Let $M : K$ be a field extension with $M$ finite. Then $\Gal(M : K)$ is cyclic of order $[M : K]$.
-\end{ppn}
-
-\lipsum[1-4]
 \end{multicols}
 \end{document}
