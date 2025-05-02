@@ -40,8 +40,8 @@
 \usepackage{lipsum}
 \usepackage[framemethod=TikZ]{mdframed}
 % \usepackage{../thmboxes_white}
-\usepackage{../../thmboxes_v2}
-\usepackage{../../customs}
+\usepackage{../../rss/thmboxes_v3}
+\usepackage{../../rss/customs}
 \usepackage{float}
 % \usepackage{setspace}
 \usepackage[nodisplayskipstretch]{setspace}
@@ -141,18 +141,13 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \begin{dfn}[Normed and Inner Product Spaces]{def:normed-space-inner-space}{B}
     \vspace{-5pt}
     \textrule{\textbf{Def 5 (Normed Vector Spaces)}}
-
-    \vspace{-3pt}
     A \textbf{normed vector space} is a real vector space $X$ equipped with a \textbf{norm}, i.e. a function that assigns to every vector $x\in X$ a real number $\lVert x \rVert$ so that, for all vectors $x$ and $y$ in $X$ and all real scalars $a$:
-
     \vspace{-5pt}
     \begin{itemize}
         \item $\lVert x\rVert\ge 0 $ and $\lVert x \rVert = 0 \iff x = 0$
         \item $\lVert ax \rVert = \lvert a \rvert\lVert x \rVert$
         \item $\lVert x+y \rVert\le \lVert x \rVert + \lVert y \rVert$
     \end{itemize}
-
-    \vspace{-7pt}
     \longrule{0.08ex}
     \textbf{Remark}: If $(X, \lVert \cdot \rVert)$ is a normed vector space then
     \[d(x,y) = \lVert x - y \rVert\]
@@ -162,7 +157,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 
     \textrule{\textbf{Def 6 (Inner Product Spaces)}}
-
     Let $X$ be a real vector space. An \textbf{inner product} on $X$ is a function that assigns to every pair $(x,y)\in X \times X $ a real number denoted by $\langle x,y \rangle$ and has the following properties:
     \vspace{-3pt}
     \begin{itemize}
@@ -195,7 +189,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \[\langle x,y \rangle = x_{1}y_{1} + x_{2}y_{2} + \cdots + x_{n}y_{n} \text{ (inner product)}\]
     \[\lVert x \rVert_{2} = \langle x,x \rangle^{1/2} = \sqrt{x^{2}_{1} + x^{2}_{2} + \cdots + c^{2}_{n}}\text{(norm)}\]
 \end{dfn}
-\vspace{-5pt}
 
 \begin{xmp}[Examples of Metric Spaces]{xmp:metric-spaces}{D}
     \vspace{-5pt}
@@ -247,8 +240,8 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
     % This is the \textbf{Cauchy-Schwarz Inequality}. Various ways to prove this (watch lecture 1)
 
+    \vspace{-5pt}
     \textrule{\textbf{The complex plane}}
-
     Let $X = \mathbb{C},\, d: \mathbb{C} \times \mathbb{C} \to \mathbb{R} $
     \[d(z,w) = \lvert z - w \rvert\]
     If $z = a+ib, w = c+id,\, a,b,c,d\in\mathbb{R}$, then
@@ -263,7 +256,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \begin{xmp}[Sequence Spaces]{xmp:sequence-spaces}{E}
     \vspace{-5pt}
     \textrule{\textbf{The space $\ell^{1}$}}
-
     $\ell^{1}$ is the set of real sequences $(x_{n})_{n\in\mathbb{N}}$ where $\sum_{n = 1}^{\infty}\lvert x_{n} \rvert$ converges.
 
     For $x = (x_{1},\dots,x_{n},\dots)\in \ell^{1}$, $y = (y_{1},\dots,y_{n},\dots)\in \ell^{1}$ we define
@@ -275,7 +267,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
         
     \vspace{-2pt}
     \textrule{\textbf{The space $\ell^{2}$}}
-
     $\ell^{2}$ is the set of real seqs $(x_{n})_{n\in N}$ where $\sum_{n = 1}^{\infty} \lvert x_{n} \rvert^{2}$ converges
 
     For $x = (x_{1},\dots,x_{n},\dots)\in \ell^{2}$, $y = (y_{1},\dots,y_{n},\dots)\in \ell^{2}$ we define
@@ -289,7 +280,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
     \vspace{-3pt}
     \textbf{Thm}: $\ell^{2}$ is a real vector space
-
     \textrule{\textbf{The space $\ell^{\infty}$}}
 
     $\ell^{\infty}$ is the set of all bounded sequences of real numbers
@@ -302,7 +292,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
     \vspace{-3pt}
     \textrule{\textbf{The space $C([a, b])$}}
-
     $X = C([a, b])$ is the set of all continuous functions $f : [a, b]\to \mathbb{R}$
     \vspace{-3pt}
     \begin{itemize}[leftmargin=*]
@@ -312,7 +301,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
     \vspace{-3pt}
     \textrule{\textbf{The $L^{1}$ metric}}
-
     $X$ is the set of all continuous functions $f : [a, b] \to \mathbb{R}$
     \vspace{-3pt}
     \begin{itemize}
@@ -322,7 +310,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \vspace{-3pt}
 
     \textrule{\textbf{The $L^{2}$ metric}}
-
     $X$ is the set of all continuous functions $f : [a, b] \to \mathbb{R}$
     \vspace{-3pt}
     \begin{itemize}
@@ -342,7 +329,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     Then $d_{Y}$ is a metric on $Y$. $d_{Y}$ is called the \textbf{induced} or \textbf{inherited} metric, and $(Y, d_{Y})$ is said to be a metric subspace of the metric space $(X, d)$
 
     \textrule{\textbf{Interior}}
-
     Let $(X, d)$ be a metric space. The \textbf{interior} $\mathring{A}$ of a subset $A$ of $X$ is the largest open set contained in $A$. e.g. $A=[0,1],\,\mathring{A}=(0,1)$
 
 \end{dfn}
@@ -352,20 +338,14 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \begin{thm}[a lack of equality or fair treatment in t...]{dfn:p-metric}{G}
     \vspace{-5pt}
     \textrule{\textbf{Good old fashioned Triangle Inequality}}
-    \vspace{-2pt}
-
     If it ain't broke...
     \[\lvert x + y \rvert \le \lvert x \rvert + \lvert y \rvert, \quad \lvert x - y \rvert \ge \big\lvert \lvert x \rvert - \lvert y \rvert \big\rvert \quad, \lvert x - y \rvert \le \lvert x - z \rvert + \lvert z - y \rvert\]
     \vspace{-8pt}
     \textrule{\textbf{Cauchy-Schwarz Inequality}}
-
-    \vspace{-2pt}
     For all $x$ and $y$ of an inner product space:
     \[\lvert \langle x, y \rangle \rvert \le \lVert x \rVert \lVert y \rVert\]
     \vspace{-8pt}
     \textrule{\textbf{Minkowski's Inequality}}
-
-    \vspace{-2pt}
     Let $p \ge 1$, and real numbers $x_{i}, y_{i},\,(i = 1,\dots,n)$. Then
     \begin{align*}
         \lVert x + y \rVert_{p} &\le \lVert x \rVert_{p} + \lVert y \rVert_{p} \\
@@ -373,12 +353,10 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \end{align*}
 
     \textrule{\textbf{Ex 56 (Young's Inequality)}}
-    
     Let $1 \le p, q \le \infty$ s.t. $\frac{1}{p} + \frac{1}{q} = 1$, and $a, b\le 0$. Then
     \[ab \le \frac{a^{p}}{p} + \frac{b^{q}}{q}\]
     \vspace{-3pt}
     \textrule{\textbf{Thm 169 (Hölder Inequality)}}
-
     Let $1 \le p, q \le \infty$ s.t. $\frac{1}{p} + \frac{1}{q} = 1$ and $x, y\in \mathbb{R}^{n}$. Then
     \[\sum_{i = 1}^{n} \lvert x_{i}y_{i} \rvert \le \lVert x \rVert_{p} \lVert y \rVert_{q}\]
 
@@ -388,16 +366,13 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \begin{dfn}[Equivalent Norms]{dfn:equivalent-norms}{166}
     \vspace{-5pt}
     Two norms on the same real vector space are said to be \textbf{equivalent} iff their corresponding metrics are equivalent
-
-    \vspace{-3pt}
+    \par\vspace{-7pt}
     \longrule{0.08ex}
     \textbf{Thm 167}: If $\lVert \cdot \rVert_{1}$ and $\lVert \cdot \rVert_{2}$ are norms on the same real vector space $X$, then they are equivalent if there exist positive constants $C$ and $C'$ such that, for all $x\in X$,
     \[D \lVert x \rVert_{1} \le \lVert x \rVert_{2} \le C' \lVert x \rVert_{1}\]
 
-    \vspace{-5pt}
     \textrule{\textbf{Equivalence Theorems of $p$-metrics}}
-
-    \vspace{-10pt}
+    \vspace{-15pt}
     \begin{itemize}
         \item[\textbf{171}:] Any of the following norms are equivalent:
             \begin{align*}
@@ -418,17 +393,13 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     Let $(X, d)$ be a metric space, $c$ be a point in $X$, and $r > 0$. The \textbf{open ball} with center $c$ and radius $r$ is defined by
     \[B(c,r) = \{x\in X: d(c,x) < r\}\]
 
-    \vspace{-3pt}
+    \vspace{-5pt}
     \textrule{\textbf{Boundedness and Distance Set}}
-    \vspace{-3pt}
-
     Let $A \subseteq X$. $A$ is \textbf{bounded} iff there exists a $c\in X$ and radius $r$ s.t. $A \subseteq B(c, r)$. The \textbf{distance set} of $D$, $D(A)$ is defined by
     \[D(A) = \{d(x, y) : x, y\in A\}\]
 
     \vspace{-3pt}
     \textrule{\textbf{Boundary Points}}
-    \vspace{-3pt}
-
     Let $(X, d)$ metric space and $A \subseteq X$. $x\in X$ is a \textbf{boundary point} of $A$ iff every open ball centered at $x$ intersects both $A$ and $A^{c}$, i.e.
     \[B(x,r) \cap A \ne \emptyset \text{ and } B(x, r) \cap A^{c} \ne \emptyset\]
     \textbf{Boundary} of $A$: The set of all boundary points of $A$, denoted $\partial A$
@@ -525,12 +496,11 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     A metric space is called \textbf{discrete} iff all its subsets are open (equiv. all subsets are closed)
 
     \textbf{Example:} $[0,1]\cap (2,3)$
-
     \longrule{0.08ex}
     \textbf{Def 33}: A set that is both open and closed is called \textbf{clopen}
 \end{dfn}
 
-\vspace{-7pt}
+\vspace{-5pt}
 \begin{thm}[Properties of open and closed sets]{thm:open-set-props}{34}
     \vspace{-5pt}
     Let $(X,d)$ be a metric space
@@ -834,8 +804,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
     \vspace{-3pt}
     \textrule{\textbf{Exercise 31}}
-    \vspace{-8pt}
-
+    \vspace{-12pt}
     \begin{itemize}[leftmargin=*]
         \item Let $(X, d_{X})$ and $(Y, d_{Y})$ be two metric spaces and assume that $(Y, d_{Y})$ is complete.
         \item Let $C(X, Y)$ be the set of all continuous and bounded functions from $X$ to $Y$. For $f, g\in C(X, Y)$ define
@@ -852,8 +821,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
     \vspace{-5pt}
     \textrule{\textbf{Lemma Bank}}
-
-    \vspace{-8pt}
+    \vspace{-12pt}
     \begin{itemize}
         \item[\textbf{Ex.33}:] $D$ is a metric and a sequence converges in $(X^{n}, D)$ iff it \newline converges componentwise
         \item[\textbf{Ex.34}:] If $(X, d)$ is complete then $(X^{n}, D)$ is complete
@@ -864,7 +832,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \begin{dfn}[The product space \texorpdfstring{$X^{\mathbb{N}}$}{X^N}]{dfn:x-natural-product-space}{84}
     \vspace{-5pt}
     Let $B^{A}$, where $A, B$ are sets, be the set of all functions from $A$ to $B$
-
     \longrule{0.08ex}
     \textbf{Def 85:} Let $(X, d)$ be a metric space. Define a metric $D : X^{\mathbb{N}} \times X^{\mathbb{N}} \to \mathbb{R}$ by
     \[D(x_{1}, x_{2}) = \sum_{n = 1}^{\infty} \frac{1}{2^{n}} \frac{d(x_{1n}, x_{2n})}{1 + d(x_{1n}, x_{2n})}\]
@@ -880,11 +847,9 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \begin{thm}[Product space Convergence \& Completeness]{thm:product-space-convergence}{J}
     \vspace{-5pt}
     \textrule{\textbf{Thm 86 (Convergence)}}
-
     Let $(X, d)$ be a metric space, let $(x_{k})_{k=1}^{\infty}$ be a sequence in $X^{\mathbb{N}}$ and let $x\in X^{\mathbb{N}}$. Write $x_{k} = (x_{k 1},\dots, x_{kn},\dots)$ and $x = (l_{1},\dots,l_{n},\dots)$. Then, $x_{k} \xrightarrow[k \to +\infty]{(X^{\mathbb{N}}, D)} x$ if and only if, for all $n$, $x_{kn}\xrightarrow[k \to +\infty]{(X, d)} l_{n}$
 
     \textrule{\textbf{Thm 87 (Completeness)}}
-
     Let $(X, d)$ be a complete metric space. Then the product space $(X^{\mathbb{N}}, D)$ is complete.
 \end{thm}
 
@@ -915,8 +880,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     Therefore $I_{n} \to I$ and $S_{n} \to S$ for some reals $I$ and $S$. Since $S_{n} - I_{n} \to 0$ we have $S = I$. We also have $x_{n}\to S = I$
 
     \textrule{\textbf{Def 90: Limsup and Liminf}}
-    \vspace{-8pt}
-
+    \vspace{-12pt}
     \begin{itemize}[leftmargin=*]
         \item The limit of the sequence $(I_{n})^{\infty}_{n=1}$ is called the \textbf{limit inferior} of $(x_{n})^{\infty}_{n=1}$ and is denoted by $\liminf x_{n}$
             \[\liminf x_{n} = \lim_{n\to +\infty} I_{n} = \lim_{n\to +\infty} \inf \{x_{n}, x_{n+1},\dots\}\]
@@ -944,7 +908,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \begin{dfn}[Compacting Compactness]{dfn:compactness}{M}
     \vspace{-5pt}
     \textrule{\textbf{Def 102 (Compactness and Sequential Compactness)}}
-
     Let $(X, d)$ be a metric space and $K \subseteq X$
     \vspace{-5pt}
     \begin{enumerate}[leftmargin=*]
@@ -956,7 +919,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
     \vspace{-5pt}
     \textrule{\textbf{Def 111 (Uniform Continuity)}}
-    \vspace{-8pt}
+    \vspace{-12pt}
     \begin{enumerate}[leftmargin=*]
         \item[3.] Let $(X, d_{X}), (Y, d_{Y})$ be metric spaces. A function $f : X \to Y$ is said to be \textbf{uniformly continuous} iff for every $\epsilon>0$ there exists a $\delta>0$ such that, for all $x, x'$ in $X$ with $d_{X}(x, x') < \delta$ we have
             \[d_{Y}(f(x), f(x')) < \epsilon\]
@@ -964,7 +927,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
     \vspace{-3pt}
     \textrule{\textbf{Def 117 (Totally bounded Spaces)}}
-    \vspace{-8pt}
+    \vspace{-12pt}
     \begin{enumerate}[leftmargin=*]
         \item[\textbf{117}:] A metric space $(X, d)$ is said to be \textbf{totally bounded} iff for every positive $\delta$, $X$ can be covered by a finite number of open balls of radius $\delta$.
         \item[\textbf{118}:] If $(X, d)$ is totally bounded then it is bounded, but the converse is not necessarily true
@@ -994,20 +957,17 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     \vspace{-8pt}
 \end{xmp}
 
-\vspace{-6pt}
 \begin{thm}[Lebesgue's Lemma]{thm:lebesgue-lemma}{116}
     \vspace{-6pt}
     Let $(X, d)$ be a sequentially compact metric space and $X = \bigcup_{i\in I} G_{i}$ be an open cover of $X$. There exists a $\delta > 0$ such that for any two points $x, y\in X$ with $d(x, y) < \delta$ there exists an $i$ such that $x, y\in G_{i}$. Any such $\delta$ is called a \textbf{Lebesgue number} of the open cover
-
     \longrule{0.08ex}
     \textbf{Ex.44}: Let $(X, d)$ be a sequentially compact m.s. and $X = \bigcup_{i\in I} G_{i}$ be an open cover of $X$. Then there exists a $\delta > 0$ s.t. any nonempty subset of $X$ of diameter $< \delta$ can be covered by a single $G_{i}$
 \end{thm}
 
-\vspace{-6pt}
 \begin{thm}[big theorem bank of obvious shit]{thm:compactness-thms}{O}
     \vspace{-5pt}
     \textrule{\textbf{Regular Compactness}}
-    \vspace{-7pt}
+    \vspace{-12pt}
     \begin{itemize}[leftmargin=1.5em]
         \item For a set $K$ in $\mathbb{R}$ with the standard metric, or $\mathbb{R}^{n}$ with the\newline Euclidean metric:
             \vspace{-5pt}
@@ -1023,7 +983,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
     \vspace{-8pt}
     \textrule{\textbf{Continuous Functions}}
-    \vspace{-7pt}
+    \vspace{-12pt}
     \begin{itemize}[leftmargin=1.5em]
         \item Let $K \subseteq \mathbb{R}$ be compact, and $f : K \to \mathbb{R}$ continuous:
             \vspace{-5pt}
@@ -1041,8 +1001,6 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
     \vspace{-5pt}
     \textrule{\textbf{Sequential compactness stuff}}
-    \vspace{-3pt}
-
     Let $(X, d)$ be a metric space, and $K \subseteq X$:
     \vspace{-5pt}
     \begin{itemize}[leftmargin=1.5em]
@@ -1066,13 +1024,10 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
     \vspace{-5pt}
     \textrule{\textbf{Thm 114 (Uniform Continuity)}}
-    \vspace{-2pt}
-
     Let $(X, d_{X})$ be a sequentially compact metric space, $(Y, d_{Y})$ be a metric space and $f : X\to Y$ be a continuous function. Then $f$ is uniformly continuous
 
     \vspace{-3pt}
     \textrule{\textbf{Totally Bounded Spaces}}
-
     Let $(X, d)$ be a metric space:
     \vspace{-5pt}
     \begin{itemize}[leftmargin=1.5em]
@@ -1097,8 +1052,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
     \vspace{-5pt}
     \textrule{\textbf{Example 124}}
-
-    \vspace{-8pt}
+    \vspace{-12pt}
     \begin{itemize}
         \item $\{1, 2, 3\}$ and $\mathbb{R}$ are countable sets
         \item $\mathbb{Q}$ is infinitely countable
@@ -1125,7 +1079,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     A metric space is \textbf{separable} iff it has a countable dense subset
 
     \textrule{\textbf{Examples}}
-    \vspace{-5pt}
+    \vspace{-12pt}
     \begin{itemize}[leftmargin=*]
         \item $\mathbb{R}$ with the standard metric is a separable metric because $\mathbb{Q}$ is dense and countable
         \item $\mathbb{R}^{n}$ with the Euclidean metric is a separable metric space because $\mathbb{Q}^{n}$ is dense and countable
@@ -1137,18 +1091,15 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \begin{thm}[Polynomials]{thm:polynomials}{P}
     \vspace{-5pt}
     \textrule{\textbf{Thm 130 (Weierstrass Approximation Theorem)}}
-
     Let $f : [a, b]\to \mathbb{R}$ be a continuous function and $\epsilon > 0$. There exists a polynomial $p$ with \textit{real} coefficients s.t. for all $x\in [a,b]$
     \[\lvert f(x) - p(x) \rvert < \epsilon\]
 
     \textrule{\textbf{Thm 131 (literally same thing but with $\mathbb{Q}$)}}
-
     Let $f : [a,b]\to \mathbb{R}$ be a continuous function and $\epsilon > 0$. There exists a polynomial $p$ with \textit{rational} coefficients s.t. for all $x\in [a,b]$
     \[\lvert f(x) - p(x) \rvert < \epsilon\]
 
     \textrule{\textbf{More Theorems}}
-    \vspace{-8pt}
-
+    \vspace{-12pt}
     \begin{itemize}[leftmargin=*]
         \item \textbf{Ex 47}: The set of all polynomials (of one variable and any degree) with rational coefficients is countable
         \item \textbf{Thm 132}: $C([a,b])$ is separable
@@ -1172,18 +1123,13 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \begin{dfn}[Open Bases and Second Countability]{dfn:open-bases-second-countable}{Q}
     \vspace{-5pt}
     \textrule{\textbf{Def 137 (Open Bases)}}
-    \vspace{-3pt}
-
     Let $(X, \mathcal{T})$ be a topological space. An \textbf{open base} (or \textbf{base}) for the topology $\mathcal{T}$, is a family $\mathcal{B}$ of open sets such that every open set in $\mathcal{T}$ can be written as a union of elements of $\mathcal{B}$
 
     \textrule{\textbf{Def 139 (Second Countability)}}
-    \vspace{-3pt}
-
     A topological space $(X, \mathcal{T})$ satisfies the \textbf{second Axiom of Countability}, or is \textbf{second countable} iff it has a countable open base
 
     \textrule{\textbf{Other theorems}}
-    \vspace{-8pt}
-
+    \vspace{-12pt}
     \begin{itemize}[leftmargin=*]
         \item \textbf{Thm 140}: In a separable metric space, every family of pairwise disjoint non-empty open sets is countable
         \item \textbf{Thm 141}: On the real line with the standard metric, every open set can be written as a countable union of disjoint open intervals
@@ -1222,8 +1168,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
     The metric spaces $(X, d_{X})$ and $(Y, d_{Y})$ are said to be \textbf{isometric} iff there exists an isometry $f$ from $X$ onto $Y$
 
     \textrule{\textbf{Isometry Theorems}}
-    \vspace{-8pt}
-
+    \vspace{-12pt}
     \begin{itemize}[leftmargin=*]
         \item \textbf{Thm 148}: Let $(X, d_{X})$ and $(Y, d_{Y})$ be metric spaces and $f : X \to Y$ be an isometry. Then $f$ is an injection. If, moreover, $f$ is a surjection (hence $f$ bij.) then $f^{-1} : Y \to X$ is also an isometry
         \item \textbf{Fun Fact}: if two metric spaces are isometric and one of them is complete/compact/connected/... then so is the other
@@ -1307,8 +1252,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
     \vspace{-5pt}
     \textrule{\textbf{Connected Theorems}}
-    \vspace{-8pt}
-
+    \vspace{-12pt}
     \begin{itemize}[leftmargin=*]
         \item \textbf{Thm 154}: $\mathbb{R}$ with the standard metric is connected
         \item \textbf{Ex.53}: On the real line with the standard metric, all intervals are connected sets
@@ -1348,7 +1292,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
     \vspace{-5pt}
     \textrule{\textbf{Thm 163 (Path Connected Theorem)}}
-    \vspace{-5pt}
+    \vspace{-12pt}
     \begin{itemize}[leftmargin=*]
         \item Every path-connected metric space is connected
         \item Not every connected metric space is necessarily path-connected
