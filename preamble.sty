@@ -65,6 +65,8 @@
 \usepackage{underscore}
 % More colours
 \usepackage[dvipsnames]{xcolor}
+% String manipulation - needed for thmboxes
+\usepackage{xstring}
 
 
 % ╭──────────────────────────────────────────────────────────╮
@@ -94,8 +96,10 @@
 
 % MDFramed on Tikz-cd - Required for Thmboxes
 \usepackage[framemethod=TikZ]{mdframed}
+\usepackage[skins, breakable]{tcolorbox}
 % Theorem Boxes
-\usepackage{../../rss/thmboxes_v3}
+% \usepackage{../../rss/thmboxes_v3}
+\usepackage{../../rss/thmboxes_v4}
 % Custom Environments and Objects
 \usepackage{../../rss/customs}
 

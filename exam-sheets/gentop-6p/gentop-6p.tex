@@ -180,7 +180,6 @@ Let $(X, d)$ be a metric space.
 \item $(X, d)$ is \textbf{complete} if every Cauchy sequence converges.
 \end{enumerate-tight}
 \end{dfn}
-\newpage
 
 \begin{dfn}[Topology Basis]{dfn:topology-basis}{1.37}
 	\vspace{-5pt}
@@ -362,15 +361,16 @@ and the set of equivalence classes is denoted by $X / \sim$. The function which 
 	\[f = g \circ p : X \prightarrow{p} X / \sim \prightarrow{g} Y.\]
 	If $f$ is onto, and such that $f(U) \subseteq Y$ is open for every open subset $U \subseteq X$ then $g$ is a homeomorphism.
 \end{ppn}
-\newpage
 
+\newpage
 \section{Compact Spaces}
 
+\vspace{-3pt}
 \begin{dfn}[Open Covers and Compact Spaces]{dfn:open-cover-compact}{4.1}
 \begin{enumerate-zero}
 \item An \textbf{open cover} of a topological space $X$ is a collection $\{U_{\lambda} \mid \lambda\in \Lambda\}$ of open subsets $U_{\lambda}$ of $X$ such that
 \[\bigcup_{\lambda\in \Lambda} U_{\lambda} = X\]
-
+\vspace{-8pt}
 \item A topological space $X$ is \textbf{compact} if every open cover $\{U_{\lambda} \mid \lambda\in\Lambda\}$ of $X$ has a finite subcover, i.e. there exists $\lambda_{1},\dots,\lambda_{n}\in \Lambda$ such that
 \[X = \bigcup_{j = 1}^{n} U_{\lambda_{j}}.\]
 \end{enumerate-zero}
@@ -839,7 +839,6 @@ In fact, every continuous function on $X$ determines an equivalence relation.
 		\item \textbf{Path-Connectedness}: Pick $y_{0}$ and $y_{1}$ in $f(X)$. So there are $x_{0},x_{1}\in X$ such that $f(x_{0}) = y_{0}$ and $f(x_{1}) = y_{1}$. Let $\alpha : [0,1] \to X$ be a cts map with $\alpha(0) = x_{0}$ and $\alpha(1) = x_{1}$. Then $\beta = f \circ a$ is a path in $f(X)$ joining $y_{0}$ to $y_{1}$.
 	\end{itemize-zero}
 \end{xmp}
-
 
 \newpage
 \section{Examples}
