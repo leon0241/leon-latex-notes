@@ -1,6 +1,7 @@
 \documentclass[landscape, 8pt]{extarticle}
 
 \usepackage{../../preamble}
+\usepackage[separate]{../../rss/thmboxes_v4}
 \usepackage{symbols}
 
 
@@ -13,6 +14,268 @@
 \begin{multicols}{3}
 \raggedcolumns
 
-\begin{document}
+\section*{\huge Algebraic Topology Notes}
+Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
+\section{Introduction}
+\setcounter{subsection}{1}
+
+\begin{rcl}[Topology]{rcl:topology}{}
+	An \textbf{(open) topology} on $X$ is a collection of subsets $\tau \subset P(X)$ such that
+	\begin{itemize-zero}
+	    \item $\emptyset\in \tau$ and $X\in \tau$
+	    \item $\tau$ is closed under finite intersections: If $\{U_{1},\dots,U_{n}\} \subset \tau$ then
+			\[\bigcap_{i=1,\dots,n} U_{i}\in \tau\]
+	    \item $\tau$ is closed under arbitrary unions: If $\{U_{1},\dots,U_{n}\} \subset \tau$ is a family of open subsets then
+			\[\bigcup_{i=1,\dots,n} U_{i}\in \tau\]
+	\end{itemize-zero}
+	The subsets $U \in \mathcal{T}$ are called \textbf{open} and their complements in $X$ define \textbf{closed subsets}.
+	\tcbline
+	Two examples of a topology on a set $X$ are the following:
+	\begin{itemize-tight}
+	    \item The \textbf{Trivial Topology}: $\tau_{\mathrm{triv}} = \{\emptyset, X\}$
+	    \item The \textbf{Discrete Topology}: $\tau_{\mathrm{dis}} = P(X)$
+	\end{itemize-tight}
+	\tcbline
+	A subset $A \subset X$ is \textbf{clopen if it is both closed and open}
+\end{rcl}
+
+\begin{dfn}[Connected Spaces]{dfn:connected}{1}
+	A topological space $X$ is \textbf{connected} if $X = A \cup B$ with $A,\,B \subset X$ open implies that $A = \emptyset$ or $A = X$.
+\end{dfn}
+
+\begin{ppn}[Connectedness and Clopens]{ppn:connected-clopen}{1}
+	A topological space $X$ is \textit{connected} iff the only clopens are $\emptyset$ and $X$.
+\end{ppn}
+
+\begin{xmp}[Examples of Connected Topologies]{xmp:connected-topo-exmp}{1}
+	\begin{itemize-tight}
+	    \item Every $X$ with the trivial topology is connected.
+	    \item Every $X$ with the discrete topology is not connected unless $X = \emptyset$ or $X = \{\ast\}$ (in which it coincides with the trivial topology).
+	    \item The real line $\mathbb{R}$ with the standard topology is connected.
+	\end{itemize-tight}
+\end{xmp}
+
+\begin{ppn}[Continuous Maps]{ppn:contiuous-maps}{2}
+	Let $f : X \to Y$ be a continuous map of topological spaces and let $X$ be connected. Then $f(X)$ is connected.
+\end{ppn}
+
+\begin{ppn}[Connected Equivalence Relation]{ppn:equivalence-relation}{3}
+	For a topological space $X$, define $x \sim y$ if there exists some connected subset that contains both. The relation $x \sim y$ is an equivalence relation.
+\end{ppn}
+
+\begin{dfn}[Connected Components]{dfn:connected-components}{2}
+	The equivalence classes of this relation are called \textbf{connected components}. In particular, a space $X$ is connected iff it only has a single connected component.
+\end{dfn}
+
+\begin{dfn}[Path]{dfn:path}{3}
+	Let $I$ denote the closed unit interval $[0,1]$. A \textbf{path} in $X$ is a continuous map $\alpha : I \to X$. The points $\alpha(0)\in X$ and $\alpha(1)\in X$ will be called \textbf{start} and \textbf{end} points respectively.
+
+	We define a path relation between points in $X$ be declaring $x \sim y$ if there exists some path $\alpha : I \to X$ that starts at $x$ and ends in $y$, i.e. $\alpha(0) = x$ and $\alpha(1) = y$. This is an equivalence relation from the following properties:
+	\begin{enumerate-zero}
+	    \item \textbf{Constant Path}: For all $x\in X$ there exists the constant path $c_{x} : I \to X$ defined by $c_{x}(t)=x$ for all $t\in I$
+	    \item \textbf{Path reversal}: Let $\alpha : I \to X$ be a pth in $X$. Define its reversed path by
+			\begin{equation}\label{eq:path-reversal}
+				\overline{\alpha} : I \to X,\;\quad t \mapsto \alpha(1-t)
+			\end{equation}
+		\item \textbf{Path Concatenation}: Let $\alpha,\,\beta : I \to X$ be two paths in $X$ s.t. $\alpha(1) = \beta(0)$. Their concatenated path is defined by:
+			\begin{equation}
+				\alpha \ast \beta(t) := \begin{cases}
+					\alpha(2t), &0 \le t\le 1 /2\\
+					\beta(2t-1) & 1 /2 \le t \le 1
+				\end{cases}
+			\end{equation}
+	\end{enumerate-zero}
+\end{dfn}
+
+\begin{dfn}[Path-Connected Components]{dfn:path-connected-comps}{4}
+	The equivalence clases are called \textbf{path-connected components} and their set is denoted by $\pi_{0}(X)$. A space $X$ is called \textbf{path-connected} if $\pi_{0}(X)$ is a one-point set, i.e. any two points $x,\,y$ can be related by a path in $X$.
+\end{dfn}
+
+\begin{rem}[Random examples]{rem:random-examples}{1}
+	The following statements are true:
+	\begin{itemize-tight}
+	    \item A homeomorphism $X \cong Y$ induces a bijection $\pi_{0}(X) \cong \pi_{0}(Y)$.
+	    \item If $X$ is path-connected, it is also connected.
+	    \item The \textit{topologist's sine curve} defined by $X = \{0\} \times [-1,1] \times \{(x,\,\sin(1 /x)) \mid 0 < x\}$ is connected but not path-connected.
+	\end{itemize-tight}
+\end{rem}
+
+\begin{dfn}[Homotopy]{dfn:homotopy}{5}
+	A \textbf{homotopy} of maps $f,\, g : X \to Y$ is a continuous map $h : X \times I \to Y$ such that $h(-, 0) = f$ and $h(-, 1) = g$.
+	\begin{equation}
+		% https://q.uiver.app/#q=WzAsMixbMCwwLCJYIl0sWzIsMCwiWSJdLFswLDEsImYiLDAseyJjdXJ2ZSI6LTJ9XSxbMCwxLCJnIiwyLHsiY3VydmUiOjJ9XSxbMiwzLCJoIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dXQ==
+		\begin{tikzcd}[ampersand replacement=\&,cramped]
+			X \&\& Y
+			\arrow[""{name=0, anchor=center, inner sep=0}, "f", curve={height=-12pt}, from=1-1, to=1-3]
+			\arrow[""{name=1, anchor=center, inner sep=0}, "g"', curve={height=12pt}, from=1-1, to=1-3]
+			\arrow["h", shorten <=3pt, shorten >=3pt, Rightarrow, from=0, to=1]
+		\end{tikzcd}
+	\end{equation}
+	If such a homotopy exists, $f$ is called \textbf{homotopic} to $g$. This defines an equivalence relation $f \simeq g$ on the space of maps $\Map(X,\, Y)$.
+
+	% TODO: the equivalence relation axioms
+\end{dfn}
+
+\begin{xmp}[Paths as Homotopies]{xmp:path-homotopy}{2}
+	Points in $X$ are the same as maps $\ast \to X$ from the one-point set $\ast$ to $X$. A path $\alpha : I \to K$ corresponds to a homotopy $\ast \times I \to X$.
+\end{xmp}
+
+\begin{rem}[Composition of Homotopies]{rem:homotopy-composition}{1.5}
+	\begin{itemize-zero}
+	    \item \textbf{Horizontal Composition}: Let $h, h' : X \times I \to Y$ be two homotopies in $X$ such that $h(-, 1) = h'(-, 0) : X \to Y$. Their concatenated homotopy is defined by
+			\stepcounter{equation}
+			\begin{equation}\label{eq:homotopy}
+				h \ast h'(-, t) := \begin{cases}
+				h(-, 2t) & 0 \le t \le 1 /2\\
+				h'(-, 2t - 1) & 1 /2 \le t \le 1
+			\end{cases}\end{equation}
+		\item \textbf{Vertical Composition}: Let $h : X \times I \to Y$ and $k : Y \times I \to Z$ be two homotopies on maps from $X$ to $Y$, and $Y$ to $Z$. Then
+			\begin{equation}
+				k \circ h := [X \times I \prightarrow{\Id \times \Delta} X \times I^{2} \prightarrow{h \times \Id} Y \times I \prightarrow{k} Z]
+			\end{equation}
+			where $\Delta : I \to I^{2}$, $t \mapsto (t, t)$ is the diagonal map, or explicitly,
+			\[k \circ h(x, t) = k(h(x, t), t)\]
+	\end{itemize-zero}
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzMsMCwiWSBcXHNpbSBYIl0sWzYsMCwiWSJdLFswLDFdLFswLDEsImYiLDAseyJvZmZzZXQiOi0zLCJjdXJ2ZSI6LTR9XSxbMCwxLCJsIiwyLHsib2Zmc2V0IjozLCJjdXJ2ZSI6NH1dLFsxLDIsImYiLDAseyJvZmZzZXQiOi0zLCJjdXJ2ZSI6LTR9XSxbMSwyLCJsIiwyLHsib2Zmc2V0IjozLCJjdXJ2ZSI6NH1dLFszLDUsImgnIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFs2LDcsImsnIFxcYXN0IGgiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV0sWzQsMywiaCIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+	X \&\&\& {Y \sim X} \&\&\& Y
+	\arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=1-4]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "f", shift left=3, curve={height=-24pt}, from=1-1, to=1-4]
+	\arrow[""{name=2, anchor=center, inner sep=0}, "l"', shift right=3, curve={height=24pt}, from=1-1, to=1-4]
+	\arrow[""{name=3, anchor=center, inner sep=0}, "f", shift left=3, curve={height=-24pt}, from=1-4, to=1-7]
+	\arrow[""{name=4, anchor=center, inner sep=0}, "l"', shift right=3, curve={height=24pt}, from=1-4, to=1-7]
+	\arrow["{h'}"', shorten <=4pt, shorten >=4pt, Rightarrow, from=0, to=2]
+	\arrow["h"', shorten <=4pt, shorten >=4pt, Rightarrow, from=1, to=0]
+	\arrow["{k' \ast h}", shorten <=8pt, shorten >=8pt, Rightarrow, from=3, to=4]
+\end{tikzcd}\]
+
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzIsMCwiWSJdLFs0LDAsIlogXFxzaW0gWCJdLFs2LDAsIloiXSxbMCwxLCJmIiwwLHsiY3VydmUiOi0yfV0sWzAsMSwiZyIsMix7ImN1cnZlIjoyfV0sWzEsMiwiZiciLDAseyJjdXJ2ZSI6LTJ9XSxbMiwzLCJmJyBcXGNpcmMgZiIsMCx7ImN1cnZlIjotMn1dLFsyLDMsImcnIFxcY2lyYyBnIiwyLHsiY3VydmUiOjJ9XSxbMSwyLCJnJyIsMix7ImN1cnZlIjoyfV0sWzQsNSwiaCIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XSxbNiw5LCJrIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFs3LDgsImsgXFxjaXJjIGgiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
+\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+	X \&\& Y \&\& {Z \sim X} \&\& Z
+	\arrow[""{name=0, anchor=center, inner sep=0}, "f", curve={height=-12pt}, from=1-1, to=1-3]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "g"', curve={height=12pt}, from=1-1, to=1-3]
+	\arrow[""{name=2, anchor=center, inner sep=0}, "{f'}", curve={height=-12pt}, from=1-3, to=1-5]
+	\arrow[""{name=3, anchor=center, inner sep=0}, "{g'}"', curve={height=12pt}, from=1-3, to=1-5]
+	\arrow[""{name=4, anchor=center, inner sep=0}, "{f' \circ f}", curve={height=-12pt}, from=1-5, to=1-7]
+	\arrow[""{name=5, anchor=center, inner sep=0}, "{g' \circ g}"', curve={height=12pt}, from=1-5, to=1-7]
+	\arrow["h", shorten <=3pt, shorten >=3pt, Rightarrow, from=0, to=1]
+	\arrow["k", shorten <=3pt, shorten >=3pt, Rightarrow, from=2, to=3]
+	\arrow["{k \circ h}", shorten <=3pt, shorten >=3pt, Rightarrow, from=4, to=5]
+\end{tikzcd}\]
+\end{rem}
+
+\begin{lma}[Concatenation Relation]{lma:concatenation-relation}{1}
+	Let $f,\, f' : X \to Y$ and $g, g' : Y \to Z$ be maps such that $f \simeq f'$ and $g \simeq g'$. Then $f' \circ f \simeq g' \circ g$ as maps from $X$ to $Z$. In particular, $g' \circ f \sim g \circ f$ and $g \circ f' \sim g \circ f$.
+\end{lma}
+
+\begin{dfn}[Homotopy Equivalence]{dfn:homotopy-equivalence}{6}
+	A map $f : X \to Y$ is called a \textbf{homotopy equivalence} if there exists a map $g : Y \to X$ and homotopies $f \circ g \simeq \Id_{Y},\, g \circ f \simeq \Id_{X}$. In other words, $g$ satisfies the properties of an inverse up to homotopy. It is called a \textbf{homotopy inverse} of $f$.
+\end{dfn}
+
+\begin{xmp}[Circle to \texorpdfstring{$\mathbb{R}^{2}$}{R2}]{xmp:circle-to-R2}{3}
+	The inclusion map $\mathbb{S}^{1} \hookrightarrow \mathbb{R}^{2}$ is not a homotopy equivalence, but the inclusion $\mathbb{S}^{1} \hookrightarrow \mathbb{R}^{2} \backslash \{0\}$ is a homotopy equivalence.
+\end{xmp}
+
+\begin{ppn}[Unique Inverses of Homotopy]{ppn:homotopy-unique-inverse}{4}
+	Homotopy inverses are unique up to homotopy.
+\end{ppn}
+
+\begin{dfn}[Homotopic Spaces]{dfn:homotopic-space}{7}
+	Two spaces $X$ and $Y$ are called \textbf{homotopy equivalent}, or \textbf{of the same homotopy type}, and denoted by $X \simeq Y$ if there exists a homotopy equivalence $f : X \to Y$.
+	\tcbline
+	\textbf{Notation}: We use $\cong$ for homeomorphisms and $\simeq$ for homotopy equivalence.
+\end{dfn}
+
+\begin{lma}[Composition of Inverses]{lma:inverse-composition}{2}
+	Let $f : X \to y$ and $g : Y \to Z$ with homotopy inverses $\overline{f} : Y \to X$ and $\overline{g} : Z \to Y$ respectively. Then $\overline{f} \circ \overline{g} : Z \to X$ is a homotopy inverse of $g \circ f : X \to Z$. In particular, $X \simeq Y$ and $Y \simeq Z$ implies $X \simeq Z$.
+\end{lma}
+
+\begin{dfn}[Contractible Space]{dfn:contractible}{8}
+	A space $X$ is called \textbf{contractible} if it is homotopy equivalent to a point, i.e. $X \simeq \ast$.
+	\tcbline
+	The \textbf{terminal map} is the unique map $X \to \ast$. Contractibility requires that there is a homotopy inverse of that map, i.e. a map $\ast \to x$ along with homotopies
+	\begin{equation}\label{eq:contractibility}
+		h : [\ast \to X \to \ast] \simeq \Id_{\ast},\quad k : [X \to \ast \to X] \simeq \Id_{X}
+	\end{equation}
+\end{dfn}
+
+\begin{xmp}[Examples of Contractible Spaces]{xmp:contractible-example}{4}
+	\begin{enumerate-zero}
+	    \item $\mathbb{R}^{n}$ is contractible. Let $x_{0}$ be a fixed point in $\mathbb{R}^{n}$ and define the (straight line) homotopy $h : c_{x_{0}} \simeq \Id_{\mathbb{R}^{n}}$ by
+			\[h(x, t) = (1 - t)x_{0} + tx.\]
+		\item $\mathbb{S}^{n-1} \simeq \mathbb{R}^{n} \backslash \{0\}$. The inclusion $\mathbb{S}^{n-1} \hookrightarrow \mathbb{R}^{n}\backslash \{0\}$ and the shrinking map
+			\[\mathbb{R}^{n}\backslash \{0\} \to \mathbb{S}^{n-1},\;\quad x \mapsto \frac{x}{\lvert x \rvert}\]
+			are homotopy inverses.
+	\end{enumerate-zero}
+\end{xmp}
+
+\begin{rem}[Remarks about Contractible Spaces]{rem:contractible}{3}
+	\begin{enumerate-zero}
+	    \item Contractible spaces are path-connected. Let $x_{0}$ be the point where the space $X$ contracts to. In particular, we are given with a homotopy $h : c_{x_{0}} \simeq \Id_{X}$. For any $x\in X$, the map $h(x, -) : I \to X$ defines a path from $x_{0}$ to $x$ and thus every element $x\in X$ is path-connected to $x_{0}$.
+	    \item The converse does not hold, for example $X = \mathbb{S}^{1}$.
+	    \item A contractible space $X$ is contractible at any point $x_{0}$. Since $X$ is path-connected, a path from $x$ to $x'$ defines a homotopy $c_{x} \simeq c_{x'}$.
+	    \item Any two maps $f,\,g : X \to Y$ are homotopic if $Y$ is contractible.
+	\end{enumerate-zero}
+\end{rem}
+
+\begin{dfn}[Retracts and Deformation Retracts]{dfn:retracts}{9}
+	\begin{itemize-zero}
+	    \item A \textbf{retract} of $X$ onto a subspace $A \subset X$ is a map $r : X \to A$ such that $r \rvert_{A} = \Id_{A}$. Equivalently, this is a map $r : X \to X$ such that $r^{2} = r$ and $r(X) = A$.
+	    \item A \textbf{deformation retract} of $X$ onto $A$ is the additional datum of a homotopy $h : \Id_{X} \simeq i \circ r$.
+	\end{itemize-zero}
+	In other words, a deformation retract is a homotopy $h : X \times I \to X$ such that $h(x, 0) = x$ and $h(x, 1) \in A$ for all $x\in X$ and $h(a, 1) = a$ for all $a\in A$. Not all retracts can form deformation retracts. For instance, the retract $X$ onto a point $\{x_{0}\}$ can be a deformation retract iff $X$ is contractible.
+	\tcbline
+	This notion is called \textbf{weak} deformation retract. A \textbf{strong} deformation retract has the condition $h(a, t) = a$ for all $t\in I,\, a\in A$. i.e. Our notion of a (weak) deformation retract deforms $X$ into $A$ while allowing to deform $A$ to do so, while a strong deformation retract deforms $X$ into $A$ while keeping $A$ fixed at all times
+\end{dfn}
+
+\begin{ppn}[Deformation Retracts and Homotopies]{ppn:deformation-homotopy}{5}
+	A deformation retract of $X$ onto $A$ induces a homotopy equivalence $X \simeq A$.
+\end{ppn}
+
+\begin{rcl}[Quotient Space]{rcl:quotient-space}{2}
+	Let $X$ be a topological space and let $\sim$ be an equivalence relation on $X$. Then, $X / \sim$ is equipped with the quotient topology and called a \textbf{quotient space}. If $Z$ is a closed subset in $X$, then we can also define the quotient space $X / Z$.
+	\tcbline
+	Another form of quotient spaces: Let $f : Z \to Y$ be a continuous map between a closed subset $Z \subset X$ and $Y$. Then
+	\[X \cup_{f} Y = X \cup Y /z \sim f(z).\]
+\end{rcl}
+
+\begin{xmp}[Examples of Quotient Spaces]{xmp:quotient-spaces}{5}
+	\begin{itemize-zero}
+	    \item The quotient of the $n$-dimensional closed disk by its boundary is the $n$-sphere, i.e. $\mathbb{D}^{n} /\partial \mathbb{D}^{n} \cong \mathbb{S}^{n}$.
+	    \item The $2$-torus: $\mathbb{R}^{2} / \mathbb{Z}^{2}$.
+			The projective space: $\mathbb{RP}^{n} = \mathbb{R}^{n+1} \backslash \{0\} / \sim$ by the relation $x \sim y$ iff there exists some $\lambda\in \mathbb{R}^{\times}$ such that $x = \lambda y$. This corresponds to the space of lines through the origin in $\mathbb{R}^{n+1}$.
+	\end{itemize-zero}
+\end{xmp}
+
+\begin{dfn}[Mapping Quotients]{dfn:mapping-quotients}{10}
+	Let $f : X \to Y$ be a continuous map.
+	\begin{itemize-zero}
+	    \item Its \textbf{mapping cylinder} is defined as the topological space
+			\[M_{f} := ( X \times I ) \cup Y / \sim\]
+			where the quotient identifies $(x, 0) \sim f(x)$ for any $x\in X$.
+		\item Its \textbf{cone} is the further quotient:
+			\[C_{f} = M_{f} /X \times \{1\}.\]
+		\item The \textbf{cone} of a topological space $X$ is
+			\[C_{X} := C_{\Id_{X}} = X \times I /X \times \{1\}.\]
+	\end{itemize-zero}
+	\tcbline
+	In other words, the mapping cylinder of $f : X \times Y$ is the pushout of the diagram
+	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIFxcdGltZXMgXFx7MFxcfSJdLFsyLDAsIlkiXSxbMiwyLCJNX2YiXSxbMCwyLCJYIFxcdGltZXMgSSJdLFswLDEsImYiXSxbMSwyXSxbMCwzXSxbMywyXV0=
+	\[\begin{tikzcd}[ampersand replacement=\&,cramped, column sep=small, row sep=scriptsize]
+		{X \times \{0\}} \&\& Y \\
+		\\
+		{X \times I} \&\& {M_f}
+		\arrow["f", from=1-1, to=1-3]
+		\arrow[from=1-1, to=3-1]
+		\arrow[from=1-3, to=3-3]
+		\arrow[from=3-1, to=3-3]
+	\end{tikzcd}\]
+\end{dfn}
+
+
+
+\lipsum[1-12]
+
+\end{multicols}
 \end{document}

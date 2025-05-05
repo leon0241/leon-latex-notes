@@ -25,7 +25,6 @@
 
 \tcbset{thmboxstyle/.style={
     % General settings
-        enhanced, % Enhanced Style
         sharp corners, % Sharp corners (box)
     % Title box setup
         coltitle=black, 
@@ -47,8 +46,10 @@
         bottom=2pt, % Bottom padding
         breakable,
         halign=flush left,
-        lines before break=2,
-    %
+        skin=enhanced,
+    % Segmentation
+        segmentation style={solid, line width=0.3pt, color=black},
+    % Other
         label is label,
     }
 }
@@ -89,6 +90,7 @@
 \newtcolorbox[auto counter, use counter=thmcount, number within=subsection]{thm-box}[5][]{
     % Background , Colour of frame, Colour of Box background
     colbacktitle=blue!20, colframe=blue!20, colback=blue!5,
+    colbacklower=blue!12,
     title={#5 #4: #2}, % Title Formatting
     label=#3,               % Label Formatting
     thmboxstyle={#2},       % Import general style
@@ -142,7 +144,7 @@
 \newcounter{xmpcount}\counterwithin{xmpcount}{subsection} 
 \newtcolorbox[auto counter, use counter=xmpcount, number within=subsection]{xmp-box}[5][]{
     % Background , Colour of frame, Colour of Box background
-    colbacktitle=yellow!20, colframe=yellow!20, colback=yellow!5,
+    colbacktitle=yellow!40, colframe=yellow!40, colback=yellow!5,
     title={#5 #4: #2},  % Title Formatting
     label=#3,                   % Label Formatting
     thmboxstyle={#2},           % Import general style
@@ -183,6 +185,24 @@
         {\begin{rem-box}{#1}{#2}{\theremcount}{Remark}}
         {\parsetext{#3}{remcount}{3}\begin{rem-box}{#1}{#2}{#3}{Remark}}
 } {\end{rem-box}}
+
+% #1: Name, #2: Label, #3: Count
+\newcounter{rclcount}\counterwithin{rclcount}{subsection} 
+\newtcolorbox[auto counter, use counter=rclcount, number within=subsection]{rcl-box}[5][]{
+    % Background , Colour of frame, Colour of Box background
+    colbacktitle=red!20, colframe=red!20, colback=red!5,
+    title={#5 #4: #2},  % Title Formatting
+    label=#3,                   % Label Formatting
+    thmboxstyle={#2},           % Import general style
+    #1,                         % Additional options
+}
+
+\newenvironment{rcl}[3][]{
+    % If the last box is empty then run parser
+    \ifstrempty{#3}
+        {\begin{rcl-box}{#1}{#2}{\therclcount}{Recall}}
+        {\parsetext{#3}{rclcount}{3}\begin{rcl-box}{#1}{#2}{#3}{Recall}}
+} {\end{rcl-box}}
 
 
 
@@ -349,6 +369,13 @@
         \ifstrempty{#3}
 			{\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Remark}{magenta!20}{magenta!5}}
 			{\parsetext{#3}{thmboxcount}{3}\begin{thmbox-box}{#1}{#2}{#3}{Remark}{magenta!20}{magenta!5}}
+    } {\end{thmbox-box}}
+    % Recall
+    \renewenvironment{rcl}[3][]{
+        % If the last box is empty then run parser
+        \ifstrempty{#3}
+			{\begin{rclbox-box}{#1}{#2}{\thethmboxcount}{Recall}{magenta!20}{magenta!5}}
+			{\parsetext{#3}{thmboxcount}{3}\begin{thmbox-box}{#1}{#2}{#3}{Recall}{magenta!20}{magenta!5}}
     } {\end{thmbox-box}}
     % Question
     \renewenvironment{qst}[3][]{

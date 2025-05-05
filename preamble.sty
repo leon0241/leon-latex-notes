@@ -94,12 +94,15 @@
 % │                     Custom Packages                      │
 % ╰──────────────────────────────────────────────────────────╯
 
+\usepackage{silence}
+% annoying thmboxes issue
+\WarningFilter{latex}{You have requested package}
+
 % MDFramed on Tikz-cd - Required for Thmboxes
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage[skins, breakable]{tcolorbox}
 % Theorem Boxes
 % \usepackage{../../rss/thmboxes_v3}
-\usepackage{../../rss/thmboxes_v4}
 % Custom Environments and Objects
 \usepackage{../../rss/customs}
 
