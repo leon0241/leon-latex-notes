@@ -273,7 +273,171 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	\end{tikzcd}\]
 \end{dfn}
 
+\begin{xmp}[Spheres]{xmp:spheres}{5.5}
+	Consider the $n$-sphere $\mathbb{S}^{n}$ with the standard embedding $\mathbb{R}^{n+1} \backslash \{0\}$. Then the map
+	\[r : \mathbb{R}^{n+1} \backslash \{0\} \to \mathbb{S}^{n},\;\quad x \mapsto \frac{x}{\lvert x \rvert}\]
+	is a retract. Indeed, if $x$ has norm $\lvert x \rvert = 1$, then $r(x) = x$. for a deformation retract one needs to find a homotopy $h : i \circ r \simeq \Id_{X}$. This can easily be realised by following straight-line homotopy:
+	\[h : \mathbb{R}^{n+1} \backslash \{0\} \times I \to \mathbb{R}^{n+1} \backslash \{0\},\;\quad (x, t) \mapsto (1-t) \frac{x}{\lvert x \rvert} + tx.\]
+	Indeed, $h(x, 0) = r(x)$ and $h(x, 1) = x$ for all $x$.
+\end{xmp}
 
+\begin{dfn}[Star-Shaped Spaces]{dfn:star-spaces}{11}
+	A subset $S \subset \mathbb{R}^{n}$ is called \textbf{star-shaped} at a point $x_{0}\in S$, if for any $x\in S$ the line segment from $x_{0}$ to $x$ is contained in $S$, i.e.
+	\[\{(1-t)x_{0} + tx \mid t\in [0,1]\} \subset S\]
+	If $S$ is star-shaped at every point, then it is called \textbf{convex}.
+\end{dfn}
+
+\begin{xmp}[Star-Shaped Spaces are Contractible]{xmp:star-shaped-contractible}{5.6}
+	%TODO: also show that they are path-connected
+	Let $S$ be star-shaped at $x_{0}$ and $i : \{x_{0}\} \leftrightarrow S : r$ be the inclusion and constant maps. Define the straight line homotopy
+	\[h : S \times I \to S,\;\quad (x, t) \mapsto (1 - t) x_{0} + tx\]
+	which is well defined by the star-shaped condition. Moreover, $h(x,0) = x_{0} = r(x)$ and $h(x,1) = x$ for all $x$. Hence, star-shaped, and in particular convex spaces, are contractible.
+\end{xmp}
+
+\begin{xmp}[M\"obius band]{xmp:mobius-band}{5.7}
+	The M\"obius band $M$ can be be defined as
+	\[M = I^{2} / \sim\]
+	where the equivalence relation $\sim$ identifies the two vertical edges of $I^{2}$ by flipping one, i.e. $(0, b) \sim (1,1-b)$ for $b\in I$. Its core $C \subset M$ is the line $\{[a, 1 /2] \mid a\in I\}$. Thus the core is homeomorphic to $\mathbb{S}^{1}$. 
+
+	The M\"obius band deformation retracts onto its core. Indeed, consider the retract $r : M \to C$ defined by $r([a, b]) := [(a, 1 /2)]$ and the homotopy
+	\[h : M \times I \to M,\;\quad ([(a, b)], t) \mapsto \left[\left(a, (1-t) \frac{1}{2} + ^{}_{}\right)\right].\]
+	In particular, $M \simeq \mathbb{S}^{1}$.
+\end{xmp}
+
+\begin{ppn}[Retracts of the Mapping Cylinder]{ppn:mapping-cylinder-retract}{6}
+	Via Definition \ref{dfn:mapping-quotients}, the mapping cylinder is formed by the cylinder of $X$ by gluing $Y$ onto the bottom with the map $f$.
+
+	The mapping cylinder $M_{f}$ strongly deformation retracts onto $Y$.
+
+	\tcblower
+	\begin{proof}
+		Consider the retract:
+		\[r:M_{f} \to Y\]
+		defined by $r([x, s]) := [(x, 0)] = [f(x)]$ on the class of $(x, s) \in X \times I$ and $r([y]) = y$ for $y\in Y$. This is well-defined and by definition a retract on $Y$. Define the homotopy
+		\[h : M_{f} \times I \to M_{f}\]
+		by $h([(x, s)], t) := [(x, st)]$ for $(x, s)\in X \times I$ and $t\in I$, and by $h([y], t) := y$ for $y\in Y$. In particular, $h(-, 0) i \circ r$ and $h(-, 1) = \Id_{M_{f}}$. This forms a strong deformation retract.
+	\end{proof}
+\end{ppn}
+
+\begin{rem}[Continuous Maps are Homotopic]{rem:continuous-map-homotopic}{6}
+	Any continuous $f : X \to Y$ can be replaced up to homotopy equivalence by the closed inclusion $X \hookrightarrow M_{f},\, x \mapsto [(x, 1)]$. More precisely, it factorises through an inclusion and a homotopy equivalence as the following diagram commutes:
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzQsMCwiWSJdLFsyLDIsIk1fZiJdLFswLDEsImYiXSxbMCwyLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsyLDEsIlxcc2ltZXEiLDJdXQ==
+	\[\begin{tikzcd}[ampersand replacement=\&,cramped, column sep=scriptsize, row sep=scriptsize]
+		X \&\&\&\& Y \\
+		\\
+		\&\& {M_f}
+		\arrow["f", from=1-1, to=1-5]
+		\arrow[hook, from=1-1, to=3-3]
+		\arrow["\simeq"', from=3-3, to=1-5]
+	\end{tikzcd}\]
+\end{rem}
+
+\begin{dfn}[Relative Homotopy]{dfn:relative-homotopy}{12}
+	Let $X, Y$ be topological spaces and $A \subset X$ be a subset in $X$. A homotopy $h : X \times I \to y$ is called \textbf{relative to $A$} if $h(a, t)$ is independent of $t$ for all $a\in A$. In particular, this defines homotopies between maps $f,\, g: X \to Y$ such that $f \rvert_{A} = g \rvert_{A}$.
+
+	\tcbline
+	This definition generalises ordinary homotopies, as an ordinary homotopy is the same as a homotopy relative to $\emptyset$.
+\end{dfn}
+
+\begin{xmp}[Relative Homotopies and Retracts]{xmp:relative-retract}{6}
+	A strong deformation retarct of $X$ onto $A$ is a deformation retract such that the homotopy $h : i \circ r \simeq \Id_{X}$ is relative to $A$.
+\end{xmp}
+
+\begin{dfn}[Homotopic Path]{dfn:homotopic-path}{13}
+	Let $\alpha, \beta : I \to X$ be paths in $X$ such that $\alpha(0) = \beta(0)$ and $\alpha(1) = \beta(1)$. A relative homotopy from $\alpha$ to $\beta$ is a homotopy $h : I \times I \to x$ relative to $\partial I = \{0,1\}$, i.e.
+	\begin{equation}
+		h(-, 0) = \alpha, \quad h(-, 1) = \beta
+	\end{equation}
+	and
+	\begin{equation}
+		h(0, t) = \alpha(0) = \beta(0), \quad h(1,t)=\alpha(1)=\beta(1), \quad \forall t\in I.
+	\end{equation}
+	\tcbline
+	In particular, at any point $t\in I$ a relative homotopy $h$ defins a path $h_{t} := h(-, t) : I \to X$ with start $\alpha(0) = \beta(0)$ and end $\alpha(1) = \beta(1)$. If one omits the relative condition, the start and end points of $h_{t}$ would be allowed to vary.
+\end{dfn}
+
+\begin{rem}[Ordinary Homotopies and Paths]{rem:ordinary-homotopy-path}{7}
+	Observe that ordinary homotopies are not well suited for paths: Any path $\alpha : I \to X$ is homotopic (relative $\emptyset$) to a constant. Indeed, the homotopy
+	\[h : I \times I \to X, \quad (s, t) \mapsto \alpha(st)\]
+	defines a homotopy from the constant path $c_{\alpha(0)}$ on $\alpha(0)$ to $\alpha$, i.e. $c_{\alpha(0)}\simeq \alpha$. Hence, (ordinary) homotopy classes of paths in $X$ are in one-to-one correspondence with path-connected components of $X$.
+\end{rem}
+
+\begin{ppn}[Homotopic Properties of Paths]{ppn:path-concatenation-homotopic}{7}
+	Path concatenation is \textbf{unital}, \textbf{associative}, and \textbf{invertible} up to homotopy in the following sense: Let $\alpha,\, \beta,\, \gamma : I \to x$ be paths such that $\alpha(1) = \beta(0)$ and $\beta(1) = \gamma(0)$. Then there exists homotopies relative to $\{0,1\}$:
+	\begin{enumerate-tight}
+	    \item \textbf{Left Unitality}: $c_{\alpha(0)} \ast \alpha \simeq \alpha$
+	    \item \textbf{Right Unitality}: $\alpha \simeq c_{\alpha(0)} \ast \alpha $
+	    \item \textbf{Associativity}: $(\alpha \ast \beta) \ast \gamma \simeq \alpha \ast (\beta \ast \gamma)$
+	    \item \textbf{Right Inverse}: $\alpha \ast \overline{\alpha} \simeq c_{\alpha(0)}$
+	    \item \textbf{Left Inverse}: $\overline{\alpha} \ast \alpha \simeq c_{\alpha(1)}$
+	\end{enumerate-tight}
+	where $c_{x}$ for some $x\in X$ denotes the constant path on $x$ and $\overline{\alpha}$ is the reversed path.
+\end{ppn}
+
+\begin{lma}[]{lma:concat-relative-i}{3}
+	Let $\alpha : I \to X$ be a path and $\lambda : I \to I$ a boundary preserving map, i.e. $\lambda(0) = 0$ and $\lambda(1)=1$. Then,
+	\[\alpha \circ \lambda \simeq \alpha, \quad \text{rel.}\, \partial I.\]
+\end{lma}
+
+\begin{dfn}[Fundamental Group]{dfn:fundamental-group}{14}
+	Let $X$ be a topological space and $x_{0}\in X$ some fixed point. The \textbf{fundamental group} of $X$ at $x_{0}$ i the group of homotopy classes of paths in $X$ that start and end on $x_{0}$. i.e. $\alpha : I \to X$ such that $\alpha(0) = \alpha(1) = x_{0}$, i.e.
+	\[\pi_{1}(X, x) = \{\alpha : I \to X \mid \alpha(0) = \alpha(1)\} /\sim.\]
+\end{dfn}
+
+\begin{thm}[The Fundamental Group is Well Defined]{thm:fundamental-group-is-a-group}{1}
+	The fundamental group $\pi_{1}(X, x_{0})$ is a well-defined group with:
+	\begin{itemize-tight}
+	    \item \textbf{Multiplication}: $[\alpha] \cdot [\beta] := [\alpha \ast \beta]$
+	    \item \textbf{Unit}: $1 = [c_{x_{0}}]$
+	    \item \textbf{Inverse}: $[\alpha]^{-1} = [\overline{\alpha}]$
+	\end{itemize-tight}
+\end{thm}
+
+\begin{lma}[Relative Concated Homotopic Paths]{lma:relative-concat-homo-path}{4}
+	Let $\alpha \simeq \alpha' : I \to X$ and $\beta \simeq \beta' : I \to X$ be two pairs of relative homotopic paths such that $\alpha(1) = \alpha'(1) = \beta(0) = \beta'(0)$. Then the concatenations are relative homotopic, i.e.
+	\[\alpha \ast \beta \simeq \alpha' \ast \beta', \quad \mathrm{rel. } \{0,1\}.\]
+\end{lma}
+
+\begin{ppn}[Fundamental Group is Point Independent]{ppn:fundamental-group-point-independent}{8}
+	Let $\gamma : I \to X$ be a path from $\gamma(0) = x$ to $\gamma(1) = x'$. Then it induces a group isomorphism:
+	\[(\gamma)_{\#} : \pi(X, x) \to \pi(X, x'),\;\quad [\alpha] \mapsto [\overline{\gamma} \ast \alpha \ast \gamma].\]
+	\tcbline
+	We abuse notation to say that for a path-connected space $X$, $\pi_{1}(X)$ is the fundamental group omitting the choice of base point.
+\end{ppn}
+
+\begin{xmp}[Examples of Fundamental Groups]{xmp:fundamental-groups}{7}
+	\begin{itemize-tight}
+	    \item \textbf{Euclidean}: $\pi_{1}(\mathbb{R}^{n}) \cong 1$.
+	    \item \textbf{Circle}: $\pi_{1}(\mathbb{S}_{1}) \cong \mathbb{Z}$.
+	    \item \textbf{$n$-Spheres}: $\pi_{1}(\mathbb{S}^{n}) \cong 1$ for $n \ge 2$.
+	    \item \textbf{Torus}: $\pi_{1}(\mathbb{S}^{1} \times \mathbb{S}^{1}) \cong \mathbb{Z} \oplus \mathbb{Z}$.
+	    \item \textbf{Projective Spaces}: $\pi_{1}(\mathbb{RP}^{n}) \cong \mathbb{Z}_{2}$ for $n \ge 2$.
+	\end{itemize-tight}
+\end{xmp}
+
+\begin{dfn}[Pointed Space]{dfn:pointed-space}{15}
+	\begin{itemize-tight}
+	    \item A \textbf{pointed space} is a pair $(X, x)$ consisting of a topological space $X$ and a point $x\in X$.
+	    \item A \textbf{map of pointed spaces} $f : (X, x) \to (Y, y)$ is a continuous map $f : X \to Y$ such that $f(x) = y$.
+	    \item The \textbf{space of pointed maps} from $(X, x)$ to $(Y, y)$ is denoted by
+			\[\Map_{\ast}((X, x),\, (Y, y)) \subset \Map(X, Y).\]
+	\end{itemize-tight}
+	% TODO: explain this
+\end{dfn}
+
+\begin{ppn}[Point and Path Space Isormophism]{ppn:point-path-iso}{9}
+	We have a group isomorphism:
+	\[\pi_{1}(X, x) \cong \pi_{0}(\Omega X).\]
+	Similarly, one can iteratively define the $n$-fold loop space
+	\[\Omega^{n}X := \Omega \Omega^{n-1}X = \Omega \cdots \Omega X\]
+	There is a homeomorphism
+	\[\Omega^{n}X \cong \Map_{\ast}((\mathbb{S^{n}}, 1),\,(X, x))\]
+\end{ppn}
+
+\begin{dfn}[\texorpdfstring{$n$}{n}-th Homotopy Group]{dfn:nth-homotopy-group}{16}
+	The $n$-th homotopy group $\pi_{n}(X, x)$ is defined by:
+	\[\pi_{n}(X, x) := \pi_{0}(\Omega^{n} X) \cong \pi_{0}(\Map_{\ast}(\mathbb{S}^{n}, (X, x))).\]
+\end{dfn}
 
 \lipsum[1-12]
 
