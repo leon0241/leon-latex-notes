@@ -74,7 +74,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	We define a path relation between points in $X$ be declaring $x \sim y$ if there exists some path $\alpha : I \to X$ that starts at $x$ and ends in $y$, i.e. $\alpha(0) = x$ and $\alpha(1) = y$. This is an equivalence relation from the following properties:
 	\begin{enumerate-zero}
 	    \item \textbf{Constant Path}: For all $x\in X$ there exists the constant path $c_{x} : I \to X$ defined by $c_{x}(t)=x$ for all $t\in I$
-	    \item \textbf{Path reversal}: Let $\alpha : I \to X$ be a pth in $X$. Define its reversed path by
+	    \item \textbf{Path reversal}: Let $\alpha : I \to X$ be a path in $X$. Define its reversed path by
 			\begin{equation}\label{eq:path-reversal}
 				\overline{\alpha} : I \to X,\;\quad t \mapsto \alpha(1-t)
 			\end{equation}
@@ -89,7 +89,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \end{dfn}
 
 \begin{dfn}[Path-Connected Components]{dfn:path-connected-comps}{4}
-	The equivalence clases are called \textbf{path-connected components} and their set is denoted by $\pi_{0}(X)$. A space $X$ is called \textbf{path-connected} if $\pi_{0}(X)$ is a one-point set, i.e. any two points $x,\,y$ can be related by a path in $X$.
+	The equivalence classes are called \textbf{path-connected components} and their set is denoted by $\pi_{0}(X)$. A space $X$ is called \textbf{path-connected} if $\pi_{0}(X)$ is a one-point set, i.e. any two points $x,\,y$ can be related by a path in $X$.
 \end{dfn}
 
 \begin{rem}[Random examples]{rem:random-examples}{1}
@@ -276,7 +276,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \begin{xmp}[Spheres]{xmp:spheres}{5.5}
 	Consider the $n$-sphere $\mathbb{S}^{n}$ with the standard embedding $\mathbb{R}^{n+1} \backslash \{0\}$. Then the map
 	\[r : \mathbb{R}^{n+1} \backslash \{0\} \to \mathbb{S}^{n},\;\quad x \mapsto \frac{x}{\lvert x \rvert}\]
-	is a retract. Indeed, if $x$ has norm $\lvert x \rvert = 1$, then $r(x) = x$. for a deformation retract one needs to find a homotopy $h : i \circ r \simeq \Id_{X}$. This can easily be realised by following straight-line homotopy:
+	is a retract. Indeed, if $x$ has norm $\lvert x \rvert = 1$, then $r(x) = x$. For a deformation retract one needs to find a homotopy $h : i \circ r \simeq \Id_{X}$. This can easily be realised by following straight-line homotopy:
 	\[h : \mathbb{R}^{n+1} \backslash \{0\} \times I \to \mathbb{R}^{n+1} \backslash \{0\},\;\quad (x, t) \mapsto (1-t) \frac{x}{\lvert x \rvert} + tx.\]
 	Indeed, $h(x, 0) = r(x)$ and $h(x, 1) = x$ for all $x$.
 \end{xmp}
@@ -291,13 +291,13 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	%TODO: also show that they are path-connected
 	Let $S$ be star-shaped at $x_{0}$ and $i : \{x_{0}\} \leftrightarrow S : r$ be the inclusion and constant maps. Define the straight line homotopy
 	\[h : S \times I \to S,\;\quad (x, t) \mapsto (1 - t) x_{0} + tx\]
-	which is well defined by the star-shaped condition. Moreover, $h(x,0) = x_{0} = r(x)$ and $h(x,1) = x$ for all $x$. Hence, star-shaped, and in particular convex spaces, are contractible.
+	which is well-defined by the star-shaped condition. Moreover, $h(x,0) = x_{0} = r(x)$ and $h(x,1) = x$ for all $x$. Hence, star-shaped, and in particular convex spaces, are contractible.
 \end{xmp}
 
 \begin{xmp}[M\"obius band]{xmp:mobius-band}{5.7}
-	The M\"obius band $M$ can be be defined as
+	The M\"obius band $M$ can be defined as
 	\[M = I^{2} / \sim\]
-	where the equivalence relation $\sim$ identifies the two vertical edges of $I^{2}$ by flipping one, i.e. $(0, b) \sim (1,1-b)$ for $b\in I$. Its core $C \subset M$ is the line $\{[a, 1 /2] \mid a\in I\}$. Thus the core is homeomorphic to $\mathbb{S}^{1}$. 
+	where the equivalence relation $\sim$ identifies the two vertical edges of $I^{2}$ by flipping one, i.e. $(0, b) \sim (1,1-b)$ for $b\in I$. Its core $C \subset M$ is the line $\{[a, 1 /2] \mid a\in I\}$. Thus, the core is homeomorphic to $\mathbb{S}^{1}$. 
 
 	The M\"obius band deformation retracts onto its core. Indeed, consider the retract $r : M \to C$ defined by $r([a, b]) := [(a, 1 /2)]$ and the homotopy
 	\[h : M \times I \to M,\;\quad ([(a, b)], t) \mapsto \left[\left(a, (1-t) \frac{1}{2} + ^{}_{}\right)\right].\]
@@ -340,7 +340,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \end{dfn}
 
 \begin{xmp}[Relative Homotopies and Retracts]{xmp:relative-retract}{6}
-	A strong deformation retarct of $X$ onto $A$ is a deformation retract such that the homotopy $h : i \circ r \simeq \Id_{X}$ is relative to $A$.
+	A strong deformation retract of $X$ onto $A$ is a deformation retract such that the homotopy $h : i \circ r \simeq \Id_{X}$ is relative to $A$.
 \end{xmp}
 
 \begin{dfn}[Homotopic Path]{dfn:homotopic-path}{13}
@@ -353,7 +353,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 		h(0, t) = \alpha(0) = \beta(0), \quad h(1,t)=\alpha(1)=\beta(1), \quad \forall t\in I.
 	\end{equation}
 	\tcbline
-	In particular, at any point $t\in I$ a relative homotopy $h$ defins a path $h_{t} := h(-, t) : I \to X$ with start $\alpha(0) = \beta(0)$ and end $\alpha(1) = \beta(1)$. If one omits the relative condition, the start and end points of $h_{t}$ would be allowed to vary.
+	In particular, at any point $t\in I$ a relative homotopy $h$ defines a path $h_{t} := h(-, t) : I \to X$ with start $\alpha(0) = \beta(0)$ and end $\alpha(1) = \beta(1)$. If one omits the relative condition, the start and end points of $h_{t}$ would be allowed to vary.
 \end{dfn}
 
 \begin{rem}[Ordinary Homotopies and Paths]{rem:ordinary-homotopy-path}{7}
@@ -438,6 +438,337 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 	The $n$-th homotopy group $\pi_{n}(X, x)$ is defined by:
 	\[\pi_{n}(X, x) := \pi_{0}(\Omega^{n} X) \cong \pi_{0}(\Map_{\ast}(\mathbb{S}^{n}, (X, x))).\]
 \end{dfn}
+
+\begin{dfn}[Simply Connected Space]{dfn:simply-connected-space}{17}
+	A path-connected space $X$ is called \textbf{simply connected} if its fundamental group is trivial, i.e.
+	\[\pi_{1}(X) = 1\]
+	\tcbline
+	Some examples are $\mathbb{R}^{n}$, $\mathbb{S}^{n}$ for $n > 1$, and some non-examples are $\mathbb{S}^{1}$, $\mathbb{S}^{1} \times \mathbb{S}^{1}$ and $\mathbb{RP}^{2}$.
+\end{dfn}
+
+\begin{thm}[Fundamental Group Isomorphism]{thm:homotopy-isomorphism}{2}
+	Let $f : X \to Y$ be a homotopy equivalence and $x\in X$ an arbitrary base point. Then, the map:
+	\[f_{\ast} : \pi_{1}(X, x) \to \pi_{1}(Y, f(x)),\;\quad [\alpha] \mapsto [f \circ \alpha]\]
+	In particular, for homotopy equivalent spaces $X \simeq Y$ which are path-connected, we get $\pi_{1}(X) \cong \pi_{1}(Y)$.
+	\tcbline
+	A map of pointed spaces $f : (X, x) \to (Y, y)$ is a \textbf{homotopy equivalence of pointed spaces} or \textbf{homotopy equivalence relative $\{x\}$} if there exists a map of pointed spaces $g : (Y, y) \to (X, x)$ along with relative homotopies
+	\[h : f \circ g \simeq \Id_{Y} \quad \text{rel. } \{y\}\]
+	and
+	\[k : g \circ f \simeq \Id_{X} \quad \text{rel. } \{x\}\]
+\end{thm}
+
+\begin{xmp}[Strong Deformation Retracts Homotopies]{xmp:strong-deformation-homotopy}{9}
+	A strong deformation retract of $X$ onto a subspace $A$ gives a homotopy equivalence of pointed spaces $(x, a) \to (A, a)$ for any choice of $a\in A$. In particular, a contractible space $X \simeq \ast$ determines a homotopy equivalence of pointed spaces $(X, x) \to \ast$ for any choice of base point $x$.
+\end{xmp}
+
+\begin{lma}[Pointed Space Isomorphism]{lma:pointed-space-isomorphism}{5}
+	Let $f : (X, x) \to (Y, y)$ be a homotopy equivalence of pointed spaces. Then the map
+	\[f_{\ast} : \pi_{1}(X, x) \to \pi_{1}(Y, y)\]
+	is a group isomorphism.
+
+	\tcbline
+	\textbf{Corollary 1}: Let $r : X \to A$ be a strong deformation retract of $X$ onto $A \subset X$. Then
+	\[\pi(X, a) \cong \pi(A, a)\]
+	for any $a\in A$. In particular, contractible spaces are simply connected.
+\end{lma}
+
+\begin{lma}[Identity Homomorphic Isormorphism]{lma:id-homo-iso}{6}
+	Let $f : X \to X$ be a continuous map which is homotopic to $\Id_{X}$. Then, the map
+	\[f_{\ast} : \pi_{1}(X, x_{0}) \to \pi_{1}(X, f(x_{0}))\]
+	is a group isomorphism for any choice of base point $x_{0}\in X$.
+\end{lma}
+
+\begin{dfn}[Homotopy Lifting Property]{dfn:homotopy-lifting-property}{18}
+	A continuous map $p : E \to X$ satisfies the \textbf{homotopy lifting property} (HLP) with respect to a topological space $Y$ if for any commuting diagram:
+
+	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJZIFxcdGltZXMgXFx7MFxcfSJdLFsyLDAsIkUiXSxbMiwyLCJYIl0sWzAsMiwiWSBcXHRpbWVzIEkiXSxbMCwxLCJIXzAiXSxbMSwyLCJwIl0sWzAsMywiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMywyLCJoIl0sWzMsMSwiXFxleGlzdHMiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+\[\begin{tikzcd}[ampersand replacement=\&,cramped, column sep=small, row sep=scriptsize]
+	{Y \times \{0\}} \&\& E \\
+	\\
+	{Y \times I} \&\& X
+	\arrow["{H_0}", from=1-1, to=1-3]
+	\arrow[hook, from=1-1, to=3-1]
+	\arrow["p", from=1-3, to=3-3]
+	\arrow["\exists", dashed, from=3-1, to=1-3]
+	\arrow["h", from=3-1, to=3-3]
+\end{tikzcd}\]
+
+
+	There exists a map $H : Y \times I \to E$ such that both triangles commute, i.e. $H \rvert_{Y \times \{0\}} = H_{0}$ and $p \circ H = h$.
+
+	\tcbline
+	In other wowrds, the map $p : E \to X$ has the HLP if for any homotopy $h : Y \times I \to X$ of maps $h(-, 0) := f_{0}$ and $h(-, 1) := f_{1}$ of maps $Y \to X$ and a choice of a lift $H_{0}$ of $f_{0}$, then the homotopy $h$ lifts to a homotopy $H : Y \times I \to E$.
+
+	In particular, if $f_{0} \simeq f_{1} : Y \to X$ and $H_{0}$ is a lift of $f_{0}$, we find $H_{0} \simeq H_{1}$ where $H_{1}$ lifts $f_{1}$.
+\end{dfn}
+
+\begin{xmp}[Example of the HLP]{xmp:hlp-xmp}{10}
+	Trivially the identity map $\Id_{X} : X \to X$ has the HLP with respect to any space $Y$.
+\end{xmp}
+
+\begin{dfn}[Covering Space]{dfn:covering-space}{19}
+	A \textbf{covering space} of $X$ is a topological space $\overline{X}$ along with a continuous map $p : X \to x$ such that for any point $x\in X$ there exists an open neighbourhood $U \subset X$ whose preimage $p^{-1}(U) = \bigcup_{j\in J} V_{j}$ and the opens $V_{j} \subset \overline{X}$ map homeomorphically to $U$ under $p$. In other words, a covering space of $X$ looks locally like a product of $X$ with a discrete space.
+\end{dfn}
+
+\begin{xmp}[Example of a Covering Space]{xmp:covering-space}{11}
+	\begin{enumerate-tight}
+	    \item The projection map $p : X \times Z \to X$ is a covering map if $Z$ is a discrete topological space. If $Z$ is not discrete, then this is not a covering map in general.
+	    \item The identity map $\Id_{X} : X \to X$ is always trivially a covering map.
+	    \item While the projection of $p : X \times I \to X$ from the cylinder is not a covering map, its restriction to the boundary $\partial(X \times I ) = X \times \{0, 1\} =: \overline{X}$ gives a trivial ($2$-fold) covering of $X$.
+	    \item Recall that the M\"obius band $M$ deformation retracts onto its core $\mathbb{S}^{1}$. Restricting to the boundary $\partial M = \mathbb{S}^{1}$, one obtains a (non-trivial) covering map $\mathbb{S}^{1}\to \mathbb{S}^{1}$. This map coincides with $z \mapsto z^{2}$ if we identify $S^{1}$ as the unit circle in $\mathbb{C}$.
+	\end{enumerate-tight}
+\end{xmp}
+
+\begin{thm}[Unique HLPs from Covering Maps]{thm:covering-unique-hlp}{3}
+	Let $p : \tilde{X} \to X$ be a covering map and $Y$ any topological space. Then $p$ satisfies the HLP uniquely:
+
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJZIFxcdGltZXMgXFx7MFxcfSJdLFsyLDAsIlxcdGlsZGV7WH0iXSxbMiwyLCJYIl0sWzAsMiwiWSBcXHRpbWVzIEkiXSxbMCwxLCJIXzAiXSxbMSwyLCJwIl0sWzAsMywiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMywyLCJoIl0sWzMsMSwiXFxleGlzdHMhIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+	{Y \times \{0\}} \&\& {\tilde{X}} \\
+	\\
+	{Y \times I} \&\& X
+	\arrow["{H_0}", from=1-1, to=1-3]
+	\arrow[hook, from=1-1, to=3-1]
+	\arrow["p", from=1-3, to=3-3]
+	\arrow["{\exists!}", dashed, from=3-1, to=1-3]
+	\arrow["h", from=3-1, to=3-3]
+\end{tikzcd}\]
+	i.e. the lift $H$ not only exists, but it is also unique.
+\end{thm}
+
+% TODO: wtf?
+\begin{crl}[]{crl:something-pathy}{2}
+	\begin{enumerate-zero}
+	    \item Let $\gamma : I \to X$ be a path and fix a point $\tilde{x_{0}}\in \tilde{X}$ such that $p(\tilde{x_{0}}) = \gamma(0)$. Then, there exists a unique path $\tilde{\gamma} : I \to \tilde{X}$ which starts at $\tilde{x_{0}}$ and lifts $\gamma$ i.e. $p \circ \tilde{gamma} = \gamma$
+	    \item Let $h : I \times I \to X$ be a (relative) homotopy of paths $h(-, 0) =: \gamma_{0}$ and $h(-, 1) =: \gamma_{1}$, and fix a point $\tilde{x_{0}}$ such that $p(\tilde{x_{0}}) = h(0, t) = \gamma_{0}(0) = \gamma_{1}(0)$. Suppose $\tilde{\gamma_{0}} : I \to X$ is a lift of $\gamma$ starting at $\tilde{\gamma_{0}}(0) = \tilde{x_{0}}$. Then, there exists a unique homotopy of paths $\tilde{h} : I \times I \to \tilde{X}$ which lifts $h$ and $\tilde{h}(-, 0) = \tilde{\gamma_{0}}$
+	\end{enumerate-zero}
+\end{crl}
+
+\begin{thm}[Fundamental Group of the Circle]{thm:circle-fundamental-group}{4}
+	The fundamental group of the circle is $\pi_{1}(\mathbb{S}^{1}) \cong \mathbb{Z}$. It is generated by the class of
+	\[\alpha : I \to \mathbb{S}^{1},\;\quad t \mapsto e^{2\pi i t}.\]
+\end{thm}
+
+\begin{thm}[Brouwer's Fixed Point Theorem]{thm:brouwer}{5}
+	Any continuous map $f : \mathbb{D}^{2} \to \mathbb{D}^{2}$ has a fixed point, i.e. there exists $x \in \mathbb{D}^{2}$ such that $f(x) = x$.
+\end{thm}
+
+\begin{thm}[Fundamental Theorem of Algebra]{thm:fta}{6}
+	Every non-constant complex polynomial $p\in \mathbb{C}[z]$ has at least one root, i.e. $p(z_{0}) = 0$ for some $z_{0}$.
+\end{thm}
+
+\begin{thm}[Fundamental Group of \texorpdfstring{$\mathbb{S}^{n}$}{Sn}]{thm:fundamental-group-sn}{7}
+	The fundamental group of $\mathbb{S}^{n}$ is trivial for $n \ge 2$, i.ke. $\pi_{1}(\mathbb{S}^{2}) \cong 1$ for $n \ge 2$
+\end{thm}
+
+\begin{lma}[Closed Paths Homotopic to Loops]{lma:closed-path-loop}{7}
+	Let $(X, x_{0})$ be a topological space with an open cover $\{U_{j}\}_{j\in J}$ such that $U_{j}$ are path-connected neighbourhoods of $x_{0}$ and $U_{j} \cap U_{j'}$ is path-connected for any $j, j' \in J$. Then, any closed path $\gamma$ based at $x_{0}$ is homotopic to a concatenation $\gamma_{1} \ast \gamma_{2} \ast \cdots \ast \gamma_{n}$ of loops at $x_{0}$ each of them contained in a single $U_{j}$
+\end{lma}
+
+\begin{crl}[Homemorphisms between \texorpdfstring{$\mathbb{R}^{2}$}{R2} and \texorpdfstring{$\mathbb{R}^{n}$}{Rn}]{crl:rn-homeomorphism}{3}
+	There is no homeomorphism between $\mathbb{R}^{2}$ and $\mathbb{R}^{n}$ for $n \ne 2$
+\end{crl}
+
+% TODO: proof
+% TODO: the remark
+
+\begin{rcl}[Defining the Real Projective Space]{rcl:defining-rp2}{4}
+	\begin{enumerate-zero}
+	    \item The space $\mathbb{RP}^{2}$ is the quotient space:
+			\[\mathbb{RP}^{n} := (\mathbb{R}^{n+1} \backslash \{0\}) / \sim\]
+			where $x \sim y$ if there exists $\lambda \in \mathbb{R}$ such that $x = \lambda y$. In other words, the real projective $n$-space represents the lines in $\mathbb{R}^{n+1}$ through the origin.
+			\item Picking representatives that lie in the unit $n$-sphere $\mathbb{S}^{n} \subset \mathbb{R}^{n+1} \backslash \{0\}$, we obtain
+				$\mathbb{RP}^{n} \cong \mathbb{S}^{n} / \sim$
+				where $x \sim -x$ for all $x\in \mathbb{S}^{n}$, i.e. identifying antipodal pointso n the $n$-sphere.
+			\item Further restricting to the upper half $\mathbb{D}^{n} \subset \mathbb{S}^{n}$ we obtain:
+				\[\mathbb{RP}^{n} \cong \mathbb{D}^{n} / \sim\]
+				where $x \sim -x$ for any boudnary points $x\in \partial \mathbb{D}^{n} \cong \mathbb{S}^{n-1}$
+	\end{enumerate-zero}
+
+	\tcbline
+	For example, $\mathbb{RP}^{0}$ is a one point space, $\mathbb{RP}^{1} \cong \mathbb{S}^{1}$, while $\mathbb{RP}^{n}$ are different than spheres for larger $n$.
+\end{rcl}
+
+% TODO: lots of stuff here
+\begin{dfn}[Lift of a Path]{dfn:path-lift}{20}
+	\begin{itemize-tight}
+	    \item A lift of a path $\alpha : I \to \mathbb{RP}^{n}$ is a pth $\tilde{\alpha} : I \to \mathbb{S}^{n}$ such that $p \circ \tilde{\alpha} = \alpha$
+	    \item If $\alpha$ is a closed path, then $[\tilde{\alpha}(0)] = [\tilde{\alpha}(1)]$ which implies $\tilde{\alpha}(0) = \pm \tilde{\alpha}(1)$. The \textbf{sign} of $\alpha$ is defined by
+			\[\sgn(\alpha) \mapsto \begin{cases}
+				+1 & \tilde{\alpha}(0) = \tilde{\alpha}(1) \\
+				-1 & \tilde{\alpha}(0) = -\tilde{\alpha}(1)
+			\end{cases}\]
+	\end{itemize-tight}
+
+	% TODO: yapping
+\end{dfn}
+
+\begin{thm}[Group Homomorphism of the Sign]{thm:sign-homomorphism}{8}
+	The sign induces a surjective group homomorphism
+	\[\sgn : \pi_{1}(\mathbb{RP}^{n}) \to \mathbb{Z}_{2},\;\quad [\alpha] \mapsto \sgn(\alpha)\]
+	which is an isomorphism for $n \ge 2$.
+\end{thm}
+
+\begin{dfn}[Right Lifting Property]{dfn:rlp}{21}
+	A map $p : X \to Y$ satisfies the \textbf{right lifting property} (RLP) with respect to a map $i : A \to B$ if any commutative square
+	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzIsMCwiWCJdLFsyLDIsIlkiXSxbMCwyLCJCIl0sWzAsMV0sWzEsMiwicCJdLFswLDMsImkiLDJdLFszLDJdLFszLDEsIlxcZXhpc3RzISIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+	A \&\& X \\
+	\\
+	B \&\& Y
+	\arrow[from=1-1, to=1-3]
+	\arrow["i"', from=1-1, to=3-1]
+	\arrow["p", from=1-3, to=3-3]
+	\arrow["{\exists!}", dashed, from=3-1, to=1-3]
+	\arrow[from=3-1, to=3-3]
+\end{tikzcd}\]
+has a solution to the lifting problem making both triangles commute. Explicitly, if $f : B \to Y$ and $g : A \to X$ such that $f \circ i = p \circ g$, then there exists a map $l : B \to X$ satisfying $l \circ i = g$ and $p \circ l = f$. Dually, the map $i : A \to B$ is said to satisfy the \textbf{left lefting property} (LLP) with respect to $p : X \to Y$.
+\end{dfn}
+
+\begin{xmp}[Homotopy Lifting Property WRT Spaces]{xmp:hlp-spaces}{13}
+	\begin{enumerate-tight}
+	    \item A map $p : X \to Y$ satisfies the homotopy lifting property with respect to a space $Z$ iff it has the RLP ith respect to the inclusion map $i : Z \times \{0\} \hookrightarrow Z \times I$, i.e. solves the following lifting problem:
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJaIFxcdGltZXMgXFx7MFxcfSJdLFsyLDAsIlgiXSxbMiwyLCJZIl0sWzAsMiwiWiBcXHRpbWVzIEkiXSxbMCwxXSxbMSwyLCJwIl0sWzAsM10sWzMsMl0sWzMsMSwiXFxleGlzdHMiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+			\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+				{Z \times \{0\}} \&\& X \\
+				\\
+				{Z \times I} \&\& Y
+				\arrow[from=1-1, to=1-3]
+				\arrow[from=1-1, to=3-1]
+				\arrow["p", from=1-3, to=3-3]
+				\arrow["\exists", dashed, from=3-1, to=1-3]
+				\arrow[from=3-1, to=3-3]
+			\end{tikzcd}\]
+		In other words, given a homotopy $h : Z \times I \to Y$ and a lift $\tilde{f} : Z \to X$ of $h(-, 0) =: f$, there is a homotopy lift $\tilde{h} : Z \times I \to X$ with $\tilde{h}(-, 0) = \tilde{f}$.
+	\item Dually, a map $i : A \to b$ satisfies the \textbf{homotopy extension property} (HEP) with respect to a space $Z$ iff it has the LLP with respect to the map
+		\[p : Z^{I} \to Z,\;\quad \gamma \mapsto \gamma(0)\]
+		where $Z^{I} := \Map(I, Z)$ is the space of paths in $Z$. In other words, one can solve the following lifting problem:
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzIsMCwiWl5JIl0sWzIsMiwiWiJdLFswLDIsIkIiXSxbMCwxXSxbMSwyLCJwIl0sWzAsMywiaSIsMl0sWzMsMl0sWzMsMSwiXFxleGlzdHMiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+		\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+			A \&\& {Z^I} \\
+			\\
+			B \&\& Z
+			\arrow[from=1-1, to=1-3]
+			\arrow["i"', from=1-1, to=3-1]
+			\arrow["p", from=1-3, to=3-3]
+			\arrow["\exists", dashed, from=3-1, to=1-3]
+			\arrow[from=3-1, to=3-3]
+		\end{tikzcd}\]
+		Note that a map $A \to Z^{I}$ is the same datum as a homotopy $h : A \times I \to Z$. Given an extension $\tilde{f} : B \to Z$ of $h(-, 0)$ along $i$, the existence of a map $B \to Z^{I}$ which makes both triangles commute provides an extension of the homotopy $h$ to a homotopy $\tilde{h} : B \times I \to Z$ along $i$.
+	\end{enumerate-tight}
+\end{xmp}
+
+\begin{dfn}[Fibration]{dfn:fibration}{22}
+	\begin{enumerate-zero}
+	    \item A map $p : X \to Y$ is a \textbf{fibration} if it satisfies the HLP with respect to all spaces $Z$. In other words, it has the RLP with respect to the set of maps $\{ i : Z \times \{0\} \hookrightarrow Z \times I\}_{Z}$ where $Z$ runs over all topological spaces
+	    \item Dually, a map $i : A \to B$ is a \textbf{cofibration} if it satisfies the HEP with respect to all spaces $Z$.
+	\end{enumerate-zero}
+\end{dfn}
+
+\begin{thm}[Covering Maps are Fibrations]{thm:covering-fibration}{9}
+	A covering map $p : \tilde{X} \to X$ is a fibration. Additionally, the homotopy lifts are unique:
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJaIFxcdGltZXMgXFx7MFxcfSJdLFsyLDAsIlgiXSxbMiwyLCJZIl0sWzAsMiwiWiBcXHRpbWVzIEkiXSxbMCwxXSxbMSwyLCJwIl0sWzAsMywiaSIsMl0sWzMsMl0sWzMsMSwiXFxleGlzdHMhIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+	\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+		{Z \times \{0\}} \&\& X \\
+		\\
+		{Z \times I} \&\& Y
+		\arrow[from=1-1, to=1-3]
+		\arrow["i"', from=1-1, to=3-1]
+		\arrow["p", from=1-3, to=3-3]
+		\arrow["{\exists!}", dashed, from=3-1, to=1-3]
+		\arrow[from=3-1, to=3-3]
+	\end{tikzcd}\]
+\end{thm}
+
+\begin{xmp}[Examples of Fibrations]{xmp:fibrations}{14}
+	\begin{enumerate-zero}
+	    \item By Theorem 9, fibrations include all covering maps
+	    \item The projection map $p : X \times F \to X$ is always a fibration. However this map is a covering map iff $F$ is a discrete space. Hence, this includes examples of fibrations that are not coming from covering maps.
+	    \item An important example of a cofibration is the inclusion $i : X \to M_{f}$ where $M_{f}$ is the mapping cylinder of $f : X \times Y$. We have seen that any continuous map $f : X \times Y$ factors through the mapping cylinder:
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzQsMCwiWSJdLFsyLDIsIk1fZiJdLFswLDEsImYiXSxbMCwyLCJpIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMiwxLCJyIiwyXV0=
+\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+	X \&\&\&\& Y \\
+	\\
+	\&\& {M_f}
+	\arrow["f", from=1-1, to=1-5]
+	\arrow["i"', hook, from=1-1, to=3-3]
+	\arrow["r"', from=3-3, to=1-5]
+\end{tikzcd}\]
+	\end{enumerate-zero}
+	In particular, every map factors through a cofibration and a homotopy equivalence.
+\end{xmp}
+
+\begin{xmp}[Covering Spaces]{xmp:covering}{15}
+	\begin{enumerate-zero}
+	    \item The projection map $p : X \times D \to X$ where $D$ is a discrete space. Note that $X \times D$ cannot be path-connected unless $D$ is a one-point set.
+	    \item The covering map $\mathbb{R} \to \mathbb{S}^{1}$, $t \mapsto e^{2\pi i t}$ which we can use to compute the fundamental group of $\mathbb{S}^{1}$.
+		\item The degree-$n$ map $F_{n} : \mathbb{S}^{1} \to \mathbb{S}^{1}$, $z \mapsto z^{n}$ provides an $n$-fold covering of $\mathbb{S}^{1}$ by itself.
+		\item The product of two covering maps $p_{i} : \tilde{X}_{i} \to X_{i}$ is also a covering map $p_{1} \times p_{2} : \tilde{X}_{1} \times \tilde{X}_{2} \to X_{1} \times X_{2}$
+		\item The product of $F_{n}$ and $F_{m}$ in the third example also provides a self covering of the torus:
+			\[T^{2} = \mathbb{S}^{1} \times \mathbb{S}^{1} \to T^{2},\;\quad (z, w) \mapsto (z^{n}, w^{m})\]
+		\item Similarly, there is a covering $\mathbb{R}^{2} \to T^{2}$.
+		\item The $2$-fold covering $\mathbb{S}^{n} \to \mathbb{RP}^{n}$ which was used to compute the fundamental group of $\mathbb{RP}^{n}$
+	\end{enumerate-zero}
+\end{xmp}
+
+\begin{thm}[Homomorphism of Covering Maps]{thm:covering-homomorphism}{10}
+	Let $p : \tilde{X} \to X$ be a covering map. The induced group homomorphism
+	\[p_{\ast} : \pi_{1}(\tilde{X}, \tilde{x}_{0}) \to \pi_{1}(X, x_{0})\]
+	is injective for any $\tilde{x}_{0}\in p^{-1}(x_{0})$. Its image consists of (classes of) loops in $X$ based at $x_{0}$ that lift to loops in $\tilde{X}$ based at $\tilde{x}_{0}$
+\end{thm}
+
+\begin{rem}[Notation for Covers]{rem:cover-notation}{5}
+	Fix a covering map $p : \tilde{X} \to X$ and $x_{0}\in X$ a fixed point. We will write
+	\[G := \pi_{1}(X, x_{0})\]
+	for the fundamental group of $X$ at $x_{0}$ and
+	\[H := p_{\ast} \pi_{1}(\tilde{X}, \tilde{x}_{0}) \subset G\]
+	for the subgroup determined by the covering map. The subgroup $H$ depends on the choice of fiber point $\tilde{x}_{0}\in p^{-1}(x_{0})$ and we shall see that it subgroups for different fiber points are conjugate to each other. Finally, the fiber over $x_{0}$ will be denoted by
+	\[F_{x_{0}} := p^{-1}(x_{0})\]
+\end{rem}
+
+%TODO: action
+
+\begin{lma}[Transitive Actions]{lma:transitive-actions}{8}
+	If $\tilde{X}$ is path-connected, then the $G$-action on $F_{x_{0}}$ is transitive, i.e. for any $\tilde{x},\, \tilde{x}'\in F_{x_{0}}$, there exists a $\alpha\in G$ such that $\tilde{x}.\alpha = \tilde{x}'$.
+\end{lma}
+
+%TODO: more stuff on actions
+
+\begin{thm}[Path-Connected Correspondence]{thm:path-connected-correspondence}{11}
+	If $\tilde{X}$ is apth-connected, then there is a one-to-one correspondence between right cosets and fiber poitns, i.e. a bijection
+	\[G_{\tilde{x}} \backslash G \to F_{x_{0}},\;\quad G_{\tilde{x}} \cdot g \mapsto \tilde{x}.g\]
+
+	\tcbline
+	Thus the index of $G_{\tilde{x}}$ in $G$ coincides with the cardinality of the fiber $F_{x_{0}}$:
+	\setcounter{equation}{19}
+	\begin{equation}\label{eq:path-connected-correspondence}
+		[G : G_{\tilde{x}}] = \lvert F_{x_{0}} \rvert
+	\end{equation}
+
+	\tcbline
+	\textbf{Corollary 4}: If $\tilde{X}$ is simply-connected, then there is a bijection
+	\[G \to F_{x_{0}}\]
+	Equation \eqref{eq:path-connected-correspondence} becomes
+	\begin{equation}\label{eq:simply-connected-correspondence}
+		\lvert G \rvert = \lvert F_{x_{0}} \rvert
+	\end{equation}
+\end{thm}
+
+\begin{dfn}[Deck Transformation]{dfn:deck-transformation}{23}
+	A \textbf{deck transformation} of a covering map $p : \tilde{X} \to X$ is a self-homeomorphism $D : \tilde{X} \prightarrow{\cong} \tilde{X}$ such that $p \circ D = p$.
+	\tcbline
+	Deck transformations form a group $\Deck(p)$. Indeed, for any two deck transformations $D, D'$ their composite is also a deck transformation since $p \circ D \circ D' = p \circ D' = p$. Moreover, if $D$ is a deck transformation then so is its inverse $D^{-1}$ as $p \circ D^{-1} = p \circ D \circ D' = p$. 
+
+	For example, deck transformations of the covering map $\mathbb{R} \to \mathbb{S}^{1}$ are precisely translations by integers:
+	\[D_{n} : \mathbb{R} \to \mathbb{R},\;\quad t \mapsto t+n\]
+	In particular, the group of deck transformations is $\mathbb{Z}$. More generally, the group of deck transformations $\Deck(p)$ of a universal covering $p$ is isomorphic to the fundamental group $G$. From now on $p : \tilde{X} \to x$ will be a covering with $\tilde{X}$ path-connected and $X$ path-connected and locally path-connected.
+\end{dfn}
+
+\begin{xmp}[Topologist's Sine Curve]{xmp:topologist-sine-curve}{16}
+	Recall that the topologist's sine curve
+	\[X = \{0\} \times [-1, 1] \cup \left\{\left(x, \sin\left( \frac{1}{x}\right)\right) \mid 0 < x \le \frac{1}{2\pi}\right\} \subset \mathbb{R}^{2}\]
+	is an example of a connected, but not path-connected space. Let $Z$ be the quotient of $X$ by identifying the points $(0, 0) \sim (\frac{1}{2\pi}, 0)$. $Z$ is a path-connected space but not locally path-connected.
+\end{xmp}
 
 \lipsum[1-12]
 
