@@ -4,4 +4,5 @@
 *.log
 *.synctex.gz
 *.md5
+.fuse_hidden*
 chris-itcs-notes/

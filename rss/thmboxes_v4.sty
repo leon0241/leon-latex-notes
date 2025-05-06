@@ -23,18 +23,19 @@
 % │                          STYLE                           │
 % ╰──────────────────────────────────────────────────────────╯
 
-\tcbset{thmboxstyle/.style={
-    % General settings
-        sharp corners, % Sharp corners (box)
-    % Title box setup
+\tcbset{
+    thmboxstyle/.style n args={6}{
+    % general settings
+        sharp corners, % sharp corners (box)
+    % title box setup
         coltitle=black, 
-        attach boxed title to top left={ % Position the title box
-            yshift=-12pt, % Shift down the box
-            yshifttext=-8pt, % Offset text
-        xshift=15pt}, % Shift to the right
-        boxed title style={ % Style the title box
-            left=0pt, right=0pt, % No margins on left and right side
-            sharp corners, % Sharp corners (title)
+        attach boxed title to top left={ % position the title box
+            yshift=-12pt, % shift down the box
+            yshifttext=-6pt, % offset text
+        xshift=15pt}, % shift to the right
+        boxed title style={ % style the title box
+            left=0pt, right=0pt, % no margins on left and right side
+            sharp corners, % sharp corners (title)
         },
     % Title text setup
         fonttitle=\bfseries,
@@ -45,14 +46,53 @@
         right=7pt,
         bottom=2pt, % Bottom padding
         breakable,
+        break at=-\baselineskip/0pt,
         halign=flush left,
         skin=enhanced,
-    % Segmentation
+        colbacktitle=#5, colframe=#5, colback=#6,
+    % Lines
         segmentation style={solid, line width=0.3pt, color=black},
+        middle=1pt,
     % Other
         label is label,
+        title=#1 #2: #3, % Title Formatting
+        label=#4,
+    },
+    sbsadaptstyle/.style={
+        sidebyside adapt=right,
+        sidebyside align=top,
+        sidebyside gap=15pt,
+        frame hidden,
+        halign=flush left,
+        size=minimal,
+        skin=enhanced jigsaw,
+        opacityback=0
+    },
+    sbsevenstyle/.style={
+        sidebyside align=top,
+        sidebyside gap=15pt,
+        frame hidden,
+        halign=flush left,
+        size=minimal,
+        skin=enhanced jigsaw,
+        opacityback=0
     }
 }
+
+% \tcbset{common/.style 2 args={
+%     enhanced,
+%     frame hidden, interior hidden, segmentation hidden,
+%     coltitle=black,
+%     fonttitle=\bfseries\rmfamily,
+%     fontupper=\tiny,
+%     title={#2 #1},
+%     overlay unbroken={\draw[gray,line width=1pt] (frame.north west) rectangle (frame.south east);
+%     \draw[gray,line width=1pt] ([xshift=\kvtcb@lefttitle+\kvtcb@boxsep]interior.north west)--([xshift=-(\kvtcb@righttitle+\kvtcb@boxsep)]interior.north east);
+%     \shade (frame.south west)--++(0,-1mm)--(frame.south)--cycle;
+%     \shade (frame.south east)--++(0,-1mm)--(frame.south)--cycle;},
+%   }
+% }
+% \newtcolorbox{myblock}[3][]{common={#2}{#3}}
 
 % ╭──────────────────────────────────────────────────────────╮
 % │                       LABEL PARSER                       │
@@ -83,18 +123,22 @@
 % │                   SEPARATE DEFINITIONS                   │
 % ╰──────────────────────────────────────────────────────────╯
 
+% \newcommand{\thmboxsbs}[1]{\mathbb{#1}}
+%
+\newcommand{\sbsadapt}[2]{\tcbsidebyside[sbsadaptstyle]{#1}{#2}}
+
+\newtcolorbox{sbseven}[1]{sbsevenstyle, #1}
+        
+
 % ── THEOREM ───────────────────────────────────────────────────────────
 
-% #1: Name, #2: Label, #3: Count
+% #1: Optional Arguments, #2: Name, #3: Label, #4: Count, #5: Box Label
 \newcounter{thmcount}\counterwithin{thmcount}{subsection} 
 \newtcolorbox[auto counter, use counter=thmcount, number within=subsection]{thm-box}[5][]{
-    % Background , Colour of frame, Colour of Box background
-    colbacktitle=blue!20, colframe=blue!20, colback=blue!5,
-    colbacklower=blue!12,
-    title={#5 #4: #2}, % Title Formatting
-    label=#3,               % Label Formatting
-    thmboxstyle={#2},       % Import general style
-    #1,                     % Additional options
+    % Import general style
+    thmboxstyle={#5}{#4}{#2}{#3}{blue!20}{blue!5},
+    % Additional options
+    #1,
 }
 
 \newenvironment{thm}[3][]{
@@ -116,11 +160,7 @@
 % #1: Name, #2: Label, #3: Count
 \newtcolorbox[auto counter, use counter=dfncount, number within=subsection]{dfn-box}[5][]{
     % Background , Colour of frame, Colour of Box background
-    colbacktitle=green!20, colframe=green!20, colback=green!5,
-    title={#5 #4: #2}, % Title Formatting
-    label=#3,                   % Label Formatting
-    thmboxstyle={#2},           % Import general style
-    #1,                         % Additional options
+    thmboxstyle={#5}{#4}{#2}{#3}{green!20}{green!5},
 }
 
 % Definition
@@ -144,11 +184,7 @@
 \newcounter{xmpcount}\counterwithin{xmpcount}{subsection} 
 \newtcolorbox[auto counter, use counter=xmpcount, number within=subsection]{xmp-box}[5][]{
     % Background , Colour of frame, Colour of Box background
-    colbacktitle=yellow!40, colframe=yellow!40, colback=yellow!5,
-    title={#5 #4: #2},  % Title Formatting
-    label=#3,                   % Label Formatting
-    thmboxstyle={#2},           % Import general style
-    #1,                         % Additional options
+    thmboxstyle={#5}{#4}{#2}{#3}{yellow!40}{yellow!5}
 }
 
 \newenvironment{xmp}[3][]{
@@ -172,11 +208,7 @@
 \newcounter{remcount}\counterwithin{remcount}{subsection} 
 \newtcolorbox[auto counter, use counter=remcount, number within=subsection]{rem-box}[5][]{
     % Background , Colour of frame, Colour of Box background
-    colbacktitle=magenta!20, colframe=magenta!20, colback=magenta!5,
-    title={#5 #4: #2},  % Title Formatting
-    label=#3,                   % Label Formatting
-    thmboxstyle={#2},           % Import general style
-    #1,                         % Additional options
+    thmboxstyle={#5}{#4}{#2}{#3}{magenta!20}{magenta!5}
 }
 
 \newenvironment{rem}[3][]{
@@ -190,11 +222,7 @@
 \newcounter{rclcount}\counterwithin{rclcount}{subsection} 
 \newtcolorbox[auto counter, use counter=rclcount, number within=subsection]{rcl-box}[5][]{
     % Background , Colour of frame, Colour of Box background
-    colbacktitle=red!20, colframe=red!20, colback=red!5,
-    title={#5 #4: #2},  % Title Formatting
-    label=#3,                   % Label Formatting
-    thmboxstyle={#2},           % Import general style
-    #1,                         % Additional options
+    thmboxstyle={#5}{#4}{#2}{#3}{red!20}{red!5}
 }
 
 \newenvironment{rcl}[3][]{
@@ -212,11 +240,7 @@
 \newcounter{qstcount}\counterwithin{qstcount}{subsection} 
 \newtcolorbox[auto counter, use counter=qstcount, number within=subsection]{qst-box}[5][]{
     % Background , Colour of frame, Colour of Box background
-    colbacktitle=orange!20, colframe=orange!20, colback=orange!5,
-    title={#5 #4: #2},  % Title Formatting
-    label=#3,                   % Label Formatting
-    thmboxstyle={#2},           % Import general style
-    #1,                         % Additional options
+    thmboxstyle={#5}{#4}{#2}{#3}{orange!20}{orange!5}
 }
 
 \newenvironment{qst}[3][]{
@@ -239,11 +263,7 @@
 \newcounter{lmacount}\counterwithin{dfncount}{subsection} 
 \newtcolorbox[auto counter, use counter=lmacount, number within=subsection]{lma-box}[5][]{
     % Background , Colour of frame, Colour of Box background
-    colbacktitle=cyan!20, colframe=cyan!20, colback=cyan!5,
-    title={#5 #4: #2},  % Title Formatting
-    label=#3,                   % Label Formatting
-    thmboxstyle={#2},           % Import general style
-    #1,                         % Additional options
+    thmboxstyle={#5}{#4}{#2}{#3}{cyan!20}{cyan!5}
 }
 
 \newenvironment{lma}[3][]{
@@ -260,11 +280,7 @@
 \newcounter{ppncount}\counterwithin{dfncount}{subsection} 
 \newtcolorbox[auto counter, use counter=ppncount, number within=subsection]{ppn-box}[5][]{
     % Background , Colour of frame, Colour of Box background
-    colbacktitle=cyan!20, colframe=cyan!20, colback=cyan!5,
-    title={#5 #4: #2},  % Title Formatting
-    label=#3,                   % Label Formatting
-    thmboxstyle={#2},           % Import general style
-    #1,                         % Additional options
+    thmboxstyle={#5}{#4}{#2}{#3}{cyan!20}{cyan!5}
 }
 
 \newenvironment{ppn}[3][]{
@@ -287,11 +303,7 @@
 \newcounter{crlcount}\counterwithin{dfncount}{subsection} 
 \newtcolorbox[auto counter, use counter=crlcount, number within=subsection]{crl-box}[5][]{
     % Background , Colour of frame, Colour of Box background
-    colbacktitle=cyan!20, colframe=cyan!20, colback=cyan!5,
-    title={#5 #4: #2},  % Title Formatting
-    label=#3,                   % Label Formatting
-    thmboxstyle={#2},           % Import general style
-    #1,                         % Additional options
+    thmboxstyle={#5}{#4}{#2}{#3}{cyan!20}{cyan!5}
 }
 
 \newenvironment{crl}[3][]{
@@ -313,12 +325,8 @@
     \newcounter{thmboxcount}\counterwithin{thmboxcount}{subsection} 
     % #1: Name, #2: Label, #3: Count
     \newtcolorbox[auto counter, use counter=thmboxcount, number within=subsection]{thmbox-box}[7][]{
-        % Background , Colour of frame, Colour of Box background
-        colbacktitle=#6, colframe=#6, colback=#7,
-        title={#5 #4: #2}, % Title Formatting
-        label=#3,                   % Label Formatting
-        thmboxstyle={#2},           % Import general style
-        #1,                         % Additional options
+            % Background , Colour of frame, Colour of Box background
+        thmboxstyle={#5}{#4}{#2}{#3}{#6}{#7}
     }
     %
     % Theorem

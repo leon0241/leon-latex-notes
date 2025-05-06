@@ -23,12 +23,12 @@
 
 % Set lists to have zero spacing between items to squeeze more in
 \newenvironment{enumerate-tight}{
-    \begin{enumerate}\setlength\itemsep{0em}
+    \begin{enumerate}
 } {\end{enumerate}}
 
 % Version with zero left bullet padding
 \newenvironment{enumerate-zero}{
-    \begin{enumerate}[leftmargin=*]\setlength\itemsep{0em}
+    \begin{enumerate}[leftmargin=*]
 } {\end{enumerate}}
 
 % Alternative versions with alpha numbering
@@ -43,9 +43,9 @@
 } {\end{enumerate}}
 
 \newenvironment{itemize-tight}{
-    \begin{itemize} \setlength\itemsep{0em}
+    \begin{itemize}
 } {\end{itemize}}
 
 \newenvironment{itemize-zero}{
-    \begin{itemize}[leftmargin=*]\setlength\itemsep{0em}
+    \begin{itemize}[leftmargin=*]
 } {\end{itemize}}
