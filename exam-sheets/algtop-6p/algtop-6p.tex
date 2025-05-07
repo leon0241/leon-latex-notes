@@ -468,17 +468,19 @@ $\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=small]
 \vspace{-7pt}
 \begin{xmp}[Examples of Fundamental Groups]{xmp:fundamental-groups}{7}
 	\vspace{-2pt}
-	\begin{itemize-tight}
+	\begin{itemize-zero}
+		\begin{multicols}{2}
 	    \item \textbf{Euclidean}: $\pi_{1}(\mathbb{R}^{n}) \cong 1$.
 	    \item \textbf{Circle}: $\pi_{1}(\mathbb{S}_{1}) \cong \mathbb{Z}$.
-	    \item \textbf{$n$-Spheres}: $\pi_{1}(\mathbb{S}^{n}) \cong 1$ for $n \ge 2$.
+	    \item \textbf{$n$-Sphere}, $n \ge 2$: $\pi_{1}(\mathbb{S}^{n}) \cong 1$.
 	    \item \textbf{Torus}: $\pi_{1}(\mathbb{S}^{1} \times \mathbb{S}^{1}) \cong \mathbb{Z} \oplus \mathbb{Z}$.
+		\end{multicols}
 	    \item \textbf{Projective Spaces}: $\pi_{1}(\mathbb{RP}^{n}) \cong \mathbb{Z}_{2}$ for $n \ge 2$.
-	\end{itemize-tight}
+	\end{itemize-zero}
 \end{xmp}
 
 \vspace{-7pt}
-\begin{dfn}[Pointed Space]{dfn:pointed-space}{15}
+\begin{dfn}[Pointed Space and Loop Space]{dfn:pointed-space}{15}
 	\vspace{-2pt}
 	\begin{itemize-zero}
 	    \item A \textbf{pointed space} is a pair $(X, x)$ consisting of a topological space $X$ and a point $x\in X$.
@@ -488,32 +490,36 @@ $\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=small]
 	    \item The \textbf{space of pointed maps} from $(X, x)$ to $(Y, y)$ is denoted
 			\[\Map_{\ast}((X, x),\, (Y, y)) \subset \Map(X, Y).\]
 	\end{itemize-zero}
-	% TODO: explain this
+	\par\vspace{-5pt}
+	With the (pointed) homeomorphism $(\mathbb{S}^{1}, 1) \cong (I /\partial I, [0])$, closed paths (where $\alpha(0) = \alpha(1) = x$) are the same as pointed maps
+	\[(\mathbb{S}^{1}, 1) \to (X, x)\]
+	The space of such \textbf{loops} based at $x$ is called the \textbf{loop space at $x$}.
+	\[\Omega X := \Map_{\ast} ((\mathbb{S}^{1}, 1), (X, x))\]
+	\par\vspace{-2pt}
+	It is itself a pointed space with the compact-open topology, and the constant map $c_{x}$ as the base point. Paht concatenation is the operation $\ast : \Omega X \times \Omega X \to \Omega X$ which is associative, unital, invertible up to path-connectedness, which gives a group structure
+	\[\pi_{0}(\Omega X).\]
 \end{dfn}
 
 \vspace{-7pt}
-\begin{ppn}[Point and Path Space Isormophism]{ppn:point-path-iso}{9}
+\begin{ppn}[Loop Space Isormophism]{ppn:point-path-iso}{9}
 	\vspace{-2pt}
-	We have a group isomorphism:
-	\[\pi_{1}(X, x) \cong \pi_{0}(\Omega X).\]
-	\par\vspace{-2pt}
-	Similarly, one can iteratively define the $n$-fold loop space
-	\[\Omega^{n}X := \Omega \Omega^{n-1}X = \Omega \cdots \Omega X\]
-	\par\vspace{-2pt}
-	There is a homeomorphism
-	\[\Omega^{n}X \cong \Map_{\ast}((\mathbb{S^{n}}, 1),\,(X, x))\]
+	We have a group isomorphism: $\pi_{1}(X, x) \cong \pi_{0}(\Omega X).$
+
+	Iteratively defining the $n$-fold loop space: $\Omega^{n}X := \Omega \Omega^{n-1}X = \Omega \cdot \cdot \Omega X$
+
+	There is a homeomorphism: $\Omega^{n}X \cong \Map_{\ast}((\mathbb{S^{n}}, 1),\,(X, x))$
 \end{ppn}
 
 \begin{dfn}[\texorpdfstring{$n$}{n}-th Homotopy Group]{dfn:nth-homotopy-group}{16}
+	\vspace{-2pt}
 	The $n$-th homotopy group $\pi_{n}(X, x)$ is defined by:
 	\[\pi_{n}(X, x) := \pi_{0}(\Omega^{n} X) \cong \pi_{0}(\Map_{\ast}(\mathbb{S}^{n}, (X, x))).\]
 \end{dfn}
 
 \vspace{-7pt}
 \begin{dfn}[Simply Connected Space]{dfn:simply-connected-space}{17}
-	A path-connected space $X$ is called \textbf{simply connected} if its fundamental group is trivial, i.e.
-	\vspace{-4pt}
-	\[\pi_{1}(X) = 1\]
+	\vspace{-2pt}
+	A path-connected space $X$ is \textbf{simply connected} if its fundamental group is trivial, i.e. $\pi_{1}(X) = 1$.
 	\par\vspace{-4pt}
 	\tcbline
 	Some examples are $\mathbb{R}^{n}$, $\mathbb{S}^{n}$ for $n > 1$, and some non-examples are $\mathbb{S}^{1}$, $\mathbb{S}^{1} \times \mathbb{S}^{1}$ and $\mathbb{RP}^{2}$.
@@ -521,25 +527,30 @@ $\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=small]
 
 \vspace{-7pt}
 \begin{thm}[Fundamental Group Isomorphism]{thm:homotopy-isomorphism}{2}
-	Let $f : X \to Y$ be a homotopy equivalence and $x\in X$ an arbitrary base point. Then, the map:
+	\vspace{-2pt}
+	Let $f : X \to Y$ be a homotopy equivalence and $x\in X$ an arbitrary base point. Then, the following map is a group isomorphism:
+	\vspace{-2pt}
 	\[f_{\ast} : \pi_{1}(X, x) \to \pi_{1}(Y, f(x)),\;\quad [\alpha] \mapsto [f \circ \alpha]\]
+	\par\vspace{-2pt}
 	In particular, for homotopy equivalent spaces $X \simeq Y$ which are path-connected, we get $\pi_{1}(X) \cong \pi_{1}(Y)$.
 	\tcbline
 	A map of pointed spaces $f : (X, x) \to (Y, y)$ is a \textbf{homotopy equivalence of pointed spaces} or \textbf{homotopy equivalence relative $\{x\}$} if there exists a map of pointed spaces $g : (Y, y) \to (X, x)$ along with relative homotopies
-	\[h : f \circ g \simeq \Id_{Y} \quad \text{rel. } \{y\}\]
-	and
-	\[k : g \circ f \simeq \Id_{X} \quad \text{rel. } \{x\}\]
+	\[h : f \circ g \simeq \Id_{Y} \quad \text{rel. } \{y\} \quad \text{ and } \quad k : g \circ f \simeq \Id_{X} \quad \text{rel. } \{x\}\]
 \end{thm}
 
 \vspace{-7pt}
 \begin{xmp}[Strong Deformation Retracts Homotopies]{xmp:strong-deformation-homotopy}{9}
+	\vspace{-2pt}
 	A strong deformation retract of $X$ onto a subspace $A$ gives a homotopy equivalence of pointed spaces $(x, a) \to (A, a)$ for any choice of $a\in A$. In particular, a contractible space $X \simeq \ast$ determines a homotopy equivalence of pointed spaces $(X, x) \to \ast$ for any choice of base point $x$.
 \end{xmp}
 
 \vspace{-7pt}
 \begin{lma}[Pointed Space Isomorphism]{lma:pointed-space-isomorphism}{5}
+	\vspace{-2pt}
 	Let $f : (X, x) \to (Y, y)$ be a homotopy equivalence of pointed spaces. Then the map
+	\vspace{-3pt}
 	\[f_{\ast} : \pi_{1}(X, x) \to \pi_{1}(Y, y)\]
+	\par\vspace{-2pt}
 	is a group isomorphism.
 
 	\tcbline
@@ -552,7 +563,8 @@ $\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=small]
 
 \vspace{-7pt}
 \begin{lma}[Identity Homomorphic Isormorphism]{lma:id-homo-iso}{6}
-	Let $f : X \to X$ be a continuous map which is homotopic to $\Id_{X}$. Then, the map
+	\vspace{-2pt}
+	Let $f : X \to X$ be a cts. map homotopic to $\Id_{X}$. Then, the map
 	\[f_{\ast} : \pi_{1}(X, x_{0}) \to \pi_{1}(X, f(x_{0}))\]
 	is a group isomorphism for any choice of base point $x_{0}\in X$.
 \end{lma}
