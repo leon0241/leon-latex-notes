@@ -496,7 +496,7 @@ $\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=small]
 	The space of such \textbf{loops} based at $x$ is called the \textbf{loop space at $x$}.
 	\[\Omega X := \Map_{\ast} ((\mathbb{S}^{1}, 1), (X, x))\]
 	\par\vspace{-2pt}
-	It is itself a pointed space with the compact-open topology, and the constant map $c_{x}$ as the base point. Paht concatenation is the operation $\ast : \Omega X \times \Omega X \to \Omega X$ which is associative, unital, invertible up to path-connectedness, which gives a group structure
+	It is itself a pointed space with the compact-open topology, and the constant map $c_{x}$ as the base point. Path concatenation is the operation $\ast : \Omega X \times \Omega X \to \Omega X$ which is associative, unital, invertible up to path-connectedness, which gives a group structure
 	\[\pi_{0}(\Omega X).\]
 \end{dfn}
 
@@ -736,7 +736,7 @@ $\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=small]
 	\arrow[from=3-1, to=3-3]
 \end{tikzcd}
 	}
-Explicitly, if $f : B \to Y$ and $g : A \to X$ such that $f \circ i = p \circ g$, then there exists a map $l : B \to X$ satisfying $l \circ i = g$ and $p \circ l = f$. Dually, the map $i : A \to B$ is said to satisfy the \textbf{left lefting property} (LLP) with respect to $p : X \to Y$.
+Explicitly, if $f : B \to Y$ and $g : A \to X$ such that $f \circ i = p \circ g$, then there exists a map $l : B \to X$ satisfying $l \circ i = g$ and $p \circ l = f$. Dually, the map $i : A \to B$ is said to satisfy the \textbf{left lifting property} (LLP) with respect to $p : X \to Y$.
 \end{dfn}
 
 \vspace{-7pt}
@@ -811,7 +811,7 @@ Explicitly, if $f : B \to Y$ and $g : A \to X$ such that $f \circ i = p \circ g$
 	\vspace{-2pt}
 	Fix a covering map $p : \tilde{X} \to X$ and $x_{0}\in X$ a fixed point. Write $G := \pi_{1}(X, x_{0})$ for the fundamental group of $X$ at $x_{0}$ and $H := p_{\ast} \pi_{1}(\tilde{X}, \tilde{x}_{0}) \subset G$ for the subgroup determined by the covering map.
 
-	The subgroup $H$ depends on the choice of fiber point $\tilde{x}_{0}\in p^{-1}(x_{0})$ and we shall see that it subgroups for different fiber points are conjugate to each other. Finally, the fiber over $x_{0}$ will be denoted by
+	The subgroup $H$ depends on the choice of fiber point $\tilde{x}_{0}\in p^{-1}(x_{0})$, and we shall see that it subgroups for different fiber points are conjugate to each other. Finally, the fiber over $x_{0}$ will be denoted by
 	\[F_{x_{0}} := p^{-1}(x_{0})\]
 \end{rem}
 
@@ -820,7 +820,7 @@ Explicitly, if $f : B \to Y$ and $g : A \to X$ such that $f \circ i = p \circ g$
 \vspace{-7pt}
 \begin{lma}[Transitive Actions]{lma:transitive-actions}{8}
 	\vspace{-2pt}
-	If $\tilde{X}$ is path-connected, then the $G$-action on $F_{x_{0}}$ is transitive, i.e. for any $\tilde{x},\, \tilde{x}'\in F_{x_{0}}$, there exists a $\alpha\in G$ such that $\tilde{x}.\alpha = \tilde{x}'$.
+	If $\tilde{X}$ is path-connected, then the $G$-action on $F_{x_{0}}$ is transitive, i.e. for any $\tilde{x},\, \tilde{x}'\in F_{x_{0}}$, there exists an $\alpha\in G$ such that $\tilde{x}.\alpha = \tilde{x}'$.
 \end{lma}
 
 %TODO: more stuff on actions
