@@ -137,14 +137,14 @@ A \textbf{homotopy} of maps $f,\, g : X \to Y$ is a\newline continuous map $h : 
 
 \begin{rem}[Composition of Homotopies]{rem:homotopy-composition}{1.5}
 	\begin{itemize-zero}
-	    \item \textbf{Horizontal Composition}: Let $h, h' : X \times I \to Y$ be two homotopies in $X$ such that $h(-, 1) = h'(-, 0) : X \to Y$. Their concatenated homotopy is defined by
+	    \item \textbf{Vertical Composition}: Let $h, h' : X \times I \to Y$ be two homotopies in $X$ such that $h(-, 1) = h'(-, 0) : X \to Y$. Their concatenated homotopy is defined by
 			\stepcounter{equation}
 			\begin{equation}\label{eq:homotopy}
 				h \ast h'(-, t) := \begin{cases}
 				h(-, 2t) & 0 \le t \le 1 /2\\
 				h'(-, 2t - 1) & 1 /2 \le t \le 1
 			\end{cases}\end{equation}
-		\item \textbf{Vertical Composition}: Let $h : X \times I \to Y$ and $k : Y \times I \to Z$ be two homotopies on maps from $X$ to $Y$, and $Y$ to $Z$. Then
+		\item \textbf{Horizontal Composition}: Let $h : X \times I \to Y$, $k : Y \times I \to Z$ be two homotopies on maps from $X$ to $Y$, and $Y$ to $Z$. Then
 			\begin{equation}
 				k \circ h := [X \times I \prightarrow{\Id \times \Delta} X \times I^{2} \prightarrow{h \times \Id} Y \times I \prightarrow{k} Z]
 			\end{equation}
@@ -154,33 +154,36 @@ A \textbf{homotopy} of maps $f,\, g : X \to Y$ is a\newline continuous map $h : 
 
 	\sbsadapt
 	{
-% https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzIsMCwiWSBcXHNpbSBYIl0sWzQsMCwiWSJdLFswLDFdLFswLDEsImYiLDAseyJvZmZzZXQiOi0zLCJjdXJ2ZSI6LTF9XSxbMCwxLCJsIiwyLHsib2Zmc2V0IjozLCJjdXJ2ZSI6MX1dLFsxLDIsImYiLDAseyJvZmZzZXQiOi0zLCJjdXJ2ZSI6LTF9XSxbMSwyLCJsIiwyLHsib2Zmc2V0IjozLCJjdXJ2ZSI6MX1dLFszLDUsImgnIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFs2LDcsImsnIFxcYXN0IGgiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV0sWzQsMywiaCIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
-		\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=scriptsize]
-			X \&\& {Y\hspace{-0.2em}\sim\hspace{-0.2em}X} \&\& Y
-			\arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=1-3]
-			\arrow[""{name=1, anchor=center, inner sep=0}, "f", shift left=3, curve={height=-8pt}, from=1-1, to=1-3]
-			\arrow[""{name=2, anchor=center, inner sep=0}, "l"', shift right=3, curve={height=8pt}, from=1-1, to=1-3]
-			\arrow[""{name=3, anchor=center, inner sep=0}, "f", shift left=3, curve={height=-8pt}, from=1-3, to=1-5]
-			\arrow[""{name=4, anchor=center, inner sep=0}, "l"', shift right=3, curve={height=8pt}, from=1-3, to=1-5]
-			\arrow["{h'}", shorten <=2pt, shorten >=2pt, Rightarrow, from=0, to=2]
-			\arrow["h"', shorten <=2pt, shorten >=2pt, Rightarrow, from=1, to=0]
-			\arrow["{k' \ast h}"', shorten <=3pt, shorten >=3pt, Rightarrow, from=3, to=4]
-		\end{tikzcd}
+$\begin{tikzcd}[ampersand replacement=\&,cramped, column sep=small]
+	X \&\& {Y\hspace{-2pt}}
+	\arrow[""{name=0, anchor=center, inner sep=0}, "f", curve={height=-20pt}, from=1-1, to=1-3]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "l"', curve={height=20pt}, from=1-1, to=1-3]
+	\arrow[""{name=2, anchor=center, inner sep=0}, from=1-1, to=1-3]
+	\arrow["h", shorten <=3pt, shorten >=3pt, Rightarrow, from=0, to=2]
+	\arrow["{{h'}}", shorten <=3pt, shorten >=3pt, Rightarrow, from=2, to=1]
+\end{tikzcd} \sim \begin{tikzcd}[ampersand replacement=\&,cramped, column sep=scriptsize, row sep=scriptsize]
+	X \&\& {Y\hspace{-2pt}}
+	\arrow[""{name=0, anchor=center, inner sep=0}, "f", curve={height=-20pt}, from=1-1, to=1-3]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "l"', curve={height=20pt}, from=1-1, to=1-3]
+	\arrow["{h'\ast h}", shorten <=6pt, shorten >=6pt, Rightarrow, from=0, to=1]
+\end{tikzcd}$
 	}
 	{
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzIsMCwiWSJdLFs0LDAsIlogXFxzaW0gWCJdLFs2LDAsIloiXSxbMCwxLCJmIiwwLHsiY3VydmUiOi0yfV0sWzAsMSwiZyIsMix7ImN1cnZlIjoyfV0sWzEsMiwiZiciLDAseyJjdXJ2ZSI6LTJ9XSxbMiwzLCJmJyBcXGNpcmMgZiIsMCx7ImN1cnZlIjotMn1dLFsyLDMsImcnIFxcY2lyYyBnIiwyLHsiY3VydmUiOjJ9XSxbMSwyLCJnJyIsMix7ImN1cnZlIjoyfV0sWzQsNSwiaCIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XSxbNiw5LCJrIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFs3LDgsImsgXFxjaXJjIGgiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
-		\begin{tikzcd}[ampersand replacement=\&,cramped, column sep=small]
-			X \&\& Y \&\& {Z\hspace{-0.2em}\sim\hspace{-0.2em}X} \&\& Z
-			\arrow[""{name=0, anchor=center, inner sep=0}, "f", curve={height=-12pt}, from=1-1, to=1-3]
-			\arrow[""{name=1, anchor=center, inner sep=0}, "g"', curve={height=12pt}, from=1-1, to=1-3]
-			\arrow[""{name=2, anchor=center, inner sep=0}, "{f'}", curve={height=-12pt}, from=1-3, to=1-5]
-			\arrow[""{name=3, anchor=center, inner sep=0}, "{g'}"', curve={height=12pt}, from=1-3, to=1-5]
-			\arrow[""{name=4, anchor=center, inner sep=0}, "{f' \circ f}", curve={height=-12pt}, from=1-5, to=1-7]
-			\arrow[""{name=5, anchor=center, inner sep=0}, "{g' \circ g}"', curve={height=12pt}, from=1-5, to=1-7]
-			\arrow["h", shorten <=3pt, shorten >=3pt, Rightarrow, from=0, to=1]
-			\arrow["k", shorten <=3pt, shorten >=3pt, Rightarrow, from=2, to=3]
-			\arrow["{k \circ h}", shorten <=3pt, shorten >=3pt, Rightarrow, from=4, to=5]
-		\end{tikzcd}
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzIsMCwiWSJdLFs0LDAsIloiXSxbMCwxLCJmIiwwLHsiY3VydmUiOi0yfV0sWzAsMSwiZyIsMix7ImN1cnZlIjoyfV0sWzEsMiwiZiciLDAseyJjdXJ2ZSI6LTJ9XSxbMSwyLCJnJyIsMix7ImN1cnZlIjoyfV0sWzMsNCwiaCIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XSxbNSw2LCJrIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dXQ==
+$\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=small]
+	X \&\& Y \&\& Z
+	\arrow[""{name=0, anchor=center, inner sep=0}, "f", curve={height=-12pt}, from=1-1, to=1-3]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "g"', curve={height=12pt}, from=1-1, to=1-3]
+	\arrow[""{name=2, anchor=center, inner sep=0}, "{f'}", curve={height=-12pt}, from=1-3, to=1-5]
+	\arrow[""{name=3, anchor=center, inner sep=0}, "{g'}"', curve={height=12pt}, from=1-3, to=1-5]
+	\arrow["h", shorten <=3pt, shorten >=3pt, Rightarrow, from=0, to=1]
+	\arrow["k", shorten <=3pt, shorten >=3pt, Rightarrow, from=2, to=3]
+\end{tikzcd} \sim \begin{tikzcd}[ampersand replacement=\&,cramped,column sep=small]
+	X \&\& Z
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{f' \circ f}", curve={height=-12pt}, from=1-1, to=1-3]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "{g' \circ g}"', curve={height=12pt}, from=1-1, to=1-3]
+	\arrow["{k \circ h}", shorten <=3pt, shorten >=3pt, Rightarrow, from=0, to=1]
+\end{tikzcd}$
 	}
 \end{rem}
 
