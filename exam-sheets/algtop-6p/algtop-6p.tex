@@ -554,11 +554,13 @@ A \textbf{homotopy} of maps $f,\, g : X \to Y$ is a\newline continuous map $h : 
 	is a group isomorphism for any choice of base point $x_{0}\in X$.
 \end{lma}
 
+\vspace{-7pt}
 \begin{dfn}[Homotopy Lifting Property]{dfn:homotopy-lifting-property}{18}
+	\vspace{-2pt}
 	\sbsadapt{A continuous map $p : E \to X$ satisfies the \textbf{homotopy lifting property} (HLP) with respect to a topological space $Y$ if for any commuting diagram:}
 	{
 	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJZIFxcdGltZXMgXFx7MFxcfSJdLFsyLDAsIkUiXSxbMiwyLCJYIl0sWzAsMiwiWSBcXHRpbWVzIEkiXSxbMCwxLCJIXzAiXSxbMSwyLCJwIl0sWzAsMywiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMywyLCJoIl0sWzMsMSwiXFxleGlzdHMiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
-		\begin{tikzcd}[ampersand replacement=\&,cramped, column sep=small, row sep=scriptsize]
+		\begin{tikzcd}[ampersand replacement=\&,cramped, column sep=small, row sep=small]
 			{Y \times \{0\}} \&\& E \\
 			\\
 			{Y \times I} \&\& X
@@ -569,20 +571,24 @@ A \textbf{homotopy} of maps $f,\, g : X \to Y$ is a\newline continuous map $h : 
 			\arrow["h", from=3-1, to=3-3]
 		\end{tikzcd}
 	}
-	
+	\vspace{-2pt}
 	There exists a map $H : Y \times I \to E$ s.t. both triangles commute, i.e. $H \rvert_{Y \times \{0\}} = H_{0}$ and $p \circ H = h$.
 
 	\tcbline
 	The map $p : E \to X$ has the HLP if for any homotopy $h : Y \times I \to X$ of maps $h(-, 0) := f_{0}$ and $h(-, 1) := f_{1}$ of maps $Y \to X$ and a choice of lift $H_{0}$ of $f_{0}$, then the homotopy $h$ lifts to a homotopy $H : Y \times I \to E$. In particular, if $f_{0} \simeq f_{1} : Y \to X$ and $H_{0}$ is a lift of $f_{0}$, we find $H_{0} \simeq H_{1}$ where $H_{1}$ lifts $f_{1}$.
 	\tcbline
-	\textbf{Example 10}: The identity map $\Id_{X} : X \to X$ has the HLP with respect to any space $Y$.
+	\textbf{Ex. 10}: The identity map $\Id_{X} : X \to X$ has the HLP with respect to any space $Y$.
 \end{dfn}
 
+\vspace{-7pt}
 \begin{dfn}[Covering Space]{dfn:covering-space}{19}
-	A \textbf{covering space} of $X$ is a topological space $\overline{X}$ along with a continuous map $p : X \to x$ such that for any point $x\in X$ there exists an open neighbourhood $U \subset X$ whose preimage $p^{-1}(U) = \bigcup_{j\in J} V_{j}$ and the opens $V_{j} \subset \overline{X}$ map homeomorphically to $U$ under $p$. In other words, a covering space of $X$ looks locally like a product of $X$ with a discrete space.
+	\vspace{-2pt}
+	A \textbf{covering space} of $X$ is a topological space $\overline{X}$ along with a continuous map $p : X \to x$ s.t. for any point $x\in X$ there exists an open nbhd $U \subset X$ whose preimage $p^{-1}(U) = \bigcup_{j\in J} V_{j}$ and the opens $V_{j} \subset \overline{X}$ map homeomorphically to $U$ under $p$. A covering space of $X$ looks locally like a product of $X$ with a discrete space.
 \end{dfn}
 
+\vspace{-7pt}
 \begin{xmp}[Example of a Covering Space]{xmp:covering-space}{11}
+	\vspace{-2pt}
 	\begin{enumerate-zero}
 	    \item The projection map $p : X \times Z \to X$ is a covering map if $Z$ is a discrete topological space. If $Z$ is not discrete, then this is not a covering map in general.
 	    \item The identity map $\Id_{X} : X \to X$ is trivially a covering map.
@@ -591,13 +597,13 @@ A \textbf{homotopy} of maps $f,\, g : X \to Y$ is a\newline continuous map $h : 
 	\end{enumerate-zero}
 \end{xmp}
 
+\vspace{-7pt}
 \begin{thm}[Unique HLPs from Covering Maps]{thm:covering-unique-hlp}{3}
-	\sbsadapt{Let $p : \tilde{X} \to X$ be a covering map and $Y$ any topological space. Then $p$ \newline satisfies the HLP uniquely:
-
-	i.e. the lift $H$ not only exists, but it is also unique.}
+	\vspace{-2pt}
+	\sbsadapt{Let $p : \tilde{X} \to X$ be a covering map and $Y$ any topological space. Then $p$ \newline satisfies the HLP uniquely: i.e. the lift $H$ not only exists, but it is also unique.}
 	{
 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJZIFxcdGltZXMgXFx7MFxcfSJdLFsyLDAsIlxcdGlsZGV7WH0iXSxbMiwyLCJYIl0sWzAsMiwiWSBcXHRpbWVzIEkiXSxbMCwxLCJIXzAiXSxbMSwyLCJwIl0sWzAsMywiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMywyLCJoIl0sWzMsMSwiXFxleGlzdHMhIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
-\begin{tikzcd}[ampersand replacement=\&,cramped]
+\begin{tikzcd}[ampersand replacement=\&,cramped, column sep=small, row sep=small]
 	{Y \times \{0\}} \&\& {\tilde{X}} \\
 	\\
 	{Y \times I} \&\& X
@@ -611,9 +617,10 @@ A \textbf{homotopy} of maps $f,\, g : X \to Y$ is a\newline continuous map $h : 
 	
 \end{thm}
 
-\columnbreak
 % TODO: wtf?
+\vspace{-7pt}
 \begin{crl}[]{crl:something-pathy}{2}
+	\vspace{-2pt}
 	\begin{enumerate-zero}
 	    \item Let $\gamma : I \to X$ be a path and fix a point $\tilde{x_{0}}\in \tilde{X}$ such that $p(\tilde{x_{0}}) = \gamma(0)$. Then, there exists a unique path $\tilde{\gamma} : I \to \tilde{X}$ which starts at $\tilde{x_{0}}$ and lifts $\gamma$ i.e. $p \circ \tilde{\gamma} = \gamma$
 	    \item Let $h : I \times I \to X$ be a (relative) homotopy of paths $h(-, 0) =: \gamma_{0}$ and $h(-, 1) =: \gamma_{1}$, and fix a point $\tilde{x_{0}}$ such that $p(\tilde{x_{0}}) = h(0, t) = \gamma_{0}(0) = \gamma_{1}(0)$. Suppose $\tilde{\gamma_{0}} : I \to X$ is a lift of $\gamma$ starting at $\tilde{\gamma_{0}}(0) = \tilde{x_{0}}$. Then, there exists a unique homotopy of paths $\tilde{h} : I \times I \to \tilde{X}$ which lifts $h$ and $\tilde{h}(-, 0) = \tilde{\gamma_{0}}$
@@ -621,45 +628,60 @@ A \textbf{homotopy} of maps $f,\, g : X \to Y$ is a\newline continuous map $h : 
 \end{crl}
 
 \begin{thm}[Fundamental Groups]{thm:fundamental-group-thms}{4-7}
+	\vspace{-2pt}
 	\begin{itemize-zero}
 		\item \textbf{Theorem 4}: The fundamental group of the circle is $\pi_{1}(\mathbb{S}^{1}) \cong \mathbb{Z}$. It is generated by the class of
 			\[\alpha : I \to \mathbb{S}^{1},\;\quad t \mapsto e^{2\pi i t}.\]
 			\par\vspace{-5pt}
+	\vspace{-2pt}
 		\item \textbf{Theorem 5 (Brouwer's Fixed Point Theorem)}: Any continuous map $f : \mathbb{D}^{2} \to \mathbb{D}^{2}$ has a fixed point, i.e. there exists $x \in \mathbb{D}^{2}$ such that $f(x) = x$.
+	\vspace{-2pt}
 		\item \textbf{Theorem 6 (Fundamental Theorem of Algebra)}: Every non-constant complex polynomial $p\in \mathbb{C}[z]$ has at least one root, i.e. $p(z_{0}) = 0$ for some $z_{0}$.
-		\item \textbf{Theorem 7}: Fundamental Group of $\mathbb{S}^{n}$: The fundamental group of $\mathbb{S}^{n}$ is trivial for $n \ge 2$, i.ke. $\pi_{1}(\mathbb{S}^{2}) \cong 1$ for $n \ge 2$
+	\vspace{-2pt}
+		\item \textbf{Theorem 7}: The fundamental group of $\mathbb{S}^{n}$ is trivial for $n \ge 2$, i.e. $\pi_{1}(\mathbb{S}^{2}) \cong 1$ for $n \ge 2$
 	\end{itemize-zero}
 \end{thm}
 
+\vspace{-7pt}
 \begin{lma}[Closed Paths Homotopic to Loops]{lma:closed-path-loop}{7}
-	Let $(X, x_{0})$ be a topological space with an open cover $\{U_{j}\}_{j\in J}$ such that $U_{j}$ are path-connected neighbourhoods of $x_{0}$ and $U_{j} \cap U_{j'}$ is path-connected for any $j, j' \in J$. Then, any closed path $\gamma$ based at $x_{0}$ is homotopic to a concatenation $\gamma_{1} \ast \gamma_{2} \ast \cdots \ast \gamma_{n}$ of loops at $x_{0}$ each of them contained in a single $U_{j}$
+	\vspace{-2pt}
+	Let $(X, x_{0})$ be a topological space with an open cover $\{U_{j}\}_{j\in J}$ such that $U_{j}$ are path-connected neighbourhoods of $x_{0}$ and $U_{j} \cap U_{j'}$ is path-connected for any $j, j' \in J$. Then, any closed path $\gamma$ based at $x_{0}$ is homotopic to a concatenation $\gamma_{1} \ast \gamma_{2} \ast \cdots \ast \gamma_{n}$ of loops at $x_{0}$ each of them contained in a single $U_{j}$.
 \end{lma}
 
+\vspace{-7pt}
 \begin{crl}[Homemorphisms between \texorpdfstring{$\mathbb{R}^{2}$}{R2} and \texorpdfstring{$\mathbb{R}^{n}$}{Rn}]{crl:rn-homeomorphism}{3}
-	There is no homeomorphism between $\mathbb{R}^{2}$ and $\mathbb{R}^{n}$ for $n \ne 2$
+	\vspace{-2pt}
+	There is no homeomorphism between $\mathbb{R}^{2}$ and $\mathbb{R}^{n}$ for $n \ne 2$.
+	\vspace{-2pt}
 \end{crl}
 
 % TODO: proof
 % TODO: the remark
 
+\vspace{-7pt}
 \begin{rcl}[Defining the Real Projective Space]{rcl:defining-rp2}{4}
+	\vspace{-2pt}
 	\begin{enumerate-zero}
 	    \item The space $\mathbb{RP}^{2}$ is the quotient space:
 			\[\mathbb{RP}^{n} := (\mathbb{R}^{n+1} \backslash \{0\}) / \sim\]
+			\par\vspace{-5pt}
 			where $x \sim y$ if there exists $\lambda \in \mathbb{R}$ s.t. $x = \lambda y$. i.e., the real projective $n$-space represents the lines in $\mathbb{R}^{n+1}$ through the origin.
 			\item Picking representatives that lie in the unit $n$-sphere $\mathbb{S}^{n} \subset \mathbb{R}^{n+1} \backslash \{0\}$, we obtain
 				$\mathbb{RP}^{n} \cong \mathbb{S}^{n} / \sim$
-				where $x \sim -x$ for all $x\in \mathbb{S}^{n}$, i.e. identifying antipodal pointso n the $n$-sphere.
+				where $x \sim -x$ for all $x\in \mathbb{S}^{n}$, i.e. identifying antipodal points on the $n$-sphere.
 			\item Further restricting to the upper half $\mathbb{D}^{n} \subset \mathbb{S}^{n}$ we obtain:
 				\[\mathbb{RP}^{n} \cong \mathbb{D}^{n} / \sim\]
-				where $x \sim -x$ for any boudnary points $x\in \partial \mathbb{D}^{n} \cong \mathbb{S}^{n-1}$
+				\par\vspace{-6pt}
+				where $x \sim -x$ for any boundary points $x\in \partial \mathbb{D}^{n} \cong \mathbb{S}^{n-1}$
 	\end{enumerate-zero}
-
+	\vspace{-5pt}
 	\tcbline
+	\vspace{-1.5pt}
 	For example, $\mathbb{RP}^{0}$ is a one point space, $\mathbb{RP}^{1} \cong \mathbb{S}^{1}$, while $\mathbb{RP}^{n}$ are different than spheres for larger $n$.
 \end{rcl}
 
 % TODO: lots of stuff here
+\vspace{-7pt}
 \begin{dfn}[Lift of a Path]{dfn:path-lift}{20}
 	\begin{itemize-zero}
 	    \item A lift of a path $\alpha : I \to \mathbb{RP}^{n}$ is a path $\tilde{\alpha} : I \to \mathbb{S}^{n}$ s.t. $p \circ \tilde{\alpha} = \alpha$
@@ -681,7 +703,8 @@ A \textbf{homotopy} of maps $f,\, g : X \to Y$ is a\newline continuous map $h : 
 	which is an isomorphism for $n \ge 2$.
 \end{thm}
 
-\vspace{-7pt}
+\section{Covering Theory}
+\vspace{-3pt}
 \begin{dfn}[Right Lifting Property]{dfn:rlp}{21}
 	\vspace{-2pt}
 	\sbsadapt{A map $p : X \to Y$ satisfies the \textbf{right lifting property} (RLP) w.r.t. a map $i : A \to B$ if any commutative square has a solution to the lifting problem making both triangles commute.}
@@ -748,48 +771,6 @@ Explicitly, if $f : B \to Y$ and $g : A \to X$ such that $f \circ i = p \circ g$
 \end{xmp}
 
 \vspace{-7pt}
-\begin{dfn}[Fibration]{dfn:fibration}{22}
-	\vspace{-2pt}
-	\begin{enumerate-zero}
-	    \item A map $p : X \to Y$ is a \textbf{fibration} if it satisfies the HLP w.r.t. all spaces $Z$. i.e., it has the RLP w.r.t. the set of maps $\{ i : Z \times \{0\} \hookrightarrow Z \times I\}_{Z}$ where $Z$ runs over all topo. spaces.
-	    \item Dually, a map $i : A \to B$ is a \textbf{cofibration} if it satisfies the HEP with respect to all spaces $Z$.
-	\end{enumerate-zero}
-\end{dfn}
-
-\begin{thm}[Covering Maps are Fibrations]{thm:covering-fibration}{9}
-	\sbsadapt{A covering map $p : \tilde{X} \to X$ is a\newpage fibration. Additionally, the homotopy lifts are unique:}{
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJaIFxcdGltZXMgXFx7MFxcfSJdLFsyLDAsIlgiXSxbMiwyLCJZIl0sWzAsMiwiWiBcXHRpbWVzIEkiXSxbMCwxXSxbMSwyLCJwIl0sWzAsMywiaSIsMl0sWzMsMl0sWzMsMSwiXFxleGlzdHMhIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
-	\begin{tikzcd}[ampersand replacement=\&,cramped]
-		{Z \times \{0\}} \&\& X \\
-		\\
-		{Z \times I} \&\& Y
-		\arrow[from=1-1, to=1-3]
-		\arrow["i"', from=1-1, to=3-1]
-		\arrow["p", from=1-3, to=3-3]
-		\arrow["{\exists!}", dashed, from=3-1, to=1-3]
-		\arrow[from=3-1, to=3-3]
-	\end{tikzcd}
-	}
-\end{thm}
-
-\begin{xmp}[Examples of Fibrations]{xmp:fibrations}{14}
-	\begin{enumerate-zero}
-	    \item By Theorem 9, fibrations include all covering maps
-	    \item The projection map $p : X \times F \to X$ is always a fibration. However this map is a covering map iff $F$ is a discrete space. Hence, this includes examples of fibrations that are not coming from covering maps.
-	    \item $ $\newline\vspace{-23pt}\sbsadapt{An important example of a cofibration is the inclusion $i : X \to M_{f}$ where $M_{f}$ is the mapping cylinder of $f : X \times Y$. We have seen that any continuous map $f : X \times Y$ factors through the mapping cylinder:}
-			{
-% https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzIsMCwiWSJdLFsxLDEsIk1fZiJdLFswLDEsImYiXSxbMCwyLCJpIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMiwxLCJyIiwyXV0=
-\begin{tikzcd}[ampersand replacement=\&,cramped, column sep=small, row sep=scriptsize]
-	X \&\& Y \\
-	\& {M_f}
-	\arrow["f", from=1-1, to=1-3]
-	\arrow["i"', hook, from=1-1, to=2-2]
-	\arrow["r"', from=2-2, to=1-3]
-\end{tikzcd}
-			}
-	\end{enumerate-zero}
-	In particular, every map factors through a cofibration and a homotopy equivalence.
-\end{xmp}
 
 \begin{xmp}[Covering Spaces]{xmp:covering}{15}
 	\begin{enumerate-zero}
@@ -837,7 +818,7 @@ Explicitly, if $f : B \to Y$ and $g : A \to X$ such that $f \circ i = p \circ g$
 	\par\vspace{-5pt}
 	\tcbline
 	Thus the index of $G_{\tilde{x}}$ in $G$ coincides with the cardinality of the fiber $F_{x_{0}}$:
-	\vspace{-4pt}
+	\vspace{-6pt}
 	\setcounter{equation}{19}
 	\begin{equation}\label{eq:path-connected-correspondence}
 		[G : G_{\tilde{x}}] = \lvert F_{x_{0}} \rvert
@@ -846,6 +827,7 @@ Explicitly, if $f : B \to Y$ and $g : A \to X$ such that $f \circ i = p \circ g$
 	\par\vspace{-5pt}
 	\tcbline
 	\textbf{Corollary 4}: If $\tilde{X}$ is simply-connected, then there is a bijection
+	\vspace{-2pt}
 	\[G \to F_{x_{0}}\]
 	\par\vspace{-4pt}
 	Equation \eqref{eq:path-connected-correspondence} becomes
@@ -855,7 +837,9 @@ Explicitly, if $f : B \to Y$ and $g : A \to X$ such that $f \circ i = p \circ g$
 	\end{equation}
 \end{thm}
 
-\vspace{-7pt}
+\vspace{-12pt}
+\section{Deck Transformations, Further Cover Theory}
+\vspace{-3pt}
 \begin{dfn}[Deck Transformation]{dfn:deck-transformation}{23}
 	\vspace{-2pt}
 	A \textbf{deck transformation} of a covering map $p : \tilde{X} \to X$ is a self-homeomorphism $D : \tilde{X} \prightarrow{\cong} \tilde{X}$ such that $p \circ D = p$.
@@ -876,7 +860,7 @@ Explicitly, if $f : B \to Y$ and $g : A \to X$ such that $f \circ i = p \circ g$
 \begin{thm}[Solutions to the Lifting Problem]{thm:lifting-solution}{12}
 	Let $p : (\tilde{X}, \tilde{x}_{0}) \to (X, x_{0})$ be a covering with $X$ path-connected and locally path-connected, and let $g : (Z, z_{0}) \to (X, x_{0})$ be a pointed map. Then, there exists a solution to the lifting problem
 % https://q.uiver.app/#q=WzAsMyxbMCwyLCIoWiwgel8wKSJdLFsyLDIsIihYLCB4XzApIl0sWzIsMCwiKFxcdGlsZGV7WH0sIFxcdGlsZGV7eH1fMCkiXSxbMCwxLCJnIl0sWzAsMiwiXFxleGlzdCBcXHRpbGRle2d9IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzIsMSwicCJdXQ==
-\[\begin{tikzcd}[ampersand replacement=\&,cramped, column sep=scriptsize]
+\[\begin{tikzcd}[ampersand replacement=\&,cramped, column sep=small, row sep=small]
 	\&\& {(\tilde{X}, \tilde{x}_0)} \\
 	\\
 	{(Z, z_0)} \&\& {(X, x_0)}
@@ -924,21 +908,20 @@ Moreover, if a solution to the lifting problem exists, then it is also unique.
 \end{dfn}
 
 \begin{xmp}[The Figure Eight Space]{xmp:figure-8-space}{19}
-	Let $X$ be the figure eight space
-	\[X = \mathbb{S}^{1} \vee \mathbb{S}^{1}.\]
-	Consider an oriented bicolored graph $\tilde{X}$ whose vertices are all $4$-valent with one incoming edge of each color and one outgoing edge of each color. Bicolored means each edge is labelled by $a$ or $b$. 	
-\end{xmp}
+	\vspace{-2pt}
+	Let $X$ be the figure eight space, $X = \mathbb{S}^{1} \vee \mathbb{S}^{1}$.
 
-\begin{xmp}[Covering The Figure Eight Space]{xmp:figure-8-space-cover}{19.1}
+	Consider an oriented bicolored graph $\tilde{X}$ whose vertices are all $4$-valent with one incoming edge of each color and one outgoing edge of each color. Bicolored means each edge is labelled by $a$ or $b$. 	
 	\sbsadapt{ Such a graph determines a covering map
 	\[p : \tilde{X} \to X\]
 	by sending all vertices to the unique vertex of the figure-eight graph and the edges are sent to one of the loops. A universal covering is obtained by the following graph:}{\includegraphics[width=0.25\linewidth]{images/fig8.png}}
 
-	where vertical edges are oriented upwards and labelled by $b$ and horizontal edges are oriented to the right and labelled by $a$. Deck transformations are freely generated by either $D_{a}$ or $D_{b}$, where $D_{a}$ (resp. $D_{b}$) acts on the graph by shifting all edges once to the right, rescaling them appropriately. In other words..
+	Vertical edges are oriented upwards and labelled by $b$, horizontal edges are oriented to the right and labelled by $a$. Deck transformations are freely generated by either $D_{a}$ or $D_{b}$, where $D_{a}$ (resp. $D_{b}$) acts on the graph by shifting all edges once to the right, rescaling them appropriately. In other words..
 \end{xmp}
 
 \vspace{-7pt}
 \begin{thm}[Fundamental Group of \texorpdfstring{$\mathbb{S}^{1} \vee \mathbb{S}^{1}$}{S1 V S1}]{thm:fundamental-group-figeight}{14}
+	\vspace{-2pt}
 	The fundamental group of $\mathbb{S}^{1} \vee \mathbb{S}^{1}$ is the free group generated by two elements, i.e.
 	\vspace{-4pt}
 	\[\pi_{1}(\mathbb{S}^{1} \vee \mathbb{S}^{1}) \cong \langle a, b \rangle\]
@@ -946,28 +929,30 @@ Moreover, if a solution to the lifting problem exists, then it is also unique.
 
 \vspace{-7pt}
 \begin{xmp}[Covering The M\"obius Band]{xmp:covering-mobius}{20.1}
-	Recall the M\"obius band $M : \mathbb{R} \times I / \sim$ is defined by the quotient $(x, y) \sim (x + 1, 1 - y)$. We obtain the homotopy equivalence using covering theory. The quotient map
+	\vspace{-2pt}
+	Consider $M : \mathbb{R} \times I / \sim$ where $(x, y) \sim (x + 1, 1 - y)$. We obtain the homotopy equivalence using covering theory. The quotient map
 	\[q : \mathbb{R} \times I \to M\]
 	is the universal covering, since $\mathbb{R} \times I$ is simply-connected. For some $n\in \mathbb{Z}$, let $D_{n}$ be the deck transformation:
+	\vspace{-1pt}
 	\[D_{n} : \mathbb{R} \times I \to \mathbb{R} \times I,\;\quad (x, y) \mapsto (x+n, y_{n})\]
 	\par\vspace{-3pt}
 	where $y_{n} = y$ if $n$ is even and $y_{n} = 1-y$ for $n$ odd. These are all deck transformations and $\Deck(p)$ is generated by $D_{1}$ since
+	\vspace{-1pt}
 	\[D_{n} = (D_{1})^{n}\]
 	\par\vspace{-3pt}
 	\tcbline
-	For odd $n$, there are $n$-fold self-coverings $M \to M$. For even $n$, there are $n$-fold coverings by the torus $T^{2} \to M$.
+	For odd $n$, there are $n$-fold self-coverings $M \to M$. For even $n$, there are $n$-fold coverings by the cylinder $S^{I} \to I$.
 \end{xmp}
 
 \vspace{-7pt}
 \begin{xmp}[Covering the Klein Bottle]{xmp:covering-klein-bottle}{20.2}
-	Consider the Klein bottle
-	\vspace{-4pt}
-	\[K = \mathbb{R}^{2} / \sim\]
-	where $(x, y) \sim (x + 1, 1 - y) \sim (x, y+1)$ for all $(x, y)\in \mathbb{R}^{2}$. The quotient map
+	\vspace{-2pt}
+	Consider $K = \mathbb{R}^{2} / \sim$, where $(x, y) \sim (x + 1, 1 - y) \sim (x, y+1)$ for all $(x, y)\in \mathbb{R}^{2}$. The quotient map of the Klein bottle
 	\vspace{-4pt}
 	\[q : \mathbb{R}^{2} \to K\]
 	\par\vspace{-3pt}
 	is the universal covering map. Consider the deck transformation
+	\vspace{-1pt}
 	\[D_{a} : \mathbb{R}^{2} \to \mathbb{R}^{2},\;\quad (x, y) \mapsto (x, y+1)\]
 	\par\vspace{-3pt}
 	and
@@ -981,14 +966,60 @@ Moreover, if a solution to the lifting problem exists, then it is also unique.
 
 \vspace{-7pt}
 \begin{ppn}[Fundamental Group of the Klein Bottle]{ppn:fundamental-group-klein}{10}
+	\vspace{-2pt}
 	The fundamental group of the Klein Bottle is:
 	\vspace{-2pt}
 	\[\pi_{1}(K) = \langle a, b \rangle / \langle aba^{-1}b \rangle\]
 \end{ppn}
 
+\newpage
+\section{Free Space and Examples}
 
 \newpage
 \section{Unexaminable Material}
+\begin{dfn}[Fibration]{dfn:fibration}{22}
+	\vspace{-2pt}
+	\begin{enumerate-zero}
+	    \item A map $p : X \to Y$ is a \textbf{fibration} if it satisfies the HLP w.r.t. all spaces $Z$. i.e., it has the RLP w.r.t. the set of maps $\{ i : Z \times \{0\} \hookrightarrow Z \times I\}_{Z}$ where $Z$ runs over all topo. spaces.
+	    \item Dually, a map $i : A \to B$ is a \textbf{cofibration} if it satisfies the HEP with respect to all spaces $Z$.
+	\end{enumerate-zero}
+\end{dfn}
+
+\begin{thm}[Covering Maps are Fibrations]{thm:covering-fibration}{9}
+	\sbsadapt{A covering map $p : \tilde{X} \to X$ is a\newpage fibration. Additionally, the homotopy lifts are unique:}{
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJaIFxcdGltZXMgXFx7MFxcfSJdLFsyLDAsIlgiXSxbMiwyLCJZIl0sWzAsMiwiWiBcXHRpbWVzIEkiXSxbMCwxXSxbMSwyLCJwIl0sWzAsMywiaSIsMl0sWzMsMl0sWzMsMSwiXFxleGlzdHMhIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+	\begin{tikzcd}[ampersand replacement=\&,cramped]
+		{Z \times \{0\}} \&\& X \\
+		\\
+		{Z \times I} \&\& Y
+		\arrow[from=1-1, to=1-3]
+		\arrow["i"', from=1-1, to=3-1]
+		\arrow["p", from=1-3, to=3-3]
+		\arrow["{\exists!}", dashed, from=3-1, to=1-3]
+		\arrow[from=3-1, to=3-3]
+	\end{tikzcd}
+	}
+\end{thm}
+
+\begin{xmp}[Examples of Fibrations]{xmp:fibrations}{14}
+	\begin{enumerate-zero}
+	    \item By Theorem 9, fibrations include all covering maps
+	    \item The projection map $p : X \times F \to X$ is always a fibration. However this map is a covering map iff $F$ is a discrete space. Hence, this includes examples of fibrations that are not coming from covering maps.
+	    \item $ $\newline\vspace{-23pt}\sbsadapt{An important example of a cofibration is the inclusion $i : X \to M_{f}$ where $M_{f}$ is the mapping cylinder of $f : X \times Y$. We have seen that any continuous map $f : X \times Y$ factors through the mapping cylinder:}
+			{
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzIsMCwiWSJdLFsxLDEsIk1fZiJdLFswLDEsImYiXSxbMCwyLCJpIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMiwxLCJyIiwyXV0=
+\begin{tikzcd}[ampersand replacement=\&,cramped, column sep=small, row sep=scriptsize]
+	X \&\& Y \\
+	\& {M_f}
+	\arrow["f", from=1-1, to=1-3]
+	\arrow["i"', hook, from=1-1, to=2-2]
+	\arrow["r"', from=2-2, to=1-3]
+\end{tikzcd}
+			}
+	\end{enumerate-zero}
+	In particular, every map factors through a cofibration and a homotopy equivalence.
+\end{xmp}
+
 \begin{thm}[Seifert-Vam Kampen Theorem]{thm:seifert}{15}
 	Let $X$ be a topological space with a fixed point $x_{0}$. Let $\{U_{\alpha}\}_{\alpha}$ be an open cover of $X$ consisting of path-connected open sets $U_{\alpha}$ containing the fixed point $x_{0}$. The inclusions $U_{\alpha} \subset X$ induce a group homomorphism:
 	\[\Phi : \ast_{\alpha} \pi_{1}(U_{\alpha}) \to \pi_{1}(X).\]
@@ -1021,6 +1052,7 @@ Moreover, if a solution to the lifting problem exists, then it is also unique.
 \end{xmp}
 
 \columnbreak
+
 \begin{dfn}[CW Complexes]{dfn:cw-complex}{25}
 	A special class of topological spaces which are constructed inducively attaching $n$-dimensional disks or $n$-cells are called \textbf{CW complexes}. They are described as follows:
 	\begin{enumerate-zero}
