@@ -711,9 +711,10 @@ $\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=small]
 \end{dfn}
 
 \vspace{-7pt}
-\begin{thm}[Group Homomorphism of the Sign]{thm:sign-homomorphism}{8}
+\begin{thm}[The Fundamental Group of \texorpdfstring{$\mathbb{RP}^{2}$}{RP2}]{thm:rp2-fg}{8}
 	\vspace{-2pt}
 	The sign induces a surjective group homomorphism
+	\vspace{-3pt}
 	\[\sgn : \pi_{1}(\mathbb{RP}^{n}) \to \mathbb{Z}_{2},\;\quad [\alpha] \mapsto \sgn(\alpha)\]
 	which is an isomorphism for $n \ge 2$.
 \end{thm}
@@ -1003,8 +1004,8 @@ Moreover, if a solution to the lifting problem exists, then it is also unique.
 	is a group iso. It is a homo. as $f(0) = [\alpha_{0}] = [c_{1}]$, $c_{1}$ constant path at $1$ and $f(n + m) = f(n) \cdot f(m)$ follows from $a_{n + m} \simeq \alpha_{n} \ast \alpha_{m}$. Let $\gamma : I \to \mathbb{S}^{1}$ a loop based at $1\in \mathbb{S}^{1}$. $\exists n \in \mathbb{Z}$ s.t. $\gamma \simeq \alpha_{n}$, i.e. $[\alpha] = [\alpha_{n}]$. Consider the covering map
 	\[p : \mathbb{R} \to \mathbb{S}^{1}, \quad t \mapsto e^{2\pi i t}\]
 	and note the fiber of $1\in \mathbb{S}^{1}$ is $p^{-1}(1) = \mathbb{Z} \subset \mathbb{R}$. By Corollary $2$, $\exists \! \tilde{\gamma} : I \to \mathbb{R}$ s.t. $\tilde{\gamma}(0) = 0$ and $p \circ \tilde{\gamma} = \gamma$. In particular, $p \circ \tilde{\gamma} = \gamma$ and $p \circ \tilde{\gamma}(1) = \gamma(1) = 1$, therefore $\tilde{\gamma}(1) =: n$ is some integer. Similarly
-	\[\tilde{\alpha_{n}} : I \to \mathbb{R}, \quad t \mapsto nt\]
-	is a lift of $\alpha_{n}$ and also starts at $0$, ends $n$. By contract. of $\mathbb{R}$, both $\tilde{\gamma}$ and $\tilde{\alpha_{n}}$ are homotopic as paths in $\mathbb{R}$. In particular, $p \circ \tilde{g} = \gamma$ and $p \circ \tilde{\alpha_{n}} = \alpha_{n}$ homotopic. Show that $n$ is uniquely determined, i.e. $[\alpha_{n}] = [\alpha_{m}]$ iff $n = m$. Suppose $\exists$ homotopy $h : I \times I \to \mathbb{S}^{1}$ paths $h(-, 0) = \alpha_{n}$ and $h(-, 1) = \alpha_{m}$. By crl2 $\exists!$ rel. homotopy $\tilde{h} : I \times I \to \mathbb{R}$ s.t. $\tilde{h}(-, 0) = \tilde{\alpha_{n}}$. In particular, we get a lift $\tilde{h}(-, 1)$ of $a_{m}$ which by uniqueness must be $\tilde{h}(-, 1) = \tilde{\alpha}_{m}$. Comparing end points of $\tilde{\alpha}_{n}$ and $\tilde{\alpha}_{m}$ and noting $\tilde{h}$ homotopy of paths, $n = m$
+	\[\tilde{\alpha}_{n} : I \to \mathbb{R}, \quad t \mapsto nt\]
+	is a lift of $\alpha_{n}$ and also starts at $0$, ends $n$. By contract. of $\mathbb{R}$, both $\tilde{\gamma}$ and $\tilde{\alpha}_{n}$ are homotopic as paths in $\mathbb{R}$. In particular, $p \circ \tilde{g} = \gamma$ and $p \circ \tilde{\alpha}_{n} = \alpha_{n}$ homotopic. Show that $n$ is uniquely determined, i.e. $[\alpha_{n}] = [\alpha_{m}]$ iff $n = m$. Suppose $\exists$ homotopy $h : I \times I \to \mathbb{S}^{1}$ paths $h(-, 0) = \alpha_{n}$ and $h(-, 1) = \alpha_{m}$. By crl2 $\exists!$ rel. homotopy $\tilde{h} : I \times I \to \mathbb{R}$ s.t. $\tilde{h}(-, 0) = \tilde{\alpha_{n}}$. In particular, we get a lift $\tilde{h}(-, 1)$ of $a_{m}$ which by uniqueness must be $\tilde{h}(-, 1) = \tilde{\alpha}_{m}$. Comparing end points of $\tilde{\alpha}_{n}$ and $\tilde{\alpha}_{m}$ and noting $\tilde{h}$ homotopy of paths, $n = m$
 	\tcbline
 	We use: \textbf{Covering space} $p : \mathbb{R} \to \mathbb{S}^{1}, t \mapsto e^{2\pi i t}$ and its HLP to lift a closed path $\alpha : I \to \mathbb{S}^{1}$ at $1$ to a path $\tilde{\alpha} : I \to \mathbb{R}$. \textbf{Angle map} at $\alpha$: $\alpha(t) = e^{2\pi i \tilde{a} (t)}$. If $\tilde{\alpha}$ and $\alpha'$ are both angle maps of $\alpha$ s.t. $\tilde{\alpha}(0) = \alpha'(0)$, then $\tilde{\alpha} = \alpha'$, i.e. unique up to starting point. \newline\textbf{Degree} of $\alpha$: $\deg(\alpha) := \tilde{\alpha}(1) = \tilde{\alpha}(0)$ and is indep. of choice of angle map. Thm 4 states that $\pi_{1}(\mathbb{S}^{1}) \to \mathbb{Z}, [\alpha] \mapsto \deg(\alpha)$ is a grp. iso.
 \end{xmp}
