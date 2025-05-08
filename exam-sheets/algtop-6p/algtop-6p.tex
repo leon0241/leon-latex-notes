@@ -598,7 +598,7 @@ $\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=small]
 \vspace{-7pt}
 \begin{dfn}[Covering Space]{dfn:covering-space}{19}
 	\vspace{-2pt}
-	A \textbf{covering space} of $X$ is a topological space $\overline{X}$ along with a continuous map $p : X \to x$ s.t. for any point $x\in X$ there exists an open nbhd $U \subset X$ whose preimage $p^{-1}(U) = \bigcup_{j\in J} V_{j}$ and the opens $V_{j} \subset \overline{X}$ map homeomorphically to $U$ under $p$. A covering space of $X$ looks locally like a product of $X$ with a discrete space.
+	A \textbf{covering space} of $X$ is a topological space $\overline{X}$ along with a continuous map $p : \tilde{X} \to X$ s.t. for any point $x\in X$ there exists an open nbhd $U \subset X$ whose preimage $p^{-1}(U) = \bigcup_{j\in J} V_{j}$ and the opens $V_{j} \subset \overline{X}$ map homeomorphically to $U$ under $p$. A covering space of $X$ looks locally like a product of $X$ with a discrete space.
 \end{dfn}
 
 \vspace{-7pt}
@@ -894,7 +894,7 @@ Moreover, if a solution to the lifting problem exists, then it is also unique.
 \textbf{Remark 10}: If $g$ is a covering map, then so is its lift $\tilde{g}$. In particular, homomorphisms of covering maps are also covering maps.
 \end{thm}
 
-\begin{crl}[Commuting Covering Maps]{crl:commuting-covering-map}{5}
+\begin{crl}[Universal Coverings]{crl:commuting-covering-map}{5}
 	\sbsadapt{Let $p : \tilde{X} \to X$ be a covering with $\tilde{X}$ simply connected. Then, for any covering $p' : X' \to X$ there exists a covering $\tilde{p} : \tilde{X} \to X'$ such that the following diagram commutes:}{
 % https://q.uiver.app/#q=WzAsMyxbMCwyLCJcXHRpbGRle1h9Il0sWzIsMiwiWCJdLFsyLDAsIlgnIl0sWzAsMSwicCJdLFswLDIsIlxcdGlsZGV7cH0iXSxbMiwxLCJwJyJdXQ==
 \begin{tikzcd}[ampersand replacement=\&,cramped, column sep=small, row sep=small]
@@ -906,7 +906,7 @@ Moreover, if a solution to the lifting problem exists, then it is also unique.
 	\arrow["p", from=3-1, to=3-3]
 \end{tikzcd}}
 	
- In other words, if a simply connected covering $\tilde{X}$ of $X$ exists, then it covers all other possible coverings. This is why such a covering is called the \textbf{universal covering of $X$}. For example, we have seen $\mathbb{R}$ as the universal covering of $\mathbb{S}^{1}$ of $\mathbb{S}^{n}$ as the universal covering of $\mathbb{RP}^{n}$.
+ In other words, if a simply connected covering $\tilde{X}$ of $X$ exists, then it covers all other possible coverings. This is why such a covering is called the \textbf{universal covering of $X$}. For example, we have seen $\mathbb{R}$ as the universal covering of $\mathbb{S}^{1}$ or $\mathbb{S}^{n}$ as the universal covering of $\mathbb{RP}^{n}$.
 
 \end{crl}
 
