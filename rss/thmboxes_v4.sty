@@ -109,12 +109,17 @@
             % split into subsection | theorem
             \StrCut{\restnum}{.}\ssecnum\thmnum
             % set theorem (take 1 because it steps)
-            \setcounter{#2}{\numexpr\thmnum-1\relax}
+            \IfInteger{\thmnum}{
+                \setcounter{#2}{\numexpr\thmnum-1\relax}
+            }{}
+            
         \else % Subsection.Theorem
             % split into subsection | theorem
             \StrCut{#1}{.}\secnum\thmnum
             % set theorem
+            \IfInteger{\thmnum}{
             \setcounter{#2}{\numexpr\thmnum-1\relax}
+            }{}
         \fi
     }{}
 }
