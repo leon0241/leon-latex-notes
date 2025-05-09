@@ -250,7 +250,7 @@ $\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=small]
 \vspace{-7pt}
 \begin{dfn}[Retracts and Deformation Retracts]{dfn:retracts}{9}
 	\begin{itemize-zero}
-	    \item A \textbf{retract} of $X$ onto a subspace $A \subset X$ is a map $r : X \to A$ such that $r \rvert_{A} = \Id_{A}$. Equivalently, this is a map $r : X \to X$ such that $r^{2} = r$ and $r(X) = A$. Or, s.t. $ri = 1 : A \to A$, where $i : A \to X$ is the inclusion map.
+	    \item A \textbf{retract} of $X$ onto a subspace $A \subset X$ is a map $r : X \to A$ such that $r \rvert_{A} = \Id_{A}$. Equivalently, this is a map $r : X \to X$ such that $r^{2} = r$ and $r(X) = A$. Or, s.t. $ri = \Id_{A}$, where $i : A \to X$ is the inclusion map.
 		\vspace{-3pt}
 	    \item A \textbf{deformation retract} of $X$ onto $A$ is the additional datum of a homotopy $h : \Id_{X} \simeq i \circ r$.
 	\end{itemize-zero}
@@ -1132,14 +1132,14 @@ Describe $f_{\ast} : \pi_{1}(\mathbb{S}^{1} \times \mathbb{S}^{1}, (1,1)) \to \p
 
 Compute the degree of cts $w_{1} : \mathbb{S}^{1} \to \mathbb{S}^{1} ; (x, y) \mapsto (x, -y)$ - takes points on $\mathbb{S}^{1}$ and reflects on $x$-axis. Therefore, $(x, y) \mapsto (x, -y)$ corresponds to $z \mapsto \underline{z}$ on $\mathbb{S}^{1}$, i.e. $\deg(w_{1}) = -1$ - a map that reverses orientation and wraps around the circle once.
 
-Compute the sign of the cts $w_{3} : \mathbb{S}^{1} \to \mathbb{RP}^{2}; (x, y) \mapsto [x : 0 : -y]$. This sends $(x, y)$ to the projective point on the line spanned by $(x, 0, -y) \in \mathbb{R}^{3}$, i.e. image lies in $\{[x, : 0 : z] \in \mathbb{RP}^{2} \mid x^{2} +z^{2} \ne 0\} \cong \mathbb{S}^{1} \subset \mathbb{RP}^{2}$ since the points $[x, 0, -y]$ form a circle in RP when we vary $(x, y)$ over the unit circle. Antipodal points $w_{3}(x, y) = [x : 0 : -y]$, $w_{3}(-x, -y) = [-x : 0 : y] = [x : 0 : -y]$. Therefore $w_{3}$ factors through the quotient map $\mathbb{S}^{1} \to \mathbb{RP}^{1}$, and the image is homeo to $\mathbb{RP}^{1}$, therefore as it is nontrivial the sign is $-1$ ``inclusion $\mathbb{RP}^{1} \hookrightarrow \mathbb{RP}^{2}$ maps gen. of $\pi_{1}(\mathbb{RP}^{1}) \cong \mathbb{Z}$ to the nontriv. elem. of $\mathbb{Z} / 2\mathbb{Z}$.''
+Compute the sign of the cts $w_{3} : \mathbb{S}^{1} \to \mathbb{RP}^{2}; (x, y) \mapsto [x : 0 : -y]$. Parametarise in terms of $\sin$ and $\cos$: $(x, y) \mapsto [x : 0 : -y]$ becomes $(\sin(t), \cos(t)) \mapsto [\cos(t) : 0 : -\sin(t)]$. Since $\cos(0) = 1$ and $-\sin(0) = 0$ for it be closed, $\cos(\lambda 2\pi t) = 1$ and $-\sin(\lambda 2\pi t) = 0$ for a path $w_{3}(\lambda)$. sign is $1$.
 
 \vspace{-5pt}
 \subsubsection{Retracts}
 \vspace{-5pt}
 Show that if $Y$ is a retract of $\mathbb{D}^{2}$ then every map $g : Y \to Y$ has a fixed point (assume brouwer). If $A$ is a retract of $\mathbb{D}^{2}$ then $\exists r : \mathbb{D}^{2} \to A$ with $rj = 1_{A}$. $jfr$ has a fixed point $x\in \mathbb{D}^{2}$. Now since $rjfr = (rf)fr = 1_{A}fr = fr$ then $f(r(x)) = fr(x) = rjfr(x) = r(jfr(x)) = r(x)$ and so $f$ fixed $r(x)$.
 
-Does the inclusion $i : \mathbb{RP}^{1} \to \mathbb{RP}^{2} ; [x : y] \to [x : y : 0]$ admit a retraction?\newline No. Consider the fundamental groups $\pi_{1}(\mathbb{RP}^{1}) \cong \mathbb{S}^{1} \cong \mathbb{Z}$, and $\pi_{1}(\mathbb{RP}^{2}) \cong \mathbb{Z} / 2\mathbb{Z}$, along with the induced inclusion map $i_{\ast} : \pi_{1}(\mathbb{RP}^{1})\to \pi_{1}(\mathbb{RP}^{2})$  which sends $\mathbb{Z}$ to $\mathbb{Z} / 2\mathbb{Z}$. If there is a retract, i.e. $r \circ i = \Id_{\mathbb{RP}^{2}}$ then we would need to have $r_{\ast} \circ i_{\ast} = id_{\pi_{1}(\mathbb{RP}^{2})}$. However there is no such map $r_{\ast} : \mathbb{Z} / 2\mathbb{Z} \to \mathbb{Z}$, therefore no such retraction can exist.
+Does the inclusion $i : \mathbb{RP}^{1} \to \mathbb{RP}^{2} ; [x : y] \to [x : y : 0]$ admit a retraction?\newline No. Consider the fundamental groups $\pi_{1}(\mathbb{RP}^{1}) \cong \mathbb{S}^{1} \cong \mathbb{Z}$, and $\pi_{1}(\mathbb{RP}^{2}) \cong \mathbb{Z} / 2\mathbb{Z}$, along with the induced inclusion map $i_{\ast} : \pi_{1}(\mathbb{RP}^{1})\to \pi_{1}(\mathbb{RP}^{2})$  which sends $\mathbb{Z}$ to $\mathbb{Z} / 2\mathbb{Z}$. If there is a retract, i.e. $r \circ i = \Id_{\mathbb{RP}^{1}}$ then we would need to have $r_{\ast} \circ i_{\ast} = id_{\pi_{1}(\mathbb{RP}^{1})}$. However there is no such map $r_{\ast} : \mathbb{Z} / 2\mathbb{Z} \to \mathbb{Z}$, therefore no such retraction can exist.
 
 \newpage
 \normalsize
