@@ -224,6 +224,7 @@ $\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=small]
 	\end{equation}
 \end{dfn}
 
+\vspace{-7pt}
 \begin{xmp}[Examples of Contractible Spaces]{xmp:contractible-example}{4}
 	\begin{enumerate-zero}
 	    \item $\mathbb{R}^{n}$ is contractible. Let $x_{0}$ be a fixed point in $\mathbb{R}^{n}$ and define the (straight line) homotopy $h : c_{x_{0}} \simeq \Id_{\mathbb{R}^{n}}$ by
@@ -236,6 +237,7 @@ $\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=small]
 	\end{enumerate-zero}
 \end{xmp}
 
+\vspace{-7pt}
 \begin{rem}[Remarks about Contractible Spaces]{rem:contractible}{3}
 	\begin{enumerate-zero}
 	    \item Contractible spaces are path-connected. Let $x_{0}$ be the point where the space $X$ contracts to. In particular, we are given with a homotopy $h : c_{x_{0}} \simeq \Id_{X}$. For any $x\in X$, the map $h(x, -) : I \to X$ defines a path from $x_{0}$ to $x$ and thus every element $x\in X$ is path-connected to $x_{0}$.
@@ -245,11 +247,14 @@ $\begin{tikzcd}[ampersand replacement=\&,cramped,column sep=small]
 	\end{enumerate-zero}
 \end{rem}
 
+\vspace{-7pt}
 \begin{dfn}[Retracts and Deformation Retracts]{dfn:retracts}{9}
 	\begin{itemize-zero}
-	    \item A \textbf{retract} of $X$ onto a subspace $A \subset X$ is a map $r : X \to A$ such that $r \rvert_{A} = \Id_{A}$. Equivalently, this is a map $r : X \to X$ such that $r^{2} = r$ and $r(X) = A$.
+	    \item A \textbf{retract} of $X$ onto a subspace $A \subset X$ is a map $r : X \to A$ such that $r \rvert_{A} = \Id_{A}$. Equivalently, this is a map $r : X \to X$ such that $r^{2} = r$ and $r(X) = A$. Or, s.t. $ri = 1 : A \to A$, where $i : I \to X$ is the inclusion map.
+		\vspace{-3pt}
 	    \item A \textbf{deformation retract} of $X$ onto $A$ is the additional datum of a homotopy $h : \Id_{X} \simeq i \circ r$.
 	\end{itemize-zero}
+	\vspace{-5pt}
 	In other words, a deformation retract is a homotopy $h : X \times I \to X$ such that $h(x, 0) = x$ and $h(x, 1) \in A$ for all $x\in X$ and $h(a, 1) = a$ for all $a\in A$. Not all retracts can form deformation retracts. For instance, the retract $X$ onto a point $\{x_{0}\}$ can be a deformation retract iff $X$ is contractible.
 \end{dfn}
 
@@ -1120,15 +1125,21 @@ The loop $\alpha_{1}(t) = [\cos(2\pi t) : \sin(2 \pi t) : 0]$ has trivial class 
 Covering spaces of $(X, x_{0})$ are (up to homeo. of cover spaces) $1$-to-$1$ correspondence with subgroups of $\pi_{1}(X, x_{0})$. Using that determine all connected covering spaces. $\mathbb{S}^{1}$: All subgroups of $\mathbb{Z}$ are $n\mathbb{Z} \subset \mathbb{Z}$ for $n\in \mathbb{Z}$. In particular, we have to determine coverings inducing those subgroups, these are $\mathbb{S}^{1} \to \mathbb{S}^{1}, z \mapsto z^{n}$ for $n \ne 0$ and $R \to \mathbb{S}^{1}$ for $0 \subset \mathbb{Z}$. $\mathbb{RP}^{2}$: The only subgroups of $\mathbb{Z}_{2}$ are the trivial and itself. The two assoc. coverings are $\mathbb{S}^{2} \to \mathbb{RP}^{2}$ and the id. cover. $T$ ($2$-torus): All subgroups are of the form $n \mathbb{Z} \times m \mathbb{Z}$ for $n,m\in \mathbb{Z}$. The assoc. coverings are products of the ones for $\mathbb{S}^{1}$. $M$ (M\"obius band): FG is $\mathbb{Z}$ as it is homotop. equiv. to its core. Hence we only need to find coverings for each $n\mathbb{Z} \subset \mathbb{Z}$. We start with its universal cover $\mathbb{R} \times [0,1] \to M = \mathbb{R} \times [0,1] / (x, y) \sim (x +1, 1-y)$. For each $n$, $\tilde{X} = \mathbb{R} \times [0,1] / (x, y) \sim (x + n, y_{n})$, where $y = y$ for $n$ even and $y_{n} = 1-y$ for $n$ odd, give all the covering spaces. In particular for even $n$ we get $n$-fold coverings by $\mathbb{S}^{1} \times [0,1]$ and odd $n$ we get $n$-fold coverings by M\"obius bands.
 
 
+\vspace{-5pt}
 \subsubsection{More circles}
+\vspace{-5pt}
 Describe $f_{\ast} : \pi_{1}(\mathbb{S}^{1} \times \mathbb{S}^{1}, (1,1)) \to \pi_{1}(\mathbb{S}^{1}, 1)$ associated to the map $f : \mathbb{S}^{1} \times \mathbb{S}^{1} \to \mathbb{S}^{1}$ given by $f(w, z) = w^{p}z^{q}$ for $p, q\in \mathbb{Z}$. Let $\alpha\in \pi_{1}(T_{2})$ be a single loop around the first circle: $t \mapsto (e^{2\pi i t}, 1)$ and $\beta\in \pi_{1}(T_{2})$ be a single loop around the second: $t \mapsto (1, e^{2\pi i t})$. Then $\langle \alpha, \beta \rangle \cong \mathbb{Z} \times \mathbb{Z}$ generates $\pi_{1}(T^{2})$. $f_{\ast}(\alpha)$ is the eq.class of $f(e^{2\pi i t}, 1) \mapsto e^{2 \pi i t p} \cdot 1^{q} = e^{2\pi i t p}$, or the loop that wraps $\mathbb{S}^{1}$ $p$ times. $f_{\ast}(\beta)$ is the eq.class of $f(1, e^{2\pi i t}) \mapsto 1^{p} \cdot e^{2 \pi i t q} = e^{2\pi i t q}$, or the loop that wraps $\mathbb{S}^{1}$ $q$ times. Therefore $f(w, z)$ is the homo. that wraps around $e^{2\pi i t (p + q)}$, or $p + q$ times. As $\alpha$ and $\beta$ are the generators, this means $f_{\ast}(m, n) = pm + qn$.
 
 Compute the degree of cts $w_{1} : \mathbb{S}^{1} \to \mathbb{S}^{1} ; (x, y) \mapsto (x, -y)$ - takes points on $\mathbb{S}^{1}$ and reflects on $x$-axis. Therefore, $(x, y) \mapsto (x, -y)$ corresponds to $z \mapsto \underline{z}$ on $\mathbb{S}^{1}$, i.e. $\deg(w_{1}) = -1$ - a map that reverses orientation and wraps around the circle once.
 
 Compute the sign of the cts $w_{3} : \mathbb{S}^{1} \to \mathbb{RP}^{2}; (x, y) \mapsto [x : 0 : -y]$. This sends $(x, y)$ to the projective point on the line spanned by $(x, 0, -y) \in \mathbb{R}^{3}$, i.e. image lies in $\{[x, : 0 : z] \in \mathbb{RP}^{2} \mid x^{2} +z^{2} \ne 0\} \cong \mathbb{S}^{1} \subset \mathbb{RP}^{2}$ since the points $[x, 0, -y]$ form a circle in RP when we vary $(x, y)$ over the unit circle. Antipodal points $w_{3}(x, y) = [x : 0 : -y]$, $w_{3}(-x, -y) = [-x : 0 : y] = [x : 0 : -y]$. Therefore $w_{3}$ factors through the quotient map $\mathbb{S}^{1} \to \mathbb{RP}^{1}$, and the image is homeo to $\mathbb{RP}^{1}$, therefore as it is nontrivial the sign is $-1$ ``inclusion $\mathbb{RP}^{1} \hookrightarrow \mathbb{RP}^{2}$ maps gen. of $\pi_{1}(\mathbb{RP}^{1}) \cong \mathbb{Z}$ to the nontriv. elem. of $\mathbb{Z} / 2\mathbb{Z}$.''
 
+\vspace{-5pt}
 \subsubsection{Retracts}
+\vspace{-5pt}
 Show that if $Y$ is a retract of $\mathbb{D}^{2}$ then every map $g : Y \to Y$ has a fixed point (assume brouwer). If $A$ is a retract of $\mathbb{D}^{2}$ then $\exists r : \mathbb{D}^{2} \to A$ with $rj = 1_{A}$. $jfr$ has a fixed point $x\in \mathbb{D}^{2}$. Now since $rjfr = (rf)fr = 1_{A}fr = fr$ then $f(r(x)) = fr(x) = rjfr(x) = r(jfr(x)) = r(x)$ and so $f$ fixed $r(x)$.
+
+Does the inclusion $i : \mathbb{RP}^{1} \to \mathbb{RP}^{2} ; [x : y] \to [x : y : 0]$ admit a retraction? No.  
 
 \newpage
 \normalsize
