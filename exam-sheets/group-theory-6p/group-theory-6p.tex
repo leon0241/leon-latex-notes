@@ -1,8 +1,15 @@
 \documentclass[landscape, 8pt]{extarticle}
 
+\usepackage[fontsize=7pt]{scrextend}
+
+\usepackage{titlesec}
+% Left, Before Title, After Title
+\titlespacing*{\section} {0pt}{2pt}{1pt}
+
 \usepackage{../../preamble}
-\usepackage[separate]{../../rss/thmboxes_v4}
+\usepackage[thmclass]{../../rss/thmboxes_v4}
 \usepackage{symbols}
+
 
 
 \begin{document}
@@ -10,184 +17,268 @@
 \setlength{\belowdisplayskip}{3.5pt}
 \setlength{\abovedisplayshortskip}{3.5pt}
 \setlength{\belowdisplayshortskip}{3.5pt}
-\setlength{\multicolsep}{0pt}% 50% of original values
-\setlist{topsep=3pt, itemsep=0pt}
 
 \begin{multicols*}{3}
 \raggedcolumns
 \section*{\huge Group Theory Notes}
+Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 \section{Revision of Groups}
+\stepcounter{subsection}
+\vspace{2pt}
 \begin{dfn}[Definition of a Group]{dfn:group-definition}{1.1.1}
-	A \textbf{group} consists of a set $G$ together with a function $G \times G zto G$ which maps an ordered pair $(g, h) \in G \times G$ to an element $g \star h \in G$. The following axioms must be satisfied:
-	\begin{enumerate}
-	    \item \textbf{Associativity}: $(g \star h) \star k = g \star (h \star k)$ for each triple $(g,h,k)\in G \times G \times G$
-	    \item \textbf{Identity}: $\exists e\in G$ such that $e\star g = g = g \star e$ for each $g\in G$
-	    \item \textbf{Inverse}: To each element $g\in G$, there is an element $g^{-1} \in G$ such that $g\star h = e = h \star g$
-	\end{enumerate}
+	
+	A \textbf{group} consists of a set $G$ together with a function $G \times G \to G$ which maps an ordered pair $(g, h) \in G \times G$ to an element $g \star h \in G$. The following axioms must be satisfied:
+	\vspace{-0.8ex}
+	\begin{enumerate-zero}
+	    \item \textbf{Associativity}: $(g \star h) \star k = g \star (h \star k)$ for each triple $(g,h,k)$.
+	    \item \textbf{Identity}: $\exists e\in G$ such that $e\star g = g = g \star e$ for each $g\in G$.
+	    \item \textbf{Inverse}: For all $g\in G$, $\exists g^{-1} \in G$ such that $g\star h = e = h \star g$.
+	\end{enumerate-zero}
 	\textbf{Note}: The closure axiom follows from the definition of a function.
-\end{dfn}
 
-\begin{xmp}[Examples of Groups]{xmp:groups}{1.2.A}
-	\begin{itemize}
-	    \item[\textbf{1.2.1})] $S_{n}$, the \textbf{$n$-th symmetric group}, is the group of permutations of $\{1,2,\dots,n\}$, with composition of functions.
-	    \item[\textbf{1.2.2})] $D_{n}$, the \textbf{$n$-th dihedral group}, is the group of symmetries of the $n$-gon. It has $2n$ elements: $n$ rotations, and $n$ reflections.
-	    \item[\textbf{1.2.3})] The \textbf{free group} on the letters $x, y$ is written as $G = \langle x, y \rangle$. The elements of $G$ are \textbf{words} in the symbols $x, y, x^{-1}, y^{-1}$. The group operation $\star$ is \textbf{concatenation}: so $x x x^{-1}y \star y^{-1} x = x x x^{-1} y y^{-1} x$. $e$ is the \textbf{empty word} with $0$ letters, and $x^{-1}$ and $y^{-1}$ is the inverse of $x$ and $y$ respectively. Thus $x x x^{-1} y = xy$.
-	    \item[\textbf{1.2.4})] $(\mathbb{Z}, +)$ is a group, with $e = 0$. It is a \textbf{cyclic} group, and is \textbf{generated} by $1$.
-	    \item[\textbf{1.2.5})] $\mathbb{Z} /n$, the set of integers modulo $n$, is a group under $+$.
-	\end{itemize}
-\end{xmp}
-
-\begin{dfn}[Abelian Group]{dfn:abelian}{1.2.6}
+	\tcbsubtitle{Definition 1.2.6: Abelian Group}
 	A group $(G, \star)$ is \textbf{abelian} if $g \star h = h \star g$ for all $g, h\in G$.
 
-	\textbf{Note}: Often, when $(G, \star)$ is ablian, we write $g+h$ as the group operation.
+	\textbf{Note}: Often, if $(G, \star)$ is abelian, we write $g+h$ as the operation.
 \end{dfn}
 
+\vspace{-2pt}
+\begin{xmp}[The Free Group]{xmp:free-group}{1.2.3}
+	
+	$G = \langle x, y \rangle$, the \textbf{free group} on the letters $x, y$. The elements of $G$ are \textbf{words} in the symbols $x, y, x^{-1}, y^{-1}$. The group operation $\star$ is \newline\textbf{concatenation}: $x x x^{-1}y \star y^{-1} x = x x x^{-1} y y^{-1} x$. $e$ is the \textbf{empty word} with $0$ letters, and $x^{-1}$ and $y^{-1}$ is the inverse of $x$ and $y$ respectively. Thus $x x x^{-1} y = xy$.
+	% \begin{itemize}
+	    % \item[\textbf{1.2.1})] $S_{n}$, the \textbf{$n$-th symmetric group}, is the group of permutations of $\{1,2,\dots,n\}$, with composition of functions.
+	    % \item[\textbf{1.2.2})] $D_{n}$, the \textbf{$n$-th dihedral group}, is the group of symmetries of the $n$-gon, with $2n$ elements: $n$ rotations, $n$ reflections.
+	    % \item[\textbf{1.2.3})] $G = \langle x, y \rangle$, the \textbf{free group} on the letters $x, y$. The elements of $G$ are \textbf{words} in the symbols $x, y, x^{-1}, y^{-1}$. The operation $\star$ is \textbf{concatenation}: $x x x^{-1}y \star y^{-1} x = x x x^{-1} y y^{-1} x$.\newline $e$ is the \textbf{empty word} with $0$ letters, and $x^{-1}$ and $y^{-1}$ is the inverse of $x$ and $y$ respectively. Thus $x x x^{-1} y = xy$.
+	    % \item[\textbf{1.2.4})] $(\mathbb{Z}, +)$ is a group, with $e = 0$. It is \textbf{cyclic}, and \textbf{generated} by $1$.
+	    % \item[\textbf{1.2.5})] $\mathbb{Z} /n$, the set of integers modulo $n$, is a group under $+$.
+	% \end{itemize}
+\end{xmp}
+
+\vspace{-2pt}
 \begin{dfn}[Subgroup]{dfn:subgroup}{1.3.1}
-	If $H$ is a nonempty subset of $G$ then $H$ is a \textbf{subgroup} provided that:
+	
+	If $H$ is a nonempty subset of $G$ then $H$ is a \textbf{subgroup} if:
+	\begin{multicols}{2}
 	\begin{itemize-zero}
 	    \item $hk \in H$ for all $h, k\in H$.
 	    \item $h^{-1} \in H$ for all $h\in H$.
 	\end{itemize-zero}
+	\end{multicols}
 
-	We usually just say ``$H$ is closed under the group operations''. Note that $e\in H$ follows from the definition, and associativity follows from the fact that $G$ is a group. Any subgroup $H$ of $G$ is a group using the same product as that of $G$.
+	$e\in H$ follows from the definition, and associativity follows because $G$ is a group. A subgroup $H$ uses the same product as $G$.
 
-	We write $H \le G$ when $H$ is a subgroup of $G$ (as opposed to $H \subseteq G$ which just means $H$ is a subset of $G$). The notation $H < G$ means that $H$ is a subgroup of $G$ and $H \ne G$. A subgroup $H$ is \textbf{proper} if $H \ne G$ and is \textbf{non-trivial} if $H \ne \{e\}$.
+	\tcbline
+
+	We write $H \le G$ when $H$ is a subgroup of $G$. The notation $H < G$ means that $H$ is a subgroup of $G$ and $H \ne G$. A subgroup $H$ is \textbf{proper} if $H \ne G$ and is \textbf{non-trivial} if $H \ne \{e\}$.
 \end{dfn}
 
+\vspace{-2pt}
 \begin{xmp}[Examples of Subgroups]{xmp:subgroups}{1.3.A}
+	
 	\begin{itemize}
 	    \item[\textbf{1.3.2})] The subsets $\{e\}$ and $G$ are always subgroups of $G$
+			\vspace{-2pt}
 		\item[\textbf{1.3.3})] The group of rotations of an $n$-gon is a subgroup of $D_{n}$
+			\vspace{-2pt}
 		\item[\textbf{1.3.4})] The \textbf{$n$-th alternating group}, $A_{n}$ is the subgroup of $S_{n}$ consisting of all permutations that can be written as the product of an even number of $2$-cycles.
+			\vspace{-2pt}
 		\item[\textbf{1.3.5})] Let $G$ be a group and $g\in G$. Then $\langle g \rangle := \{g^{n} : n \in \mathbb{Z}\}$ is a subgroup of $G$, called the \textbf{subgroup generated by $g$}. If $G = \langle g \rangle$ for some $g\in G$, then $G$ is \textbf{cyclic}.
 	\end{itemize}
 \end{xmp}
 
+\vspace{-2pt}
 \begin{dfn}[Coset]{dfn:coset}{1.3.6}
-	Let $H \le G$ and $g\in G$. Then the \textbf{left coset} of $H$ determined by $g$ is the set 
+	
+	Let $H \le G$, $g\in G$. The \textbf{left coset} of $H$ determined by $g$ is the set 
+	\vspace{-0.8ex}
 	\[gH := \{gh \mid h\in H\}\]
-	Similarly, the \textbf{right coset} of $H$ determind by $g$ is the set
+	\par\vspace{-0.8ex}
+	Similarly, the \textbf{right coset} of $H$ determined by $g$ is the set
+	\vspace{-0.8ex}
 	\[Hg := \{hg \mid h\in H\}\]
-	The set of left cosets is denoted $G /H$ and the sets of right cosets is denoted $H \backslash G$. The number of elements in a group $G$ is denoted by $\#G$ or $\lvert G \rvert$, and is known as the \textbf{order} of $G$. The number of left cosets of a subgroup $H$ of $G$ is the \textbf{index} of $H$ in $G$ and denoted by $\lvert G : : \rvert$ or $[G : H]$, that is $[G : H] = \lvert G / H \rvert$
-\end{dfn}
-
-\begin{dfn}[Normal Subgroup]{dfn:normal-subgroup}{1.3.7}
-	A subgroup $H \le G$ is \textbf{normal}, denoted $H \lhd G$, if $gH = Hg$ for all $g\in G$
-
+	\vspace{-12pt}
 	\tcbline
-	The following are equivalent:
+	\par\vspace{-5pt}
 	\begin{itemize-zero}
-	    \item $H \lhd G$
-	    \item $gHg^{-1}=H$ for all $g\in G$ (where $gHg^{-1} = \{ghg^{-1} : h\in H\}$)
-	    \item $gHg^{-1} \subseteq H$ for all $g\in G$
+	    \item The set of left cosets: $G /H$, the sets of right cosets: $H \backslash G$
+			\vspace{-2pt}
+	    \item The number of elements in $G$, or \textbf{order} of $G$: $\lvert G \rvert$ or $\#G$
+			\vspace{-2pt}
+	    \item The number of left cosets, or \textbf{index} of $G$: $\lvert G : H \rvert$, or $[G:H]$
 	\end{itemize-zero}
 \end{dfn}
 
-\begin{thm}[Lagrange's Theorem]{thm:lagrange}{1.3.8}
-	Let $H$ be a subgroup of a finite group $G$. Then
-	\[\lvert G \rvert = [G : H] \cdot \lvert H \rvert\]
-	i.e. The order of a subgroup divides the order of a group
-\end{thm}
-
-\begin{thm}[Cauchy's Theorem]{thm:cauchy}{1.3.9}
-	If $G$ is a finite group and $p$ is a prime that divides the order of $G$, then $G$ has a subgroup of order $p$.
-\end{thm}
-
-\begin{dfn}[Order of an Element]{dfn:order-element}{1.3.10}
-	Let $g\in G$. The \textbf{order} of $g$ is the least positive integer such that $g^{n} = e$, or $\infty$ if $n$ does not exist. We write the order of $g$ as $o(g)$. Note that $o(g) = \lvert \langle g \rangle \rvert$.
-\end{dfn}
-
-\begin{crl}[Prime Cyclic Groups]{crl:prime-cyclic}{1.3.11}
-	If $\lvert G \rvert$ is prime, then $G$ is cyclic.
-\end{crl}
-
-\begin{dfn}[Group Homomorphism]{dfn:group-homomorphism}{1.4.1}
-	Let $G, H$ be groups. A function $\phi : G \to H$ such that $\phi(ab) = \phi(a)\phi(b)$ for all $a, b \in G$ is a \textbf{group homomorphism}.
-\end{dfn}
-
-\begin{xmp}[The Cyclic Group \texorpdfstring{$C_{n}$}{Cn}]{xmp:Cn}{1.4.2}
-	The \textbf{cyclic group or order $n$}, written $C_{n}$, can be thought of the set of rotations by $2\pi /n$ of an $n$-gon. 
-\end{xmp}
-
-\begin{dfn}[Group Isomorphism]{dfn:group-isomorphism}{1.4.3}
-	If $G$ and $H$ are groups and $\psi : G \to H$ is a bijective group homomorphism, then $\psi$ is a \textbf{group isomorphism} and $G$ and $H$ are isomorphic.
+\vspace{-2pt}
+\begin{dfn}[Normal Subgroup]{dfn:normal-subgroup}{1.3.7}
+	
+	A subgroup $H \le G$ is \textbf{normal}, $H \lhd G$, if $gH = Hg$ for all $g\in G$.
 
 	\tcbline
-	If $p$ is prime, all groups of order $p$ are isomorphic.
+	\par\vspace{-1pt}
+	The following are equivalent (where $gHg^{-1} = \{ghg^{-1} : h\in H\}$):
+	\begin{itemize-zero}
+		\item $H \lhd G$
+			\vspace{2pt}
+			\begin{multicols}{2}
+			\item $gHg^{-1}=H$ for all $g\in G$
+			\item $gHg^{-1} \subseteq H$ for all $g\in G$
+			\end{multicols}
+	\end{itemize-zero}
 \end{dfn}
 
+\vspace{-2pt}
+\begin{dfn}[Order of an Element]{dfn:order-element}{1.3.10}
+	
+	Let $g\in G$. The \textbf{order} of $g$, written $o(g)$, is the least positive integer s.t. $g^{n} = e$, or $\infty$ if $n$ does not exist. Note that $o(g) = \lvert \langle g \rangle \rvert$.
+\end{dfn}
+
+\vspace{-2pt}
+\begin{thm}[Lagrange's Theorem]{thm:subgroup-thm}{1.3.8}
+	Let $H$ be a subgroup of a finite group $G$. Then the order of a subgroup divides the order of a group, i.e.
+	\vspace{-2pt}
+	\[\lvert G \rvert = [G : H] \cdot \lvert H \rvert\]
+	\par\vspace{-5pt}
+	\tcbsubtitle{Theorem 1.3.9: Cauchy's Theorem}
+	If $G$ is a finite group and $p$ is a prime that divides the order of $G$, then $G$ has a subgroup of order $p$.
+
+	\vspace{-1pt}
+	\tcbsubtitle{Corollary 1.3.11: Prime Cyclic Groups}
+	If $\lvert G \rvert$ is prime, then $G$ is cyclic.
+\end{thm}
+
+\vspace{-2pt}
+\stepcounter{subsection}
+\begin{dfn}[Morphisms]{dfn:group-morphism}{1.4.A}
+	Let $G, H$ be groups.
+	\vspace{-1pt}
+	\tcbsubtitle{Definition 1.4.1: Group Homomorphism}
+	A function $\phi : G \to H$ such that $\phi(ab) = \phi(a)\phi(b)$ for all $a, b \in G$ is a \textbf{group homomorphism}.
+
+	\vspace{-1pt}
+	\tcbsubtitle{Definition 1.4.3: Group Isomorphism}
+	A bijective group homomorphism $\psi : G\hspace{-0.1em}\to \hspace{-0.1em}H$, $\psi$ is a \textbf{group isomorphism} and $G$ and $H$ are isomorphic.
+
+	\tcbline
+	\par\vspace{-1pt}
+	If $p$ is prime, all groups of order $p$ are isomorphic.
+
+	\vspace{-1pt}
+	\tcbsubtitle{Definition 1.4.6: Group Automorphisms}
+	The \textbf{Automorphism group of $G$}, $\Aut(G)$, is the set of all isomorphisms $\phi : G \to G$. The operation is composition of functions.
+\end{dfn}
+
+\vspace{-2pt}
+\begin{xmp}[The Cyclic Group \texorpdfstring{$C_{n}$}{Cn}]{xmp:Cn}{1.4.2}
+	The \textbf{cyclic group of order $n$}, written $C_{n}$, can be thought of the set of rotations by $2\pi /n$ of an $n$-gon. 
+\end{xmp}
+
+\vspace{-2pt}
 \begin{dfn}[Kernel of a Homomorphism]{dfn:kernel}{1.4.5}
 	Let $\phi : G \to H$ be a group homomorphism. The \textbf{kernel} of $\phi$ is
+	\vspace{-2pt}
 	\[
 		\{g\in G \mid \phi(g) = e\}.
 	\]
+	\vspace{-11pt}
 	\tcbline
-	A gropu homomorphism $\phi$ is injective iff $\ker\phi = \{e\}$
-\end{dfn}
-
-\begin{dfn}[Automorphisms]{dfn:automorphism}{1.4.6}
-	Let $G$ be a group. The set of all isomorphisms $\phi : G \to G$ is called the \textbf{automorphism group of $G$}, written $\Aut(G)$. The group oepration is composition of functions.
+	\par\vspace{-1pt}
+	A group homomorphism $\phi$ is injective iff $\ker\phi = \{e\}$
 \end{dfn}
 
 % TODO: automorphism thing..
 
+\vspace{-2pt}
 \begin{dfn}[Product Group]{dfn:product-group}{1.4.8}
+	
 	Let $G$, $H$ be groups. The \textbf{product}, or \textbf{direct product}, $G \times H$ is a group, with group operation $\star$ given by
 	\[(g, h) \star (g', h') = (g \star_{G} g', h \star_{H} h')\]
+	\par\vspace{-2pt}
 	Note: we usually just say $(g, h) \star (g', h') = (gg', hh')$
 
+	\vspace{-2pt}
 	\tcbline
+	\par\vspace{-1pt}
 	If $\mathrm{gcd}(m, n) = 1$, then $C_{m} \times C_{n} \cong C_{mn}$.
 \end{dfn}
 
+\vspace{-2pt}
+\stepcounter{section}
 \begin{thm}[Normal Subgroups and Kernels]{thm:normal-kernel}{2.1.1}
+	
 	% TODO: sort out this definition..
 	Let $G$ be a group and $M \le G$. Then $N \lhd G$ iff $N$ is the kernel of a group homomorphism from $G$ to another group $H$.
 
+	\vspace{-2pt}
 	\tcbline
-	This implies:
-	\begin{enumerate}
+	\vspace{-1pt}
+	Suppose $N \lhd G$. We want a group $H$ and homomorphism $\alpha : G \to H$ with kernel $N$. Let $H$ be the \textbf{factor group} $G /N$, or
+	\vspace{-2pt}
+	\[G /N = \{\text{(left or right) cosets of $N$}\}\]
+	\par\vspace{-4pt}
+	We can show...
+	\vspace{-2pt}
+	\begin{enumerate-zero}
 	    \item There is a natural way to make $G /N$ a group
+			\vspace{-2pt}
 	    \item There is a \textbf{canonical} group homomorphism $\can : G \to G /N$
+			\vspace{-2pt}
 		\item $\ker(\can) = N$
-	\end{enumerate}
+	\end{enumerate-zero}
 \end{thm}
 
+\vspace{-2pt}
 \begin{thm}[First Isomorphism Theorem for Groups]{thm:iso1}{2.2.1}
-	Let $\phi : G \to H$ be a group homomorphism. Then $N := \ker(\phi)$ ia a normal subgroup of $G$, $\Im(\phi)$ is a subgroup of $H$, and there is an isomorphism
+	
+	If $\phi : G \to H$ is a group homomorphism, $N := \ker(\phi)$ is a normal subgroup of $G$, $\im(\phi)$ is a subgroup of $H$, and there is an isomorphism
+	\vspace{-3pt}
 	\[\overline{\theta} : G / \ker(\theta) \prightarrow{\cong} \Im(\theta)\]
-	defined by $\overline{\theta}(gN) = \theta(g)$. In particular, if $\theta$ is surjective, then $G /\ker(\phi) \cong H$.
-\end{thm}
+	\par\vspace{-3pt}
+	defined by $\overline{\theta}(gN) = \theta(g)$. If $\theta$ is surjective, then $G /\ker(\phi) \cong H$.
 
-\begin{thm}[Universal Property of Factor Groups]{thm:universal-prop}{2.2.3}
-	Let $G$ be a group and $N \lhd G$. Then for any homomorphism $\psi : G \to h$ with $N \subseteq \ker(\psi)$, there is a unique homomorphism $\overline{\psi} : G /N \to H$ such that $\overline{\psi} \circ \can = \psi$, where $\can : G \to G /N$ is the canonical homomorphism.
-\end{thm}
-
-\begin{crl}[]{crl:unique-homomorphism}{2.2.4}
+	\tcbsubtitle{Theorem 2.2.3: Universal Property of Factor Groups}
+	\sbsadaptr{
+	For a group $G$, and $N \lhd G$, for any homomorphism $\psi : G \to h$ with $N \subseteq \ker(\psi)$, there is a unique homomorphism $\overline{\psi} : G /N \to H$ s.t. $\overline{\psi} \circ \can = \psi$, where $\can : G \to G /N$ is the canonical homomorphism.
+	}{
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJHIl0sWzEsMCwiRyAvIE4iXSxbMSwxLCJIIl0sWzAsMSwiXFx0ZXh0YmZ7Y2FufSJdLFsxLDIsIlxcb3ZlcmxpbmV7XFxwc2l9XFxleGlzdHMhIl0sWzAsMiwiXFxwc2kiLDJdXQ==
+\begin{tikzcd}[ampersand replacement=\&,cramped]
+	G \& {G / N} \\
+	\& H
+	\arrow["{\text{can}}", from=1-1, to=1-2]
+	\arrow["\psi"', from=1-1, to=2-2]
+	\arrow["{\overline{\psi}}", "\exists!"', from=1-2, to=2-2]
+\end{tikzcd}
+	}
+	\tcbsubtitle{Corollary 2.2.4}
 	If $\phi : G \to K$ is a surjective group homomorphism, and $\phi : G \to H$ is a group homomorphism with $\ker(\phi) \subseteq \ker(\psi)$, then there is a unique group homomorphism $\overline{\psi} : K \to H$ such that $\overline{\psi}\phi = \psi$.
-\end{crl}
+\end{thm}
 
-\begin{ppn}[]{ppn:not-canonical-pullback}{2.3.1}
-	Let $G$ be a group and let $N \lhd G$ Let $\can : G \to G /N$ be the canonical map. Let $K \le G /N$.
+\vspace{-1pt}
+\begin{ppn}[Canonical Pullbacks]{ppn:canonical-pullback}{2.3.1}
+	
+	Let $G$ be a group and let $N \lhd G$. Let $\can : G \to G /N$ be the canonical map. Let $K \le G /N$.
 	\begin{enumerate}
 	    \item $\can^{-1}(K) \le G$ with $N \subseteq \can^{-1}(K)$.
 	    \item $\can^{-1}(K) \lhd G$ if and only if $K \lhd G /N$
 	\end{enumerate}
-\end{ppn}
-
-\begin{ppn}[Canonical Pullback]{ppn:canonical-pullback}{2.3.2}
+	\tcbsubtitle{Proposition 2.3.2}
 	Let $N \lhd G$ and let $\can : G \to G /N$ be the canonical map. If $N \le H \le G$, then $H = \can^{-1} (\can(H))$. That is, all subgroups of $G$ that can contain $N$ are ``pulled back'' from subgroups of $G /N$.
 \end{ppn}
 
+\vspace{-1pt}
 \begin{thm}[Correspondence Theorem]{thm:correspondence-thm}{2.3.3}
+	
 	Let $G$ be a group, $N \lhd G$, and let $\can : G \to G fN$ be the canonical map. The map $H \mapsto \can(H)$ is a bijection between subgroups of $G$ containing $N$ and subgroups of $G /N$. Under this bijection, normal subgroups match with normal subgroups. Further, if $N \subseteq A, B$ are subgroups of $G$, then $\can(A) \subseteq \can(B)$ iff $A \subseteq B$.
 \end{thm}
 
-\begin{xmp}[Subgroups Example]{xmp:subgroup-correspondence}{2.3.4}
-	Find all subgroups of $\mathbb{Z} / 12 = \mathbb{Z} / 12\mathbb{Z}$ together with their inclusions. The subgroups of $\mathbb{Z}$ that contain $12\mathbb{Z}$ are shown as:
+\vspace{-1pt}
+\begin{xmp}[Correspondence Example]{xmp:subgroup-correspondence}{2.3.4}
+	
+	Find all subgroups of $\mathbb{Z} / 12 = \mathbb{Z} / 12\mathbb{Z}$ together with their inclusions. 
 	\sbsadapt{
+The subgroups of $\mathbb{Z}$ that contain $12\mathbb{Z}$:
+
 % https://q.uiver.app/#q=WzAsNixbMiwwLCJcXG1hdGhiYntafSJdLFszLDEsIjNcXG1hdGhiYntafSJdLFsxLDEsIjJcXG1hdGhiYntafSJdLFsyLDIsIjZcXG1hdGhiYntafSJdLFswLDIsIjRcXG1hdGhiYntafSJdLFsxLDMsIjEyXFxtYXRoYmJ7Wn0iXSxbNCw1LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsMywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwzLCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
 \begin{tikzcd}[ampersand replacement=\&,cramped, row sep=small, column sep=small]
 	\&\& {\mathbb{Z}} \\
@@ -203,6 +294,8 @@
 	\arrow[no head, from=4-2, to=3-3]
 \end{tikzcd}
 	}{
+Via The Correspondence Thm, the subgroups of $\mathbb{Z} /12$:
+
 % https://q.uiver.app/#q=WzAsNixbMiwwLCJcXG1hdGhiYntafS8gMTIiXSxbMywxLCJcXGxhbmdsZVxcbHZlcnQzXFxydmVydFxccmFuZ2xlIl0sWzEsMSwiXFxsYW5nbGVcXGx2ZXJ0MlxccnZlcnRcXHJhbmdsZSJdLFsyLDIsIlxcbGFuZ2xlXFxsdmVydDNcXHJ2ZXJ0XFxyYW5nbGUiXSxbMCwyLCJcXGxhbmdsZVxcbHZlcnQ0XFxydmVydFxccmFuZ2xlIl0sWzEsMywiXFxsYW5nbGVcXGx2ZXJ0MFxccnZlcnRcXHJhbmdsZSJdLFs0LDUsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwzLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDEsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDMsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
 \begin{tikzcd}[ampersand replacement=\&,cramped, row sep=small, column sep=small]
 	\&\& {\mathbb{Z}/ 12} \\
@@ -220,109 +313,173 @@
 	}
 \end{xmp}
 
+\vspace{-1pt}
 \begin{thm}[Third Isomorphism Theorem]{thm:third-iso-thm}{2.3.5}
 	If $N \le H \le G$ with $N, H \lhd G$, then
 	\[(G /N) / (H / N) \cong G /H\]
-\end{thm}
-
-\begin{xmp}[Example of ISO3]{xmp:third-iso}{2.3.6}
-	Consider the inclusions $10 \mathbb{Z} \le 5\mathbb{Z} \le \mathbb{Z}$. By the Third Isomorphism Theorem,
-	\[(\mathbb{Z} / 10\mathbb{Z}) / (5\mathbb{Z} / 10\mathbb{Z}) \cong \mathbb{Z} / 5\mathbb{Z}\]
-\end{xmp}
-
-\begin{thm-s}[Second Isomorphism Theorem for Groups]{thm:second-iso-thm}{2.3.7}
-	Let $N$ be a normal subgroup of a group $G$. Let $H$ be a subgroup of $G$. Then
+	\tcbsubtitle{Theorem 2.3.7: Second Isomorphism Theorem for Groups}
+	Let $N$ be a normal subgroup of a group $G$, and $H$ be a subgroup of $G$.
 	\begin{enumerate-a}
 	    \item $HN$ is a subgroup of $G$
 	    \item $N \lhd HN$
 	    \item $H \cap N \lhd H$
 	    \item There is an isomorphism $HN / N \cong H ( H \cap N)$
 	\end{enumerate-a}
-\end{thm-s}
+\end{thm}
+
+% \begin{xmp}[Example of TIT]{xmp:third-iso}{2.3.6}
+% 	Consider the inclusions $10 \mathbb{Z} \le 5\mathbb{Z} \le \mathbb{Z}$. By the Third Iso Theorem,
+% 	\[(\mathbb{Z} / 10\mathbb{Z}) / (5\mathbb{Z} / 10\mathbb{Z}) \cong \mathbb{Z} / 5\mathbb{Z}\]
+% \end{xmp}
+
+\columnbreak
 
 \section{Group Presentations}
+\stepcounter{subsection}
+
+\vspace{2pt}
 \begin{dfn}[Multiplication Table]{dfn:multiplication}{3.1}
-	[TODO: put one in ]
+	\sbsadaptr{
+	We can record group structures with a \textbf{multiplication table}.
+	}{
+	$\begin{array}{c|cccc}
+		& g_{1} & g_{2} &  \cdots & g_{n}\\
+		\hline
+		g_{1} & g_{1}^{2} & g_{1}g_{2} & \cdots & g_{1}g_{n}\\[1ex]
+		g_{2} & g_{2}g_{1} & g_{2}^{2} & \cdots & g_{2}g_{n}\\
+		: & : & : & : & :
+	\end{array}$
+	}
+	%
+	% Example with $S_{3}$
+	% \centering
+	% \begin{tabular}{ c|cccccc}
+	% 	& () & (12) & (13) & (23) & (123) & (132) \\
+	% 	\hline
+	% 	() & () & (12) & (13) & (23) & (123) & (132) \\
+	% 	(12) & (12) & () & (132) & (13) & (23) & (123) \\
+	% 	(13) & (13) & (123) & () & (132) & (12) & (23) \\
+	% 	(23) & (23) & (132) & (123) & () & (13) & (12) \\
+	% 	(123) & (123) & (13) & (23) & (12) & (132) & () \\
+	% 	(132) & (132) & (23) & (12) & (13) & () & (123) \\
+	% \end{tabular}
+	\vspace{-5pt}
 \end{dfn}
 
+\vspace{-2pt}
 \begin{xmp}[A Simple Group Presentation]{xmp:group-presentation}{3.2.1}
 	Let $n\in \mathbb{Z}_{\ge 1}$. We'll define a new group $A$, which we write
+	\vspace{-3pt}
 	\[A = \langle  x \mid x^{n} = e \rangle\]
+	\par\vspace{-3pt}
 	The notation means ``$A$ is the group generated by $x$, subject to the group axioms, the rule $x^{n} = e$, and all logical consequences''.
 
 	The elements of $A$ are $\{x, x^{2}, x^{3},\dots,x^{n-1},x^{n} = e\}$. i.e.e $A \cong C_{n}$.
 \end{xmp}
 
+\vspace{-2pt}
 \begin{dfn}[Free Group]{dfn:free-group}{3.2.2}
 	The \textbf{free group on generators $x_{1},x_{2},\dots,x_{m}$}, written $\langle x_{1},\dots,x_{m} \rangle$, is the group whose elements are words in the symbols $x_{1},\dots,x_{m}, x^{-1}_{1},\dots,x^{-1}_{m}$ subject to the group axioms and all logical consequences. The group operation is concatenation.
-\end{dfn}
-
-\begin{dfn}[Group Presentation]{dfn:group-presentation}{3.2.3}
-	Let $r_{1},\dots,r_{n} \in \langle x_{1},\dots,x_{m} \rangle$. The group \textbf{generated} by $x_{1},\dots,x_{m}$ subject to the \textbf{relations} $r_{1},\dots,r_{n}$ is the group wiht generators $x_{1},\dots,x_{m}$, subject to the group axioms, the rules that $r_{1}=r_{2}=\cdots=r_{n}=e$, and all logical consequences. This group is written
+	\vspace{-2pt}
+	\tcbsubtitle{Definition 3.2.3: Group Presentation}
+	\vspace{-2pt}
+	Let $r_{1},\dots,r_{n} \in \langle x_{1},\dots,x_{m} \rangle$. The group \textbf{generated} by $x_{1},\dots,x_{m}$ subject to the \textbf{relations} $r_{1},\dots,r_{n}$ is the group with generators $x_{1},\dots,x_{m}$, subject to the rules that $r_{1}=r_{2}=\cdots=r_{n}=e$, the group axioms, and all logical consequences. This group is written
+	\vspace{-3pt}
 	\[\langle x_{1},\dots,x_{m} \mid r_{1},\dots,r_{m} \rangle\]
+	\par\vspace{-3pt}
 	This notation gives a \textbf{presentation} of the group
 \end{dfn}
 
+\vspace{-2pt}
+\begin{xmp}[Examples of Free Groups]{xmp:free-groups}{3.2.A}
+	\textbf{Example 3.2.4}: Let $B = \langle x \mid - \rangle$ (Here, the $-$ means there are no relations). $B$ is the free group on the generator $x$. Writing out the elements of $B$ we get $B = \{ \dots, x^{-3}, x^{-2}, x^{-1}, e, x, x^{2}, x^{3}, \dots\}.$ The map $x^{a} \mapsto a$ gives an isomorphism between $B$ and $\mathbb{Z}$.
+
+	\textbf{Example 3.2.5}: Let $C = \langle x, y \mid xyx^{-1}y^{-1} \rangle $. In $C$, we have $xyx^{-1}y^{-1} = e$, so $xy = yx$. Therefore an element of $C$ is a product of some $x$'s then some $y$'s. i.e. $C = \{x^{a}y^{b} \mid a,b\in \mathbb{Z}\}$, i.e. $C \cong \mathbb{Z} \times \mathbb{Z}$
+
+	\textbf{Example 3.2.6}: Let $D = \langle x \mid x^{3} = x^{2} \rangle$. Since we can use group axioms, and logical consequences, we have the cancellation property.
+	\[
+		x^{3} = x^{2} \quad \implies \quad  x = e \quad \implies \quad D = \{e\}.
+	\]
+\end{xmp}
+
 %TODO: examples
 
-\section{E}
+\vspace{-2pt}
 \begin{thm}[Novikov's Theorem]{thm:novikov}{3.2.7}
 	There is no algorithm for deciding whether or not
+	\vspace{-3pt}
 	\[\langle x_{1},\dots,x_{m} \mid r_{1},\dots,r_{m} \rangle = \{e\}\]
 \end{thm}
 
+\vspace{-2pt}
 \begin{xmp}[E]{xmp:E}{3.2.8}
 	Let $E = \langle a, b \mid a^{2}, b^{5}, (ab)^{5} \rangle$. Notice that in $E$, we have
+	\vspace{-2pt}
 	\[abab = e = b^{5} \implies aba = b^{5} \implies ba = a^{2}ba = ab^{4}\]
-	Note the equation
-	\begin{equation}\label{3.2.9}
-		ba = ab^{4}
-	\end{equation}
+	\par\vspace{-2pt}
+	Note: the equation $ba = ab^{4}$ gives us..
+	\vspace{-2pt}
+	\tcbline
+	\vspace{-3pt}
+	\textbf{Lemma 3.2.10}: Any element $x\in E$ can be written $x = a^{i}b^{j}$, where $i\in \{0, 1\}$ and $j\in \{0,1,2,3,4\}$
 \end{xmp}
-
-\begin{lma}[]{lma:e-writing}{3.2.10}
-	Any element $x\in E$ can be written $x = a^{i}b^{j}$, where $i\in \{0, 1\}$ and $j\in \{0,1,2,3,4\}$
-\end{lma}
 
 %TODO: universal prop of free groups
 
 \begin{ppn}[Universal Property of Free Groups]{ppn:fg-up}{3.2.11}
-	Let $G$ be a group generated by a set $\{s_{1},\dots,s_{n}\}$. Let $F = \langle S_{1},\dots,S_{n} \rangle$ be the free group on the letters $\{S_{1},\dots,S_{n}\}$. Then there is a unique surjective homomorphism from $\pi : F \to G$ such that $\pi(S_{i}) = s_{i}$ for all $i$.
+	For a group $G$ generated by a set $\{s_{1},\dots,s_{n}\}$, let $F = \langle S_{1},\dots,S_{n} \rangle$ be the free group on the letters $\{S_{1},\dots,S_{n}\}$. Then there is a unique surjective homomorphism from $\pi : F \to G$ s.t. $\pi(S_{i}) = s_{i}$ for all $i$.
 \end{ppn}
 
-\begin{xmp}[Free Groups]{xmp:free-groups}{3.2.A}
-	Something something this is isomorphic to the Dihedral group.
+\vspace{-2pt}
+\begin{xmp}[Dihedral Presentation]{xmp:dihedral-presentation}{3.2.12}
+	We have $\langle a, b \mid a^{2}, b^{n}, (ab)^{2} \rangle \cong D_{n}$ for any $n \ge 3$.
 \end{xmp}
 
 \section{Sylow Theorems}
+\stepcounter{subsection}
 
-\begin{dfn}[\texorpdfstring{$p$}{p}-subgroup]{dfn:p-subgroup}{4.1.}
-	Let $G$ be a finite group and let $p$ be a prime. A subgroup $H$ of $G$ is a \textbf{$p$-subgroup} of $G$ if it is a $p$-group, that is, it has order $p^{n}$ for some $n$, and it is a \textbf{Sylow $p$-subgroup} of $G$ if its order is the highest power of $p$ that divides the order of $G$. We say that $H$ is a \textbf{Sylow subgroup} of $G$ if it is a Sylow $p$-subgroup for some prime $p$.
+\vspace{2pt}
+\begin{dfn}[\texorpdfstring{$p$}{p}-subgroup]{dfn:p-subgroup}{4.1.1}
+	Let $G$ be a finite group and let $p$ be a prime. A subgroup $H$ of $G$ is a...
+	\begin{itemize-zero}
+	    \item \textbf{$p$-subgroup} of $G$ if it has order $p^{n}$ for some $n$
+	    \item \textbf{Sylow $p$-subgroup} if its order is the highest power of $p$ that divides the order of $G$
+	    \item \textbf{Sylow subgroup} of $G$ if it is a Sylow $p$-subgroup for some $p$.
+	\end{itemize-zero}
 \end{dfn}
 
-\begin{thm}[Sylow I]{thm:sylow-i}{4.1.2}
-	Let $\lvert G \rvert = n$ and suppose that $p$ is a prime that divides $n$. Write $n = p^{m}r$ with $p$ not dividing $r$. Then there exists at least one subgroup of order $p^{m}$. That is, there is at least one Sylow $p$-subgroup.
+\begin{thm}[Sylow Theorems I - III]{thm:sylows}{4.1.A}
+	
+	Let $\lvert G \rvert = n$ and suppose that $p$ is a prime that divides $n$. Write $n = p^{m}r$ with $p$ not dividing $r$. 
+	\tcbsubtitle{Theorem 4.1.2: Sylow I}
+	\vspace{-2pt}
+	Then there exists at least one subgroup of order $p^{m}$. That is, there is at least one Sylow $p$-subgroup.
+	\tcbsubtitle{Theorem 4.1.3: Sylow II}
+	\vspace{-2pt}
+	Suppose that $P$ is a Sylow $p$-subgroup and that $H \le G$ is any $p$-subgroup of $G$. Then there exists $x\in G$ with $H \subseteq x P x^{-1}$. In particular, any two Sylow $p$-subgroups of $G$ are conjugate in $G$.
+	\tcbsubtitle{Theorem 4.1.4: Sylow III}
+	\vspace{-2pt}
+	Let $n_{p}$ be the number of distinct Sylow $p$-subgroups of $G$. Then $n_{p} \mid r$ and $n_{p} \equiv 1 \mod p$
 \end{thm}
 
-\begin{thm}[Sylow ii]{thm:sylow-ii}{4.1.3}
-	Let $\lvert G \rvert = n$ and suppose that $p$ is a prime that divides $n$. Write $p^{m}r$ with $p$ not dividing $r$. Suppose that $P$ is a Sylow $p$-subgroup and that $H \le G$ is any $p$-subgroup of $G$. Then there exists $x\in G$ with $H \subseteq x P x^{-1}$. In particular, any two Sylow $p$-subgroups of $G$ are conjugate in $G$.
-\end{thm}
-
-\begin{thm}[Sylow III]{thm:sylow-iii}{4.1.4}
-	Let $\lvert G \rvert = n$ and suppose that $p$ is a prime that divides $n$. Write $n = p^{m}r$ with $p$ not dividing $r$. Let $n_{p}$ be the number of distinct Sylow $p$-subgroups of $G$. Then $n_{p} \mid r$ and $n_{p} \equiv 1 \mod p$
-\end{thm}
-
-\begin{xmp}[Sylow Subgroups of \texorpdfstring{$S_{3}$}{S3}]{xmp:sylow-s3}{4.1.5}
-	Consider $S_{3}$ and recall that $\lvert S_{3} \rvert = 6$ s.t. the possible nontrivial Sylow $p$-subgroups would be of order $2$ and $3$. There are three transpositions in $S_{3}$ and we get three Sylow $2$-subgroups of order $2$. They are all conjugate, since all transpositions in $S_{n}$ are conjugate.
-
-	There is a unique subgroup of order $3$, which is normal
-\end{xmp}
-
-\begin{xmp}[Sylow Subgroups of \texorpdfstring{$D_{6}$}{D6}]{xmp:sylow-d6}{4.1.6}
-	$D_{6}$ has $12$ elements, so Sylow I predicts subgroups of order $3$ and subgroups of order $4$. Let $g$ be a reflection and $h$ the clockwise rotation by $\pi /3$. It's clear that $h^{2}$ generates a subgroup of order $3$, and since all elements of $D_{6}$ that are not powers of $h$ are reflections, this is the only one.
-
-	$D_{6}$ has no elements of order $4$, so a Sylow $2$-subgroup must be isomorphic to $C_{2} \times C_{2}$. In $D_{6}$ we have $ah^{3} = h^{3}a$ for any reflection $a$. So $\{e, a, h^{3}, ah^{3}\}$ is a subgroup of $D_{6}$ for any reflection $a$. If $a$ is a reflection, then $a = gh^{i}$ for some $i$. We see that there are $3$ Sylow $2$-subgroups of $D_{6}$:
+\begin{xmp}[Elementary Sylow Subgroups]{xmp:sylow-subgroups}{4.1.B}
+	\textbf{Example 4.1.5: Sylow Subgroups of $S_{3}$}: $\lvert S_{3} \rvert = 6$ therefore the possible nontrivial Sylow $p$-subgroups would be of order $2$ and $3$.
+	\begin{itemize-zero}
+	    \item There are three transpositions in $S_{3}$ and we get three Sylow $2$-subgroups of order $2$. They are all conjugate, since all transpositions in $S_{n}$ are conjugate.
+			\vspace{-2pt}
+		\item There is a unique subgroup of order $3$, which is normal
+	\end{itemize-zero}
+	\vspace{-4pt}
+	\tcbline
+	\textbf{Example 4.1.6: Sylow Subgroups of $D_{6}$}: $\lvert D_{6} \rvert = 12$, therefore Sylow I predicts subgroups of order $3$ and subgroups of order $4$. Let $g$ be a reflection and $h$ the clockwise rotation by $\pi /3$.
+	\begin{itemize-zero}
+		\item $h^{2}$ generates a subgroup of order $3$, and since all elements of $D_{6}$ that are not powers of $h$ are reflections, this is the only one.
+			\vspace{-2pt}
+	    \item $D_{6}$ has no elements of order $4$, so a Sylow $2$-subgroup must be isomorphic to $C_{2} \times C_{2}$. In $D_{6}$ we have $ah^{3} = h^{3}a$ for any reflection $a$.
+			\vspace{-2pt}
+		\item So $\{e, a, h^{3}, ah^{3}\}$ is a subgroup of $D_{6}$ for any reflection $a$. If $a$ is a reflection, then $a = gh^{i}$ for some $i$. We see that there are $3$ Sylow $2$-subgroups of $D_{6}$:
 	\[\{e,g,h^{3},gh^{3}\},\, \{e, gh,h^{3}, gh^{4}\},\,\{e, gh^{2}, h^{3}, gh^{5}\}.\]
+	\end{itemize-zero}
 	These are all isomorphic to $C_{2} \times C_{2}$, and are all conjugate.
 \end{xmp}
 
@@ -334,19 +491,18 @@
 
 \begin{dfn}[Simple Subgroup]{dfn:simple-subgroup}{4.1.8}
 	A group $G$ is \textbf{simple} if $G$ has no nontrivial normal subgroups: that is, the only normal subgroups are $\{e\}$ and $G$ itself.
-
-	\tcbline
-	\textbf{Motivation}: If $G$ is finite but not simple then $G$ has a nontrivial normal subgroup $N$, and we can think of $G$ being ``built'' from the smaller groups $N$ and $G /N$. On the other hand, if $G$ is simple it is not being built from smaller groups in any obvious way. We will see later in the term that finite groups are really built from simple groups.
 \end{dfn}
 
 \begin{lma}[Sylow Subgroups and Normal Groups]{lma:sylow-normal}{4.1.9}
 	If a group $G$ has a unique Sylow $p$-subgroup $P$, then $P \lhd G$.
 \end{lma}
 
-\setcounter{subsection}{2}
+\stepcounter{subsection}
+\vspace{-2pt}
 \begin{dfn}[Group Action]{dfn:action}{4.2.1}
 	Let $G$ be a group and $X$ a set. An \textbf{action of $G$ on $X$} is a function
 	\[G \times X \to X,\;\quad (g, x) \mapsto g \cdot x\]
+	\par\vspace{-3pt}
 	satisfying the following two properties:
 	\begin{enumerate}
 	    \item The identity acts trivially: $e \cdot x = x$ for all $x\in X$.
@@ -355,54 +511,62 @@
 
 	\textbf{Note}: We write our group actions as $g \cdot x$. 
 	\tcbline
+	\vspace{-5pt}
+	\sbsadapt{
 	If $x\in X$ then the \textbf{orbit} of $x$ is
 	\[G \cdot x = \{g \cdot x \mid g\in G\}\]
-	\tcbline
+	}{
 	The \textbf{stabilizer} of $x$ is
 	\[\Stab_{G}(x) = \{g \in G : g \cdot x = x\}\]
-	These are the elements that leave $x$ fixed.
+	}
 \end{dfn}
 
+\vspace{-2pt}
 \begin{lma}[Orbits Partitions]{lma:orbits-partition}{4.2.2}
 	Let $G$ act on $X$.
 	\begin{enumerate-a-zero}
 	    \item The action induces an equivalence relation $\sim$ on $X$ defined by: $x \sim y$ iff there exists $g\in G$ with $g \cdot x = y$
 	    \item The equivalence classes of this equivalence relation are the orbits.
-	    \item The distinct orbits in $X$ form a partition of $X$ (That is, each element of $x$ is in exactly one orbit and distinct orbits have empty intersection.)
+	    \item The distinct orbits in $X$ form a partition of $X$ (each element of $x$ is in exactly one orbit, distinct orbits have empty intersection.)
 	\end{enumerate-a-zero}
-\end{lma}
-
-\begin{lma}[Stabilizer is a Subgroup]{lma:stabilizer-subgroup}{4.2.3}
+	\tcbsubtitle{Lemma 4.2.3}
 	Let $G$ be a group that acts on a set $X$. For all $x\in X$, the stabilizer $\Stab_{G}(x)$ is a subgroup of $G$.
 \end{lma}
 
-\begin{xmp}[Examples of Actions]{xmp:action-example}{4.2.4}
-	\begin{itemize}
-		\item[\textbf{4.2.4})] Let $k$ be a field and let $n$ be a positive integer. Let $G = GL_{n}(k)$ and $X = k^{n}$. Then $G$ acts on $X$ via
-			\[A \cdot v = Av\]
-			that is, by matrix multiplication
-		\item Let $n$ be a positive integer. Let $G = S_{n}$, the $n$-th symmetric group, and let $X = \{1,\dots,n\}$. Then $G$ acts on $X$ via:
-			\[\sigma \cdot i = \sigma(i)\]
-	\end{itemize}
+\vspace{-2pt}
+\begin{xmp}[Examples of Actions]{xmp:action-example}{4.2.A}
+	\textbf{Example 4.2.4}: Let $k$ be a field and let $n$ be a positive integer. Let $G = GL_{n}(k)$ and $X = k^{n}$. Then $G$ acts on $X$ via $A \cdot v = Av$ that is, by matrix multiplication.
+	\tcbline
+	\textbf{Example 4.2.5}: Let $n$ be a positive integer. Let $G = S_{n}$ and let $X = \{1,\dots,n\}$. Then $G$ acts on $X$ via $\sigma \cdot i = \sigma(i)$.
 \end{xmp}
 
+\vspace{-2pt}
 \begin{thm}[Orbit-Stabilizer Theorem]{thm:orbit-stabilizer}{4.2.6}
 	Let $G$ be a finite group acting on a set $X$, and let $x\in X$. Then
 	\[\lvert G \rvert = \lvert \Stab_{G}(x) \rvert \lvert G \cdot x \rvert\]
 \end{thm}
 
+\vspace{-2pt}
 \begin{xmp}[Conjugacy Class]{xmp:conjugacy}{4.2.A}
 	We will look at $G$ ating on itself by \textbf{conjugation}
+	\vspace{-2pt}
 	\[g \cdot a = gag^{-1}\]
+	\par\vspace{-2pt}
 	Lets check this is a group action: $e \cdot a = eae^{-1} = a$, and
+	\vspace{-2pt}
 	\[g \cdot (h \cdot a) = g \cdot (hah^{-1}) = g(hah^{-1}g^{-1}) = gha(gh)^{-1} = (gh) \cdot a\]
-	So conjugacy is a group action. Orbits and stabilizers of elements of $G$ under the conjugacy action: If $a\in G$, then
+	Orbits and stabilizers of elements of $G$ under the conjugacy action: If $a\in G$, then
+	\vspace{-3pt}
 	\[\Stab_{G}(a) = \{g \in G \mid gag^{-1} = a\}\]
-	Since we can rewrite $gag^{-1} = a$ as $ga = ag$, $\Stab_{G}(a)$ is precisely the \textbf{centralizer} $C_{G}(a)$ (the elements of $G$ that commute with $a$). The orbit of $a$ is
+	\par\vspace{-1pt}
+	Since we can write $gag^{-1} = a$ as $ga = ag$, $\Stab_{G}(a)$ is the \textbf{centralizer} $C_{G}(a)$ (the elements of $G$ that commute with $a$). The orbit of $a$ is
+	\vspace{-2pt}
 	\[G \cdot a = \{gag^{-1} \mid g\in G\}\]
-	This is the set of elements that are conjugate to $a$, or more concisely the \textbf{conjugacy class of $a$}. We will write the conjugacy class of $a$ as $\Cl(a)$. Now we can apply Orbit-Stabilizer.
+	\par\vspace{-2pt}
+	This is the set of elements that are conjugate to $a$, or the \textbf{conjugacy class of $a$}. We will write the conjugacy class of $a$ as $\Cl(a)$.
 \end{xmp}
 
+\vspace{-2pt}
 \begin{lma}[Conjugacy Class Divides]{lma:conjugacy-divides}{4.2.7}
 	Let $G$ be a finite group. For any $a\in G$, we have
 	\begin{equation}\label{4.2.8}
@@ -410,7 +574,9 @@
 	\end{equation}
 	Thus, $\lvert C_{G}(a) \rvert$ and $\lvert \Cl(a) \rvert$ divide $\lvert G \rvert$.
 
+	\vspace{-2pt}
 	\tcbline
+	\par\vspace{-2pt}
 	This can also be written with the index of $C_{G}(a)$ in $G$:
 	\[\lvert Cl(a) \rvert = [G : C_{G}(a)]\]
 \end{lma}
@@ -436,7 +602,7 @@
 \end{thm}
 
 \subsection{Proofs of Sylow Theorems}
-lol
+Not going to be proved here lol
 
 \begin{lma}[Fixed Points of a \texorpdfstring{$p$}{p}-group]{lma:fixed-point-pgroup}{4.3.1}
 	Let $p$ be a prime and let $G$ be a finite $p$-group acting ona finite set $X$. Then the number of fixed points in $X$ is congruent to $\lvert X \rvert \mod p$
@@ -464,65 +630,77 @@ lol
 	Very long working
 \end{xmp}
 
+\columnbreak
 \section{Finitely Generated Abelian Groups}
-
+\vspace{2pt}
 \begin{xmp}[Isomorphisms for Groups of Order 100]{xmp:order-100-isos}{5.1.1}
-	Suppose $A$ is an abelian group with $\lvert A \rvert = 100$. Then, since $100 = 2^{2} \cdot 5^{2}$, there will be a (unique) Sylow $2$-subgroup $P$, say, of order $4$, and a unique Sylow $5$-subgroup $Q$, say, of order $25$.
-
-	Any element in $P \cap Q$ has order dividing $4$ and also dividing $25$; so $P \cap Q = \{e\}$. Now, $PQ$ is a subgroup of $A$ that contains $P$, and so has order divisible by $4$, and contains $Q$ and so has order divisible by $25$. Hence $PQ$ has order at least $100$ and so $PQ =	A$. By Chapter 2, Ex10, $A \cong P \times Q$. Thus, the possibilities for $A$ are:% TODO ? Lol
-	\begin{align*}\label{eq:groups-of-C100}\tag{5.1.2}
-		\renewcommand{\arraystretch}{1.2}% Spread out array rows
-		\begin{array}{c}
-		C_{4} \times C_{25}, \quad C_{2} \times C_{2} \times C_{25}, \\ C_{4} \times C_{5} \times C_{5}, \quad C_{2} \times C_{2} \times C_{5} \times C_{5}
-		\end{array}
-	\end{align*}
+	Suppose $A$ is an abelian group with $\lvert A \rvert = 100$. Then, 
+	\vspace{-2pt}
+	\begin{itemize-zero}
+	    \item Since $100 = 2^{2} \cdot 5^{2}$, there will be a (unique) Sylow $2$-subgroup $P$, say, of order $4$, and a unique Sylow $5$-subgroup $Q$, say, of order $25$.
+		\item Any element in $P \cap Q$ has order dividing $4$ and also dividing $25$; so $P \cap Q = \{e\}$.
+		\item $PQ$ is a subgroup of $A$ that contains $P$, and so has order divisible by $4$, and contains $Q$ and so has order divisible by $25$
+		\item Hence $PQ$ has order at least $100$ and so $PQ =	A$. By Chapter 2, Ex10, $A \cong P \times Q$
+	\end{itemize-zero}
+	\par\vspace{-3pt}
+	Thus, the possibilities for $A$ are:% TODO ? Lol
+	\vspace{-3pt}
+	\[C_{4} \times C_{25}, \quad C_{2} \times C_{2} \times C_{25}, \quad C_{4} \times C_{5} \times C_{5}, \quad C_{2} \times C_{2} \times C_{5} \times C_{5}\]
 \end{xmp}
 
+\vspace{-2pt}
 \begin{thm}[Isomorphisms for Finite Groups]{thm:finite-isomorphisms}{5.1.3}
-	Suppose that $A$ is a finite abelian group of order $n$, and that $n = p_{1}^{s_{1}}p_{2}^{s_{2}}\cdots p_{t}^{s_{t}}$. Let $A_{p_{i}}$ be the unique Sylow $p_{i}$-subgroup of $A$. Then
+	Suppose $A$ is a finite abelian group of order $n$, and $n = p_{1}^{s_{1}}p_{2}^{s_{2}}\cdots p_{t}^{s_{t}}$. Let $A_{p_{i}}$ be the unique Sylow $p_{i}$-subgroup of $A$. Then
+	\vspace{-3pt}
 	\[A \cong A_{p_{1}} \times A_{p_{2}} \times \cdots \times A_{p_{i}}\]
+	\par\vspace{-3pt}
 	That is, $A$ is isomorphic to the direct product of its Sylow subgroups.
 \end{thm}
 
+\vspace{-2pt}
 \begin{thm}[Cyclic Subgroups of Abelian Groups]{thm:cyclic-abelian}{5.1.4}
-	Let $A$ be an abelian group with $\lvert A \rvert = p^{n}$ for some prime $p$. Then $A$ is isomorphic to the direct product of cyclic subgroups of orders $p^{c_{1}}, p^{c_{2}},\dots,p^{c_{s}}$, where $e_{1} \ge e_{2} \ge \cdots \ge e_{s} \ge 1$ and $e_{1}+e_{2}+\cdots+e_{s}=n$. This product is unique up to reordering the factors.
+	Let $A$ be an abelian group with $\lvert A \rvert = p^{n}$ for some prime $p$. Then $A$ is isomorphic to the direct product of cyclic subgroups of orders $p^{c_{1}}, p^{c_{2}},\dots,p^{c_{s}}$, where $e_{1} \ge e_{2} \ge \cdots \ge e_{s} \ge 1$ and $e_{1}+e_{2}+\cdots+e_{s}=n$. This product is unique up to reordering factors.
+	\tcbsubtitle{Corollary 5.1.5: Fundamental Thm of Finite Abelian Groups i}
+	Let $A$ be a finite abelian group. Then $A$ is a direct product of cyclic groups of prime power order. This product is unique up to reordering the factors.
 \end{thm}
 
-\begin{crl}[FT of Finite Abelian Groups I]{crl:ftfag-i}{5.1.5}
-	Let $A$ be a finite abelian group. Then $A$ is a direct product of cyclic groups of prime power order. This product is unique up to reordering the factors.
-\end{crl}
-
+\vspace{-2pt}
 \begin{thm}[Chinese Remainder Theorem]{thm:chinese-remainder}{5.1.6}
 	Let $m$, $n$ be nonzero coprime integers, then $C_{mn} \cong C_{m} \times C_{n}$.
+
+	\tcbsubtitle{Corollary 5.1.8: Fundamental Thm of Finite Abelian Groups ii}
+	Any finite abelian group of order $n$ can be written as a direct product of cyclic groups
+	\vspace{-4pt}
+	\[C_{n_{1}} \times C_{n_{2}} \times \cdots \times C_{n_{s}},\]
+	\par\vspace{-3pt}
+	where $n_{i}$ divides $n_{i+1}$ for each $i = 1,2,\dots,s-1$ and $n_{1}n_{2}\cdots n_{s} = n$. This product is unique up to reordering the factors.
 \end{thm}
 
+\vspace{-2pt}
 \begin{xmp}[Cyclic 100 via the CRT]{xmp:cyclic-100-crt}{5.1.7}
-	Using the Chinese Remainder Theorem \ref{thm:chinese-remainder}, we have: $C_{4} \times C_{25} \cong C_{100};$ $C_{2} \times C_{2} \times C_{25} \cong C_{2} \times C_{50}$; $C_{4} \times C_{5} \times C_{5} \cong C_{5} \times C_{20}$; $C_{2} \times C_{2} \times C_{5} \times C_{5} \cong C_{10} \times C_{10}$. Therefore, an alternative list is:
+	Using the Chinese Remainder Theorem \ref{thm:chinese-remainder}, we have:
+	\begin{align*}
+		C_{4} \times C_{25} \cong C_{100};& \qquad C_{2} \times C_{2} \times C_{25} \cong C_{2} \times C_{50} \\
+		C_{4} \times C_{5} \times C_{5} \cong C_{5} \times C_{20};& \qquad C_{2} \times C_{2} \times C_{5} \times C_{5} \cong C_{10} \times C_{10}
+	\end{align*}
+	Therefore, an alternative list is:
 	\[C_{100}, \quad C_{2} \times C_{50}, \quad C_{5} \times C_{20}, \quad C_{10} \times C_{10}\]
 \end{xmp}
 
-\begin{crl}[FT of Finite Abelian Groups II]{crl:ftfag-ii}{5.1.8}
-	Any finite abelian group of order $n$ can be written as a direct product of cyclic groups
-	\[C_{n_{1}} \times C_{n_{2}} \times \cdots \times C_{n_{s}},\]
-	where $n_{i}$ divides $n_{i+1}$ for each $i = 1,2,\dots,s-1$ and $n_{1}n_{2}\cdots n_{s} = n$. This product is unique up to reordering the factors.
-\end{crl}
-
+\vspace{-2pt}
 \begin{dfn}[Exponent of a Finite Group]{dfn:exponent}{5.1.9}
-	The \textbf{exponent}, $e(G)$, of a finite group is the least common muliple of the orders of the elements of $G$. Note that $e(G) \le \lvert G \rvert$ for any finite group $G$, by Lagrange.
+	The \textbf{exponent}, $e(G)$, of a finite group is the least common multiple of the orders of the elements of $G$. Note that $e(G) \le \lvert G \rvert$ for any finite group $G$, by Lagrange.
+	\tcbsubtitle{Lemma 5.1.11}
+	Let $A$ be a finite abelian group. $A$ contains an element of order $e(A)$.
+	\tcbsubtitle{Corollary 5.1.12}
+	If $A$ is a finite abelian group with $e(A) = \lvert A \rvert$ then $A$ is cyclic.
 \end{dfn}
 
 \begin{xmp}[Example of an Exponent]{xmp:exponent-example}{5.1.10}
 	The symmetric group $S_{3}$ has elements of order $1$, $2$, and $3$; so $e(S_{3}) = 6$. However, note that $S_{3}$ has no element of order $6$.
 \end{xmp}
 
-\begin{lma}[Order of Exponent in FA Groups]{lma:exponent-order}{5.1.11}
-	Let $A$ be a finite abelian group. Then $A$ contains an element of order $e(A)$.
-\end{lma}
-
-\begin{crl}[Cyclic Finite Abelian Groups]{crl:cyclic-fag}{5.1.12}
-	If $A$ is a finite abelian group with $e(A) = \lvert A \rvert$ then $A$ is cyclic.
-\end{crl}
-
+\vspace{-1pt}
 \begin{thm}[Cyclicity of Field Group]{thm:field-multiple-cyclic}{5.1.13}
 	Let $A$ be a finite subgroup of the multiplicative group $K^{\ast} := K \backslash \{0\}$ of a field $K$. Then $A$ is a cyclic group.
 
@@ -530,15 +708,19 @@ lol
 	\textbf{Corollary 5.1.14}: The multiplicative group of nonzero elements of a finite field is cyclic.
 \end{thm}
 
+\vspace{-1pt}
 \setcounter{subsection}{2}
 \begin{dfn}[Modules of a Ring]{dfn:module}{5.2.1}
 	Let $R$ be a ring. An \textbf{$R$-module} is an abelian group $(M, +)$ together with a mapping
+	\vspace{-3pt}
 	\[R \times M \to M,\;\quad (r, a) \mapsto ra\]
+	\par\vspace{-2pt}
 	that is \textbf{distributive}, \textbf{associative}, and \textbf{unital} ($1a=a$ $\forall a\in M$). 
 \end{dfn}
 
+\vspace{-1pt}
 \begin{xmp}[\texorpdfstring{$\mathbb{Z}$}{Z}-module]{xmp:zmod}{5.2.2}
-	\sbsadapt{
+	\sbsadaptr{
 	A $\mathbb{Z}$-module is the same as an abelian group: if $(M, +)$ is an abelian group, $n\in \mathbb{Z}$, and $a\in M$ define
 	}{
 	$na = \begin{cases}
@@ -547,34 +729,38 @@ lol
 		-(-n)a & n < 0
 	\end{cases}$
 	}
-\end{xmp}
-
-\begin{xmp}[Modules and Vector Spaces]{xmp:module-vector-space}{5.2.3}
+	\tcbsubtitle{Example 5.2.3}
 	If $K$ is a field then a $K$-module is the same as a $K$-vector space.
 \end{xmp}
 
+\vspace{-1pt}
 \begin{dfn}[Free Module]{dfn:free-module}{5.2.4}
 	Let $R$ be a ring, and let $n\in \mathbb{N}$. The \textbf{free $R$-module of rank $n$} is the $n$-fold catesian product $R^{n}$. It is given a module structure by
 	\[r(a_{1}, a_{2},\dots,a_{k}) = (ra_{1},ra_{2},\dots,ra_{k})\]
 \end{dfn}
 
+\vspace{-1pt}
 \begin{thm-s}[FT of Finitely Generated Abelian Groups]{thm:ftfgag}{5.2.5}
 	Let $A$ be a finitely generated abelian group. Then
 	\[A \cong \mathbb{Z} /r_{1} \mathbb{Z} \times \mathbb{Z} / r_{2} \mathbb{Z} \times \cdots \times \mathbb{Z} /r_{k} \mathbb{Z} \times \mathbb{Z}^{\ell}\]
-	for some $k, \ell\in \mathbb{N}$ and $r_{1},\dots,r_{k}$ nonzero elements of $\mathbb{Z}$ with $r_{1} \mid r_{2} \mid \cdots \mid r_{k}$.
+	for some $k, \ell\in \mathbb{N}$ and $r_{1},. .,r_{k}$ nonzero elements of $\mathbb{Z}$ with $r_{1} | r_{2} | \cdot\cdot | r_{k}$.
 \end{thm-s}
 
+\vspace{-1pt}
 \begin{lma}[Basis of \texorpdfstring{$\mathbb{Z}$}{Z}-modules]{lma:zmod-basis}{5.2.6}
 	Let $\alpha$ be a $\mathbb{Z}$-module automorphism of $\mathbb{Z}^{s}$. Then $\mathbb{Z}^{s} / K \cong \mathbb{Z}^{s} / \alpha(K)$.
 \end{lma}
 
+\vspace{-1pt}
 \begin{ppn}[]{ppn:submodule-vector}{5.2.7}
 	Suppose that $M$ is the $r \times s$ matrix corresponding to $K = \sum_{i = 1}^{r} \mathbb{Z} x_{i} \subseteq \mathbb{Z}^{s}$. If we change $M \rightsquigarrow M'$ via invertible row and column operations then $M'$ corresponds to a submodule $K'$ of $\mathbb{Z}^{s}$ so that $\mathbb{Z}^{s} /K \cong \mathbb{Z}^{s} / K'$.
 \end{ppn}
 
 
 % #1: Optional Arguments, #2: Name, #3: Label, #4: Count, #5: Box Label
+\vspace{-6pt}
 \begin{tcolorbox}[thmboxstyle={Useful Fact}{5.3.1}{Parity of Sequences}{usefulfact}{blue!20}{blue!5}, boxed title style={ interior style = {left color=blue!20, right color=green!20}, frame style = {left color=blue!20, right color=green!20}},  frame style={left color=blue!20, right color=red!20, middle color=green!20}, interior style={left color=blue!5, right color=red!5, middle color=green!5}]
+	\vspace{-2pt}
 	If $x_{1},x_{2},x_{3},\dots$ are a sequence of integers with $x_{i} \mid x_{i - 1}$ for all $i$, then there is $n$ such that $x_{i} = \pm x_{i+1}$ for all $i \ge n$
 \end{tcolorbox}
 
@@ -585,17 +771,24 @@ lol
 
 	%TODO: the proof is non examinable
 \end{ppn}
+\newpage
 
 \section{Alternating Groups}
-
+\stepcounter{subsection}
+\vspace{2pt}
 \begin{rcl}[Permutations]{rcl:permutations}{6.1.A}
-	Recall the \textbf{symmetric group} $S_{n}$ is the group of permutations (or bijections) of $n$ objects. We usually think of the $n$ objects as being the set $\{1,2,\dots,n\}$. A permutation can be written as a $2 \times n$ array
-	\[\begin{pmatrix}
+	Recall the \textbf{symmetric group} $S_{n}$ is the group of permutations (or bijections) of $n$ objects. We usually think of the $n$ objects as being the
+	\vspace{-3pt}
+	\sbsadaptl{
+	$\begin{pmatrix}
 		1&2&\cdots& n\\
 		\sigma(1) & \sigma(2) & \cdots & \sigma(n)
-	\end{pmatrix}\]
+	\end{pmatrix}$
+	}{
+	set $\{1,2,\dots,n\}$. A permutation can be written as a $2 \times n$ array (right).
+	}
 
-	\sbsadapt{
+	\sbsadaptr{
 	For example, the following permutation denotes the permutation that sends $1 \mapsto 2$, $2 \mapsto 4$, $3 \mapsto 1$, and $4 \mapsto 3$.
 	}{
 		$\begin{pmatrix}
@@ -603,177 +796,217 @@ lol
 			2 & 4 & 1 & 3
 		\end{pmatrix}$
 	}
-	Remember that $\sigma\tau$ means $\sigma \circ \tau$; that is, first apply $\tau$ and then apply $\sigma$ to the result.
+	Recall $\sigma\tau$ means $\sigma \circ \tau$; i.e. first apply $\tau$ and then apply $\sigma$ to the result.
 	\tcbline
-	We usually write permutations using cycle notation. For example, the cycle $(214)$ denotes the permutation that sends $2\mapsto 1$, $1 \mapsto 4$ and $4 \mapsto 2$, with the convention that all other elements are fixed. Note that cycle notation does not give unique representations, e.g. $(214) = (142) = (421)$. In this notatino, the first permutation above would be written $(1243)$. A cycle is a $k$-cycle if it has $k$ entries; so $(214)$ is a $3$-cycle, while $(35)$ is a $2$-cycle.
-
+	We usually write permutations using cycle notation. For example, the cycle $(214)$ denotes the permutation that sends $2\mapsto 1$, $1 \mapsto 4$ and $4 \mapsto 2$, where all other elements are fixed. Note that cycle notation doesn't give unique representations, e.g. $(214) = (142) = (421)$. In this notation, the above permutation would be written $(1243)$. A cycle is a $k$-cycle if it has $k$ entries; so $(214)$ is a $3$-cycle, while $(35)$ is a $2$-cycle.
+	\vspace{-2pt}
 	\tcbline
-	Two cycles are \textbf{disjoint} if no integer appears in both cycles. For example $(214)(35)$ is a product of two disjoint cycles, and is the permutation
-	\[\begin{pmatrix}
+	\vspace{-5pt}
+	\sbsadaptr{
+	Two cycles are \textbf{disjoint} if no integer appears in both cycles. e.g. $(214)(35)$ is a product of two disjoint cycles, and is the permutation
+	}{
+	$\begin{pmatrix}
 		1 & 2 & 3 & 4 & 5\\
 		4 & 1 & 5 & 2 & 3
-	\end{pmatrix}\]
-	Note that two disjoint cycles commute; e.g. $(214)(35) = (35)(214)$. However, the product of cycles that are not disjoint is not usually commutative; e.g. $(214)(45)\ne (45)(214)$, as the first product sendsd $5$ to $2$ while the second product sends $5$ to $4$.
+	\end{pmatrix}$
+	}
+	Note that two disjoint cycles commute; e.g. $(214)(35) = (35)(214)$. The product of non-disjoint cycles is not usually commutative; e.g. $(214)(45)\ne (45)(214)$, the first product sends $5$ to $2$ while the second sends $5$ to $4$.
 \end{rcl}
 
+\vspace{-2pt}
 \begin{lma}[Unique Representation of Permutations]{lma:permutation-disjoint-unique}{6.1.1}
 	Every permutation can be written as a product of disjoint cycles, and the product is unique up to re-ordering the factors.
-
+	\vspace{-2pt}
 	\tcbline
-	e.g.
-	\[\begin{pmatrix}
+	\vspace{-5pt}
+	\sbsadaptr{
+	e.g. the following permutation is written as $(142)(36)(5)$ in cycle, but could also be written $(36)(5)(142)$
+	}{
+	$\begin{pmatrix}
 		1 & 2 & 3 & 4 & 5 & 6\\
 		4 & 1 & 6 & 2 & 5 & 3
-	\end{pmatrix}\]
-	is written as $(142)(36)(5)$ in cycle, but could also be written $(36)(5)(142)$. Also $1$-cycles are usually omitted, and it is taken that any number not appearing is fixed by the permutation; so for example, we would usually write the above permutation as $(142)(36)$.
+	\end{pmatrix}$
+	}
+	$1$-cycles are usually omitted, and it is taken that any number not appearing is fixed by the permutation; so for example, we would usually write the above permutation as $(142)(36)$.
 
+	\vspace{-2pt}
 	\tcbline
+	\par\vspace{-2pt}
 	A $2$-cycle is often called a \textbf{transposition}, and a $2$-cycle of the form $(i\, i+1)$ is an \textbf{adjacent transposition}.
-\end{lma}
 
-\begin{lma}[Transposition Form of Permutations]{lma:transposition-permutations}{6.1.2}
+	\tcbsubtitle{Lemma 6.1.2: Transposition Form}
+	\vspace{-2pt}
 	Every permutation can be written as a product of transpositions. Thus, $S_{n}$ is generated by transpositions. In fact, $S_{n}$ is generated by adjacent transpositions. Think bubble sort.
 \end{lma}
 
+\vspace{-2pt}
 \begin{dfn}[Cycle Type of a Permutation]{dfn:cycle-type}{6.1.3}
 	Suppose that $\sigma = c_{1}c_{2}\cdots c_{k}$ is a product of $k$ disjoint cycles of length $l_{1},l_{2},\dots,l_{k}$ with $l_{1} \ge l_{2} \ge \cdots \ge k_{k}$. Then the $k$-tuple $(l_{1},l_{2},\dots,l_{k})$ is called the \textbf{cycle type} of $\sigma$.
 \end{dfn}
     
+\vspace{-2pt}
 \begin{xmp}[Conjugate of Permutations]{xmp:permutation-conjugate}{6.1.5}
-	\sbsadapt{
+	\sbsadaptr{
 		Let $c = (125)$ and $g = (23)(145)$ in $S_{5}$. A representation of $g$ is shown to the right
+
+		The conjugate $gcg^{-1}$ is
 	}{
 		$\begin{pmatrix}
 			1 & 2&3&4&5\\
 			4&3&2&5&1
 		\end{pmatrix}$
 	}
-
-	The conjugate $gcg^{-1}$ is
+	\vspace{-12pt}
 	\[
 		(23)(145)(125)(154)(23)=(143)(2)(5)=(431)=(g(1)g(2)g(5))
 	\]
 \end{xmp}
 
+\vspace{-2pt}
 \begin{lma}[Conjugacy Formula]{lma:conjugacy-formula}{6.1.7}
 	Let $\sigma = (a_{1}\, a_{2} \, \cdots \, a_{k})\in S_{n}$, and $\tau \in S_{n}$. Then
+	\vspace{-2pt}
 	\[\tau \sigma \tau^{-1} = (\tau(a_{1}) \, \tau(a_{2}) \, \cdots \, \tau(a_{k}))\]
 \end{lma}
 
+\vspace{-2pt}
 \begin{thm}[Conjugacy Equals Cycle Type]{thm:conjugacy-cycle}{6.1.8}
-	Two permutations in $S_{n}$ are conjugate iff they have the same cycle type.
+	\hspace{-0.6ex}Two permutations in $S_{n}$ are conjugate iff they have the same cycle type
 \end{thm}
 
 \stepcounter{subsection}
 \begin{rcl}[Actions on Two Elements]{rcl:action-two-element}{6.2.A}
 	We consider an action of $S_{n}$ on a set of two elements. Let $x_{1},\dots,x_{n}$ be indeterminates, and set
+	\vspace{-3pt}
 	\[P := \prod_{1 \le i < j \le n} (x_{i} - x_{j})\]
+	\par\vspace{-3pt}
 	Now, set $X = \{P, -P\}$. Then $S_{n}$ acts on $X$ by permuting the variables. For example, when $n = 3$ then $P = (x_{1} - x_{2})(x_{1} - x_{3})(x_{2} - x_{3})$ and $(13)$ sends $P$ to $(x_{3} - x_{2})(x_{1} - x_{3})(x_{2} - x_{3}) = -P$
 \end{rcl}
 
+\vspace{-1pt}
 \begin{dfn}[Odd and Even Permutations]{dfn:odd-even-permutation}{6.2.1}
-	If $\sigma \in S_{n}$ fixes $P$ then $\sigma$ is an \textbf{even permutation}, while if $\sigma \cdot P = -P$ then $\sigma$ is an \textbf{odd permutation}. The set of even permutations is denoted by $A_{n}$ and is called the \textbf{alternating group}.
+	\begin{itemize}[noitemsep, leftmargin=*]
+	    \item If $\sigma \in S_{n}$ fixes $P$ then $\sigma$ is an \textbf{even permutation}
+		\item if $\sigma \cdot P = -P$ then $\sigma$ is an \textbf{odd permutation}
+		\item The set of even permutations is the \textbf{alternating group}, or $A_{n}$.
+	\end{itemize}
+	\tcbsubtitle{Lemma 6.2.2: Products of Odd and Even Permutations}
+	\begin{itemize}[noitemsep, leftmargin=*]
+		\item The product of two even permutations is even
+		\item The product of two odd permutations is even
+		\item The product of an odd and an even permutation (either order) is odd
+		\item A cycle of length $n$ is even if $n$ is odd and is odd if $n$ is even.
+	\end{itemize}
 \end{dfn}
 
-\begin{lma}[Products of Odd and Even Permutations]{lma:odd-even-product}{6.2.2}
-	The product of two even permutations is even. The product of two odd permutations is even. The product of an odd and an even permutation (in either order) is odd. A cycle of length $n$ is even if $n$ is odd and is odd if $n$ is even.
-\end{lma}
-
+\vspace{-1pt}
 \begin{thm}[Even Permutations are a Subgroup]{thm:even-perm-subgroup}{6.2.3}
 	Let $n \ge 2$. Then the set of even permutations $A_{n}$ is a normal subgroup of $S_{n}$ of index $2$; so that $\lvert A_{n} \rvert = \lvert S_{n} \rvert / 2 = n! /2$ for $n \ge 2$.
 \end{thm}
 
+\vspace{-1pt}
 \begin{ppn}[Properties of \texorpdfstring{$A_{4}$}{A4}]{ppn:properties-a4}{6.2.4}
 	The alternating group $A_{4}$ has order $12$. It has a unique subgroup $N$ of order $4$. The subgroup $N$ is normal in $S_{4}$ (and so certainly $N \lhd A_{4}$) and $A_{4} /N \cong C_{3}$, while $S_{4} /N \cong S_{3}$.
-\end{ppn}
-
-\begin{lma}[Closure Union]{lma:closure-union}{6.2.5}
+	\vspace{-1pt}
+	\tcbsubtitle{Lemma 6.2.5: Closure Union}
 	Let $G$ be a finite group and suppose that $H \lhd G$. Then there are $h_{1},\dots,h_{k}\in H$ so that $H = \bigsqcup \Cl_{G}(h_{i})$.
-\end{lma}
+\end{ppn}
 
 \stepcounter{subsection}
 
 % TODO: stuff here
+\vspace{-1pt}
 \begin{thm}[Simple Alternating Groups]{thm:a5-simple}{6.3.A}
-	\textbf{Theorem 6.3.1}: The alternating group $A_{5}$ is simple.
-
-	\textbf{Theorem 6.3.3}: Let $n \ge 5$. Then $A_{n}$ is simple.
-
-	\textbf{Lemma 6.3.4}: If $n \ge 5$ and $\sigma, \sigma'$ are $3$-cycles in $A_{n}$, then $\sigma$ and $\sigma'$ are conjugate in $A_{n}$: that is, there exists $\tau\in A_{n}$ with $\tau \sigma \tau^{-1} = \sigma'$
-
-	\textbf{Lemma 6.3.5}: If $n \ge 3$, then $A_{n}$ is generated by $3$-cycles.
-
-	\textbf{Lemma 6.3.6}: If $H \le S_{n}$ and $H$ has the property that any $\sigma \in H$ with $\sigma \ne ()$ is fixed-point-free, then $\lvert H \rvert \le n$.
-
-	\textbf{Lemma 6.3.7}: If $n \ge 6$ and $\sigma \in A_{n}$ with $\sigma \ne ()$, then $\lvert \Cl_{A_{n}}(\sigma) \rvert \ge n$.
+	\begin{itemize}
+	    \item[\textbf{6.3.1})] The alternating group $A_{5}$ is simple.
+	    \item[\textbf{6.3.3})] Let $n \ge 5$. Then $A_{n}$ is simple.
+	    \item[\textbf{6.3.4})] If $n \ge 5$ and $\sigma, \sigma'$ are $3$-cycles in $A_{n}$, then $\sigma$ and $\sigma'$ are conjugate in $A_{n}$: that is, there exists $\tau\in A_{n}$ with $\tau \sigma \tau^{-1} = \sigma'$
+	    \item[\textbf{6.3.5})] If $n \ge 3$, then $A_{n}$ is generated by $3$-cycles.
+	    \item[\textbf{6.3.6})] If $H \le S_{n}$ and $H$ has the property that any $\sigma \in H$ with $\sigma \ne ()$ is fixed-point-free, then $\lvert H \rvert \le n$.
+	    \item[\textbf{6.3.7})] If $n \ge 6$ and $\sigma \in A_{n}$ with $\sigma \ne ()$, then $\lvert \Cl_{A_{n}}(\sigma) \rvert \ge n$.
+	\end{itemize}
 \end{thm}
 
 \section{Jordan H\"older Theorem}
-
+\vspace{2pt}
 \begin{xmp}[Composition Series]{xmp:composition-series}{7.1.1}
 	Consider the chains of normal subgroups
+	\vspace{-2pt}
 	\begin{align*}
 		\{0\} \lhd 4\mathbb{Z} / 12\mathbb{Z} \lhd 2\mathbb{Z} / 12\mathbb{Z} \lhd \mathbb{Z} /12 \mathbb{Z} \\
 		\{0\} \lhd 6\mathbb{Z} / 12\mathbb{Z} \lhd 3\mathbb{Z} / 12\mathbb{Z} \lhd \mathbb{Z} /12 \mathbb{Z}
 	\end{align*}
+	\vspace{-2pt}
 	These are both examples of \textbf{composition series}
 \end{xmp}
 
+\vspace{-1pt}
 \begin{dfn}[Composition Series]{dfn:composition-series}{7.1.2}
-	Let $G$ be a group. A \textbf{composition series} for $G$ is a chain of subgroups
+	For a group $G$, a \textbf{composition series} for $G$ is a chain of subgroups
+	\vspace{-2pt}
 	\begin{equation}\label{eq:composition-series}\tag{$\ast$}
 		\{e\} = G_{0} \lhd G_{1} \lhd \cdots \lhd G_{s-1} \lhd G_{s} = G
 	\end{equation}
-	where $G_{i} \ne G_{i+1}$ and $G_{i+1} / G_{i}$ is simple for all $i$.
-
-	If \eqref{eq:composition-series} is a composition series for $G$, we say that $s$ is the \textbf{length} of the composition series and the simple groups $G_{i+1} /G_{i}$ are the \textbf{composition factors}.
+	\par\vspace{-2pt}
+	where $G_{i} \ne G_{i+1}$ and $G_{i+1} / G_{i}$ is simple for all $i$. If \eqref{eq:composition-series} is a composition series for $G$, we say that $s$ is the \textbf{length} of the composition series and the simple groups $G_{i+1} /G_{i}$ are the \textbf{composition factors}.
 \end{dfn}
 
 \begin{thm}[Jordan H\"older Theorem]{thm:jordan-holder}{7.1.3}
 	Let $G$ be a finite group. Then $G$ has a composition series. Moreover, any two composition series have the same composition length, and they have the same composition factors up to isomorphism of groups and order of the factors.
 \end{thm}
 
+\vspace{-2pt}
 \begin{thm}[Classification of Finite Simple Groups]{thm:classification}{7.1.4}
 	Let $G$ be a finite simple group. Then $G$ is isomorphic to one of:
-	\begin{itemize}
+	\vspace{2pt}
+	\begin{multicols}{2}
+	\begin{itemize-zero}
 	    \item \textbf{Family 1}: $C_{p}$ for $p$ prime
 	    \item \textbf{Family 2}: $A_{n}$ for $n \ge 5$
 	    \item 16 other infinite families
-		\item 26 sporadic groups. These include the \textbf{Monster} and \textbf{Baby Monster}.
-	\end{itemize}
+		\item 26 sporadic groups.
+	\end{itemize-zero}
+	\end{multicols}
 \end{thm}
 
 \stepcounter{subsection}
+\vspace{-2pt}
 \begin{ppn}[Finite Composition Series]{ppn:finite-composition}{7.2.1}
 	If $G$ is a finite group, then $G$ has a composition series.
-\end{ppn}
-
-\begin{lma}[]{lma:composition-addition}{7.2.2}
+	\tcbsubtitle{Sublemma 7.2.2}
 	Let
+	\vspace{-3pt}
 	\[
 		\{e\} = G_{0} \lhd G_{1} \lhd \cdots \lhd G_{s-1} \lhd G_{s} = G
 	\]
+	\par\vspace{-2pt}
 	be a composition series for $N$, and
+	\vspace{-2pt}
 	\[
 		N = H_{0} \lhd H_{1} \lhd \cdots \lhd H_{r} = G /N
 	\]
+	\par\vspace{-2pt}
 	be a composition series for $G /N$. Then there is a composition series for $G$ of length $s + r$, whose composition factors are, in order,
 	\[G_{1}, G_{2} /G_{1},\dots, G_{s} /G_{s-1}, H_{1}, H_{2} /H_{1},\dots, H_{r} /H_{r-1}\]
 	
-\end{lma}
+\end{ppn}
 
+\vspace{-2pt}
 \begin{thm}[Composition Factors of Series]{thm:series-factors}{7.3.1}
 	Let $G$ be a finite group. Then any two composition series have the same length and the same composition factors up to isomorphism and the order in which they are listed. More precisely, if
 	\begin{equation}\tag{$\dag$}
 		\{e\} = G_{0} \lhd G_{1} \lhd \cdots \lhd G_{s-1} \lhd G_{s} = G
 	\end{equation}
+	\par\vspace{-3pt}
 	and
+	\vspace{-3pt}
 	\begin{equation}\tag{$\ddag$}
 		\{e\} = H_{0} \lhd H_{1} \lhd \cdots \lhd H_{r-1} \lhd H_{r} = G
 	\end{equation}
-	are two composition series for $G$, then $s = r$ and there is a permutation $\sigma$ of $\{0,\dots,s-1\}$ such that $H_{i+1} /H_{i} \cong G_{\sigma(i) + 1}$, for all $i = 0,\dots,s-1$.
+	are two composition series for $G$, then $s = r$ and there is a permutation $\sigma$ of $\{0,\dots,s-1\}$ s.t. $H_{i+1} /H_{i} \cong G_{\sigma(i) + 1}$, for all $i = 0,. .,s-1$.
 \end{thm}
 
+\vspace{-2pt}
 \begin{dfn}[Subnormal Series]{dfn:subnormal-series}{8.1.1}
 	Let $G$ be a group. A \textbf{subnormal series} for $G$ is a series of subgroups
 	\[
@@ -782,86 +1015,110 @@ lol
 	\textbf{Warning}: normality is not transitive. That is, there exists $C$ with subgroups $A \lhd B \lhd C$ where $A$ is not a normal subgroup of $C$.
 \end{dfn}
 
+\vspace{-2pt}
 \begin{dfn}[Solvable Group]{dfn:solvable-group}{8.1.2}
-	A group $G$ is \textbf{solvable} (or \textbf{soluble}) provided that it has a subnormal series
+	A group $G$ is \textbf{solvable}/\textbf{soluble} provided that it has a subnormal series
 	\[
 		\{e\} = G_{0} \lhd G_{1} \lhd \cdots \lhd G_{s} = G
 	\]
 	such that each factor $G_{i+1} /G_{i}$ is abelian.
 \end{dfn}
 
+\vspace{-2pt}
 \begin{xmp}[Examples of Solvable Groups]{xmp:solvable-groups}{8.1.3}
 	\begin{enumerate-a-zero}
-	    \item The group $S_{3}$ is not abelian, but is solvable, as the subnormal series $\{e\} \lhd A_{3} \lhd S_{3}$ demonstrates.
-		\item The group $S_{4}$ is solvable.
-		\item The group $A_{5}$ is not solvable: as it is a simple group, its only subnormal series is $\{e\} \lhd A_{5}$ and the only factor is $A_{5}$ which is not abelian.
+	    \item $S_{3}$ is not abelian, but is solvable, as the subnormal series $\{e\} \lhd A_{3} \lhd S_{3}$ demonstrates.
+		\item $S_{4}$ is solvable.
+		\item $A_{5}$ is not solvable: as it is a simple group, its only subnormal series is $\{e\} \lhd A_{5}$ and the only factor is $A_{5}$ which is not abelian.
 		\item Any finite $p$-group is solvable. Let $\lvert G \rvert = p^{k}$, where $p$ is prime. $G$ has a subnormal series $\{e\} = G_{0} \lhd G_{1} \lhd \cdots \lhd G_{k} = G$, where $\lvert G_{i} \rvert = p^{i}$. Since each $G_{i} / G_{i-1}$ has order $p$, it is abelian.
 	\end{enumerate-a-zero}
 \end{xmp}
 
+\vspace{-2pt}
 \begin{thm}[Solvable Cyclic Groups]{thm:solvable-cyclic}{8.1.4}
-	A finite group $G$ is solvable iff all the composition factors of $G$ are cyclic.
+	A finite group $G$ is solvable iff all composition factors of $G$ are cyclic.
 \end{thm}
 
 \begin{lma}[Composition Factors for FA Groups]{lma:composition-fag}{8.1.5}
 	If $A$ is a finite abelian group of order $p^{n_{1}}_{1}p^{n_{2}}_{2} \cdots p^{n_{k}}_{k}$, then the composition factors of $A$ are
+	\vspace{-2pt}
 	\[\underbrace{C_{p_{1}},\dots,C_{p_{1}}}_{n_{1}} ,\, \underbrace{C_{p_{2}},\dots,C_{p_{2}}}_{n_{2}},\, \cdots ,\, \underbrace{C_{p_{k}},\dots,C_{p_{k}}}_{n_{k}}\]
+	\par\vspace{-3pt}
 	in some order.
 \end{lma}
 
+\vspace{-2pt}
 \begin{thm}[Solvable Properties]{thm:solvable-props}{8.1.A}
-	\textbf{Theorem 8.1.6}: Let $G$ be a group and let $N \lhd G$. Then $G$ is solvable iff both $N$ and $G /N$ are solvable.
-
-	\textbf{Theorem 8.1.7}: If $G$ is solvable and $H \le G$ then $H$ is solvable.
-
-	\textbf{Theorem 8.1.9}: A general degree $n$ polynomial $f(x)$ with rational coefficients is not solvable by radicals if $n \ge 5$, that is, there is no quintic formula.
+	\begin{itemize}
+	    \item[\textbf{8.1.6})] Let $G$ be a group and let $N \lhd G$. Then $G$ is solvable iff both $N$ and $G /N$ are solvable.
+			\vspace{-1pt}
+	    \item[\textbf{8.1.7})] If $G$ is solvable and $H \le G$ then $H$ is solvable.
+			\vspace{-1pt}
+	    \item[\textbf{8.1.9})] There is no quintic formula.
+	\end{itemize}
 \end{thm}
 
+\vspace{-2pt}
 \stepcounter{subsection}
 \begin{dfn}[Commutators and Derived Subgroups]{dfn:derived-subgroup}{8.2.1}
-	Let $G$ be a group. The \textbf{commutator} of two elements $a, b\in G$ is the element $aba^{-1}b^{-1}$, and is often denoted by $[a, b]$. The \textbf{derived subgroup} (or \textbf{commutator subgroup}) $G'$ of a group $G$ is the subgroup generated by all possible commutators in $G$; that is,
+	Let $G$ be a group. The \textbf{commutator} of two elements $a, b\in G$ is the element $aba^{-1}b^{-1}$, and is often denoted by $[a, b]$. 
+
+	The \textbf{derived subgroup} (or \textbf{commutator subgroup}) $G'$ of a group $G$ is the subgroup generated by all possible commutators in $G$; that is,
+	\vspace{-2pt}
 	\[G' := \langle aba^{-1}b^{-1} \mid a, b\in G \rangle\]
 
+	\vspace{-4pt}
 	\tcbline
 	\textbf{Remark}: Some properties of the commutator subgroup:
-	\begin{enumerate-a}
+	\begin{enumerate-a-zero}
 	    \item $[a, b]^{-1} = [ba]$ and the conjugate of $[a,b]$ by $z$ is $[zaz^{-1}, zbz^{-1}]$. Thus, inverses and conjugates of commutators are commutators
 	    \item Every element in $G'$ is a product of commutators
 	    \item $G' \lhd G$
-	    \item \textbf{Warning}: The product of two commutators is not necessarily a commutator
-	\end{enumerate-a}
+		\item The product of two commutators is not necessarily a commutator
+	\end{enumerate-a-zero}
 \end{dfn}
 
+\vspace{-2pt}
 \begin{thm}[Commutators and Abelian Groups]{thm:abelian-commutator}{8.2.2}
 	Let $G$ be a group and $N$ a normal subgroup of $G$. Then $G /N$ is abelian iff $G' \subseteq N$. In particular, $G / G'$ is abelian.
 \end{thm}
 
+\vspace{-2pt}
 \begin{dfn}[Derived Series]{dfn:derived-series}{8.2.3}
 	Let $G$ be a group. Set $G^{0} = 0$ and for each $i \ge  $, set $G^{(i + 1)}:= (G^{(i)}) '$. The sequence
+	\vspace{-4pt}
 	\[G = G^{(0)} \rhd G^{(1)} \rhd G^{(2)} \rhd \cdots\]
+	\par\vspace{-2pt}
 	is called the \textbf{derived series} of $G$. (Note that $G^{(1)} = G'$)
-
+	\vspace{-2pt}
 	\tcbline
+	\vspace{-2pt}
 	\textbf{Remark}: Some properties of derived series:
-	\begin{enumerate-a}
-	    \item If there is an $i$ such that $G^{(i+1)} = G^{(i)}$ then $G^{(j)} = G^{(i)}$ for all $j \le i$.
-	    \item If $G$ is a finite group, then there must be an $i$ such that $G^{(i+1)} = G^{(i)}$. However, this may happen without it being the case that $G^{(i)} = \{e\}$
-	    \item Let $G = A_{5}$. Then $G^{(1)} \lhd G$ and so $G^{(1)} = \{e\}$ or $G^{(1)} = G$, as $G$ is simple. However, $G /G^{(1)}$ is abelian, and so $G^{(1)} = \{e\}$ is impossible, as $G = A_{5}$ is not abelian. Thus, $G^{(1)} = G$ and so $G^{(i)} = G$ for all $i \ge 1$. (this argument works for any non-abelian simple group)
+	\begin{enumerate-a-zero}
+	    \item If there is an $i$ s.t. $G^{(i+1)} = G^{(i)}$ then $G^{(j)} = G^{(i)}$ for all $j \le i$.
+	    \item If $G$ is a finite group, then there must be an $i$ s.t. $G^{(i+1)} = G^{(i)}$. However, this may happen without it being the case $G^{(i)} = \{e\}$
+	    \item Let $G = A_{5}$. Then $G^{(1)} \lhd G$ and so $G^{(1)} = \{e\}$ or $G^{(1)} = G$, as $G$ is simple. However, $G /G^{(1)}$ is abelian, and so $G^{(1)} = \{e\}$ is impossible, as $G = A_{5}$ is not abelian. Thus, $G^{(1)} = G$ and so $G^{(i)} = G$, $\forall i \ge 1$. (this works for any non-abelian simple group)
 	    \item If $G^{(n)} = \{e\}$ for some $n$ then the series
+			\vspace{-2pt}
 			\[G = G^{(0)} \rhd G^{(1)} \rhd G^{(2)} \rhd \cdots \rhd G^{n} = \{e\}\]
+			\par\vspace{-4pt}
 			has abelian factors $G^{(i)} / G^{(i + 1)}$, since $G^{(i)} / G^{(i+1)} = G^{(i)} / (G^{(i)})'$. Thus, $G$ is solvable.
-	\end{enumerate-a}
+	\end{enumerate-a-zero}
 \end{dfn}
 
+\vspace{-2pt}
 \begin{thm}[Solvability with Derived Groups]{thm:solvability-trivial-derived}{8.2.4}
 	A group $G$ is solvable iff there is an $n$ with $G^{(n)} = \{e\}$.
 \end{thm}
 
+\vspace{-2pt}
 \begin{dfn}[Derived Length]{dfn:derived-length}{8.2.5}
 	Let $G$ be a solvable group. Then $G^{(n)} = \{e\}$ for some $n$. The least such $n$ is the \textbf{derived length} of $G$.
 \end{dfn}
-
 % TODO: example 8.2.6
+
+
+
 
 \end{multicols*}
 \end{document}

@@ -31,7 +31,7 @@
         coltitle=black, 
         attach boxed title to top left={ % position the title box
             yshift=-12pt, % shift down the box
-            yshifttext=-6pt, % offset text
+            yshifttext=-2ex, % offset text
         xshift=15pt}, % shift to the right
         boxed title style={ % style the title box
             left=0pt, right=0pt, % no margins on left and right side
@@ -44,7 +44,7 @@
     % Box setup
         left=7pt,
         right=7pt,
-        bottom=2pt, % Bottom padding
+        bottom=0pt, % Bottom padding
         breakable,
         lines before break=10, % idk how this affects stuff
         break at=-\baselineskip/0pt,
@@ -58,18 +58,14 @@
         label is label,
         title=#1 #2: #3, % Title Formatting
         label=#4,
+        subtitle style = {
+            % bottom = 0pt,
+            % boxsep=0pt,
+            boxrule=0pt,
+        }
     },
-    sbsadaptstyle/.style={
-        sidebyside adapt=right,
-        sidebyside align=top,
-        sidebyside gap=15pt,
-        frame hidden,
-        halign=flush left,
-        size=minimal,
-        skin=enhanced jigsaw,
-        opacityback=0
-    },
-    sbsevenstyle/.style={
+% Side by side - No Border No Frame
+    sbsstyle/.style={
         sidebyside align=top,
         sidebyside gap=15pt,
         frame hidden,
@@ -129,12 +125,9 @@
 % │                   SEPARATE DEFINITIONS                   │
 % ╰──────────────────────────────────────────────────────────╯
 
-% \newcommand{\thmboxsbs}[1]{\mathbb{#1}}
-%
-\newcommand{\sbsadapt}[2]{\tcbsidebyside[sbsadaptstyle]{#1}{#2}}
-
-\newtcolorbox{sbseven}[1]{sbsevenstyle, #1}
-        
+\newcommand{\sbsadaptr}[2]{\tcbsidebyside[sbsstyle, sidebyside adapt=right]{#1}{#2}}
+\newcommand{\sbsadaptl}[2]{\tcbsidebyside[sbsstyle, sidebyside adapt=left]{#1}{#2}}
+\newcommand{\sbsadapt}[2]{\tcbsidebyside[sbsstyle]{#1}{#2}}
 
 % ── THEOREM ───────────────────────────────────────────────────────────
 
@@ -339,99 +332,99 @@
     \renewenvironment{thm}[3][]{
         % If the last box is empty then run parser
         \ifstrempty{#3}
-			{\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Theorem}{blue!20}{blue!5}}
-			{\parsetext{#3}{thmboxcount}{3}\begin{thmbox-box}{#1}{#2}{#3}{Theorem}{blue!20}{blue!5}}
+			{\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Theorem}{blue!20}{blue!5}\vspace{-2pt}}
+			{\parsetext{#3}{thmboxcount}{3}\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{#3}{Theorem}{blue!20}{blue!5}\vspace{-2pt}}
     } {\end{thmbox-box}}
     % Thm
     \renewenvironment{thm-s}[3][]{
         % If the last box is empty then run parser
         \ifstrempty{#3}
-			{\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Thm}{blue!20}{blue!5}}
-			{\parsetext{#3}{thmboxcount}{3}\begin{thmbox-box}{#1}{#2}{#3}{Thm}{blue!20}{blue!5}}
+			{\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Thm}{blue!20}{blue!5}\vspace{-2pt}}
+			{\parsetext{#3}{thmboxcount}{3}\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{#3}{Thm}{blue!20}{blue!5}\vspace{-2pt}}
     } {\end{thmbox-box}}
     % Definition
     \renewenvironment{dfn}[3][]{
         % If the last box is empty then run parser
         \ifstrempty{#3}
-			{\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Definition}{green!20}{green!5}}
-			{\parsetext{#3}{thmboxcount}{3}\begin{thmbox-box}{#1}{#2}{#3}{Definition}{green!20}{green!5}}
+			{\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Definition}{green!20}{green!5}\vspace{-2pt}}
+			{\parsetext{#3}{thmboxcount}{3}\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{#3}{Definition}{green!20}{green!5}\vspace{-2pt}}
     } {\end{thmbox-box}}
     % Dfn
     \renewenvironment{dfn-s}[3][]{
         % If the last box is empty then run parser
         \ifstrempty{#3}
-			{\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Def}{green!20}{green!5}}
-			{\parsetext{#3}{thmboxcount}{3}\begin{thmbox-box}{#1}{#2}{#3}{Def}{green!20}{green!5}}
+			{\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Def}{green!20}{green!5}\vspace{-2pt}}
+			{\parsetext{#3}{thmboxcount}{3}\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{#3}{Def}{green!20}{green!5}\vspace{-2pt}}
     } {\end{thmbox-box}}
     % Example
     \renewenvironment{xmp}[3][]{
         % If the last box is empty then run parser
         \ifstrempty{#3}
-			{\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Example}{yellow!20}{yellow!5}}
-			{\parsetext{#3}{thmboxcount}{3}\begin{thmbox-box}{#1}{#2}{#3}{Example}{yellow!20}{yellow!5}}
+			{\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Example}{yellow!40}{yellow!5}\vspace{-2pt}}
+			{\parsetext{#3}{thmboxcount}{3}\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{#3}{Example}{yellow!40}{yellow!5}\vspace{-2pt}}
     } {\end{thmbox-box}}
     % Ex
     \renewenvironment{xmp-s}[3][]{
         % If the last box is empty then run parser
         \ifstrempty{#3}
-			{\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Ex.}{yellow!20}{yellow!5}}
-			{\parsetext{#3}{thmboxcount}{3}\begin{thmbox-box}{#1}{#2}{#3}{Ex.}{yellow!20}{yellow!5}}
+			{\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Ex.}{yellow!40}{yellow!5}\vspace{-2pt}}
+			{\parsetext{#3}{thmboxcount}{3}\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{#3}{Ex.}{yellow!40}{yellow!5}\vspace{-2pt}}
     } {\end{thmbox-box}}
     % Remark
     \renewenvironment{rem}[3][]{
         % If the last box is empty then run parser
         \ifstrempty{#3}
-			{\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Remark}{magenta!20}{magenta!5}}
-			{\parsetext{#3}{thmboxcount}{3}\begin{thmbox-box}{#1}{#2}{#3}{Remark}{magenta!20}{magenta!5}}
+			{\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Remark}{magenta!20}{magenta!5}\vspace{-2pt}}
+			{\parsetext{#3}{thmboxcount}{3}\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{#3}{Remark}{magenta!20}{magenta!5}\vspace{-2pt}}
     } {\end{thmbox-box}}
     % Recall
     \renewenvironment{rcl}[3][]{
         % If the last box is empty then run parser
         \ifstrempty{#3}
-			{\begin{rclbox-box}{#1}{#2}{\thethmboxcount}{Recall}{magenta!20}{magenta!5}}
-			{\parsetext{#3}{thmboxcount}{3}\begin{thmbox-box}{#1}{#2}{#3}{Recall}{magenta!20}{magenta!5}}
+			{\vspace{-5pt}\begin{rclbox-box}{#1}{#2}{\thethmboxcount}{Recall}{magenta!20}{magenta!5}\vspace{-2pt}}
+			{\parsetext{#3}{thmboxcount}{3}\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{#3}{Recall}{magenta!20}{magenta!5}\vspace{-2pt}}
     } {\end{thmbox-box}}
     % Question
     \renewenvironment{qst}[3][]{
         % If the last box is empty then run parser
         \ifstrempty{#3}
-			{\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Question}{orange!20}{orange!5}}
-			{\parsetext{#3}{thmboxcount}{3}\begin{thmbox-box}{#1}{#2}{#3}{Question}{orange!20}{orange!5}}
+			{\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Question}{orange!20}{orange!5}\vspace{-2pt}}
+			{\parsetext{#3}{thmboxcount}{3}\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{#3}{Question}{orange!20}{orange!5}\vspace{-2pt}}
     } {\end{thmbox-box}}
     % Q.
     \renewenvironment{qst-s}[3][]{
         % If the last box is empty then run parser
         \ifstrempty{#3}
-			{\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Q.}{orange!20}{orange!5}}
-			{\parsetext{#3}{thmboxcount}{3}\begin{thmbox-box}{#1}{#2}{#3}{Q.}{orange!20}{orange!5}}
+			{\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Q.}{orange!20}{orange!5}\vspace{-2pt}}
+			{\parsetext{#3}{thmboxcount}{3}\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{#3}{Q.}{orange!20}{orange!5}\vspace{-2pt}}
     } {\end{thmbox-box}}
     % Lemma
     \renewenvironment{lma}[3][]{
         % If the last box is empty then run parser
         \ifstrempty{#3}
-			{\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Lemma}{cyan!20}{cyan!5}}
-			{\parsetext{#3}{thmboxcount}{3}\begin{thmbox-box}{#1}{#2}{#3}{Lemma}{cyan!20}{cyan!5}}
+			{\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Lemma}{cyan!20}{cyan!5}\vspace{-2pt}}
+			{\parsetext{#3}{thmboxcount}{3}\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{#3}{Lemma}{cyan!20}{cyan!5}\vspace{-2pt}}
     } {\end{thmbox-box}}
     % Proposition
     \renewenvironment{ppn}[3][]{
         % If the last box is empty then run parser
         \ifstrempty{#3}
-			{\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Proposition}{cyan!20}{cyan!5}}
-			{\parsetext{#3}{thmboxcount}{3}\begin{thmbox-box}{#1}{#2}{#3}{Proposition}{cyan!20}{cyan!5}}
+			{\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Proposition}{cyan!20}{cyan!5}\vspace{-2pt}}
+			{\parsetext{#3}{thmboxcount}{3}\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{#3}{Proposition}{cyan!20}{cyan!5}\vspace{-2pt}}
     } {\end{thmbox-box}}
     % Prop
     \renewenvironment{ppn-s}[3][]{
         % If the last box is empty then run parser
         \ifstrempty{#3}
-			{\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Prop}{cyan!20}{cyan!5}}
-			{\parsetext{#3}{thmboxcount}{3}\begin{thmbox-box}{#1}{#2}{#3}{Prop}{cyan!20}{cyan!5}}
+			{\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Prop}{cyan!20}{cyan!5}\vspace{-2pt}}
+			{\parsetext{#3}{thmboxcount}{3}\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{#3}{Prop}{cyan!20}{cyan!5}\vspace{-2pt}}
     } {\end{thmbox-box}}
     % Corollary
     \renewenvironment{crl}[3][]{
         % If the last box is empty then run parser
         \ifstrempty{#3}
-			{\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Corollary}{cyan!20}{cyan!5}}
-			{\parsetext{#3}{thmboxcount}{3}\begin{thmbox-box}{#1}{#2}{#3}{Corollary}{cyan!20}{cyan!5}}
+			{\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{\thethmboxcount}{Corollary}{cyan!20}{cyan!5}\vspace{-2pt}}
+			{\parsetext{#3}{thmboxcount}{3}\vspace{-5pt}\begin{thmbox-box}{#1}{#2}{#3}{Corollary}{cyan!20}{cyan!5}\vspace{-2pt}}
     } {\end{thmbox-box}}
 }
 % ── SUBSUBSECTION COUNTER ─────────────────────────────────────────────
