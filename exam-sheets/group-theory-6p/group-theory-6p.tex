@@ -44,6 +44,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \end{dfn}
 
 \vspace{-2pt}
+\stepcounter{subsection}
 \begin{xmp}[The Free Group]{xmp:free-group}{1.2.3}
 	
 	$G = \langle x, y \rangle$, the \textbf{free group} on the letters $x, y$. The elements of $G$ are \textbf{words} in the symbols $x, y, x^{-1}, y^{-1}$. The group operation $\star$ is \newline\textbf{concatenation}: $x x x^{-1}y \star y^{-1} x = x x x^{-1} y y^{-1} x$. $e$ is the \textbf{empty word} with $0$ letters, and $x^{-1}$ and $y^{-1}$ is the inverse of $x$ and $y$ respectively. Thus $x x x^{-1} y = xy$.
@@ -57,6 +58,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \end{xmp}
 
 \vspace{-2pt}
+\stepcounter{subsection}
 \begin{dfn}[Subgroup]{dfn:subgroup}{1.3.1}
 	
 	If $H$ is a nonempty subset of $G$ then $H$ is a \textbf{subgroup} if:
@@ -205,6 +207,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 \vspace{-2pt}
 \stepcounter{section}
+\stepcounter{subsection}
 \begin{thm}[Normal Subgroups and Kernels]{thm:normal-kernel}{2.1.1}
 	
 	% TODO: sort out this definition..
@@ -229,6 +232,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \end{thm}
 
 \vspace{-2pt}
+\stepcounter{subsection}
 \begin{thm}[First Isomorphism Theorem for Groups]{thm:iso1}{2.2.1}
 	
 	If $\phi : G \to H$ is a group homomorphism, $N := \ker(\phi)$ is a normal subgroup of $G$, $\im(\phi)$ is a subgroup of $H$, and there is an isomorphism
@@ -239,7 +243,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 
 	\tcbsubtitle{Theorem 2.2.3: Universal Property of Factor Groups}
 	\sbsadaptr{
-	For a group $G$, and $N \lhd G$, for any homomorphism $\psi : G \to h$ with $N \subseteq \ker(\psi)$, there is a unique homomorphism $\overline{\psi} : G /N \to H$ s.t. $\overline{\psi} \circ \can = \psi$, where $\can : G \to G /N$ is the canonical homomorphism.
+	For a group $G$, and $N \lhd G$, for any homomorphism $\psi : G \to H$ with $N \subseteq \ker(\psi)$, there is a unique homomorphism $\overline{\psi} : G /N \to H$ s.t. $\overline{\psi} \circ \can = \psi$, where $\can : G \to G /N$ is the canonical homomorphism.
 	}{
 % https://q.uiver.app/#q=WzAsMyxbMCwwLCJHIl0sWzEsMCwiRyAvIE4iXSxbMSwxLCJIIl0sWzAsMSwiXFx0ZXh0YmZ7Y2FufSJdLFsxLDIsIlxcb3ZlcmxpbmV7XFxwc2l9XFxleGlzdHMhIl0sWzAsMiwiXFxwc2kiLDJdXQ==
 \begin{tikzcd}[ampersand replacement=\&,cramped]
@@ -255,6 +259,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \end{thm}
 
 \vspace{-1pt}
+\stepcounter{subsection}
 \begin{ppn}[Canonical Pullbacks]{ppn:canonical-pullback}{2.3.1}
 	
 	Let $G$ be a group and let $N \lhd G$. Let $\can : G \to G /N$ be the canonical map. Let $K \le G /N$.
@@ -269,7 +274,7 @@ Made by Leon :) \textit{Note: Any reference numbers are to the lecture notes}
 \vspace{-1pt}
 \begin{thm}[Correspondence Theorem]{thm:correspondence-thm}{2.3.3}
 	
-	Let $G$ be a group, $N \lhd G$, and let $\can : G \to G fN$ be the canonical map. The map $H \mapsto \can(H)$ is a bijection between subgroups of $G$ containing $N$ and subgroups of $G /N$. Under this bijection, normal subgroups match with normal subgroups. Further, if $N \subseteq A, B$ are subgroups of $G$, then $\can(A) \subseteq \can(B)$ iff $A \subseteq B$.
+	Let $G$ be a group, $N \lhd G$, and let $\can : G \to G /N$ be the canonical map. The map $H \mapsto \can(H)$ is a bijection between subgroups of $G$ containing $N$ and subgroups of $G /N$. Under this bijection, normal subgroups match with normal subgroups. Further, if $N \subseteq A, B$ are subgroups of $G$, then $\can(A) \subseteq \can(B)$ iff $A \subseteq B$.
 \end{thm}
 
 \vspace{-1pt}
@@ -366,6 +371,7 @@ Via The Correspondence Thm, the subgroups of $\mathbb{Z} /12$:
 	\vspace{-5pt}
 \end{dfn}
 
+\stepcounter{subsection}
 \vspace{-2pt}
 \begin{xmp}[A Simple Group Presentation]{xmp:group-presentation}{3.2.1}
 	Let $n\in \mathbb{Z}_{\ge 1}$. We'll define a new group $A$, which we write
@@ -584,7 +590,7 @@ Via The Correspondence Thm, the subgroups of $\mathbb{Z} /12$:
 % TODO: Example with D5
 
 \begin{dfn}[Class Equation]{dfn:class-equation}{4.2.B}
-	Since conjugacy classes are obits of a group action, we obtain from Lemma \ref{lma:orbits-partition}, they partition $G$. This gives us the \textbf{class equation}: If $G$ is a finite group, then there are elements $a_{1},\dots,a_{n}\in G$ s.t.
+	Since conjugacy classes are orbits of a group action, we obtain from Lemma \ref{lma:orbits-partition}, they partition $G$. This gives us the \textbf{class equation}: If $G$ is a finite group, then there are elements $a_{1},\dots,a_{n}\in G$ s.t.
 	\[G = \Cl(a_{1}) \sqcup \Cl(a_{2}) \sqcup \cdots \sqcup \Cl(a_{n})\]
 	It is more usual to write
 	\begin{equation}\label{4.2.10}
@@ -1118,9 +1124,51 @@ Not going to be proved here lol
 	Let $G$ be a solvable group. Then $G^{(n)} = \{e\}$ for some $n$. The least such $n$ is the \textbf{derived length} of $G$.
 \end{dfn}
 % TODO: example 8.2.6
+\section{Library of Groups}
+\stepcounter{subsection}
+\begin{xmp}[Groups]{xmp:groupslist}{}
+	
+\end{xmp}
 
+\begin{xmp}[Group Presentations]{xmp:presentations}{}
+	\begin{itemize}
+	    \item \textbf{Dihedral Group} $D_{n} = \langle g, h\mid g^{n}, h^{2}, (gh)^{2} \rangle$
+	    \item \textbf{Cyclic Group} $C_{n} = \langle a \mid a^{n} \rangle$
+	    \item \textbf{Product Group} $\mathbb{Z} \times \mathbb{Z} = \langle x, y \mid xy=yx \rangle \text{ or } \langle x, y \mid xyx^{-1}y^{-1} \rangle$
+	    \item \textbf{Free Group}: $\langle x \mid - \rangle$
+	\end{itemize}
+\end{xmp}
 
+\begin{dfn}[Group Properties]{dfn:group-props}{}
+	\begin{itemize-zero}
+		\item Kernel: $\{g\in G \mid \phi(g) = e\}$ for some homomorphism $\phi$. $\ker\phi=e$ implies injective.
+	    \item \textbf{Stabilizer (under conj.)}: $\Stab_{G}(a) = \{g\in G \mid gag^{-1} = a\}$. under conjugation this is the \textbf{centralizer}, $C_{G}(a)$.
+	    \item \textbf{Orbit (under conj.)}: $G \cdot a = \{gag^{-1} \mid g\in G\}$. Under conjugation, these are the \textbf{conjugacy classes}, $\Cl(a)$.
+		\item \textbf{p-group}: A group where each element has order a power of $p$. If $\lvert G \rvert$ finite, $p-group$ iff $\lvert  G \rvert$ is a power of $p$.
+		\item \textbf{Normalizer}: $N_{G}(H) = \{g\in G \mid gHg^{-1} = H\}.$
+	    \item \textbf{Centre}: $Z(G) = \{z\in G \mid zg = gz \text{ for all $g\in G$}\}$. The centre is nontrivial for nontrivial finite $p$-groups
+		\item \textbf{Normal}: $H \lhd G$ if $gH = Hg$, or $gHg^{-1}:= \{gHg^{-1} \mid h\in H\} = H$ for all $g\in G$
+	\end{itemize-zero}
+\end{dfn}
 
+\newpage
+\section{Examples}
+
+\begin{xmp}[Normal Subgroups of Order 30 Groups]{xmp:order30}{4.1.7}
+	Prop \ref{ppn:normal-order-30}: Any group of order $30$ has a nontrivial normal subgroup.
+
+	\begin{proof}
+		Let $G$ be a group of order $30 = 2 \cdot 3 \cdot 5$. By Sylow III (\ref{thm:sylows}),
+		\[n_{5} \mid 6 \text{ and } n_{5} \equiv 1 \mod 5,\;\quad n_{3} \mid 6 \text{ and } n_{3} \equiv 1 \mod 3\]
+		Thus there is either a Unique Sylow 5-subgroup of $G$ (order 5), or there are 6 Sylow 5-subgroups. Likewise we have either a unique Sylow 3-subgroup (order 3) or there are 10.
+
+		Suppose $n_{3} = 10$ and $n_{5} = 6$. Let the Syl-5 of $G$ be $P_{1},\dots,P_{6}$. If $i \ne j$ then $P_{i} \cap P_{j}$ is a subgroup of $P_{i}$ (and $P_{j}$) that is not all of $P_{i}$. Since $\lvert P_{i} \rvert$ is prime, by Lagrange $P_{i} \cap P_{j} = \{e\}$. Each $P_{i}$ has $4$ elements of order $5$, so $\bigcap_{i=1}^{6} P_{i}$ is $e$ and $24$ elements of order $5$.
+
+		Likewise Let the Syl-3 of $G$ be $Q_{1},\dots,Q_{10}$. Same process to reach $\bigcap_{i = 1}^{10} Q_{i}$ consists of $e$ and 20 elements order $3$. However $\lvert G \rvert = 30$ so either Sylow-3 unique or Sylow-5 unique
+
+		Suppose $n_{5} = 1$. Let $P$ be the unique subgroup of order $5$ and let $g\in G$. Then $gPg^{-1}$ is also a subgroup of order $5$ and therefore $gPg^{-1} = P$, i.e. $P \lhd G$. Same conclusion for if $n_{3} = 1$.
+	\end{proof}
+\end{xmp}
 
 \end{multicols*}
 \end{document}
