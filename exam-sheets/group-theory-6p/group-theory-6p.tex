@@ -1125,23 +1125,76 @@ Not going to be proved here lol
 \end{dfn}
 % TODO: example 8.2.6
 \section{Library of Groups}
+\vspace{2pt}
 \stepcounter{subsection}
-\begin{xmp}[Groups]{xmp:groupslist}{}
-	
-\end{xmp}
-
 \begin{xmp}[Group Presentations]{xmp:presentations}{}
+	\textbf{Dihedral Group} $D_{n}$.
 	\begin{itemize}
-	    \item \textbf{Dihedral Group} $D_{n} = \langle g, h\mid g^{n}, h^{2}, (gh)^{2} \rangle$
-	    \item \textbf{Cyclic Group} $C_{n} = \langle a \mid a^{n} \rangle$
+	    \item Presentation: $D_{n} = \langle g, h\mid g^{n}, h^{2}, (gh)^{2} \rangle$
+	\end{itemize}
+	\textbf{Conjugacy classes for Dihedral Group $D_{7}$}
+	\vspace{5pt}
+	\begin{tabular}{ |c|c|c|c|}
+		\hline
+		Element & Centralizer & Conjugacy Class & CCs \\
+		\hline
+		$\{e\}$ & $D_{n}$ & $\{e\}$ & 1 \\
+		$\{g^{k}, g^{k-n}\}$ & $\{e, g, \dots,g^{n}\}$ & $\{g^{k}, g^{n-k}\}$ & $2 \cdot 3$\\
+		$\{h, hg,\dots hg^{k-n}\}$ & $\{hg^{k}, hg^{n-k}\}$ & $\{hg^{k}\dots hg^{n-k}\}$ & $7 \cdot 1$ \\
+		\hline
+	\end{tabular}
+
+	\textbf{Cyclic Group} $C_{n}$
+	\begin{itemize}
+	    \item Presentation: $C_{n} = \langle a \mid a^{n} \rangle$
+		\item Cyclic (clearly), abelian
+		\item Simple if prime order.
+		\item Solvable if $n < 60$ via cyclic composition factors.
+	\end{itemize}
+
+	\textbf{Symmetric Group} $S_{3}$
+	\begin{itemize-zero}
+	    \item Not abelian
+		\item SG: $\{e\}, \{e, (2,3)\}, \{e, (1,3)\}, \{e, (1,2)\}, A_{3} := \{e, (123), (132)\}$
+		\item Normal SGs: $\{e\}, A_{3}, S_{3}$ 
+		\item Solvable from the subnormal series $\{e\} \lhd V_{4} \lhd A_{3} \lhd S_{3}$.
+		\item Counterexample CS:
+			$\{e\} \lhd C_{2} \lhd A_{3} \lhd S_{3}$ but $C_{2} \centernot\lhd S_{3}$
+		\item Conjugacy classes: $6 = 1 + 2 + 3$, exactly the ones of same cycle type.
+			\[\{e\}, \{(12), (13), (23)\}, \{123, 132\}\]
+	\end{itemize-zero}
+
+	\textbf{Alternating Group} $A_{4}$
+	\begin{itemize}
+		\item Order 12, Not abelian ($(123)$ and $(12)(34)$ don't commute)
+		\item Solvable, length $2$, derived subgroup is $\mathbb{Z}_{2} \times \mathbb{Z}_{2}$.
+	    \item SG: $\{e\}, \mathbb{Z}_{2}, \mathbb{Z}_{2} \times \mathbb{Z}_{2}, A_{3}$
+		\item Conjugacy classes: $12 = 1 + 3 + 4 + 4$
+			\begin{multline*}\{e\}, \{(12)(34), (13)(24), (14)(23)\}, \\\{(123), (243), (143), (142)\}, \{(132), (234), (143), (124)\}\end{multline*}
+	\end{itemize}
+
+
+	\textbf{Alternating Group} $A_{5}$
+	\begin{itemize}
+	    \item Order 60, Smallest simple non-abelian group $(123)$ and $(12345)$
+		\item Not solvable, as $n \ge 5$ (\ref{xmp:solvable-groups})
+	\end{itemize}
+
+	\tcbline
+	Other Presentations
+	\begin{itemize-zero}
 	    \item \textbf{Product Group} $\mathbb{Z} \times \mathbb{Z} = \langle x, y \mid xy=yx \rangle \text{ or } \langle x, y \mid xyx^{-1}y^{-1} \rangle$
 	    \item \textbf{Free Group}: $\langle x \mid - \rangle$
-	\end{itemize}
+		\item \textbf{Klein 4}: $V_{4} \cong D_{2} \cong C_{2} \times C_{2} = \langle x, y \mid x^{2}, y^{2}, (xy)^{2} \rangle$.
+		\item \textbf{Quaternion}: $Q_{8} = \langle i, j \mid i^{4}, jij=i, iji=j \rangle$
+		\item \textbf{Tits group}: $\langle a, b \mid a^{2}, b^{3}, (ab)^{13}, [a,b]^{5}, [a, bab]^{4}, ((ab)^{4} ab^{-1})^{6} \rangle$
+	\end{itemize-zero}
 \end{xmp}
 
+\columnbreak
 \begin{dfn}[Group Properties]{dfn:group-props}{}
 	\begin{itemize-zero}
-		\item Kernel: $\{g\in G \mid \phi(g) = e\}$ for some homomorphism $\phi$. $\ker\phi=e$ implies injective.
+		\item \textbf{Kernel}: $\{g\in G \mid \phi(g) = e\}$ for some homomorphism $\phi$. $\ker\phi=e$ implies injective.
 	    \item \textbf{Stabilizer (under conj.)}: $\Stab_{G}(a) = \{g\in G \mid gag^{-1} = a\}$. under conjugation this is the \textbf{centralizer}, $C_{G}(a)$.
 	    \item \textbf{Orbit (under conj.)}: $G \cdot a = \{gag^{-1} \mid g\in G\}$. Under conjugation, these are the \textbf{conjugacy classes}, $\Cl(a)$.
 		\item \textbf{p-group}: A group where each element has order a power of $p$. If $\lvert G \rvert$ finite, $p-group$ iff $\lvert  G \rvert$ is a power of $p$.
@@ -1153,6 +1206,7 @@ Not going to be proved here lol
 
 \newpage
 \section{Examples}
+\stepcounter{subsection}
 
 \begin{xmp}[Normal Subgroups of Order 30 Groups]{xmp:order30}{4.1.7}
 	Prop \ref{ppn:normal-order-30}: Any group of order $30$ has a nontrivial normal subgroup.
@@ -1168,6 +1222,66 @@ Not going to be proved here lol
 
 		Suppose $n_{5} = 1$. Let $P$ be the unique subgroup of order $5$ and let $g\in G$. Then $gPg^{-1}$ is also a subgroup of order $5$ and therefore $gPg^{-1} = P$, i.e. $P \lhd G$. Same conclusion for if $n_{3} = 1$.
 	\end{proof}
+\end{xmp}
+
+\begin{xmp}[Correspondence]{xmp:correspondence}{B}
+	Let $G$ be a group of order $5^{2} \cdot 3^{2} \cdot 17$ with a normal subgroup $S$ order $5$ with a NSG $S$ order 5, and suppose $G /S$ is abelian. Suppose $G$ has an element of order 9, find the number of subgroups of $G$ with order $5 \cdot 3 \cdot 17$ that contain $S$.
+	\begin{proof}
+		Take the (abelian) factor group $G / S$, which has order $5 \cdot 3^{2} \cdot 17$ (as $\lvert S \rvert = 5$). The Correspondence Theorem states that there is a bijection between subgroups of $G$ containing $S$, and subgroups of $G / S$. Therefore we want to find the number of subgroups of order $3 \cdot 17$ in $G /S$, such that they map back up to a subgroup order $3 \cdot 5 \cdot 17$ in $G$. There is one subgroup of this nature in $G /S$ up to isomorphism, namely $C_{3} \times C_{17}$, therefore via the correspondence theorem, there is one subgroup with order $5 \cdot 3 \cdot 17$ in $G$, namely $C_{5} \times C_{3} \times C_{17}$
+	\end{proof}
+	\tcbline
+	Let $G$ be a group of order $196 = 4 \cdot 49$. show $G$ has a proper normal subgroup with even cardinality.
+
+	\begin{proof}
+		We have $n_{7} \mid 4$ and $n_{7} \equiv 1 \mod 7$, therefore unique Sylow $7$-subgroup, which is normal. $G / P$ has order $4 = 2^{2}$ therefore abelian. By Cauchy, $G /P$ contains a subgroup $H$ of order $2$ which must be normal as $G / P$ is abelian. Via correspondence, $\can^{-1}(H)$ is then a normal subgroup of order $2 \times 49$ in $G$.
+	\end{proof}
+\end{xmp}
+
+\begin{xmp}[Presentation]{xmp:presentation}{C}
+	\[G = \langle x, y \mid x^{4}, y^{3}, xyx \rangle\]
+	We have $x^{4} = xyx \implies x^{3} = xy \implies x^{2} = y$.
+	Subtitute in $x^{2} = y$:
+	\begin{align*}
+		G &= \langle x, y \mid x^{4}, y^{3}, xyx \rangle \\
+		  &= \langle x \mid x^{4}, x^{6}, x^{4} \rangle \\
+		  &= \langle x \mid x^{2} \rangle
+	\end{align*}
+	Therefore isomorphic to $C_{2}$
+\end{xmp}
+
+\begin{xmp}[Multiplied Orders]{xmp:oders}{D}
+	Find an Abelian group of order $2000$ where $20A$ has order $10$.
+	\[g^{20} \mid g\in A\]
+	\begin{proof}
+		WTS: Iso Product of $2000$ where the prime factors make $10$
+		\[\mathbb{Z}_{8} \times \mathbb{Z}_{25} \times \mathbb{Z}_{10}\]
+		has $\mathrm{GCD}(8, 20) = 4$ and $8 / 4 = 2$, $\mathrm{GCD}(25, 20) = 5$ and $25 / 5 = 5$, $\mathrm{GCD}(10, 20) = 10$ and $10 / 10 = 1$ therefore $2 \cdot 5 \cdot 1$ so the generator has order $10$.
+	\end{proof}
+\end{xmp}
+
+\begin{xmp}[Presentation Homomorphism]{xmp:presentation-homo}{E}
+	Consider $D_{5}$, and $E = \langle a, b \mid a^{2}, b^{5}, (ab)^{2} \rangle$. Consider
+	\[\phi : \langle A, B \rangle \to D_{5}, \quad A\mapsto g, \quad B\mapsto h\]
+	$A^{2}$, $B^{5}$, and $(AB)^{2}$ are in $\ker \psi$. These elements are also in $\ker\pi$, from the relations on $E$. $\ker\pi$ is equal to the set of words in $\langle A, B \rangle$ that become equal to $e$ as a logical consequence of (the group axioms and) setting $A^{2}, B^{5}, (AB)^{2} = e$. i.e. $\ker\pi$ is equal to the set of words in $\langle A, B \rangle$ that become equal to $e$ by any group homomorphism from $\langle X, Y \rangle$ to a group $K$ that sends $A^{2}, B^{5}, (AB)^{2}$ to $e.$ All these logical consequences must also be in $\ker\psi$. However we don't know if we have found all relations of $D_{5}$, i.e. maybe some word in $\ker\psi$ that is not in $\ker\pi$. i.e. we have homomorphisms
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXGxhbmdsZSBBLCBCXFxyYW5nbGUiXSxbMiwwLCJFIl0sWzIsMiwiRF81Il0sWzAsMSwiXFxwaSJdLFswLDIsIlxccHNpIiwyXV0=
+\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+	{\langle A, B\rangle} \&\& E \\
+	\\
+	\&\& {D_5}
+	\arrow["\pi", from=1-1, to=1-3]
+	\arrow["\psi"', from=1-1, to=3-3]
+\end{tikzcd}\]
+and also $\ker\pi \subseteq \ker\psi$. The Universral prop of factor groups applies, therefore we have $\overline{\psi} : E \to D_{5}$ s.t. $\overline{\psi} \pi = \psi$:
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXGxhbmdsZSBBLCBCXFxyYW5nbGUiXSxbMiwwLCJFIl0sWzIsMiwiRF81Il0sWzAsMSwiXFxwaSJdLFswLDIsIlxccHNpIiwyXSxbMSwyLCJcXGJhcntcXHBzaX0iXV0=
+\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+	{\langle A, B\rangle} \&\& E \\
+	\\
+	\&\& {D_5}
+	\arrow["\pi", from=1-1, to=1-3]
+	\arrow["\psi"', from=1-1, to=3-3]
+	\arrow["{\bar{\psi}}", from=1-3, to=3-3]
+\end{tikzcd}\]
+In particular, $\overline{\psi}(a) = g$ and $\overline{\psi}(b) = h$. So $\overline{\psi}$ is surjective and $\lvert E \rvert \ge \lvert D_{5} \rvert = 10$. But $\lvert E \rvert \le 10$. So $\lvert E \rvert = 10$ and $\overline{\psi}$ is iso.
 \end{xmp}
 
 \end{multicols*}
