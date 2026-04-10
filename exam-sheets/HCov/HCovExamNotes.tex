@@ -1,0 +1,526 @@
+\documentclass[landscape, 8pt]{extarticle}
+
+\usepackage{../../preamble}
+\usepackage[separate]{../../rss/thmboxes_v5}
+
+
+\begin{document}
+
+
+\fontsize{5pt}{6pt} \selectfont
+	
+	\setlength{\abovedisplayskip}{0pt}
+	\setlength{\belowdisplayskip}{0pt}
+	\setlength{\abovedisplayshortskip}{0pt}
+	\setlength{\belowdisplayshortskip}{0pt}
+	
+	\begin{multicols*}{4}
+		\raggedcolumns 
+		%Original template by Leon, modified by Louis, content by Louis
+		\vspace{-5pt}
+		\subsection*{HCov Exam Sheet 2025/26 - The Gratwick Files}
+		\vspace{-5pt}
+		\begin{thm}[Go-To Theorems]{thm:gotos}{ }
+			\begin{itemize}
+				\item \textbf{Triangle Inequality} $\left|z + w\right| \le \left|z\right| + \left|w\right|$
+				\item \textbf{Reverse Triangle Inequality} $\left| z - w\right| \ge \left|\left|z\right| - \left|w\right|\right|$
+				\item \textbf{M-L Lemma} For regular $\Gamma$, continuous $f:\Gamma \to \mathbb{C}$:\\
+					$\left| \int_\Gamma f(z) \text{ dz} \right| \le \text{max}_{z \in \Gamma}\left|f(z)\right| \ell (\Gamma)$
+			\end{itemize}
+		\end{thm}
+		
+		
+%--------------------------------------------------------------------------------------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--------------------------------------------------------------------------------------------------%
+		
+		
+		{\footnotesize \textbf{\underline{Complex Fundamentals}}}
+		
+		
+		\begin{dfn}[Basics]{dfn:basics}{ }
+			\vspace{-5pt}
+			\begin{multicols}{2}
+				\begin{itemize}
+					\item $\mathbb{C} = \left\{x + iy | x, y \in \mathbb{R}\right\}$ is a field
+					\item $\Re(z) = \frac{z + \overline{z}}{2}$, $\Im(z) = \frac{z - \overline{z}}{2 i}$
+					\item $z = re^{i\theta}$: $x = r \cos\theta$, $y = r \sin\theta$
+					\item $e^{in \theta} = (e^{i \theta})^n$
+				\end{itemize}
+				\columnbreak
+				
+				\begin{itemize}
+					\item $\left|z\right| = 0 \iff z = 0$
+					\item $\left|z^2\right| = \left|z\right|^2 = z \overline{z}$
+					\item $\overline{zw} = (\overline{z}) (\overline{w})$
+				\end{itemize}
+				
+			\end{multicols}
+		
+		\end{dfn}
+		
+		
+		\begin{dfn}[The Argument]{dfn:args}{ }
+			\begin{itemize}
+			\item For some $z = re^{i\theta}$, $\theta$ is an \textit{argument} of $z$. $\text{Arg}(z)$ is the unique $\theta \in (-\pi, \pi]$
+			\item $\arg(z)$ = $\{\theta : z = \left|z\right| e^{i\theta}\} = \left\{ \text{Arg(z)} + 2k\pi : k \in \mathbb{Z}\right\}$
+			\item $\arg(zw)  = \arg(z) + \arg(w)$, $\arg(\overline{z}) = -\arg(z)$
+			\item $\text{Arg}(zw) = \text{Arg}(z) + \text{Arg}(w)$, $\text{Arg}(\overline{z}) = -\text{Arg}(z)$ (both potentially $\pm 2k \pi$ for some $k \in \mathbb{Z}$)
+			\item $\text{Arg}_\phi(z)$ is the branch of $\arg(z)$ s.t $\phi < \text{Arg}_\phi(z) \le \phi + 2\pi$
+			\end{itemize}
+		\end{dfn}
+		
+		
+		\begin{thm}[Properties Of Sets $S \subseteq\mathbb{C}$]{thm:setprops}{ }
+			\begin{itemize}
+				\item \textit{Open} if $\forall$ $z_0 \in U$ there is a disc around $z_0$ wholly in $U$. For example, $D_\epsilon(z), D'_\epsilon(z)$.
+				\item \textit{Closed} if its complement is open, and iff $S = \overline{S}$. For example $\overline{D}_\epsilon(z)$
+				\item A \textit{neighbourhood} of $z_0$ is an open set containing it.
+				\item $z_0$ is a \textit{limit point} of $S$ if $\forall \epsilon > 0, D'_\epsilon(z_0) \cap S$ is nonempty
+				\item $\overline{S}$, the \textit{closure} of $S$, is the union of $S$ with its limit points.
+				\item \textit{Bounded} if there exists $M>0$ s.t. $\left|z\right| \le M$, for all $z \in S$. Otherwise it is unbounded.
+			\end{itemize}	
+			
+		\end{thm}
+		
+		
+		\begin{dfn}[Complex Sequences]{thm:seqs}{ }
+			Complex sequences $z_n \in \mathbb{C}$ are analogous to real ones, except index from $0$.
+			\begin{itemize}
+				\item $z = \lim_{n\to \infty}z_n$ if for all $\epsilon > 0$, there exists $N \in \mathbb{N}$ s.t. $\left|z_n - z\right| <\epsilon$ for $n \ge N$.
+				\item $z_n$ can be split into the combination of two real sequences $a_n + ib_n$, and $z = \lim_{n\to \infty}z_n$ iff $\Re(z) = \lim_{n\to \infty} a_n$ and $\Im(z) = \lim_{n\to \infty} b_n$. $z_n$ converges iff $a_n$ and $b_n$ converge.
+				\item Cauchy, Bolzano-Weierstrass, boundedness are all akin to $\mathbb{R}$
+				\item $z \in \overline{S}$ iff there exists a sequence $z_n \in S$ s.t. $z = \lim_{n\to \infty} z_n$
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[Complex Functions]{dfn:funcs}{ }
+			A complex function $f(z)$ can be written as $f(x+iy) = u(x, y) + iv(x, y)$, where $u, v: \mathbb{R}^2 \to \mathbb{R}$
+			\begin{itemize}
+				\item For $z_0 \in \overline{S}$, $a_0 = \lim_{z\to z_0}f(z)$ if $\forall$ $\epsilon > 0$, $\exists \delta > 0$ s.t. $\left|f(z) - a_0\right| <\epsilon$ when $0 < \left|z - z_0\right| < \delta$.
+				\item The limit exists iff the limits of the $\Re / \Im$ exist and equal the $\Re / \Im$ of the limit
+				\item For $z_0 \in \overline{S}, f: S \to \mathbb{C}$, $\lim_{z\to z_0}f(z) = a_0$, $w_n \in S \backslash \left\{z_0\right\}$ s.t $w_n \to z_0$, $\lim_{n\to \infty} f(w_n) = a_0$.
+				\item Limit algebra is analogous to the reals
+			\end{itemize}
+			
+			
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[Continuity]{dfn:continuity}{ }
+			\begin{itemize}
+			\item $f(z)$ is cont. at $z_0$ if $\lim_{z\to z_0} f(z)$ exists and equals $f(z_0)$, and cont. on a set if it is cont. at all points in that set. It is cont. at $z_0$ iff $u, v$ are cont. at $(x_0, y_0)$.
+			\item Continuity is preserved through $+/\times/\div$(where denominator $\ne 0$) of cont. functions.
+			\item $f$ is cont. iff the preimage $f^{-1}(U)$ is open $\forall$ open $U \subseteq \mathbb{C}$
+			\item Continuous functions map closed and bounded sets to closed and bounded sets
+		\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[Differentiability and Holomorphicity]{dfn:diffnholo}{ }
+			\begin{itemize}
+			\item $f(z)$ differentiable at $z_0$ if $\lim_{z \to z_0} \frac{f(z) - f(z_0)}{z-z_0}$ exists, and cont. if it is diffable.
+			\item Diffability/holo.city preserved by $+/\cdot / \div$(where denom $\ne 0$) of diffable/holo. funcs.
+			\item $f(z)$ is holo. at $z_0$ if it is diffable on a neighbourhood of $z_0$
+			\item Composition preserves diffability, $(f \circ g)'(z_0) = f'(g(z_0))g'(z_0)$
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{thm}[The Cauchy-Riemann Equations]{thm:C-R}{ }
+			If $f(z)$ is diffable at $z_0$ then $\frac{\partial u}{\partial x}(x_0, y_0) = \frac{\partial  v}{\partial  y}(x_0, y_0)$ and $\frac{\partial  u}{\partial  y}(x_0, y_0) = - \frac{\partial  v}{\partial  x}(x_0, y_0)$
+			
+			\begin{itemize}
+			\item If $u, v$ are continuously diffable (derivative is continuous) on a neighbourhood of $(x_0, y_0)$, and satisfy the C-R equations at $(x_0, y_0)$, then $f$ is diffable at $z_0$.
+			\item Abbrev. by defining $\partial = \left(\frac{\partial }{\partial x} - i \frac{\partial }{\partial  y}\right)$, $\overline{\partial } = \left(\frac{\partial }{\partial x} + i \frac{\partial }{\partial  y} \right)$. $f$ satisfies C-R iff $\overline{\partial }f = 0$.
+			
+			\end{itemize}
+			
+		\end{thm}
+		
+		
+		\begin{dfn}[Harmonic Functions]{dfn:harm}{ }
+			$h: \mathbb{R}^2 \to \mathbb{R}$ is \textit{harmonic} if it satisfies Laplace's equation, that $\forall (x, y) \in \mathbb{R}^2$, $\frac{\partial^2 h}{\partial x^2} + \frac{\partial^2 h}{\partial y^2} = 0$
+			\begin{itemize}
+				\item Holomorphicity implies harmonicity
+				\item For a harmonic $u$, $v$ is a \textit{harmonic conjugate of u} if $f = u + iv$ is holomorphic 
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[Polynomials and Rational Functions]{dfn:polysnrats}{ }
+			\begin{itemize}
+				\item For polynomial $P(z) = \Sigma_{n=0}^{N} a_n z^n$, with $a_0, ..., a_N \in \mathbb{R}$, $P(z_0) = 0$ iff $P(\overline{z_0}) = 0$
+				\item For polynoms $P, Q$, $R: \left\{z \in \mathbb{C}: Q(z) \ne 0\right\} \to \mathbb{C}$, $R(z) := \frac{P(z)}{Q(z)}$ is a \textit{rational function}.
+				\item The domain of a rational function is always an open set
+				\item Rational functions are holomorphic on $\left\{z \in \mathbb{C}: Q(z) \ne 0\right\}$
+			\end{itemize}
+			
+			
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[exp(z)\text and Complex Trig]{dfn:expntrig}{ }
+			\begin{multicols}{2}
+				\begin{itemize}
+					\item $\exp(z) := e^x(\cos(y) + i\sin(y))$
+					\item $\exp(z)$ holo. on $\mathbb{C}$, $\exp(z) = \exp '(z)$
+					\item $\exp(z + 2 \pi i) = \exp(z)$, so not bijective
+					\item $\sin(z) = \frac{\exp(iz) - \exp(-iz)}{2i}$
+					\item $\cos(z) = \frac{\exp(iz) + \exp(-iz)}{2}$
+					\item $\sin'(z) = \cos(z)$ and $\cos'(z) = -\sin(z)$
+					\item Periodicity, $\frac{\pi}{2}$ offset akin to $\mathbb{R}$
+				\end{itemize}
+				
+				\columnbreak
+				
+				\begin{itemize}
+					\item $\cos^2(z) + \sin^2(z) = 1$
+					\item $\tan(z) := \frac{\sin(z)}{\cos(z)}$, $\cot(z):= \frac{1}{\tan(z)}$ 
+					\item $\sec(z) := \frac{1}{\cos(z)}$, $\csc(z) = \frac{1}{\sin(z)}$
+					\item $\sinh(z) := \frac{\exp(z) - \exp(-z)}{2}$
+					\item $\cosh(z) := \frac{\exp(z) + \exp(-z)}{2}$
+					\item $\sinh(iz) = i\sin(z)$, $\cosh(iz) = \cos(z)$
+				\end{itemize}
+				
+			\end{multicols}
+			
+			$\sin(x + iy) = \sin(x)\cosh(y) + i\cos(x)\sinh(y)$ and $\cos(x+iy) = \cos(x)\cosh(y) - i\sin(x)\sinh(y)$
+			$\sin(z+w) = \sin(z)\cos(w) + \cos(z)\sin(w)$ and $\cos(z+w) = \cos(z)\cos(w) - \sin(z)\sin(w)$
+			
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[The Complex Logarithm]{dfn:log}{ }
+			$\log(z) := \left\{w \in \mathbb{C} : \exp(w) = z\right\}$, $\text{Log}(z) := \left\{ \ln \left|z\right| + i\phi : \phi \in \arg(z)\right\} = \ln\left|z\right| + i \text{Arg}(z)$
+			\begin{itemize}
+				\item $\log(re^{i\theta}) = \ln\left|z\right| + i \arg(z) = \left\{\ln r + i\theta + 2k\pi i: k\in \mathbb{Z}\right\}$
+				\item $\log(zw) = \log(z) + \log(w)$, $\log(\frac{1}{z}) = -\log(z)$
+				\item $\text{Log}_\phi(z) := \ln \left|z\right| + i \text{Arg}_\phi(z)$ is holomorphic on $D_\phi$ and $\text{Log}_\phi'(z) = \frac{1}{z}$ for all $z \in D_\phi$
+			\end{itemize}
+			
+			
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[Branches and Cuts]{dfn:branchesncuts}{ }
+			Motivated by the discontinuity line of $\text{Arg}(z)$, and thus the non-holomorphicity of $\text{Log}(z)$
+			\begin{itemize}
+				\item A branch cut is an $L \subseteq \mathbb{C}$ which is removed so that a holo. branch of a multivalued func may be defined on $\mathbb{C} \backslash L$
+				\item $L_{z_0, \phi} := \{z \in \mathbb{C} : z = z_0 + r e^{i \phi} \text{ for } r>0\}$. $L_{0, \phi} = L_\phi$.
+				\item $D_{z_0, \phi} = \mathbb{C} \backslash L_{z_0, \phi}$. $D_{0, \phi} = D_\phi$. $D_{-\pi} = D$.
+			\end{itemize}
+			
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[Complex Powers]{dfn:powers}{ }
+			$z^\alpha := \left\{\exp(\alpha w) : w \in \log(z)\right\} = \left\{\exp(\alpha\text{Log}(z)) \exp(i \alpha 2 k \pi): k \in \mathbb{Z}\right\}$
+			\begin{itemize}
+				\item Let $\alpha, z \in \mathbb{C}, z \ne 0$. If $\alpha \in \mathbb{Z}$ there is exactly one value of $z^\alpha$.  \\
+					\hspace*{6em} If $\alpha = \frac{p}{q}$, $p, q \in \mathbb{Z}, p, q$ coprime, $q \ne 0$, there are exactly $q$ values of $z^\alpha$. \\
+					\hspace*{6em} If $\alpha$ is irrational or non-real there are infinitely many values of $z^\alpha$.
+				\item Let $q \in \mathbb{Z}^+$. The $q$ values $1^{\frac{1}{q}} = 1, w, ..., w^{q-1}$, $w := \exp(\frac{2 \pi i}{q})$ are the $q$ \textit{roots of unity}
+				\item Each branch of $\text{log}(z)$ gives a branch of $z^\alpha$. The \textit{principal branch} is $z^\alpha = \exp(\alpha \text{Log}(z))$
+				\item For $z \ne 0$, $z^\alpha z^\beta = z^{\alpha + \beta}$ where the principal branch is chosen for each power.
+				\item A branch of $z^\alpha$ is holo. on the $D_\phi$ on which $\text{Log}_\phi$ is holo. and $ \forall z \in D_\phi$, $\frac{d}{dz}z^\alpha = \alpha z^{\alpha -1}$.
+			\end{itemize}
+			
+			
+		\end{dfn}
+	
+	
+%--------------------------------------------------------------------------------------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--------------------------------------------------------------------------------------------------%
+	
+	{\footnotesize \textbf{\underline{Conformal Maps and M{\"o}bius Transforms}}}
+	
+	\begin{dfn}[Conformal Map]{dfn:confmap}{ }	
+		For open $U, f: U \to \mathbb{C}$, $f$ is \textit{conformal} if the angle between straight lines is the same as the angle between their images under $f$. This extends to diffable curves by considering tangents.
+		\begin{itemize}
+			\item A holomorphic $f(z)$ preserves angles for all $z_0 \in U$ where $f'(z_0) \ne 0$
+		\end{itemize}
+		
+	\end{dfn}
+	
+	
+	\begin{dfn}[The Extended Complex Plane]{dfn:extplane}{ }
+		The \textit{extended complex plane} is $\tilde{\mathbb{C}} = \mathbb{C} \cup \{\infty\}$. Let $a, b \in \mathbb{C}, b \ne 0$, then $a + \infty = \infty$, $b \cdot \infty = \infty$, $\frac{b}{0} = \infty$, $\frac{b}{\infty} = 0$.	Then $f(-\frac{d}{c}) = \infty$ and $f(\infty) = \frac{a}{c}$. We do not define $0 \cdot \infty$ or $\infty + \infty$.
+		
+	\end{dfn}
+	
+	
+	\begin{dfn}[M{\"o}bius Transforms]{dfn:morbius}{ }
+		A \textit{M{\"o}bius transformation} is a function of the form $f(z) = \frac{az + b}{cz + d}, a, b, c, d \in \mathbb{C}, ad \ne bc$
+		\begin{itemize}
+			\item $\frac{\lambda az + \lambda b}{\lambda cz + \lambda d} = \frac{az + b}{cz + d}$, so can always divide by $sqrt(ad - bc)$ and impose $ad - bc = 1$
+						
+			\item The MT $f_M(z) = \frac{az + b}{cz + d}$ corresponds to $M = 
+			( \begin{pmatrix}{cc}
+				a&b\\
+				c&d\\
+			\end{pmatrix} )$ 
+			, with $\det(M) = ad - bc = 1$.
+			
+		\end{itemize}
+			
+			\begin{tabular}{|c|c|c|c|}
+				\hline 
+				\textit{Translation} & \textit{Rotation} & \textit{Dilation} & \textit{Inversion} \\ 
+				\hline
+				$f(z) = z+b$ & $f(z) = az, \left|a\right| = 1, a = e^{i\theta}$ & $f(z) = rz, r> 0$ & $f(z) = \frac{1}{z}$ \\ 
+				\hline
+				$\begin{pmatrix}
+					1&b\\
+					0&1\\
+				\end{pmatrix}$
+				&
+				$\begin{pmatrix}
+					e^{i\theta/2}&0\\
+					0&e^{-i\theta/2}\\
+				\end{pmatrix}$
+				&
+				$\begin{pmatrix}
+					\sqrt{r}&0\\
+					0&1/\sqrt{r}\\
+				\end{pmatrix}$
+				&
+				$\begin{pmatrix}
+					0&i\\
+					i&0\\
+				\end{pmatrix}$
+				\\
+				\hline
+				
+			\end{tabular}
+		
+	\end{dfn}
+	
+	
+	\begin{thm}[M{\"o}bius Transform Theorems]{thm:morbius}{ }
+		\begin{itemize}
+			\item Every MT is a composition of a finite number of translations, rotations, and dilations, and iff $f$ does not fix the point at infinity, one inversion.
+			\item MTs map circlines to circlines
+			\item $f_{M_1 M_2} = f_{M_1} \circ f_{M_2}$ and $f_{M^-1} = f_M^{-1}$
+			\item If $f(z)$ an MT and $\exists$ distinct $z_2, z_3, z_4 \in \tilde{\mathbb{C}}$ s.t. $f(z_2) = z_2, f(z_3) = z_3, f(z_4) = z_4$, $f = id$.
+			\item For distinct $z_2, z_3, z_4 \in \tilde{C}$, $\exists$ a unique MT $f(z)$ s.t. $f(z_2) = 1, f(z_3) = 0, f(z_4) = \infty$
+			\item For triplets of distinct points $(z_2, z_3, z_4), (w_2, w_3, w_4) \in \tilde{\mathbb{C}}$, $\exists$ a unique MT $f(z)$ s.t. $f(z_2) = w_2, f(z_3) = w_3, f(z_4) = w_4$
+			\item MTs preserve the cross-ratio - $[f(z_1), f(z_2), f(z_3), f(z_4)] = [z_1, z_2, z_3, z_4]$
+		\end{itemize}
+		
+		
+		
+	\end{thm}
+	
+	
+	\begin{dfn}[The Riemann Sphere and Stereographic Projection]{dfn:riemannnstereograph}{ }
+		Consider $\{X, Y, Z\}$ describing $\mathbb{R}^3$. Identify $\mathbb{C}$ with the plane $Z = 0$ and $X + iY$ with $\{X, Y, 0\}$. \\
+		The \textit{Riemann Sphere} is $S^2 := \{(X, Y, X) \in \mathbb{R}^3 : X^2 + Y^2 + Z^2 = 1\}$. $N := \{0, 0, 1\}$, 'north pole'.\\
+		Define $\phi : \tilde{\mathbb{C}} \to S^2$ by stipulating that $\phi(z), z, N$ are collinear, and $\phi(\infty) = N$. \\
+		The \textit{stereographic projection} is $\psi : S^2 \to \mathbb{C}, \psi(z) := \phi^{-1}(z)$. $\psi$ maps circles to circlines.
+		\begin{itemize}
+			\item $\phi(z) = (\frac{2x}{\left|z\right|^2 + 1}, \frac{2y}{\left|z\right|^2 + 1}, \frac{\left|z\right|^2-1}{\left|z\right|^2 + 1})$. $\psi(X, Y, Z) = \frac{X + iY}{1 - Z}$, $\psi(N) = \infty$.
+		\end{itemize}
+		
+		
+	\end{dfn}
+	
+	
+	\begin{dfn}[The Cross-Ratio]{dfn:crossratio}{ }
+		For distinct $z_1, z_2, z_3, z_4 \in \tilde{\mathbb{C}}$, their \textit{cross-ratio}, $[z_1, z_2, z_3, z_4]$, is the image of $z_1$ under the unique MT which sends $(z_2, z_3, z_4)$ to $(1, 0, \infty)$.
+		$[z_1, z_2, z_3, z_4] = \frac{z_1-z_3}{z_1 - z_4} \frac{z_2 - z_4}{z_2 - z_3}.$ \\
+		$[\infty, z_2, z_3, z_4] = \frac{z_2-z_4}{z_2 - z_3}$,
+		$[z_1, \infty, z_3, z_4] = \frac{z_1-z_3}{z_1 - z_4}$,
+		$[z_1, z_2, \infty, z_4] = \frac{z_2-z_4}{z_1 - z_4}$,
+		$[z_1, z_2, z_3, \infty] = \frac{z_1-z_3}{z_2 - z_3}$.
+		
+	\end{dfn}
+	
+	
+%--------------------------------------------------------------------------------------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--------------------------------------------------------------------------------------------------%
+	
+	{\footnotesize \textbf{\underline{Complex Integration}}}
+	
+	\begin{dfn}[Complex Integration Of A Real Variable]{dfn:comint}{ }
+		For $[a, b] \subseteq \mathbb{R}$, $f: [a,b] \to \mathbb{C}$ is \textit{integrable} if $u, v : [a, b] \to \mathbb{R}$ are real integrable. Then $\int_{a}^{b}f(t) \text{ dt} = \int_{a}^{b}u(t) \text{ dt} + i \int_{a}^{b} v(t) \text{ dt}$. Continuous functions are integrable.\\
+		This integration is linear, respects FTC, and $\left|\int_{a}^{b} f(t) \text{ dt}\right| \le \int_{b}^{a} \left|f(t)\right| \text{ dt}$
+		
+	\end{dfn}
+	
+	\begin{dfn}[Contours]{dfn:contours}{ }
+		For $z_0, z_1 \in \mathbb{C}$, a \textit{(parametrised) curve} $\Gamma$ connecting them is a continuous func $\gamma : [t_0, t_1] \to \mathbb{C}$ for $t_0, t_1 \in \mathbb{R}, t_0 < t_1$, s.t. $\gamma(t_0) = z_0$ and $\gamma(t_1) = z_1$.
+		\begin{itemize}
+			\item $\gamma$ can be split into $\Re/\Im$ parts how you think it can be.\\
+			\item $\Gamma$ is \textit{regular} if $\gamma$ is continuously diffable and $\gamma'(t) \ne 0$ for all $t \in (t_0, t_1)$
+			\item $\Gamma$ is a closed and bounded subset of $\mathbb{C}$
+			\item For regular $\Gamma$, the \textit{arclength} $\ell(\Gamma) := \int_{t_0}^{t_1}\left|\gamma'(t)\right| \text{ dt} = \int_{t_0}^{t_1} \sqrt{x'(t)^2 + y'(t)^2} \text{ dt}$
+			\item For $\Gamma$ an arc of a circle of radius $r$ through an angle $\theta$, $\ell(\Gamma) = r\theta$
+			\item A curve $\Gamma$ is a \textit{contour} if it is a finite union of regular curves where the endpoints join up.
+			\item A contour is \textit{simple} if it has no self-intersections, except possibly at the endpoints.
+			\item A \textit{loop} is a simple closed contour
+			\item A loop is \textit{positively-oriented} if the interior is on the left as we move along the loop.
+		\end{itemize}
+		
+	\end{dfn}
+	
+	
+	\begin{dfn}[Contour Integrals]{dfn:contints}{ }
+		Given $z_0, z_1 \in \mathbb{C}, \Gamma$ a regular curve connecting them, and $f: \Gamma \to \mathbb{C}$ continuous, we define the \textit{integral of $f$ along $\Gamma$} by $\int_{\Gamma} f(z) \text{ dz} = \int_{t_0}^{t_1} f(\gamma(t))\gamma'(t) \text{ dt}$
+		\begin{itemize}
+			\item Contour integration is linear (can pull out factors, split sums)
+			\item For two parametrisations of $\Gamma$, $\gamma : [t_0, t_1] \to \mathbb{C}$ and $\tilde{\gamma}:[\tilde{t_0}, \tilde{t_1}] \to \mathbb{C}$, if there exists injective diffable $\lambda:[\tilde{t_0}, \tilde{t_1}] \to [t_0, t_1]$ with $\lambda'(t) > 0 \forall t \infty [\tilde{t_0}, \tilde{t_1}]$ s.t. $\tilde{\gamma}(t) = \gamma(\lambda(t))$ $\forall$ $t \in [t_0, t_1]$, then the integrals along $\gamma$ and $\tilde{\gamma}$ are equal.
+			\item If $\Gamma$ is parametrised by $\gamma : [0,1] \to \mathbb{C}$, then integrating $-\Gamma$ parametrised by $\tilde{\gamma} : [0, 1] \to \mathbb{C}, \tilde{\gamma}(t) = \gamma(1-t)$ gives the negative of the integral along $\Gamma$.
+			\item A contour is \textit{closed} if $\gamma(t_0) = \gamma(t_1)$
+			\item A \textit{contour integral} is the sum of the integrals along the component regular curves.
+		\end{itemize}
+		
+	\end{dfn}
+	
+	
+	\begin{dfn}[Domains]{dfn:domains}{ }
+		$D \subseteq \mathbb{C}$ is a \textit{domain} if $D$ is open and every two points in $D$ can be connected by a contour lying wholly in $D$.
+		\begin{itemize}
+			\item If $u : D \to \mathbb{R}$ is diffable, with $\frac{\partial u}{\partial x} = \frac{\partial u}{\partial y} = 0$ on $D$, then $u$ is constant on $D$.
+			\item A continuous $f$ on $D$ has an \textit{antiderivative} $F$ on $D$ if $F'(z) = f(z)$ for all $z \in D$.
+			\item The integral of a cont. $f: D \to \mathbb{C}$, with an antideriv on $D$, along a closed $\Gamma$ in $D$, is $0$.
+			\item $D$ is \textit{simply-connected} if $\text{Int}(\Gamma) \subseteq D$ for all loops $\Gamma \subseteq D$.
+		\end{itemize}
+		
+		
+	\end{dfn}
+	
+	\begin{lma}[Path-Independence]{lem:pathind}{ }
+		For a domain $D \subseteq C$ and continuous $f: D \to \mathbb{C}$, the following are equivalent:
+		\begin{enumerate}[label = \roman*]
+			\item $f$ has an antiderivative $F$ on $D$
+			\item $\int_{\Gamma} f(z) \text{ dz} = 0$ for all closed $\Gamma$ in $D$
+			\item All contour integrals are independent of the path $\Gamma$, and depend only on the endpoints
+		\end{enumerate}
+		
+	\end{lma}
+	
+	\begin{thm}[Jordan Curve Theorem]{thm:michaelcurves}{ }
+		Let $\Gamma$ be a loop in $\mathbb{C}$. Then $\Gamma$ defines two regions in $\mathbb{C}$ with $\Gamma$ as their common boundary: a bounded domain, the \textit{interior} of $\Gamma$, $\text{Int}(\Gamma)$; and an unbounded domain, the \textit{exterior} of $\Gamma$, $\text{Ext}(\Gamma)$.
+		\begin{itemize}
+			\item $\mathbb{C} = \text{Int}(\Gamma) \cup \Gamma \cup \text{Ext}(\Gamma)$
+		\end{itemize}
+		
+		
+	\end{thm}
+	
+	
+	\begin{thm}[Cauchy Integral Theorem]{thm:cit}{ }
+		Let $\Gamma$ be a loop and $f$ be holomorphic inside and on $\Gamma$. Then 
+		$
+		\int_{\Gamma}f(z) \text{ dz} = 0.
+		$
+		\begin{itemize}
+			\item If $f$ is holo. on a simply-connected domain $D$, then $f$ has an antiderivative on $D$
+			\item If $z_0 \in \mathbb{C}$ and $\Gamma$ is a loop s.t. $z_0 \notin \Gamma$, then $\int_{\Gamma} \frac{1}{z - z_0} \text{ dz} = 2\pi i$ if $z \in \text{Int}(\Gamma)$ and 0 otherwise
+		\end{itemize}
+	\end{thm}
+	
+	
+	\begin{thm}[The Deformation Theorem]{dfn:deform}{ }
+		For loops $\Gamma_1, \Gamma_2 \subseteq \mathbb{C}$, and $f$ holomorphic on $\Gamma_1, \Gamma_2, \{\text{Int}(\Gamma_1) \backslash \text{Int}(\Gamma_2)\} \cup \{\text{Int}(\Gamma_2) \backslash \text{Int}(\Gamma_1)\}, \int_{\Gamma_1}f(z) \text{ dz} = \int_{\Gamma_2}f(z) \text{ dz}$
+		
+		
+	\end{thm}
+	
+	
+	\begin{thm}[Cauchy Integral Formula]{thm:cif}{ }
+		For a loop $\Gamma$, $z_0 \in \text{Int}(\Gamma)$, and $f$ holo. inside and on $\Gamma$, $f(z_0) = \frac{1}{2 \pi i} \int_{\Gamma}\frac{f(z)}{z-z_0} \text{ dz}$
+		
+		
+	\end{thm}	
+	
+	
+	\begin{thm}[Generalised Cauchy Integral Formula]{thm:gcif}{ }
+		Given a loop $\Gamma$, $z_0 \in \text{Int}(\Gamma)$, and $f$ holo. inside and on $\Gamma$:\\ $f$ is infinitely differentiable at $z_0$ and for $n \in \mathbb{N}$, $f^{(n)}(z_0) = \frac{n!}{2 \pi i} \int_{\Gamma}\frac{f(z)}{(z-z_0)^{n+1}} \text{ dz}$
+		
+		\begin{itemize}
+			\item Can be rearranged to calculate contour integrals if appropriate derivatives are known
+			\item For $z_0 \in$ domain $D$, $R > 0$ s.t. $\overline{D}_R(z_0) \subseteq D$, $f$ holo. on $D$, and $M>0$ an upper bound for $\left|f(z)\right|$, then for all $n \in \mathbb{N}$, $\left|f^{(n)}(z_0)\right| \le \frac{n!M}{R^n}$
+		\end{itemize}
+		
+	\end{thm}	
+	
+	
+	\begin{thm}[Morera's Theorem]{thm:morera}{ }
+		If $D \subseteq \mathbb{C}$ a domain, $f: D \to \mathbb{C}$ cont., $\int_{\Gamma}f(z) \text{ dz} = 0$ for all loops $\Gamma$ inside $D$, then $f$ is holo.
+		
+	\end{thm}
+	
+	
+	\begin{thm}[Liouville's Theorem]{thm:liouville}{ }
+		If $f$ is holo. on $\mathbb{C}$ and bounded (ie $\exists M > 0$ s.t. $\left|f(z)\right| \le M \forall z \in \mathbb{C}$), then $f$ is constant.
+		\begin{itemize}
+			\item For $D \subseteq \mathbb{C}$ a domain, $z_0 \in D$, $R>0$ s.t. $\overline{D}_R(z_0) \subseteq D$, and $f$ holo. on $D$;\\
+			$f(z_0) = \frac{1}{2 \pi} \int_{0}^{2 \pi}f(z_0 + R \exp(it)) \text{ dt}.$
+			\item Given the above and $f$ s.t. $\max_{z \in \overline{D}_R(z_0)}\left|f(z)\right| = \left|f(z_0)\right|$, $f(z)$ is constant on $\overline{D}_R(z_0)$.
+		\end{itemize}
+		
+	\end{thm}
+	
+	
+	\begin{thm}[The Maximum Modulus Principle]{thm:maxmod}{ }
+		Let $D \subseteq \mathbb{C}$ be a domain, and $f$ be holo. and bounded on $D$.\\
+		Then if $\left|f(z)\right|$ achieves its maximum on $D$, $f$ is constant on $D$.
+		\begin{itemize}
+			\item If a func is holo. on a bounded domain, and cont. up to and including the boundary, it attains the maximum of its modulus on the boundary.
+		\end{itemize}
+	\end{thm}
+	
+	
+	\begin{thm}[Maximum/Minimum Principle For Harmonic Functions]{thm:maxminharm}{ }
+		Let $D \subseteq \mathbb{R}^2$  be a domain and $\phi : D \to \mathbb{R}$ be harmonic s.t. $\phi$ is bounded above or below on $D$ by $M > 0$, and $\phi(z_0) = M$ for some $z_0 \in D$. Then $\phi$ is constant on $D$.
+		
+		
+	\end{thm}
+	
+	
+	\end{multicols*}	
+	
+	\newpage
+	
+	\begin{multicols*}{4}
+		\raggedcolumns 
+%--------------------------------------------------------------------------------------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--------------------------------------------------------------------------------------------------%
+
+	{\footnotesize \textbf{\underline{Series Expansions For Holomorphic Functions}}}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	\end{multicols*}
+
+
+\end{document}

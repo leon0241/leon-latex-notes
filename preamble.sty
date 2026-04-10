@@ -15,8 +15,11 @@
 \usepackage{geometry}
 \geometry{
 	a4paper,
-	margin=0.17in
+	margin=0.05in
 }
+
+%Generic space savings
+\usepackage{savetrees}
 
 % ╭──────────────────────────────────────────────────────────╮
 % │                   Diagrams and Visual                    │
@@ -55,9 +58,11 @@
 % Needed for variable font sizes
 \usepackage{lmodern, anyfontsize}
 % recommended, but you can remove if it causes problems
-\usepackage[final, nopatch=footnote]{microtype}
+%\usepackage[final, nopatch=footnote]{microtype} - This package causes significant problems with AMS packages, is purely aesthetical, and is only left commented in in honour of Leon being a massive neek - Louis
 % AMS packages. Note: AMSThm for proof env.
 \usepackage{amsmath, amsthm, amsfonts, amssymb}
+%Fixes maths symbols scalings (int, sqrt, brackets, etc). Must be loaded after lmodern
+\usepackage{fixcmex}
 % Provides \mathscr font
 \usepackage{mathrsfs}
 % Provides Bisimulation Symbol
@@ -70,6 +75,8 @@
 \usepackage[dvipsnames]{xcolor}
 % String manipulation - needed for thmboxes
 \usepackage{xstring}
+%Smaller bullet point symbol to match \fontsize{4pt}{5pt}
+\usepackage{adfbullets}
 
 
 % ╭──────────────────────────────────────────────────────────╮
@@ -128,12 +135,21 @@
 
 \parindent = 0pt
 
-\setlength{\multicolsep}{0pt}% 50% of original values
-\setlist{topsep=3pt, itemsep=0pt}
+
+%Reduce itemize environment spacing
+\setlist{noitemsep, topsep=0pt, parsep=0pt, partopsep=0pt, leftmargin=*, labelsep=1pt}
+%Smaller bullet point to match \fontsize{4pt}{5pt}
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny\adfbullet{27}}}$}
+
+
+%Reduce multicols spacing
+\setlength{\columnsep}{3pt}
+
+
+
+
 
 \setlength{\parsep}{2pt}
-
-\renewcommand\labelitemi{\tiny$\bullet$}
 
 
 \lstset{ %this is the stype
