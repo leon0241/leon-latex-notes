@@ -19,6 +19,7 @@ LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and M
         <li> <b>Honours Algebra</b> everything - <a href="exam-sheets/algebra-10p/algebra-10p.pdf">click here!</a> <i>*(10 pages)*</i> </li>
         <li> <b>Honours Analysis</b> - <a href="exam-sheets/analysis-6p/analysis-6p.pdf">click here!</a> <i>(without examples - basically 5 pages)</i> </li> 
         <li> <b>Honours Analysis</b> - <a href="exam-sheets/analysis-6p/analysis-6p-no-examples.pdf">click here!</a> <i>*(without examples or applications - 5 and a bit pages)*</i> </li>
+        <li> <b>Honours Complex Variables</b> - <a href="exam-sheets/HCov/PDF/HCovExamNotes.pdf">click here!</a> <i>*Made by Louis Taylor!*</i> </li>
         <li> <b>Introduction to Theoretical CS</b> - <a href="exam-sheets/ITCS/itcs_notes.pdf">click here!</a> <i>(Adapted from Chris Dalziel's LaTeX notes)</i> </li>
         <li> <b>Metric Spaces</b> - <a href="exam-sheets/metric-6p/metric-6p.pdf">click here!</a> </li>
     </ul>
