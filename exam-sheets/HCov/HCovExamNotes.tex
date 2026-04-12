@@ -8,6 +8,11 @@
 
 
 \fontsize{5pt}{6pt} \selectfont
+
+%Reduce horizontal padding between columns in 'tabular' environment
+\setlength\tabcolsep{4.5pt}
+\setlength\extrarowheight{2pt}
+
 	
 	\setlength{\abovedisplayskip}{0pt}
 	\setlength{\belowdisplayskip}{0pt}
@@ -30,7 +35,7 @@
 		
 		\begin{rem}[Notation]{rem:nota}{ }
 			Look at the context and these are usually obvious 
-			\vspace{-10pt}
+			\vspace{-12pt}
 			\begin{multicols}{2}
 				\begin{itemize}
 					\item $z = x+iy = \Re(z) + i \Im(z)$
@@ -45,6 +50,8 @@
 					\item 'Respects linearity' or 'is linear' for an operation means can do $\alpha f + \beta g$ and pull out sum + factors from the operation.
 					\item (T/P/L)S/E = (Taylor/Power/Laurent) Series/Expansion
 					\item If a disc/circle/etc is demarcated with a random $R/r$/etc, assume it is 'for some $R/r$/etc $>0$'
+					\item If something is stated in the 'Let' section at the start of a box, assume it must be true for any conclusion made inside the box to be valid
+					\item Things itemised with '*' are more important than those with $\bullet$. 
 				\end{itemize}
 			\end{multicols}
 			
@@ -76,6 +83,10 @@
 				\end{itemize}
 				
 			\end{multicols}
+			\vspace{-11pt}
+			\begin{itemize}
+				\item $f$ is bounded if there exists $M > 0$ s.t. $\left|f(z)\right| \le M \forall z \in \mathbb{C}$.
+			\end{itemize}
 		
 		\end{dfn}
 		
@@ -187,6 +198,7 @@
 		
 		
 		\begin{mdfn}[exp(z)\text and Complex Trig]{mdfn:expntrig}{ }
+			\vspace{-5pt}
 			\begin{multicols}{2}
 				\begin{itemize}
 					\item $\exp(z) := e^x(\cos(y) + i\sin(y))$
@@ -354,7 +366,7 @@
 	\end{thm}
 	
 	
-	\begin{dfn}[The Riemann Sphere and Stereographic Projection]{dfn:riemannnstereograph}{ }
+	\begin{dfn}[The Riemann Sphere\text{,} Stereographic Projection]{dfn:riemannnstereograph}{ }
 		Describe $\mathbb{R}^3$ with $\{X, Y, Z\}$. $\mathbb{C}$ is the plane $Z = 0$ and $X + iY$ is $\{X, Y, 0\}$:
 		\begin{itemize}
 			\item The \textit{Riemann Sphere} is $S^2 := \{(X, Y, X) \in \mathbb{R}^3 : X^2 + Y^2 + Z^2 = 1\}$.
@@ -485,14 +497,10 @@
 	
 	\begin{mthm}[Cauchy Integral Formula\text{,} Generalised CIF]{mthm:gcif}{ }
 		Let $\Gamma$ be a loop, $z_0 \in \text{Int}(\Gamma)$, and $f$ holo. inside and on $\Gamma$. Then:
-		For loop $\Gamma$, , $f$ holo. inside and on $\Gamma$: $f(z_0) = \frac{1}{2 \pi i} \int_{\Gamma}\frac{f(z)}{z-z_0} \text{ dz}$
-		
-		
-		
-		Given a loop $\Gamma$, $z_0 \in \text{Int}(\Gamma)$, and $f$ holo. inside and on $\Gamma$:\\ $f$ is infinitely differentiable at $z_0$ and for $n \in \mathbb{N}$, $f^{(n)}(z_0) = \frac{n!}{2 \pi i} \int_{\Gamma}\frac{f(z)}{(z-z_0)^{n+1}} \text{ dz}$
-		
 		\begin{itemize}
-			\item Can be rearranged to calculate contour integrals if appropriate derivatives are known
+			\item[*] $f(z_0) = \frac{1}{2 \pi i} \int_{\Gamma}\frac{f(z)}{z-z_0} \text{ dz}$
+			\item[*] $f$ is $\infty$'ly diffable at $z_0$, for $n \in \mathbb{N}$, $f^{(n)}(z_0) = \frac{n!}{2 \pi i} \int_{\Gamma}\frac{f(z)}{(z-z_0)^{n+1}} \text{ dz}$
+			\item Can be rearranged to evaluate contour integrals given appropriate $f^{(n)}$
 			\item For $z_0 \in$ domain $D$, $R > 0$ s.t. $\overline{D}_R(z_0) \subseteq D$, $f$ holo. on $D$, and $M>0$ an upper bound for $\left|f(z)\right|$, then for all $n \in \mathbb{N}$, $\left|f^{(n)}(z_0)\right| \le \frac{n!M}{R^n}$
 		\end{itemize}
 		
@@ -500,17 +508,18 @@
 	
 	
 	\begin{thm}[Morera's Theorem]{thm:morera}{ }
-		If $D \subseteq \mathbb{C}$ a domain, $f: D \to \mathbb{C}$ cont., $\int_{\Gamma}f(z) \text{ dz} = 0$ for all loops $\Gamma$ inside $D$, then $f$ is holo.
+		Let $D \subseteq \mathbb{C}$ be a domain, $f: D \to \mathbb{C}$ continuous, \\
+		and $\int_{\Gamma}f(z) \text{ dz} = 0$ for all loops $\Gamma$ inside $D$. Then $f$ is holo. on $D$.
 		
 	\end{thm}
 	
 	
 	\begin{thm}[Liouville's Theorem]{thm:liouville}{ }
-		If $f$ is holo. on $\mathbb{C}$ and bounded (ie $\exists M > 0$ s.t. $\left|f(z)\right| \le M \forall z \in \mathbb{C}$), then $f$ is constant.
+		Let $f$ be holo. on $\mathbb{C}$ and bounded. Then $f$ is constant.
 		\begin{itemize}
 			\item For $D \subseteq \mathbb{C}$ a domain, $z_0 \in D$, $R>0$ s.t. $\overline{D}_R(z_0) \subseteq D$, and $f$ holo. on $D$;\\
 			$f(z_0) = \frac{1}{2 \pi} \int_{0}^{2 \pi}f(z_0 + R \exp(it)) \text{ dt}.$
-			\item Given the above and $f$ s.t. $\max_{z \in \overline{D}_R(z_0)}\left|f(z)\right| = \left|f(z_0)\right|$, $f(z)$ is constant on $\overline{D}_R(z_0)$.
+			\item If $f$ s.t. $\max_{z \in \overline{D}_R(z_0)}\left|f(z)\right| = \left|f(z_0)\right|$, $f(z)$ is constant on $\overline{D}_R(z_0)$.
 		\end{itemize}
 		
 	\end{thm}
@@ -521,13 +530,15 @@
 		Then if $\left|f(z)\right|$ achieves its maximum on $D$, $f$ is constant on $D$.
 		\begin{itemize}
 			\item If a func is holo. on a bounded domain, and cont. up to and including the boundary, it attains the maximum of its modulus on the boundary.
+			
 		\end{itemize}
+		
 	\end{thm}
 	
 	
 	\begin{thm-s}[Maximum/Minimum Principle For Harmonic Funcs]{thm:maxminharm}{ }
-		Let $D \subseteq \mathbb{R}^2$  be a domain and $\phi : D \to \mathbb{R}$ be harmonic s.t. $\phi$ is bounded above or below on $D$ by $M > 0$, and $\phi(z_0) = M$ for some $z_0 \in D$. Then $\phi$ is constant on $D$.
-		
+		Let $D \subseteq \mathbb{R}^2$  be a domain, $\phi : D \to \mathbb{R}$ be harmonic s.t. $\phi$ is bounded above or below on $D$ by $M > 0$, and $\phi(z_0) = M$ for some $z_0 \in D$. \\
+		Then $\phi$ is constant on $D$.
 		
 	\end{thm-s}
 	
@@ -546,7 +557,7 @@
 		
 		
 		\begin{dfn}[Convergence Of An Infinite Series]{dfn:infsrscnvg}{ }
-			An infinite series $\sum_{j=0}^{\infty}z_j$ \textit{converges} if the sequence $S_n \in \mathbb{C}, S_n = \sum_{j =0}^{n}z_j$ is convergent with limit $S \in \mathbb{C}$, and say $\sum_{j=0}^{\infty}z_j = S$. Otherwise the series is \textit{divergent}.
+			An infinite series $\sum_{j=0}^{\infty}z_j$ \textit{converges}, with $\sum_{j=0}^{\infty}z_j = S$, if the sequence $S_n := \sum_{j =0}^{n}z_j$ is convergent with limit $S \in \mathbb{C}$. Otherwise \textit{divergent}.
 			\begin{itemize}
 				\item If $\sum_{j=0}^{\infty}z_j$ is convergent, $\lim{n\to \infty} z_n = 0$
 				\item Comparison Test: If $z_n$ is s.t. $\left|z_n\right| \le M_n \ge 0$, for all $n \ge N$ for some $N \in \mathbb{N}$, and $\sum_{j = 0}^{\infty} M_j$ converges, then $\sum_{j=0}^{\infty}z_j$ converges.
@@ -564,11 +575,12 @@
 				\begin{itemize}
 				\item Holo. $f_n$ may converge pointwise to an $f$ which is not even cont.
 				\item If cont. $f_n$ converge uniformly to $f$, $f$ is cont.
-				\item $\sum_{j=0}^{\infty}f_j(z)$ converges pointwise/uniformly if $S_n = \sum_{j=0}^{n}f_j$ converges pointwise/uniformly.
-				\item Weierstrass M-Test: For $S \subseteq C, M_n \ge 0$ s.t. $\forall z \in S$ and $n \ge N \in \mathbb{N}$, $\left|f_n(z)\right| \le M_n$, and $\sum_{j=0}^{\infty}M_j$ convergent; $\sum_{j=0}^{\infty}f_j(z)$ is uniformly convergent.
-				\item For $f_n : S \to \mathbb{C}$ uniformly converging to $f$, and $\Gamma \subseteq S$; $\int_{\Gamma}f_n(z) \text{ dz} \to \int_{\Gamma}f(z) \text{ dz}$.
-				\item For cont. $f_n$ s.t. $\sum_{j=0}^{\infty}f_j(z)$ converges uniformly on $S$ and $\Gamma \subseteq S$, $\int_{\Gamma}\sum_{j=0}^{\infty}f_j(z) \text{ dz} = \sum_{j=0}^{\infty}\int_{\Gamma}f_j(z) \text{ dz}$ 
-				\item For simply-connected $D$ with $f_n$ holo. on $D$ converging uniformly to $f$, $f$ is holomorphic on $D$.
+				\item $\sum_{j=0}^{\infty}f_j(z)$ cnvges ptwise/unifly if $S_n = \sum_{j=0}^{n}f_j$ cnvges ptwise/unifly.
+				\item Weierstrass M-Test: For $S \subseteq C, M_n \ge 0$ s.t. $\forall z \in S$ and $n \ge N \in \mathbb{N}$, $\left|f_n(z)\right| \le M_n$, and $\sum_{j=0}^{\infty}M_j$ cnvgent; $\sum_{j=0}^{\infty}f_j(z)$ is unifly cnvgent.
+				\item For $f_n : S \to \mathbb{C}$ unifly cnvgng to $f$, and $\Gamma \subseteq S$; $\int_{\Gamma}f_n(z) \text{ dz} \to \int_{\Gamma}f(z) \text{ dz}$.
+				\item For continuous $f_n$ s.t. $\sum_{j=0}^{\infty}f_j(z)$ converges uniformly on $S$ and $\Gamma \subseteq S$:\\
+				$\int_{\Gamma}\sum_{j=0}^{\infty}f_j(z) \text{ dz} = \sum_{j=0}^{\infty}\int_{\Gamma}f_j(z) \text{ dz}$ 
+				\item If $f_n$, holo. on simply-connected $D$, cnvge unifly to $f$: $f$ is holo. on $D$.
 				
 			\end{itemize}
 			
@@ -577,7 +589,7 @@
 		
 		
 		\begin{dfn}[Power Series]{dfn:pwrsrs}{ }
-			For $a_n \in \mathbb{C}$ a sequence, a \textit{power series} is an infinite series of form $\sum_{j=0}^{\infty}a_j (z-z_0)^j$. $a_n$ are the \textit{coefficients}.\\
+			For $a_n \in \mathbb{C}$ a complex sequence, a \textit{power series} with \\ \textit{coefficients} $a_j$ is an infinite series of the form $\sum_{j=0}^{\infty}a_j (z-z_0)^j$.\\
 			Given a power series, $\exists R \in [0, \infty) \cup \left\{\infty\right\}$, the \textit{radius of convergence}, such that:
 			\begin{enumerate}[label=(\roman*)]
 				\item The series converges on $D_R(z_0)$
@@ -594,14 +606,18 @@
 		
 		
 		\begin{dfn}[Taylor Series]{dfn:taylor}{ }
-			For $f$ holo. at $z_0 \in \mathbb{C}$, the \textit{Taylor series of $f$ centred at $z_0$} is the PS $\sum_{j=0}^{\infty}\frac{f^{(j)}(z_0)}{j!}(z-z_0)^j$.
+			For $f$ holo. at $z_0 \in \mathbb{C}$: \\ \vspace{-5pt}
+			the \textit{Taylor series of $f$ centred at $z_0$} is the PS $\sum_{j=0}^{\infty}\frac{f^{(j)}(z_0)}{j!}(z-z_0)^j$.
 			\begin{itemize}
-				\item For $f$ holo. on $D_R(z_0)$, the TS of $f$ centred at $z_0$ converges to $f(z)$ for all $z \in D_R(z_0)$, uniformly on $\overline{D}_r(z_0)$ for $0 \le r < R$ 
-				\item Thus the TS of $f$ centred at $z_0$ converges to $f$ everywhere inside the largest open disc centred at $z_0$ on which $f$ is holo.
+				\item For $f$ holo. on $D_R(z_0)$, the TS of $f$ centred at $z_0$ converges \\
+				to $f(z)$ for all $z \in D_R(z_0)$, uniformly on $\overline{D}_r(z_0)$ for $0 \le r < R$ 
+				\item Thus the TS of $f$ centred at $z_0$ converges to $f$ everywhere\\
+				inside the largest open disc centred at $z_0$ on which $f$ is holo.
 				\item For $U$ open, $f$ is \textit{analytic} if for all $z\in U$, $f$ can be expressed as a convergent power series centred at $z$, valid on some disc centred at $z$.
 				\item If $U$ is open and $f$ holo. , $f$ is analytic
 				\item For $f$ holo. on and $z \in D_R(z_0)$, $f'(z) = \sum_{j=0}^{\infty}\frac{f^{(j+1)}(z_0)}{j!}(z-z_0)^j$
-				\item For $f, g$ holo. on and $z \in D_R(z_0)$, TSs respect linearity and the TS for $fg$, valid on same centre/disc, is $\sum_{j=0}^{\infty}\frac{1}{j!}\left( \sum_{k=0}^{j} \binom{j}{k} f^{(k)}(z_0) g^{(j-k)}(z_0)\right)(z-z_0)^j$
+				\item For $f, g$ holo. on and $z \in D_R(z_0)$: \\
+				TSs respect linearity, and the TS for $fg$, valid on the same $D_R(z_0)$, is $\sum_{j=0}^{\infty}\frac{1}{j!}\left( \sum_{k=0}^{j} \binom{j}{k} f^{(k)}(z_0) g^{(j-k)}(z_0)\right)(z-z_0)^j$
 				\item Uniqueness: If $\exists$ a PS converging to $f$ on a disc, it is the TS of $f$.
 			\end{itemize}
 			
@@ -610,10 +626,13 @@
 		
 		
 		\begin{dfn}[Laurent Series]{dfn:laurent}{ }
-			For $z_0 \in \mathbb{C}$ and $..., a_{-1}, a_0, a_1, ... \in C$ a doubly-infinite sequence, a \textit{Laurent series} centred at $z_0$ is a series of form $\sum_{j= -\infty}^{\infty}a_j(z-z_0)^j = \sum_{j=0}^{\infty}a_j(z-z_0)^j + \sum_{j=1}^{\infty}a_{-j}(z-z_0)^{-j}$
+			For $z_0 \in \mathbb{C}$ and $..., a_{-1}, a_0, a_1, ... \in C$ a doubly-infinite sequence, a \textit{Laurent series} centred at $z_0$ is a PS of form $\sum_{j= -\infty}^{\infty}a_j(z-z_0)^j = \sum_{j=0}^{\infty}a_j(z-z_0)^j + \sum_{j=1}^{\infty}a_{-j}(z-z_0)^{-j}$
 			\begin{itemize}
-				\item An LS converges if the two component PSs converge. The first has RoC $R$, regard the second as a PS in variable $w = (z-z_0)^{-1}$ with RoC $S >0$, then the LS converges for $z$ s.t. $\left|z-z_0\right| <R$ and $\left|(z-z_0)^{-1}\right| <S$, or $S^{-1} = r < \left|z-z_0\right| < R$.
-				\item For $f$ holo. on $A_{r, R}(z_0), 0 \le r < R \le \infty$, $f$ can be expressed an an LS centred at $z_0$ that converges on $A_{r, R}(z_0)$, uniformly on $\overline{A}_{r', R'}(z_0), r < r' \le R' < R$, with coeffs $a_j = \frac{1}{2 \pi i} \int_{\Gamma}\frac{f(z)}{(z-z_0)^{j+1}} \text{ dz}$, for $\Gamma$ in $A_{r, R}(z_0)$ s.t. $z_0 \in \text{Int}(\Gamma)$
+				\item An LS converges if its component PSs converge. \\
+				The first has RoC $R$, regard the second as a PS in variable $w = (z-z_0)^{-1}$ with RoC $S >0$. Then the LS converges for $z$ s.t. $\left|z-z_0\right| <R$ and $\left|(z-z_0)^{-1}\right| <S$, or $S^{-1} = r < \left|z-z_0\right| < R$.
+				\item For $f$ holo. on $A_{r, R}(z_0), 0 \le r < R \le \infty$:\\
+				$f$ can be expressed an an LS centred at $z_0$ that converges on $A_{r, R}(z_0)$,\\
+				uniformly on $\overline{A}_{r', R'}(z_0)$, $r < r' \le R' < R$, with coeffs $a_j = \frac{1}{2 \pi i} \int_{\Gamma}\frac{f(z)}{(z-z_0)^{j+1}} \text{ dz}$ for $\Gamma$ in $A_{r, R}(z_0)$ s.t. $z_0 \in \text{Int}(\Gamma)$
 				\item If $f$ is holomorphic on the 'hole' of the annulus, the LS is the TS
 				\item Uniqueness: If the PS $\sum_{j= -\infty}^{\infty} c_j (z-z_0)^j$ converges on $A_{r, R}(z_0)$, $\exists f$ holo. on $A_{r, R}(z_0)$ s.t. its LS centred at $z_0$ is the PS. Ie, if a func can be expressed in terms of a PS of the form of an LS centred at some $z_0$, that PS is the LS
 			\end{itemize}
@@ -622,11 +641,11 @@
 		\end{dfn}
 		
 		
-		\begin{dfn}[zeroes]{dfn:zeroes}{ }
-			Let $z_0 \in \mathbb{C}$, $U$ a neighbourhood of $z_0$, $f$ holo. on $U$
-			$z_0$ is a \textit{zero} of $f$ if $f(z_0) = 0$.\\
-			$z_0$ is of \textit{finite order} if there exists $m \in \mathbb{N}$ s.t. $f(z_0) = f'(z_0) = ... = f^{(m-1)}(z_0) = 0$ but $f^m(z_0) \ne 0$. Then $z_0$ is a \textit{zero of order m}. 
+		\begin{dfn}[Zeroes]{dfn:zeroes}{ }
+			Let $z_0 \in \mathbb{C}$, $U$ a neighbourhood of $z_0$, $f$ holo. on $U$. Then:
 			\begin{itemize}
+				\item[*] $z_0$ is a \textit{zero} of $f$ if $f(z_0) = 0$.\\
+				\item[*] $z_0$ is of \textit{finite order} if there exists $m \in \mathbb{N}$ s.t. $f(z_0) = f'(z_0) = ... = f^{(m-1)}(z_0) = 0$ but $f^m(z_0) \ne 0$. Then $z_0$ is a \textit{zero of order m}. 
 				\item A zero of order $1$ is a \textit{simple zero}. 
 				\item A zero is \textit{isolated} if $\exists R> 0$ s.t. $f(z) \ne 0$ for $z \in D'_R(z_0)$
 				\item If $f$ has a zero of finite order at $z_0$, then it is isolated
@@ -637,16 +656,16 @@
 		\end{dfn}
 		
 		
-		\begin{dfn}[Singularities]{dfn:sings}{ }
-			Let $D$ be a domain, $z_0 \in \mathbb{C}$, $f:D \to \mathbb{C}$
-			$z_0$ is a \textit{singularity} of $f$ if $f$ is not holo. at $z_0$.\\			
-			If $z_0$ is an isolated singularity of $f$ holo. on $D'_R(z_0)$ for some $R> 0$, then $f$ has an LE $f(z) = \sum_{j= -\infty}^{\infty}a_j(z-z_0)^j$ valid on $A_{0, R}$. Then:
-			\begin{enumerate}[label=(\roman*)]
-				\item $z_0$ is a \textit{removable singularity} of $f$ if $a_j = 0$ for all $j < 0$, ie $f(z) = \sum_{j=0}^{\infty}a_j(z-z_0)^j$
-				\item $z_0$ is a \textit{pole of order m} of $f$, $m \in \mathbb{N}$, if $a_j = 0$ for $j < -m$ and $a_{-m} \ne 0$, ie $f(z) = \sum_{j= -m}^{\infty}a_j(z-z_0)^j$. Poles of order $1, 2, 3$ are \textit{simple, double, triple} poles.
+		\begin{dfn}[Singularities And Their Classifications]{dfn:sings}{ }
+			Let $D$ be a domain, $f:D \to \mathbb{C}$. Then:\\
+			$z_0 \in \mathbb{C}$ is a \textit{singularity} of $f$ if $f$ is not holo. at $z_0$.\\			
+			If $z_0$ is an isolated singularity of $f$ holo. on $D'_R(z_0)$ for some $R> 0$, then $f$ has an LE $f(z) = \sum_{j= -\infty}^{\infty}a_j(z-z_0)^j$ valid on $A_{0, R}$.
+			\begin{itemize}[label=*]
+				\item $z_0$ is a \textit{removable singularity} of $f$ if $a_j = 0$ $\forall j < 0$ (LE is $\sum_{j=0}^{\infty}a_j(z-z_0)^j$)
+				\item $z_0$ is a \textit{pole of order m}$\in \mathbb{N}$ of $f$ if $a_j = 0$ for $j < -m$ and $a_{-m} \ne 0$ (LE is $\sum_{j= -m}^{\infty}a_j(z-z_0)^j$). Poles of order $1/2/3$ are \textit{simple/double/triple} poles.
 				\item $z_0$ is an \textit{essential singularity} if $a_j \ne 0$ for infinitely many negative values of $j$
 				
-			\end{enumerate}
+			\end{itemize}
 			
 			If $z_0$ is a removable singularity of $f$ holo. on $D'_R(z_0)$ for $R > 0$, then $f(z_0)$ can be redefined s.t. $f$ is holo. at $z_0$. By definition $f$ has an LE valid on $D'_R(z_0)$, so setting $f(z_0) = a_0$, the value of the LE at $z_0$, makes it holo.
 			
@@ -671,11 +690,10 @@
 		
 		
 		\begin{mthm}[The Identity Theorem]{mthm:identity}{ }
-			Let $D \subseteq \mathbb{C}$ be a domain, $z_0 \in D$, $f$ holo. on $D$, and $f(z) = 0$ for all $z \in D_R(z_0)$. \\
-			Then $f(z) = 0$ for all $z \in D$.
+			Let $D \subseteq \mathbb{C}$ be a domain, $z_0 \in D$, $f$ holo. on $D$, and $f(z) = 0$ for all $z \in D_R(z_0)$. Then $f(z) = 0$ for all $z \in D$.
 			\begin{itemize}
-				\item If $g : D \to \mathbb{C}$ is also holo. and s.t. $f(z) = g(z)$ for all $z \in D_R(z_0)$, then $f(z) = g(z)$ for all $z \in D$.
-				\item If $f$ is s.t. $f(z_n) = 0$ for a seq. of distinct $z_n \in D, z_n \to z_0$, then $f(z) = 0$ for all $z \in D$.
+				\item If $g : D \to \mathbb{C}$ also holo. s.t. $f(z) = g(z)$ $\forall z \in D_R(z_0)$; $f(z) = g(z)$ $\forall z \in D$.
+				\item If $f$ s.t. $f(z_n) = 0$ for seq. of distinct $z_n \in D, z_n \to z_0$; $f(z) = 0$ $\forall z \in D$.
 				\item If $g(z)$ also s.t. $g(z_n) = 0$ for the same $z_n$, then $f(z) = g(z)$ for all $z \in D$.
 			\end{itemize}
 			
@@ -693,17 +711,15 @@
 		
 		
 		\begin{thm}[5.1.1]{thm:5.1.1}{}
-			Let $z_0 \in \mathbb{C}$, $f$ be holo. on $D'_R(z_0)$ with an isolated sing. at $z_0$, and $\Gamma$ a loop inside $D'_R(z_0)$ with $z_0 \in \text{Int}(\Gamma)$.
-			Then $\int_{\Gamma} f(z) \text{ dz} = 2 \pi i a_{-1}$, where $a_{-1}$ is the $j= -1$ coeff in the LE of $f$, centred at $z_0$ valid on $D'_R(z_0)$.
-			
-			
+			Let $z_0 \in \mathbb{C}$, $f$ be holo. on $D'_R(z_0)$ with an isolated singularity at $z_0$, and $\Gamma$ a loop inside $D'_R(z_0)$ with $z_0 \in \text{Int}(\Gamma)$.
+			Then $\int_{\Gamma} f(z) \text{ dz} = 2 \pi i a_{-1}$, where $a_{-1}$ is the $j= -1$ coeff in the LE of $f$ centred at $z_0$ valid on $D'_R(z_0)$.
 			
 		\end{thm}
 		
 		
 		\begin{dfn}[The Residue]{dfn:residue}{ }
-			Let $z_0 \in \mathbb{C}$, $f$ holo. on $D'_R(z_0)$ with an isolated singularity at $z_0$. Then the \textit{residue of $f$ at $z_0$} is $\text{Res}(f, z_0) = a_{-1}$ where the LS of $f$ valid on $D'_R(z_0)$ is $f(z) = \sum_{j= -\infty}^{\infty}a_j(z-z_0)^j$
-			
+			Let $z_0 \in \mathbb{C}$, $f$ holo. on $D'_R(z_0)$ with an isolated singularity at $z_0$. \\
+			Then the \textit{residue of $f$ at $z_0$} is $\text{Res}(f, z_0) = a_{-1}$ where the LE of $f$ valid on $D'_R(z_0)$ is $f(z) = \sum_{j= -\infty}^{\infty}a_j(z-z_0)^j$
 			
 		\end{dfn}
 		
@@ -715,7 +731,6 @@
 				\item 5.1.7: If $f= g/h$, $g, h$ holo. on $D_R(z_0)$ s.t. $h$ has a simple zero at $z_0$ and $g(z_0) \ne 0$, then $\text{Res}(f, z_0) = \frac{g(z_0)}{h'(z_0)}$
 			\end{itemize}
 			
-			
 		\end{lma}
 		
 		
@@ -723,21 +738,21 @@
 			Let $\Gamma$ be a loop, and $f$ holo. inside and on $\Gamma$ except for finitely many isolated singularities $z_1, ..., z_k \in \text{Int}(\Gamma)$. \\
 			Then $\int_{\Gamma}f(z) \text{ dz} = 2 \pi i \sum_{j = 1}^{k} \text{Res}(f, z_j)$
 			
-			
 		\end{mthm}
 		
 		
 		\begin{dfn}[Meromorphicity]{dfn:meromorph}{ }
-			Let $D \subseteq \mathbb{C}$ be a domain. Then: $f$ is \textit{meromorphic on $D$} if for all $z\in D$, $f$ has a pole of finite order at $z$ or $f$ is holo. at $z$.
-			
+			Let $D \subseteq \mathbb{C}$ be a domain. Then: $f$ is \textit{meromorphic on $D$} if \\ for all $z\in D$, $f$ has a pole of finite order at $z$ or $f$ is holo. at $z$.
 			\begin{itemize}
 				\item If $\Gamma$ a loop in $D$, $f$ mero. on $D$ and not identically $0$, then $f$ has a finite number of poles and zeroes on $\text{Int}(\Gamma)$.
 			\end{itemize}
 			
 		\end{dfn}
 		
+		
 		\begin{dfn}[$N_0(f)$ and $N_\infty(f)$]{dfn:nzeronninf}{ }
-			Let $\Gamma$ be a loop and $f$ mero. on $\text{Int}(\Gamma)$, with zeroes $w_1, ..., w_l$ and poles $z_1, ..., z_k$ all $\in \text{Int}(\Gamma)$. \\
+			Let $\Gamma$ be a loop and $f$ mero. on $\text{Int}(\Gamma)$,\\
+			with zeroes $w_1, ..., w_l$ and poles $z_1, ..., z_k$ all $\in \text{Int}(\Gamma)$. \\
 			Then $N_0(f)$, the number of zeroes of $f$ inside $\Gamma$, and $N_\infty(f)$, the number of poles of $f$ inside $\Gamma$, both counted with multiplicity, are:\\
 			$N_0(f) = \sum_{j=1}^{l}$order of $w_j$, and $n_\infty(f) = \sum_{j=1}^{k}$order of $z_j$.
 			
@@ -746,7 +761,7 @@
 		
 		
 		\begin{thm}[The Argument Principle]{thm:argprin}{ }
-			Let $\Gamma$ be a loop in $\mathbb{C}$, $f$ be mero. on $\text{Int}(\Gamma)$, and holo. and non-zero on $\Gamma$. Then:\\
+			Let $\Gamma$ be a loop, $f$ be mero. on $\text{Int}(\Gamma)$, and holo. and non-zero on $\Gamma$. Then:\\
 			$\int_{\Gamma}\frac{f'(z)}{f(z)} \text{ dz} = 2 \pi i (N_0(f) - N_\infty(z))$.
 			
 			\begin{itemize}
@@ -760,7 +775,7 @@
 		\begin{thm}[Rouch{\'e}'s Theorem]{thm:rouche}{ }
 			Let $\Gamma$ be a loop and $f, g$ holo. on and inside $\Gamma$ s.t. for all $z \in \Gamma$, $\left|f(z) - g(z)\right| < \left|f(z)\right|.$ Then $N_0(f) = N_0(g)$.
 			\begin{itemize}
-				\item FTA: A polynomial of degree $n$ has exactly $n$ zeros counted with multiplicity
+				\item FTA: A degree $n$ polynom has exactly $n$ zeros counted with multiplicity
 			\end{itemize}
 			
 			
@@ -785,7 +800,8 @@
 				\item $\int_{-\infty}^{0} f(x) \text{ dx} := \lim_{R\to -\infty} \int_{R}^{0}f(x) \text{ dx}$
 				\item $\int_{-\infty}^{\infty} f(x) \text{ dx} := \lim_{R_1, R_2\to (\infty, -\infty)} \int_{R_2}^{R_1}f(x) \text{ dx}$
 			\end{enumerate}
-			whenever the appropriate limits exist. If $\int_{-\infty}^{\infty} f(x) \text{ dx}$ exists, it is equal to $\lim_{R\to \infty} \int_{R}^{R}f(x) \text{ dx}$.\\
+			whenever the appropriate limits exist. \\
+			If $\int_{-\infty}^{\infty} f(x) \text{ dx}$ exists, it is equal to $\lim_{R\to \infty} \int_{R}^{R}f(x) \text{ dx}$.\\
 			
 			Let $c \in (a, b) \subseteq \mathbb{R}$ and $f: [a, b] \backslash \left\{c\right\} \to \mathbb{R}$ be cont.. Then:
 			\begin{enumerate}[label=(\roman*)]
@@ -793,7 +809,8 @@
 				\item $\int_{c}^{b}f(x) \text{ dx} := \lim_{s \downarrow 0} \int_{c+s}^{b}f(x) \text{ dx}$
 				\item $\int_{a}^{b}f(x) \text{ dx} := \lim_{r \downarrow 0 } \int_{a}^{c-r} f(x) \text{ dx} + \lim_{s \downarrow 0} \int_{c+s}^{b}f(x) \text{ dx}$
 			\end{enumerate}	
-			whenever the appropriate limits exist. If the limits in the third case exist the result is equal to the p.v. of the integral.
+			whenever the appropriate limits exist. If the limits in the third case exist\\
+			the result is equal to the p.v. of the integral.
 			
 		\end{dfn}
 		
