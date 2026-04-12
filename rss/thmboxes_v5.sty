@@ -54,7 +54,7 @@
         right=0.5pt,
         top = 0.5pt,
         bottom=0pt, % Bottom padding
-        breakable,
+        %breakable,
         lines before break=10, % idk how this affects stuff
         break at=-\baselineskip/0pt,
         halign=flush left,
@@ -162,6 +162,32 @@
         {\begin{thm-box}{#1}{#2}{\thethmcount}{Thm}}
         {\parsetext{#3}{thmcount}{3}\begin{thm-box}{#1}{#2}{#3}{Thm}}
 } {\end{thm-box}}
+
+
+% ── MAJOR THEOREM ───────────────────────────────────────────────────────────
+
+% #1: Optional Arguments, #2: Name, #3: Label, #4: Count, #5: Box Label
+\newcounter{mthmcount}\counterwithin{mthmcount}{subsection} 
+\newtcolorbox[auto counter, use counter=mthmcount, number within=subsection]{mthm-box}[5][]{
+	% Import general style
+	thmboxstyle={#5}{#4}{#2}{#3}{blue!40}{blue!10},
+	% Additional options
+	#1,
+}
+
+\newenvironment{mthm}[3][]{
+	% If the last box is empty then run parser
+	\ifstrempty{#3}
+	{\begin{mthm-box}{#1}{#2}{\themthmcount}{Major Theorem}}
+		{\parsetext{#3}{mthmcount}{3}\begin{mthm-box}{#1}{#2}{#3}{Major Theorem}}
+		} {\end{mthm-box}}
+	
+	\newenvironment{mthm-s}[3][]{
+		\ifstrempty{#3}
+		{\begin{mthm-box}{#1}{#2}{\themthmcount}{MThm}}
+			{\parsetext{#3}{mthmcount}{3}\begin{mthm-box}{#1}{#2}{#3}{MThm}}
+			} {\end{mthm-box}}
+
 
 % ── DEFINITION ───────────────────────────────────────────────────────
 
