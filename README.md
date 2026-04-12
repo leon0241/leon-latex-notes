@@ -5,7 +5,7 @@ LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and M
 ### :coffee: [(Optional) Buy me a coffee :)](https://ko-fi.com/leon024)
 
 
-## Links to 2-page Exam Sheets <i>Made by [Louis!](github.com/AulrenT)</i> 
+## Links to 2-page Exam Sheets <i>Made by [Louis!](https://github.com/AulrenT)</i> 
 
 <details>
     <summary>Year 3</summary>
