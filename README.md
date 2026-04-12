@@ -60,7 +60,7 @@ The following files are imported for a cheat sheet:
 
 `preamble` is the master preamble for the repo (note the double layers of backreferencing), while `symbols` is a local sty file for any custom symbol definitions which would change per file. 
 
-Additionally imported from within `preamble` is `rss/thmboxes` and `rss/customs`.
+Additionally imported from within `preamble` is `rss/customs`.
 
 ### ⌨️ Writing LaTeX
 
