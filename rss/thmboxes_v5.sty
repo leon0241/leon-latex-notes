@@ -213,6 +213,31 @@
         {\parsetext{#3}{dfncount}{3}\begin{dfn-box}{#1}{#2}{#3}{Dfn}}
 } {\end{dfn-box}}
 
+
+% ── MAJOR DEFINITION ───────────────────────────────────────────────────────
+
+\newcounter{mdfncount}\counterwithin{mdfncount}{subsection} 
+% #1: Name, #2: Label, #3: Count
+\newtcolorbox[auto counter, use counter=mdfncount, number within=subsection]{mdfn-box}[5][]{
+	% Background , Colour of frame, Colour of Box background
+	thmboxstyle={#5}{#4}{#2}{#3}{green!40}{green!10},
+}
+
+% Major Definition
+\newenvironment{mdfn}[3][]{
+	\ifstrempty{#3}
+	{\begin{mdfn-box}{#1}{#2}{\themdfncount}{Major Definition}}
+		{\parsetext{#3}{mdfncount}{3}\begin{mdfn-box}{#1}{#2}{#3}{Major Definition}}
+		} {\end{mdfn-box}}
+	
+% MDfn
+\newenvironment{mdfn-s}[3][]{
+	% If the last box is empty then run parser
+	\ifstrempty{#3}
+	{\begin{mdfn-box}{#1}{#2}{\themdfncount}{MDfn}}
+		{\parsetext{#3}{mdfncount}{3}\begin{mdfn-box}{#1}{#2}{#3}{MDfn}}
+		} {\end{mdfn-box}}
+
 % ── EXAMPLE ───────────────────────────────────────────────────────────
 
 % #1: Name, #2: Label, #3: Count

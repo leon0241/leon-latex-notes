@@ -141,7 +141,7 @@
 		\end{dfn}
 		
 		
-		\begin{dfn}[Differentiability and Holomorphicity]{dfn:diffnholo}{ }
+		\begin{mdfn}[Differentiability and Holomorphicity]{mdfn:diffnholo}{ }
 			\begin{itemize}
 				\item $f(z)$ diffable (and thus cont.) at $z_0$ if $\lim_{z \to z_0} \frac{f(z) - f(z_0)}{z-z_0}$ exists.
 				\item $f(z)$ is holo. at $z_0$ if it is diffable on a neighbourhood of $z_0$
@@ -149,7 +149,7 @@
 				\item Composition preserves diffability, $(f \circ g)'(z_0) = f'(g(z_0))g'(z_0)$
 			\end{itemize}
 			
-		\end{dfn}
+		\end{mdfn}
 		
 		
 		\begin{mthm}[The Cauchy-Riemann Equations]{mthm:C-R}{ }
@@ -186,7 +186,7 @@
 		\end{dfn}
 		
 		
-		\begin{dfn}[exp(z)\text and Complex Trig]{dfn:expntrig}{ }
+		\begin{mdfn}[exp(z)\text and Complex Trig]{mdfn:expntrig}{ }
 			\begin{multicols}{2}
 				\begin{itemize}
 					\item $\exp(z) := e^x(\cos(y) + i\sin(y))$
@@ -220,10 +220,10 @@
 				\item $\sinh(iz) = i\sin(z)$, $\cosh(iz) = \cos(z)$
 			\end{itemize}
 			
-		\end{dfn}
+		\end{mdfn}
 		
 		
-		\begin{dfn}[The Complex Logarithm]{dfn:log}{ }
+		\begin{mdfn}[The Complex Logarithm]{mdfn:log}{ }
 			$\log(z) := \left\{w \in \mathbb{C} : \exp(w) = z\right\}$ \\
 			$\text{Log}(z) := \left\{ \ln \left|z\right| + i\phi : \phi \in \arg(z)\right\} = \ln\left|z\right| + i \text{Arg}(z)$
 			\begin{itemize}
@@ -234,7 +234,7 @@
 			
 			
 			
-		\end{dfn}
+		\end{mdfn}
 		
 		
 		\begin{dfn}[Branches and Cuts]{dfn:branchesncuts}{ }
@@ -369,7 +369,7 @@
 	\end{dfn}
 	
 	
-	\begin{dfn}[The Cross-Ratio]{dfn:crossratio}{ }
+	\begin{mdfn}[The Cross-Ratio]{mdfn:crossratio}{ }
 		For distinct $z_1, z_2, z_3, z_4 \in \tilde{\mathbb{C}}$, their \textit{cross-ratio}, $[z_1, z_2, z_3, z_4]$, is the image of $z_1$ under the unique $f$ s.t. $f(z_2) = 1, f(z_3) = 0, f(z_4) = \infty$.
 		$[z_1, z_2, z_3, z_4] = \frac{z_1-z_3}{z_1 - z_4} \frac{z_2 - z_4}{z_2 - z_3}.$ \\
 		$[\infty, z_2, z_3, z_4] = \frac{z_2-z_4}{z_2 - z_3}$,
@@ -377,7 +377,7 @@
 		$[z_1, z_2, \infty, z_4] = \frac{z_2-z_4}{z_1 - z_4}$,
 		$[z_1, z_2, z_3, \infty] = \frac{z_1-z_3}{z_2 - z_3}$.
 		
-	\end{dfn}
+	\end{mdfn}
 	
 	
 	%----------------------------------------------------------------------------------------------%
@@ -410,7 +410,7 @@
 	\end{dfn}
 	
 	
-	\begin{dfn}[Contour Integrals]{dfn:contints}{ }
+	\begin{mdfn}[Contour Integrals]{mdfn:contints}{ }
 		Let $z_0, z_1 \in \mathbb{C}$, $\Gamma$ be a contour from $z_0$ to $z_1$, and $f: \Gamma \to \mathbb{C}$ be continuous. Then the \textit{integral of $f$ along $\Gamma$} is defined by $\int_{\Gamma} f(z) \text{ dz} = \int_{t_0}^{t_1} f(\gamma(t))\gamma'(t) \text{ dt}$
 		\begin{itemize}
 			\item Contour integration is linear
@@ -420,7 +420,7 @@
 			\item A \textit{contour integral} of $f$ is the sum of the integrals of $f$ along the regular curves which make up the contour.
 		\end{itemize}
 		
-	\end{dfn}
+	\end{mdfn}
 	
 	
 	\begin{dfn}[Domains]{dfn:domains}{ }
@@ -483,13 +483,12 @@
 	\end{thm}
 	
 	
-	\begin{mthm}[Cauchy Integral Formula]{mthm:cif}{ }
-		For loop $\Gamma$, $z_0 \in \text{Int}(\Gamma)$, $f$ holo. inside and on $\Gamma$: $f(z_0) = \frac{1}{2 \pi i} \int_{\Gamma}\frac{f(z)}{z-z_0} \text{ dz}$
+	\begin{mthm}[Cauchy Integral Formula\text{,} Generalised CIF]{mthm:gcif}{ }
+		Let $\Gamma$ be a loop, $z_0 \in \text{Int}(\Gamma)$, and $f$ holo. inside and on $\Gamma$. Then:
+		For loop $\Gamma$, , $f$ holo. inside and on $\Gamma$: $f(z_0) = \frac{1}{2 \pi i} \int_{\Gamma}\frac{f(z)}{z-z_0} \text{ dz}$
 		
-	\end{mthm}	
-	
-	
-	\begin{thm}[Generalised Cauchy Integral Formula]{thm:gcif}{ }
+		
+		
 		Given a loop $\Gamma$, $z_0 \in \text{Int}(\Gamma)$, and $f$ holo. inside and on $\Gamma$:\\ $f$ is infinitely differentiable at $z_0$ and for $n \in \mathbb{N}$, $f^{(n)}(z_0) = \frac{n!}{2 \pi i} \int_{\Gamma}\frac{f(z)}{(z-z_0)^{n+1}} \text{ dz}$
 		
 		\begin{itemize}
@@ -497,7 +496,7 @@
 			\item For $z_0 \in$ domain $D$, $R > 0$ s.t. $\overline{D}_R(z_0) \subseteq D$, $f$ holo. on $D$, and $M>0$ an upper bound for $\left|f(z)\right|$, then for all $n \in \mathbb{N}$, $\left|f^{(n)}(z_0)\right| \le \frac{n!M}{R^n}$
 		\end{itemize}
 		
-	\end{thm}	
+	\end{mthm}	
 	
 	
 	\begin{thm}[Morera's Theorem]{thm:morera}{ }
