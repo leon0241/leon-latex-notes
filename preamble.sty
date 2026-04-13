@@ -42,6 +42,8 @@
 \usepackage{prftree}
 % Required for inserting images
 \usepackage{graphicx, atbegshi}
+%Tell graphicx where to find images
+\graphicspath{ {./images/} }
 % Needed for \mathmakebox for Arrow symbols
 \usepackage{mathtools}
 % Needed for Fixed Table widths
@@ -55,9 +57,9 @@
 % ╰──────────────────────────────────────────────────────────╯
 
 \usepackage{centernot}
+
 % Needed for variable font sizes
 \usepackage{lmodern, anyfontsize}
-% recommended, but you can remove if it causes problems
 %\usepackage[final, nopatch=footnote]{microtype} - This package causes significant problems with AMS packages, is purely aesthetical, and is only left commented in in honour of Leon being a massive neek - Louis
 % AMS packages. Note: AMSThm for proof env.
 \usepackage{amsmath, amsthm, amsfonts, amssymb}
@@ -84,6 +86,7 @@
 % ╰──────────────────────────────────────────────────────────╯
 
 \usepackage{rotating}
+
 % Multiple columns
 \usepackage{multicol}
 % Multiple columns (variable width)
@@ -104,15 +107,13 @@
 % │                     Custom Packages                      │
 % ╰──────────────────────────────────────────────────────────╯
 
-\usepackage{silence}
 % annoying thmboxes issue
+\usepackage{silence}
 \WarningFilter{latex}{You have requested package}
 
 % MDFramed on Tikz-cd - Required for Thmboxes
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage[skins, breakable]{tcolorbox}
-% Theorem Boxes
-% \usepackage{../../rss/thmboxes_v3}
 % Custom Environments and Objects
 \usepackage{../../rss/customs}
 
@@ -146,10 +147,7 @@
 \setlength{\columnsep}{3pt}
 
 
-
-
-
-\setlength{\parsep}{2pt}
+\setlength{\parsep}{0pt}
 
 
 \lstset{ %this is the stype

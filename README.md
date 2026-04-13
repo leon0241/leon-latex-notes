@@ -4,37 +4,15 @@ LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and M
 
 ### :coffee: [(Optional) Buy me a coffee :)](https://ko-fi.com/leon024)
 
-## Links to 6-page Exam Sheets
 
-<details>
-<summary>Year 2</summary>
-<b>Fundamentals of Pure Mathematics</b> - <a href="exam-sheets/FPM/notes_colour.pdf">click here!</a>
-</details>
+## Links to 2-page Exam Sheets <i>Made by [Louis!](https://github.com/AulrenT)</i> 
 
 <details>
     <summary>Year 3</summary>
     <ul>
-        <li> <b>Geometry</b> - <a href="exam-sheets/Geometry/geometry_notes.pdf">click here!</a> <i>(they are terrible tho)</i> </li>
-        <li> <b>Honours Algebra</b> - <a href="exam-sheets/algebra-6p/algebra-6p.pdf">click here!</a> </li>
-        <li> <b>Honours Algebra</b> everything - <a href="exam-sheets/algebra-10p/algebra-10p.pdf">click here!</a> <i>(10 pages)</i> </li>
-        <li> <b>Honours Analysis</b> - <a href="exam-sheets/analysis-6p/analysis-6p.pdf">click here!</a> <i>(without examples - basically 5 pages)</i> </li> 
-        <li> <b>Honours Analysis</b> - <a href="exam-sheets/analysis-6p/analysis-6p-no-examples.pdf">click here!</a> <i>(without examples or applications - 5 and a bit pages)</i> </li>
-        <li> <b>Honours Complex Variables</b> - <a href="exam-sheets/HCov/PDF/HCovExamNotes.pdf">click here!</a> <i>Made by Louis Taylor!</i> </li>
-        <li> <b>Introduction to Theoretical CS</b> - <a href="exam-sheets/ITCS/itcs_notes.pdf">click here!</a> <i>(Adapted from Chris Dalziel's LaTeX notes)</i> </li>
-        <li> <b>Metric Spaces</b> - <a href="exam-sheets/metric-6p/metric-6p.pdf">click here!</a> </li>
-    </ul>
+        <li> <b>Honours Complex Variables</b> - <a href="exam-sheets/HCov/PDF/HCovExamNotes.pdf">click here!</a> </li>
 </details>
 
-<details>
-    <summary>Year 4</summary>
-    <ul>
-        <li> <b>Algebraic Topology</b> - <a href="exam-sheets/algtop-6p/algtop-6p.pdf">click here!</a> </li>
-        <li> <b>Galois Theory</b> - <a href="exam-sheets/galois-6p/galois-6p.pdf">click here!</a> </li>
-        <li> <b>General Topology</b> - <a href="exam-sheets/gentop-6p/gentop-6p.pdf">click here!</a> </li>
-        <li> <b>Group Theory</b> - <a href="exam-sheets/group-theory-6p/group-theory-6p.pdf">click here!</a> </li>
-        <li> <b>Modelling Concurrent Systme</b> - <a href="exam-sheets/mcs-6p/mcs-6p.pdf">click here!</a> </li>
-    </ul>
-</details>
 
 
 ## Links to LaTeX Lecture Notes! (none of these are getting finished lol)
@@ -53,22 +31,23 @@ LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and M
 
 ### 🎁 Theorem Boxes
 
-Theorem boxes are created using `thmboxes_v3.sty`. Go to [leon-latex-thmboxes](https://github.com/leon0241/leon-latex-thmboxes) for more details
+Theorem boxes are created using various versions of `thmboxes_v*.sty`. Go to [leon-latex-thmboxes](https://github.com/leon0241/leon-latex-thmboxes) for more details
 
-Additional Note: `\usepackage{../thmboxes_v2)` to import, but all of my notes will backreference by 1 level since they are in separate folders. If you want to fork and put them in the same folder you just need to `\usepackage{thmboxes_v2)`
+Additional Note: `\usepackage{../thmboxes_v*)` to import, but all of my notes will backreference by 1 level since they are in separate folders. If you want to fork and put them in the same folder you just need to `\usepackage{thmboxes_v*)`
 
 ### 📁 Respository Structure
 This repo is laid out in the following way
-- `exam-sheets/` for 6-page exam cheat sheets. 
+- `exam-sheets` for 2-page exam cheat sheets (Made by [Louis](github.com/AulrenT))
+- `legacy-exam-sheets/` for 6-page exam cheat sheets. 
 - `lecture-notes/` for lecture notes. 
-- `legacy/` contains old files for Y2 or Y3 notes such old versions of `thmboxes.sty`.
+- `legacy/` contains old files for legacy notes such old versions of `thmboxes.sty`.
 - `other/` includes anything else such as a script to convert lecture notes to 6 page ones, or a script to convert obsidian callouts to thmboxes.
 - `packages/` includes external latex packages.
 - `rss/` includes the following LaTeX files:
     - `customs.sty` has custom definitions for commands such as page wide bars
-    - `thmboxes.sty` includes the definition for the custom theorem boxes
-- `template/` includes a template for both lecture notes and 6 page cheat sheets
-- `preamble.sty` includes prerequisite imported packages for any 6 page notes.
+    - `thmboxes_v5.sty` includes the definition for the custom theorem boxes
+- `template/` includes templates for lecture notes, 2 page cheat sheets, and 6 page cheat sheets
+- `preamble.sty` includes prerequisite imported packages for any 2 page notes.
 
 ### ✏️ LaTeX File Structure
 The following files are imported for a cheat sheet:
@@ -81,7 +60,7 @@ The following files are imported for a cheat sheet:
 
 `preamble` is the master preamble for the repo (note the double layers of backreferencing), while `symbols` is a local sty file for any custom symbol definitions which would change per file. 
 
-Additionally imported from within `preamble` is `rss/thmboxes` and `rss/customs`.
+Additionally imported from within `preamble` is `rss/customs`.
 
 ### ⌨️ Writing LaTeX
 
@@ -101,9 +80,41 @@ Other configs I've tried to use (the FPM notes were made entirely with VSCode, n
 - [LaTeX Suite with Obsidian](https://github.com/leon0241/latex-suite-config) - Very smooth, and obsidian has the potential to be a great cross-course note-taking app, just requires a lot of dedication and planning
 
 
-## 🪦 Legacy Info
+# 🪦 Legacy Info
 
-**Note**: This is only relevant for the FPM notes
+
+## (SoM Exam Standard Is Now 2 Pages) - Links to 6-page Exam Sheets
+
+<details>
+<summary>Year 2</summary>
+<b>Fundamentals of Pure Mathematics</b> - <a href="exam-sheets/FPM/notes_colour.pdf">click here!</a>
+</details>
+
+<details>
+    <summary>Year 3</summary>
+    <ul>
+        <li> <b>Geometry</b> - <a href="legacy-exam-sheets/Geometry/geometry_notes.pdf">click here!</a> <i>(they are terrible tho)</i> </li>
+        <li> <b>Honours Algebra</b> - <a href="legacy-exam-sheets/algebra-6p/algebra-6p.pdf">click here!</a> </li>
+        <li> <b>Honours Algebra</b> everything - <a href="legacy-exam-sheets/algebra-10p/algebra-10p.pdf">click here!</a> <i>(10 pages)</i> </li>
+        <li> <b>Honours Analysis</b> - <a href="legacy-exam-sheets/analysis-6p/analysis-6p.pdf">click here!</a> <i>(without examples - basically 5 pages)</i> </li> 
+        <li> <b>Honours Analysis</b> - <a href="legacy-exam-sheets/analysis-6p/analysis-6p-no-examples.pdf">click here!</a> <i>(without examples or applications - 5 and a bit pages)</i> </li>
+        <li> <b>Introduction to Theoretical CS</b> - <a href="legacy-exam-sheets/ITCS/itcs_notes.pdf">click here!</a> <i>(Adapted from Chris Dalziel's LaTeX notes)</i> </li>
+        <li> <b>Metric Spaces</b> - <a href="legacy-exam-sheets/metric-6p/metric-6p.pdf">click here!</a> </li>
+    </ul>
+</details>
+
+<details>
+    <summary>Year 4</summary>
+    <ul>
+        <li> <b>Algebraic Topology</b> - <a href="legacy-exam-sheets/algtop-6p/algtop-6p.pdf">click here!</a> </li>
+        <li> <b>Galois Theory</b> - <a href="legacy-exam-sheets/galois-6p/galois-6p.pdf">click here!</a> </li>
+        <li> <b>General Topology</b> - <a href="legacy-exam-sheets/gentop-6p/gentop-6p.pdf">click here!</a> </li>
+        <li> <b>Group Theory</b> - <a href="legacy-exam-sheets/group-theory-6p/group-theory-6p.pdf">click here!</a> </li>
+        <li> <b>Modelling Concurrent Systme</b> - <a href="legacy-exam-sheets/mcs-6p/mcs-6p.pdf">click here!</a> </li>
+    </ul>
+</details>
+
+## FPM Notes Info
 
 If you want to import into overleaf or anything, you will need `preamble.sty` and either `thmboxes_col.sty` or `thmboxes_white.sty` as well as the main `.tex` file
 
