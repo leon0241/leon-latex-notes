@@ -7,11 +7,11 @@
 \begin{document}
 
 
-\fontsize{5pt}{6pt} \selectfont
+	\fontsize{5pt}{6pt} \selectfont
 
-%Reduce horizontal padding between columns in 'tabular' environment
-\setlength\tabcolsep{4.5pt}
-\setlength\extrarowheight{2pt}
+	%Reduce horizontal padding in 'tabular' environment, make rows taller for legibility
+	\setlength\tabcolsep{4.5pt}
+	\setlength\extrarowheight{2pt}
 
 	
 	\setlength{\abovedisplayskip}{0pt}
@@ -51,7 +51,7 @@
 					\item (T/P/L)S/E = (Taylor/Power/Laurent) Series/Expansion
 					\item If a disc/circle/etc is demarcated with a random $R/r$/etc, assume it is 'for some $R/r$/etc $>0$'
 					\item If something is stated in the 'Let' section at the start of a box, assume it must be true for any conclusion made inside the box to be valid
-					\item Things itemised with '*' are more important than those with $\bullet$. 
+					\item Things itemised with * are more important than those with $\bullet$. 
 				\end{itemize}
 			\end{multicols}
 			
@@ -230,6 +230,8 @@
 				\item $\sin(z+w) = \sin(z)\cos(w) + \cos(z)\sin(w)$
 				\item $\cos(z+w) = \cos(z)\cos(w) - \sin(z)\sin(w)$
 				\item $\sinh(iz) = i\sin(z)$, $\cosh(iz) = \cos(z)$
+				\item $\sin(z) = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!}z^{2n+1} = z-\frac{z^3}{3!} + \frac{z^5}{5!} - ...$
+				\item $\cos(z) = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n)!}z^{2n} = 1 - \frac{z^2}{2!} + \frac{z^4}{4!} - ...$
 			\end{itemize}
 			
 		\end{mdfn}
@@ -507,6 +509,19 @@
 	\end{mthm}	
 	
 	
+	\begin{xmp}[Figure-8 Contour]{xmp:fig8}{ }
+		We compute the contour integral $\int_{\Gamma} \frac{2z + 1}{z(z-1)^2} \text{ dz}$.
+		\includegraphics[scale=0.02]{fig8contour.png}
+		\includegraphics[scale=0.03]{splitfig8contour.png} \\
+		In order to apply the GCIF, we need $\Gamma$ in the form of a loop (currently it is not even simple), and the integrand of form $\frac{g(z)}{(z-z_0)^n}$ with $g$ holo. inside $\Gamma$. Notice that $\Gamma$ can be expressed as two 'lobes' which start and end at the point of self-intersection. Since the integrand is holo. everywhere but $z = 1$ and $z=0$ the Deformation Theorem tells us integrating around the shown lobes $\Gamma_1, \Gamma_2$ will give the same result as integrating around $\Gamma$.\\
+		Ie, $\int_{\Gamma}\frac{2z+1}{z(z-1)^2} \text{ dz} = \int_{\Gamma_0}	\frac{2z+1}{z(z-1)^2} \text{ dz} + \int_{\Gamma_1}\frac{2z+1}{z(z-1)^2} \text{ dz}$\\
+		Now rewrite the integrand in each case to allow application of the GCIF, remembering that $\Gamma_0$ is negatively oriented:\\
+		$\int_{\Gamma}\frac{2z+1}{z(z-1)^2} \text{ dz} = \int_{\Gamma_0}	\frac{(2z+1)/(z-1)^2}{z} \text{ dz} + \int_{\Gamma_1}\frac{(2z+1)/z}{(z-1)^2} \text{ dz}$ \\
+		$ = -2 \pi i + 2\pi i \frac{d}{dz}\left.\left(\frac{2z+1}{z}\right)\right|_{z=1} = -4 \pi i$
+		
+	\end{xmp}
+	
+	
 	\begin{thm}[Morera's Theorem]{thm:morera}{ }
 		Let $D \subseteq \mathbb{C}$ be a domain, $f: D \to \mathbb{C}$ continuous, \\
 		and $\int_{\Gamma}f(z) \text{ dz} = 0$ for all loops $\Gamma$ inside $D$. Then $f$ is holo. on $D$.
@@ -536,11 +551,27 @@
 	\end{thm}
 	
 	
+	\begin{xmp}[Maximum Size Of a Polynomial On A Disc]{xmp:polymax}{ }
+		Find the maximum value of $\left|z^2 + 3z - 1\right|$ on the unit disc $\overline{D}_1(0)$.\\
+		Since $z^2 + 3z - 1$ is holo. on $\mathbb{C}$, the maximum will occur somewhere on the edge of the disc (ie $C_1(0)$). For $\left|z\right| = 1$:
+		\begin{align*}
+			\left|z^2 + 3z - 1\right|^2 &= \left(z^2 + 3z - 1\right)\left(\overline{z}^2 + 3\overline{z} - 1\right)\\
+			&= z^2 \overline{z}^2 + 3z^2 \overline{z} - z^2 + 3z \overline{z}^2 + 9 z \overline{z} - 3z - \overline{z}^2 - 3\overline{z} +1\\
+			&= (z \overline{z})^2 + 3(z \overline{z})z - z^2 + 3(z \overline{z})\overline{z} + 9(z \overline{z}) - 3z - \overline{z}^2 - 3\overline{z} + 1\\
+			& = 1 + 3z - z^2 + 3 \overline{z} + 9 - 3z - \overline{z}^2 - 3 \overline{z} + 1\\
+			&= 11 - (z^2 + \overline{z}^2) = 11 - 2\Re(z^2)
+ 		\end{align*}
+		Since $\left|z^2\right| = 1, \Re(z^2) \ge 1$ with a minimum at $z^2 = -1$, where $\left|z^2 + 3z - 1\right|^2 = 13$. Thus the maximum value of $\left|z^2 + 3z - 1\right|$ is $\sqrt{13}$, attained at $\pm i$.
+		
+	\end{xmp}
+	
+	
 	\begin{thm-s}[Maximum/Minimum Principle For Harmonic Funcs]{thm:maxminharm}{ }
 		Let $D \subseteq \mathbb{R}^2$  be a domain, $\phi : D \to \mathbb{R}$ be harmonic s.t. $\phi$ is bounded above or below on $D$ by $M > 0$, and $\phi(z_0) = M$ for some $z_0 \in D$. \\
 		Then $\phi$ is constant on $D$.
 		
 	\end{thm-s}
+	
 	
 	
 	\end{multicols*}	
@@ -833,8 +864,8 @@
 		\end{lma}
 		
 		
-		\begin{lma}[5.5.3 -Integrating On An Arc]{lma:arcint}{ }
-			Let $D \subseteq $ be a domain, $c \in D$, $f$ mero. on $D$ with a simple pole at $z \in D$, and $S_r$ be the circular arc paremed. by $\gamma(\theta) = c + r \exp(i\theta)$ for $\theta \in [\theta_0,\theta_1], 0 \le\theta_0 <\theta_1 \le 2 \pi$. Then $\lim_{r \downarrow 0} \int_{S_r} f(z) \text{ dz} = i(\theta_1 -\theta_0) \text{Res}(f, c)$
+		\begin{lma}[5.5.3 - Integrating On An Arc]{lma:arcint}{ }
+			Let $D \subseteq C$ be a domain, $c \in D$, $f$ mero. on $D$ with a simple pole at $z \in D$, and $S_r$ be the circular arc paremed. by $\gamma(\theta) = c + r \exp(i\theta)$ for $\theta \in [\theta_0,\theta_1], 0 \le\theta_0 <\theta_1 \le 2 \pi$. Then $\lim_{r \downarrow 0} \int_{S_r} f(z) \text{ dz} = i(\theta_1 -\theta_0) \text{Res}(f, c)$
 			
 			
 			
@@ -867,7 +898,24 @@
 		
 		
 		\begin{xmp}[Evaluating Infinite Series With Contour Integrals]{xmp:infsersints}{ }
+			Consider the alternating sum $\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n^2}$.\\
+			Let $f=\csc(\pi z)/z^2 = \frac{1}{\sin(\pi(z)) \frac{1}{z^2}}$ which is holo. on $\mathbb{C}$ except for poles at $z = n \in \mathbb{Z}$. For non-zero $n$, the pole is simple, and we can calculate that\\
+			$\text{Res}(f, n) = \frac{1}{\pi \sin'(\pi z)} \frac{1}{n^2} = \frac{1}{\pi \cos(\pi n)} \frac{1}{n^2} = (-1)^n \frac{1}{\pi n^2}$,\\
+			To find $\text{Res}(f, 0)$ we compute the LE centred at $0$, remembering that we only care about the $a_1$ term so can ignore most higher order terms:
+			\begin{align*}
+				f(z) = \frac{1}{z^2} \frac{1}{\sin( \pi z)} &= \frac{1}{z^3} \frac{1}{1 - (\pi z)^2/3! + ...}\\
+				&= \frac{1}{\pi z^3} \frac{1}{(1 - (\pi z)^2/6 - ...)}\\
+				&= \frac{1}{\pi z^3} (1 + ((\pi z)^2)/3! + ...) + ((\pi z)^2/6 + ...)^2 + ...)\\
+				&= \frac{1}{\pi z^3} + \frac{\pi}{6z} + ...
+			\end{align*}
+			Thus $\text{Res}(f. 0) = \pi/6$. Now consider $\Gamma_N$ as shown, for $N \in \mathbb{N}$.
+			\includegraphics[scale=0.08]{squarecontour.png}\\
 			
+			It can be shown $\exists K > 0$ s.t. $\left|\cot(\pi z)\right| \le K \forall z \in \Gamma_N$, with $K$ independent of $N$. The trig identity $\csc^2(\pi z) = 1 + \cot^2(\pi z)$ then implies $\left|\csc^2(\pi z)\right| \le 1 + K^2 \forall z \in \Gamma_N$. Thus for $z \in \Gamma_N$, $\left|z\right| \ge N + \frac{1}{2}$, so $\left|f(z)\right| \le \left|\frac{\cot(n \pi)}{z^2}\right| \le \frac{K}{(N+1/2)^2} \le \frac{K}{N^2}$. Then applying the M-L Lemma gives: \\ 
+			$\left|\int_{\Gamma_N} f(z) \text{ dz}\right| \le \ell(\Gamma_N) \frac{K}{N^2} = \frac{4(2N + 1)K}{N^2} \to 0$ as $N \to \infty$.\\
+			However, applying the CRT tells us $\int_{\Gamma_N}f(z) \text{ dz} = 2\pi i \sum_{n = -N}^{N}\text{Res}((f, n) = 2 \pi i \left(2 \sum_{n=1}^{N}(-1)^n \frac{1}{pi n^2} + \frac{\pi}{6}\right)$ and taking $N \to \infty$ gives\\
+			$\int_{\Gamma_N} = 4 i \left(\sum_{n = 1}^{\infty} (-1)^n \frac{1}{n^2} + \frac{\pi ^2}{12}\right)$\\
+			Therefore, $\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n^2} = \frac{\pi ^2}{12}$
 			
 			
 		\end{xmp}
