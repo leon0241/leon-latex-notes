@@ -4,7 +4,7 @@ LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and M
 
 ### :coffee: [(Optional) Buy me a coffee :)](https://ko-fi.com/leon024)
 
-
+<!-- such a shameless self promotion u dickhead -->
 ## Links to 2-page Exam Sheets <i>Made by [Louis!](https://github.com/AulrenT)</i> 
 
 <details>
@@ -13,7 +13,37 @@ LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and M
         <li> <b>Honours Complex Variables</b> - <a href="exam-sheets/HCov/PDF/HCovExamNotes.pdf">click here!</a> </li>
 </details>
 
+## [LEGACY] Links to 6-page Exam Sheets
+Outdated - SoM Exam Standard Is Now 2 Pages
 
+<details>
+<summary>Year 2</summary>
+<b>Fundamentals of Pure Mathematics</b> - <a href="exam-sheets/FPM/notes_colour.pdf">click here!</a>
+</details>
+
+<details>
+    <summary>Year 3</summary>
+    <ul>
+        <li> <b>Geometry</b> - <a href="legacy-exam-sheets/Geometry/geometry_notes.pdf">click here!</a> <i>(they are terrible tho)</i> </li>
+        <li> <b>Honours Algebra</b> - <a href="legacy-exam-sheets/algebra-6p/algebra-6p.pdf">click here!</a> </li>
+        <li> <b>Honours Algebra</b> everything - <a href="legacy-exam-sheets/algebra-10p/algebra-10p.pdf">click here!</a> <i>(10 pages)</i> </li>
+        <li> <b>Honours Analysis</b> - <a href="legacy-exam-sheets/analysis-6p/analysis-6p.pdf">click here!</a> <i>(without examples - basically 5 pages)</i> </li> 
+        <li> <b>Honours Analysis</b> - <a href="legacy-exam-sheets/analysis-6p/analysis-6p-no-examples.pdf">click here!</a> <i>(without examples or applications - 5 and a bit pages)</i> </li>
+        <li> <b>Introduction to Theoretical CS</b> - <a href="legacy-exam-sheets/ITCS/itcs_notes.pdf">click here!</a> <i>(Adapted from Chris Dalziel's LaTeX notes)</i> </li>
+        <li> <b>Metric Spaces</b> - <a href="legacy-exam-sheets/metric-6p/metric-6p.pdf">click here!</a> </li>
+    </ul>
+</details>
+
+<details>
+    <summary>Year 4</summary>
+    <ul>
+        <li> <b>Algebraic Topology</b> - <a href="legacy-exam-sheets/algtop-6p/algtop-6p.pdf">click here!</a> </li>
+        <li> <b>Galois Theory</b> - <a href="legacy-exam-sheets/galois-6p/galois-6p.pdf">click here!</a> </li>
+        <li> <b>General Topology</b> - <a href="legacy-exam-sheets/gentop-6p/gentop-6p.pdf">click here!</a> </li>
+        <li> <b>Group Theory</b> - <a href="legacy-exam-sheets/group-theory-6p/group-theory-6p.pdf">click here!</a> </li>
+        <li> <b>Modelling Concurrent Systme</b> - <a href="legacy-exam-sheets/mcs-6p/mcs-6p.pdf">click here!</a> </li>
+    </ul>
+</details>
 
 ## Links to LaTeX Lecture Notes! (none of these are getting finished lol)
 <details>
@@ -81,38 +111,6 @@ Other configs I've tried to use (the FPM notes were made entirely with VSCode, n
 
 
 # 🪦 Legacy Info
-
-
-## (SoM Exam Standard Is Now 2 Pages) - Links to 6-page Exam Sheets
-
-<details>
-<summary>Year 2</summary>
-<b>Fundamentals of Pure Mathematics</b> - <a href="exam-sheets/FPM/notes_colour.pdf">click here!</a>
-</details>
-
-<details>
-    <summary>Year 3</summary>
-    <ul>
-        <li> <b>Geometry</b> - <a href="legacy-exam-sheets/Geometry/geometry_notes.pdf">click here!</a> <i>(they are terrible tho)</i> </li>
-        <li> <b>Honours Algebra</b> - <a href="legacy-exam-sheets/algebra-6p/algebra-6p.pdf">click here!</a> </li>
-        <li> <b>Honours Algebra</b> everything - <a href="legacy-exam-sheets/algebra-10p/algebra-10p.pdf">click here!</a> <i>(10 pages)</i> </li>
-        <li> <b>Honours Analysis</b> - <a href="legacy-exam-sheets/analysis-6p/analysis-6p.pdf">click here!</a> <i>(without examples - basically 5 pages)</i> </li> 
-        <li> <b>Honours Analysis</b> - <a href="legacy-exam-sheets/analysis-6p/analysis-6p-no-examples.pdf">click here!</a> <i>(without examples or applications - 5 and a bit pages)</i> </li>
-        <li> <b>Introduction to Theoretical CS</b> - <a href="legacy-exam-sheets/ITCS/itcs_notes.pdf">click here!</a> <i>(Adapted from Chris Dalziel's LaTeX notes)</i> </li>
-        <li> <b>Metric Spaces</b> - <a href="legacy-exam-sheets/metric-6p/metric-6p.pdf">click here!</a> </li>
-    </ul>
-</details>
-
-<details>
-    <summary>Year 4</summary>
-    <ul>
-        <li> <b>Algebraic Topology</b> - <a href="legacy-exam-sheets/algtop-6p/algtop-6p.pdf">click here!</a> </li>
-        <li> <b>Galois Theory</b> - <a href="legacy-exam-sheets/galois-6p/galois-6p.pdf">click here!</a> </li>
-        <li> <b>General Topology</b> - <a href="legacy-exam-sheets/gentop-6p/gentop-6p.pdf">click here!</a> </li>
-        <li> <b>Group Theory</b> - <a href="legacy-exam-sheets/group-theory-6p/group-theory-6p.pdf">click here!</a> </li>
-        <li> <b>Modelling Concurrent Systme</b> - <a href="legacy-exam-sheets/mcs-6p/mcs-6p.pdf">click here!</a> </li>
-    </ul>
-</details>
 
 ## FPM Notes Info
 
