@@ -278,6 +278,9 @@
         {\parsetext{#3}{remcount}{3}\begin{rem-box}{#1}{#2}{#3}{Remark}}
 } {\end{rem-box}}
 
+
+% ── RECALL ────────────────────────────────────────────────────────────
+
 % #1: Name, #2: Label, #3: Count
 \newcounter{rclcount}\counterwithin{rclcount}{subsection} 
 \newtcolorbox[auto counter, use counter=rclcount, number within=subsection]{rcl-box}[5][]{
