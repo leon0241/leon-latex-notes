@@ -1,0 +1,11 @@
+% ╭──────────────────────────────────────────────────────────╮
+% │                   Custom Environments                    │
+% ╰──────────────────────────────────────────────────────────╯
+
+
+%Augmented matrix environment by Jim Hefferon
+\newenvironment{amatrix}[1]{%
+	\left(\begin{array}{@{}*{#1}{c}|c@{}}
+	}{%
+	\end{array}\right)
+}

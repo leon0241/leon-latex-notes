@@ -2,11 +2,12 @@
 
 \usepackage{../../preamble}
 \usepackage[separate]{../../rss/thmboxes_v5}
+\usepackage{HAlgCustoms}
 
 
 \begin{document}
 	
-	%\fontsize{4pt}{5pt} \selectfont %Smallest legible font size when printing with UoE Main Library printers, however some resolution issues 	for extremely small charactes such as subscripts inside fractions. Only use if you *really* need the extra space
+	%\fontsize{4pt}{5pt} \selectfont %Smallest legible font size when printing with UoE Main Library printers, however some resolution issues for extremely small characters such as subscripts inside fractions. Only use if you *really* need the extra space *cough*HAlg*cough*
 	\fontsize{5pt}{6pt} \selectfont
 	
 	%Reduce horizontal padding in 'tabular' environment, make rows taller for legibility
@@ -20,11 +21,289 @@
 	
 	\begin{multicols*}{4}
 		\raggedcolumns 
-		%Original template by Leon, modified by Louis
+		%Original template by Leon, modified by Louis. Content by Louis
 		\vspace{-5pt}
-		\subsection*{Template Title}
+		\subsection*{HAlg Exam Sheet 2025/26 - What Doesn't Kill You}
 		\vspace{-5pt}
-
+		
+		
+		\begin{thm}[Random Theorems And Definition]{thm:randoms}{ }
+			\begin{itemize}
+				\item pr$_i : X_1 \times ... \times X_n \to X_i, (x_1, ..., x_n) \mapsto x_i$
+				\item $\mathcal{P}(X) = \left\{U: U\subseteq X\right\}$ is the \textit{power set} of $X$. A subset of $\mathcal{P}$ is a \textit{system of subsets} of $X$.
+			\end{itemize}
+			
+			
+		\end{thm}
+		
+		
+		\begin{rem}[Notation]{rem:notation}{ }
+			\begin{itemize}
+				\item  'almost all' means 'all but finitely many'
+				
+				
+				
+				
+			\end{itemize}
+			
+		\end{rem}
+		
+		
+	%----------------------------------------------------------------------------------------------%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%----------------------------------------------------------------------------------------------%
+	
+	
+	{\footnotesize \textbf{\underline{Vector Spaces}}}
+		
+		
+		\begin{dfn}[Systems Of Linear Equations]{dfn:sysoflineqs}{ }
+			Let $F$ be a field. We seek to solve the system of $n$ linear equations in $m$ unknowns, described more easily by the extended coefficient matrix.
+			\begin{multicols}{2}
+			\vspace{-5pt}
+			$$
+			\begin{array}{ *{4}{cc}c }
+				a_{11}x_1 &+& a_{12}x_2 &+& \cdots &+& a_{1m}x_m &=& b_1    \\
+				a_{21}x_1 &+& a_{22}x_2 &+& \cdots &+& a_{2m}x_m &=& b_2    \\
+				\vdots    & & \vdots    & &        & & \vdots    & & \vdots \\
+				a_{n1}x_1 &+& a_{n2}x_2 &+& \cdots &+& a_{nm}x_m &=& b_n
+			\end{array} 
+			$$
+			\columnbreak
+			$
+			\begin{amatrix}{4}
+				a_{11}& a_{12} & \dots & a_{1m} & b_1 \\
+				a_{21}& a_{22} & \dots & a_{2m} & b_2 \\
+				\vdots& & & \vdots & \vdots \\
+				a_{n1}& a_{n2} & \dots & a_{nm} & b_n
+			\end{amatrix}
+			$
+			\end{multicols}
+			
+			\begin{itemize}
+				\item The set $L \subseteq F^m$ of m-tuples satisfying the equations is the \textit{solution set}.
+				\item If the solution set of a linsys of eqns $\ne \emptyset$ we obtain all solutions by adding componentwise an arbitrary solution of the homogenised system to a fixed solution of the system.
+			\end{itemize}
+			
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[Matrices]{dfn:matrices}{ }
+			A mapping $A: \left\{1, ..., n\right\} \times \left\{1, ..., m\right\} \to Z$ is called an $n \times m$-matrix with coefficients in $Z$. \\
+			The set of all $n \times m$-matrices with coefficients in $Z$ is denoted Mat$(n \times m; Z) :=$Maps$({1, ..., n} \times {1, ..., m}, Z)$\\
+			If $m = n$ we have a \textit{square matrix} and write Mat$(n, Z)$
+			
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[Fields And Vector Spaces]{dfn:fieldsnvecs}{ }
+			\begin{multicols}{2}
+				A \textit{field} $F$ is a set with functions $+ : F\times F \to F ; (\lambda, \mu) \mapsto \lambda + \mu$ and $\cdot : F \times F \to F; (\lambda, \mu) \mapsto \lambda\mu$ s.t. $(F, +)$ and $(F\backslash\{0\}, \cdot)$ are abelian groups with respective identities $0_F, 1_F$, and $\lambda(\mu + \nu) = \lambda \mu + \lambda\nu \in F$.
+				
+				\begin{itemize}
+					\item $0 \vec{v} = \vec{0}; (-1)\vec{v} = -\vec{v}$
+					\item $\forall \lambda \in F$, $\lambda \vec{0} = \vec{0}$
+					\item If $\lambda \vec{v} = 0, \lambda = 0$ or $\vec{v} = \vec{0}$
+					
+				\end{itemize}
+			
+			
+			
+				\columnbreak
+				A \textit{vector space $V$ over a field $F$} is a pair made up of an abelian group $V = (V, \dotplus )$ and a mapping $F \times V \to V ; (\lambda, \vec{v} ) \mapsto \lambda\vec{v}$ such that for all $\lambda, \mu \in F$ and $\vec{v}, \vec{w} \in V$ the following hold:
+				\begin{align*}
+					\lambda(\vec{v} + \vec{w}) &= (\lambda\vec{v}) + (\lambda\vec{w})\\
+					(\lambda + \mu)\vec{v} &= (\lambda\vec{v}) + (\mu \vec{v})\\
+					\lambda(\mu \vec{v}) &= (\lambda \mu) \vec{v}\\
+					1_F \vec{v} &= \vec{v}
+				\end{align*}
+			
+			\end{multicols} 
+			
+			\begin{itemize}
+				\item Let $X$ be a set and $V$ an $F-$VS. Then the set Maps$(X, V)$ of mappings $X \to V$ is an $F-$VS if we define $(f+g)(x) = f(x) + g(x)$ and $(\lambda f)(x) = \lambda (f(x))$.
+				\item Given $F-$VSs $V_1, ..., V_n$, $V_1 \times ... \times V_n$ is an $F-$VS if we define addition/mult by scalars componentwise. We denote this VS by $V_1 \oplus ... \oplus V_n$ and name it the \textit{external direct sum}. $F^n = F \oplus ... \oplus F$ $n$ times.
+				
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[Vector Subspaces]{dfn:vecsubspc}{ }
+			A subset $U$ of a vector space $V$ is a \textit{vector subspace} if $\vec{0} \in U$ and $\forall \vec{u}, \vec{v} \in U, \lambda \in F$, $\vec{u} + \vec{v}$ and $\lambda \vec{u} \in U$.
+			\begin{itemize}
+				\item The solution set of a linsys of eqns seen earlier is a vector space
+				\item An expression of form $\alpha_1\vec{v}_1 + ... + \alpha_n \vec{v}_n$ with $n$ finite is a \textit{linear combination} of $\vec{v}_1, ..., \vec{v}_n$.
+				\item A subset is a \textit{hyperplane} if it is a proper subspace and together with one other $\vec{v}$ generates the whole VS.
+				\item The intersection of two VSs is itself a VS
+			\end{itemize}
+			
+			Let $T$ be a subset of $V$, a VS over $F$. $\left\langle T\right\rangle$, the \textit{span of $T$} or \textit{vector subspace generated by $T$} is the set of all linear combinations of vectors in $T$. (If $T = \emptyset, \left\langle T \right\rangle = \vec{0}$). Note if $v \in \left\langle T\right\rangle, \left\langle T \cup \{v\}\right\rangle = \left\langle T\right\rangle$.\\
+			A subset of $V$ is a \textit{generating/spanning set} if its span is $V$. A VS with a finite generating set is \textit{finitely generated}.
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[Linear Independence]{dfn:linind}{ }
+			A subset $L$ of a vector space $V$ is \textit{linearly independent} if for all $\alpha_1, ..., \alpha_n \in F$ and distinct $\vec{v}_1, ..., \vec{v}_n \in L$, $\alpha_1 \vec{v}_1 + ... + \alpha_n \vec{v}_n = 0$ only if all $\alpha_i = 0$. Otherwise it is \textit{linearly dependent}.
+			
+		\begin{tabular}{|c|c|}
+			\hline
+			Linearly Independent & Linearly Dependent\\ \hline
+			$\emptyset; \{\vec{v}\}, \vec{v}\ne \vec{0}$&$ \{\vec{0}\}$ \\ \hline
+		\end{tabular}	
+			
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[Bases]{dfn:based}{ }
+			Let $V$ be a VS over a field $F$. A \textit{basis} of $V$ is a linearly independent generating set in $V$.
+			\begin{itemize}
+				\item The family $\left(\vec{v}_i\right)_{1 \le i \le n}$ is a basis of $V$ iff $\Phi: F^n \to V; (\alpha_1, ..., \alpha_n) \mapsto (\alpha_1 \vec{v}_1 + ... + \alpha_n \vec{v}_n)$ is a bijection.\\
+				\item TFAE for a subset $E$ of a VS $V$:
+					\begin{enumerate}[label = (\roman*)]
+						\item $E$ is a basis 
+						\item $E$ is minimal among generating sets ($\forall \vec{v} \in E$, $E \backslash\vec{v}$ does not generate $V$)
+						\item $E$ is maximal among linearly independent subsets ($\forall \vec{v} \in E, E \cup \vec{v}$ is linearly dependent)	
+					\end{enumerate}
+				\item If $V$ is a finitely generated VS, it has a finite basis
+				\item For a set $X$, the set Maps$(X, F)$ equipped with pointwise addition and scalar multiplication is an F-VS. The subset, $F \left\langle X\right\rangle \subseteq$Maps$(X, F)$, of all mappings which send almost all $x \in X$ to zero as a vector subspace, called the \textit{free vector space on $X$}
+				\item TFAE
+					\begin{enumerate}[label = (\roman*)]
+						\item The family $\left(\vec{v}_i\right)_{i \in I}$ is a basis of $V$.
+						\item For all $v \in V$, $\exists$ precisely one family $\left(a_i\right)_{i \in I}$ s.t. almost all $a_i =0$, and $\vec{v} = \sum_{i \in I} a_i \vec{v}_i$.
+					\end{enumerate}
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{thm}[FTLA\text{,} Steinitz\text{,} Exchange Lemma]{thm:dfkm}{ }
+			Let $V$ be a VS, $L \subset V$ linearly ind., and $E \subseteq V$ generating
+			\begin{itemize}
+				\item If $V$ is finitely generated then it has a finite basis, and any two bases have the same cardinality
+				\item Fundamental Theorem of Linear Algebra: $\left|L\right| \le \left|E\right|$.
+				\item Steinitz Exchange Theorem: There is an injection $\phi: L\hookrightarrow E$ s.t. $\{E \backslash \phi(L)\}\cup L$ is also generating.
+				\item Exchange Lemma: Steinitz but for single elements.
+			\end{itemize}
+			
+			
+		\end{thm}
+		
+		
+		\begin{dfn}[Dimensions Of Vector Spaces]{dfn:dimens}{ }
+			Let $V$ be a finitely-generated VS, $L \subset V$ linearly ind., $E \subseteq V$ generating.
+			For finitely-generated $V$, its \textit{dimension}, $\dim V$ is the cardinality of a basis of $V$. For dimension as an $F$-VS write $\dim_F V$. Also:		
+			\begin{itemize}
+				\item $\left|L\right| \le \dim V$, if $\left|L\right| = \dim V$ then $L$ is a basis
+				\item $\left|E\right| \ge \dim V$, if $\left|E\right| = \dim V$ then $E$ is a basis
+				\item A proper vector subspace of $V$ has a strictly smaller dimension than $V$
+				\item For $U, W$ subspaces of $V$, $\dim(U + W) + \dim (U \cap W) = \dim (U) + \dim (W).$
+				\item Given $V_1, ..., V_n$ $F-$VSs, $\dim (V_1 \oplus ... \oplus V_n) = \dim (V_1) + ... + \dim (V_n)$
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{mdfn-s}[Linear Mappings: Homo/Iso/Endo/Automorphisms]{dfn:linmaps}{ }
+			Let $V, W$ be VSs over a field $F$ and $B \subset V$ be a basis. A mapping $f: V \to W$ is \textit{(F-)linear} or a \textit{homomorphism of $F$-vector spaces} if for all $\vec{v}_1, \vec{v}_2 \in V$ and $\lambda \in F$:\\
+			$F(\vec{v}_1 + \vec{v}_2) = f(v_1) + f(v_2)$ and $f(\lambda \vec{v}_1) = \lambda f(\vec{v}_1)$.
+			The set of all homomorphisms from $V$ to $W$ is Hom$_F(V, W) =$Hom$(V, W) \subseteq$Maps$(V, W)$
+			\begin{itemize}
+				\item An \textit{isomorphism} is a bijective linear mapping. Isomorphisms are invertible, and the inverse mapping is also an isomorphism
+				\item An \textit{endomorphism} is a homomorphism from a VS to itself
+				\item An \textit{automorphism} is an isomorphism from a VS to itself. The automorphisms of a VS $V$ form a subgroup of its permutation group called the \textit{general linear} or \textit{automorphism} group, denoted $GL(V) =$Aut$(V) \subseteq Maps^\times(V, V).$
+				\item If $f: V \to W$ and $g: U \to V$ are homo.s, $(f \circ g) : U \to W$ is a homo.
+				\item A homo. can be restricted to a bijection Hom$_F(V, W) \tilde{\to}$Maps$(B, W)$, $f \mapsto \left.f\right|_B$ - ie a linear mapping determines and is determined by the values it takes on a basis.
+				\item Every injective homo. $f: V \hookrightarrow W$ has a \textit{left inverse} $g$ s.t. $g \circ f =$id$_V$
+				\item Every surjective homo. $f: V \twoheadrightarrow W$ has a \textit{right inverse} $g$ s.t. $f \circ g =$id$_W$
+				\item For $n \ge 0 \in \mathbb{Z}$, a VS $V$ over $F$ is isomorphic to $F^n$ iff $\dim V = n$.
+				\item A point sent to itself by a homo. is a \textit{fixed point} of the mapping. Given a mapping $f: X \to X$, the set of fixed points is $X^f = \{x \in X : f(x) = x\}$.
+				\item Two VsubSs $V_1, V_2$ are \textit{complementary} if addition defines a bijection from $V_1 \times V_2 \to V$. We define $f: V_1 \oplus ... + \oplus \to V$ by $f(\vec{v}_1, ..., \vec{v}_n) = f_1(\vec{v}_1) + ... + f_n(\vec{v}_n)$
+			\end{itemize}
+			
+		\end{mdfn-s}
+		
+		
+		\begin{dfn}[Image and Kernel]{dfn:imnkern}{ }
+			Let $V, W$ be VSs and $f: V \to W$ be a linear mapping.
+			The \textit{image} of $f$ is $(f) = F(V) \subseteq W$. It is a VsubS of $W$ .\\
+			The \textit{kernel} of $f$ is $\ker (f) := f^{-1}(\vec{0}) = \{\vec{v} \in V : f(\vec{v}) = \vec{0}\}$. It is a VsubS of $V$.
+			\begin{itemize}
+				\item A linear mapping $f$ is injective iff its kernel is $\vec{0}$.
+				\item The image of a VsubS under a linear mapping is again a VsubS, and the preimage of a VsubS under a linear mapping is again a VsubS.
+			\end{itemize}
+			
+			
+		\end{dfn}
+		
+		
+		
+		\begin{thm}[Rank-Nullity Theorem]{thm:ranknull}{ }
+			Let $V, W$ be VSs and $f: V \to W$ a linear mapping. \\
+			Then $\dim V = \dim (\ker(f)) + \dim($im$(f))$. $\dim($im$(f))$/$\dim (\ker (f))$ are the \textit{rank/nullity} of $f$.
+			
+		\end{thm}
+		
+		
+	%----------------------------------------------------------------------------------------------%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%----------------------------------------------------------------------------------------------%
+	
+	
+	{\footnotesize \textbf{\underline{Linear Mappings and Matrices}}}
+		
+		
+		\begin{thm}[Linking Linear Mappings And Matrices]{thm:repmat}{ }
+			Let $F$ be a field and $m, n \in \mathbb{N}$. There is a bijection $M$ between the space of linear mappings $F^m \to F^n$ and Mat$(n \times m; F)$ which maps $f \mapsto [f]$. $M(f) := [f]$ is the \textit{representing matrix} of $f$, whose columns are the images under $f$ of the standard basis elements of $F^m$, ie $[f] = (f(\vec{e}_1)|...|f(\vec{e}_m))$.
+			
+		\end{thm}
+		
+		
+		\begin{thm}[Composing Mappings vs Matrix Multiplication]{thm:}{ }
+			Let $g: F^\ell \to F^m$ and $f:F^m \to F^n$ be linmaps. The representing mat of their composition is the product of their representing mats: $[f \circ g] = [f][g]$.
+			\begin{itemize}
+				\item For $\ell, m, n \in \mathbb{N}$, $F$ a field, $A \in $Mat$(n\times m; F)$, $B \in$Mat$(m \times \ell ; F)$. Then $AB \in $Mat$(n \times \ell)$ is defined by $(AB)_{ik} = \sum_{j = 1}^{m}A_{ij} B{jk}$.
+			\end{itemize}
+			
+		\end{thm}
+		
+		
+		\begin{dfn}[The General Linear Group]{dfn:glgroup}{ }
+			The set of invertible $n\times n$ matrices in a field $F$ form a group under matrix multiplication, called the \textit{General Linear group of $(n\times n)$ matrices} and written GL$(n; F) :=$Mat$(n; F)^\times$
+			
+		\end{dfn}
+		
+		
+		
+		
+		\begin{dfn}[Properties Of Matrices]{dfn:matprops}{ }
+			\begin{itemize}
+				\item Let $k, \ell, m, n \in \mathbb{N}$, $A, A' \in$Mat$(n\times m; F)$, $B, B' \in $Mat$(m \times \ell; F)$, $C \in$Mat$(\ell \times k; F)$, and $I = I_m$. Then:
+				\begin{enumerate}[label=(\roman*)]
+					\item $(A + A')B = AB + A'B$
+					\item $A(B + B') = AB + AB'$
+					\item $(AB)C = A(BC)$
+				\end{enumerate}
+				\item A square matrix $A$ is \textit{invertible} if $\exists A^{-1}$ of same size s.t $AA^{-1} = A^{-1}A = I$
+				\item An \textit{elementary} matrix is one which differs from $I$ in at most one entry
+				\item Every square matrix with entries in a field can be written as a product of elementary matrices
+				\item A matrix whose only non-zero entries lie on the diagonal, and which has first ones along the diagonal, then zeroes, is in \textit{Smith Normal Form}. For each $A \in $Mat$(n \times m; F)$, $\exists$ invertible $P, Q$ s.t. $PAQ$ is in Smith Normal Form.
+				\item The \textit{rank} of a matrix $A$ is the dimension of the subspace of $F^n$ generated by the columns or rows of $A$ (the $dim$ of each are always equal).\\
+				\item A is of \textit{full rank} if the rank is equal to the number of rows or columns
+				\item rk$(A + B) \le$rk$A +$rk$B$, and rk$(AB) \le \min($rk$A,$rk$B)$.
+			\end{itemize}
+			
+			
+		\end{dfn}
+		
+		
+		
+		
+		
 		
 	\end{multicols*}
 	
