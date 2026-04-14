@@ -1,4 +1,4 @@
-# Leon's UoE Math LaTeX Notes
+# Leon's UoE Maths LaTeX Notes
 
 LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and Maths. Feel free to use / fork / customise to your liking
 
