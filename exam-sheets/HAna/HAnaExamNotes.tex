@@ -1,1 +1,363 @@
+\documentclass[landscape, 8pt]{extarticle}
 
+\usepackage{../../preamble}
+\usepackage[separate]{../../rss/thmboxes_v5}
+
+%For \upgamma symbol for graphs
+\usepackage{upgreek}
+
+
+\begin{document}
+	
+	\fontsize{5pt}{6pt} \selectfont
+	
+	%Reduce horizontal padding in 'tabular' environment, make rows taller for legibility
+	\setlength\tabcolsep{4.5pt}
+	\setlength\extrarowheight{2pt}
+	
+	\setlength{\abovedisplayskip}{0pt}
+	\setlength{\belowdisplayskip}{0pt}
+	\setlength{\abovedisplayshortskip}{0pt}
+	\setlength{\belowdisplayshortskip}{0pt}
+	
+	\begin{multicols*}{4}
+		\raggedcolumns 
+		%Original template by Leon, modified by Louis. Content by Louis
+		\vspace{-5pt}
+		\subsection*{HAna Exam Sheet 2025/26 - Back From The Dead}
+		\vspace{-5pt}
+		
+		
+		
+	%----------------------------------------------------------------------------------------------%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%----------------------------------------------------------------------------------------------%
+	
+	
+	{\footnotesize \textbf{\underline{Reals, Sequences, and Series}}}
+	
+	
+	{\tiny \textbf{\underline{Real Sequences}}}
+		
+		
+		
+		\begin{dfn}[Bounds and Boundedness]{dfn:bounds}{ }
+			Let $A \subseteq R$.
+			\begin{itemize}[label=*]
+				\item $x \in \mathbb{R}$ is an \textbf{upper bound for $A$} if $x \ge a$ for all $a \in A$
+				\item $A$ is \textbf{bounded above} if there exists an upper bound $x \in \mathbb{R}$ for $A$.
+				\item $s \in \mathbb{R}$ is a \textbf{least upper bound} or \textbf{supremum} for $A$ if $s$ is an upper bound for $A$, and $x \ge s$ whenever $x$ is an upper bound for $A$.
+				\item \textbf{Lower bounds} stuff is akin to this - if u don't know it go back to FPM
+				\item $A$ is \textbf{bounded} if it is bounded above and below
+			\end{itemize}
+			
+		\end{dfn}
+		
+		\begin{axi}[The Completeness Axiom]{axi:test}{ }
+			Every bounded above non-empty $A \subseteq \mathbb{R}$ has a least upper bound in $\mathbb{R}$
+			
+		\end{axi}
+		
+		
+		\begin{dfn}[Nested Sets]{dfn:nestsets}{ }
+			A sequence $(I_n)_{n \in \mathbb{N}}$ of sets is \textbf{nested} if $I_n \supseteq I_{n+1}$ for all $n \in \mathbb{N}$
+			
+		\end{dfn}
+		
+		
+		\begin{thm}[The Nested Interval Theorem]{thm:nestints}{ }
+			If $(I_n)_{n \in \mathbb{N}}$ is a nested sequence of nonempty closed bounded intervals, then the set $E := \bigcap_{n \in \mathbb{N}}I_n = \left\{x \in \mathbb{R}: x \in I_n \forall n \in \mathbb{N}\right\}$ is nonempty. Moreover, if $\lambda(I_n) \to 0$ as $n \to \infty$, where $\lambda(I_n)$ is the length of interval $I_n$, then $E$ contains exactly one element.
+			
+		\end{thm}
+		
+		
+		\begin{dfn}[Convergence]{dfn:cnvgnce}{ }
+			A real sequence $(a_n)_{n \in \mathbb{N}}$ \textbf{converges} to $a \in \mathbb{R}$ iff for every $\epsilon > 0$ there exists $N \in \mathbb{N}$ such that $\left|a_n - a\right| <\epsilon$ for all $n \ge N$. A sequence which does not converge to some real number \textbf{diverges}.
+			\begin{itemize}
+				\item We say $a_n \to \infty$ as $n \to \infty$ if for all $R \in \mathbb{R}$ there exists $N \in \mathbb{N}$ s.t. $a_n > R$ for all $n \ge \mathbb{N}$
+				\item We say $a_n \to -\infty$ as $n \to \infty$ if for all $R \in \mathbb{R}$ there exists $N \in \mathbb{N}$ s.t. $a_n < R$ for all $n \ge \mathbb{N}$
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[Monotonicity]{dfn:monton}{ }
+			Let $(a_n)_{n \in \mathbb{N}}$ be a real sequence and $A := \{a_n : n \in\mathbb{N}\}$. Then:
+			\begin{enumerate}[label=(\arabic*)]
+				\item $(a_n)_{n \in \mathbb{N}}$ is \textbf{monotone non-decreasing} if $a_{n + 1} \ge a_n$ for all $n \in \mathbb{N}$
+				\item $(a_n)_{n \in \mathbb{N}}$ is \textbf{monotone non-increasing} if $a_{n + 1} \le a_n$ for all $n \in \mathbb{N}$
+				\item $(a_n)_{n\in \mathbb{N}}$ is \textbf{bounded above/bounded below/bounded} if $A$ is such
+			\end{enumerate} 
+			
+			\textit{Monotone Convergence Theorem For Sequences}: If $(a_n)_{n \in \mathbb{N}}$ is a real sequence which is monotone non-decreasing and bounded above; or monotone non-increasing and bounded below; then $(a_n)_{n \in \mathbb{N}}$ converges.
+			
+		\end{dfn}
+		
+		
+		\begin{mdfn}[Cauchy On Sequences]{mdfn:cauchyseq}{ }
+			A real sequence $(a_n)_{n \in \mathbb{N}}$ is \textbf{Cauchy} if for every $\epsilon > 0$ there exists $N \in \mathbb{N}$ s.t. $\left|a_n - a_m\right| <\epsilon$ for all $n, m \ge N$.\\
+			The \textit{Cauchy Criterion} states that a real sequence is convergent if and only if it is Cauchy
+			
+		\end{mdfn}
+		
+		
+		\begin{dfn}[Subsequences]{dfn:subseqs}{ }
+			Let $(a_n)_{n \in \mathbb{N}}$ be a real sequence. A \textbf{subsequence} of $(a_n)_{n \in \mathbb{N}}$ is a real sequence of the form $(a_{n_k})_{k \in \mathbb{N}}$ where for each $k \in \mathbb{N}$ there exists $n_k \in \mathbb{N}$ such that $n_1 < n_2< ... < n_k < n_{k+1} < ...$. Ie, a subsequence is just some (possibly all) elements of a sequence taken in order.
+			
+		\end{dfn}
+		
+		
+		\begin{thm}[Bolzano-Weierstrass Theorem]{thm:bolzweier}{ }
+			Every bounded sequence of real numbers has a convergent subsequence
+			
+		\end{thm}
+		
+		
+		
+		{\tiny \textbf{\underline{Series}}}
+		
+		
+		
+		\begin{mdfn}[Infinite Series]{dfn:infsers}{ }
+			Let $(a_k)_{k \in N}$ be a real sequence. We form the \textbf{sequence of partial sums $(s_n)_{n \in \mathbb{N}}$} by $s_n := \sum_{k=1}^{n} a_k$ for all $n \in\mathbb{N}$.
+			\begin{itemize}
+				\item We say the infinite series $\sum_{k=1}^{\infty}a_k$ \textbf{converges to $a$} if $\lim_{n\to \infty} s_n$ exists and equals $a$. Otherwise we say it \textbf{diverges}.
+			\end{itemize} 
+			
+		\end{mdfn}
+		
+		
+		\begin{dfn}[Absolute Convergence]{dfn:absconv}{ }
+			Let $(a_n)_{n \in \mathbb{N}}$ be a real sequence.
+			\begin{enumerate}[label=(\arabic*)]
+				\item We say $\sum_{n=1}^{\infty} a_n$ \textbf{converges absolutely} if $\sum_{n=1}^{\infty} \left|a_n\right|$ converges
+				\item We say $\sum_{n=1}^{\infty}a_n$ \textbf{converges conditionally} if it converges but $\sum_{n=1}^{\infty}\left|a_n\right|$ diverges.
+			\end{enumerate}
+			
+			\begin{itemize}
+				\item Absolute convergence implies convergence (the converse is not always true!)
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{mthm}[The Cauchy Criterion For Series]{thm:cauchforseries}{ }
+			Let $(a_k)_{k=1}^\infty$ be a real sequence. Then $\sum_{k=1}^{\infty}a_k$ converges if and only if for all $\epsilon > 0$ there exists $N \in \mathbb{N}$ such that $\left|\sum_{k=m+1}^{n}a_k\right| <\epsilon$ for all $n > m \ge N$.
+			
+		\end{mthm}
+		
+		
+		\begin{thm}[The Riemann Rearrangement Theorem]{thm:riearrange}{ }
+			Let $(a_n)_{n \in \mathbb{N}}$ be a real sequence and suppose $\sum_{n=1}^{\infty}a_n$ is conditionally convergent. Then for \textit{any} $s \in \mathbb{R}$, there exists a bijection $\sigma: \mathbb{N} \to \mathbb{N}$ such that the rearrangement $\sum_{n=1}^{\infty}a_{\sigma(n)}$ converges to $s$. 
+			\vspace{1pt}
+			\hrule
+			\vspace{2pt}
+			Note the RRT does not apply to absolutely convergent series. Indeed, for $\sum_{n=1}^{\infty}a_n$ absolutely convergent, and any bijection $\sigma: \mathbb{N} \to \mathbb{N}$, $\sum_{n=1}^{\infty}a_{\sigma(n)}$ is convergent and $\sum_{n=1}^{\infty}a_{\sigma(n)} = \sum_{n=1}^{\infty}a_n$
+			
+		\end{thm}
+		
+		
+		
+		{\tiny \textbf{\underline{Subsets Of The Real Line}}}
+		
+		
+		
+		\begin{dfn}[Open Sets]{dfn:opensets}{ }
+			We say a set $U \subseteq \mathbb{R}$ is \textbf{open} if for all $x \in U$ there exists $r > 0$ such that $(x-r, x+r) \subseteq U$.
+			
+			\begin{itemize}
+				\item The union of any collection of open sets is open
+				\item The intersection of any finite collection of open sets is open
+				\item Any nonempty open $U \subseteq \mathbb{R}$ is a finite or countable union of nonempty disjoint open intervals
+				\item If $f: \mathbb{R} \to \mathbb{R}$ is continuous and $\lambda \in \mathbb{R}$, then $\{x \in \mathbb{R} : f(x) > \lambda\}$ is open.
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[Closed Sets]{dfn:closedsets}{ }
+			A set $F \subseteq \mathbb{R}$ is \textbf{closed} if its complement $\mathbb{R} \backslash F$ is open.
+			
+			\begin{itemize}
+				\item The union of any finite collection of closed sets is closed
+				\item The intersection of any collection of closed sets is closed
+				\item If $f: \mathbb{R} to \mathbb{R}$ is continuous and $ \lambda \in \mathbb{R}$, then $\{x \in \mathbb{R} : f(x) \le \lambda\}$ is closed.
+			\end{itemize}
+			\vspace{1pt}
+			\hrule
+			\vspace{2pt}
+			A set $F \subseteq \mathbb{R}$ is \textbf{sequentially closed} if for every convergent sequence $(x_n)_{n \in \mathbb{N}}$ s.t. $x_n \in F$ for all $n \in \mathbb{N}$, the limit $x := \lim_{n\to \infty}x_n$ satisfies $x \in F$.
+			\begin{itemize}
+				\item $F \subseteq \mathbb{R}$ is closed if and only if it is sequentially closed.
+			\end{itemize}
+			
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[The Middle Thirds Cantor Set]{dfn:midthrdscantor}{ }
+			The \textbf{Middle Thirds Canto Set $C$} is a closed set defined by the following recursive process: 
+			\begin{enumerate}[label=(\arabic*)]
+				\item Divide $[0, 1]$ into three equal parts and remove the open middle third interval $(\frac{1}{3}, \frac{2}{3})$.
+				\item Divide the remaining two intervals into three equal parts and remove the open middle thirds intervals $(\frac{1}{9}, \frac{2}{9})$ and $(\frac{7}{9}, \frac{8}{9})$.
+				\item Repeat this process ad infinitum.
+			\end{enumerate}
+			At the $n^{th}$ stage of the construction we have $2^n$ closed intervals $(I_{n, k})_{k=1}^{2n}$ with $\lambda(I_{n, k}) = 3^{-n}$ for all $1 \le k \le 2^n$. $C$ is then defined as $C = \bigcap_{n =1}^{\infty}C_n$ where $C_n :+ \bigcup_{k =1}^{2^n}I_{n, k}$ for $n \in \mathbb{N}$. Each $I_{n, k}$ is a closed interval so their finite union $C_n$ is closed, and $C$, the intersection of these closed $C_n$, is also closed.
+			
+		\end{dfn}
+		
+		
+		
+	%----------------------------------------------------------------------------------------------%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%----------------------------------------------------------------------------------------------%
+	
+	
+	{\footnotesize \textbf{\underline{Uniform Continuity, Uniform Convergence, Power Series}}}
+	
+	
+	{\tiny\textbf{\underline{Uniform Continuity}}}
+		
+		
+		
+		\begin{mdfn}[Uniform Continuity]{dfn:unifcont}{ }
+			Let $I \subseteq \mathbb{R}$ be an interval and $f: I \to \mathbb{R}$. We say $f$ is \textbf{uniformly continuous} if for every $\epsilon > 0$ there exists $\delta > 0$ such that $\left|f(x) - f(y)\right| <\epsilon$ for all $x, y \in I$ s.t. $\left|x-y\right| < \delta$. Note the key difference with regular continuity - here $\delta$ may only depend on $\epsilon$ only, not $x$.
+			
+		\end{mdfn}
+		
+		
+		\begin{thm}[The Heine-Cantor Theorem]{thm:heincan}{ }
+			If $a < b$ and $f: [a, b] \to \mathbb{R}$ is continuous, then $f$ is uniformly continuous.
+			
+		\end{thm}
+		
+		
+		
+	{\tiny \textbf{\underline{Uniform Convergence}}}	
+		
+		
+		
+		\begin{dfn}[Pointwise Convergence]{dfn:ptwiseconv}{ }
+			Let $E \subseteq \mathbb{R}$ be nonempty. A sequence of functions $f_n: E \to \mathbb{R}$ \textbf{converges pointwise on $E$ to $f: E \to \mathbb{R}$} if for all $x\in E$ and $ \epsilon > 0$, there exists $N\in \mathbb{N}$ s.t. $\left|f_n(x) - f(x)\right| <\epsilon$ for all $n \ge N$.
+			
+		\end{dfn}
+		
+		
+		\begin{thm}[Pointwise Convergence Theorems]{thm:ptwiseconv}{ }
+			\begin{itemize}[label=*]
+				\item The pointwise limit of bounded functions is not necessarily bounded
+				\item The pointwise limit of continuous functions is not necessarily continuous. Ie, $\exists f_n, f: [0,1] \to \mathbb{R}$ s.t.
+				\begin{itemize}
+					\item $f_n$ is continuous for all $n \in \mathbb{N}$
+					\item $f_n \to f$ pointwise on $[0, 1]$ as $n \to \infty$
+					\item $f$ is not continuous
+					\item Example: $f_n(x) := 0$ if $ 0 \le x \le \frac{1}{2} - \frac{1}{2n}$; $nx - \frac{n-1}{2}$ if $ \frac{1}{2} - \frac{1}{2n} \le x \le \frac{1}{2}+ \frac{1}{2n}$; $1$ if $\frac{1}{2} + \frac{1}{2n} \le x \le 1$
+				\end{itemize}
+				\item The pointwise limit of differentiable functions is not necessarily differentiable. Ie, $\exists f_n, f: (-1, 1) \to \mathbb{R}$ s.t.:
+				\begin{itemize}
+					\item $f_n$ is differentiable for all $N \in \mathbb{N}$
+					\item $f_n \to f$ pointwise on $(-1, 1)$ as $n \to \infty$
+					\item $f$ is not differentiable
+					\item Example: Let $f_n(x) := \sqrt{x^2 + \frac{1}{n}}$, limit is not diffable at $0$.
+				\end{itemize}
+				\item The pointwise limit of derivatives is not necessarily the derivative of the pointwise limit. Ie, $\exists f_n, f : (-1, 1) \to \mathbb{R}$ s.t.
+				\begin{itemize}
+					\item $f_n$ is diffable for all $n \in \mathbb{N}$ and $f$ is diffable
+					\item $f_n \to f$ pointwise on $(-1, 1)$
+					\item $f'(0) \ne \lim_{n\to \infty}f'_n(0)$, ie $\left(\lim_{n\to \infty f_n}\right)'(0) \ne \lim_{n\to \infty}f_n'(0)$ - the derivate and ptwise lim operations do not commute.
+					\item Example: Let $f_n(x) = \frac{\sin(2 \pi n x)}{2 \pi n}, f'_n = \cos(2\pi n x), f = 0$
+				\end{itemize}
+			\end{itemize}
+			
+		\end{thm}
+		
+		
+		\begin{dfn}[Graph and Vertical Neighbourhood]{dfn:graphnvertneigh}{ }
+			Let $f: E \to \mathbb{R}$. The \textbf{graph of $f$} is the set $\upgamma(f) : = \left\{(f, f(x) : x\in E)\right\} \subset \mathbb{R}^2$.\\
+			For $ \epsilon > 0$, the $e-$vertical neighbourhood of the graph of $f$ is the set $\mathscr{N}(f,\epsilon) := \left\{(x, y) : x\in E, \left|y-f(x)\right| <\epsilon\right\} \subset \mathbb{R}^2$.
+			
+		\end{dfn}
+		
+		
+		\begin{mdfn}[Uniform Convergence]{mdfn:unifcon}{ }
+			Let $E \subseteq \mathbb{R}$ bd nonempty. A sequence of function s$f_n: E \to \mathbb{R}$ \textbf{converges uniformly on $E$ to $f:: E \to \mathbb{R}$} if for all $\epsilon > 0$ there exists $N\in \mathbb{N}$ s.t. $\left|f_n(x) - f(x)\right| <\epsilon$ for all $x\in E, n \ge N$.
+			\begin{itemize}
+				\item Uniform convergence implies pointwise convergence (not the converse though! For counterexample use $f_n(x) := 1 $ if $0 < x < \frac{1}{n}$; $0$ if $\frac{1}{n} \le x \le 1$ and $f: (0, 1] \to \mathbb{R}$ be $f(x) =0$).
+			\end{itemize}
+			
+		\end{mdfn}
+		
+		
+		\begin{thm}[Uniform Convergence Properties]{thm:unifconv}{ }
+			Let $E \subseteq \mathbb{R}$ be nonempty, $f_n : E \to \mathbb{R}$ be a sequence of functions, and $f: E \to \mathbb{R}$.
+			\begin{itemize}
+				\item The following are equivalent:
+				\begin{enumerate}[label=(\arabic*)]
+					\item $f_n \to f$ uniformly on $E$ as $n \to \infty$
+					\item $\sup_{x\in E}\left|f_n(x) - f(x)\right| \to 0$ as $n \to \infty$
+					\item (Vertical neighbourhood test) For all $\epsilon > 0$ there exists $N\in \mathbb{N}$ s.t. $\upgamma(f_n) \subset \mathscr{N}(f,\epsilon)$ for all $n \ge N$.
+				\end{enumerate}
+				\item (Sequence test for uniform convergence): Suppose $f_n \to f$ uniformly on $E$ as $n \to \infty$. If $(x_n)_{n\in \mathbb{N}}$ is a real sequence with $x_n\in E$ for all $n\in \mathbb{N}$, then $\left|f_n(x_n) - f(x_n)\right| \to 0$ as $n \to \infty$.
+			\end{itemize}
+			
+		\end{thm}
+		
+		
+		
+		\begin{dfn}[Uniform Cauchy]{dfn:unifcauch}{ }
+			Let $E \subseteq \mathbb{R}$ be nonempty and $f_n : E \to \mathbb{R}$ be a sequence of functions. We say $(f_n)_{n\in \mathbb{N}}$ is \textbf{uniformly Cauchy on $E$} if for all $\epsilon > 0$ there exists $N\in \mathbb{N}$ s.t. $\left|f_n(x) - f_m(x)\right| < \epsilon$ for all $x\in E$ and $m, n \ge N$.
+			\begin{itemize}[label=*]
+				\item The Uniform Cauchy Criterion: $(f_n)_{n\in \mathbb{N}}$ converges uniformly on $E$ iff $(f_n)_{n\in \mathbb{N}}$ is uniformly Cauchy on $E$.
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{thm}[Uniform Limits Of Continuous And Differentiable Functions]{thm:uniflimscontdiff}{ }
+			\begin{itemize}
+				\item Let $I \subseteq\mathbb{R}$ be an interval and $f_n, f : I \to \mathbb{R}$ s.t. $f_n \to f$ uniformly on $I$ as $n \to \infty$. For all $x_0\in I$, if each $f_n$ is continuous at $x_0$, then $f$ is continuous at $x_0$.
+				\item The uniform limit of diffable functions is not necessarily diffable, ie $\exists f_n, f : (-1, 1) \to \mathbb{R}$ s.t.:
+				\begin{itemize}
+					\item $f_n$ is differentiable for all $n\in \mathbb{N}$
+					\item $f_n \to f$ uniformly on $(-1, 1)$ as $n \to \infty$
+					\item $f$ is not differentiable
+					\item Example: consider $f_n(x) := \sqrt{x^2 + \frac{1}{n}}$
+				\end{itemize}
+				\item Let $I \subseteq \mathbb{R}$ be a bounded open interval and $f_n : I \to \mathbb{R}$ a sequence of diffable funcs s.t.:
+				\begin{enumerate}[label=(\arabic*)]
+					\item There exists $x_0\in I$ s.t. $(f_n(x_0))_{n\in \mathbb{N}}$ converges
+					\item There exists $g: I \to \mathbb{R}$ s.t. $f_n' \to g$ uniformly on $I$ as $n \to \infty$.
+				\end{enumerate}
+				Then there exists diffable $f: I \to \mathbb{R}$ s.t. $f_n \to f$ uniformly on $I$ as $n \to \infty$. Alternatively $(\lim_{n\to \infty}f_n)'(x) = \lim_{n\to \infty}f_n'(x)$ for all $x\in I$, ie differentiation commutes with taking the uniform limit under our conditions.
+			\end{itemize}
+			
+		\end{thm}
+		
+		
+		\begin{dfn}[Uniform Convergence Of Series Of Functions]{dfn:unficonvfuncseries}{ }
+			
+			
+		\end{dfn}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	\end{multicols*}
+	
+	
+\end{document}
