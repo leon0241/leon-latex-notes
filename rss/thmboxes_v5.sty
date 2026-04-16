@@ -4,8 +4,15 @@
 
 
 %thmboxes v1 to v4 were made by Leon, github.com/leon0241, when UoE maths exams allowed 6 sides of notes in exams
-%v5, a heavily compacted and condensed version of v4, was made by Louis in 2025/26 after this was changed to 2 sides
-%"If I have passed my exams, it is by standing on the shoulders of giants"
+%v5 was made by Louis in 2025/26 after this was changed to 2 sides. It is heavily compacted, with some new style options (major theorems/definitions among others)
+
+%"If I have passed 3rd year maths, it is by standing on the shoulders of giants" - Louis
+
+
+
+
+%Available box styles are: Theorem/Major Theorem; Definition/Major Definition; Example; Remark; Recall; Question; Lemma; Proposition; Corollary; Axiom
+%Note counters etc do not work on Major Theorems, Major Definitions, and Axioms because Louis had Honours Algebra to worry about when he added these so didn't write that code
 
 
 \NeedsTeXFormat{LaTeX2e}
@@ -360,6 +367,7 @@
         {\parsetext{#3}{ppncount}{3}\begin{ppn-box}{#1}{#2}{#3}{Prop}}
 } {\end{ppn-box}}
 
+
 % ── COROLLARY ─────────────────────────────────────────────────────────
 
 % #1: Name, #2: Label, #3: Count
@@ -375,6 +383,30 @@
         {\begin{crl-box}{#1}{#2}{\thecrlcount}{Corollary}}
         {\parsetext{#3}{crlcount}{3}\begin{crl-box}{#1}{#2}{#3}{Corollary}}
 } {\end{crl-box}}
+
+
+% ── AXIOM ───────────────────────────────────────────────────────
+
+% #1: Name, #2: Label, #3: Count
+\newcounter{axicount}\counterwithin{axicount}{subsection} 
+\newtcolorbox[auto counter, use counter=axicount, number within=subsection]{axi-box}[5][]{
+	% Background , Colour of frame, Colour of Box background
+	thmboxstyle={#5}{#4}{#2}{#3}{orange!20}{orange!5}
+}
+
+\newenvironment{axi}[3][]{
+	% If the last box is empty then run parser
+	\ifstrempty{#3}
+	{\begin{axi-box}{#1}{#2}{\theaxicount}{Axiom}}
+		{\parsetext{#3}{axicount}{3}\begin{axi-box}{#1}{#2}{#3}{Axiom}}
+		} {\end{axi-box}}
+	
+	\newenvironment{axi-s}[3][]{
+		% If the last box is empty then run parser
+		\ifstrempty{#3}
+		{\begin{axi-box}{#1}{#2}{\theaxicount}{Axi}}
+			{\parsetext{#3}{axicount}{3}\begin{axi-box}{#1}{#2}{#3}{Axi}}
+			} {\end{axi-box}}
 
 
 % ╭──────────────────────────────────────────────────────────╮
