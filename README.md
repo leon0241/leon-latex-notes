@@ -11,6 +11,8 @@ LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and M
     <summary>Year 3</summary>
     <ul>
         <li> <b>Honours Complex Variables</b> - <a href="exam-sheets/HCov/PDF/HCovExamNotes.pdf">click here!</a> </li>
+        <li> <b> Honours Algebra</b> - <a href='exam-sheets/HAlg/PDF/HAlgExamNotes.pdf'>click here!</a> </li>
+        <li> <b> Honours Analysis</b> - <a href='exam-sheets/HAna/PDF/HAnaExamNotes.pdf'>click here!</a> </li>
 </details>
 
 ## [LEGACY] Links to 6-page Exam Sheets
