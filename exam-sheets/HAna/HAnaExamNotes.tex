@@ -45,9 +45,15 @@
 		\end{thm}
 		
 		
-	%--------------------------------------------------------------------------------------%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%--------------------------------------------------------------------------------------%
+		\begin{thm}[Convergence Tests]{thm:convtests}{ }
+			
+			
+		\end{thm}
+		
+		
+	%----------------------------------------------------------------------------------%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%----------------------------------------------------------------------------------%
 	
 	
 	{\footnotesize \textbf{\underline{Reals, Sequences, and Series}}}
@@ -106,7 +112,7 @@
 				\item $(a_n)_{n\in \mathbb{N}}$ is \textbf{bounded above/bounded below/bounded} if $A$ is such
 			\end{enumerate} 
 			
-			\textit{Monotone Convergence Theorem For Sequences}: If $(a_n)_{n \in \mathbb{N}}$ is a real sequence which is monotone non-decreasing and bounded above; or monotone non-increasing and bounded below; then $(a_n)_{n \in \mathbb{N}}$ converges.
+			\textit{MCT For Seqs}: If a real sequence $(a_n)_{n \in \mathbb{N}}$ is monotone non-decreasing and bdd above; or monotone non-increasing and bdd below; it converges.
 			
 		\end{dfn}
 		
@@ -119,9 +125,10 @@
 		
 		\begin{mthm}[The Cauchy Criterion]{thm:}{ }
 			A real sequence is convergent if and only if it is Cauchy.
-			
+			\vspace{-8pt}
 			\begin{proof}
-				%TO-DO - PROOF
+				1: Let $(a_n)_{n\in \mathbb{N}}$ be convergent. Then $\exists a\in\mathbb{R}$ s.t. $\lim_{n\to \infty}a_n = a$, and for all $ \epsilon > 0$, $\exists N\in \mathbb{N}$ s.t. $\left|a_n -a\right| <\epsilon/2$ when $n \ge N$. Then by the TI, $\left|a_n - a_m\right| = \left|(a_n-a) + (a-a_m)\right| \le \left|a_n - a\right| + \left|a-a_m\right| = \left|a_n - a\right| + \left|a_m -a\right| <\epsilon/2 +\epsilon/2 =\epsilon$ for $m, n \ge N$, thus the sequence is Cauchy.\\
+				2: Let $(a_n)_{n\in \mathbb{N}}$ be Cauchy. First show it is bdd. Let $\epsilon = 1$. Then $\exists N\in \mathbb{N}$ s.t. $\left|a_n -a_m\right| < 1$ for $m, n \ge N$. In particular $\left|a_m\right| < 1+\left|a_N\right|$ for all $m \ge N$, so $\left|a_m\right| \le \max\{\left|a_1\right|, ..., \left|a_{N-1},\right|, \left|a_N\right| + 1\}$ for $m\in \mathbb{N}$, so $(a_n)_{n\in \mathbb{N}}$ is bdd. Secondly, by the B-WT, $\exists (a_{n_k})_{k\in \mathbb{N}}$ s.t. $a_{n_k} \to a\in \mathbb{R}$ as $k \to \infty$. Finally, show $a_n \to a$: Let $\epsilon > 0$. Since $(a_n)_{n\in \mathbb{N}}$ is Cauchy, $\exists N, K\in \mathbb{N}$ s.t. $\left|a_n - a_m\right| <\epsilon/2$ for $m, n \ge N$ and $\left|a_{n_k} - a \right| <\epsilon/2$ for $k \ge K$. Fix $k\in \mathbb{N}$ s.t. $k\ge K$ and $n_k \ge N$. Then $\left|a_n - a\right| \le \left|a_n - a_{n_k}\right| + \left|a_{n_k} - a\right| <\epsilon/2 +\epsilon/2 =\epsilon$, $\forall n \ge N$. Thus $a_n \to a$ as $n \to \infty$ as required.
 			\end{proof}
 			
 		\end{mthm}
@@ -135,9 +142,12 @@
 		
 		\begin{thm}[Bolzano-Weierstrass Theorem]{thm:bolzweier}{ }
 			Every bounded sequence of real numbers has a convergent subsequence.
-			
+			\vspace{-8pt}
 			\begin{proof}
-				%TO-DO - PROOF
+				Let $(a_n)_{n\in \mathbb{N}}$ be a bdd seq., with upper/lower bound $a, b\in \mathbb{R}$. Let $I_1 = [a, b]$ and divide $I_1$ into $I_1' = [a, (a+b)/2], I_1'' = [(a+b)/2, b]$. Since $I_1 = I_1' \cup I_1''$, at least one of $I_1', I_1''$ contains infinitely many $a_n$. Choose one with this property and denote it $I_2$. Let $n_2\in \mathbb{N}$ be s.t. $n_2 > n_1 = 1$ and $a_{n_2}\in I_2$. Repeat inductively.\\
+				By the above process we recursively define a nested sequence of intervals $(I_k)_{k\in \mathbb{N}}$ and subsequence $(a_{n_k})_{k\in \mathbb{N}}$ s.t. each $I_k$ contains infinitely many terms of $(a_n)_{n\in \mathbb{N}}$, $a_{n_k}\in I_k$, and $\lambda(I_k) = 2^{-(k-1)}(b-a)$.\\
+				Suppose in this way we construct $a_{n_1}, ..., a_{n_k}, k\in \mathbb{N}$, and intervals $I_1, ..., I_k$. Divide $I_k$ into $I_k', I_k''$ as above, again at least one contains infinitely many $a_n$. Choose one with this property, denote it $I_{k +1}$. Let $n_{k + 1}\in \mathbb{N}$ be s.t. $n_{k +1} > n_k$, $a_{N_{k+1}}\in I_{k+1}$.\\
+				Now observe $(I_k)_{k\in \mathbb{N}}$ is a nested seq. of clounded intervals, so by the NIT there is $x\in \mathbb{R}$ s.t. $x$ lies in all $I_k$. Since $a_{n_k}\in I_k$, $\left|x - a_{n_k}\right| \le \lambda(I_k) = \frac{b-a}{2^{k-1}}$ for all $k\in \mathbb{N}$. Then by the Squeeze Theorem, $a_{n_k} \to x$ as $k \to \infty$.
 			\end{proof}
 			
 		\end{thm}
@@ -157,6 +167,16 @@
 		\end{mdfn}
 		
 		
+		\begin{mthm}[The Cauchy Criterion For Series]{thm:cauchforseries}{ }
+			Let $(a_k)_{k=1}^\infty$ be a real sequence. Then $\sum_{k=1}^{\infty}a_k$ converges iff for all $\epsilon > 0$ there exists $N \in \mathbb{N}$ such that $\left|\sum_{k=m+1}^{n}a_k\right| <\epsilon$ for all $n > m \ge N$.
+			\vspace{-8pt}
+			\begin{proof}
+				Let $(s_n)_{n\in \mathbb{N}}$ be the seq. of partial sums of the series. Observe that $s_n - s_m = \sum_{k=1}^{n}a_k - \sum_{k=1}^{m}a_k = \sum_{k=m+1}^{n}a_k$ for $n > m$. Then the series satisfies the Cauchy criterion iff $(s_n)_{n\in \mathbb{N}}$ is Cauchy. $(s_n)_{n\in \mathbb{N}}$ is Cauchy iff it is convergent, and convergent iff $\sum_{k=1}^{\infty}a_k$ converges.
+			\end{proof}
+			
+		\end{mthm}
+		
+		
 		\begin{dfn}[Absolute Convergence]{dfn:absconv}{ }
 			Let $(a_n)_{n \in \mathbb{N}}$ be a real sequence.
 			\begin{enumerate}[label=(\arabic*)]
@@ -165,17 +185,12 @@
 			\end{enumerate}
 			
 			Absolute convergence implies convergence.
+			\vspace{-8pt}
 			\begin{proof}
-				%TO-DO - PROOF
+				Let $(a_k)_{k=1}^\infty$ be a real seq., and $\sum_{n=1}^{\infty}a_n$ be absolutely convergent. We show the series satisfies the Cauchy criterion: Let $\epsilon > 0$. Since $\sum_{n=1}^\infty$ cnvges absolutely, by the Cauchy criterion for series $\exists N\in \mathbb{N}$ s.t. $\sum_{k=m+1}^{n}\left|a_k\right| <\epsilon$ for all $n > m \ge N$. Now let $n > m \ge N$ and apply the TI repeatedly to obtain $\left|\sum_{k=m+1}^n a_k\right| \le \sum_{k=m+1}^n \left|a_k\right| <\epsilon$. This establishes the Cauchy criterion for $\sum_{n=1}^\infty a_n$, so the series is convergent.
 			\end{proof}
 			
 		\end{dfn}
-		
-		
-		\begin{mthm}[The Cauchy Criterion For Series]{thm:cauchforseries}{ }
-			Let $(a_k)_{k=1}^\infty$ be a real sequence. Then $\sum_{k=1}^{\infty}a_k$ converges iff for all $\epsilon > 0$ there exists $N \in \mathbb{N}$ such that $\left|\sum_{k=m+1}^{n}a_k\right| <\epsilon$ for all $n > m \ge N$.
-			
-		\end{mthm}
 		
 		
 		\begin{thm}[The Riemann Rearrangement Theorem]{thm:riearrange}{ }
@@ -213,6 +228,7 @@
 				\item The union of any finite collection of closed sets is closed
 				\item The intersection of any collection of closed sets is closed
 				\item If $f: \mathbb{R} to \mathbb{R}$ is continuous and $ \lambda \in \mathbb{R}$, then $\{x \in \mathbb{R} : f(x) \le \lambda\}$ is closed.
+				\item If $F \subseteq \mathbb{R}$ closed and $U \subseteq \mathbb{R}$ open; $U \backslash F$ is open and $F \backslash U$ is closed
 			\end{itemize}
 			
 		\end{dfn}
@@ -221,15 +237,25 @@
 		\begin{dfn}[Sequential Closure]{dfn:seqclos}{ }
 			$F \subseteq \mathbb{R}$ is \textbf{sequentially closed} if for every convergent sequence $(x_n)_{n \in \mathbb{N}}$ s.t. $x_n \in F$ for all $n \in \mathbb{N}$, the limit $x := \lim_{n\to \infty}x_n$ satisfies $x \in F$. \\
 			$F \subseteq \mathbb{R}$ is closed if and only if it is sequentially closed.
+			\vspace{-8pt}
 			\begin{proof}
-				%TO-DO - PROOF
+				First prove by contrapositive every closed set is sequentially closed: Let $F$ be closed and $(x_n)_{n\in \mathbb{N}}$ convergent s.t. $x:= \lim_{n\to \infty}x_n \notin F$. We show $\exists N\in \mathbb{N}$ s.t. $x_N \notin F$. Since $F$ is closed, by definition $U := \mathbb{R} \backslash F$ is open. Moreover $x\in U$, so $\exists\epsilon > 0 $ s.t. $(x-\epsilon, x+\epsilon \subseteq U)$, and $N\in \mathbb{N}$ s.t. $\left|x_n - x\right| <\epsilon$ for all $n\in \mathbb{N}$. In particular, $x_N\in (x-\epsilon, x +\epsilon) \subseteq U$, so $x_N \notin F$.\\
+				Now prove by contradiction every sequentially closed set is closed: Suppose $F$ is not closed, equivalently $U := \mathbb{R} \backslash F$ is not open. Then $\exists x\in U$ s.t. $\forall r > 0$, $(x-r, x+r) \cap F \ne \emptyset$. For $n\in \mathbb{N}$, let $x_n$ be any element of $(x - \frac{1}{n}, x+ \frac{1}{n}) \cap F$. Then $(x_n)_{n\in \mathbb{N}}$ converges to $x$, since $\left|x - x_n\right| \le \frac{1}{n}$. In particular, since $F$ is sequentially closed, we must have $x\in F$, a contradiction.
 			\end{proof}
 			
 		\end{dfn}
 		
 		
 		\begin{dfn}[Level Sets]{dfn:lvlsets}{ }
-			%TO-DO - ALL
+			Let $f : \mathbb{R} \to \mathbb{R}$ be continuous and $\lambda\in \mathbb{R}$: 
+			\begin{itemize}
+			\item The \textbf{level set} $\{x\in \mathbb{R} : f(x) = \lambda\}$ is closed
+			\item The \textbf{strict superlevel set} $\{x\in \mathbb{R} : f(x) > \lambda\}$ is open
+			\item The \textbf{superlevel set} $\{x\in \mathbb{R} : f(x) \ge \lambda\}$ is closed
+			\item The \textbf{strict sublevel set} $\{x\in \mathbb{R} : f(x) < \lambda\}$ is 	
+			\item The \textbf{sublevel set} $\{x\in \mathbb{R} : f(x) \le \lambda\}$ is closed
+			\end{itemize}
+			Then for continuous $f: \mathbb{R} \to \mathbb{R}$ and $a, b\in \mathbb{R}, a<b$, we can characterise the level set $\{x\in \mathbb{R}: a \le f(x) < b\}$ as the intersection between a closed set and an open set.
 			
 		\end{dfn}
 		
@@ -248,9 +274,9 @@
 		
 		
 		
-	%--------------------------------------------------------------------------------------%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%--------------------------------------------------------------------------------------%
+	%----------------------------------------------------------------------------------%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%----------------------------------------------------------------------------------%
 	
 	
 	{\footnotesize \textbf{\underline{Uniform Continuity, Uniform Convergence, Power Series}}}
@@ -338,7 +364,7 @@
 					\item $\sup_{x\in E}\left|f_n(x) - f(x)\right| \to 0$ as $n \to \infty$
 					\item For all $\epsilon > 0$ there exists $N\in \mathbb{N}$ s.t. $\upgamma(f_n) \subset \mathscr{N}(f,\epsilon)$ for all $n \ge N$.
 				\end{enumerate}
-				\item \textit{Sequence test for uniform convergence}: Let $f_n \to f$ uniformly on $E$ as $n \to \infty$. If $(x_n)_{n\in \mathbb{N}}$ is a real sequence with $x_n\in E$ for all $n\in \mathbb{N}$, then $\left|f_n(x_n) - f(x_n)\right| \to 0$ as $n \to \infty$.
+				\item Let $f_n \to f$ uniformly on $E$ as $n \to \infty$. If $(x_n)_{n\in \mathbb{N}}$ is a real sequence with $x_n\in E$ for all $n\in \mathbb{N}$, then $\left|f_n(x_n) - f(x_n)\right| \to 0$ as $n \to \infty$.
 			\end{itemize}
 			
 		\end{thm}
@@ -353,19 +379,12 @@
 		
 		\begin{mthm}[The Uniform Cauchy Criterion]{thm:unifcauchcrit}{ }
 			$(f_n)_{n\in \mathbb{N}}$ converges unifly on $E$ iff $(f_n)_{n\in \mathbb{N}}$ is unifly Cauchy on $E$.
-			\begin{proof}
-				%TO-DO? MAYBE? - PROOF
-			\end{proof}
 			
 		\end{mthm}
 		
 		
 		\begin{thm-s}[Uniform Limits Of Continuous/Diffable Functions]{thm:uniflimscontdiff}{ }
 			\begin{itemize}
-				\item Let $I \subseteq\mathbb{R}$ be an interval, $f_n, f : I \to \mathbb{R}$ s.t. $f_n \to f$ unifly on $I$ as $n \to \infty$. For all $x_0\in I$, if each $f_n$ is continuous at $x_0$, then $f$ is continuous at $x_0$.
-				\begin{proof}
-					%TO-DO - PROOF
-				\end{proof}
 				\item A unif lim of diffable funcs is not always diffable. $\exists f_n, f : (-1, 1) \to \mathbb{R}$ s.t.:
 				\begin{itemize}
 					\item $f_n$ is differentiable for all $n\in \mathbb{N}$
@@ -385,7 +404,7 @@
 		
 		
 		\begin{dfn}[Uniform Convergence Of Series Of Functions]{dfn:unficonvfuncseries}{ }
-			Let $E \subseteq \mathbb{R}$ be nonempty and $f_n : E \to \mathbb{R}$ be a sequence of real funcs. Define the \textbf{sequence of partial sums} $s_n: E \to \mathbb{R}$ as $s_n(x) := \sum_{k=1}^{n}f_k(x)$ for all $x\in E, n\in \mathbb{N}$. Then:
+			Let $E \subseteq \mathbb{R}$ be $\ne \emptyset$, $f_n : E \to \mathbb{R}$ be a seq. of real funcs. The \textbf{sequence of partial sums} is $s_n: E \to \mathbb{R}$, $s_n(x) := \sum_{k=1}^{n}f_k(x)$ for all $x\in E, n\in \mathbb{N}$. Then:
 			\begin{enumerate}[label=(\arabic*)]
 				\item $\sum_{n=1}^{\infty}f_n$ \textbf{converges ptwise on $E$} if $(s_n)_{n\in \mathbb{N}}$ converges ptwise on $E$.
 				\item $\sum_{n=1}^{\infty}f_n$ \textbf{converges unifly on $E$} if $(s_n)_{n\in \mathbb{N}}$ converges unifly on $E$
@@ -396,7 +415,7 @@
 		
 		
 		\begin{thm}[On Termwise Differentiation]{thm:trmwisediff}{ }
-			Let $I \subset \mathbb{R}$ be a bounded open interval and suppose $f_n: I \to \mathbb{R}$ is a seq. of diffable funcs satisfying:
+			Let $I \subset \mathbb{R}$ be a bdd open interval and $f_n: I \to \mathbb{R}$ a seq. of diffable funcs s.t.:
 			\begin{enumerate}[label=(\arabic*)]
 				\item There exists $x_0\in I$ such that $\sum_{n=1}^{\infty}f_n(x_0)$ converges
 				\item $\sum_{n=1}^{\infty}f_n'$ converges uniformly on $I$.
@@ -413,17 +432,19 @@
 				\item $\sum_{n=1}^{\infty}M_n$ converges
 			\end{enumerate}
 			Then $\sum_{n=1}^{\infty}f_n$ converges absolutely and uniformly on $E$.
+			\vspace{-8pt}
 			\begin{proof}
-				%TO-DO - PROOF
+				Let $\epsilon > 0$. By the CC for series, $\exists N\in \mathbb{N}$ s.t. $\sum_{k=m+1}^{n} M_k <\epsilon$ for $n \ge m \ge N$. Thus by hypothesis, $\left|\sum_{k=m+1}^{n} f_k(x)\right| \le \sum_{k=m+1}^{n}\left|f_k(x)\right| \le \sum_{k=m+1}^{n}M_k <\epsilon$ for all $x\in E, n > m \ge N$. Thus the partial sums of $\sum_{n=1}^{\infty}f_n$ are unifly Cauchy, so $\sum_{n=1}^{\infty}f_n$ converges unifly. Moreover, by the above, the partial sums of $\sum_{n=1}^{\infty}\left|f_n\right|$ are unifly Cauchy, so the series converges absolutely.
 			\end{proof}
 			
 		\end{thm}
 		
 		
 		\begin{thm}[Continuity Of Uniform Limits]{thm:uniflimscont}{ }
-			Let $I \subseteq \mathbb{R}$ be an interval, $f_n, f : I \to \mathbb{R}$ s.t. $\sum_{n=1}^{\infty}f_n$ cnvges unifly to $f$ on $I$. For $x_0\in I$, if each $f_n$ is continuous at $x_0$, then $f$ is continuous at $x_0$.
+			Let $I \subseteq\mathbb{R}$ be an interval, $f_n, f : I \to \mathbb{R}$ s.t. $f_n \to f$ unifly on $I$ as $n \to \infty$. For all $x_0\in I$, if each $f_n$ is continuous at $x_0$, then $f$ is continuous at $x_0$.
+			\vspace{-8pt}
 			\begin{proof}
-				%TO-DO - PROOF
+				Let $\epsilon > 0$. Since $f_n \to f$ unifly on $I$, $\exists N\in \mathbb{N}$ s.t. $\left|f_n(x) - f(x)\right| <\epsilon/3$ for all $x\in I, n \ge N$. Since $f_N$ is cont. at $x_0\in I$, $\exists \delta >0$ s.t. $\left|f_N(x) - f_N(x_0)\right| <\epsilon/3$ for all $x\in I$ s.t. $\left|x-x_0\right| < \delta$. Now let $x\in I$ be s.t. $\left|x - x_0\right| < \delta$. Then by the TI, $\left|f(x) - f(x_0)\right| \le \left|f(x) - f_N(x)\right| + \left|f_N(x) - f_N(x_0)\right| + \left|f_N(x_0) -f(x_0)\right| <\epsilon$. Thus $f$ is cont. at $x_0\in I$.
 			\end{proof}
 			
 		\end{thm}
@@ -440,7 +461,7 @@
 		\end{dfn}
 		
 		
-		\begin{thm}[Radius Of Convergence]{thm:radofconv}{ }
+		\begin{dfn}[Radius Of Convergence]{dfn:radofconv}{ }
 			Let $(a_n)_{n\in \mathbb{N}}$ be a real seq and $c\in \mathbb{R}$. Then one of the following holds:
 			\begin{enumerate}[label=(\arabic*)]
 				\item $\sum_{n=0}^{\infty}a_n(x-c)^n$ converges only when $x = c$
@@ -449,15 +470,15 @@
 			\end{enumerate}
 			The $R$ in case $(3)$ is the \textbf{radius of convergence} of $\sum_{n=0}^{\infty}a_n(x-c)^n$. In cases $(1)$ and $(2)$ we say $R=0$ and $R = \infty$ respectively.
 			
-		\end{thm}
+		\end{dfn}
 		
 		
-		\begin{thm}[Continuity and Differentiability Of Power Series]{thm:contndiffpwrseries}{ }
+		\begin{thm}[On Termwise Differentiation Of Power Series]{thm:contndiffpwrseries}{ }
 			Let $\sum_{n=0}^{\infty}a_n(x-c)^n$ have radius of convergence $0 < R \le \infty$. Then $f(x) = \sum_{n=0}^{\infty}a_n(x-c)^n$ for $x\in (c-R, c+R)$ is differentiable on $(c-R, c+R)$; and $f'(x) = \sum_{n=1}^{\infty}na_n(x-c)^{n-1}$ for all $x\in (c-R, c+R)$.
 			\begin{itemize}
 				\item Given the above, $f(x) := \sum_{n=0}^{\infty}a_n(x-c)^n$  is \textbf{infinitely differentiable} on $(c-R, c+R)$, and $a_k = \frac{f^(k)(c)}{k!}$ for all $k\in \mathbb{N}_0$.
-				\item For any $0 < r < R$, both of the above series converge absolutely and uniformly on $[c-r, c+r]$
-				\item For any real sequence $(a_n)_{n\in \mathbb{N}_0}$ and $c\in \mathbb{R}$, the $\sum_{n=0}^{\infty}a_n(x-c)^n$ and $\sum_{n=1}^{\infty}na_n(x-c)^{n-1}$ have the same radius of convergence
+				\item For $0 < r < R$, both series converge absolutely and unifly on $[c-r, c+r]$
+				\item For any real sequence $(a_n)_{n\in \mathbb{N}_0}$ and $c\in \mathbb{R}$, $\sum_{n=0}^{\infty}a_n(x-c)^n$ and $\sum_{n=1}^{\infty}na_n(x-c)^{n-1}$ have the same radius of convergence
 			\end{itemize}
 			
 		\end{thm}
@@ -465,8 +486,9 @@
 		
 		\begin{mthm}[Uniqueness Of Power Series]{thm:uniqpwrsers}{ }
 			Power series are unique - For $\sum_{n=0}^{\infty}a_n(x-c)^n$ and $\sum_{n=0}^{\infty}b_n(x-c)^n$ with RoCs $0 < R, S, \le \infty$, if $\exists 0 < r < \min{R, S}$ s.t. $\sum_{n=0}^{\infty} a_n(x-c)^n = \sum_{n=0}^{\infty}b_n (x-c)^n$ for all $x\in \mathbb{R}$ s.t. $\left|x-c\right| < r$, then $a_n = b_n$ for all $n\in \mathbb{N}$.
+			\vspace{-8pt}
 			\begin{proof}
-				%TO-DO - PROOF
+				Let $I = (c-r, c+r)$, and $f: I \to \mathbb{R}, f(x) := \sum_{n=0}^{\infty}a_n(x-c)^n$ for $x\in I$. We know $f$ is infinitely diffable on $I$, and $a_n = \frac{f^{(n)}(c)}{n!}$ for $n\in \mathbb{N}_0$. However, $f(x) = \sum_{n=0}^{\infty}b_n(x-c)^n$ for $x\in I$, and $b_n = \frac{f^{(n)}(c)}{n!}$ for all $n\in \mathbb{N}_0$. Thus $a_n = b_n$ for all $n\in \mathbb{N}_0$.
 			\end{proof}
 			
 		\end{mthm}
@@ -479,16 +501,17 @@
 		
 		
 		\begin{dfn}[Taylor Series]{dfn:tayser}{ }
-			Let $I \subseteq \mathbb{R}$ be a nonempty open interval, and $f: I \to \mathbb{R}$ be infinitely diffable. Then the \textbf{Taylor series of $f$ at $c\in I$} is the PS $\sum_{n=0}^{\infty}\frac{f^{(n)}(c)}{n!}(x-c)^n$.\\
-			$f$ is \textbf{real analytic} at $x\in I$ if its TS converges in a neighbourhood of $x$, and to $f(x)$ at $x$.
+			Let $I \subseteq \mathbb{R}$ be a nonempty open interval, and $f: I \to \mathbb{R}$ be infinitely diffable. Then the \textbf{Taylor series of $f$ at $c\in I$} is $\sum_{n=0}^{\infty}\frac{f^{(n)}(c)}{n!}(x-c)^n$.
+			$f$ is \textbf{real analytic} if its TS converges ptwise on $I$ and equals $f(x)$ at $x$
 			
 		\end{dfn}
 		
 		
 		
-	%--------------------------------------------------------------------------------------%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%--------------------------------------------------------------------------------------%
+	\columnbreak
+	%----------------------------------------------------------------------------------%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%----------------------------------------------------------------------------------%
 	
 	
 	{\footnotesize \textbf{\underline{Measure And Integration}}}
@@ -499,44 +522,44 @@
 		
 		
 		\begin{dfn}[The Lebesgue Outer Measure]{dfn:lebesoutmes}{ }
-			For any $E \subseteq \mathbb{R}$, the \textbf{Lebesgue outer measure of $E$} is $m*(E) := \inf \left\{\sum_{j=1}^{\infty}\lambda(I_j) : E \subseteq\bigcup_{j=1}^\infty I_j, I_j \subseteq \mathbb{R} \text{ an open interval}\right\}$. Here the inf is taken over all countable coverings $(I_j)_{j\in \mathbb{N}}$ of $E$ by open intervals.
+			For $E \subseteq \mathbb{R}$, the \textbf{Lebesgue outer measure of $E$} is $m^*(E): \mathcal{P}(\mathbb{R}) \to [0, \infty] := \inf \left\{\sum_{j=1}^{\infty}\lambda(I_j) : E \subseteq\bigcup_{j=1}^\infty I_j, I_j \subseteq \mathbb{R} \text{ an open interval}\right\}$. Here the inf is over all countable coverings $(I_j)_{j\in \mathbb{N}}$ of $E$ by open intervals.
 			\begin{itemize}
-				\item[(1)] $m*(\emptyset) = 0$
-				\item[(2)] If $E \subseteq F \subseteq \mathbb{R}$, $m*(E) \le m*(F)$
-				\item[(3)] If $(E_j)_{j\in \mathbb{N}}$ is any seq of subsets of $\mathbb{R}$, $m*\left(\bigcup_{j=1}^{\infty} E_j\right) \le \sum_{j=1}^{\infty}m*(E_j)$
-				\item If $\sum_{j=1}^{\infty}\lambda(I_j)$ diverges, we say it has value $\infty$. If there is no cover of $E$ s.t. $\sum_{j=1}^{\infty}\lambda(I_j) < \infty$, $m*(E) = \infty$.
-				\item For any interval $J \subseteq\mathbb{R}$, $\lambda(J) = m*(J)$.
-				\item Given $E \subseteq\mathbb{R}$, $\epsilon > 0$, $\exists$ open $U \subseteq \mathbb{R}$ s.t. $E \subseteq U$ and $m*(U) < m*(E) +\epsilon$.
+				\item[*] $m^*(\emptyset) = 0$
+				\item[*] If $E \subseteq F \subseteq \mathbb{R}$, $m^*(E) \le m^*(F)$
+				\item[*] If $(E_j)_{j\in \mathbb{N}}$ is any seq of subsets of $\mathbb{R}$, $m^*\left(\bigcup_{j=1}^{\infty} E_j\right) \le \sum_{j=1}^{\infty}m^*(E_j)$
+				\item If $\sum_{j=1}^{\infty}\lambda(I_j)$ diverges, we say it has value $\infty$. If there is no cover of $E$ s.t. $\sum_{j=1}^{\infty}\lambda(I_j) < \infty$, $m^*(E) = \infty$.
+				\item For any interval $J \subseteq\mathbb{R}$, $\lambda(J) = m^*(J)$.
+				\item Given $E \subseteq\mathbb{R}$, $\epsilon > 0$, $\exists$ open $U \subseteq \mathbb{R}$ s.t. $E \subseteq U$ and $m^*(U) < m^*(E) +\epsilon$.
 			\end{itemize}
 			
 		\end{dfn}
 		
 		
 		\begin{dfn}[Null Sets]{dfn:nullsets}{ }
-			A set $E \subseteq \mathbb{R}$ is \textbf{null} or \textbf{has measure zero} if $m*(E) = 0$.
-			\begin{itemize}
-				\item Every countable subset of $R$ has measure zero.
-				\begin{proof}
-					%TO-DO - PROOF
-				\end{proof}
-			\end{itemize}
+			A set $E \subseteq \mathbb{R}$ is \textbf{null} or \textbf{has measure zero} if $m^*(E) = 0$.\\
+			Every countable subset of $R$ has measure zero.
+			\vspace{-8pt}
+			\begin{proof}
+				First prove any singleton set $\{x\}$ for $x\in \mathbb{R}$ has measure zero. Given $x\in \mathbb{R}$, let $\epsilon > 0$ and consider the cover $I  := \left(x-\epsilon/2, x +\epsilon/2\right)$. Then $m^*(\{x\}) \le \lambda(I) =\epsilon$. Since $\epsilon > 0$ is arbitrary we conclude $m^*(\{x\}) = 0$. \\
+				Any countable $E$ is a countable union of singletons, $E = \bigcup_{j=1}^\infty \{x_j\}$. Apply the countable subadditivity property to conclude $m^*(E) = 0$.
+			\end{proof}
 			
 		\end{dfn}
 		
 		
 		\begin{dfn}[Distance Between Sets]{dfn:dist}{ }
-			Let $E, F \subseteq \mathbb{R}$ be nonempty and disjoint. Then dist$(E, F) := \inf\left\{\left|x-y\right|: x\in E, y\in F\right\}$.
+			For $E, F \subseteq \mathbb{R}$ $\ne \emptyset$ and disjoint; dist$(E, F) := \inf\left\{\left|x-y\right|: x\in E, y\in F\right\}$.
 			\begin{itemize}
-				\item If $E, F \subseteq \mathbb{R}$ nonempty, disjoint, dist$(E, F) > 0$; $m*(E \cup F) = m*(E) + m*(F)$
+				\item If $E, F \subseteq \mathbb{R}$ $\ne \emptyset$, disjoint, dist$(E, F) > 0$; $m*(E \cup F) = m^*(E) + m^*(F)$
 				\item If $F< K \subseteq \mathbb{R}$ nonempty, closed, $F \cup K = \emptyset$, $K$ bounded; dist$(F, K) > 0$.
-				\item If $\left(K_j\right)_{j\in \mathbb{N}} \subseteq\mathbb{R}$ a seq. of disjoint closed sets, $m*\left(\bigcup_{j=1}^\infty K_j\right) = \sum_{j=1}^{\infty}m*(K_j)$
+				\item For $(K_j)_{j\in \mathbb{N}}$ a sequence of disjoint closed $K_i \subseteq \mathbb{R}$; $m^*\left(\bigcup_{j=1}^\infty K_j\right) = \sum_{j=1}^{\infty}m^*(K_j)$
 			\end{itemize}
 			
 		\end{dfn}
 		
 		
 		\begin{mdfn}[Lebesgue Measurable Sets]{mdfn:lebmesable}{ }
-			$E \subseteq \mathbb{R}$ is \textbf{Lebesgue measurable} if for all $\epsilon > 0$, there exists open $U \subseteq \mathbb{R}$ s.t. $E \subseteq U$ and $m*(U \backslash E) <\epsilon$. The collection of all L-mesable subsets of $\mathbb{R}$ is denoted $\mathcal{M}$.
+			$E \subseteq \mathbb{R}$ is \textbf{Lebesgue measurable} if for all $\epsilon > 0$, there exists open $U \subseteq \mathbb{R}$ s.t. $E \subseteq U$ and $m^*(U \backslash E) <\epsilon$. The collection of all L-mesable subsets of $\mathbb{R}$ is denoted $\mathcal{M}$.
 			
 		\end{mdfn}
 		
@@ -550,7 +573,162 @@
 						\item The intersection $\bigcap_{j=1}^\infty E_j$ is L-mesable
 					\end{enumerate}
 				\item Let $E, F \subseteq \mathbb{R}$ be L-mesable. Then $F \backslash E$ is L-mesable
-				\item For $E \subseteq \mathbb{R}$, $E$ is L-mesable iff $\forall \epsilon > 0$, $\exists$ closed $K \subseteq \mathbb{R}$ s.t. $K \subseteq E$ and $m*(E \backslash K) <\epsilon$.
+				\item For $E \subseteq \mathbb{R}$, $E$ is L-mesable iff $\forall \epsilon > 0$, $\exists$ closed $K \subseteq E$ and $m^*(E \backslash K) <\epsilon$.
+			\end{itemize}
+			
+		\end{thm}
+		
+		
+		\begin{mdfn}[The Lebesgue Measure]{dfn:lebmes}{ }
+			The \textbf{Lebesgue measure} is the function $m : \mathcal{M} \to [0, \infty]$ given by $m(E) := m^*(E)$ for $E\in \mathcal{M}$.
+			
+		\end{mdfn}
+		
+		
+		\begin{thm}[Countable Additivity Of The Lebesgue Measure]{thm:lebmesctableadd}{ }
+			For disjoint L-mesable $(E_j)_{j\in \mathbb{N}}$, $m\left(\bigcup_{j=1}^\infty E_j\right) = \sum_{j=1}^{\infty}m(E_j)$.
+			
+			
+		\end{thm}
+		
+		
+		\begin{thm}[Monotone Convergence For Measure]{thm:montonconvmes}{ }
+			Let $(E_j)_{j\in \mathbb{N}}$ be a seq. of L-mesable sets s.t. $E_j \subseteq E_{j+1}$ for all $j\in \mathbb{N}$. Then $m\left(\bigcup_{j=1}^\infty E_j\right) = \lim_{j\to \infty}E_j$
+			
+		\end{thm}
+		
+		
+		
+	{\tiny\textbf{\underline{The Lebesgue Integral}}}
+		
+		
+		
+		\begin{dfn}[Characteristic Functions Of Sets]{dfn:setcharfunc}{ }
+			For $E \subseteq \mathbb{R}$, the \textbf{characteristic function of $E$} is \\
+			$\chi_E: \mathbb{R}\to \mathbb{R}$, $\chi_E(x) := 1$ if $x\in E$; $:= 0$ if $x \notin E$.
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[Simple Functions]{dfn:simpfuncs}{ }
+			$s: \mathbb{R} \to \mathbb{R}$ is \textbf{simple} if it is a linear combination \\
+			of characteristic functions of L-mesable sets. Ie, $\exists c_1, ..., c_k\in \mathbb{R}$ and L-mesable $E_1, ..., E_k \subseteq \mathbb{R}$ s.t. $s(x) = \sum_{j=1}^{k}c_j \chi_{E_j}(x)$ for all $x\in \mathbb{R}$.
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[L-Integral Of A Non-Negative Simple Function]{dfn:lintnonnegsimpfunc}{ }
+			Let $s: \mathbb{R} \to [0, \infty)$ be simple, $a_j\in [0, \infty), E_j\in \mathcal{M}$, $s = \sum_{j=1}^{k}a_j \chi_{E_j}$. The \textbf{Lebesgue integral of $s$} is $\int_\mathbb{R} s(x) \text{ dx} := \sum_{j=1}^{k}a_j m(E_j)\in [0, \infty)$.
+			\begin{itemize}
+				\item $\int_\mathbb{R} \chi_E(x) \text{ dx} := m(E)$
+				\item This L-integral respects linearity
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{mdfn}[Lebesgue Measurable Functions]{dfn:lmesablefuncs}{ }
+			Let $E \subseteq \mathbb{R}$ be L-mesable. $f: \mathbb{E} \to \mathbb{R}$ is \textbf{Lebesgue measurable} if for all $\lambda\in \mathbb{E}$, the strict superlevel set $\{x\in \mathbb{E} : f(x) > \lambda\}$ is L-mesable
+			\begin{itemize}
+				\item Any simple function is L-mesable
+				\item Any continuous function $f: \mathbb{R} \to \mathbb{R}$ is L-mesable
+				\item If $E \subseteq \mathbb{R}$, $f, g : \mathbb{R} \to \mathbb{R}$ are all L-mesable; then $\max\{f, g\}$, $\min\{f, g\}$, $f\cdot\chi_E$ are all L-mesable
+				\item If $f, g : \mathbb{R} \to \mathbb{R}$ L-mesable, $\alpha, \beta\in \mathbb{R}$; then $\alpha f + \beta g$, $f \cdot g$ are L-mesable.
+			\end{itemize}
+			
+		\end{mdfn}
+		
+		
+		\begin{thm}[Approxing Non-Negative L-Measurable Functions]{thm:approxnonneglmesfuncs}{ }
+			Let $f: \mathbb{R} \to [0, \infty)$ be a non-negative L-mesable func. Then there exists a sequence $s_n : \mathbb{R} \to [0, \infty)$ of non-negative simple functions s.t.:
+			\begin{enumerate}[label=(\arabic*)]
+				\item $(s_n)_{n\in \mathbb{N}}$ is ptwise non-decreasing - $0 \le s_n \le s_{n+1}$ for $x\in \mathbb{R}$, $n\in \mathbb{N}$.
+				\item $s_n \to f$ pointwise on $\mathbb{R}$ as $n \to \infty$.
+			\end{enumerate}
+			
+		\end{thm}
+		
+		
+		\begin{dfn-s}[Integrating Non-Negative L-Measurable Functions]{dfn:intnonneglmesfuncs}{ }
+			Let $f: \mathbb{R} \to [0, \infty)$ be a non-negative L-mesable func. The \textbf{Lebesgue integral of $f$} as $\int_{\mathbb{R}}f(x) \text{ dx} := \sup\left\{\int_{\mathbb{R}}s(x) \text{ dx} : s \text{ simple }, 0 \le s \le f\right\}$ where the supremum is taken over all non-negative simple functions $s: \mathbb{R} \to \mathbb{R}$ with $s(x) \le f(x)$ for all $x\in \mathbb{R}$.
+			\begin{itemize}
+				\item If $f: \mathbb{R} \to [0, \infty)$, $E \subseteq \mathbb{R}$ both L-mesable, $\int_E f(x) \text{ dx} := \int_{\mathbb{R}} f(x) \chi_E(x) \text{ dx}$
+				\item For L-mesable $f$ defined only on L-mesable $E \subseteq \mathbb{R}$, define $\int_E f(x) \text{ dx} = \int_{\mathbb{R}}\tilde{f(x)} \text{ dx}$, with $\tilde{f}: \mathbb{R}\to [0,\infty)$, $\tilde{f}(x) := f(x)$ if $x\in E$, $0$ if $x\in \mathbb{R} \backslash E$.
+				\item Let $f, g : \mathbb{R} \to [0, \infty)$ be L-mesable. Then:
+					\begin{enumerate}[label=(\arabic*)]
+						\item If $0 \le f(x) \le g(x)$ for all $x\in \mathbb{R}$, $0 \le \int_{\mathbb{R}}f(x) \text{ dx} \le \int_{\mathbb{R}}g(x) \text{ dx}$
+						\item For all $\lambda > 0$, $m\left(\{x\in \mathbb{R} : f(x) > \lambda\}\right) \le \frac{1}{\lambda} \int_{\mathbb{R}}f(x) \text{ dx}$
+					\end{enumerate} 
+				\item This L-integral respects linearity
+				\item If $f: \mathbb{R} \to [0, \infty)$ is L-mesable and $E, F \subseteq \mathbb{R}$ are disjoint L-mesable sets, $\int_{E \cup F} f(x) \text{ dx} = \int_E f(x) \text{ dx} + \int_F f(x) \text{ dx}$
+				\item Let $h_k : \mathbb{R} \to [0, \infty)$ be a seq of non-neg L-mesable funcs on $\mathbb{R}$ s.t. $\sum_{k=1}^{\infty}h_k$ cnvges ptwise. Then $\sum_{k=1}^{\infty} \int_{\mathbb{R}}h_k(x) \text{ dx} = \int_{\mathbb{R}}\sum_{k=1}^{\infty}h_k(x) \text{ dx}$.
+			\end{itemize}
+			
+		\end{dfn-s}
+		
+		
+		\begin{thm}[Pointwise Limits And L-Integration]{thm:ptwiselimslebints}{ }
+			The pointwise limit of L-integrals is not necessarily the L-integral of the pointwise limit. Ie, $\exists$ L-mesable $f_n, f: \mathbb{R} \to [0, \infty)$ s.t.:
+			\begin{itemize}
+				\item $f_n$ is L-integrable for all $n\in \mathbb{N}$ and $f$ is L-integrable
+				\item $f_n \to f$ pointwise on $(0, 1]$
+				\item $\int_{0}^{1}f(x) \text{ dx} \ne \lim_{n\to \infty} \int_{0}^{1}f_n(x) \text{ dx}$, ie $\lim_{n\to \infty}\int_{0}^{1}f_n(x) \text{ dx} \ne \int_{0}^{1}\left(\lim_{n\to \infty}f_n(x) \right) \text{ dx}$
+				\item For counterexample: $f, f_n: \mathbb{R}\to [0, \infty)$, $f(x) := \mathbb{R} \to [0, \infty)$, $f_n(x) := n$ if $0 < x \le \frac{1}{n}$ and $0$ otherwise.
+			\end{itemize}
+			
+		\end{thm}
+		
+		
+		\begin{mthm}[The MCT For Lebesgue Integrals]{thm:mctlebints}{ }
+			Let $f_k : \mathbb{R} \to [0, \infty)$ be a ptwise non-decreasing seq. of non-negative L-mesable funcs converging ptwise to $f:=\lim_{k\to \infty} f_k : \mathbb{R} \to [0, \infty)$. Then $f$ is L-mesable $\lim_{k\to \infty}\int_{\mathbb{R}}f_k(x) \text{ dx} = \int_{\mathbb{R}}\lim_{k\to \infty}f_k(x) \text{ dx} = \int_{\mathbb{R}}f(x) \text{ dx}$.
+			
+		\end{mthm}
+		
+		
+		\begin{lma}[The Fatou Lemma]{lma:fatou}{ }
+			If $f_k : \mathbb{R} \to [0, \infty)$ is a seq of non-neg L-mesable funcs, then $\int_{\mathbb{R}}\liminf_{k\to \infty} f_k(x) \text{ dx} \le \liminf_{k\to \infty}\int_{\mathbb{R}}f_k(x) \text{ dx}$.
+			
+		\end{lma}
+		
+		
+		\begin{lma}[The Reverse Fatou Lemma]{lma:revfatou}{ }
+			Let $f_k: \mathbb{R} \to [0, \infty)$ be a seq of non-neg L-mesable funcs and $g: \mathbb{R} \to [0, \infty)$ L-intable s.t. $f_k(x) \le g(x)$ for all $x\in \mathbb{R}$. Then $\int_{\mathbb{R}} \limsup_{k \to \infty} f_k(x) \text{ dx} \ge \limsup_{k \to \infty}\int_{\mathbb{R}}f_k(x) \text{ dx}$.
+			
+		\end{lma}
+		
+		
+		\begin{dfn-s}[Decomposing L-Measurable Real-Valued Functions]{dfn:decomplmesablefs}{ }
+			Let $f : \mathbb{R} \to \mathbb{R}$ be L-mesable. $f^+ (x) := \max\{f(x), 0\}$ and $f^-(x) := -\min\{f(x), 0\}$, $f = f^+ - f^-$, and $\left|f\right| = f^+ + f^-$ are all L-mesable. Moreover, $\int_{\mathbb{R}}\left|f(x)\right| \text{ dx} < \infty \iff \int_{\mathbb{R}}f^+ (x) \text{ dx} < \infty$ and $ \int_{\mathbb{R}}f^- (x) \text{ dx} < \infty$.
+			
+		\end{dfn-s}
+		
+		
+		\begin{mdfn-s}[Lebesgue Integration Of Real-Valued Functions]{mdfn:lebintsrfuncs}{ }
+			An L-mesable $f: \mathbb{R} \to \mathbb{R}$ is \textbf{Lebesgue integrable} if $\int_{\mathbb{R}}\left|f(x)\right| \text{ dx} < \infty$.\\
+			The collection of all L-integrable functions is $\mathcal{L}^1(\mathbb{R})$.\\
+			For L-integrable $f: \mathbb{R} \to \mathbb{R}$, $\int_{\mathbb{R}}f(x) \text{ dx} := \int_{\mathbb{R}}f^+ (x) \text{ dx} - \int_{\mathbb{R}}f^- (x) \text{ dx}$.
+			\begin{itemize}
+				\item For $f\in \mathcal{L}^1(\mathbb{R})$, $\left|\int_{\mathbb{R}}f(x) \text{ dx}\right| \le \int_{\mathbb{R}}\left|f(x) \right|dx$
+				\item This L-integral respects linearity
+				\item For L-mesable $E \subseteq \mathbb{R}$, $\mathcal{L}^1(E) = \left\{f: E \to \mathbb{R} : \text{$f$ is L-mesable, }\tilde{f}\in \mathcal{L}^1(\mathbb{R})\right\}$.
+			\end{itemize}
+			
+		\end{mdfn-s}
+		
+		
+		\begin{mthm}[The Dominated Convergence Theorem]{mthm:domconv}{ }
+			Let $f_k : \mathbb{R} \to \mathbb{R}$ be a seq. of L-integrable funcs converging ptwise to $f: \mathbb{R} \to \mathbb{R}$, and $g\in \mathcal{L}^1(\mathbb{R})$ be s.t. $\left|f_k(x)\right| \le g(x)$ for all $x\in \mathbb{R}, k\in \mathbb{N}$. Then $f\in \mathcal{L}^1(\mathbb{R})$ and $\lim_{k\to \infty}\int_{\mathbb{R}}f_k(x) \text{ dx} = \int_{\mathbb{R}}\lim_{k\to \infty}f_k(x) \text{ dx} = \int_{\mathbb{R}}f(x) \text{ dx}$.
+			\begin{itemize}
+				\item Uniform Convergence Theorem for integrals: Let $E \subseteq \mathbb{R}$ be L-mesable s.t. $m(E) < \infty$, and $f_n : \mathbb{R} \to \mathbb{R}$ a seq. of L-integrable funcs s.t. $f_n \to f$ unifle on $E$ as $n \to \infty$, for $f : \mathbb{R} \to \mathbb{R}$. Then $f\in \mathcal{L}^1(\mathbb{R})$ and $\lim_{n\to \infty} \int_E f_n(x) \text{ dx} = \int_E \lim_{n\to \infty} f_n (x) \text{ dx}$
+			\end{itemize}
+			
+		\end{mthm}
+		
+		
+		\begin{thm}[The Fundamental Theorem Of Calculus]{thm:ftc}{ }
+			Let $a, b\in \mathbb{R}$ with $a < b$ and $f:[a, b] \to \mathbb{R}$ continuous. Then $F(x) := \int_{a}^{x}f(y) \text{ dy}$ is diffable on $[a, b]$ and $F'(x) = f(x)$ for all $x\in [a, b]$
+			\begin{itemize}
+				\item For $a, b\in \mathbb{R}$, $a < b$, $f: [a, b] \to \mathbb{R}$ cont.sly diffable; $\int_{a}^{b}f'(x) \text{ dx} = f(b) - f(a)$
 			\end{itemize}
 			
 		\end{thm}
