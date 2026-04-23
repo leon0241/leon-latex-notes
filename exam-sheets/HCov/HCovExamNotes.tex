@@ -28,7 +28,8 @@
 		\begin{thm}[Random Theorems]{thm:randoms}{ }
 			\begin{itemize}
 				\item \textbf{Triangle Inequality} $\left|z + w\right| \le \left|z\right| + \left|w\right|$
-				\item \textbf{Reverse Triangle Inequality} $\left| z - w\right| \ge \left|\left|z\right| - \left|w\right|\right|$/
+				\item \textbf{Reverse Triangle Inequality} $\left| z - w\right| \ge \left|\left|z\right| - \left|w\right|\right|$
+				\item \textbf{Convergent Geometric Series} For $\left|r\right| < 1$, $\frac{1}{1-r} = \sum_{k=0}^{\infty}r^k$
 			\end{itemize}
 		\end{thm}
 		
@@ -38,20 +39,19 @@
 			\vspace{-12pt}
 			\begin{multicols}{2}
 				\begin{itemize}
-					\item $z = x+iy = \Re(z) + i \Im(z)$
 					\item $z_0 = x_0+iy_0, w = a+ib$
 					\item $S, U, D \subseteq \mathbb{C}$
 					\item $f(z) = u(x, y) + iv(x, y)$
-					\item $(x, y) \in \mathbb{R}^2$
 					\item $f: S \to C$, $D \to C$, etc (context :)))
 					\item $z, z_0, w$ etc $\in \mathbb{C}, S, D$ etc
 					\item $\Gamma$ is a contour/curve (context :)))
 					\item $[a, b] \subseteq \mathbb{R}$
-					\item 'Respects linearity' or 'is linear' for an operation means can do $\alpha f + \beta g$ and pull out sum + factors from the operation.
-					\item (T/P/L)S/E = (Taylor/Power/Laurent) Series/Expansion
-					\item If a disc/circle/etc is demarcated with a random $R/r$/etc, assume it is 'for some $R/r$/etc $>0$'
-					\item If something is stated in the 'Let' section at the start of a box, assume it must be true for any conclusion made inside the box to be valid
-					\item Things itemised with * are more important than those with $\bullet$. 
+					\item When mapping $A$ 'onto' $B$, all of $B$ must be in the image of the map
+%					\item 'Respects linearity' or 'is linear' for an operation means can do $\alpha f + \beta g$ and pull out sum + factors from the operation.
+%					\item (T/P/L)S/E = (Taylor/Power/Laurent) Series/Expansion
+%					\item If a disc/circle/etc is demarcated with a random $R/r$/etc, assume it is 'for some $R/r$/etc $>0$'
+%					\item If something is stated in the 'Let' section at the start of a box, assume it must be true for any conclusion made inside the box to be valid
+%					\item Things itemised with * are more important than those with $\bullet$. 
 				\end{itemize}
 			\end{multicols}
 			
@@ -59,9 +59,9 @@
 		\end{rem}
 		
 		
-	%----------------------------------------------------------------------------------------------%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%----------------------------------------------------------------------------------------------%
+	%----------------------------------------------------------------------------------%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%----------------------------------------------------------------------------------%
 		
 		
 		{\footnotesize \textbf{\underline{Complex Fundamentals}}}
@@ -78,6 +78,7 @@
 					\item $\left|z\right| = 0 \iff z = 0$
 					\item $\left|z^2\right| = \left|z\right|^2 = z \overline{z}$
 					\item $\overline{zw} = (\overline{z}) (\overline{w})$
+					\item $\overline{1/z} = 1/\overline{z}$
 					\item $0! = 1$, $f^{(0)} = f$
 					\item $r \downarrow 0$ indicates $r \to 0$ through positive values only
 				\end{itemize}
@@ -98,6 +99,7 @@
 				\item $\arg(zw)  = \arg(z) + \arg(w)$, $\arg(\overline{z}) = -\arg(z)$
 				\item $\text{Arg}(zw) = \text{Arg}(z) + \text{Arg}(w) \pm 2k \pi$, $\text{Arg}(\overline{z}) = -\text{Arg}(z) \pm 2k \pi$
 				\item $\text{Arg}_\phi(z)$ is the branch of $\arg(z)$ s.t $\phi < \text{Arg}_\phi(z) \le \phi + 2\pi$
+				\item Any argument $\theta, \phi$, etc. is always a real number
 			\end{itemize}
 			
 		\end{dfn}
@@ -155,9 +157,10 @@
 		\begin{mdfn}[Differentiability and Holomorphicity]{mdfn:diffnholo}{ }
 			\begin{itemize}
 				\item $f(z)$ diffable (and thus cont.) at $z_0$ if $\lim_{z \to z_0} \frac{f(z) - f(z_0)}{z-z_0}$ exists.
-				\item $f(z)$ is holo. at $z_0$ if it is diffable on a neighbourhood of $z_0$
-				\item $+/\cdot / \div$(where denom $\ne 0$) of holo. funcs. preserves holo.city
+				\item $f(z)$ is hol. at $z_0$ if it is diffable on a neighbourhood of $z_0$
+				\item $+/\cdot / \div$(where denom $\ne 0$) of hol. funcs. preserves hol.city
 				\item Composition preserves diffability, $(f \circ g)'(z_0) = f'(g(z_0))g'(z_0)$
+				\item $\overline{z}$, $\left|z\right|$, $\left|z\right|^2$, $\Re(z)$, $\Im(z)$ nowhere hol.
 			\end{itemize}
 			
 		\end{mdfn}
@@ -180,7 +183,7 @@
 			$h: \mathbb{R}^2 \to \mathbb{R}$ is \textbf{harmonic} if $\forall (x, y) \in \mathbb{R}^2$: $\frac{\partial^2 h}{\partial x^2} + \frac{\partial^2 h}{\partial y^2} = 0$ (Laplace).
 			\begin{itemize}
 				\item Holomorphicity implies harmonicity
-				\item For a harmonic $u$, $v$ is a \textbf{harmonic conjugate of u} if $f = u + iv$ is holo.
+				\item For a harmonic $u$, $v$ is a \textbf{harmonic conjugate of u} if $f = u + iv$ is hol.
 			\end{itemize}
 			
 		\end{dfn}
@@ -202,11 +205,12 @@
 			\begin{multicols}{2}
 				\begin{itemize}
 					\item $\exp(z) := e^x(\cos(y) + i\sin(y))$
-					\item $\exp(z) = \exp'(z)$ holo. on $\mathbb{C}$
+					\item $\exp(z) = \exp'(z)$ hol. on $\mathbb{C}$
 					\item $\exp(z + 2 \pi i) = \exp(z)$, so not bijective
 					\item $\sin(z) = \frac{\exp(iz) - \exp(-iz)}{2i}$
 					\item $\cos(z) = \frac{\exp(iz) + \exp(-iz)}{2}$
 					\item $\sin'(z) = \cos(z)$, $\cos'(z) = -\sin(z)$
+					\item $\cos(\theta + \pi) = -\cos(\theta)$ same for $\sin$
 				\end{itemize}
 				
 				\columnbreak
@@ -238,12 +242,12 @@
 		
 		
 		\begin{mdfn}[The Complex Logarithm]{mdfn:log}{ }
-			$\log(z) := \left\{w \in \mathbb{C} : \exp(w) = z\right\}$ \\
-			$\text{Log}(z) := \left\{ \ln \left|z\right| + i\phi : \phi \in \arg(z)\right\} = \ln\left|z\right| + i \text{Arg}(z)$
+			$\log(z) := \left\{w \in \mathbb{C} : \exp(w) = z\right\} = \left\{ \ln \left|z\right| + i\phi : \phi \in \arg(z)\right\}$ \\
+			$\text{Log}(z) := \ln\left|z\right| + i \text{Arg}(z)$
 			\begin{itemize}
 				\item $\log(re^{i\theta}) = \ln\left|z\right| + i \arg(z) = \left\{\ln r + i\theta + 2k\pi i: k\in \mathbb{Z}\right\}$
 				\item $\log(zw) = \log(z) + \log(w)$, $\log(\frac{1}{z}) = -\log(z)$
-				\item $\text{Log}_\phi(z) := \ln \left|z\right| + i \text{Arg}_\phi(z)$ holo. on $D_\phi$, $\text{Log}_\phi'(z) = \frac{1}{z}$ for all $z \in D_\phi$
+				\item $\text{Log}_\phi(z) := \ln \left|z\right| + i \text{Arg}_\phi(z)$ hol. on $D_\phi$, $\text{Log}_\phi'(z) = \frac{1}{z}$ for all $z \in D_\phi$
 			\end{itemize}
 			
 			
@@ -253,11 +257,12 @@
 		
 		\begin{dfn}[Branches and Cuts]{dfn:branchesncuts}{ }
 			Motivated by $\text{Arg}(z)$'s discontinuity on the negative real line, \\
-			which means $\text{Log}(z)$ is not holo. on all of $\mathbb{C}$.
+			which means $\text{Log}(z)$ is not hol. on all of $\mathbb{C}$.
 			\begin{itemize}
 				\item A branch cut is a line $L \subseteq \mathbb{C}$ which is such that that a holomorphic branch of a multivalued func may be defined on $\mathbb{C} \backslash L$
 				\item $L_{z_0, \phi} := \{z \in \mathbb{C} : z = z_0 + r e^{i \phi} \text{ for } r>0\}$. $L_{0, \phi} = L_\phi$.
 				\item $D_{z_0, \phi} = \mathbb{C} \backslash L_{z_0, \phi}$. $D_{0, \phi} = D_\phi$. $D_{-\pi} = D$.
+				\item If $U \subseteq\mathbb{C}$ open, $g:U \to \mathbb{C}$ hol. on $U$; $\text{Log}_\phi(g(z))$ is hol. on $U\cap g^{-1}(D_\phi)$. If $g$ hol. on $\mathbb{C}$, $\text{Log}_\phi(g)$ is hol. on $g^{-1}(D_\phi) = \{z\in \mathbb{C} : g(z)\in D_\phi\}$.
 			\end{itemize}
 			
 			
@@ -273,7 +278,7 @@
 						\item If $\alpha = \frac{p}{q}$, $p, q \in \mathbb{Z}, p, q$ coprime, $q \ne 0$, $z^\alpha$ has exactly $q$ values.
 						\item If $\alpha$ is irrational or non-real, $z^\alpha$ has infinitely many values.
 					\end{enumerate}
-				\item Let $q \in \mathbb{Z}^+$. $1^{\frac{1}{q}} = 1, w, ..., w^{q-1}$, $w := \exp(\frac{2 \pi i}{q})$ are the $q$ \textbf{roots of unity}
+				\item If $q \in \mathbb{Z}^+$, $1^{\frac{1}{q}} = 1, w, ..., w^{q-1}$, $w := \exp(\frac{2 \pi i}{q})$ are the $q$ \textbf{roots of unity}
 				\item Each branch of $\text{log}(z)$ gives a branch of $z^\alpha$.
 				\item The \textbf{principal branch} is $z^\alpha = \exp(\alpha \text{Log}(z))$
 				\item For $z \ne 0$, $z^\alpha z^\beta = z^{\alpha + \beta}$ choosing the principal branch for each power.
@@ -284,9 +289,9 @@
 		\end{dfn}
 	
 	
-	%----------------------------------------------------------------------------------------------%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%----------------------------------------------------------------------------------------------%
+	%----------------------------------------------------------------------------------%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%----------------------------------------------------------------------------------%
 	
 	{\footnotesize \textbf{\underline{Conformal Maps and M{\"o}bius Transforms}}}
 	
@@ -306,7 +311,7 @@
 	
 	
 	\begin{dfn}[M{\"o}bius Transforms]{dfn:morbius}{ }
-		A \textbf{M{\"o}bius transformation} is a func of form $f(z) = \frac{az + b}{cz + d}, a, b, c, d \in \mathbb{C}, ad \ne bc$
+		A \textbf{M{\"o}bius transformation} is an $f$ s.t. $f(z) = \frac{az + b}{cz + d}, a, b, c, d \in \mathbb{C}, ad \ne bc$
 		\begin{itemize}
 			\item $\frac{\lambda az + \lambda b}{\lambda cz + \lambda d} = \frac{az + b}{cz + d}$, can always set $ \lambda = \sqrt{(ad - bc)}$ and impose $ad - bc = 1$
 			\item $f_M(z) = \frac{az + b}{cz + d}$ corresponds to $M = 
@@ -347,6 +352,11 @@
 				\hline
 				
 			\end{tabular}
+		\begin{itemize}
+			\item To find the image of a set under an MT - if bdary of set is a circline, bdary of the image is. So calculate image of 3 points on bdary to find bdary of image, and one point inside to know which side of bdary the image is on.
+			\item $(z-(1 \text{or } i))/(z+(1 \text{or } i))$ maps $\{z\in \mathbb{C} : (\Re(z) \text{ or } \Im(z)) > 0\}$ onto $D_1(0)$
+			%This came up a lot in workshops my year (25/26) lol, very random func
+		\end{itemize}
 		
 	\end{dfn}
 	
@@ -358,9 +368,10 @@
 			\item MTs map circlines to circlines
 			\item $f_{M_1 M_2} = f_{M_1} \circ f_{M_2}$ and $f_{M^-1} = f_M^{-1}$
 			\item If $f(z_2) = z_2, f(z_3) = z_3, f(z_4) = z_4$, $f = id$.
-			\item For There exists a unique $f$ s.t. $f(z_2) = 1, f(z_3) = 0, f(z_4) = \infty)$
+			\item There exists a unique $f$ s.t. $f(z_2) = 1, f(z_3) = 0, f(z_4) = \infty)$
 			\item For triplets of distinct points $(z_2, z_3, z_4), (w_2, w_3, w_4) \in \tilde{\mathbb{C}}$, $\exists$ a unique MT $f$ s.t. $f(z_2) = w_2, f(z_3) = w_3, f(z_4) = w_4$
 			\item $f$ preserves the cross-ratio: $[f(z_1), f(z_2), f(z_3), f(z_4)] = [z_1, z_2, z_3, z_4]$
+			
 		\end{itemize}
 		
 		
@@ -394,9 +405,9 @@
 	\end{mdfn}
 	
 	
-	%----------------------------------------------------------------------------------------------%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%----------------------------------------------------------------------------------------------%
+	%----------------------------------------------------------------------------------%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%----------------------------------------------------------------------------------%
 	
 	{\footnotesize \textbf{\underline{Complex Integration}}}
 	
@@ -429,7 +440,7 @@
 		\begin{itemize}
 			\item Contour integration is linear
 			\item For two parametrisations of $\Gamma$, $\gamma : [t_0, t_1] \to \mathbb{C}$ and $\tilde{\gamma}:[\tilde{t_0}, \tilde{t_1}] \to \mathbb{C}$, if there exists injective diffable $\lambda:[\tilde{t_0}, \tilde{t_1}] \to [t_0, t_1]$ with $\lambda'(t) > 0 \forall t \infty [\tilde{t_0}, \tilde{t_1}]$ s.t. $\tilde{\gamma}(t) = \gamma(\lambda(t))$ $\forall$ $t \in [t_0, t_1]$, then the integrals along $\gamma$ and $\tilde{\gamma}$ are equal.
-			\item If $\Gamma$ is parametrised by $\gamma : [0,1] \to \mathbb{C}$, then integrating $-\Gamma$ parametrised by $\tilde{\gamma} : [0, 1] \to \mathbb{C}, \tilde{\gamma}(t) = \gamma(1-t)$ gives the negative of the integral along $\Gamma$.
+			\item If $\Gamma$ a regular curve,$f: \Gamma \to \mathbb{C}$ cont., integrating along the path of a parametrisation of $\Gamma$ backwards gives the negative of the integral along $\Gamma$.
 			\item A contour is \textbf{closed} if $\gamma(t_0) = \gamma(t_1)$
 			\item A \textbf{contour integral} of $f$ is the sum of the integrals of $f$ along the regular curves which make up the contour.
 		\end{itemize}
@@ -479,60 +490,47 @@
 	
 	
 	\begin{mthm}[Cauchy Integral Theorem]{mthm:cit}{ }
-		Let $\Gamma$ be a loop and $f$ be holo. inside and on $\Gamma$. Then 
+		Let $\Gamma$ be a loop and $f$ be hol. inside and on $\Gamma$. Then 
 		$
 		\int_{\Gamma}f(z) \text{ dz} = 0.
 		$
 		\begin{itemize}
-			\item If $f$ is holo. on a simply-connected domain $D$, $f$ has an antideriv on $D$
+			\item If $f$ is hol. on a simply-connected domain $D$, $f$ has an antideriv on $D$
 			\item If $z_0 \in \mathbb{C}$ and $z_0 \notin \Gamma$, then $\int_{\Gamma} \frac{1}{z - z_0} \text{ dz} = 2\pi i$ if $z \in \text{Int}(\Gamma)$ and 0 otherwise
 		\end{itemize}
 	\end{mthm}
 	
 	
 	\begin{thm}[The Deformation Theorem]{dfn:deform}{ }
-		Let $\Gamma_1, \Gamma_2 \subseteq \mathbb{C}$ be loops and $f$ holo. on: $\Gamma_1; \Gamma_2; \{\text{Int}(\Gamma_1) \backslash \text{Int}(\Gamma_2)\} \cup \{\text{Int}(\Gamma_2) \backslash \text{Int}(\Gamma_1)\}$. Then $\int_{\Gamma_1}f(z) \text{ dz} = \int_{\Gamma_2}f(z) \text{ dz}$
+		Let $\Gamma_1, \Gamma_2 \subseteq \mathbb{C}$ be loops and $f$ hol. on: $\Gamma_1; \Gamma_2; \{\text{Int}(\Gamma_1) \backslash \text{Int}(\Gamma_2)\} \cup \{\text{Int}(\Gamma_2) \backslash \text{Int}(\Gamma_1)\}$. Then $\int_{\Gamma_1}f(z) \text{ dz} = \int_{\Gamma_2}f(z) \text{ dz}$
 		
 		
 	\end{thm}
 	
 	
 	\begin{mthm}[Cauchy Integral Formula\text{,} Generalised CIF]{mthm:gcif}{ }
-		Let $\Gamma$ be a loop, $z_0 \in \text{Int}(\Gamma)$, and $f$ holo. inside and on $\Gamma$. Then:
+		Let $\Gamma$ be a loop, $z_0 \in \text{Int}(\Gamma)$, and $f$ hol. inside and on $\Gamma$. Then:
 		\begin{itemize}
 			\item[*] $f(z_0) = \frac{1}{2 \pi i} \int_{\Gamma}\frac{f(z)}{z-z_0} \text{ dz}$
 			\item[*] $f$ is $\infty$'ly diffable at $z_0$, for $n \in \mathbb{N}$, $f^{(n)}(z_0) = \frac{n!}{2 \pi i} \int_{\Gamma}\frac{f(z)}{(z-z_0)^{n+1}} \text{ dz}$
 			\item Can be rearranged to evaluate contour integrals given appropriate $f^{(n)}$
-			\item For $z_0 \in$ domain $D$, $R > 0$ s.t. $\overline{D}_R(z_0) \subseteq D$, $f$ holo. on $D$, and $M>0$ an upper bound for $\left|f(z)\right|$, then for all $n \in \mathbb{N}$, $\left|f^{(n)}(z_0)\right| \le \frac{n!M}{R^n}$
+			\item For $z_0 \in$ domain $D$, $R > 0$ s.t. $\overline{D}_R(z_0) \subseteq D$, $f$ hol. on $D$, and $M>0$ an upper bound for $\left|f(z)\right|$, then for all $n \in \mathbb{N}$, $\left|f^{(n)}(z_0)\right| \le \frac{n!M}{R^n}$
 		\end{itemize}
 		
 	\end{mthm}	
 	
 	
-	\begin{xmp}[Figure-8 Contour]{xmp:fig8}{ }
-		We compute the contour integral $\int_{\Gamma} \frac{2z + 1}{z(z-1)^2} \text{ dz}$.
-		\includegraphics[scale=0.02]{fig8contour.png}
-		\includegraphics[scale=0.03]{splitfig8contour.png} \\
-		In order to apply the GCIF, we need $\Gamma$ in the form of a loop (currently it is not even simple), and the integrand of form $\frac{g(z)}{(z-z_0)^n}$ with $g$ holo. inside $\Gamma$. Notice that $\Gamma$ can be expressed as two 'lobes' which start and end at the point of self-intersection. Since the integrand is holo. everywhere but $z = 1$ and $z=0$ the Deformation Theorem tells us integrating around the shown lobes $\Gamma_1, \Gamma_2$ will give the same result as integrating around $\Gamma$.\\
-		Ie, $\int_{\Gamma}\frac{2z+1}{z(z-1)^2} \text{ dz} = \int_{\Gamma_0}	\frac{2z+1}{z(z-1)^2} \text{ dz} + \int_{\Gamma_1}\frac{2z+1}{z(z-1)^2} \text{ dz}$\\
-		Now rewrite the integrand in each case to allow application of the GCIF, remembering that $\Gamma_0$ is negatively oriented:\\
-		$\int_{\Gamma}\frac{2z+1}{z(z-1)^2} \text{ dz} = \int_{\Gamma_0}	\frac{(2z+1)/(z-1)^2}{z} \text{ dz} + \int_{\Gamma_1}\frac{(2z+1)/z}{(z-1)^2} \text{ dz}$ \\
-		$ = -2 \pi i + 2\pi i \frac{d}{dz}\left.\left(\frac{2z+1}{z}\right)\right|_{z=1} = -4 \pi i$
-		
-	\end{xmp}
-	
-	
 	\begin{thm}[Morera's Theorem]{thm:morera}{ }
 		Let $D \subseteq \mathbb{C}$ be a domain, $f: D \to \mathbb{C}$ continuous, \\
-		and $\int_{\Gamma}f(z) \text{ dz} = 0$ for all loops $\Gamma$ inside $D$. Then $f$ is holo. on $D$.
+		and $\int_{\Gamma}f(z) \text{ dz} = 0$ for all loops $\Gamma$ inside $D$. Then $f$ is hol. on $D$.
 		
 	\end{thm}
 	
 	
 	\begin{thm}[Liouville's Theorem]{thm:liouville}{ }
-		Let $f$ be holo. on $\mathbb{C}$ and bounded. Then $f$ is constant.
+		Let $f$ be hol. on $\mathbb{C}$ and bounded. Then $f$ is constant.
 		\begin{itemize}
-			\item For $D \subseteq \mathbb{C}$ a domain, $z_0 \in D$, $R>0$ s.t. $\overline{D}_R(z_0) \subseteq D$, and $f$ holo. on $D$;\\
+			\item For $D \subseteq \mathbb{C}$ a domain, $z_0 \in D$, $R>0$ s.t. $\overline{D}_R(z_0) \subseteq D$, and $f$ hol. on $D$;\\
 			$f(z_0) = \frac{1}{2 \pi} \int_{0}^{2 \pi}f(z_0 + R \exp(it)) \text{ dt}.$
 			\item If $f$ s.t. $\max_{z \in \overline{D}_R(z_0)}\left|f(z)\right| = \left|f(z_0)\right|$, $f(z)$ is constant on $\overline{D}_R(z_0)$.
 		\end{itemize}
@@ -541,29 +539,14 @@
 	
 	
 	\begin{thm}[The Maximum Modulus Principle]{thm:maxmod}{ }
-		Let $D \subseteq \mathbb{C}$ be a domain, and $f$ be holo. and bounded on $D$.\\
+		Let $D \subseteq \mathbb{C}$ be a domain, and $f$ be hol. and bounded on $D$.\\
 		Then if $\left|f(z)\right|$ achieves its maximum on $D$, $f$ is constant on $D$.
 		\begin{itemize}
-			\item If a func is holo. on a bounded domain, and cont. up to and including the boundary, it attains the maximum of its modulus on the boundary.
+			\item If a func is hol. on a bounded domain, and cont. up to and including the boundary, it attains the maximum of its modulus on the boundary.
 			
 		\end{itemize}
 		
 	\end{thm}
-	
-	
-	\begin{xmp}[Maximum Size Of a Polynomial On A Disc]{xmp:polymax}{ }
-		Find the maximum value of $\left|z^2 + 3z - 1\right|$ on the unit disc $\overline{D}_1(0)$.\\
-		Since $z^2 + 3z - 1$ is holo. on $\mathbb{C}$, the maximum will occur somewhere on the edge of the disc (ie $C_1(0)$). For $\left|z\right| = 1$:
-		\begin{align*}
-			\left|z^2 + 3z - 1\right|^2 &= \left(z^2 + 3z - 1\right)\left(\overline{z}^2 + 3\overline{z} - 1\right)\\
-			&= z^2 \overline{z}^2 + 3z^2 \overline{z} - z^2 + 3z \overline{z}^2 + 9 z \overline{z} - 3z - \overline{z}^2 - 3\overline{z} +1\\
-			&= (z \overline{z})^2 + 3(z \overline{z})z - z^2 + 3(z \overline{z})\overline{z} + 9(z \overline{z}) - 3z - \overline{z}^2 - 3\overline{z} + 1\\
-			& = 1 + 3z - z^2 + 3 \overline{z} + 9 - 3z - \overline{z}^2 - 3 \overline{z} + 1\\
-			&= 11 - (z^2 + \overline{z}^2) = 11 - 2\Re(z^2)
- 		\end{align*}
-		Since $\left|z^2\right| = 1, \Re(z^2) \ge 1$ with a minimum at $z^2 = -1$, where $\left|z^2 + 3z - 1\right|^2 = 13$. Thus the maximum value of $\left|z^2 + 3z - 1\right|$ is $\sqrt{13}$, attained at $\pm i$.
-		
-	\end{xmp}
 	
 	
 	\begin{thm-s}[Maximum/Minimum Principle For Harmonic Funcs]{thm:maxminharm}{ }
@@ -573,6 +556,44 @@
 	\end{thm-s}
 	
 	
+	\begin{xmp}[Maximum Size Of a Polynomial On A Disc]{xmp:polymax}{ }
+		Find the maximum value of $\left|z^2 + 3z - 1\right|$ on the unit disc $\overline{D}_1(0)$.\\
+		Since $z^2 + 3z - 1$ is hol. on $\mathbb{C}$, the maximum will occur somewhere on the edge of the disc (ie $C_1(0)$). For $\left|z\right| = 1$:
+		\begin{align*}
+			\left|z^2 + 3z - 1\right|^2 &= \left(z^2 + 3z - 1\right)\left(\overline{z}^2 + 3\overline{z} - 1\right)\\
+			&= z^2 \overline{z}^2 + 3z^2 \overline{z} - z^2 + 3z \overline{z}^2 + 9 z \overline{z} - 3z - \overline{z}^2 - 3\overline{z} +1\\
+			&= (z \overline{z})^2 + 3(z \overline{z})z - z^2 + 3(z \overline{z})\overline{z} + 9(z \overline{z}) - 3z - \overline{z}^2 - 3\overline{z} + 1\\
+			& = 1 + 3z - z^2 + 3 \overline{z} + 9 - 3z - \overline{z}^2 - 3 \overline{z} + 1\\
+			&= 11 - (z^2 + \overline{z}^2) = 11 - 2\Re(z^2)
+		\end{align*}
+		Since $\left|z^2\right| = 1, \Re(z^2) \ge 1$ with a min at $z^2 = -1$, where $\left|z^2 + 3z - 1\right|^2 = 13$. Thus the max value of $\left|z^2 + 3z - 1\right|$ is $\sqrt{13}$, attained at $\pm i$.
+		
+	\end{xmp}
+	
+	
+	\begin{xmp}[Figure-8 Contour]{xmp:fig8}{ }
+		\sbsadaptr{
+		We compute the contour integral $\int_{\Gamma} \frac{2z + 1}{z(z-1)^2} \text{ dz}$. In order to apply the GCIF, we need $\Gamma$ in the form of a loop (currently it is not even simple), and the integrand of form $g(z)/(z-z_0)^n$ with $g$ hol.
+		}
+		{
+		\includegraphics[scale=0.06]{fig8contour.png}
+		}
+		inside $\Gamma$. Notice that $\Gamma$ can be expressed as two 'lobes' which start and end at the point of self-intersection. Since the integrand is hol. everywhere but $z = 1$ and $z=0$ the Deformation Theorem tells us integrating around the lobes $\Gamma_1, \Gamma_2$ will give the same result as integrating around $\Gamma$.\\
+		Ie, $\int_{\Gamma}\frac{2z+1}{z(z-1)^2} \text{ dz} = \int_{\Gamma_0}	\frac{2z+1}{z(z-1)^2} \text{ dz} + \int_{\Gamma_1}\frac{2z+1}{z(z-1)^2} \text{ dz}$\\
+		Now rewrite the integrand in each case to allow application of the GCIF, remembering that $\Gamma_0$ is negatively oriented:\\
+		$\int_{\Gamma}\frac{2z+1}{z(z-1)^2} \text{ dz} = \int_{\Gamma_0}	\frac{(2z+1)/(z-1)^2}{z} \text{ dz} + \int_{\Gamma_1}\frac{(2z+1)/z}{(z-1)^2} \text{ dz}$ \\
+		$ = -2 \pi i + 2\pi i \frac{d}{dz}\left.\left(\frac{2z+1}{z}\right)\right|_{z=1} = -4 \pi i$
+		
+	\end{xmp}
+	
+	
+	\begin{xmp}[Defining A Branch Holomorphic On A Domain]{xmp:holbranchondom}{ }
+		Define a branch of $f(z) = (\frac{1}{z^2} - 1)^{1/2}$ hol. on $\mathbb{C} \backslash \overline{D}_1(0) = \{z\in \mathbb{C} : \left|z\right| > 1\}$.\\
+		Note if $g:\mathbb{C} \to \mathbb{C}$ is a branch of $\log(\frac{1}{z^2} -1)$ hol. on $\mathbb{C} \backslash \overline{D}_1(0)$, $f(z) = \exp(\frac{1}{2}g(z))$ is the desired branch. By course lemma, $\text{Log}_\phi(\frac{1}{z^2} -1)$ is hol. on $\mathbb{C} \backslash \{0\} \cap U$, where $U := \{z\in \mathbb{C} : \frac{1}{z^2} -1\in D_\phi\} = \{z\in \mathbb{C} : \frac{1}{z^2}\in D_{1, \phi}\}$. Thus if $\frac{1}{z^2}$ maps $\mathbb{C} \backslash\overline{D}_1(0)$ to $D_{1, \phi}$, we can take $g(z) = \text{Log}_\phi(\frac{1}{z^2} -1)$. Note $\frac{1}{z^2}$ maps $\mathbb{C} \backslash \overline{D}_{1}(0)$ inside the unit circle, so any $-\frac{\pi}{2} < \phi < \frac{\pi}{2}$ gives the desired branch. In particular can take $f(z) = \exp(\frac{1}{2} \text{Log}_0(\frac{1}{z^2} -1))$.
+		
+	\end{xmp}
+	
+	
 	
 	\end{multicols*}	
 	
@@ -580,9 +601,9 @@
 	
 	\begin{multicols*}{4}
 		\raggedcolumns 
-	%----------------------------------------------------------------------------------------------%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%----------------------------------------------------------------------------------------------%
+	%----------------------------------------------------------------------------------%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%----------------------------------------------------------------------------------%
 	
 	{\footnotesize \textbf{\underline{Series Expansions For Holomorphic Functions}}}
 		
@@ -611,7 +632,7 @@
 				\item For $f_n : S \to \mathbb{C}$ unifly cnvgng to $f$, and $\Gamma \subseteq S$; $\int_{\Gamma}f_n(z) \text{ dz} \to \int_{\Gamma}f(z) \text{ dz}$.
 				\item For continuous $f_n$ s.t. $\sum_{j=0}^{\infty}f_j(z)$ converges uniformly on $S$ and $\Gamma \subseteq S$:\\
 				$\int_{\Gamma}\sum_{j=0}^{\infty}f_j(z) \text{ dz} = \sum_{j=0}^{\infty}\int_{\Gamma}f_j(z) \text{ dz}$ 
-				\item If $f_n$, holo. on simply-connected $D$, cnvge unifly to $f$: $f$ is holo. on $D$.
+				\item If $f_n$, hol. on simply-connected $D$, cnvge unifly to $f$: $f$ is hol. on $D$.
 				
 			\end{itemize}
 			
@@ -629,7 +650,7 @@
 			\end{enumerate}
 			
 			\begin{itemize}
-				\item For $f = \sum_{j=0}^{\infty}a_j (z-z_0)^j$, $f$ is holo. on $D_R(z_0)$
+				\item For $f = \sum_{j=0}^{\infty}a_j (z-z_0)^j$, $f$ is hol. on $D_R(z_0)$
 				\item If $\lim_{j\to \infty}\left|\frac{a_j}{a_{j+1}}\right|$ exists, it is equal to $R$.
 			\end{itemize}
 			
@@ -637,17 +658,17 @@
 		
 		
 		\begin{dfn}[Taylor Series]{dfn:taylor}{ }
-			For $f$ holo. at $z_0 \in \mathbb{C}$: \\ \vspace{-5pt}
+			For $f$ hol. at $z_0 \in \mathbb{C}$: \\ \vspace{-5pt}
 			the \textbf{Taylor series of $f$ centred at $z_0$} is the PS $\sum_{j=0}^{\infty}\frac{f^{(j)}(z_0)}{j!}(z-z_0)^j$.
 			\begin{itemize}
-				\item For $f$ holo. on $D_R(z_0)$, the TS of $f$ centred at $z_0$ converges \\
+				\item For $f$ hol. on $D_R(z_0)$, the TS of $f$ centred at $z_0$ converges \\
 				to $f(z)$ for all $z \in D_R(z_0)$, uniformly on $\overline{D}_r(z_0)$ for $0 \le r < R$ 
 				\item Thus the TS of $f$ centred at $z_0$ converges to $f$ everywhere\\
-				inside the largest open disc centred at $z_0$ on which $f$ is holo.
+				inside the largest open disc centred at $z_0$ on which $f$ is hol.
 				\item For $U$ open, $f$ is \textbf{analytic} if for all $z\in U$, $f$ can be expressed as a convergent power series centred at $z$, valid on some disc centred at $z$.
-				\item If $U$ is open and $f$ holo. , $f$ is analytic
-				\item For $f$ holo. on and $z \in D_R(z_0)$, $f'(z) = \sum_{j=0}^{\infty}\frac{f^{(j+1)}(z_0)}{j!}(z-z_0)^j$
-				\item For $f, g$ holo. on and $z \in D_R(z_0)$: \\
+				\item If $U$ is open and $f$ hol. , $f$ is analytic
+				\item For $f$ hol. on and $z \in D_R(z_0)$, $f'(z) = \sum_{j=0}^{\infty}\frac{f^{(j+1)}(z_0)}{j!}(z-z_0)^j$
+				\item For $f, g$ hol. on and $z \in D_R(z_0)$: \\
 				TSs respect linearity, and the TS for $fg$, valid on the same $D_R(z_0)$, is $\sum_{j=0}^{\infty}\frac{1}{j!}\left( \sum_{k=0}^{j} \binom{j}{k} f^{(k)}(z_0) g^{(j-k)}(z_0)\right)(z-z_0)^j$
 				\item Uniqueness: If $\exists$ a PS converging to $f$ on a disc, it is the TS of $f$.
 			\end{itemize}
@@ -661,11 +682,11 @@
 			\begin{itemize}
 				\item An LS converges if its component PSs converge. \\
 				The first has RoC $R$, regard the second as a PS in variable $w = (z-z_0)^{-1}$ with RoC $S >0$. Then the LS converges for $z$ s.t. $\left|z-z_0\right| <R$ and $\left|(z-z_0)^{-1}\right| <S$, or $S^{-1} = r < \left|z-z_0\right| < R$.
-				\item For $f$ holo. on $A_{r, R}(z_0), 0 \le r < R \le \infty$:\\
+				\item For $f$ hol. on $A_{r, R}(z_0), 0 \le r < R \le \infty$:\\
 				$f$ can be expressed an an LS centred at $z_0$ that converges on $A_{r, R}(z_0)$,\\
 				uniformly on $\overline{A}_{r', R'}(z_0)$, $r < r' \le R' < R$, with coeffs $a_j = \frac{1}{2 \pi i} \int_{\Gamma}\frac{f(z)}{(z-z_0)^{j+1}} \text{ dz}$ for $\Gamma$ in $A_{r, R}(z_0)$ s.t. $z_0 \in \text{Int}(\Gamma)$
 				\item If $f$ is holomorphic on the 'hole' of the annulus, the LS is the TS
-				\item Uniqueness: If the PS $\sum_{j= -\infty}^{\infty} c_j (z-z_0)^j$ converges on $A_{r, R}(z_0)$, $\exists f$ holo. on $A_{r, R}(z_0)$ s.t. its LS centred at $z_0$ is the PS. Ie, if a func can be expressed in terms of a PS of the form of an LS centred at some $z_0$, that PS is the LS
+				\item Uniqueness: If the PS $\sum_{j= -\infty}^{\infty} c_j (z-z_0)^j$ converges on $A_{r, R}(z_0)$, $\exists f$ hol. on $A_{r, R}(z_0)$ s.t. its LS centred at $z_0$ is the PS. Ie, if a func can be expressed in terms of a PS of the form of an LS centred at some $z_0$, that PS is the LS
 			\end{itemize}
 			
 			
@@ -673,7 +694,7 @@
 		
 		
 		\begin{dfn}[Zeroes]{dfn:zeroes}{ }
-			Let $z_0 \in \mathbb{C}$, $U$ a neighbourhood of $z_0$, $f$ holo. on $U$. Then:
+			Let $z_0 \in \mathbb{C}$, $U$ a neighbourhood of $z_0$, $f$ hol. on $U$. Then:
 			\begin{itemize}
 				\item[*] $z_0$ is a \textbf{zero} of $f$ if $f(z_0) = 0$.\\
 				\item[*] $z_0$ is of \textbf{finite order} if there exists $m \in \mathbb{N}$ s.t. $f(z_0) = f'(z_0) = ... = f^{(m-1)}(z_0) = 0$ but $f^m(z_0) \ne 0$. Then $z_0$ is a \textbf{zero of order m}. 
@@ -689,8 +710,8 @@
 		
 		\begin{dfn}[Singularities And Their Classifications]{dfn:sings}{ }
 			Let $D$ be a domain, $f:D \to \mathbb{C}$. Then:\\
-			$z_0 \in \mathbb{C}$ is a \textbf{singularity} of $f$ if $f$ is not holo. at $z_0$.\\			
-			If $z_0$ is an isolated singularity of $f$ holo. on $D'_R(z_0)$ for some $R> 0$, then $f$ has an LE $f(z) = \sum_{j= -\infty}^{\infty}a_j(z-z_0)^j$ valid on $A_{0, R}$.
+			$z_0 \in \mathbb{C}$ is a \textbf{singularity} of $f$ if $f$ is not hol. at $z_0$.\\			
+			If $z_0$ is an isolated singularity of $f$ hol. on $D'_R(z_0)$ for some $R> 0$, then $f$ has an LE $f(z) = \sum_{j= -\infty}^{\infty}a_j(z-z_0)^j$ valid on $A_{0, R}$.
 			\begin{itemize}[label=*]
 				\item A singularity $z_0$ is \textbf{removable} if $a_j = 0$ $\forall j < 0$ (LE is $\sum_{j=0}^{\infty}a_j(z-z_0)^j$)
 				\item $z_0$ is a \textbf{pole of order m}$\in \mathbb{N}$ if $a_j = 0$ for $j < -m$ and $a_{-m} \ne 0$ (LE is $\sum_{j= -m}^{\infty}a_j(z-z_0)^j$). Order $1/2/3$ poles are \textbf{simple/double/triple}.
@@ -698,12 +719,12 @@
 				
 			\end{itemize}
 			
-			If $z_0$ is a removable singularity of $f$ holo. on $D'_R(z_0)$ for $R > 0$, then $f(z_0)$ can be redefined s.t. $f$ is holo. at $z_0$. By definition $f$ has an LE valid on $D'_R(z_0)$, so setting $f(z_0) = a_0$, the value of the LE at $z_0$, makes it holo.
+			If $z_0$ is a removable singularity of $f$ hol. on $D'_R(z_0)$ for $R > 0$, then $f(z_0)$ can be redefined s.t. $f$ is hol. at $z_0$. By definition $f$ has an LE valid on $D'_R(z_0)$, so setting $f(z_0) = a_0$, the value of the LE at $z_0$, makes it hol.
 			
 			\begin{itemize}
-				\item A singularity is \textbf{isolated} if there exists $R > 0$ s.t. $f$ is holo. on $D'_R(z_0)$.
+				\item A singularity is \textbf{isolated} if there exists $R > 0$ s.t. $f$ is hol. on $D'_R(z_0)$.
 				\item If $z_0$ is a singularity of a rational function $f = \frac{P}{Q}$, it is isolated
-				\item For $f, g$ holo. at $z_0$, with $z_0$ a zero of order $m$ of $g$:
+				\item For $f, g$ hol. at $z_0$, with $z_0$ a zero of order $m$ of $g$:
 				\begin{enumerate}[label=(\roman*)]
 					\item If $z_0$ is not a zero of $f$, then $f/g$ has a pole of order m at $z_0$
 					\item If $z_0$ is a zero of order $k$ of $f$, then $f/g$ has a pole of order $m-k$ at $z_0$ if $m>k$, and a removable singularity at $z_0$ otherwise.
@@ -714,16 +735,16 @@
 		
 		
 		\begin{dfn}[Analytic Continuation]{dfn:analcont}{ }
-			For $D \subseteq \tilde{D} \subseteq \mathbb{C}$ domains, and $f: D \to \mathbb{C}$ holo., we say a holo. func $F: \tilde{D} \to \mathbb{C}$ is an \textbf{analytic continuation} of $f$ if $F(z) = f(z)$ for $z \in D$.
+			For $D \subseteq \tilde{D} \subseteq \mathbb{C}$ domains, and $f: D \to \mathbb{C}$ hol., we say a hol. func $F: \tilde{D} \to \mathbb{C}$ is an \textbf{analytic continuation} of $f$ if $F(z) = f(z)$ for $z \in D$.
 			
 			
 		\end{dfn}
 		
 		
 		\begin{mthm}[The Identity Theorem]{mthm:identity}{ }
-			Let $D \subseteq \mathbb{C}$ be a domain, $z_0 \in D$, $f$ holo. on $D$, and $f(z) = 0$ for all $z \in D_R(z_0)$. Then $f(z) = 0$ for all $z \in D$.
+			Let $D \subseteq \mathbb{C}$ be a domain, $z_0 \in D$, $f$ hol. on $D$, and $f(z) = 0$ for all $z \in D_R(z_0)$. Then $f(z) = 0$ for all $z \in D$.
 			\begin{itemize}
-				\item If $g : D \to \mathbb{C}$ also holo. s.t. $f(z) = g(z)$ $\forall z \in D_R(z_0)$; $f(z) = g(z)$ $\forall z \in D$.
+				\item If $g : D \to \mathbb{C}$ also hol. s.t. $f(z) = g(z)$ $\forall z \in D_R(z_0)$; $f(z) = g(z)$ $\forall z \in D$.
 				\item If $f$ s.t. $f(z_n) = 0$ for seq. of distinct $z_n \in D, z_n \to z_0$; $f(z) = 0$ $\forall z \in D$.
 				\item If $g(z)$ also s.t. $g(z_n) = 0$ for the same $z_n$, then $f(z) = g(z)$ for all $z \in D$.
 			\end{itemize}
@@ -734,46 +755,46 @@
 		
 		
 		
-	%----------------------------------------------------------------------------------------------%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%----------------------------------------------------------------------------------------------%
+	%----------------------------------------------------------------------------------%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%----------------------------------------------------------------------------------%
 		
 	{\footnotesize \textbf{\underline{Residue Calculus And Its Applications}}}
 		
 		
 		\begin{thm}[5.1.1]{thm:5.1.1}{}
-			Let $z_0 \in \mathbb{C}$, $f$ be holo. on $D'_R(z_0)$ with an isolated singularity at $z_0$, and $\Gamma$ a loop inside $D'_R(z_0)$ with $z_0 \in \text{Int}(\Gamma)$.
+			Let $z_0 \in \mathbb{C}$, $f$ be hol. on $D'_R(z_0)$ with an isolated singularity at $z_0$, and $\Gamma$ a loop inside $D'_R(z_0)$ with $z_0 \in \text{Int}(\Gamma)$.
 			Then $\int_{\Gamma} f(z) \text{ dz} = 2 \pi i a_{-1}$, where $a_{-1}$ is the $j= -1$ coeff in the LE of $f$ centred at $z_0$ valid on $D'_R(z_0)$.
 			
 		\end{thm}
 		
 		
 		\begin{dfn}[The Residue]{dfn:residue}{ }
-			Let $z_0 \in \mathbb{C}$, $f$ holo. on $D'_R(z_0)$ with an isolated singularity at $z_0$. \\
+			Let $z_0 \in \mathbb{C}$, $f$ hol. on $D'_R(z_0)$ with an isolated singularity at $z_0$. \\
 			Then the \textbf{residue of $f$ at $z_0$} is $\text{Res}(f, z_0) = a_{-1}$ where the LE of $f$ valid on $D'_R(z_0)$ is $f(z) = \sum_{j= -\infty}^{\infty}a_j(z-z_0)^j$
 			
 		\end{dfn}
 		
 		\begin{lma}[Residue Calculation Lemmas]{lma:rescalcs}{ }
-			For all, let $z_0 \in \mathbb{C}$ and $f$ holo. on $D'_R(z_0)$
+			For all, let $z_0 \in \mathbb{C}$ and $f$ hol. on $D'_R(z_0)$
 			\begin{itemize}
 				\item 5.1.4: If $f$ has a removable singularity at $z_0$, $\text{Res}(f, z_0) = 0$.
 				\item 5.1.5: If $f$ has a pole of order $m$ at $z_0$ then $\text{Res}((f, z_0) = \lim_{z\to z_0}\frac{1}{(m-1)!}\frac{d^{m-1}}{dz^{m-1}}(z-z_0)^m f(z$
-				\item 5.1.7: If $f= g/h$, $g, h$ holo. on $D_R(z_0)$ s.t. $h$ has a simple zero at $z_0$ and $g(z_0) \ne 0$, then $\text{Res}(f, z_0) = \frac{g(z_0)}{h'(z_0)}$
+				\item 5.1.7: If $f= g/h$, $g, h$ hol. on $D_R(z_0)$ s.t. $h$ has a simple zero at $z_0$ and $g(z_0) \ne 0$, then $\text{Res}(f, z_0) = \frac{g(z_0)}{h'(z_0)}$
 			\end{itemize}
 			
 		\end{lma}
 		
 		
 		\begin{mthm}[The Cauchy Residue Theorem]{mthm:crt}{ }
-			Let $\Gamma$ be a loop, and $f$ holo. inside and on $\Gamma$ except for finitely many isolated singularities $z_1, ..., z_k \in \text{Int}(\Gamma)$. \\
+			Let $\Gamma$ be a loop, and $f$ hol. inside and on $\Gamma$ except for finitely many isolated singularities $z_1, ..., z_k \in \text{Int}(\Gamma)$. \\
 			Then $\int_{\Gamma}f(z) \text{ dz} = 2 \pi i \sum_{j = 1}^{k} \text{Res}(f, z_j)$
 			
 		\end{mthm}
 		
 		
 		\begin{dfn}[Meromorphicity]{dfn:meromorph}{ }
-			Let $D \subseteq \mathbb{C}$ be a domain. Then: $f$ is \textbf{meromorphic on $D$} if \\ for all $z\in D$, $f$ has a pole of finite order at $z$ or $f$ is holo. at $z$.
+			Let $D \subseteq \mathbb{C}$ be a domain. Then: $f$ is \textbf{meromorphic on $D$} if \\ for all $z\in D$, $f$ has a pole of finite order at $z$ or $f$ is hol. at $z$.
 			\begin{itemize}
 				\item If $\Gamma$ a loop in $D$, $f$ mero. on $D$ and not identically $0$, then $f$ has a finite number of poles and zeroes on $\text{Int}(\Gamma)$.
 			\end{itemize}
@@ -792,11 +813,11 @@
 		
 		
 		\begin{thm}[The Argument Principle]{thm:argprin}{ }
-			Let $\Gamma$ be a loop, $f$ be mero. on $\text{Int}(\Gamma)$, and holo. and non-zero on $\Gamma$. Then:\\
+			Let $\Gamma$ be a loop, $f$ be mero. on $\text{Int}(\Gamma)$, and hol. and non-zero on $\Gamma$. Then:\\
 			$\int_{\Gamma}\frac{f'(z)}{f(z)} \text{ dz} = 2 \pi i (N_0(f) - N_\infty(z))$.
 			
 			\begin{itemize}
-				\item If $f$ is holo. inside and on $\Gamma$, then $\int_{\Gamma}\frac{f'(z)}{f(z)} \text{ dz} = 2 \pi i (N_0(f))$
+				\item If $f$ is hol. inside and on $\Gamma$, then $\int_{\Gamma}\frac{f'(z)}{f(z)} \text{ dz} = 2 \pi i (N_0(f))$
 			\end{itemize}
 			
 			
@@ -804,7 +825,7 @@
 		
 		
 		\begin{thm}[Rouch{\'e}'s Theorem]{thm:rouche}{ }
-			Let $\Gamma$ be a loop and $f, g$ holo. on and inside $\Gamma$ s.t. for all $z \in \Gamma$, $\left|f(z) - g(z)\right| < \left|f(z)\right|.$ Then $N_0(f) = N_0(g)$.
+			Let $\Gamma$ be a loop and $f, g$ hol. on and inside $\Gamma$ s.t. for all $z \in \Gamma$, $\left|f(z) - g(z)\right| < \left|f(z)\right|.$ Then $N_0(f) = N_0(g)$.
 			\begin{itemize}
 				\item FTA: A degree $n$ polynom has exactly $n$ zeros counted with multiplicity
 			\end{itemize}
@@ -814,11 +835,11 @@
 		
 		
 		\begin{mthm}[Open Mapping Theorem]{mthm:openmap}{ }
-			Let $D \subseteq \mathbb{C}$ be a domain, and $f$ non-constant and holo. on $D$. Then the image of $D$ under $f$, $f(D) = \left\{f(z) : z\in D\right\}$ is an open subset of $\mathbb{C}$
+			Let $D \subseteq \mathbb{C}$ be a domain, and $f$ non-constant and hol. on $D$. Then the image of $D$ under $f$, $f(D) = \left\{f(z) : z\in D\right\}$ is an open subset of $\mathbb{C}$
 			
 			\begin{itemize}
-				\item Let $f$ be holo. on $D$ s.t. any of $\Re(f(z)), \Im(f(z)), \left|f(z)\right|, \text{Arg}(f(z))$ are constant. Then $f$ is constant.
-				\item Schwarz Lemma: Let $f$ be holo. on $D_1(0)$ s.t. $f(0) = 0$ and $\left|f(z)\right| \le 1$ for all $z \in D_1(0)$. Then $\left|f(z)\right| \le \left|z\right|$ for all $z \in D_1(0)$.
+				\item Let $f$ be hol. on $D$ s.t. any of $\Re(f(z)), \Im(f(z)), \left|f(z)\right|, \text{Arg}(f(z))$ are constant. Then $f$ is constant.
+				\item Schwarz Lemma: Let $f$ be hol. on $D_1(0)$ s.t. $f(0) = 0$ and $\left|f(z)\right| \le 1$ for all $z \in D_1(0)$. Then $\left|f(z)\right| \le \left|z\right|$ for all $z \in D_1(0)$.
 			\end{itemize}
 			
 		\end{mthm}
@@ -880,11 +901,30 @@
 		
 		
 		
-	%----------------------------------------------------------------------------------------------%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% EXAMPLES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%----------------------------------------------------------------------------------------------%
+	%----------------------------------------------------------------------------------%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% EXAMPLES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%----------------------------------------------------------------------------------%
 		
 	{\footnotesize \textbf{\underline{Examples}}}
+	
+	
+	
+		\begin{xmp}[Finding A Holomorphic Branch]{xmp:holbranch}{ }
+			Find a branch of $f(z) = (z^2 - 9)^{1/4}$ s.t. $f(z)$ is hol. at $0$. $f(z) = \exp(\frac{1}{4} \log(z^2 - 9))$, so must find branch of $\log(z^2 -9)$ hol. at $0$.\\
+			\textit{Method 1}: $(z^2 - 9) = (z-3)(z+3)$, so $\left(\log(z-3) + \log(z+3)\right) = \log(z^2 -9)$. \\
+			$\text{Log}(z-3)$ is hol. on $\{z\in \mathbb{C} : z-3\in D_{\phi_1} \} = \{z\in \mathbb{C} : z\in D_{3, \phi_1} \}$, so choose any $\phi_1$, for example $\phi_1 = 0$, s.t. $0 \in D_{3, \phi_1}$.\\
+			$\text{Log}_{\phi_2}(z+3)$ is hol. on $\{z\in \mathbb{C} : z + 3\in D_{\phi _2}\} = \{z\in \mathbb{C} : z\in D_{-3, \phi_2}\}$, so choose any $\phi_2$, for example $\phi_2 = -\pi$, s.t. $0 \in D_{-3, \phi_2}$.
+			Then $g(z) = \text{Log}_0(z-3) + \text{Log}(z+3)$ is a branch of $\log(z^2 - 9)$ hol. at $0$, and our branch is $f(z) = \exp(\frac{1}{4}\text{Log}_0(z-3) + \text{Log}(z+3)$.\\
+			\textit{Method 2}: Since $z^2-9$ is hol. everywhere, $\text{Log}_\phi(z^2 - 9)$ is hol. on $\{z\in \mathbb{C} : z^2 -9\in D_\phi\}$. Choose $\phi$ s.t. $-9\in D_\phi$, for example $\phi = 0$, then $\text{Log}(_\phi(z^2-9)$ is hol. at $0$, and our branch is $f(z) = \exp(\frac{1}{4}\text{Log}_0(z^2-9)$
+			
+		\end{xmp}
+		
+		
+		\begin{xmp}[Finding A Domain Of Holomorphicity For A Branch]{xmp:holdom}{ }
+			Find a cut plane $D_{z_0, \phi}$ such that the branch $\text{Log}_\phi$ of $\log(z+1)$ is hol. on $\{z\in \mathbb{C} : \Re(z) < -1\}$\\
+			A branch $\text{Log}_\phi$ is hol. on $D_{0, \phi}$. Thus $\text{Log}_\phi(z+1)$ is hol. at $z\in \mathbb{C}$ s.t. $z+1\in D_{0, \phi} = \mathbb{C} \backslash L_{0, \phi}$. $z + 1\in L_{0, \phi}$ iff $z\in L_{-1, \phi}$, so $\text{Log}_\phi(z+1)$ is hol. on $\mathbb{C} \backslash L_{-1, \phi}$. Now just choose $\phi$ s.t. $L_{-1, \phi} \cap \{z\in \mathbb{C} : \Re(z) < -1\} = \emptyset$, for example $\phi = 0$. So our plane is $D_{-1, 0}$.
+			
+		\end{xmp}
 		
 		
 		\begin{xmp}[Trigonometric Integrals]{xmp:trigints}{ }
@@ -899,24 +939,27 @@
 		
 		\begin{xmp}[Evaluating Infinite Series With Contour Integrals]{xmp:infsersints}{ }
 			Consider the alternating sum $\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n^2}$.\\
-			Let $f=\csc(\pi z)/z^2 = \frac{1}{\sin(\pi(z)) \frac{1}{z^2}}$ which is holo. on $\mathbb{C}$ except for poles at $z = n \in \mathbb{Z}$. For non-zero $n$, the pole is simple, and we can calculate that\\
+			Let $f=\csc(\pi z)/z^2 = \frac{1}{\sin(\pi(z)) \frac{1}{z^2}}$ which is hol. on $\mathbb{C}$ except for poles at $z = n \in \mathbb{Z}$. For non-zero $n$, the pole is simple, and we can calculate that\\
 			$\text{Res}(f, n) = \frac{1}{\pi \sin'(\pi z)} \frac{1}{n^2} = \frac{1}{\pi \cos(\pi n)} \frac{1}{n^2} = (-1)^n \frac{1}{\pi n^2}$,\\
 			To find $\text{Res}(f, 0)$ we compute the LE centred at $0$, remembering that we only care about the $a_1$ term so can ignore most higher order terms:
+			\sbsadaptr{
 			\begin{align*}
-				f(z) = \frac{1}{z^2} \frac{1}{\sin( \pi z)} &= \frac{1}{z^3} \frac{1}{1 - (\pi z)^2/3! + ...}\\
+				f(z) &= \frac{1}{z^2} \frac{1}{\sin( \pi z)} = \frac{1}{z^3} \frac{1}{1 - (\pi z)^2/3! + ...}\\
 				&= \frac{1}{\pi z^3} \frac{1}{(1 - (\pi z)^2/6 - ...)}\\
-				&= \frac{1}{\pi z^3} (1 + ((\pi z)^2)/3! + ...) + ((\pi z)^2/6 + ...)^2 + ...)\\
-				&= \frac{1}{\pi z^3} + \frac{\pi}{6z} + ...
+				&= \frac{1}{\pi z^3} (1 + ((\pi z)^2)/3! + ...) \\
+				&+ (\frac{(\pi z)^2}{6} + ...)^2 + ...) = \frac{1}{\pi z^3} + \frac{\pi}{6z} + ...
 			\end{align*}
-			Thus $\text{Res}(f. 0) = \pi/6$. Now consider $\Gamma_N$ as shown, for $N \in \mathbb{N}$.
-			\includegraphics[scale=0.08]{squarecontour.png}\\
+			}
+			{
+			\includegraphics[scale=0.11]{squarecontour.png}
+			}
+			Thus $\text{Res}(f. 0) = \pi/6$.
+			Now consider $\Gamma_N$ as shown, for $N \in \mathbb{N}$.
 			
 			It can be shown $\exists K > 0$ s.t. $\left|\cot(\pi z)\right| \le K \forall z \in \Gamma_N$, with $K$ independent of $N$. The trig identity $\csc^2(\pi z) = 1 + \cot^2(\pi z)$ then implies $\left|\csc^2(\pi z)\right| \le 1 + K^2 \forall z \in \Gamma_N$. Thus for $z \in \Gamma_N$, $\left|z\right| \ge N + \frac{1}{2}$, so $\left|f(z)\right| \le \left|\frac{\cot(n \pi)}{z^2}\right| \le \frac{K}{(N+1/2)^2} \le \frac{K}{N^2}$. Then applying the M-L Lemma gives: \\ 
 			$\left|\int_{\Gamma_N} f(z) \text{ dz}\right| \le \ell(\Gamma_N) \frac{K}{N^2} = \frac{4(2N + 1)K}{N^2} \to 0$ as $N \to \infty$.\\
-			However, applying the CRT tells us $\int_{\Gamma_N}f(z) \text{ dz} = 2\pi i \sum_{n = -N}^{N}\text{Res}((f, n) = 2 \pi i \left(2 \sum_{n=1}^{N}(-1)^n \frac{1}{pi n^2} + \frac{\pi}{6}\right)$ and taking $N \to \infty$ gives\\
-			$\int_{\Gamma_N} = 4 i \left(\sum_{n = 1}^{\infty} (-1)^n \frac{1}{n^2} + \frac{\pi ^2}{12}\right)$\\
-			Therefore, $\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n^2} = \frac{\pi ^2}{12}$
-			
+			However, applying the CRT tells us $\int_{\Gamma_N}f(z) \text{ dz} = 2\pi i \sum_{n = -N}^{N}\text{Res}((f, n) = 2 \pi i \left(2 \sum_{n=1}^{N}(-1)^n \frac{1}{pi n^2} + \frac{\pi}{6}\right)$ and taking $N \to \infty$ gives
+			$\int_{\Gamma_N} = 4 i \left(\sum_{n = 1}^{\infty} (-1)^n \frac{1}{n^2} + \frac{\pi ^2}{12}\right)$, so $\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n^2} = \frac{\pi ^2}{12}$
 			
 		\end{xmp}
 		
