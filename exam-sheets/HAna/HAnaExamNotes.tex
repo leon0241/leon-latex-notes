@@ -29,24 +29,40 @@
 		
 		
 		
-		\begin{rem}[Notation]{rem:notati}{ }
-			\begin{itemize}
-				\item $\mathbb{N}_0 = \mathbb{N} \cup \{0\}$
-			\end{itemize}
-			
-		\end{rem}
-		
-		
-		\begin{thm}[Random Theorems]{thm:randints}{ }
+		\begin{thm}[Random Theorems]{thm:randthms}{ }
 			\begin{itemize}
 				\item $\sum_{n=1}^{\infty} 2^{-n}\epsilon =\epsilon$ for $\epsilon > 0$.
-				\item \textbf{Convergent Geometric Series} For $\left|r\right| < 1$, $\frac{1}{1-r} = \sum_{k=0}^{\infty}r^k$
+				\item \textbf{Convergent Geometric Series}: For $\left|r\right| < 1$, $\frac{1}{1-r} = \sum_{k=0}^{\infty}r^k$
+				\item Let $f: [a, b] \to \mathbb{R}$ be cont. Then:
+					\begin{itemize}
+						\item \textit{MVT}: If $f$ diffable on $(a, b)$; $\exists c\in (a, b)$ s.t. $f'(c) = \frac{f(b)-f(a)}{b-a}$
+						\item \textit{IVT}: $\forall x$ between $f(a)$ and $f(b)$, $\exists c\in (a, b)$ s.t. $f(c) = x$.
+					\end{itemize}	
 			\end{itemize}
 			
 		\end{thm}
 		
 		
+		\begin{dfn}[Random Definitions]{dfn:randdfns}{ }
+			\begin{itemize}
+				\item $\limsup_{n\to \infty}a_n := \lim_{n\to \infty}(\sup_{k \ge n}a_k)$
+				\item $\liminf_{n\to \infty}a_n := \lim_{n\to \infty}(\inf_{k \ge n}a_k)$
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
 		\begin{thm}[Convergence Tests]{thm:convtests}{ }
+			\begin{itemize}
+				\item \textit{Sequences MCT}: If a real sequence $(a_n)_{n \in \mathbb{N}}$ is monotone non-decreasing and bdd above; or monotone non-increasing and bdd below; it converges.
+				\item If a seq converges to $L$, all its subseqs also converge to $L$ (so to disprove convergence find two subseqs converging to different limits).
+				\item \textit{Limsup/inf}: $(x_n)_{n\in \mathbb{N}}$ converges iff $\limsup_{n\to \infty}x_n = \liminf_{n \to \infty}x_n$.
+				\item \textit{p-Series}: $\sum_{n=1}^{\infty}\frac{1}{n^p}$ converges if $p >1$, diverges otherwise.
+				\item \textit{Ratio}: For $\sum_{n=1}^{\infty}$ with all $a_n \ne 0$, $\rho = \lim_{n\to \infty}\left|\frac{a_{n+1}}{a_n}\right|$; if $0 \le \rho < 1$ series converges absolutely, if $\rho > 1$ series diverges.
+				\item \textit{Alternating Series}: For $\sum_{n=1}^{\infty} (-1)^{n+1} b_n$ or $\sum_{n=1}^{\infty}(-1)^n b_n$, if $b_{n +1} \le b_n$ for all $n\ge 1$ and $b_n \to 0$ the series converges.
+				\item \textit{Root}: For $\sum_{n+1}^{\infty}a_n$, $\rho := \lim_{n\to \infty} \sqrt[n]{\left|a_n\right|}$, if $0 \le \rho < 1$ series converges absolutely, if $\rho > 1$ series diverges.
+				\item \textit{Limit Comparison}: For $\sum_{n=1}^{\infty} a_n$ and $\sum_{n=1}^{\infty}b_n$, $a_n \ge 0, b_n > 0$ for all $n$, if $\lim_{n\to \infty} \frac{a_n}{b_n} = c$ with $0 < c < \infty$; both series converge or both diverge.
+			\end{itemize}
 			
 			
 		\end{thm}
@@ -76,7 +92,7 @@
 			
 		\end{dfn}
 		
-		\begin{axi}[The Completeness Axiom]{axi:test}{ }
+		\begin{axi}[The Completeness Axiom]{axi:completeness}{ }
 			Every bounded above non-empty $A \subseteq \mathbb{R}$ has a least upper bound in $\mathbb{R}$
 			
 		\end{axi}
@@ -112,8 +128,6 @@
 				\item $(a_n)_{n \in \mathbb{N}}$ is \textbf{monotone non-increasing} if $a_{n + 1} \le a_n$ for all $n \in \mathbb{N}$
 				\item $(a_n)_{n\in \mathbb{N}}$ is \textbf{bounded above/bounded below/bounded} if $A$ is such
 			\end{enumerate} 
-			
-			\textit{MCT For Seqs}: If a real sequence $(a_n)_{n \in \mathbb{N}}$ is monotone non-decreasing and bdd above; or monotone non-increasing and bdd below; it converges.
 			
 		\end{dfn}
 		
@@ -210,7 +224,7 @@
 		
 		
 		\begin{dfn}[Open Sets]{dfn:opensets}{ }
-			We say a set $U \subseteq \mathbb{R}$ is \textbf{open} if for all $x \in U$ there exists $r > 0$ such that $(x-r, x+r) \subseteq U$.
+			$U \subseteq \mathbb{R}$ is \textbf{open} if for all $x \in U$ there exists $r > 0$ s.t. $(x-r, x+r) \subseteq U$.
 			
 			\begin{itemize}
 				\item The union of any collection of open sets is open
@@ -228,7 +242,7 @@
 			\begin{itemize}
 				\item The union of any finite collection of closed sets is closed
 				\item The intersection of any collection of closed sets is closed
-				\item If $f: \mathbb{R} to \mathbb{R}$ is continuous and $ \lambda \in \mathbb{R}$, then $\{x \in \mathbb{R} : f(x) \le \lambda\}$ is closed.
+				\item If $f: \mathbb{R} \to \mathbb{R}$ is continuous and $ \lambda \in \mathbb{R}$, then $\{x \in \mathbb{R} : f(x) \le \lambda\}$ is closed.
 				\item If $F \subseteq \mathbb{R}$ closed and $U \subseteq \mathbb{R}$ open; $U \backslash F$ is open and $F \backslash U$ is closed
 			\end{itemize}
 			
@@ -240,8 +254,10 @@
 			$F \subseteq \mathbb{R}$ is closed if and only if it is sequentially closed.
 			\vspace{-8pt}
 			\begin{proof}
-				First prove by contrapositive every closed set is sequentially closed: Let $F$ be closed and $(x_n)_{n\in \mathbb{N}}$ convergent s.t. $x:= \lim_{n\to \infty}x_n \notin F$. We show $\exists N\in \mathbb{N}$ s.t. $x_N \notin F$. Since $F$ is closed, by definition $U := \mathbb{R} \backslash F$ is open. Moreover $x\in U$, so $\exists\epsilon > 0 $ s.t. $(x-\epsilon, x+\epsilon \subseteq U)$, and $N\in \mathbb{N}$ s.t. $\left|x_n - x\right| <\epsilon$ for all $n\in \mathbb{N}$. In particular, $x_N\in (x-\epsilon, x +\epsilon) \subseteq U$, so $x_N \notin F$.\\
-				Now prove by contradiction every sequentially closed set is closed: Suppose $F$ is not closed, equivalently $U := \mathbb{R} \backslash F$ is not open. Then $\exists x\in U$ s.t. $\forall r > 0$, $(x-r, x+r) \cap F \ne \emptyset$. For $n\in \mathbb{N}$, let $x_n$ be any element of $(x - \frac{1}{n}, x+ \frac{1}{n}) \cap F$. Then $(x_n)_{n\in \mathbb{N}}$ converges to $x$, since $\left|x - x_n\right| \le \frac{1}{n}$. In particular, since $F$ is sequentially closed, we must have $x\in F$, a contradiction.
+				First prove by contrapositive closed sets are sequentially closed: Let $F$ be closed and $(x_n)_{n\in \mathbb{N}}$ convergent s.t. $x:= \lim_{n\to \infty}x_n \notin F$. We show $\exists N\in \mathbb{N}$ s.t. $x_N \notin F$. $F$ is closed, so by definition $U := \mathbb{R} \backslash F$ is open. \\
+				Moreover $x\in U$, so $\exists\epsilon > 0 $ s.t. $(x-\epsilon, x+\epsilon \subseteq U)$, and $N\in \mathbb{N}$ s.t. \\
+				$\left|x_n - x\right| <\epsilon$ $\forall n\in \mathbb{N}$. In particular $x_N\in (x-\epsilon, x +\epsilon) \subseteq U$, so $x_N \notin F$.\\
+				Now prove by contradiction sequentially closed sets are closed: Suppose $F$ is not closed, equivalently $U := \mathbb{R} \backslash F$ is not open. Then $\exists x\in U$ s.t. $\forall r > 0$, $(x-r, x+r) \cap F \ne \emptyset$. For $n\in \mathbb{N}$, let $x_n \in ((x - \frac{1}{n}, x+ \frac{1}{n}) \cap F)$. Then $(x_n)_{n\in \mathbb{N}}$ converges to $x$, since $\left|x - x_n\right| \le \frac{1}{n}$. In particular, since $F$ is sequentially closed, we must have $x\in F$, a contradiction.
 			\end{proof}
 			
 		\end{dfn}
@@ -733,14 +749,6 @@
 			\end{itemize}
 			
 		\end{thm}
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 	\end{multicols*}
