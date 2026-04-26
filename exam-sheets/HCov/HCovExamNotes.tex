@@ -205,8 +205,8 @@
 			\begin{multicols}{2}
 				\begin{itemize}
 					\item $\exp(z) := e^x(\cos(y) + i\sin(y))$
-					\item $\exp(z) = \exp'(z)$ hol. on $\mathbb{C}$
-					\item $\exp(z + 2 \pi i) = \exp(z)$, so not bijective
+					\item $\exp(z) = \exp'(z) = \sum_{j=0}^{\infty} \frac{z^j}{j!}$
+					\item $\exp(z + 2 \pi i) = \exp(z)$
 					\item $\sin(z) = \frac{\exp(iz) - \exp(-iz)}{2i}$
 					\item $\cos(z) = \frac{\exp(iz) + \exp(-iz)}{2}$
 					\item $\sin'(z) = \cos(z)$, $\cos'(z) = -\sin(z)$
@@ -365,6 +365,8 @@
 		Let $f(z)$ be a M{\"o}bius Transform and $z_2, z_3, z_4 \in \tilde{C}$ be distinct. Then:
 		\begin{itemize}
 			\item Every MT is a composition of a finite number of translations, rotations, and dilations, and iff $f$ does not fix the point at infinity, one inversion.
+			\item If $c = 0$, $f(\infty = \infty), f(z) = (a/d)z + b/d = f_2 \circ f_1$; $f_1(z) := (a/d)z$ (dilation+rotation), $f_2(z) = z + b/d$ (translation).
+			\item If $c \ne 0$, $f(z) = \frac{(bc-ad)/(c^2)}{z + d/c} + \frac{a}{c} = g_4 \circ g_3 \circ g_2 \circ g_1$; $g_1(z) = z + d/c$ (translation), $g_2(z) = 1/z$ (inversion), $g_3(z) = ((bc-ad)/(c^2))z$ (dilation+rotation), $g_4(z) = z+ a/c$ (translation).
 			\item MTs map circlines to circlines
 			\item $f_{M_1 M_2} = f_{M_1} \circ f_{M_2}$ and $f_{M^-1} = f_M^{-1}$
 			\item If $f(z_2) = z_2, f(z_3) = z_3, f(z_4) = z_4$, $f = id$.
@@ -383,8 +385,7 @@
 		Describe $\mathbb{R}^3$ with $\{X, Y, Z\}$. $\mathbb{C}$ is the plane $Z = 0$ and $X + iY$ is $\{X, Y, 0\}$:
 		\begin{itemize}
 			\item The \textbf{Riemann Sphere} is $S^2 := \{(X, Y, X) \in \mathbb{R}^3 : X^2 + Y^2 + Z^2 = 1\}$.
-			\item The 'North Pole' is the point $N := \left\{0, 0, 1\right\}$
-			\item $\phi : \tilde{\mathbb{C}} \to S^2$ is defined by: $\phi(z), z, N$ are collinear, and $\phi(\infty) = N$.
+			\item $\phi : \tilde{\mathbb{C}} \to S^2$ is defined by: $\phi(z), z, N$ collinear, and $\phi(\infty) = N := \left\{0, 0, 1\right\}$.
 			\item The \textbf{stereographic projection} is $\psi := \phi^{-1}(z): S^2 \to \mathbb{C}$. 
 			\item $\psi$ maps circles to circlines.
 			\item $\phi(z) = (\frac{2x}{\left|z\right|^2 + 1}, \frac{2y}{\left|z\right|^2 + 1}, \frac{\left|z\right|^2-1}{\left|z\right|^2 + 1})$. $\psi(X, Y, Z) = \frac{X + iY}{1 - Z}$, $\psi(N) = \infty$.
@@ -451,7 +452,8 @@
 	\begin{dfn}[Domains]{dfn:domains}{ }
 		$D \subseteq \mathbb{C}$ is a \textbf{domain} if $D$ is open and every two points in $D$ can be connected by a contour lying wholly in $D$.
 		\begin{itemize}
-			\item If $u : D \to \mathbb{R}$ is diffable, with $\frac{\partial u}{\partial x} = \frac{\partial u}{\partial y} = 0$ on $D$, then $u$ is constant on $D$.
+			\item If $u : D \to \mathbb{R}$ is diffable, $\frac{\partial u}{\partial x} = \frac{\partial u}{\partial y} = 0$ on $D$, then $u$ is constant on $D$.
+			\vspace{-2pt}
 			\item A cont. $f$ on $D$ has an \textbf{antiderivative} $F$ on $D$ if $F'(z) = f(z)$ $\forall z \in D$.
 			\item The integral of cont. $f$ with an antideriv on $D$ along a closed $\Gamma$ in $D$ is $0$.
 			\item $D$ is \textbf{simply-connected} if $\text{Int}(\Gamma) \subseteq D$ for all loops $\Gamma \subseteq D$.
@@ -471,20 +473,16 @@
 	\begin{lma}[Path-Independence]{lma:pathind}{ }
 		For a domain $D \subseteq C$ and cont. $f: D \to \mathbb{C}$, the following are equivalent:
 		\begin{enumerate}[label = (\roman*)]
-			\item $f$ has an antiderivative $F$ on $D$
+			\item $f$ has an antiderivative $F$ on $D$ (thus is cont.)
 			\item $\int_{\Gamma} f(z) \text{ dz} = 0$ for all closed $\Gamma$ in $D$
-			\item All contour integrals are independent of the path $\Gamma$, and depend only on the endpoints
+			\item All contour integrals $\int_\Gamma f(z) \text{ dz}$ are independent of the path $\Gamma$, and depend only on the endpoints of the contour.
 		\end{enumerate}
 		
 	\end{lma}
 	
 	
 	\begin{thm}[Jordan Curve Theorem]{thm:michaelcurves}{ }
-		Let $\Gamma$ be a loop in $\mathbb{C}$. Then $\Gamma$ partitions $\mathbb{C}$ into two domains: one bounded, the \textbf{interior} of $\Gamma$, $\text{Int}(\Gamma)$; and one unbounded, the \textbf{exterior} of $\Gamma$, $\text{Ext}(\Gamma)$.
-		\begin{itemize}
-			\item $\mathbb{C} = \text{Int}(\Gamma) \cup \Gamma \cup \text{Ext}(\Gamma)$
-		\end{itemize}
-		
+		For $\Gamma \subseteq \mathbb{C}$ a loop, $\Gamma$ partitions $\mathbb{C}$ into two domains: The bdd \textbf{interior} of $\Gamma$, $\text{Int}(\Gamma)$; and the unbdd \textbf{exterior} of $\Gamma$, $\text{Ext}(\Gamma)$. $\mathbb{C} = \text{Int}(\Gamma) \cup \Gamma \cup \text{Ext}(\Gamma)$
 		
 	\end{thm}
 	
@@ -512,7 +510,9 @@
 		Let $\Gamma$ be a loop, $z_0 \in \text{Int}(\Gamma)$, and $f$ hol. inside and on $\Gamma$. Then:
 		\begin{itemize}
 			\item[*] $f(z_0) = \frac{1}{2 \pi i} \int_{\Gamma}\frac{f(z)}{z-z_0} \text{ dz}$
+			\vspace{-3pt}
 			\item[*] $f$ is $\infty$'ly diffable at $z_0$, for $n \in \mathbb{N}$, $f^{(n)}(z_0) = \frac{n!}{2 \pi i} \int_{\Gamma}\frac{f(z)}{(z-z_0)^{n+1}} \text{ dz}$
+			\vspace{-2pt}
 			\item Can be rearranged to evaluate contour integrals given appropriate $f^{(n)}$
 			\item For $z_0 \in$ domain $D$, $R > 0$ s.t. $\overline{D}_R(z_0) \subseteq D$, $f$ hol. on $D$, and $M>0$ an upper bound for $\left|f(z)\right|$, then for all $n \in \mathbb{N}$, $\left|f^{(n)}(z_0)\right| \le \frac{n!M}{R^n}$
 		\end{itemize}
@@ -558,7 +558,7 @@
 	
 	\begin{xmp}[Maximum Size Of a Polynomial On A Disc]{xmp:polymax}{ }
 		Find the maximum value of $\left|z^2 + 3z - 1\right|$ on the unit disc $\overline{D}_1(0)$.\\
-		Since $z^2 + 3z - 1$ is hol. on $\mathbb{C}$, the maximum will occur somewhere on the edge of the disc (ie $C_1(0)$). For $\left|z\right| = 1$:
+		$z^2 + 3z - 1$ is hol. on $\mathbb{C}$ so its max occurs somewhere on $C_1(0)$. For $\left|z\right| = 1$:
 		\begin{align*}
 			\left|z^2 + 3z - 1\right|^2 &= \left(z^2 + 3z - 1\right)\left(\overline{z}^2 + 3\overline{z} - 1\right)\\
 			&= z^2 \overline{z}^2 + 3z^2 \overline{z} - z^2 + 3z \overline{z}^2 + 9 z \overline{z} - 3z - \overline{z}^2 - 3\overline{z} +1\\
@@ -571,25 +571,23 @@
 	\end{xmp}
 	
 	
-	\begin{xmp}[Figure-8 Contour]{xmp:fig8}{ }
-		\sbsadaptr{
-		We compute the contour integral $\int_{\Gamma} \frac{2z + 1}{z(z-1)^2} \text{ dz}$. In order to apply the GCIF, we need $\Gamma$ in the form of a loop (currently it is not even simple), and the integrand of form $g(z)/(z-z_0)^n$ with $g$ hol.
-		}
-		{
-		\includegraphics[scale=0.06]{fig8contour.png}
-		}
-		inside $\Gamma$. Notice that $\Gamma$ can be expressed as two 'lobes' which start and end at the point of self-intersection. Since the integrand is hol. everywhere but $z = 1$ and $z=0$ the Deformation Theorem tells us integrating around the lobes $\Gamma_1, \Gamma_2$ will give the same result as integrating around $\Gamma$.\\
-		Ie, $\int_{\Gamma}\frac{2z+1}{z(z-1)^2} \text{ dz} = \int_{\Gamma_0}	\frac{2z+1}{z(z-1)^2} \text{ dz} + \int_{\Gamma_1}\frac{2z+1}{z(z-1)^2} \text{ dz}$\\
-		Now rewrite the integrand in each case to allow application of the GCIF, remembering that $\Gamma_0$ is negatively oriented:\\
-		$\int_{\Gamma}\frac{2z+1}{z(z-1)^2} \text{ dz} = \int_{\Gamma_0}	\frac{(2z+1)/(z-1)^2}{z} \text{ dz} + \int_{\Gamma_1}\frac{(2z+1)/z}{(z-1)^2} \text{ dz}$ \\
-		$ = -2 \pi i + 2\pi i \frac{d}{dz}\left.\left(\frac{2z+1}{z}\right)\right|_{z=1} = -4 \pi i$
+	\begin{xmp-s}[Finding A Laurent Series On Punctured Disc\text{,} Annulus]{xmp:laurser}{ }
+		Let $f = 1/(z(z+i))$. $(i)$ Find the LSE for $f$ valid on $D_1'(0)$. \\
+		$(ii)$ Find the LSE for $f$ valid on $A_{1, \infty}(0)$. \\
+		$(i)$: For $\left|z\right| < 1$; $\frac{1}{z+i} = \frac{1}{i} \cdot \frac{1}{1-iz} = -i \sum_{j=0}^{\infty}(iz)^j = \sum_{j=0}^{\infty}-i^{j+1}z^j$, so for $z\in D_1'(0)$; $f(z) = \frac{1}{z} \cdot \frac{1}{z+i} = \frac{1}{z} \sum_{j=0}^{\infty}-i^{j+1} z^j = \sum_{j=0}^{\infty}i^{j-1} z^{j-1} = \sum_{j=-1}^{\infty}(iz)^j$.\\
+		$(ii)$: For $\left|z\right| > 1$; $\frac{1}{z+i} = \frac{1}{z} \cdot \frac{1}{1-(-i/z)} = \frac{1}{z} \sum_{j=0}^{\infty} (-i)^j/z^j = \sum_{j=0}^{\infty}(-i)^jz^{-j-1}$ so for $z\in A_{1, \infty}$; $f(z) = \frac{1}{z} \cdot \frac{1}{z+i} = \frac{1}{z} \sum_{j=0}^{\infty}(-i)^jz^{-j-1} = \sum_{j=0}^{\infty}(-i)^j z^{-j-2} = \sum_{j=-\infty}^{0} (-i)^{-j}z^{j-2} = \sum_{j=-\infty}^{0} i^j z^{j-2} = \sum_{j=-\infty}^{-2} i^{j+2}z^j = \sum_{j=-\infty}^{-2} -i^jz^j$
 		
-	\end{xmp}
+	\end{xmp-s}
 	
 	
-	\begin{xmp}[Defining A Branch Holomorphic On A Domain]{xmp:holbranchondom}{ }
-		Define a branch of $f(z) = (\frac{1}{z^2} - 1)^{1/2}$ hol. on $\mathbb{C} \backslash \overline{D}_1(0) = \{z\in \mathbb{C} : \left|z\right| > 1\}$.\\
-		Note if $g:\mathbb{C} \to \mathbb{C}$ is a branch of $\log(\frac{1}{z^2} -1)$ hol. on $\mathbb{C} \backslash \overline{D}_1(0)$, $f(z) = \exp(\frac{1}{2}g(z))$ is the desired branch. By course lemma, $\text{Log}_\phi(\frac{1}{z^2} -1)$ is hol. on $\mathbb{C} \backslash \{0\} \cap U$, where $U := \{z\in \mathbb{C} : \frac{1}{z^2} -1\in D_\phi\} = \{z\in \mathbb{C} : \frac{1}{z^2}\in D_{1, \phi}\}$. Thus if $\frac{1}{z^2}$ maps $\mathbb{C} \backslash\overline{D}_1(0)$ to $D_{1, \phi}$, we can take $g(z) = \text{Log}_\phi(\frac{1}{z^2} -1)$. Note $\frac{1}{z^2}$ maps $\mathbb{C} \backslash \overline{D}_{1}(0)$ inside the unit circle, so any $-\frac{\pi}{2} < \phi < \frac{\pi}{2}$ gives the desired branch. In particular can take $f(z) = \exp(\frac{1}{2} \text{Log}_0(\frac{1}{z^2} -1))$.
+	\begin{xmp}[Exact Values Of A Complex Power]{xmp:powvals}{ }
+		Give all the values of $(1+i)^{1/4}$\\
+			\begin{align*}
+				&(1+i)^{1/4} =\left\{\exp\left(\frac{1}{4}(\ln\left|1+i\right| + i\text{Arg}(1+i) + 2k\pi i)\right) : k\in \mathbb{Z}\right\} \\
+				&=\left\{\exp\left(\frac{\ln\sqrt{2}}{4} + \frac{i \pi}{4} + \frac{i k \pi}{2}\right) : k\in \mathbb{Z}\right\} \\
+				&= \left\{\exp\left(\ln2^{1/8} + \frac{i \pi}{16} + \frac{i k \pi }{2}\right) : k\in \mathbb{Z}\right\} = \left\{2^{1/8}e^{i\pi/16}e^{i k \pi/2} : k\in \mathbb{Z}\right\} \\
+				&= \left\{2^{1/8}e^{i \pi /16}, 2^{1/8}e^{9 i \pi /16}, 2^{1/8}e^{17 i \pi /16}, 2^{1/8}e^{25 i \pi/16}\right\}
+			\end{align*}
 		
 	\end{xmp}
 	
@@ -642,7 +640,7 @@
 		
 		\begin{dfn}[Power Series]{dfn:pwrsrs}{ }
 			For $a_n \in \mathbb{C}$ a complex sequence, a \textbf{power series} with \\ \textbf{coefficients} $a_j$ is an infinite series of the form $\sum_{j=0}^{\infty}a_j (z-z_0)^j$.\\
-			Given a power series, $\exists R \in [0, \infty) \cup \left\{\infty\right\}$, the \textbf{radius of convergence}, such that:
+			Given a PS, $\exists R \in [0, \infty) \cup \left\{\infty\right\}$, the \textbf{radius of convergence}, such that:
 			\begin{enumerate}[label=(\roman*)]
 				\item The series converges on $D_R(z_0)$
 				\item The series converges uniformly on $\overline{D}_r(z_0)$ for $r \in [0, R]$
@@ -668,6 +666,7 @@
 				\item For $U$ open, $f$ is \textbf{analytic} if for all $z\in U$, $f$ can be expressed as a convergent power series centred at $z$, valid on some disc centred at $z$.
 				\item If $U$ is open and $f$ hol. , $f$ is analytic
 				\item For $f$ hol. on and $z \in D_R(z_0)$, $f'(z) = \sum_{j=0}^{\infty}\frac{f^{(j+1)}(z_0)}{j!}(z-z_0)^j$
+				\item Convergent PSs can be differentiated termwise
 				\item For $f, g$ hol. on and $z \in D_R(z_0)$: \\
 				TSs respect linearity, and the TS for $fg$, valid on the same $D_R(z_0)$, is $\sum_{j=0}^{\infty}\frac{1}{j!}\left( \sum_{k=0}^{j} \binom{j}{k} f^{(k)}(z_0) g^{(j-k)}(z_0)\right)(z-z_0)^j$
 				\item Uniqueness: If $\exists$ a PS converging to $f$ on a disc, it is the TS of $f$.
@@ -680,13 +679,12 @@
 		\begin{dfn}[Laurent Series]{dfn:laurent}{ }
 			For $z_0 \in \mathbb{C}$ and $..., a_{-1}, a_0, a_1, ... \in C$ a doubly-infinite sequence, a \textbf{Laurent series} centred at $z_0$ is a PS of form $\sum_{j= -\infty}^{\infty}a_j(z-z_0)^j = \sum_{j=0}^{\infty}a_j(z-z_0)^j + \sum_{j=1}^{\infty}a_{-j}(z-z_0)^{-j}$
 			\begin{itemize}
-				\item An LS converges if its component PSs converge. \\
-				The first has RoC $R$, regard the second as a PS in variable $w = (z-z_0)^{-1}$ with RoC $S >0$. Then the LS converges for $z$ s.t. $\left|z-z_0\right| <R$ and $\left|(z-z_0)^{-1}\right| <S$, or $S^{-1} = r < \left|z-z_0\right| < R$.
-				\item For $f$ hol. on $A_{r, R}(z_0), 0 \le r < R \le \infty$:\\
-				$f$ can be expressed an an LS centred at $z_0$ that converges on $A_{r, R}(z_0)$,\\
-				uniformly on $\overline{A}_{r', R'}(z_0)$, $r < r' \le R' < R$, with coeffs $a_j = \frac{1}{2 \pi i} \int_{\Gamma}\frac{f(z)}{(z-z_0)^{j+1}} \text{ dz}$ for $\Gamma$ in $A_{r, R}(z_0)$ s.t. $z_0 \in \text{Int}(\Gamma)$
+				\item An LS cnvges if its component PSs converge. The first has RoC $R$, view the second as a PS in $w = (z-z_0)^{-1}$, RoC $S >0$. Then the LS cnvges for $z$ s.t. $\left|z-z_0\right| <R$ and $\left|(z-z_0)^{-1}\right| <S$, or $S^{-1} = r < \left|z-z_0\right| < R$.
+				\item For $f$ hol. on $A_{r, R}(z_0), 0 \le r < R \le \infty$;
+				$f$ can be written as a LS centred at $z_0$ cnvging on $A_{r, R}(z_0)$,
+				unifly on $\overline{A}_{r', R'}(z_0)$, $r < r' \le R' < R$, $a_j = \frac{1}{2 \pi i} \int_{\Gamma}\frac{f(z)}{(z-z_0)^{j+1}} \text{ dz}$ for $\Gamma$ in $A_{r, R}(z_0)$ s.t. $z_0 \in \text{Int}(\Gamma)$
 				\item If $f$ is holomorphic on the 'hole' of the annulus, the LS is the TS
-				\item Uniqueness: If the PS $\sum_{j= -\infty}^{\infty} c_j (z-z_0)^j$ converges on $A_{r, R}(z_0)$, $\exists f$ hol. on $A_{r, R}(z_0)$ s.t. its LS centred at $z_0$ is the PS. Ie, if a func can be expressed in terms of a PS of the form of an LS centred at some $z_0$, that PS is the LS
+				\item Uniqueness: If the PS $\sum_{j= -\infty}^{\infty} c_j (z-z_0)^j$ cnvgs on $A_{r, R}(z_0)$, $\exists f$ hol. on $A_{r, R}(z_0)$ s.t. its LS centred at $z_0$ is the PS. Ie, if a func can be expressed as a PS of the form of an LS centred at some $z_0$, that PS is the LS
 			\end{itemize}
 			
 			
@@ -779,7 +777,7 @@
 			For all, let $z_0 \in \mathbb{C}$ and $f$ hol. on $D'_R(z_0)$
 			\begin{itemize}
 				\item 5.1.4: If $f$ has a removable singularity at $z_0$, $\text{Res}(f, z_0) = 0$.
-				\item 5.1.5: If $f$ has a pole of order $m$ at $z_0$ then $\text{Res}((f, z_0) = \lim_{z\to z_0}\frac{1}{(m-1)!}\frac{d^{m-1}}{dz^{m-1}}(z-z_0)^m f(z$
+				\item 5.1.5: If $f$ has a pole of order $m$ at $z_0$ then $\text{Res}(f, z_0) = \lim_{z\to z_0}\frac{1}{(m-1)!}\frac{d^{m-1}}{dz^{m-1}}((z-z_0)^m f(z))$
 				\item 5.1.7: If $f= g/h$, $g, h$ hol. on $D_R(z_0)$ s.t. $h$ has a simple zero at $z_0$ and $g(z_0) \ne 0$, then $\text{Res}(f, z_0) = \frac{g(z_0)}{h'(z_0)}$
 			\end{itemize}
 			
@@ -834,6 +832,12 @@
 		\end{thm}
 		
 		
+		\begin{lma}[5.6.5 - The Binomial As An Integral]{lma:binomint}{ }
+			Let $0 \le k \le n$ be non-negative integers, $\Gamma$ a loop with $0 \in \text{Int}(\Gamma)$, and $\binom{n}{k} = \frac{n!}{k!(n-k!)}$. Then $\binom{n}{k} = \frac{1}{2 \pi i} \int_{\Gamma} \frac{(1+z)^n}{z^{k+1}} \text{ dz}$.
+			
+		\end{lma}
+		
+		
 		\begin{mthm}[Open Mapping Theorem]{mthm:openmap}{ }
 			Let $D \subseteq \mathbb{C}$ be a domain, and $f$ non-constant and hol. on $D$. Then the image of $D$ under $f$, $f(D) = \left\{f(z) : z\in D\right\}$ is an open subset of $\mathbb{C}$
 			
@@ -879,7 +883,9 @@
 		
 		
 		\begin{lma}[Jordan Lemma]{lma:jord}{ }
-			Let $P, Q$ be polynoms with deg$(Q) \ge$deg$(P) + 1$. Consider $R := P/Q$ and let $a \in \mathbb{R} \ne 0$. Then: $\lim_{R\to \infty} \int_{C_R^+} \exp(iaz) \frac{P(z)}{Q(z)} \text{ dz} =0$ if $a > 0$ and $\lim_{R\to \infty} \int_{C_R^-} \exp(iaz) \frac{P(z)}{Q(z)} \text{ dz} =0$ if $a < 0$.
+			Let $P, Q$ be polynoms with deg$(Q) \ge$deg$(P) + 1$, $a \in \mathbb{R} \ne 0$.\\
+			Then $\lim_{R\to \infty} \int_{C_R^+} \exp(iaz) \frac{P(z)}{Q(z)} \text{ dz} =0$ if $a > 0$\\
+			and $\lim_{R\to \infty} \int_{C_R^-} \exp(iaz) \frac{P(z)}{Q(z)} \text{ dz} =0$ if $a < 0$.
 			
 			
 		\end{lma}
@@ -888,13 +894,6 @@
 		\begin{lma}[5.5.3 - Integrating On An Arc]{lma:arcint}{ }
 			Let $D \subseteq C$ be a domain, $c \in D$, $f$ mero. on $D$ with a simple pole at $z \in D$, and $S_r$ be the circular arc paremed. by $\gamma(\theta) = c + r \exp(i\theta)$ for $\theta \in [\theta_0,\theta_1], 0 \le\theta_0 <\theta_1 \le 2 \pi$. Then $\lim_{r \downarrow 0} \int_{S_r} f(z) \text{ dz} = i(\theta_1 -\theta_0) \text{Res}(f, c)$
 			
-			
-			
-		\end{lma}
-		
-		
-		\begin{lma}[5.6.5 - The Binomial As An Integral]{lma:binomint}{ }
-			Let $0 \le k \le n$ be non-negative integers, $\binom{n}{k} = \frac{n!}{k!(n-k!)}$, and $\Gamma$ a loop with $0 \in \text{Int}(\Gamma)$. Then: $\binom{n}{k} = \frac{1}{2 \pi i} \int_{\Gamma} \frac{(1+z)^n}{z^{k+1}} \text{ dz}$.
 			
 			
 		\end{lma}
@@ -911,11 +910,10 @@
 	
 		\begin{xmp}[Finding A Holomorphic Branch]{xmp:holbranch}{ }
 			Find a branch of $f(z) = (z^2 - 9)^{1/4}$ s.t. $f(z)$ is hol. at $0$. $f(z) = \exp(\frac{1}{4} \log(z^2 - 9))$, so must find branch of $\log(z^2 -9)$ hol. at $0$.\\
-			\textit{Method 1}: $(z^2 - 9) = (z-3)(z+3)$, so $\left(\log(z-3) + \log(z+3)\right) = \log(z^2 -9)$. \\
-			$\text{Log}(z-3)$ is hol. on $\{z\in \mathbb{C} : z-3\in D_{\phi_1} \} = \{z\in \mathbb{C} : z\in D_{3, \phi_1} \}$, so choose any $\phi_1$, for example $\phi_1 = 0$, s.t. $0 \in D_{3, \phi_1}$.\\
-			$\text{Log}_{\phi_2}(z+3)$ is hol. on $\{z\in \mathbb{C} : z + 3\in D_{\phi _2}\} = \{z\in \mathbb{C} : z\in D_{-3, \phi_2}\}$, so choose any $\phi_2$, for example $\phi_2 = -\pi$, s.t. $0 \in D_{-3, \phi_2}$.
-			Then $g(z) = \text{Log}_0(z-3) + \text{Log}(z+3)$ is a branch of $\log(z^2 - 9)$ hol. at $0$, and our branch is $f(z) = \exp(\frac{1}{4}\text{Log}_0(z-3) + \text{Log}(z+3)$.\\
-			\textit{Method 2}: Since $z^2-9$ is hol. everywhere, $\text{Log}_\phi(z^2 - 9)$ is hol. on $\{z\in \mathbb{C} : z^2 -9\in D_\phi\}$. Choose $\phi$ s.t. $-9\in D_\phi$, for example $\phi = 0$, then $\text{Log}(_\phi(z^2-9)$ is hol. at $0$, and our branch is $f(z) = \exp(\frac{1}{4}\text{Log}_0(z^2-9)$
+			$(z^2 - 9) = (z-3)(z+3)$, so $\left(\log(z-3) + \log(z+3)\right) = \log(z^2 -9)$. \\
+			$\text{Log}(z-3)$ is hol. on $\{z\in \mathbb{C} : z-3\in D_{\phi_1} \} = \{z\in \mathbb{C} : z\in D_{3, \phi_1} \}$, so choose any $\phi_1$, for example $\phi_1 = 0$, s.t. $0 \in D_{3, \phi_1}$\\ 
+			$\text{Log}_{\phi_2}(z+3)$ is hol. on $\{z\in \mathbb{C} : z + 3\in D_{\phi _2}\} = \{z\in \mathbb{C} : z\in D_{-3, \phi_2}\}$, so choose any $\phi_2$, for example $\phi_2 = -\pi$, s.t. $0 \in D_{-3, \phi_2}$. \\
+			Then $g(z) = \text{Log}_0(z-3) + \text{Log}(z+3)$ is a branch of $\log(z^2 - 9)$ hol. at $0$, and our branch is $f(z) = \exp(\frac{1}{4}\text{Log}_0(z-3) + \text{Log}(z+3)$.
 			
 		\end{xmp}
 		
@@ -928,11 +926,9 @@
 		
 		
 		\begin{xmp}[Trigonometric Integrals]{xmp:trigints}{ }
-			Integrals of form $\int_{0}^{2\pi} R(\cos\theta, \sin\theta) \text{ d}\theta$ for rational $R$ can be evaluated by considering a contour integral of an appropriate function around $C_1(0)$.\\
-			Recall for $z = e^{i\theta}$ on $C_1(0)$, $\cos\theta - \Re(z) = \frac{z + \overline{z}}{2} = \frac{1}{2}\left(z + \frac{1}{z}\right)$ and $\sin\theta - \Im(z) = \frac{z - \overline{z}}{2i} = \frac{1}{2i}\left(z - \frac{1}{z}\right)$\\
-			Define $f(z) = \frac{1}{iz}R\left(\frac{z + 1/z}{2}, \frac{z - 1/z}{2i}\right)$, then $f(\exp(i\theta)) = \frac{1}{i \exp(i\theta)}R(\cos\theta, \sin\theta)$. Parametrise $C_1(0)$ by $\gamma : [0, 2 \pi] \to \mathbb{C}, \gamma(\theta) = \exp(i\theta)$.\\
-			Then $\int_{C_1(0)} f(z) \text{ dz} = \int_{0}^{2 \pi} f(\gamma(\theta)) \gamma'(\theta) \text{ d}\theta = \int_{0}^{2 \pi}f(\exp(i\theta))i \exp(i\theta) \text{ d}\theta = \int_{0}^{2 \pi}\frac{1}{i \exp(i\theta)} R(\cos\theta, \sin\theta)i \exp(i\theta) \text{ d}\theta = \int_{0}^{2\pi} R(\cos\theta, \sin\theta) \text{ d}\theta$.
-			So we may transform a real integral to a contour integral, then evaluate using the CRT.
+			Integrals of form $\int_{0}^{2\pi} R(\cos\theta, \sin\theta) \text{ d}\theta$ for rational $R$ can be evaluated by considering a contour integral of an appropriate function around $C_1(0)$. If $z = e^{i\theta}\in C_1(0)$, $\overline{z} = \frac{1}{z}$, $\cos\theta = \Re(z) = \frac{z + (1/z)}{2}$, $\sin\theta = \Im(z) = \frac{z - (1/z)}{2i}$\\
+			If $f(z) := \frac{1}{iz}R\left(\frac{z + 1/z}{2}, \frac{z - 1/z}{2i}\right)$; $f(\exp(i\theta)) = \frac{1}{i \exp(i\theta)}R(\cos\theta, \sin\theta)$. Parametrise $C_1(0)$ by $\gamma : [0, 2 \pi] \to \mathbb{C}, \gamma(\theta) = \exp(i\theta)$. Then $\int_{C_1(0)} f(z) \text{ dz} = \int_{0}^{2 \pi} f(\gamma(\theta)) \gamma'(\theta) \text{ d}\theta = \int_{0}^{2 \pi}f(\exp(i\theta))i \exp(i\theta) \text{ d}\theta = \int_{0}^{2 \pi}\frac{1}{i \exp(i\theta)} R(\cos\theta, \sin\theta)i \exp(i\theta) \text{ d}\theta = \int_{0}^{2\pi} R(\cos\theta, \sin\theta) \text{ d}\theta$.
+			So we may transform a real integral to a contour integral, then apply the CRT.
 			
 		\end{xmp}		
 		
@@ -962,6 +958,40 @@
 			$\int_{\Gamma_N} = 4 i \left(\sum_{n = 1}^{\infty} (-1)^n \frac{1}{n^2} + \frac{\pi ^2}{12}\right)$, so $\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n^2} = \frac{\pi ^2}{12}$
 			
 		\end{xmp}
+		
+		
+		\begin{xmp-s}[If Hol. On $\mathbb{C}$\text{,} Appropriately Bounded; Is A Polynom]{xmp:holeverywherebddrightmeanspolynom}{ }
+			Suppose $h$ is hol. on $\mathbb{C}$ and $\exists C >0, N \ge 0$ s.t. $\left|h(z)\right| \le C \left|z\right|^N$ for all $z\in \mathbb{C}$. Show $h$ is a polynom of degree at most $N$.\\
+			The TSE for $h$ centred at $0$ is valid on $\mathbb{C}$ as $h$ is hol. on $\mathbb{C}$. So for all $z\in \mathbb{C}$, $h(z) = \sum_{j=0}^{\infty}\frac{h^{(j)}(0)}{j1}z^j$. Let $n \ge N + 1$. We claim $h^{(n)}(0) = 0$. By the GCIF, for $R > 0$, $\left|h^{(n)}(0)\right| = \left|\frac{n!}{2 \pi i} \int_{C_R(0)} \frac{h(z)}{z^{n+1}} \text{ dz}\right|
+			\le \frac{n!}{2 \pi} \max_{z \in C_R(0)} \left|\frac{h(z)}{z^{n+1}}\right| \ell(C_R(0))
+			\le \frac{n!}{2 \pi} \max_{z \in C_R(0)} \left|\frac{C\left|z\right|^N}{R^{n+1}}\right| 2 \pi R
+			= \frac{n! C R^N}{R^n}
+			= n!C R^{N-n}
+			\to 0 \text{ as } R \to \infty$ since $n \ge N+1$. Thus $h^{(n)}(0) = 0$. Then we can substitute into the above TSE to see $h(z) = \sum_{j=0}^{N}\frac{h^{(j)}(0)}{j!} z^j$, that is, that $h$ is a polynom of degree at most $N$.
+			
+		\end{xmp-s}
+		
+		
+		\begin{xmp-s}[Evaluating An Improper Integral Via The CRT]{xmp:impintviacomplexint}{ }
+			By CRT, calculate $I = \int_{-\infty}^{\infty} \frac{\cos(x)}{(x^2 + 4)^2} \text{ dx} = \lim_{R\to \infty} \int_{-R}^{R} \frac{\cos(x)}{(x^2 + 4)^2} \text{ dx}.$\\
+			$I$ is the real part of $I_0 = \int_{-\infty}^{\infty} \frac{\exp(ix)}{(x^2 + 4)^2} \text{ dx}$. Let $f(z) = \frac{\exp(iz)}{(z^2 + 4)^2}$ and consider the loop $\Gamma_R$ consisting of $\gamma_R$, the line along the real axis from $-R$ to $R$, and $C_R^+$, the upper semi-circle from $R$ to $-R$. $f$ is hol. except at the zeroes of $(z^2 + 4)^2$, $z = \pm 2i$, both of which are double poles. For $R >2$, only $2i$ lies inside $\Gamma_R$.\\
+			Res$(f, 2i) = \lim_{z\to 2i}\frac{d}{dz}((z-2i)^2 f(z)) 
+			= \lim_{z\to 2i}\frac{d}{dz}(\frac{(z-2i)^2 \exp(iz)}{(z^2 + 4)^2})
+			= \lim_{z\to 2i}\frac{d}{dz}((z-2i)^2 \frac{\exp(iz)}{(z+2i)^2})
+			= \lim_{z\to 2i}\frac{i \exp(iz)(z+2i)^2 - 2\exp(iz)(z+2i)}{(z+2i)^4}
+			= \frac{i \exp(-2)(4i)^2 - 2 \exp(-2)(4i)}{4^4}
+			= \frac{-4ie^{-2} - 2ie^{-2}}{4^3}
+			= \frac{-3ie^{-2}}{32}$ thus by the CRT, $\int_{\Gamma_R} f(z) \text{ dz} = 2 \pi i \text{Res}(f, 2i) = 2 \pi i \frac{-3ie^{-2}}{32} = \frac{3 \pi e^{-2}}{16}$. By the Jordan Lemma, $\left| \int_{C_R^+} f(z) \text{ dz}\right| \to 0$ as $R \to \infty$.\\
+			Therefore $\int_{-\infty}^{\infty} \frac{\exp(ix)}{(x^2 + 4)^2} \text{ dx} 
+			= \lim_{R\to \infty} \int_{-R}^{R} \frac{\exp(ix)}{(x^2 + 4)^2} \text{ dx}
+			= \lim_{R\to \infty} \int_{\gamma_R} f(z) \text{ dz}
+			= \lim_{R\to \infty} \left(\int_{\Gamma_R} f(z) \text{ dz} - \int_{C_R^+} f(z) \text{ dz}\right)
+			= \lim_{R\to \infty} \int_{\Gamma_R} f(z) \text{ dz} - \lim_{R\to \infty} \int_{C_R^+}f(z) \text{ dz}
+			= \lim_{R\to \infty \frac{3 \pi e^{-2}}{16}} = \frac{3 \pi e^{-2}}{16}$.\\
+			Hence, $\int_{-\infty}^{\infty} \frac{\cos(x)}{(x^2 + 4)^2} \text{ dx} = I = \Re(I_0) = \Re\left(\frac{3 \pi e^-2}{16}\right) = \frac{3 \pi e^{-2}}{16}$.
+			
+			
+		\end{xmp-s}
 		
 		
 		
