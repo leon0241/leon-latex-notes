@@ -205,8 +205,8 @@
 			\begin{multicols}{2}
 				\begin{itemize}
 					\item $\exp(z) := e^x(\cos(y) + i\sin(y))$
-					\item $\exp(z) = \exp'(z) = \sum_{j=0}^{\infty} \frac{z^j}{j!}$
-					\item $\exp(z + 2 \pi i) = \exp(z)$
+					\item $\exp(z + 2 \pi i) = \exp(z) = \sum_{j=0}^{\infty} \frac{z^j}{j!}$
+					\item $\exp'(\alpha t) = \alpha \exp(\alpha t)$, $t\in \mathbb{R}, \alpha\in \mathbb{C}$.
 					\item $\sin(z) = \frac{\exp(iz) - \exp(-iz)}{2i}$
 					\item $\cos(z) = \frac{\exp(iz) + \exp(-iz)}{2}$
 					\item $\sin'(z) = \cos(z)$, $\cos'(z) = -\sin(z)$
@@ -918,9 +918,13 @@
 		\end{xmp}
 		
 		
-		\begin{xmp}[Finding A Domain Of Holomorphicity For A Branch]{xmp:holdom}{ }
-			Find a cut plane $D_{z_0, \phi}$ such that the branch $\text{Log}_\phi$ of $\log(z+1)$ is hol. on $\{z\in \mathbb{C} : \Re(z) < -1\}$\\
-			A branch $\text{Log}_\phi$ is hol. on $D_{0, \phi}$. Thus $\text{Log}_\phi(z+1)$ is hol. at $z\in \mathbb{C}$ s.t. $z+1\in D_{0, \phi} = \mathbb{C} \backslash L_{0, \phi}$. $z + 1\in L_{0, \phi}$ iff $z\in L_{-1, \phi}$, so $\text{Log}_\phi(z+1)$ is hol. on $\mathbb{C} \backslash L_{-1, \phi}$. Now just choose $\phi$ s.t. $L_{-1, \phi} \cap \{z\in \mathbb{C} : \Re(z) < -1\} = \emptyset$, for example $\phi = 0$. So our plane is $D_{-1, 0}$.
+		\begin{xmp}[Finding Zeroes Of A Polynomial]{xmp:polynomzeroes}{ }
+			Prove $h(z) = 1/(z^4 + z + 4)$ is hol. on $D_1(0)$ but not on $D_2(0)$.\\
+			Show $p(z) = z^4 + z + 4$ has no zeroes in $D_1(0)$ and one or more in $D_2(0)$. \\
+			Let $q_1(z) := 4$. Then on $C_1(0)$; $\left|p(z) - q_1(z)\right| = \left|z^4 + z + 4 - 4\right| = \left|z^4 + z\right| \le \left|z^4\right| + \left|z\right| = 1^4 + 1 = 2 < 4 = q_1(z)$.\\
+			By Rouch\'e's Theorem, $N_0(p) = N_0(q_1) = 0$ on $D_1(0)$, so $h$ hol on $D_1(0)$.\\
+			Let $q_2(z) = z^4$. Then on $C_2(0)$; $\left|p(z)-q_2(z)\right| = \left|z^4 + z + 4 - z^4\right| = \left|z + 4\right| \le \left|z\right| + \left|4\right| = 6 < 16 = \left|z^4\right| = \left|q_2(z)\right|$.\\
+			Again by Rouch\'e, $N_0(p) = N_0(q_2) = 4$ on $D_2(0)$, so $h$ not hol. on $D_2(0)$.
 			
 		\end{xmp}
 		
