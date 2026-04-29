@@ -17,7 +17,9 @@ LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and M
 </details>
 
 ## [LEGACY] Links to 6-page Exam Sheets
-Outdated - SoM Exam Standard Is Now 2 Pages (re-compiling the .tex using thmboxes_v5 *should* work and get these most of the way to 2 pages)
+Outdated - SoM Exam Standard Is Now 2 Pages  
+*Recompiling these with thmboxes_v5 and preamble.sty is possible, but requires some fiddling with packages and reformatting*
+
 
 <details>
 <summary>Year 2</summary>
