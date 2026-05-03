@@ -31,13 +31,15 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%----------------------------------------------------------------------------------%
 	
-	
+	\sbsadaptr{
 	{\footnotesize \textbf{\underline{Reals, Sequences, and Series}}}
 	
 	
-	{\tiny \textbf{\underline{Real Sequences}}}
-		
-		
+	{\tiny \textbf{\underline{Real Sequences}}}	\hspace*{65pt} Me fr$\to$
+	}
+	{
+	\includegraphics[scale=0.135]{elephant.jpg}
+	}
 		
 		\begin{dfn}[Bounds and Boundedness]{dfn:bounds}{ }
 			Let $A \subseteq R$.
@@ -139,7 +141,11 @@
 				\item \textbf{Converges conditionally} if it converges but $\sum_{n=1}^{\infty}\left|a_n\right|$ diverges.
 			\end{enumerate}
 			
-			Absolute convergence implies convergence.
+		\end{dfn}
+		
+		
+		\begin{thm}[Absolute Convergence vs Convergence]{thm:absconvvsconv}{ }
+			Absolute convergence implies convergence. Note the converse does not always hold (consider $\sum_{n=0}^{\infty} (-1)^n/n$.
 			\vspace{1pt}
 			\hrule	
 			\vspace{-6pt}
@@ -147,7 +153,7 @@
 				Let $(a_k)_{k=1}^\infty$ be a real seq., and $\sum_{n=1}^{\infty}a_n$ be absolutely convergent. We show the series satisfies the Cauchy criterion: Let $\epsilon > 0$. Since $\sum_{n=1}^\infty$ cnvges absolutely, by the Cauchy criterion for series $\exists N\in \mathbb{N}$ s.t. $\sum_{k=m+1}^{n}\left|a_k\right| <\epsilon$ for all $n > m \ge N$. Now let $n > m \ge N$ and apply the TI repeatedly to obtain $\left|\sum_{k=m+1}^n a_k\right| \le \sum_{k=m+1}^n \left|a_k\right| <\epsilon$. This establishes the Cauchy criterion for $\sum_{n=1}^\infty a_n$, so the series is convergent.
 			\end{proof}
 			
-		\end{dfn}
+		\end{thm}
 		
 		
 		\begin{mthm}[The Cauchy Criterion For Series]{thm:cauchforseries}{ }
@@ -222,16 +228,30 @@
 		
 		
 		\begin{dfn}[The Middle Thirds Cantor Set]{dfn:midthrdscantor}{ }
-			The \textbf{Middle Thirds Cantor Set $C$} is a closed set defined by the following recursive process: 
+			The \textbf{Middle Thirds Cantor Set $C$} is a closed set defined as follows: 
 			\begin{enumerate}[label=(\arabic*)]
 				\item Divide $[0, 1]$ into thirds, remove the open middle third interval $(\frac{1}{3}, \frac{2}{3})$.
 				\item Divide the remaining two intervals into thirds and remove the open middle thirds intervals $(\frac{1}{9}, \frac{2}{9})$ and $(\frac{7}{9}, \frac{8}{9})$.
 				\item Repeat this process ad infinitum.
 			\end{enumerate}
-			At the $n^{th}$ stage of the construction we have $2^n$ closed intervals $(I_{n, k})_{k=1}^{2n}$ with $\lambda(I_{n, k}) = 3^{-n}$ for all $1 \le k \le 2^n$. \\
-			Then $C := \bigcap_{n =1}^{\infty}C_n$ where $C_n :+ \bigcup_{k =1}^{2^n}I_{n, k}$ for $n \in \mathbb{N}$. Each $I_{n, k}$ is a closed interval so their finite union $C_n$ is closed, and $C$, the intersection of these closed $C_n$, is also closed.
+			At the $n^{th}$ stage of the construction we have $2^n$ closed intervals $(I_{n, k})_{k=1}^{2n}$ with $\lambda(I_{n, k}) = 3^{-n}$ for all $1 \le k \le 2^n$. Then $C := \bigcap_{n =1}^{\infty}C_n$ where $C_n :+ \bigcup_{k =1}^{2^n}I_{n, k}$ for $n \in \mathbb{N}$. Each $I_{n, k}$ is closed, so their finite union $C_n$ and the intersection $C$ of these $C_n$ are also closed.
 			
 		\end{dfn}
+		
+		
+		\begin{xmp}[Showing Not Closed And Not Open]{xmp:notclsdoropn}{ }
+			Show $S := \{e^k : k\in \mathbb{Z}\}$ is neither open nor closed.\\
+			First show $S$ is not open: Let $k=0$. $e^0 = 1$, so $1\in S$. For $k > 0$, $e^k \ge e^1$, and for $k < 0, e^k \le e^{-1}$. Thus $S \cap (e^{-1}, e) = \{1\}$. Since $\{1\}$ is not open, $S$ cannot be open, as $(e^{-1}, e)$ is open and a finite intersection of open sets is open.\\
+			Now show $S$ is not closed: The seq $x_n := e^{-n}$ has $x_n\in S$ for all $n\in \mathbb{N}$ but $\lim_{n\to \infty} x_n = 0 \notin S$. Thus $S$ is not sequentially closed, ie not closed.
+			
+		\end{xmp}
+		
+		
+		\begin{xmp-s}[A Seq With Bounded Term Differences Is Cauchy]{xmp:bddtermdiffsmeanscauch}{ }
+			Let $(a_n)_{n\in \mathbb{N}}$ be s.t. $\left|a_n - a_{n-1}\right| \le 2^{-n}$. Show $(a_n)_{n\in \mathbb{N}}$ is Cauchy.\\
+			Consider $\left|a_n - a_m\right|$. Form the telescoping sum then apply the TI: $\left|a_n - a_m\right| \le \left|a_n - a_{n-1}\right| + \left|a_{n-1} - a_{n-2}\right| + ... + \left|a_{m+1} - a_m\right| \le \frac{1}{2^n} + \frac{1}{2^{n-1}} + \dots + \frac{1}{2^{m+1}}$. Thus $\left|a_n - a_m\right| \le \sum_{k=m+1}^{n} \frac{1}{2^k} \le \frac{1}{2^m}$, so given $\epsilon > 0$ choose $N\in \mathbb{N}$ s.t. $\frac{1}{2^N} <\epsilon$ and the seq is Cauchy.
+			
+		\end{xmp-s}
 		
 		
 		
@@ -541,6 +561,13 @@
 		\end{xmp}
 		
 		
+		\begin{xmp-s}[Diffable On Open Intvl\text{,} Bdd Deriv $\implies$ Unif Cont]{xmp:weirdunifcont}{ }
+			Let $I \subseteq \mathbb{R}$ be an open interval and $f: I \to \mathbb{R}$ be differentiable with bounded derivative on $I$. Show $f$ is uniformly continuous on $I$.\\
+			$\exists M\in \mathbb{R}$, $\left|f'(x)\right| \le M$ for all $x\in I$. By the MVT, for all $x, y\in \mathbb{R}$, there exists $c$ between $x$ and $y$ s.t. $\left|f(x) - f(y)\right| = \left|f'(c)\right| \left|x-y\right| \le M\left|x-y\right|$. Then given $\epsilon > 0$, let $\delta =\epsilon/M$, and we have unif cont.ty by the definition.
+			
+		\end{xmp-s}
+		
+		
 		
 		{\tiny \textbf{\underline{Uniform Convergence}}}	
 		
@@ -721,19 +748,18 @@
 		
 		
 		\begin{dfn}[Power Series]{dfn:powseries}{ }
-		Let $(a_n)_{n\in \mathbb{N}}$ be a real sequence and $c\in \mathbb{R}$. A \textbf{power series centred at $c$} is a series of the form $\sum_{n=0}^{\infty}a_n(x-c)^n$.
+			Let $(a_n)_{n\in \mathbb{N}}$ be a real sequence and $c\in \mathbb{R}$. A \textbf{power series centred at $c$} is a series of the form $\sum_{n=0}^{\infty}a_n(x-c)^n$.
 		
 		\end{dfn}
 		
 		
-		\begin{dfn}[Radius Of Convergence]{dfn:radofconv}{ }
-		Let $(a_n)_{n\in \mathbb{N}}$ be a real seq and $c\in \mathbb{R}$. Then one of the following holds:
-		\begin{enumerate}[label=(\arabic*)]
-			\item $\sum_{n=0}^{\infty}a_n(x-c)^n$ converges only when $x = c$
-			\item $\sum_{n=0}^{\infty}a_n(x-c)^n$ converges absolutely for all $x\in \mathbb{R}$
-			\item There exists $R > 0, R\in \mathbb{R}$ such that $\sum_{n=0}^{\infty}a_n(x-c)^n$ converges absolutely when $\left|x - c\right| < R$ and diverges when $\left|x-c\right|> R$. Here $R = \sup\{r > 0 : (a_nr^n)_{n\in \mathbb{N}_0} \text{is bounded}\}$
-		\end{enumerate}
-		The $R$ in case $(3)$ is the \textbf{radius of convergence} of $\sum_{n=0}^{\infty}a_n(x-c)^n$. In cases $(1)$ and $(2)$ we say $R=0$ and $R = \infty$ respectively.
+		\begin{dfn}[Radius Of Convergence $R$]{dfn:radofconv}{ }
+			Let $(a_n)_{n\in \mathbb{N}}$ be a real seq and $c\in \mathbb{R}$. Then one of the following holds:
+			\begin{enumerate}[label=(\arabic*)]
+				\item $\exists R > 0, R\in \mathbb{R}$ s.t. $\sum_{n=0}^{\infty}a_n(x-c)^n$ cnvges absolutely if $\left|x - c\right| < R$ and diverges if $\left|x-c\right|> R$. Here $R = \sup\{r > 0 : (a_nr^n)_{n\in \mathbb{N}_0} \text{is bdd}\}$
+				\item $\sum_{n=0}^{\infty}a_n(x-c)^n$ converges only when $x = c$. Here $R = 0$
+				\item $\sum_{n=0}^{\infty}a_n(x-c)^n$ converges absolutely for all $x\in \mathbb{R}$. Here $R = \infty$
+			\end{enumerate}.
 		
 		\end{dfn}
 		
@@ -766,6 +792,28 @@
 		$f$ is \textbf{real analytic} if its TS converges ptwise on $I$ and equals $f(x)$ at $x$
 		
 		\end{dfn}
+		
+		
+		\begin{xmp}[Applying The UCT For Integrals]{xmp:uctforints}{ }
+			Use the UCT for integrals to prove $\lim_{n\to \infty}\int_0^2 e^{x^2/n} \text{ dx}$ exists and evaluate it.\\
+			Let $f_n, f : [o, 2] \to \mathbb{R}$ be $f_n(x) := e^{x^2/n}$ and $f(x):= 1$. Clearly both are cont. on $[0, 2]$ and thus intable there. Given $0 \le x \le 2$, by the MVT $\exists c\in (0, 2)$ s.t. $\left|f_n(x) - f(x)\right| = \left|e^{x^2/n} - e^0\right| = \frac{\left|e^c\right|x^2}{n} \le \frac{4e^4}{n}$. Thus $\sup_{x\in [0, 2]} \left|f_n(x) - f(x)\right| \le \frac{4c^2}{n} \to 0$ as $n \to \infty$. Then by the squeeze theorem $f_n \to f$ uniformly on $[0, 2]$ as $\to \infty$. Since our interval is bounded, by the UCT $\lim_{n\to \infty} \int_{0}^{2} e^{x^2/n} \text{ dx} = \int_{0}^{2} 1 \text{ dx} = 2$.
+			
+		\end{xmp}
+		
+		
+		\begin{xmp}[Translation Invariance]{xmp:infiniteunionmes}{ }
+			Let $E \subseteq \mathbb{R}$ with $m(E) < \infty$, $x\in \mathbb{R}$. Define $x + E = \{x + y : y\in E\}$. Show $m(E) = m(x+E)$.\\
+			Let $\epsilon > 0$. By the dfn of measure there exists a seq of open $(I_j)_{j\in \mathbb{N}}$ s.t. $E \subseteq \bigcup_{j=1}^\infty I_j$ and $\sum_{j=1}^{\infty} \lambda(I_j) < m(E)  +\epsilon$. Note the translates $(I_j + x)_{j\in \mathbb{N}}$ are also a seq of open intvls with $\lambda(I_j + x) = \lambda(I_j) \forall j\in \mathbb{N}$. Moreover $E + x \subseteq \bigcup_{j=1}^\infty (I_j + x)$ and $\sum_{j=1}^{\infty}\lambda(I_j + x) < m(E) +\epsilon$. Taking the infimum we see $m(E + x) \le m(E) +\epsilon$, since $\epsilon > 0$ arbitrary $m(E+x) \le m(E)$.\\
+			We can apply the same inequality in reverse (since $E = (E+x) -x$ is a translate of $E+x$. Thus $m(E) \le m(E+x) \le m(E)$, so $m(E) = m(E+x)$.
+		
+		\end{xmp}
+		
+		
+		\begin{xmp}[Applying The DCT (Less Evil Example)]{xmp:applymctforints}{ }
+			Use the DCT to prove $\lim_{n\to \infty} \int_{0}^{\infty} (1 + x/n)^{-n} \sin(x/n) \text{ dx}$ exists and evaluate it.\\
+			Define $f_n: \mathbb{R}\to \mathbb{R}$ be $f_n(x):= (1 + x/n)^{-n} \sin(x/n) \chi_{[0, \infty)}$, it is the product of a cont. func and the charfunc of an L-mesable set so is L-mesable. $(1 + x/n)^n \to e^x$ ptwise on $\mathbb{R}$ as $n \to \infty$ (proof left as exercise) and $\sin(x/n) \to 0$ ptwise on $\mathbb{R}$ as $n \to \infty$. Thus $f_n(x) \to 0$ ptwise on $\mathbb{R}$ as $n \to \infty$. By observations akin to evil example (binom thm, $n \ge 2$, $(1 + x/n)^n \ge 1 + x^2/4)$, $\left|f_n(x)\right| \le g(x) := \frac{4}{4+x^2}$ for $x\in \mathbb{R}, n \ge 2$. Again by evil example $g$ is L-intable. Thus we can apply the DCT to see that $\lim_{n\to \infty} \int_{0}^{\infty} (1 + x/n)^{-n} \sin(x/n) \text{ dx} = \lim_{n\to \infty} \int_{\mathbb{R}} f_n(x) \text{ dx} = \int_{\mathbb{R}}\lim_{n\to \infty} f_n(x) \text{ dx} = \int_{0}^{\infty} 0 \text{ dx} = 0$. 
+			
+		\end{xmp}
 		
 		
 		
@@ -840,19 +888,34 @@
 		
 		
 		\begin{thm}[Convergence Tests]{thm:convtests}{ }
-		\begin{itemize}
-			\item \textit{Sequences MCT}: If a real sequence $(a_n)_{n \in \mathbb{N}}$ is monotone non-decreasing and bdd above; or monotone non-increasing and bdd below; it converges.
-			\item If a seq converges to $L$, all its subseqs also converge to $L$ (so to disprove convergence find two subseqs converging to different limits).
-			\item \textit{Limsup/inf}: $(x_n)_{n\in \mathbb{N}}$ converges iff $\limsup_{n\to \infty}x_n = \liminf_{n \to \infty}x_n$.
-			\item \textit{p-Series}: $\sum_{n=1}^{\infty}\frac{1}{n^p}$ converges if $p >1$, diverges otherwise.
-			\item \textit{Ratio}: For $\sum_{n=1}^{\infty}$ with all $a_n \ne 0$, $\rho = \lim_{n\to \infty}\left|\frac{a_{n+1}}{a_n}\right|$; if $0 \le \rho < 1$ series converges absolutely, if $\rho > 1$ series diverges.
-			\item \textit{Alternating Series}: For $\sum_{n=1}^{\infty} (-1)^{n+1} b_n$ or $\sum_{n=1}^{\infty}(-1)^n b_n$, if $b_{n +1} \le b_n$ for all $n\ge 1$ and $b_n \to 0$ the series converges.
-			\item \textit{Root}: For $\sum_{n+1}^{\infty}a_n$, $\rho := \lim_{n\to \infty} \sqrt[n]{\left|a_n\right|}$, if $0 \le \rho < 1$ series converges absolutely, if $\rho > 1$ series diverges.
-			\item \textit{Limit Comparison}: For $\sum_{n=1}^{\infty} a_n$ and $\sum_{n=1}^{\infty}b_n$, $a_n \ge 0, b_n > 0$ for all $n$, if $\lim_{n\to \infty} \frac{a_n}{b_n} = c$ with $0 < c < \infty$; both series converge or both diverge.
-		\end{itemize}
-		
+			\begin{itemize}
+				\item \textit{Sequences MCT}: If a real sequence $(a_n)_{n \in \mathbb{N}}$ is monotone non-decreasing and bdd above; or monotone non-increasing and bdd below; it converges.
+				\item If a seq converges to $L$, all its subseqs also converge to $L$ (so to disprove convergence find two subseqs converging to different limits).
+				\item \textit{Limsup/inf}: $(x_n)_{n\in \mathbb{N}}$ converges iff $\limsup_{n\to \infty}x_n = \liminf_{n \to \infty}x_n$.
+				\item \textit{p-Series}: $\sum_{n=1}^{\infty}\frac{1}{n^p}$ converges if $p >1$, diverges otherwise.
+				\item \textit{Ratio}: For $\sum_{n=1}^{\infty}$ with all $a_n \ne 0$, $\rho = \lim_{n\to \infty}\left|\frac{a_{n+1}}{a_n}\right|$; if $0 \le \rho < 1$ series converges absolutely, if $\rho > 1$ series diverges.
+				\item \textit{Alternating Series}: For $\sum_{n=1}^{\infty} (-1)^{n+1} b_n$ or $\sum_{n=1}^{\infty}(-1)^n b_n$, if $b_{n +1} \le b_n$ for all $n\ge 1$ and $b_n \to 0$ the series converges.
+				\item \textit{Root}: For $\sum_{n+1}^{\infty}a_n$, $\rho := \lim_{n\to \infty} \sqrt[n]{\left|a_n\right|}$, if $0 \le \rho < 1$ series converges absolutely, if $\rho > 1$ series diverges.
+				\item \textit{Limit Comparison}: For $\sum_{n=1}^{\infty} a_n$ and $\sum_{n=1}^{\infty}b_n$, $a_n \ge 0, b_n > 0$ for all $n$, if $\lim_{n\to \infty} \frac{a_n}{b_n} = c$ with $0 < c < \infty$; both series converge or both diverge.
+			\end{itemize}
 		
 		\end{thm}
+		
+		
+		\begin{xmp}[Applying The Dominated Convergence Theorem]{xmp:applydct}{ }
+		Use the DCT to evaluate $\lim_{n\to \infty} \int_{0}^{1}\frac{1}{(1+x/n)^n x^{1/n}} \text{ dx}$.\\
+		Let $f_n: \mathbb{R} \to \mathbb{R}$ be $f_n(x) := (1+x/n)^{-n} x^{-1/n} \chi_{(0, \infty)}(x)$ for all $x\in \mathbb{R}$. We claim $f_n$ is L-mesable. Since is is not cont. on $\mathbb{R}$, given $\lambda\in \mathbb{R}$ let $E_\lambda := \{x\in \mathbb{R} : f_n(x) > \lambda\}$. Then if $\lambda < 0$, $E_\lambda = \mathbb{R}$ which is L-mesable. If $\lambda \ge 0$, $E_\lambda = \{x\in (0, \infty) : (1+ x/n)^{-n}x^{-1/n} > \lambda\}$. $g_n : (0, \infty) \to \mathbb{R}$, $g_n(x) := (1+ x/n)^{-n}x^{-1/n}$ for $x > 0$ is a cont. func over an open intvl, so $E_\lambda$ is an open set and thus L-mesable. Thus $f_n(x)$ is L-mesable.\\
+		We know $(1 + 1/x)^{-n} \to e^{-x}$ ptwise on $[0, \infty)$, and $x^{-1/n} \to 1$ ptwise on $(0, \infty)$, as $n \to \infty$. Thus $f(x) := e^{-x} \chi_{(0, \infty)}(x)$ for $x\in \mathbb{R}$ is the ptwise lim of $f_n$ on $\mathbb{R}$.\\
+		By the binomial theorem, for $x > 0$, $(1 + \frac{x}{n})^n \ge 1 + n \cdot x/n + \binom{n}{2} \left(\frac{x}{n}\right)^2 = 1 + x + \frac{n(n-1)}{2n^2} \cdot x^2$. If $n \ge 2$, $ n-1 \ge n/2$, so $(1 + x/n)^n \ge 1 + x^2/4$. It follows from these that $(1 + x/n)^{-n} \le \frac{4}{4+x^2}$. Moreover, $x^{1/n} \ge 1$ for $x \ge 1$ and $x^{1/n} \ge x^{1/2}$ for $0 < x \le 1$ and $n \ge 2$. Combining all these observations:\\
+		$\left|f_n(x)\right| \le \ell(x) := \frac{4}{4 + x^2}\chi_{[1, \infty)}(x) + \frac{1}{x^{1/2}}\chi_{(0,1)}(x)$ for all $x\in \mathbb{R}, n \ge 2$, and $\ell(x)$ is non-neg and L-mesable.\\
+		We claim $\ell$ is L-intable. Indeed by monotonicity of the integral we have $\int_{1}^{\infty} \frac{4}{4+x^2} \chi_{[1, \infty)}(x) \text{ dx} \le \int_{1}^{\infty} \frac{4}{x^2} \text{ dx}$, where the RHS is finite (proof left as an exercise). Moreover define $h: (0, \infty) \to \mathbb{R}$ by $h(x) := x^{-1/2}$ for $x > 0$. Then $H: (0, \infty) \to \mathbb{R}, H(x) := 2x^{1/2}$ for $x> 0$ is a primitive for $h$. By the FTC, for $\epsilon > 0$, $\int_{eps}^{1} x^{-1/2} \text{ dx} = \left[2x^{1/2}\right]_\epsilon^1 = 2 - 2e^{1/2}$.\\
+		By the MCT, $\int_{\mathbb{R}} \frac{1}{x^{1/2}}\chi_{(0,1)}(x) \text{ dx} = \int_{0}^{1} \frac{1}{x^{1/2}} \text{ dx} = \lim_{\epsilon\to 0^+} \int_{\epsilon}^{1}\frac{1}{x^{1/2}}dx = \lim_{\epsilon\to 0^+} 2 - 2\epsilon^{1/2} = 2$.\\
+		Combining these observations with the linearity of the integral, $\int_{\mathbb{R}} \ell(x) \text{ dx} < \infty$, so $\ell$ is L-intable. Thus we may apply the DCT and conclude:\\
+		$\lim_{n\to \infty} \int_{0}^{\infty} \frac{1}{(1+x/n)^n x^{1/n}} \text{ dx} = \lim_{n\to \infty} \int_{\mathbb{R}}f_n(x) \text{ dx} = \int_{\mathbb{R}} \lim_{n\to \infty} f_n(x) \text{ dx} = \int_{0}^{\infty} e^{-x} \text{ dx} = 1$.
+		
+		\end{xmp}
+		
+		
 		
 		
 	\end{multicols*}
