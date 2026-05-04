@@ -20,7 +20,7 @@ LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and M
 <details>
     <summary>Other Level 10s</summary>
     <ul>
-        <li> <b> Classical Mechanics For Mathematicians </b> - <a href='exam-sheets/CMM/PDF/CMMExamNotes.pdf'>click here!</a> (Not Louis' original content, just a condensed version of another sheet) </li>
+        <li> <b> Classical Mechanics For Mathematicians </b> - <a href='exam-sheets/CMM/PDF/CMMExamNotes.pdf'>click here!</a> <i>(Not Louis' original content, just a condensed version of another sheet) <i> </li>
 </details>
 
 ## [LEGACY] Links to 6-page Exam Sheets
