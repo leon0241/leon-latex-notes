@@ -9,11 +9,12 @@ LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and M
 ## Links to 2-page Exam Sheets <i>Made by [Louis!](https://github.com/AulrenT)</i> 
 *NB - These PDFs do not have sufficient margin for many printers and will be cropped (I optimised for myself) - ensure you set appropriate margins in your print dialogue - test before you rely on it*
 <details>
-    <summary>Year 3</summary>
+    <summary>Level 10s</summary>
     <ul>
         <li> <b>Honours Complex Variables</b> - <a href="exam-sheets/HCov/PDF/HCovExamNotes.pdf">click here!</a> </li>
         <li> <b> Honours Algebra</b> - <a href='exam-sheets/HAlg/PDF/HAlgExamNotes.pdf'>click here!</a> </li>
         <li> <b> Honours Analysis</b> - <a href='exam-sheets/HAna/PDF/HAnaExamNotes.pdf'>click here!</a> </li>
+        <li> <b> Classical Mechanics For Mathematicians </b> - <a href='exam-sheets/CMM/PDF/CMMExamNotes.pdf'>click here!</a> </li>
 </details>
 
 ## [LEGACY] Links to 6-page Exam Sheets
