@@ -69,7 +69,7 @@
 % Underscore compatability
 \usepackage{underscore}
 % bold math
-% \usepackage{bm}
+\usepackage{bm}
 % More colours
 \usepackage[dvipsnames]{xcolor}
 % String manipulation - needed for thmboxes
@@ -127,7 +127,8 @@
 \pretolerance=0
 \hyphenpenalty=0
 
-
+% Reduce spacing between lines in array environment
+\addtolength{\jot}{-0.5ex}
 
 \usepackage[nodisplayskipstretch]{setspace}
 
@@ -141,7 +142,7 @@
 \setlength\arraycolsep{0pt}
 
 
-%Smaller bullet point to match \fontsize{4pt}{5pt}
+%Smaller bullet point to match \fontsize{5pt}{6pt}
 \renewcommand\labelitemi{$\vcenter{\hbox{\tiny\adfbullet{27}}}$}
 
 
