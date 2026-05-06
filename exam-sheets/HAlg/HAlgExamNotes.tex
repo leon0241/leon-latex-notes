@@ -23,16 +23,18 @@
 		\raggedcolumns 
 		%Original template by Leon, modified by Louis. Content by Louis
 		\vspace{-5pt}
-		\subsection*{HAlg Exam Sheet 2025/26 - What Doesn't Kill You}
+		\subsection*{HAlg 2025/26 - She Jordan On My Normal Till I Form}
 		\vspace{-5pt}
 		
 		
 		
 		\begin{dfn}[Random Definitions]{dfn:randomstuff}{ }
 			\begin{itemize}
-				\item pr$_i : X_1 \times ... \times X_n \to X_i, (x_1, ..., x_n) \mapsto x_i$
-				\item $\mathcal{P}(X) = \left\{U: U\subseteq X\right\}$ is the \/{power set} of $X$. A subset of $\mathcal{P}$ is a \textbf{system of subsets} of $X$.
-				\item 'n-z' means 'non-zero'
+				\item pr$_i : X_1 \times \dots \times X_n \to X_i, (x_1, \dots, x_n) \mapsto x_i$
+				\item The \textbf{power set} of $X$ is $\mathcal{P}(X) = \left\{U: U\subseteq X\right\}$ 
+				\item A subset of $\mathcal{P}$ is a \textbf{system of subsets} of $X$.
+				\item $\vec{0}$ is understood to be the linear combination of no vectors.
+				\item $A$ (an operator/mat/etc) is \textbf{nilpotent} with \textbf{degree $k$} if $A^k = 0$, $k\in \mathbb{N}$.
 			\end{itemize}
 			
 		\end{dfn}
@@ -40,7 +42,11 @@
 		
 		\begin{thm}[Random Theorems]{thm:randoms}{ }
 			\begin{itemize}
+				\item Group axioms for $(G, *)$: G closed under $*$; $*$ associative $[g*(h*k) = (g*h)*k]$, $\exists$ unique identity $\id \in G$; $\exists$ unique inverse $g^{-1}\in G \; \forall g$.
+				\item For $G, H$ grps, $f: G \to H$ is a group hom. if $f(ab) = f(a)f(b)$.\\
+				\item For $f$ a group hom. $\ker(f) = \{a\in G : f(a) = e\}$ is a normal subgrp of $G$.
 				\item O-S: For $G$ a group acting on a finite set $X$, $\left|\text{Orb}(x)\right| = \left|G\right|/\left|\text{Stab}(x)\right|$
+				\item Lagrange's Theorem: For $G$ a finite group and $H \triangleleft G$ a normal subgroup (invariant under conjugation, $ghg^{-1}\in H \; \forall g\in G, h\in H$); $\left|G\right| = \left|H\right| \left|G/H\right|$
 			\end{itemize}
 			
 		\end{thm}
@@ -48,10 +54,14 @@
 		
 		\begin{rem}[Notation]{rem:noting}{ }
 			\begin{itemize}
-				\item 'almost all' means 'all but finitely many'
+				\item VS = Vector Space. VsubS = Vector subSpace. $F-$VS = $F-$Vector Space
+				\item `lin-ind'  = `linearly independent' and `lin-dep' = `linearly dependent'
+				\item `almost all' means `all but finitely many'
+				\item `n-z' = `non-zero'
 			\end{itemize}
 			
 		\end{rem}
+		
 		
 		
 	%----------------------------------------------------------------------------------%
@@ -64,17 +74,18 @@
 		
 		\begin{dfn}[Systems Of Linear Equations]{dfn:sysoflineqs}{ }
 			Let $F$ be a field. We seek to solve the system of $n$ linear equations in $m$ unknowns, described more easily by the extended coefficient matrix.
-			\begin{multicols}{2}
-			\vspace{-5pt}
-			$$
-			\begin{array}{ *{4}{cc}c }
+			\sbsadaptr{
+			\vspace{0.5em}
+			$
+			\begin{smallmatrix}
 				a_{11}x_1 &+& a_{12}x_2 &+& \cdots &+& a_{1m}x_m &=& b_1    \\
 				a_{21}x_1 &+& a_{22}x_2 &+& \cdots &+& a_{2m}x_m &=& b_2    \\
 				\vdots    & & \vdots    & &        & & \vdots    & & \vdots \\
 				a_{n1}x_1 &+& a_{n2}x_2 &+& \cdots &+& a_{nm}x_m &=& b_n
-			\end{array} 
-			$$
-			\columnbreak
+			\end{smallmatrix} 
+			$
+			}
+			{
 			$
 			\begin{amatrix}{4}
 				a_{11}& a_{12} & \dots & a_{1m} & b_1 \\
@@ -83,35 +94,19 @@
 				a_{n1}& a_{n2} & \dots & a_{nm} & b_n
 			\end{amatrix}
 			$
-			\end{multicols}
+			}
 			
 			\begin{itemize}
 				\item The set $L \subseteq F^m$ of m-tuples satisfying the equations is the \textbf{solution set}.
-				\item If the solution set of a linsys of eqns $\ne \emptyset$ we obtain all solutions by adding componentwise an arbitrary solution of the homogenised system to a fixed solution of the system.
+				\item For a linsys with soln set $\ne \emptyset$, all solns are obtained by adding an arbitrary soln of the homogenised sys to a fixed soln of the sys componentwise.
 			\end{itemize}
 			
 			
 		\end{dfn}
 		
 		
-		\begin{dfn}[Matrices]{dfn:matrices}{ }
-			A mapping $A: \left\{1, ..., n\right\} \times \left\{1, ..., m\right\} \to Z$ is called an $n \times m$-matrix with coefficients in $Z$.
-			\begin{itemize}
-				\item The set of all $n \times m$-matrices with coefficients in $Z$ is denoted Mat$(n \times m; Z) :=$Maps$({1, ..., n} \times {1, ..., m}, Z)$
-				\item If $m = n$ we have a \textbf{square matrix} and write Mat$(n, Z)$
-				\item For square matrix $A$, its \textbf{trace} $\text{tr}(A)$ is the sum of its diagonal entries
-				\item A square matrix $A$ is \textbf{nilpotent} with \textbf{index/degree $k$} if $A^k = 0$ for $k \in \mathbb{N}$. 
-				\item $P \in $Mat$(n, \mathbb{R})$ is \textbf{orthogonal} if $P^T P = I_n$, ie $P^T = P^{-1}$.
-				\item $P \in $Mat$(n, \mathbb{C})$ is \textbf{unitary} if $\overline{P}^TP = I_n$, ie $\overline{P}^T = P^{-1}$.
-				\item $P \in $Mat$(n, \mathbb{C})$ is \textbf{hermitian} if $P = \overline{P}^T$, and the mapping on the standard IPS described by $P$ is self-adjoint.
-				\item For $A \in $Mat$(n, \mathbb{C})$, $\exp(A) := \sum_{k = 0}^{\infty} \frac{1}{k!} A^k$. For commutative $A, B$, $\exp(A + B) = \exp(A) \exp(B)$
-			\end{itemize}
-			
-		\end{dfn}
-		
-		
-		\begin{dfn}[Fields And Vector Spaces]{dfn:fieldsnvecs}{ }
-			\begin{multicols}{2}
+		\begin{mdfn}[Fields And Vector Spaces]{mdfn:fieldsnvecs}{ }
+			\sbsadapt{
 				A \textbf{field} $F$ is a set with functions $+ : F\times F \to F ; (\lambda, \mu) \mapsto \lambda + \mu$ and $\cdot : F \times F \to F; (\lambda, \mu) \mapsto \lambda\mu$ s.t. $(F, +)$ and $(F\backslash\{0\}, \cdot)$ are abelian groups with respective identities $0_F, 1_F$, and $\lambda(\mu + \nu) = \lambda \mu + \lambda\nu \in F$.
 				
 				\begin{itemize}
@@ -120,134 +115,163 @@
 					\item If $\lambda \vec{v} = 0, \lambda = 0$ or $\vec{v} = \vec{0}$
 					
 				\end{itemize}
-			
-			
-			
-				\columnbreak
-				A \textbf{vector space $V$ over a field $F$} is a pair made up of an abelian group $V = (V, \dotplus )$ and a mapping $F \times V \to V ; (\lambda, \vec{v} ) \mapsto \lambda\vec{v}$ such that for all $\lambda, \mu \in F$ and $\vec{v}, \vec{w} \in V$ the following hold:
+			}
+			{
+				A \textbf{vector space $V$ over $F$} is an abelian group $(V, \dotplus )$ paired with a mapping $F \times V \to V ; (\lambda, \vec{v} ) \mapsto \lambda\vec{v}$ such that $\forall \!\! \lambda, \mu \in F$ and $\vec{v}, \vec{w} \in V$:
 				\begin{align*}
 					\lambda(\vec{v} + \vec{w}) &= (\lambda\vec{v}) + (\lambda\vec{w})\\
 					(\lambda + \mu)\vec{v} &= (\lambda\vec{v}) + (\mu \vec{v})\\
 					\lambda(\mu \vec{v}) &= (\lambda \mu) \vec{v}\\
 					1_F \vec{v} &= \vec{v}
 				\end{align*}
+			}
 			
-			\end{multicols} 
 			
 			\begin{itemize}
-				\item Let $X$ be a set and $V$ an $F-$VS. Then the set Maps$(X, V)$ of mappings $X \to V$ is an $F-$VS (define $(f+g)(x) = f(x) + g(x)$ and $(\lambda f)(x) = \lambda (f(x))$).
-				\item Given $F-$VSs $V_1, ..., V_n$, $V_1 \times ... \times V_n$ is an $F-$VS if we define addition/mult by scalars componentwise. We denote this VS by $V_1 \oplus ... \oplus V_n$ and name it the \textbf{external direct sum}. $F^n = F \oplus ... \oplus F$ $n$ times.
-				\item Two VsubSs $V_1, V_2$ of a VS $V$ are \textbf{complementary} if addition defines a bijection: $V_1 \times V_2 \tilde{\to} V$
+				\item For $X$ a set and $V$ an $F-$VS, the set Maps$(X, V)$ of mappings $X \to V$ is an $F-$VS (define $(f+g)(x) = f(x) + g(x)$ and $(\lambda f)(x) = \lambda (f(x))$).
+				\item Given $F-$VSs $V_1, \dots, V_n$, $V_1 \times \dots \times V_n$ is an $F-$VS if we define addition/mult by scalars componentwise. We denote this VS by $V_1 \oplus \dots \oplus V_n$ and name it the \textbf{external direct sum}. $F^n = F \oplus \dots \oplus F$ $n$ times.
+				\item Two VsubSs $V_1, V_2$ of a VS $V$ are \textbf{complementary} if addition defines a bijection: $V_1 \times V_2 \tilde{\to} V$ %TO-DO - More detail
+				\item A nice example of an infinite-dim VS is the space of all sequences (ie working over $\mathbb{R}$, real seqs). A nice endomorphism with this VS is 'shifting' all the indices of the seq.
+				\item For a set $X$, the set Maps$(X, F)$ equipped with pointwise addition and scalar multiplication is an F-VS. 
 				
+			\end{itemize}
+			
+		\end{mdfn}
+		
+		
+		\begin{dfn}[Vector Subspaces]{dfn:vecsubspc}{ }
+			Let $U$ be a subset of a VS $V$. 
+			$U$ is a \textbf{vector subspace} if $\vec{0} \in U$ and $\forall \vec{u}, \vec{v} \in U, \lambda \in F$: $\vec{u} + \vec{v}$ and $\lambda \vec{u} \in U$.
+			\begin{itemize}
+				\item The solution set of a linsys of eqns seen earlier is a vector space
+				\item $\alpha_1\vec{v}_1 + \dots + \alpha_n \vec{v}_n$, $n\in \mathbb{N}$ is a \textbf{linear combination} of $\vec{v}_1, \dots, \vec{v}_n$.
+				\item A subset is a \textbf{hyperplane} of a VS if it is a proper VsubS (a VsubS $\ne$ V) and together with one other $\vec{v}$ generates the whole VS.
+				\item The intersection of two VSs is itself a VS
 			\end{itemize}
 			
 		\end{dfn}
 		
 		
-		\begin{dfn}[Vector Subspaces]{dfn:vecsubspc}{ }
-			A subset $U$ of a vector space $V$ is a \textbf{vector subspace} if $\vec{0} \in U$ and $\forall \vec{u}, \vec{v} \in U, \lambda \in F$, $\vec{u} + \vec{v}$ and $\lambda \vec{u} \in U$.
+		\begin{dfn}[The Free Vector Space]{dfn:freevs}{ }
+		The \textbf{free vector space on $X$}, $F \left\langle X\right\rangle \subseteq$Maps$(X, F)$, is the VsubS of all mappings which send almost all $x \in X$ to zero.
+		
+		\end{dfn}
+		
+		
+		\begin{dfn}[Span and Generating Sets]{dfn:genersetsnspan}{ }
+			Let $T$ be a subset of an $F-$VS $V$. $\left\langle T\right\rangle$, the \textbf{vector subspace generated by $T$} or \textbf{span of $T$} is the set of all linear combinations of vectors in $T$. 
+			\vspace{-5.5ex}
+			{\setlength{\columnsep}{-8em}
+			\begin{multicols*}{2}
 			\begin{itemize}
-				\item The solution set of a linsys of eqns seen earlier is a vector space
-				\item An expression of form $\alpha_1\vec{v}_1 + ... + \alpha_n \vec{v}_n$ with $n$ finite is a \textbf{linear combination} of $\vec{v}_1, ..., \vec{v}_n$.
-				\item A subset is a \textbf{hyperplane} if it is a proper subspace and together with one other $\vec{v}$ generates the whole VS.
-				\item The intersection of two VSs is itself a VS
+				\item $\left\langle \emptyset\right\rangle = \vec{0}$
+				\item If $v \in \left\langle T\right\rangle, \left\langle T \cup \{v\}\right\rangle = \left\langle T\right\rangle$.
 			\end{itemize}
-			
-			Let $T$ be a subset of $V$, a VS over $F$. $\left\langle T\right\rangle$, the \textbf{span of $T$} or \textbf{vector subspace generated by $T$} is the set of all linear combinations of vectors in $T$. (If $T = \emptyset, \left\langle T \right\rangle = \vec{0}$). Note if $v \in \left\langle T\right\rangle, \left\langle T \cup \{v\}\right\rangle = \left\langle T\right\rangle$.\\
-			A subset of $V$ is a \textbf{generating/spanning set} if its span is $V$. A VS with a finite generating set is \textbf{finitely generated}.
+			\end{multicols*}
+			}
+			\vspace{-5.5ex}
 			\begin{itemize}
-				\item Given $V_1, ..., V_n$ VsubSs of $V$, we define the \textbf{sum} $V_1 + ... + V_n$ to be the subspace $\left\langle V_1 \cup ... \cup V_n\right\rangle$ of $V$. If the homo. given by addition$: V_1 \times ... \times V_n$ is also an injection the sum is \textbf{direct} and can be written $V_1 \oplus ... \oplus V_n$.
+				\item A subset of $V$ is a \textbf{generating/spanning set} if its span is $V$. 
+				\item A VS with a finite generating set is \textbf{finitely generated}.
+				\item Given $V_1, \dots, V_n$ VsubSs of $V$, we define the \textbf{sum} $V_1 + \dots + V_n$ to be the subspace $\left\langle V_1 \cup \dots \cup V_n\right\rangle$ of $V$. 
+				\item If the hom. given by addition$: V_1 \times \dots \times V_n$ is also an injection the sum is \textbf{direct} and can be written $V_1 \oplus \dots \oplus V_n$.
 			\end{itemize}
 			
 		\end{dfn}
 		
 		
 		\begin{dfn}[Linear Independence]{dfn:linind}{ }
-			A subset $L$ of a vector space $V$ is \textbf{linearly independent} if for all $\alpha_1, ..., \alpha_n \in F$ and distinct $\vec{v}_1, ..., \vec{v}_n \in L$, $\alpha_1 \vec{v}_1 + ... + \alpha_n \vec{v}_n = 0$ only if all $\alpha_i = 0$. Otherwise it is \textbf{linearly dependent}.
-			\begin{tabular}{|c|c|}
-				\hline
-				Linearly Independent & Linearly Dependent\\ \hline
-				$\emptyset; \{\vec{v}\}, \vec{v}\ne \vec{0}$&$ \{\vec{0}\}$ \\ \hline
-			\end{tabular}
+			A subset $L$ of a VS $V$ is \textbf{linearly independent} if for all $\alpha_1, \dots, \alpha_n \in F$ and distinct $\vec{v}_1, \dots, \vec{v}_n \in L$, $\alpha_1 \vec{v}_1 + \dots + \alpha_n \vec{v}_n = 0$ only if all $\alpha_i = 0$.\\
+			Otherwise it is \textbf{linearly dependent}.
+			\begin{itemize}
+				\item The FELA: For VS $V$, $L \subset V$ lin-ind, and $E \subseteq V$ generating, $\left|L\right| \le \left|E\right|$.
+			\end{itemize}
 			
 		\end{dfn}
 		
 		
 		\begin{dfn}[Bases]{dfn:based}{ }
-			Let $V$ be a VS over a field $F$. A \textbf{basis} of $V$ is a linearly independent generating set in $V$.
+			Let $V$ be an $F-$VS. A \textbf{basis} of $V$ is a lin-ind generating set in $V$.
 			\begin{itemize}
-				\item The family $\left(\vec{v}_i\right)_{1 \le i \le n}$ is a basis of $V$ iff the 'evaluation mapping' $\Phi: F^n \to V; (\alpha_1, ..., \alpha_n) \mapsto (\alpha_1 \vec{v}_1 + ... + \alpha_n \vec{v}_n)$ is a bijection.\\
+				\item The family $\left(\vec{v}_i\right)_{1 \le i \le n}$ is a basis of $V$ iff the 'evaluation mapping' $\Phi: F^n \to V; (\alpha_1, \dots, \alpha_n) \mapsto (\alpha_1 \vec{v}_1 + \dots + \alpha_n \vec{v}_n)$ is a bijection.\\
 				\item TFAE for a subset $E$ of a VS $V$:
 					\begin{enumerate}[label = (\roman*)]
 						\item $E$ is a basis 
-						\item $E$ is minimal among generating sets ($\forall \vec{v} \in E$, $E \backslash\vec{v}$ does not generate $V$)
-						\item $E$ is maximal among linearly independent subsets ($\forall \vec{v} \in E, E \cup \vec{v}$ is linearly dependent)	
+						\item $E$ is minimal among generating sets ($\forall \vec{v} \in E$, $E \backslash\vec{v}$ is not generating)
+						\item $E$ is maximal among lin-ind subsets ($\forall \vec{v} \in E, E \cup \vec{v}$ is lin-dep)	
 					\end{enumerate}
-				\item If $V$ is a finitely generated VS, it has a finite basis
-				\item For a set $X$, the set Maps$(X, F)$ equipped with pointwise addition and scalar multiplication is an F-VS. The subset, $F \left\langle X\right\rangle \subseteq$Maps$(X, F)$, of all mappings which send almost all $x \in X$ to zero as a vector subspace, called the \textbf{free vector space on $X$}
-				\item TFAE
-					\begin{enumerate}[label = (\roman*)]
-						\item The family $\left(\vec{v}_i\right)_{i \in I}$ is a basis of $V$.
-						\item For all $v \in V$, $\exists$ precisely one family $\left(a_i\right)_{i \in I}$ s.t. almost all $a_i =0$, and $\vec{v} = \sum_{i \in I} a_i \vec{v}_i$.
-					\end{enumerate}
+				\item A family $\left(\vec{v}_i\right)_{i \in I}$ is a basis of $V$ iff for all $\vec{v} \in V$ there exists exactly one family $\left(a_i\right)_{i \in I}$ of $a_i\in F$ s.t. almost all $a_i =0$, and $\vec{v} = \sum_{i \in I} a_i \vec{v}_i$. 
 			\end{itemize}
 			
 		\end{dfn}
 		
 		
-		\begin{thm}[FTLA\text{,} Steinitz\text{,} Exchange Lemma]{thm:dfkm}{ }
-			Let $V$ be a VS, $L \subset V$ linearly ind., and $E \subseteq V$ generating
+		\begin{mthm}[Cardinality Of Bases]{mthm:cardbase}{ }
+			Let $V$ be a finite VS. Then $V$ has a finite basis, cannot have an infinite basis, and any two bases of $V$ have the same cardinality
+			
+		\end{mthm}
+		
+		
+		\begin{lma}[The Exchange Lemma\text{,} Steinitz]{lma:exchange}{ }
+			Let $V$ be a VS, $E \subseteq V$ generating, $L \subset V$ and $M \subseteq E$ lin-ind, $L$ finite:
 			\begin{itemize}
-				\item If $V$ is finitely generated then it has a finite basis, and any two bases have the same cardinality
-				\item Fundamental Theorem of Linear Algebra: $\left|L\right| \le \left|E\right|$.
-				\item Steinitz Exchange Theorem: There is an injection $\phi: L\hookrightarrow E$ s.t. $\{E \backslash \phi(L)\}\cup L$ is also generating.
-				\item Exchange Lemma: Steinitz but for single elements.
+				\item The Exchange Lemma: If $\vec{w}\in V\backslash M$ is s.t. $M \cup \{\vec{w}\}$ is lin-ind, there exists $\vec{e}\in E \backslash M$ s.t. $(E\backslash \{\vec{e}\}) \cup \{\vec{w}\}$ is generating for $V$.
+				\item Steinitz Exchange Theorem: There exists an injection $\phi: L \hookrightarrow E$ s.t. $(E\backslash \phi(L)) \cup L$ is generating for $V$ (apply Exchange Lemma repeatedly)
 			\end{itemize}
 			
 			
-		\end{thm}
+		\end{lma}
 		
 		
 		\begin{dfn}[Dimensions Of Vector Spaces]{dfn:dimens}{ }
-			Let $V$ be a finitely-generated VS, $L \subset V$ linearly ind., $E \subseteq V$ generating.
-			For finitely-generated $V$, its \textbf{dimension}, $\dim V$ is the cardinality of a basis of $V$. For dimension as an $F$-VS write $\dim_F V$. Also:		
+			Let $V$ be a finitely-generated VS, $L \subset V$ lin-ind, $E \subseteq V$ generating.
+			For a finitely-generated VS $V$, its \textbf{dimension} $\dim V$ is the cardinality of any basis of $V$. For dimension as an $F$-VS write $\dim_F V$. Also:		
 			\begin{itemize}
 				\item $\left|L\right| \le \dim V$, if $\left|L\right| = \dim V$ then $L$ is a basis
 				\item $\left|E\right| \ge \dim V$, if $\left|E\right| = \dim V$ then $E$ is a basis
-				\item A proper vector subspace of $V$ has a strictly smaller dimension than $V$
+				\item A proper VsubS of $V$ has a strictly smaller dimension than $V$
 				\item For $U, W$ subspaces of $V$, $\dim(U + W) + \dim (U \cap W) = \dim (U) + \dim (W).$
-				\item Given $V_1, ..., V_n$ $F-$VSs, $\dim (V_1 \oplus ... \oplus V_n) = \dim (V_1) + ... + \dim (V_n)$
+				\item Given $V_1, \dots, V_n$ $F-$VSs, $\dim (V_1 \oplus \dots \oplus V_n) = \dim (V_1) + \dots + \dim (V_n)$
 			\end{itemize}
 			
 		\end{dfn}
 		
 		
 		\begin{mdfn-s}[Linear Mappings: Homo/Iso/Endo/Automorphisms]{dfn:linmaps}{ }
-			Let $V, W$ be VSs over a field $F$ and $B \subset V$ be a basis. A mapping $f: V \to W$ is \textbf{(F-)linear} or a \textbf{homomorphism of $F$-vector spaces} if for all $\vec{v}_1, \vec{v}_2 \in V$ and $\lambda \in F$:\\
-			$F(\vec{v}_1 + \vec{v}_2) = f(v_1) + f(v_2)$ and $f(\lambda \vec{v}_1) = \lambda f(\vec{v}_1)$.
-			The set of all homomorphisms from $V$ to $W$ is Hom$_F(V, W) =$Hom$(V, W) \subseteq$Maps$(V, W)$
+			Let $V, W$ be $F-$VSs, $B \subset V$ be a basis. A mapping $f: V \to W$ is \textbf{(F-)linear} or a \textbf{homomorphism of $F$-VSs} if $\forall \; \vec{v}_1, \vec{v}_2 \in V$ and $\lambda \in F$:\\
+			$f(\vec{v}_1 + \vec{v}_2) = f(v_1) + f(v_2)$ and $f(\lambda \vec{v}_1) = \lambda f(\vec{v}_1)$.
 			\begin{itemize}
 				\item An \textbf{isomorphism} is a bijective linear mapping. Isomorphisms are invertible, and the inverse mapping is also an isomorphism
 				\item An \textbf{endomorphism} is a homomorphism from a VS to itself
-				\item An \textbf{automorphism} is an isomorphism from a VS to itself. The automorphisms of a VS $V$ form a subgroup of its permutation group called the \textbf{general linear} or \textbf{automorphism} group, denoted $GL(V) =$Aut$(V) \subseteq Maps^\times(V, V).$
-				\item If $f: V \to W$ and $g: U \to V$ are homo.s, $(f \circ g) : U \to W$ is a homo.
-				\item The image and preimage of a VS under a linear mapping are VSs.
-				\item A homo. can be restricted to a bijection Hom$_F(V, W) \tilde{\to}$Maps$(B, W)$, $f \mapsto \left.f\right|_B$ - ie a linear mapping determines and is determined by the values it takes on a basis.
-				\item Every injective homo. $f: V \hookrightarrow W$ has a \textbf{left inverse} $g$ s.t. $g \circ f =$id$_V$
-				\item Every surjective homo. $f: V \twoheadrightarrow W$ has a \textbf{right inverse} $g$ s.t. $f \circ g =$id$_W$
-				\item For $n \ge 0 \in \mathbb{Z}$, a VS $V$ over $F$ is isomorphic to $F^n$ iff $\dim V = n$.
-				\item A point sent to itself by a homo. is a \textbf{fixed point} of the mapping. Given a mapping $f: X \to X$, the set of fixed points is $X^f = \{x \in X : f(x) = x\}$.
-				\item Given VS $V$, VsubSs $V_1, ..., V_n$, and linmaps $f_i: V_i \to V$; $f: V_1 \oplus ... \oplus V_n \to V$, $f(v1, ..., v_n) = f_1(v_1) + ... + f_n(v_n)$ is an isomorphism. We then write $V = V_1 \oplus V_2$ and say $V$ is the \textbf{internal direct sum} of $V_1, V_2$.
-				\item 
+				\item An \textbf{automorphism} is an isomorphism from a VS to itself. 
 			\end{itemize}
 			
 		\end{mdfn-s}
 		
 		
+		\begin{mthm}[Properties Of Morphisms]{thm:morphprops}{ }
+			Let $V, W$ be $F-$VSs, $B \subset V$ be a basis,
+			\begin{itemize}
+				\item The set of all hom.s $V \to W$ is Hom$_F(V, W) =$Hom$(V, W) \subseteq$Maps$(V, W)$, and is itself a VS
+				\item %TO-DO: The \textbf{dual space}
+				\item The auto.s of a $V$ form a subgroup of its permutation group, the \textbf{general linear} or \textbf{automorphism} group $GL(V) =$Aut$(V) \subseteq Maps^\times(V, V).$
+				\item If $f: V \to W$ and $g: U \to V$ are hom.s, $(f \circ g) : U \to W$ is a hom.
+				\item The image and preimage of a VS under a linear mapping are VSs.
+				\item A hom. can be restricted to a bijec Hom$_F(V, W) \tilde{\to}$Maps$(B, W)$, $f \mapsto \left.f\right|_B$, ie a hom. determines/is determined by the values it takes on a basis.
+				\item Every injective hom. $f: V \hookrightarrow W$ has a \textbf{left inverse} $g$ s.t. $g \circ f =\id_V$
+				\item Every surjective hom. $f: V \twoheadrightarrow W$ has a \textbf{right inverse} $g$ s.t. $f \circ g =\id_W$
+				\item For $n \ge 0 \in \mathbb{Z}$, a VS $V$ over $F$ is isomorphic to $F^n$ iff $\dim V = n$.
+				\item A point sent to itself by a hom. is a \textbf{fixed point} of the mapping. Given a mapping $f: X \to X$, the set of fixed points is $X^f = \{x \in X : f(x) = x\}$.
+				\item Given VS $V$, VsubSs $V_1, \dots, V_n$, and linmaps $f_i: V_i \to V$; $f: V_1 \oplus \dots \oplus V_n \to V$, $f(v1, \dots, v_n) = f_1(v_1) + \dots + f_n(v_n)$ is an isomorphism. We then write $V = V_1 \oplus V_2$ and say $V$ is the \textbf{internal direct sum} of $V_1, V_2$.
+			\end{itemize}
+			
+		\end{mthm}
+		
+		
 		\begin{dfn}[Image and Kernel]{dfn:imnkern}{ }
-			Let $V, W$ be VSs and $f: V \to W$ be a linear mapping.
-			The \textbf{image} of $f$ is $(f) = F(V) \subseteq W$. It is a VsubS of $W$ .\\
-			The \textbf{kernel} of $f$ is $\ker (f) := f^{-1}(\vec{0}) = \{\vec{v} \in V : f(\vec{v}) = \vec{0}\}$. It is a VsubS of $V$.
+			Let $V, W$ be VSs and $f: V \to W$ be a hom.\\
+			The \textbf{image} of $f$, im$(f) = F(V) \subseteq W$, is a VsubS of $W$.\\
+			The \textbf{kernel} of $f$, $\ker (f) := f^{-1}(\vec{0}) = \{\vec{v} \in V : f(\vec{v}) = \vec{0}\}$, is a VsubS of $V$.
 			\begin{itemize}
 				\item A linear mapping $f$ is injective iff its kernel is $\vec{0}$.
 				\item The image of a VsubS under a linear mapping is again a VsubS, and the preimage of a VsubS under a linear mapping is again a VsubS.
@@ -272,23 +296,37 @@
 	{\footnotesize \textbf{\underline{Linear Mappings and Matrices}}}
 		
 		
-		\begin{thm}[Linking Linear Mappings And Matrices]{thm:repmat}{ }
-			Let $F$ be a field and $m, n \in \mathbb{N}$. There is a bijection $M$ between the space of linear mappings $F^m \to F^n$ and Mat$(n \times m; F)$ which maps $f \mapsto [f]$. $M(f) := [f]$ is the \textbf{representing matrix} of $f$, whose columns are the images under $f$ of the standard basis elements of $F^m$, ie $[f] = (f(\vec{e}_1)|...|f(\vec{e}_m))$.
-			
+		
+		\begin{dfn}[Matrices]{dfn:matrices}{ }
+		$A: \left\{1, \dots, n\right\} \times \left\{1, \dots, m\right\} \to Z$ is an \textbf{$n \times m$-matrix with coefficients in $Z$}.
+		\begin{itemize}
+			\item The set of all $n \times m$-matrices with coefficients in $Z$ is denoted Mat$(n \times m; Z) :=$Maps$({1, \dots, n} \times {1, \dots, m}, Z)$
+			\item If $m = n$ we have a \textbf{square matrix} and write Mat$(n, Z)$
+			\item For square matrix $A$, its \textbf{trace} $\text{tr}(A)$ is the sum of its diagonal entries
+			\item $P \in \Mat(n, \mathbb{R})$ is \textbf{orthogonal} if $P^T P = I_n$, ie $P^T = P^{-1}$.
+			\item $P \in \Mat(n, \mathbb{C})$ is \textbf{unitary} if $\overline{P}^TP = I_n$, ie $\overline{P}^T = P^{-1}$.
+			\item $P \in \Mat(n, \mathbb{C})$ is \textbf{hermitian} if $P = \overline{P}^T$, and the mapping on the standard IPS described by $P$ is self-adjoint.
+			\item For $A \in \Mat(n, \mathbb{C})$, $\exp(A) := \sum_{k = 0}^{\infty} \frac{1}{k!} A^k$. For commutative $A, B$, $\exp(A + B) = \exp(A) \exp(B)$
+		\end{itemize}
+		
+		
+		\end{dfn}\begin{thm}[Linking Linear Mappings And Matrices]{thm:repmat}{ }
+		Let $F$ be a field and $m, n \in \mathbb{N}$. There is a bijection $M$ between the space of hom.s $F^m \to F^n$ and Mat$(n \times m; F)$ which maps $f \mapsto [f]$. $M(f) := [f]$ is the \textbf{representing matrix} of $f$, whose columns are the images under $f$ of the standard basis elements of $F^m$, ie $[f] = (f(\vec{e}_1)|\dots|f(\vec{e}_m))$.
+		
 		\end{thm}
 		
 		
 		\begin{thm}[Composing Mappings vs Matrix Multiplication]{thm:}{ }
 			Let $g: F^\ell \to F^m$ and $f:F^m \to F^n$ be linmaps. The representing mat of their composition is the product of their representing mats: $[f \circ g] = [f][g]$.
 			\begin{itemize}
-				\item For $\ell, m, n \in \mathbb{N}$, $F$ a field, $A \in $Mat$(n\times m; F)$, $B \in$Mat$(m \times \ell ; F)$. Then $AB \in $Mat$(n \times \ell)$ is defined by $(AB)_{ik} = \sum_{j = 1}^{m}A_{ij} B{jk}$.
+				\item For $\ell, m, n \in \mathbb{N}$, $F$ a field, $A \in \Mat(n\times m; F)$, $B \in\Mat(m \times \ell ; F)$; $AB \in \Mat(n \times \ell)$ is defined by $(AB)_{ik} = \sum_{j = 1}^{m}A_{ij} B{jk}$.
 			\end{itemize}
 			
 		\end{thm}
 		
 		
 		\begin{dfn}[The General Linear Group]{dfn:glgroup}{ }
-			The set of invertible $n\times n$ matrices in a field $F$ form a group under matrix multiplication, called the \textbf{General Linear group of $(n\times n)$ matrices} and written GL$(n; F) :=$Mat$(n; F)^\times$
+			The set of invertible $n\times n$ matrices in a field $F$ form a group under matrix multiplication, called the \textbf{General Linear group of $(n\times n)$ matrices} and written GL$(n; F) :=\Mat(n; F)^\times$
 			
 		\end{dfn}
 		
@@ -297,16 +335,17 @@
 		
 		\begin{dfn}[Properties Of Matrices]{dfn:matprops}{ }
 			\begin{itemize}
-				\item Let $k, \ell, m, n \in \mathbb{N}$, $A, A' \in$Mat$(n\times m; F)$, $B, B' \in $Mat$(m \times \ell; F)$, $C \in$Mat$(\ell \times k; F)$, and $I = I_m$. Then:
+				\item If $A, A' \in\Mat(n\times m; F)$, $B, B' \in \Mat(m \times \ell; F)$, $C \in\Mat(\ell \times k; F)$, then:
 				\begin{enumerate}[label=(\roman*)]
 					\item $(A + A')B = AB + A'B$
 					\item $A(B + B') = AB + AB'$
 					\item $(AB)C = A(BC)$
 				\end{enumerate}
-				\item A square matrix $A$ is \textbf{invertible} if $\exists A^{-1}$ of same size s.t $AA^{-1} = A^{-1}A = I$
+				\item A square $A$ is \textbf{invertible} if $\exists A^{-1}$ of same size s.t $AA^{-1} = A^{-1}A = I$
 				\item An \textbf{elementary} matrix is one which differs from $I$ in at most one entry
-				\item Every square matrix with entries in a field can be written as a product of elementary matrices
-				\item A matrix whose only non-zero entries lie on the diagonal, and which has first ones along the diagonal, then zeroes, is in \textbf{Smith Normal Form}. For each $A \in $Mat$(n \times m; F)$, $\exists$ invertible $P, Q$ s.t. $PAQ$ is in Smith Normal Form.
+				\item Every $M\in\Mat(n, F)$ can be written as a product of elementary matrices
+				\item A matrix whose only non-zero entries lie on the diagonal, with first ones along the diagonal then zeroes, is in \textbf{Smith Normal Form}. 
+				\item For each $A \in \Mat(n \times m; F)$, $\exists$ invertible $P, Q$ s.t. $PAQ$ is in SNF.
 				\item The \textbf{rank} of a matrix $A$ is the dimension of the subspace of $F^n$ generated by the columns or rows of $A$ (the $dim$ of each are always equal).\\
 				\item A is of \textbf{full rank} if the rank is equal to the number of rows or columns
 				\item rk$(A + B) \le$rk$A +$rk$B$, and rk$(AB) \le \min($rk$A,$rk$B)$.
@@ -317,13 +356,12 @@
 		
 		
 		\begin{dfn}[Representing Matrices W.R.T Bases]{dfn:repmatbases}{ }
-			Let $F$ be a field, $V, W$ $F-$VSs with ordered bases $\mathcal{A} = (\vec{v}_1, ..., \vec{v}_m)$ and $\mathcal{B} = \vec{w}_1, ..., \vec{w}_n$. \\
-			Then to each linmap $F: V \to W$ we associate a \textbf{representing matrix} $_\mathcal{B}[f]_\mathcal{A}$ with entries $a_{ij}$ defined by $f(v_j) = a_{1j}\vec{w}_1 + ... + a_{nj}\vec{w}_n \in W$.
+			For $F$ a field, $V, W$ $F-$VSs with ordered bases $\mathcal{A} = (\vec{v}_1, \dots, \vec{v}_m)$, $\mathcal{B} = \vec{w}_1, \dots, \vec{w}_n$; to each hom. $F: V \to W$ we associate a \textbf{representing matrix} $_\mathcal{B}[f]_\mathcal{A}$ with entries $a_{ij}$ defined by $f(v_j) = a_{1j}\vec{w}_1 + \dots + a_{nj}\vec{w}_n \in W$.
 			\begin{itemize}
-				\item This produces an isomorphism of VSs $M_\mathcal{B}^\mathcal{A}:$Hom$_F(V, W) \tilde{\to}$Mat$(n\times m; F)$ with $f \mapsto _\mathcal{B}[f]_\mathcal{A}$.
+				\item Then $M_\mathcal{B}^\mathcal{A}:$Hom$_F(V, W) \tilde{\to}\Mat(n\times m; F)$, $f \mapsto _\mathcal{B}[f]_\mathcal{A}$ is an iso.
 				\item We call $M_\mathcal{B}^\mathcal{A}(f)=_\mathcal{B}[f]_\mathcal{A}$ the \textbf{representing matrix of $f$ with respect to the bases $\mathcal{A}$ and $\mathcal{B}$}. The columns of $_\mathcal{B}[f]_\mathcal{A}$ give the coords of the images of the basis vectors from $\mathcal{A}$ wrt the basis $\mathcal{B}$.
 				\item Let $U, V, W$ be finite-dimensional $F-$VSs with ordered bases $\mathcal{A, B, C}$, and $f:U \to V$, $g: V \to W$ be linmaps. Then the representing matrix of $(g \circ f) : U \to W$ is the matrix product of the representing matrices of $f$ and $g$: $_\mathcal{C}[g \circ f]_\mathcal{A} = _\mathcal{C}[g]_{\mathcal{B}\mathcal{B}}[f]_\mathcal{A}$ 
-				\item Let $\mathcal{A}$ an ordered basis of a finite-dim VS $V$), the inverse of the 'evaluation mapping' $\Phi_\mathcal{A} : F^m \tilde{\to} V$, $(\alpha_1, ..., \alpha_m)^\text{T} \mapsto \alpha_1 \vec{v}_1 + ... + \alpha_m \vec{v}_m$ is given by $\vec{v} \mapsto _\mathcal{A}[\vec{v}]$. $_\mathcal{A}[\vec{v}]$ is the \textbf{representation of $\vec{v}$ w.r.t. the basis $\mathcal{A}$}.
+				\item Let $\mathcal{A}$ an ordered basis of a finite-dim VS $V$), the inverse of the 'evaluation mapping' $\Phi_\mathcal{A} : F^m \tilde{\to} V$, $(\alpha_1, \dots, \alpha_m)^\text{T} \mapsto \alpha_1 \vec{v}_1 + \dots + \alpha_m \vec{v}_m$ is given by $\vec{v} \mapsto _\mathcal{A}[\vec{v}]$. $_\mathcal{A}[\vec{v}]$ is the \textbf{representation of $\vec{v}$ w.r.t. the basis $\mathcal{A}$}.
 				\item Let $\mathcal{A, B}$ be ordered bases of finite-dim VSs $V, W$ and $f: V \to W$ be a linmap. Then for $\vec{v} \in V$, $_\mathcal{B}[f(\vec{v})] = _\mathcal{B}[f]_{\mathcal \mathcal{A}}[\vec{v}]$
 			\end{itemize}
 			
@@ -331,7 +369,7 @@
 		
 		
 		\begin{dfn}[Change Of Matrix By Change Of Basis]{dfn:chngofbasismat}{ }
-			Let $\mathcal{A} = (\vec{v}_1, ..., \vec{v}_n)$ and $\mathcal{B} = (\vec{w}_1, ..., \vec{w}_n)$ both be ordered bases of an $F-$VS $V$. Then the matrix representing the identity map w.r.t. these bases, $_\mathcal{B}[\text{id}_V]_\mathcal{A}$ is called a \textbf{change of basis matrix}. By definition its entries are given by the equalities $\vec{v}_j = \sum_{i=1}^{n} a_{ij}\vec{w}_i$.
+			Let $\mathcal{A} = (\vec{v}_1, \dots, \vec{v}_n)$ and $\mathcal{B} = (\vec{w}_1, \dots, \vec{w}_n)$ both be ordered bases of an $F-$VS $V$. Then the matrix representing the identity map w.r.t. these bases, $_\mathcal{B}[\text{id}_V]_\mathcal{A}$ is called a \textbf{change of basis matrix}. By definition its entries are given by the equalities $\vec{v}_j = \sum_{i=1}^{n} a_{ij}\vec{w}_i$.
 			\begin{itemize}
 				\item Let $V, W$ be finite-dim $F-$VSs and $f: V \to W$ be a linmap. Suppose $\mathcal{A, A'}$ and $\mathcal{B, B'}$ are ordered bases of $V$ and $W$ respectively. Then $_\mathcal{B'}[f]_\mathcal{A} = _\mathcal{B'}[\text{id}_W]_{\mathcal{B} \mathcal{B}}[f]_{\mathcal{A} \mathcal{A}}[\text{id}_V]_\mathcal{A'}$.
 				\item For $\mathcal{A, A'}$ ordered bases of finite-dim VS $V$, and $f$ an endo. of $V$; $_\mathcal{A'}[f]_\mathcal{A'} = _\mathcal{A}[f]_{\mathcal{A'} \mathcal{A}}^{-1}[f]_{\mathcal{A} \mathcal{A}}[\text{id}_V]_\mathcal{A'}$
@@ -355,17 +393,17 @@
 			\begin{enumerate}[label=(\roman*)]
 				\item $(R, +)$ is an abelian group
 				\item $(R, \cdot)$ is a monoid (satisfies associativity and identity)
-				\item $a \cdot (b + c) = (a \cdot b) + (a\cdot c)$ and $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$.
+				\item $a \cdot (b + c) = (a \cdot b) + (a\cdot c)$ and $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$ (distributivity).
 			\end{enumerate}
 			The element $1 \in R$ is uniquely defined as the identity of $(R, \cdot)$.
 			\begin{itemize}
 				\item A ring in which $\cdot$ is commutative is a \textbf{commutative ring}.
 				\item The \textbf{null/zero ring} is the ring where $R$ is a single element set.
-				\item The integers modulo $m$, or $\mathbb{Z}/m\mathbb{Z}$ is a ring, with congruence classes as elements.
+				\item The integers mod $m$ (or $\mathbb{Z}/m\mathbb{Z}$) is a ring made up of congruence classes.
 				\item A field is a n-z commutative ring $F$ where every n-z $a \in F$ has inverse $a^{-1} \in F$, ie $a \cdot a^{-1} = a^{-1} \cdot a = 1$
-				\item For $m \in \mathbb{N}$, $\mathbb{Z}/m\mathbb{Z}$ is a field iff $m$ is prime(
+				\item For $m \in \mathbb{N}$, $\mathbb{Z}/m\mathbb{Z}$ is a field iff $m$ is prime
 				\item For $a, b \in R$, $0a = 0 = a0$; $(-a)b = -(ab) = a(-b)$; and $(-a)(-b) = ab$.
-				\item For $m \in \mathbb{Z}$, the \textbf{$m$-th multiple ma of $a \in$ abelian $R$} is $ma := a+...+a$ m times if $m>0$, $0a = 0$. If $m < 0$, $(-m)(a) = -(ma)$.
+				\item For $m \in \mathbb{Z}$, the \textbf{$m$-th multiple ma of $a \in$ abelian $R$} is $ma := a+\dots+a$ m times if $m>0$, $0a = 0$. If $m < 0$, $(-m)(a) = -(ma)$.
 				\item For $m, n \in \mathbb{Z}$, $a, b \in R$: $m(a+b) = ma + mb$; $(m + n)a = ma + na$; $m(na) = (mn)a$; and $m(ab) = (ma)b = a(mb)$.
 			\end{itemize}
 			
@@ -373,8 +411,7 @@
 		
 		
 		\begin{mdfn}[Units\text{,} Zero-Divisors\text{,} Integral Domains]{mdfn:unitsnzerodivsnintdoms}{ }
-			Let $R$ be a ring, and $a \in R$.\\
-			$a$ is a \textbf{unit} if it is invertible in $R$ ($\exists a^{-1} \in R$ s.t. $aa^{-1} = a^{-1}a = 1$). \\
+			Let $R$ be a ring, and $a \in R$.$a$ is a \textbf{unit} if it is invertible in $R$, ie there exists $\exists a^{-1} \in R$ s.t. $aa^{-1} = a^{-1}a = 1$. \\
 			A n-z $a$ is a \textbf{zero-divisor} if $\exists$ n-z $b \in R$ s.t. either $ab = 0$ or $ba=0$.\\
 			An \textbf{integral domain} is a n-z commutative ring with no zero-divisors.
 			\begin{itemize}
@@ -388,14 +425,14 @@
 		
 		
 		\begin{dfn}[Polynomials]{dfn:polynoms}{ }
-			Let $R$ be a ring. A \textbf{polynomial over $R$} is an expression of the form $P = a_m x^m + ... + a_2 x^2 + a_1 x + a_0$ for $0 \le m \in \mathbb{Z}$ and $a_i \in R$.
+			Let $R$ be a ring. A \textbf{polynomial over $R$} is an expression of the form $P = a_m x^m + \dots + a_2 x^2 + a_1 x + a_0$ for $0 \le m \in \mathbb{Z}$ and $a_i \in R$.
 			\begin{itemize}
-				\item The set of all polynomials over $R$ is denoted $R[x]$.
-				\item When the leading coefficient is one, the polynomial is \textbf{monic}
-				\item Defined with the usual addition/multiplication rules for polynomials, $R[x]$ becomes a ring, called the \textbf{ring of polynomials with coefficients in $R$}. The zero/identity of $R$ are the zero/identity of $R[x]$.
-				\item If $R$ is commutative/an integral domain/has no zero-divisors, so is or does $R[x]$
+				\item The set of all polynoms over $R$ is denoted $R[x]$.
+				\item When the leading coefficient is one, the polynom is \textbf{monic}
+				\item Defined with the usual addition/multiplication rules for polynoms, $R[x]$ becomes a ring, called the \textbf{ring of polynoms with coefficients in $R$}. The zero/identity of $R$ are the zero/identity of $R[x]$.
+				\item If $R$ is commutative/an int-dom/has no zero-divisors, so is or does $R[x]$
 				\item If $R$ has no zero-divisors, $\deg(PQ) = \deg(P) + \deg(Q)$ for n-z $P, Q \in R[x]$.
-				\item Division and Remainder Thm: Let $R$ be an int-dom and $P, Q \in R[x]$ with $Q$ monic. Then $\exists$ unique $A, B \in R[x]$ s.t. $P = AQ + B$; and $\deg (B) < \deg (Q)$ or $B=0$
+				\item Div\&Rem Thm: Let $R$ be an int-dom and $P, Q \in R[x]$, $Q$ monic. Then $\exists$ unique $A, B \in R[x]$ s.t. $P = AQ + B$; $\deg (Q) > \deg (B)$ or $B=0$
 				\item For $R$ a commutative ring $P \in R[x]$ can be \textbf{evaluated} at $\lambda \in R$ to give $P(\lambda)$. In this way we have a mapping $R[x] \to $Maps$(R, R)$
 				\item $\lambda \in R$ is a root of $P$ if $P(\lambda) = 0$, and iff $(x - \lambda)$ divides $P(x)$.
 				\item For $R$ an int-dom, n-z $P \in R[x] \backslash \{0\}$ has at most $\deg (P)$ roots in $R$.
@@ -407,38 +444,57 @@
 		\begin{dfn}[Algebraic Closure]{dfn:algclos}{ }
 			A field $F$ is \textbf{algebraically closed} if each non-constant polynom $P \in F[x] \backslash F$ with coefficients in $F$ has a root in $F$.\\
 			\begin{itemize}
-				\item If $F$ is algebraically closed, every n-z $P \in F[x] \backslash \{0\}$ decomposes uniquely (up to reordering) into linear factors: $P = c(x-\lambda_1)...(x-\lambda_n)$ with $n \ge 0, c \in F^\times, \lambda_1, ..., \lambda_n \in F$.
+				\item If $F$ alg-clsd, all n-z $P \in F[x] \backslash \{0\}$ decompose uniquely, up to reordering, into linear factors: $P = c(x-\lambda_1)\dots(x-\lambda_n)$; $n \ge 0, c \in F^\times,$ all $\lambda_i \in F$.
 			\end{itemize}
 			
 		\end{dfn}
 		
 		
 		\begin{mdfn}[Ring Homomorphisms]{mdfn:ringhomos}{ }
-			Let $R, S$ be rings. A mapping $f:R \to S$ is a \textbf{ring homomorphism} if for all $x, y \in R$: $f(x + y) = f(x) + f(y)$ and $f(xy) = f(x)f(y)$.
+			Let $R, S$ be rings. $f:R \to S$ is a \textbf{ring homomorphism} if $\forall \; x, y \in R$:
+			\[f(x + y) = f(x) + f(y) \text{ and }f(xy) = f(x)f(y)\]
 			\begin{itemize}
-				\item The \textbf{zero ring homomorphism} is $f: R \to S; r \mapsto 0$.
+				\item For $x\in R$, $n\in \mathbb{N}$, $f(x^n) = (f(x))^n$
+				\item The \textbf{zero ring homomorphism} is $f: R \to S$; $r \mapsto 0$.
 				\item \textbf{Isomorphisms} etc are akin to linear mappings
-				\item If $S$ has no zero-divs then either $f(1_R) = 0_S$ and $f$ is the zero homo., or $f(1_R) = 1_S$.
-				\item The composition of two homo.s is a homo., and the inverse of an iso. is an iso.
-				\item If $f: R \to S$ a ring homo., then $\forall x, y \in R$ and $m \in \mathbb{Z}$: $f(0_R) = 0_S$; $f(-x) = -f(x)$; $f(x-y) = f(x) - f(y)$; $f(mx) = mf(x)$.
+				\item $f(1_R)$ is not necessarily equal to $1_S$.
+				\item If $S$ has no zero-divs then either $f$ is the zero hom., or $f(1_R) = 1_S$.
+				\item The composition of hom.s is a hom. and the inverse of an iso. is an iso.
+				\item If $f: R \to S$ a ring hom., then $\forall x, y \in R$ and $m \in \mathbb{Z}$: $f(0_R) = 0_S$; $f(-x) = -f(x)$; $f(x-y) = f(x) - f(y)$; $f(mx) = mf(x)$.
 			\end{itemize}
 			
 		\end{mdfn}
 		
 		
 		\begin{mdfn}[Ideals]{mdfn:ideals}{ }
-			A subset $I$ of a ring $R$ is an \textbf{ideal}, written $I \trianglelefteq R$, if it is nonempty; closed under subtraction; and closed under multiplication by elements of $R$.
-			\begin{itemize}
-				\item For $R$ a comring and $T \subset R$, the \textbf{ideal of $R$ generated by $T$} is the set $_R \left\langle T\right\rangle = \{r_1t_1 + ... + r_mt_m: t_1, ..., t_m \in T, r_1, ..., r_m \in R\}$ together with $0_R$ if $T = \emptyset$. If $T$ is finite often write $_R \left\langle t_1, ..., t_n\right\rangle$.
-				\item For $R$ a comring and $T \subseteq R$, $_R \left\langle T\right\rangle$ is the smallest ideal of $R$ containing $T$.
-				\item For $R$ a comring, an ideal $I$ is a \textbf{principal ideal} if $I = \left\langle t\right\rangle$ for some $t \in R$. In a comring, $\{0\}$ and $R$ are always principal ideals, generated by $0$ and $1_R$.
-			\end{itemize}
+			A subset $I$ of a ring $R$ is an \textbf{ideal}, written $I \trianglelefteq R$, if:
+			\begin{enumerate}[label=(\arabic*)]
+				\item $I \ne \emptyset$
+				\item $I$ is closed under subtraction
+				\item For all $i\in I$ and $r\in R$, we have $ri, ir\in I$
+			\end{enumerate}
 			
 		\end{mdfn}
 		
 		
+		\begin{thm}[Properties Of Ideals]{thm:idealprops}{ }
+			
+			\begin{itemize}
+				\item For $R$ a comring and $T \subset R$, the \textbf{ideal of $R$ generated by $T$} is the set $_R \left\langle T\right\rangle = \{r_1t_1 + \dots + r_mt_m: t_1, \dots, t_m \in T, r_1, \dots, r_m \in R\}$ together with $0_R$ if $T = \emptyset$.
+					\begin{itemize}
+						\item If $T$ is finite can write $_R \left\langle t_1, \dots, t_n\right\rangle$.
+						\item For $m\in \mathbb{Z}$, $_{\mathbb{Z}}\left\langle m\right\rangle = m\mathbb{Z}$
+					\end{itemize}
+				\item For $R$ a comring and $T \subseteq R$, $_R \left\langle T\right\rangle$ is the smallest ideal of $R$ containing $T$.
+				\item For $R$ a comring, an ideal $I$ is a \textbf{principal ideal} if $I = \left\langle t\right\rangle$ for some $t \in R$. 
+				\item In a comring, $\{0\} = \left\langle 0\right\rangle$ and $R = \left\langle 1_R\right\rangle$ are always principal ideals.
+			\end{itemize}
+			
+		\end{thm}
+		
+		
 		\begin{dfn}[The Kernel Of A Ring Homomorphisms]{dfn:ringker}{ }
-			Let $R, S$ be rings with zero elements $0_R, 0_S$ and $f: R \to S$ be a ring homo. Then the \textbf{kernel} of $f$ is $\ker f - \left\{r \in R : f(r) = 0_S\right\}$.
+			Let $R, S$ be rings with zero elements $0_R, 0_S$ and $f: R \to S$ be a ring hom. Then the \textbf{kernel} of $f$ is $\ker f = \left\{r \in R : f(r) = 0_S\right\}$.
 			\begin{itemize}
 				\item $\ker f$ is an ideal of $R$.
 				\item $f$ is injective iff $\ker f = \{0\}$.
@@ -450,25 +506,29 @@
 		
 		
 		\begin{dfn}[Subrings]{dfn:subrings}{ }
-			Let $R$ be a ring. A subset $R'$ of $R$ is a subring of $R$ if $R'$ is a ring under the same operations $+/\cdot$ defined in $R$.\\
-			Test For A Subring: A subset $R'$ of a ring $R$ is a subring if and only if:
+			Let $R$ be a ring. A subset $R'$ of $R$ is a \textbf{subring} of $R$\\
+			if $R'$ is a ring under the operations $+/\cdot$ defined for $R$.\\
+			\textbf{Test For A Subring:} A subset $R'$ of a ring $R$ is a subring if and only if:
 			\begin{enumerate}[label=(\roman*)]
 				\item $R'$ has a multiplicative identity ($1_{R'}$ is not necessarily equal to $1_R$!)
 				\item $R'$ is closed under subtraction ($a, b \in R \implies a-b \in R$)
 				\item $R'$ is closed under multiplication
 			\end{enumerate}
-			The intersections of two subrings of $R$ is not necessarily a subring of $R$.
-			Let $R, S$ be rings and $f: R \to S$ a ring homomorphism. Then:
 			\begin{itemize}
-				\item If $R'$ is a subring of $R$ then $f(R')$ is a subring of $S$. Particularly, im$f$ is a subring of $S$.
-				\item Let $f(1_R) = 1_S$. Then if $x$ is a unit in $R$, $f(x)$ is a unit in $S$ and $(f(x))^{-1} = f(x^{-1})$. In this case $f$ restricts to a group homomorphism $\left.f\right|_{R^\times} : R^\times \to S^\times$.
+				\item The intersection of two subrings of $R$ is not necessarily a subring of $R$.\\
+				\item Let $R, S$ be rings and $f: R \to S$ a ring homomorphism. Then:
+				\begin{itemize}
+					\item If $R'$ a subring of $R$; $f(R')$ is a subring of $S$. Particularly, im$(f)$ is a subring of $S$.
+					\item Let $f(1_R) = 1_S$. Then if $x$ is a unit in $R$, $f(x)$ is a unit in $S$ and $(f(x))^{-1} = f(x^{-1})$. In this case $f$ restricts to a group homomorphism $\left.f\right|_{R^\times} : R^\times \to S^\times$.
+				\end{itemize}
 			\end{itemize}
 			
 		\end{dfn}
 		
 		
-		\begin{dfn}[Equivalence]{dfn:equiv}{ }
-			A \textbf{relation} $R$ on a set $X$ is a subset $R \subseteq X \times X$. Only in this context, we write $(x, y) \in R$ as $xRy$.\\
+		\begin{dfn}[Equivalence and Equivalence Relations]{dfn:equiv}{ }
+			A \textbf{relation} $R$ on a set $X$ is a subset $R \subseteq X \times X$. \\
+			Only in this context, $(x, y) \in R$ is written $xRy$.\\
 			$R$ is an \textbf{equivalence relation on $X$} when for all $x, y, z, \in X$:
 			\begin{enumerate}[label=(\roman*)]
 				\item Reflexivity: $xRx$
@@ -476,23 +536,43 @@
 				\item Transitivity: ($xRy$ and $yRz$) $\implies xRz$
 			\end{enumerate}
 			\begin{itemize}
-			\item[*] Let $~$ be an equivrel on a set $X$. For $x \in X$ the set $E(x) := \left\{z \in X : z~ x\right\}$ is the \textbf{equivalence class of $x$}. $E \subseteq X$ is an \textbf{equivalence class for $~$} if $\exists x \in X$ s.t. $E = E(x)$.
+			\item[*] For $\sim$ an equivalence relation on $X$ and $x \in X$; the set $E(x) := \left\{z \in X : z \sim x\right\}$ is the \textbf{equivalence class of $x$}.
+			\item $E \subseteq X$ is an \textbf{equivalence class for $\sim$} if $\exists x \in X$ s.t. $E = E(x)$.
 			\item  An element of an equivalence class is a \textbf{representative} of the class. 
-			\item $Z \subseteq X$ is a \textbf{system of representatives for $~$} if it contains precisely one element from each equivalence class of $~$. 
-			\item For $x, y \in X$ TFAE: $x ~ y$; $E(x) = E(y)$; $E(x) \cap E(y) \ne \emptyset$
-			\item[*] Let $~$ be an equivrel on a set $X$. We denote the \textbf{set of equivalence classes of $X$}, a subset of $\mathcal{P}(X)$, as $(X/~) := \left\{E(x) : x \in X\right\}$.
-			\item There is a surjective canonical mapping can$: X \twoheadrightarrow (X/~), x \mapsto E(x)$.
-			\item Let $~$ be an equivrel on a set $X$. If $f: X \to Z$ is a mapping s.t. $x ~ y \implies f(x) = f(y)$; there is a unique mapping $\overline{f} : (X/~) \to Z$, $\overline{f}(E(x)) := f(x)$, and $f = \overline{f} \circ$can.
-			\item Often when defining a map $g: (X/~) \to Z$, we define $f: X \to Z$ and say $g$ is \textbf{well-defined} to indicate that $x ~ y \implies f(x) = f(y)$ as this guarantees the existence of $g = \overline{f}$.
+			\item $Z \subseteq X$ is a \textbf{system of representatives for $\sim$} if it contains precisely one element from each equivalence class of $\sim$. 
+			\item For $x, y \in X$ TFAE: $x \sim y$; $E(x) = E(y)$; $E(x) \cap E(y) \ne \emptyset$
+			\item[*] The \textbf{set of equiv classes of $X$} is $(X/\sim) := \left\{E(x) : x \in X\right\} \subseteq \mathcal{P}(X)$.
+			\item There is a surjective canonical mapping can$: X \twoheadrightarrow (X/d), x \mapsto E(x)$.
 			\end{itemize}			
 			
 		\end{dfn}
 		
 		
+		\begin{thm-s}[Universal Prop. Of The Set Of Equivalence Classes]{thm:univpropsetofequivclsses}{ }
+			Let $\sim$ be an equivrel on $X$. 
+			\sbsadaptr{
+				If $f: X \to Z$ is a mapping s.t. $x \sim y \implies f(x) = f(y)$; there is a unique mapping $\overline{f} : (X/\sim) \to Z$, $\overline{f}(E(x)) := f(x)$, and $f = \overline{f} \circ$can. Often when defining a map $g: (X/\sim) \to Z$, we define $f: X \to Z$ and say $g$ is \textbf{well-defined} to indicate that $x \sim y \implies f(x) = f(y)$ as this guarantees the existence of $g = \overline{f}$.
+			}
+			{
+				% https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzIsMCwiKFgvXFxzaW0pIl0sWzIsMiwiWiJdLFsxLDIsIlxcb3ZlcmxpbmV7Zn0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMCwxLCJcXHRleHR7Y2FufSJdLFswLDIsImYiLDJdXQ==
+				\begin{tikzcd}[ampersand replacement=\&,cramped]
+					X \&\& {(X/\sim)} \\
+					\\
+					\&\& Z
+					\arrow["{\text{can}}", from=1-1, to=1-3]
+					\arrow["f"', from=1-1, to=3-3]
+					\arrow["{\overline{f}}", dashed, from=1-3, to=3-3]
+				\end{tikzcd}
+			}
+			
+		\end{thm-s}
+		
+		
 		\begin{dfn}[Cosets and Factor Rings]{dfn:cosetsnfacrings}{ }
-			Let $I \trianglelefteq R$ be an ideal in a ring $R$. The set $x + I := \{x + i : i \in I\} \subseteq R$ is a \textbf{coset of $I$ in $R$} or the \textbf{coset of $X$ with respect to $I$ in $R$}.\\
-			Let $R$ be a ring, $I \trianglelefteq R$ an ideal, and $~$ the equivrel defined by $x ~ y \iff x-y \in I$. Then $R/I$, the \textbf{factor ring} or \textbf{quotient of $R$ by $I$}, is the set $(R/~)$ of cosets of $I$ in $R$.\\
-			 Let $R$ be a ring and $I \trianglelefteq R$ an ideal. Then:
+			Let $R$ be a ring, $I \trianglelefteq R$ an ideal of $R$, and $\sim$ defined by $x\sim y \iff x-y\in I$.\\
+			$x + I := \{x + i : i \in I\} \subseteq R$ is a \textbf{coset of $I$ in $R$} or the \textbf{coset of $X$ w.r.t. $I$ in $R$} \\
+			The set $R/I$, the \textbf{factor ring of $R$ by $I$} or \textbf{quotient of $R$ by $I$},\\
+			is the set $(R/\sim)$ of cosets of $I$ in $R$.\\
 			\begin{itemize}
 				\item $R/I$ is a ring, with addition defined by $(x+I) + (y+I) = (x+y)+I$ and multiplication by $(x+I)(y+I) = xy + I$ for all $x, y \in R$.
 				\item If $R$ is commutative so is $R/I$
@@ -504,11 +584,11 @@
 		
 		
 		\begin{thm}[The Universal Property Of Factor Rings]{thm:univpropfacrings}{ }
-			Let $R$ be a ring and $I \trianglelefteq R$. Then:
+			Let $R, S$ be rings and $I \trianglelefteq R$. Then:
 			\sbsadaptr{
 				\begin{enumerate}
-					\item The mapping can$:R \to R/I, r \mapsto r + I$ is a surjective ring homo. with kernel $I$.
-					\item If $f: R \to S$ is a ring homo. with $f(I) = \{0_S\}$, ie $I \subseteq \ker f$, there is a unique ring homo. $\overline{f} : R/I \to S$ s.t. $f = \overline{f} \circ $can.
+					\item The mapping can$:R \to R/I, r \mapsto r + I$ is a surjective ring hom. with kernel $I$.
+					\item For $f: R \to S$ a ring hom. with $f(I) = \{0_S\}$, ie $I \subseteq \ker f$, there exists a unique ring hom. $\overline{f} : R/I \to S$ s.t. $f = \overline{f} \circ $can.
 				\end{enumerate}
 			}
 			{
@@ -527,7 +607,7 @@
 		
 		
 		\begin{mthm}[The First Isomorphism Theorem For Rings]{mthm:fitforrings}{ }
-			Let $R, S$ be rings. Then every ring homo. $f: R \to S$ induces a ring iso.:
+			Let $R, S$ be rings. Then every ring hom. $f: R \to S$ induces a ring iso.:
 			$$
 			\overline{f} : R/\ker f \tilde{\to} \text{im}f
 			$$
@@ -538,6 +618,7 @@
 		
 		\begin{dfn}[Modules]{dfn:modules}{ }
 			A \textbf{(left) module $M$ over a ring $R$} or an \textbf{$R$-module} is a pair consisting of an abelian group $M = (M, \dotplus)$ and a mapping $R \times M \to M; (r, a) \mapsto ra$ such that for all $r, s \in R$ and $a, b \in M$ the following hold:
+			\vspace*{-5ex}
 			\begin{multicols}{2}
 				\begin{itemize}
 					\item $r(a \dotplus b) = (ra) \dotplus (rb)$
@@ -549,6 +630,7 @@
 					\item $1_Ra = a$
 				\end{itemize}
 			\end{multicols}
+			\vspace{-4ex}
 			Let $R$ be a ring and $M$ an $R-$module. Then for all $r \in R, a \in M$: $0_R a = 0_M$; $r0_M = 0_M$; $(-r)a = r(-a) = -(ra)$
 			
 		\end{dfn}
@@ -557,48 +639,50 @@
 		\begin{dfn}[Module Homomorphisms/Kernel/Image/etc]{dfn:modulestuff}{ }
 			Let $R$ be a ring and $M, N$ be $R-$modules.\\
 			A mapping $f: M \to N$ is an \textbf{($R$-)homomorphism} if for all $a, b \in M$ and $r \in R$: $f(a+b) = f(a) + f(b)$, and $f(ra) = rf(a)$.\\
-			The \textbf{kernel} of $f$ is $\ker f - \{a \in M : f(a) = 0_N\} \subseteq M$ and the \textbf{image} of $f$ is im$f = \{f(a) : a \in M\} \subseteq N$.\\
+			The \textbf{kernel} of $f$ is $\ker f = \{a \in M : f(a) = 0_N\} \subseteq M$ and the \textbf{image} of $f$ is im$f = \{f(a) : a \in M\} \subseteq N$.\\
 			If $f$ is a bijection then it is an \textbf{($R$-module) isomorphism} with $M \cong N$.
 			\begin{itemize}
-				\item The composition of two homo.s is a homo.
+				\item The composition of two R-hom.s is an R-hom.
 			\end{itemize}
 			
 		\end{dfn}
 		
 		
 		\begin{dfn}[Submodules]{dfn:submods}{ }
-			A non-empty subset $M'$ of an $R-$module $M$ is a \textbf{submodule} if $M'$ is an $R-$module with respect to the operations of the $R-$module $M$ restricted to $M'$.\\
+			A $\ne \emptyset$ subset $M'$ of an $R-$module $M$ is a \textbf{submodule} if $M'$ is an $R-$module w.r.t. the operations of the $R-$module $M$ restricted to $M'$.\\
 			Test For A Submodule: Let $R$ be a ring and $M$ be an $R-$module. $M' \subseteq M$ is a submodule iff:
-			\begin{enumerate}[label=(\roman*)]
-				\item $0_M \in M'$
-				\item $a, b \in M' \implies a-b \in M'$
-				\item $r \in R$ and $a \in M' \implies ra \in M'$
-			\end{enumerate}
-			Let $R$ be a ring, $M, N$ be $R-$modules, $f : M \to N$ be an $R-$homo.. Then:
+			\begin{align*}
+				(1) \; 0_M \in M' \quad (2) \; &a, b \in M' \implies a-b \in M' \\
+				(3) \; r \in R \text{ and } &a \in M' \implies ra \in M'
+			\end{align*}
+			Let $R$ be a ring, $M, N$ be $R-$modules, $f : M \to N$ be an $R-$hom.. Then:
 			\begin{itemize}
 				\item $\ker f$ is a submodule of $M$ and im$f$ is a submodule of $N$.
 				\item $f$ is injective if and only if $\ker f = {0_M}$
 			\end{itemize}
 			
-			Let $R$ be a ring, $M$ an $R-$module, and $T \subseteq M$. Then the \textbf{submodule of $M$ generated by $T$} is the set $_R \left\langle T\right\rangle = \{r_1t_1 + ... + r_mt_m: t_1, ..., t_m \in T, r_1, ..., r_m \in R\}$ together with the zero element if $T = \emptyset$.
+			Let $R$ be a ring, $M$ an $R-$module, and $T \subseteq M$. Then the \textbf{submodule of $M$ generated by $T$} is the set $_R \left\langle T\right\rangle = \{r_1t_1 + \dots + r_mt_m: t_1, \dots, t_m \in T, r_1, \dots, r_m \in R\}$ together with the zero element if $T = \emptyset$.
 			Submodules have several properties akin to subspaces/ideals:
 			\begin{itemize}
 				\item M is \textbf{finitely generated} if it is generated by a finite set
 				\item M is called \textbf{cyclic} if it is generated by a singleton
 				\item $_R \left\langle T\right\rangle$ is the smallest submodule of $M$ containing $T$, for $T \subseteq M$.
 				\item The intersection of any collection of submodules of $M$ is a submodule of $M$
-				\item For $M_1, M_2$ submodules of $M$, $M_1 + M_2 := \{a + b : a \in M_1, b \in M_2\}$ is a submodule of $M$.
-				\item 
+				\item If $M_1, M_2$ are submods of $M$, $M_1 + M_2 := \{a + b : a \in M_1, b \in M_2\}$ is too.
 			\end{itemize}
 			
 		\end{dfn}
 		
 		
 		\begin{dfn}[Factor Modules]{dfn:facmods}{ }
-			Let $R$ be a ring, $M$ an $R-$module, and $N$ a submodule of $M$. For each $a \in M$, the \textbf{coset of $a$ with respect to $N$ in $M$} is : $a + N = \{a+b : b \in N\}$.\\
-			It is a coset of $N$ in the abelian group $M$, so is an equiv class for the equivrel $a ~ b \iff a-b \in N$.\\
-			$M/N$, the \textbf{factor/quotient of $M$ by $N$} to be the set $(M/~)$ of all cosets of $N$ in $M$. This becomes an $R-$module by defining: $(a+N) \dotplus (b+N) := (a+b) + N$ and $r(a+N) = ra + N$. for all $a, b \in M, r \in R$.\\
-			The $R-$module $M/N$ is the \textbf{factor module} of $M$ by the submodule $N$.
+			Let $R$ be a ring, $M$ an $R-$module, and $N$ a submodule of $M$. \\
+			For $a \in M$, the \textbf{coset of $a$ w.r.t. $N$ in $M$} is : $a + N = \{a+b : b \in N\}$.
+			\begin{itemize}
+				\item It is a coset of $N$ in the abelian group $M$, so is an equiv class for the equivrel $a \sim b \iff a-b \in N$.
+				\item $M/N$, the \textbf{factor/quotient of $M$ by $N$} is the set $(M/\sim)$ of all cosets of $N$ in $M$. 
+				\item This becomes an $R-$module by defining: $(a+N) \dotplus (b+N) := (a+b) + N$ and $r(a+N) = ra + N$. for all $a, b \in M, r \in R$.
+				\item The $R-$module $M/N$ is the \textbf{factor module} of $M$ by the submodule $N$.
+			\end{itemize}
 			
 		\end{dfn}
 		
@@ -607,8 +691,8 @@
 			Let $R$ be a ring, $L, M$ be $R-$modules, and $N$ a submodule of $M$:
 			\sbsadaptr{
 			\begin{enumerate}
-				\item The mapping can$: M \to M/N$, $a \mapsto a+N$ for all $a \in M$ is a surjective $R-$homo. with kernel $N$.
-				\item If $f: M \to L$ is an $R-$homo with $f(N) = \{0_L\}$ so that $N \subseteq \ker f$, there exists unique homo. $\overline{f}: M/N \to L$ such that $f = \overline{f} \circ $can. 
+				\item The mapping can$: M \to M/N$, $a \mapsto a+N$ for all $a \in M$ is a surjective $R-$hom. with kernel $N$.
+				\item If $f: M \to L$ is an $R-$homo with $f(N) = \{0_L\}$ so that $N \subseteq \ker f$, there exists unique hom. $\overline{f}: M/N \to L$ such that $f = \overline{f} \circ $can. 
 			\end{enumerate}}
 			{
 				% https://q.uiver.app/#q=WzAsMyxbMCwwLCJNIl0sWzIsMCwiTS9OIl0sWzIsMiwiTCJdLFswLDEsIlxcdGV4dHtjYW59Il0sWzAsMiwiZiIsMl0sWzEsMiwiXFxvdmVybGluZXtmfSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
@@ -626,11 +710,11 @@
 		
 		
 		\begin{mthm}[First Isomorphism Theorem For Modules]{thm:firstisothmformods}{ }
-			Let $R$ be a ring and $M, N$ be $R-$modules. Every $R-$homo. $f: M \to N$ induces an $R-$iso.:\\
-			$\overline{f}: M/\ker f \tilde{\to}$im$f$
+			Let $R$ be a ring and $M, N$ be $R-$modules. \\
+			Then every $R-$hom. $f: M \to N$ induces an $R-$iso. $\overline{f}: M/\ker f \tilde{\to}$im$f$
 			\begin{itemize}
 				\item 2$^{nd}$ Theorem: For $K, L$ sub-mods of $M$; $L$ is a submod of $K + L = \{b + c : b \in K, c \in L\}$ and $K \cap L$ is a submod of $K$. Also, $\frac{K + L}{L} \cong \frac{K}{K \cap L}$
-				\item 3$^{rd}$ Theorem: For $K, L$ sub-mods of $M$, with $L \subseteq K$. Then $K/L$ is a submod of $M/L$ and $\frac{M/L}{K/L} \cong M/K$.
+				\item 3$^{rd}$ Theorem: Let $K, L$ be sub-mods of $M$, with $L \subseteq K$. Then $K/L$ is a submod of $M/L$ and $\frac{M/L}{K/L} \cong M/K$.
 			\end{itemize}
 			
 			
@@ -648,15 +732,15 @@
 		
 		
 		\begin{dfn}[Permutations And Their Signs]{dfn:permsnsigns}{ }
-			The group of all permutations of the set $\{1, ..., n\}$ to itself, denoted $\mathfrak{S}_n$, is the \textbf{$n-$th symmetric group}. It is a group under composition with order $n!$
+			The group (under composition) of all permutations of the set $\{1, \dots, n\}$ to itself, denoted $\mathfrak{S}_n$, is the \textbf{$n-$th symmetric group}. It has order $\left|\mathfrak{S}_n\right| =n!$
 			\begin{itemize}
-				\item A \textbf{transposition} is a permutation which swaps two elements and leaves the others unchanged
+				\item A \textbf{transposition} is a perm that swaps two elements (no effect on others)
 				\item An \textbf{inversion} of a $\sigma \in \mathfrak{S}_n$ is a pair $(i, j)$ s.t. $1 \le i < j \le n$ and $\sigma (i) > \sigma (j)$.\\
 				\item The number of inversions of a $\sigma $ is the \textbf{length} of $\sigma $, $\ell(\sigma )$
-				\item The \textbf{sign} of $\sigma$ is the parity of the number of inversions of $\sigma$ - sgn$(\sigma) = (-1)^{\ell(\sigma_)}$. 
-				\item If sgn$(\sigma) = 1$, $\sigma$ is an \textbf{even permutation}. If it $= -1$, $\sigma$ is an \textbf{odd permutation}
+				\item The \textbf{sign} of $\sigma$ is the parity of the length of $\sigma$: sgn$(\sigma) = (-1)^{\ell(\sigma)}$. 
+				\item If sgn$(\sigma) = 1/-1$, $\sigma$ is an \textbf{even/odd permutation}
 				\item $\text{sgn}(\sigma \tau) = \text{sgn}(\sigma)\text{sgn}(\tau)$
-				\item The set of even perms. in $\mathfrak{S}_n$ forms a subgroup of $\mathfrak{S}_n$ called the \textbf{alternating group} and denoted $A_n$.
+				\item The set of even perm.s in $\mathfrak{S}_n$ forms a subgroup (it is the kernel of sgn$(\sigma)$, a grp hom.) of $\mathfrak{S}_n$ called the \textbf{alternating group} and denoted $A_n$.
 				
 			\end{itemize}
 			
@@ -664,7 +748,7 @@
 		
 		
 		\begin{dfn}[Cofactors And Adjugate Matrices]{dfn:cofacsnadjs}{ }
-			Let $A \in $Mat$(n; R)$ for a comring $R$, $n, i, j \in \mathbb{N}$ s.t. $1 \le i, j \le n$. Then: 
+			Let $A \in \Mat(n; R)$ for a comring $R$, $n, i, j \in \mathbb{N}$ s.t. $1 \le i, j \le n$. Then: 
 			\begin{itemize}
 				\item The $(i, j)$ \textbf{cofactor} of $A$ is $C_{ij} = (-1)^{i + j}\det(A\left\langle i, j\right\rangle)$ where $A \left\langle i, j\right\rangle$ is the matrix obtained by deleting the $i^{th}$ row and $j^{th}$ column of $A$.
 				\item The \textbf{adjugate matrix} $\text{adj}(A)$ is the $(n\times n)$ matrix whose entries are adj$(A)_{ij} = C_{ji}$ \textit{(note order swap of $i$ and $j$!)}.
@@ -674,20 +758,29 @@
 		
 		
 		\begin{mdfn}[The Determinant]{mdfn:det}{ }
-			Let $R$ be a comring and $n \in \mathbb{N}$. The \textbf{determinant} is a mapping $\det : $Mat$(n; R) \to R$ given by: $\det(A) = \sum_{\sigma \in \mathfrak{S}_n} \text{sgn}(\sigma)a_{1 \sigma(1)} ... a_{n \sigma(n)}$. This is called the \textbf{Leibniz formula}. For $n=0$ $\det(A) = 1$. \\
+			Let $R$ be a comring and $n \in \mathbb{N}$. The \textbf{determinant} is a mapping $\det : \Mat(n; R) \to R$ given by: $\det(A) = \sum_{\sigma \in \mathfrak{S}_n} \text{sgn}(\sigma)a_{1 \sigma(1)} \dots a_{n \sigma(n)}$. This is called the \textbf{Leibniz formula}. For $n=0$ $\det(A) = 1$. \\
 			Alternative characterisations are:
 			\begin{itemize}
-				\item Let $F$ be a field. The mapping $\det : $Mat$(n; F) \to F$ is the unique alternating multilinear form on $n-$tuples of column vectors with values in $F$ that takes the value $1_F$ on the identity matrix.
-				\item Laplace Expansions: Let $R$ be a comring and $A = (a_{ij}) \in $Mat$(n; R)$. For fixed $i, j$ the \textbf{$i^{th}$ row/$j^{th}$ column expansion of the determinant} is $\det(A) = \sum_{j=1}^{n}a_{ij}C_{ij}$/$\sum_{i=1}^{n}a_{ij}C_{ij}$.
+				\item Let $F$ be a field. The mapping $\det : \Mat(n; F) \to F$ is the unique alternating multilinear form on $n-$tuples of column vectors with values in $F$ that takes the value $1_F$ on the identity matrix.
+				\item Laplace Expansions: Let $R$ be a comring and $A = (a_{ij}) \in \Mat(n; R)$. For fixed $i, j$ the \textbf{$i^{th}$ row/$j^{th}$ column expansion of the determinant} is $\det(A) = \sum_{j=1}^{n}a_{ij}C_{ij}$/$\sum_{i=1}^{n}a_{ij}C_{ij}$.
 			\end{itemize}
 			
 		\end{mdfn}
 		
 		
-		\begin{thm}[Calculations With The Determinant]{thm:detcalcs}{ }
+		\begin{thm}[Calculations With The Determinant]{thm:detcal;cs}{ }
 			\begin{itemize}
-				\item Let $R$ be a comring and $A, B \in $Mat$(n; R)$. Then $\det(AB) = \det(A) \det(B)$; $\det(A^\text{T}) = \det(A)$
-				\item For $A, B$ same-size square matrices with entries in a field $F$: $\det(A) \ne 0$ iff the $A$ is invertible; if $A$ is invertible then $\det(a^{-1}) = \det(A)^{-1}$ and $\det(A^{-1}BA) = \det(B)$ (ie, the $\det$ of an endomorphism is independent of the choice of basis used to calculate it)
+				\item For $R$ a comring, $A, B \in \Mat(n; R)$:
+					\begin{itemize}[labelindent=2ex]
+						\item $\det(AB) = \det(A) \det(B)$
+						\item $\det(A^\text{T}) = \det(A)$
+					\end{itemize}
+				\item For F a field, $A, B\in \Mat(n, F)$:
+					\begin{itemize}[labelindent=2ex]
+						\item $\det(A) \ne 0$ iff $A$ is invertible
+						\item If $A$ is invertible then $\det(A^{-1}) = \det(A)^{-1}$ 
+						\item $\det(A^{-1}BA) = \det(B)$ (the $\det$ is independent of the choice of basis)
+					\end{itemize}
 				\item When performing Gaussian Elimination, row addition does not change the determinant, and row swaps change the sign only
 			\end{itemize}
 			
@@ -695,18 +788,20 @@
 		
 		
 		\begin{dfn}[Bi/Multilinear Forms]{dfn:bilmultilforms}{ }
-			Let $U, V, W$ be $F-$VSs. A \textbf{bilinear form on $U \times V$ with values in $W$} is a mapping $H: U\times V \to W$ which is linear in both entries, ie for all $u_1, u_2 \in U$ and $v_1, v_2 \in V$:
-			\begin{multicols}{2}
-				\begin{itemize}
-					\item $H(u_1 + u_2, v_1) = H(u_1, v_1) + H(u_2, v_1)$
-					\item $H(u_1, v_1 + v_2) = H(u_1, v_1) + H(u_1, v_2)$
-				\end{itemize}
-				\columnbreak
+			Let $U, V, W$ be $F-$VSs. A \textbf{bilinear form on $U \times V$ with values in $W$} is a mapping $H: U\times V \to W$ linear in both entries. Ie, $\forall \; u_1, u_2 \in U, \; v_1, v_2 \in V$:\\
+			\vspace*{-5ex}
+			{\setlength{\columnsep}{-5em}
+			\begin{multicols*}{2}
 				\begin{itemize}
 					\item $H(\lambda u_1, v_1) = \lambda H(u_1, v_1)$
 					\item $H(u_1, \lambda v_1) = \lambda H(u_1, v_1)$
+					\columnbreak
+					\item $H(u_1 + u_2, v_1) = H(u_1, v_1) + H(u_2, v_1)$
+					\item $H(u_1, v_1 + v_2) = H(u_1, v_1) + H(u_1, v_2)$
 				\end{itemize}
-			\end{multicols}
+			\end{multicols*}
+			}
+			\vspace*{-4ex}
 			For $U = V$, a bilinear form is \textbf{symmetric} if for all $u, v \in U$, $H(u, v) = H(v_u)$; and it is \textbf{alternating/antisymmetric} if for all $u \in U$, $H(u, u) = 0$
 			\begin{itemize}
 				\item If $H$ is antisymmetric, $H(u, v) = -H(v, u)$
@@ -714,15 +809,15 @@
 			
 			\textbf{Multilinear forms} are just an extension of bilinear forms to higher dimensions - $H$ must be linear in each argument.
 			\begin{itemize}
-				\item A multilinear form is \textbf{alternating} if $\exists i \ne j$ with $v_i = v_j \implies H(v_1, ..., v_i, ..., v_j, ..., v_n) = 0$ and if so, has the property $H(v_1, ..., v_i, ..., v_j, ..., v_n) = -H(v_1, ..., v_j, ..., v_i, ..., v_n)$ for all $v_1, ..., v_n \in V$.
-				\item Thus for any $\sigma \in \mathfrak{S}_n$, $H(v_{\sigma(1)}, ..., v_{\sigma(n)}) =\text{sgn}(\sigma)H(v_1, ..., v_n)$
+				\item A multilinear form is \textbf{alternating} if $\exists i \ne j$ with $v_i = v_j \implies H(v_1, \dots, v_i, \dots, v_j, \dots, v_n) = 0$ and if so, has the property $H(v_1, \dots, v_i, \dots, v_j, \dots, v_n) = -H(v_1, \dots, v_j, \dots, v_i, \dots, v_n)$ for all $v_1, \dots, v_n \in V$.
+				\item Thus for any $\sigma \in \mathfrak{S}_n$, $H(v_{\sigma(1)}, \dots, v_{\sigma(n)}) =\text{sgn}(\sigma)H(v_1, \dots, v_n)$
 			\end{itemize}
 			
 		\end{dfn}
 		
 		
 		\begin{thm}[Cramer's Rule]{thm:cramer}{ }
-			Let $R$ be a comring and $A \in $Mat$(n; R)$. Then $A \cdot $adj$A = (\det(A)) I_n$
+			Let $R$ be a comring and $A \in \Mat(n; R)$. Then $A \cdot $adj$A = (\det(A)) I_n$
 			\begin{itemize}
 				\item $A$ is invertible iff $\det(A)$ is a unit in $R$, ie $\det(A) \in R^\times$
 			\end{itemize}
@@ -731,64 +826,70 @@
 		
 		
 		\begin{thm}[Jacobi's Formula]{thm:jacobi}{ }
-			Let $A = (a_{ij})$ where the coeffs $a_{ij} = a_{ij}(t)$ are functions of $t$. Then $\frac{d}{dt}\det(A) = $tr adj$A \frac{dA}{dt}$
+			Let $A = (a_{ij})$ with $a_{ij} = a_{ij}(t)$ funcs of $t$. Then $\frac{d}{dt}\det(A) = $tr adj$A \frac{dA}{dt}$
 			
 		\end{thm}
 		
 		
 		\begin{mdfn}[Eigenvalues and Eigenvectors]{mdfn:eigenstuff}{ }
-			Let $f: V \to V$ be an endomorphism of an $F-$VS $V$. $\lambda \in F$ is an \textbf{eigenvalue of $F$} iff there exists n-z $\vec{v} \in V$ s.t. $f(\vec{v}) = \lambda \vec{v}$.\\
+			Let $f: V \to V$ be an endo. of an $F-$VS $V$. \\
+			$\lambda \in F$ is an \textbf{eigenvalue of $F$} iff there exists n-z $\vec{v} \in V$ s.t. $f(\vec{v}) = \lambda \vec{v}$.\\
 			Each such $\vec{v} \in V$ is called an \textbf{eigenvector of $f$ with eigenvalue $\lambda$}.\\
-			For any $\lambda \in F$, the \textbf{eigenspace of $f$ with eigenvalue $\lambda$} is $E(\lambda, f) = \{\vec{v} \in V : f(\vec{v}) = \lambda\vec{v}\}$.
+			$E(\lambda, f)$, the \textbf{eigspace of $f$ with eigval $\lambda$}, is $\{\vec{v} \in V : f(\vec{v}) = \lambda\vec{v}\}$.
 			\begin{itemize}
-				\item Each endomorphism of a n-z finite-dim VS over an algebraically closed field has an eigenvalue
-				\item If $\vec{v}_1, ..., \vec{v}_n$ are eigenvecs of $f$ with distinct eigenvals $\lambda_1, ..., \lambda_n$, then $\vec{v}_1, ..., \vec{v}_n$ are linearly independent.
+				\item Each endo. of a n-z finite-dim VS over an alglly-closed field has an eigval
+				\item For $f$ with distinct eigvals $\lambda_1, \dots, \lambda_n$, the eigvecs $\vec{v}_1, \dots, \vec{v}_n$ are lin-ind.
 			\end{itemize}
 			
 		\end{mdfn}
 		
 		
 		\begin{dfn}[The Characteristic Polynomial]{dfn:charpoly}{ }
-			Let $R$ be a comring and $A \in $Mat$(n; R)$. The polynomial $\chi_A(x) := \det(xI_n - A) \in R[x]$ is called the \textbf{characteristic polynomial of $A$}.
+			Let $R$ be a comring and $A \in \Mat(n; R)$. The polynom $\chi_A(x) := \det(xI_n - A) \in R[x]$ is called the \textbf{characteristic polynomial of $A$}.
 			\begin{itemize}
-				\item For $F$ a field and $A \in $Mat$(n; F)$. The eigenvalues of the linmap $A: F^n \to F^n$ are exactly the roots of $\chi_A$.
+				\item For $F$ a field, $A \in \Mat(n; F)$; the eigvals of $A$ are the roots of $\chi_A$.
 			\end{itemize}
 			
 		\end{dfn}
 		
 		
 		\begin{dfn}[Conjugacy]{dfn:conj}{ }
-			For a comring $R$, $A, B \in $Mat$(n; R)$, are \textbf{conjugate} if $B = P^{-1}AP$ for invertible $P \in $GL$(n; R)$. 
+			For $R$ a comring, $A, B \in \Mat(n; R)$:\\
+			$A$ and $B$ are \textbf{conjugate} if $B = P^{-1}AP$ for invertible $P \in $GL$(n; R)$. 
 			\begin{itemize}
 				\item Conjugacy is an equivalence relation on Mat$(n; R)$
-				\item The characteristic polynomials of conjugate matrices are the same
+				\item The characteristic polynoms of conjugate matrices are the same
 			\end{itemize}
 			
 		\end{dfn}
 		
 		
 		\begin{dfn}[Triangularisability]{dfn:triang}{ }
-			Let $f: V \to V$ be an endomorphism of a finite-dim $F-$VS $V$. The following two statements are equivalent, and if they hold, $f$ is \textbf{triangularisable}:
+			Let $f: V \to V$ be an endo. of a finite-dim $F-$VS $V$. The following two statements are equivalent, and if they hold, $f$ is \textbf{triangularisable}:
 			\begin{enumerate}[label=(\arabic*)]
-				\item The characteristic polynom of $f$, $\chi_f (x)$, decomposes into linear factors in $F[x]$.
-				\item $V$ has an ordered basis $\mathcal{B} = (\vec{v}_1, \dots, \vec{v}_n)$ s.t. $f(\vec{v}_1) = a_{11}\vec{v}_1, f(\vec{v}_2) = a_{12}\vec{v}_1 + a_{22} \vec{v}_2, \dots, f(\vec{v}_n) = a_{1n}\vec{v}_1 + ... + a_{nn}\vec{v}_n \in V$. Equivalently, the matrix $_\mathcal{B}[f]_\mathcal{B}$ is upper triangular.
+				\item $\chi_f (x)$, decomposes into linear factors in $F[x]$.
+				\item $V$ has an ordered basis $\mathcal{B} = (\vec{v}_1, \dots, \vec{v}_n)$ s.t. $f(\vec{v}_1) = a_{11}\vec{v}_1, f(\vec{v}_2) = a_{12}\vec{v}_1 + a_{22} \vec{v}_2, \dots, f(\vec{v}_n) = a_{1n}\vec{v}_1 + \dots + a_{nn}\vec{v}_n \in V$. Equivalently, the matrix $_\mathcal{B}[f]_\mathcal{B}$ is upper triangular.
 			\end{enumerate}
 			\begin{itemize}
-				\item An endomorphism $A : F^n \to F^n$ is triangularisable iff $A$ is conjugate to an upper triangular matrix $B$. Thus any endomorphism of a finite-dim VS over an algebraically closed field is triangularisable.
+				\item An endo. $A : F^n \to F^n$ is triangable iff $A$ is conj to an upper triang mat $B$. Ie, any endo. of a finite-dim VS over an algly-clsd field is triangable.
 			\end{itemize}
 			
 		\end{dfn}
 		
 		
 		\begin{dfn}[Diagonalisability]{dfn:diag}{ }
-			An endo. $f: V \to V$ of an $F-$VS is \textbf{diagonalisable} iff there exists a basis of $V$ consisting of eigenvectors of $f$. If $V$ is finite-dim, then this is equivalent to: $\exists$ ordered basis $\mathcal{B} = \{\vec{v}_1, ..., \vec{v}_n\}$ such that $_\mathcal{B}[f]_\mathcal{B} = $diag$(\lambda_1, ..., \lambda_n)$. Here $f(\vec{v}_i) = \lambda_i \vec{v}_i$.\\
-			A square matrix $A \in $Mat$(n; F)$ is \textbf{diagonalisable} iff the linear mapping $F^n \to F^n$ given by left multiplication by $A$ is diagonalisable. That is, $A$ is conjugate to a diagonal matrix ($\exists P \in $GL$(n; F)$ s.t. $P^{-1}AP = $diag$(\lambda_1, ..., \lambda_n)$.) In this case the columns of $P$ are the vecs of a basis of $F^n$ consisting of eigenvecs of $A$ with eigenvals $\lambda_1, ..., \lambda_n$.
+			\begin{itemize}
+			\item An endo. $f: V \to V$ of an $F-$VS is \textbf{diagonalisable} iff there exists a basis of $V$ made up of eigvecs of $f$. \\
+			\item If $V$ is finite-dim, this is equivalent to: $\exists$ ordered basis $\mathcal{B} = \{\vec{v}_1, \dots, \vec{v}_n\}$ such that $_\mathcal{B}[f]_\mathcal{B} = $diag$(\lambda_1, \dots, \lambda_n)$. Here $f(\vec{v}_i) = \lambda_i \vec{v}_i$.\\
+			\item A square matrix $A \in \Mat(n; F)$ is \textbf{diagonalisable} iff the linear mapping $F^n \to F^n$ given by left multiplication by $A$ is diagonalisable. That is, $A$ is conjugate to a diagonal matrix ($\exists P \in $GL$(n; F)$ s.t. $P^{-1}AP = $diag$(\lambda_1, \dots, \lambda_n)$.) In this case the columns of $P$ are the vecs of a basis of $F^n$ consisting of eigenvecs of $A$ with eigenvals $\lambda_1, \dots, \lambda_n$.
+			\end{itemize}
 			
 		\end{dfn}
 		
 		
 		\begin{thm}[Cayley-Hamilton Theorem]{thm:cayham}{ }
-			Let $R$ be a comring and $A \in $Mat$(n; R)$. Then evaluating $\chi_A(x)$ at the matrix $A$ gives zero.
+			Let $R$ be a comring and $A \in \Mat(n; R)$. \\
+			Then $\chi_A(x)$ evaluate at the matrix $A$, $\chi_A(A)$, equals zero.
 			
 		\end{thm}
 		
@@ -805,37 +906,40 @@
 			Let $V$ be an $\mathbb{R}-$VS. An \textbf{inner product} on $V$ is a mapping $(-, -): V \times V \to \mathbb{R}$ that satisfies, for all $\vec{x}, \vec{y}, \vec{z} \in V$ and $\lambda, \mu \in \mathbb{R}$:
 			\begin{enumerate}[label=(\arabic*)]
 				\item $(\lambda \vec{x} + \mu \vec{y}, \vec{z}) = \lambda(\vec{x}, \vec{z}) + \mu (\vec{y}, \vec{z})$
-				\item $(\vec{x}, \vec{y}) = (\vec{y}, \vec{x})$
-				\item $(\vec{x}, \vec{x}) \ge 0$, $=0$ iff $\vec{x} = 0$
+				\item $(\vec{x}, \vec{y}) = (\vec{y}, \vec{x})$ (together with $(1)$ implies symmetric bilinear form)
+				\item $(\vec{x}, \vec{x}) \ge 0$, $=0$ iff $\vec{x} = 0$ (positive definite)
 			\end{enumerate}
 			\begin{itemize}
 				\item The \textbf{standard inner product} on $V = \mathbb{R}^n$ is the dot product
-				\item A \textbf{real inner product space} is a real vector space endowed with an inner product
-				\item $(-, -)$ is a symmetric bilinear form $(1), (2)$ and \textbf{positive definite} $(3)$.
-				\item For $V$ a VS over $\mathbb{C}$ the definition is similar, swap $\mathbb{R}$ for $\mathbb{C}$ everywhere; condition $(2)$ reads $(\vec{x}, \vec{y}) = \overline{(\vec{y}, \vec{x})}$; and the standard inner product is $(\vec{v}, \vec{w}) = v_1 \overline{w}_1 + ... + v_n \overline{w}_n$. Note the SIP is not $\mathbb{C}$-linear in the second variable.
-				\item In an $\mathbb{R}$ or $\mathbb{C}-$VS, we define the \textbf{length/inner product norm/norm} as $\left\lVert \vec{v} \right\rVert := \sqrt{(\vec{v}, \vec{v})}$
+				\item A \textbf{real inner product space} is a real VS endowed with an inner product
+				\item For $V$ a VS over $\mathbb{C}$ the definition is similar, swap $\mathbb{R}$ for $\mathbb{C}$ everywhere; condition $(2)$ reads $(\vec{x}, \vec{y}) = \overline{(\vec{y}, \vec{x})}$; and the standard inner product is $(\vec{v}, \vec{w}) = v_1 \overline{w}_1 + \dots + v_n \overline{w}_n$. Note the SIP is not $\mathbb{C}$-linear in the second variable.
+				\item In a $\mathbb{R}/\mathbb{C}-$VS, the \textbf{length/inner product norm/norm} is $\left\lVert \vec{v} \right\rVert := \sqrt{(\vec{v}, \vec{v})}$
 				\item Vectors of length $1$ are \textbf{units}
-				\item $\vec{v}, \vec{w}$ are \textbf{orthogonal}, $\vec{v} \perp \vec{w}$, iff $(\vec{v}, \vec{w}) = 0$. Sets $S, T$ are orthogonal, $S \perp T$, if $\vec{v} \perp \vec{w} \forall \vec{v} \in S, \vec{w} \in T$.
-				\item A family $(\vec{v}_i)_{i \in I}$ for vecs from an $IP-$space is an \textbf{orthonormal family} if all $\vec{v}_i$ have length $1$ and are pairwise orthogonal (using the Kronecker delta, $(\vec{v}_i, \vec{v}_j) = \delta_{ij}$
-				\item An orthonormal family that is a basis is an \textbf{orthonormal basis}. For $V$ an IPS and $(\vec{v}_i)_{i \in I})$ an orthonormal basis, for any $\vec{w} \in V$, $\vec{w} = \sum_{i \in I} (\vec{w}, \vec{v}_i)\vec{v}_i$.
-				\item Every finite-dim inner product space has an orthonormal basis
+				\item $\vec{v}, \vec{w}$ are \textbf{orthogonal}, $\vec{v} \perp \vec{w}$, iff $(\vec{v}, \vec{w}) = 0$. 
+				\item Sets $S, T$ are orthogonal, $S \perp T$, if $\vec{v} \perp \vec{w} \forall \vec{v} \in S, \vec{w} \in T$.
+				\item An \textbf{orthonormal family} of vecs in an IPS is a $(\vec{v}_i)_{i\in I}$ s.t. all $\vec{v}_i$ have $\left\lVert \vec{v}_i\right\rVert = 1$ and are pairwise orthogonal (by Kronecker delta, $(\vec{v}_i, \vec{v}_j) = \delta_{ij}$)
+				\item An orthonormal family that is a basis is an \textbf{orthonormal basis}. For $V$ an IPS, $(\vec{v}_i)_{i \in I}$ an orthonormal basis; $\forall \; \vec{w} \in V$, $\vec{w} = \sum_{i \in I} (\vec{w}, \vec{v}_i)\vec{v}_i$.
+				\item Every finite-dim IPS has an orthonormal basis
 			\end{itemize}
 			
 		\end{mdfn}
 		
 		
 		\begin{dfn-s}[Orthogonal Complements/Projections]{dfn-s:orthocomplandprojecs}{ }
-			Let $V$ be an IPS and $T \subseteq V$. Define $T^\perp = \left\{\vec{v} \in V : \vec{v} \perp \vec{t} \forall \vec{t} \in T\right\}$, the \textbf{orthogonal} to $T$. $T^\perp$ is always a subspace of $V$ even if $T$ is not, and $T^\perp = \left\langle T\right\rangle^\perp.$ \\
-			Let $U$ be a finite-dim subspace of an IPS $V$. The space $U^\perp$ is the \textbf{orthogonal complement to $U$}. 
+			Let $V$ be an IPS, $T \subseteq V$, and $U$ be a finite-dim subspace of $V$. \\
+			$T^\perp = \left\{\vec{v} \in V : \vec{v} \perp \vec{t} \forall \vec{t} \in T\right\}$ is the \textbf{orthogonal} to $T$. \\
+			$T^\perp$ is always a subspace of $V$ even if $T$ is not, and $T^\perp = \left\langle T\right\rangle^\perp.$ \\
+			The space $U^\perp$ is the \textbf{orthogonal complement to $U$}. 
 			\begin{itemize}
 				\item Every $\vec{v} \in V$ can be written as $\vec{v} = \vec{p} + \vec{r}, \vec{p} \in U$ and $\vec{r} \in U^\perp$.
-				\item For $V$ an IPS and $U$ a finite-dim subspace of $V$, $U$ and $U^\perp$ are complementary, ie $V = U \oplus U^\perp$.
+				\item $U$ and $U^\perp$ are complementary, ie $V = U \oplus U^\perp$.
 			\end{itemize}
-			The \textbf{orthogonal projection from $V$ onto $U$} is the mapping $\pi_U : V \to V, \vec{v} = \vec{p} + \vec{r} \mapsto \vec{p}$.
+			The \textbf{orthogonal projection from $V$ onto $U$} is $\pi_U : V \to V, \vec{v} = \vec{p} + \vec{r} \mapsto \vec{p}$.
 			\begin{itemize}
 				\item $\pi_U$ is a linmap with im$(\pi_U) = U$ and $\ker (\pi_U) = U^\perp$
 				\item $\pi^2_U = \pi_U$, ie $\pi_U$ is idempotent
-				\item If $\{\vec{v}_1, ..., \vec{v}_n\}$ is an orthonormal basis of $U$, then for all $\vec{v} \in V$, $\pi_U(\vec{v}) = \sum_{i=1}^{n}(\vec{v}, \vec{v}_i)\vec{v}_i$.
+				\item Let $\{\vec{v}_1, \dots, \vec{v}_n\}$ be an orthonormal basis of $U$. \\
+				Then for all $\vec{v} \in V$, $\pi_U(\vec{v}) = \sum_{i=1}^{n}(\vec{v}, \vec{v}_i)\vec{v}_i$.
 			\end{itemize}
 			
 		\end{dfn-s}
@@ -855,20 +959,20 @@
 		
 		
 		\begin{thm}[Gram-Schmidt Process]{thm:gramschmidt}{ }
-			Let $\vec{v}_1, ..., \vec{v}_k$ be linearly ind. vectors in an IPS $V$. Then we can construct an orthonormal family $\vec{w}_1, ..., \vec{w}_k$ such that for all $1 \le i \le k$, $\left\langle \vec{v}_1, ..., \vec{v}_i\right\rangle = \left\langle \vec{w}_1, ..., \vec{w}_i\right\rangle$. If $V$ is finite-dim, we can use the G-S process to transform any basis into an orthonormal basis.\\
+			Let $\vec{v}_1, \dots, \vec{v}_k$ be linearly ind. vectors in an IPS $V$. Then we can construct an orthonormal family $\vec{w}_1, \dots, \vec{w}_k$ such that for all $1 \le i \le k$, $\left\langle \vec{v}_1, \dots, \vec{v}_i\right\rangle = \left\langle \vec{w}_1, \dots, \vec{w}_i\right\rangle$. If $V$ is finite-dim, we can use the G-S process to transform any basis into an orthonormal basis.\\
 			
 			\begin{itemize}
 				\item For $k = 1$ take $\vec{w}_1 = \frac{\vec{v}_1}{\left\lVert \vec{v}_1\right\rVert}$ (normalise the length)
-				\item Then given $\vec{w}_1, ..., \vec{w}_k$; $\vec{w}_{k+1} = \frac{\vec{v}_{k+1} - \sum_{i=1}^{k}(\vec{v}_{k+1}, \vec{w}_i)\vec{w}_i}{\left\lVert\vec{v}_{k+1} - \sum_{i=1}^{k}(\vec{v}_{k+1}, \vec{w}_i)\vec{w}_i\right\rVert}$
+				\item Then given $\vec{w}_1, \dots, \vec{w}_k$; $\vec{w}_{k+1} = \frac{\vec{v}_{k+1} - \sum_{i=1}^{k}(\vec{v}_{k+1}, \vec{w}_i)\vec{w}_i}{\left\lVert\vec{v}_{k+1} - \sum_{i=1}^{k}(\vec{v}_{k+1}, \vec{w}_i)\vec{w}_i\right\rVert}$
 			\end{itemize}
 			
 		\end{thm}
 		
 		
 		\begin{dfn}[Adjoints and Self-Adjointness]{dfn:adjnt}{ }
-			Let $V$ be an IPS. Two endomorphisms $T, S : V \to V$ are \textbf{adjoint} if for all $\vec{v}, \vec{w} \in V$, $(T \vec{v}, \vec{w}) = (\vec{v}, S\vec{w})$. In this case $S = T*$ and $S$ is the \textbf{adjoint of $T$}.
+			Let $V$ be an IPS. Two endo.s $T, S : V \to V$ are \textbf{adjoint} if for all $\vec{v}, \vec{w} \in V$, $(T \vec{v}, \vec{w}) = (\vec{v}, S\vec{w})$. In this case $S = T*$ and $S$ is the \textbf{adjoint of $T$}.
 			\begin{itemize}
-				\item Let $V$ be a finite-dim IPS and $T: V \to V$ an endo. Then $T*$ exists an is unique.
+				\item If $V$ a finite-dim IPS and $T: V \to V$ an endo; $T*$ exists and is unique.
 				\item An endo. of an IPS $T : V \to V$ is \textbf{self-adjoint} if $T = T*$.
 				\item Let $T : V \to V$ be an self-adjoint linmap on an IPS $V$. Then:
 					\begin{enumerate}[label=(\arabic*)]
@@ -884,8 +988,8 @@
 		\begin{mthm}[The Spectral Theorem]{mthm:}{ }
 			Let $V$ be a finite-dim IPS and $T : V \to V$ be a self-adjoint linmap. Then $V$ has an orthonormal basis consisting of eigenvectors of $T$.
 			\begin{itemize}
-				\item Let $A \in $Mat$(n, \mathbb{R})$ be symmetric. Then $\exists$ orthogonal $P \in $Mat$(n, \mathbb{R})$ such that $P^TAP = P^{-1}AP = $diag$(\lambda_1, ..., \lambda_n)$, where the $\lambda_i$ are the (necessarily real) eigvals of $A$ repeated according to their multiplicity as roots of $\chi_A$.
-				\item Let $A \in $Mat$(n, \mathbb{C})$ be hermitian. Then $\exists$ unitary $P \in $Mat$(n, \mathbb{C})$ s.t. $\overline{P}^T A P = P^{-1} AP = $diag$(\lambda_1, ..., \lambda_n)$, where the $\lambda_i$ are the (necessarily real) eigvals of $A$ repeated according to their multiplicity as roots of $\chi_A$.
+				\item Let $A \in \Mat(n, \mathbb{R})$ be symmetric. Then $\exists$ orthogonal $P \in \Mat(n, \mathbb{R})$ such that $P^TAP = P^{-1}AP = $diag$(\lambda_1, \dots, \lambda_n)$, where the $\lambda_i$ are the (necessarily real) eigvals of $A$ repeated according to multiplicity.
+				\item Let $A \in \Mat(n, \mathbb{C})$ be hermitian. Then $\exists$ unitary $P \in \Mat(n, \mathbb{C})$ s.t. $\overline{P}^T A P = P^{-1} AP = $diag$(\lambda_1, \dots, \lambda_n)$, where the $\lambda_i$ are the (necessarily real) eigvals of $A$ repeated according to multiplicity.
 			\end{itemize}
 			
 		\end{mthm}
@@ -899,29 +1003,70 @@
 	
 	{\footnotesize \textbf{\underline{Jordan Normal Form}}}
 		
-		{\tiny In this section assume that $F$ is an algebraically closed field}
 		
 		
 		\begin{dfn}[Jordan Blocks]{dfn:jordblocks}{ }
 			Let $r \in \mathbb{N}$. Then 
 			\begin{itemize}
 				\item The \textbf{nilpotent Jordan block of size $r$} is the $(r \times r)$ matrix $J(r)$ defined by the rule $J(r)_{ij} = 1$ for $j = i + i$ and $=0$ otherwise
-				\item The \textbf{Jordan block of size $r$ and eigenvalue $\lambda$}, for $\lambda \in F$, is the $(r \times r)$ matrix $J(r, \lambda)$ defined by the rule $J(r, \lambda) = \lambda I_r + J(r) = D + N$ (with $DN = ND$).
+				\item The \textbf{Jordan block of size $r$ and eigval $\lambda$}, for $\lambda \in F$, is the $(r \times r)$ matrix $J(r, \lambda)$ defined by the rule $J(r, \lambda) = \lambda I_r + J(r) = D + N$ (with $DN = ND$).
 			\end{itemize}
 			
 		\end{dfn}
 		
 		
 		\begin{mthm}[Jordan Normal Form]{mthm:jordnormform}{ }
-			Let $F$ be an algebraically closed field, $V$ be a finite-dim VS, and $\phi : V \to V$ an endomorphism with characteristic polynomial $\chi_\phi(x) = (x - \lambda_1)^{a_1}(x-\lambda_2)^{a_2}...(x-\lambda_s)^{a_s} \in F[x]$, $a_i \ge 1, \sum_{i=1}^{s} = n$ for distinct $\lambda_1, ..., \lambda_s \in F$.\\
-			Then there exists an ordered basis $\mathcal{B}$ of $V$ such that the matrix of $\phi$ with respect to the basis $\mathcal{B}$ is block diagonal with Jordan blocks on the diagonal. That is, $_\mathcal{B}[\phi]_\mathcal{B} = $diag$(J(r_{11}, \lambda_1), ..., J(r_{1m_1}, \lambda_1), J(r_{21}, \lambda_2), ..., J(r_{sm_s}, \lambda_s))$ with $r_{11}, ..., r_{1m_1}, r_{21}, ..., r_{sm_s} \ge 1$ such that $a_i = r_{i1} + r_{i2} + ... + r_{im_i}, (1 \le i \le s)$.
+			Let $F$ be an algebraically closed field, $V$ be a finite-dim VS, and $\phi : V \to V$ an endo. with characteristic polynom $\chi_\phi(x) = (x - \lambda_1)^{a_1}(x-\lambda_2)^{a_2}\dots(x-\lambda_s)^{a_s} \in F[x]$, $a_i \ge 1, \sum_{i=1}^{s} = n$ for distinct $\lambda_1, \dots, \lambda_s \in F$.\\
+			Then $\exists$ an ordered basis $\mathcal{B}$ of $V$ s.t. the matrix of $\phi$ w.r.t. $\mathcal{B}$\\
+			is block diag with Jordan blocks on the diag. That is,
+			$_\mathcal{B}[\phi]_\mathcal{B} = $\\
+			diag$(J(r_{11}, \lambda_1), \dots, J(r_{1m_1}, \lambda_1), J(r_{21}, \lambda_2), \dots, J(r_{sm_s}, \lambda_s))$ with $r_{11}, \dots, r_{1m_1}, r_{21}, \dots, r_{sm_s} \ge 1$ s.t. $a_i = r_{i1} + r_{i2} + \dots + r_{im_i}, (1 \le i \le s)$.
 			
 		\end{mthm}
 		
 		
-		\begin{rem}[The Proof of Jordan Normal Form]{rem:jordnormformproof}
+		\begin{thm}[Putting A Matrix Into JNF]{thm:}{ }
+			%TO-D0: Add notes from David's explanation in revision lecture
+			
+		\end{thm}
 		
-			%TO-DO - HONOURS ALGEBRA 1 - 0 LOUIS
+		
+		\begin{rem}[The Proof of Jordan Normal Form]{rem:jordnormformproof}{ }
+			This is a rough overview. If you need specifics you were cooked anyway.\\
+			Let $F$ be an algebraically closed field, $V$ a finite-dim VS, and $\phi : V \to V$ an endo. s.t. $\chi_\phi(x) = (x-\lambda_1)^{a_1}\dots(x-\lambda_s)^{a_s}\in F[x]$, $a_i \ge 1, \sum_{i=1}^{s} a_i = n$
+			for distinct $\lambda_1, \dots, \lambda_s\in F$.
+			\begin{enumerate}[label=(\arabic*)]
+				\item Decompose $V$ into a direct sum $V = \oplus_{i=1}^s V_i$, where for each $i$:
+					\begin{itemize}
+						\item $V_i = \ker((\phi- \lambda_i \id_V)^{a_i}: V \to V) \subseteq V$
+						\item $\phi(V_i) \subseteq V_i$
+						\item $(\phi - \lambda_i \id_{V_i})^{m_i}$ is zero on $V_i$ for large enough $m_i$
+					\end{itemize}
+				\item Now focus on individual $V_i$. These have the advantage that $\psi := \phi - \lambda_i \id_{V_i}$ is a nilpotent linmap on $V_i$. We study a finite-dim VS $W$ with nilpotent endo. $\psi: W \to W$, and show there is an ordered basis of $W$ $\{\vec{v}_{11}, \vec{v}_{21}, \vec{v}_{31}, \dots, \vec{v}_{12}, \vec{v}_{22}, \vec{v}_{32}, \dots\}$ s.t. the matrix of $\psi$ w.r.t. this basis is block-diag with nilpotent J-blocks along the diag.
+				\sbsadaptr{
+				Move to an example for the remainder of the outline. The picture to the right describes an example with $\dim W = 16$ because each box represents a basis vector. $\psi$ moves left to right, vanishing when it reaches the edge..\\
+				In this example the matrix has form $\diag(J(5), J(5), J(3), J(2), J(1))$, and $W$ has ordered basis (partitioned to match blocks) $\mathcal{B} = \mathcal{B}_1 \cup \mathcal{B}_2 \cup \mathcal{B}_3 \cup \mathcal{B}_4 \cup \mathcal{B}_5$
+				$= (\vec{v}_{11}, \vec{v}_{21}, \vec{v}_{31}, \vec{v}_{41}, \vec{v}_{51}) \cup (\vec{v}_{12}, \vec{v}_{22}, \vec{v}_{32}, \vec{v}_{42}, \vec{v}_{52}) \cup (\vec{v}_{13}, \vec{v}_{23}, \vec{v}_{33}) \cup (\vec{v}_{14}, \vec{v}_{24}) \cup (\vec{v}_{15})$
+				}
+				{
+				\includegraphics[scale=0.09]{JNF_boxes}
+				}
+				and $\psi$ is defined termwise to map each $\vec{v}_{ij}$ as shown.
+				\item Define an increasing seq. of subspaces $W_0 = \{0\} \subset W_1 \subset W_2 \subset W_3 \subset W_4 \subset W_5 = W$, where $W_k = \ker (\psi^k : W \to W) = \{\vec{w}\in W : \psi^k(\vec{w}) = \vec{0}\}$. Then $W_k$ is spanned by the $\vec{v}_{ij}\in \mathcal{B}$ with $\psi^k(\vec{v}_{ij}) = \vec{0}\in W$, and:
+				\begin{align*}
+				\hspace*{-4ex} W_1 = \left\langle \vec{v}_{15}, \vec{v}_{14}, \vec{v}_{13}, \vec{v}_{12}, \vec{v}_{11}\right\rangle \quad & \quad W_2 = \left\langle \vec{v}_{24}, \vec{v}_{23}, \vec{v}_{22}, \vec{v}_{21}\right\rangle \oplus W_1 \\
+				\hspace*{-4ex} W_3 = \left\langle \vec{v}_{33}, \vec{v}_{32}, \vec{v}_{31}\right\rangle \oplus W_2 \;\;|\; W_4 = &\left\langle \vec{v}_{42}, \vec{v}_{41}\right\rangle  \oplus W_3 \;|\;\; W_5 = \left\langle \vec{v}_{52}, \vec{v}_{51}\right\rangle \oplus W_4
+				\end{align*}
+				
+				\item We now have bases for the quotient VSs:
+				\begin{align*}
+					&W/W_4 = \left\langle W_4 + \vec{v}_{52}, W_4 + \vec{v}_{51}\right\rangle \text{ expand the others to look like this}\\
+					&W/W_3 = \left\langle W_3 + (\vec{v}_{52}, \vec{v}_{51}, \vec{v}_{41}, \vec{v}_{42})\right\rangle\\
+					&W/W_2 = \left\langle W_2 + (\text{ vecs used in $W/W_3$}, \vec{v}_{33}, \vec{v}_{32}, \vec{v}_{31})\right\rangle\\
+					&W/W_1 = \left\langle W_1 + (\text{ vecs used in $W/W_2$}, \vec{v}_{24}, \vec{v}_{23}, \vec{v}_{22}, \vec{v}_{21})\right\rangle
+				\end{align*}
+				
+			\end{enumerate}
 			
 		\end{rem}
 		

@@ -28,8 +28,38 @@
 		\vspace{-5pt}
 		
 		
-		\begin{rem}[Dimension]{rem:dim}{ }
-			Dimension is very useful when sanity-checking answers. The basic dimensions we deal with are length $(L)$, time $(T)$, and mass $(M)$. For example, $\bm{x}\in \mathbb{R}^3$ has a dimension of length, often written $[\bm{x}] = L$. Similarly the time-derivative has dimension of inverse time, so if $Q(t)$ has dimension $[Q]$, its time-derivative has dimension $[\dot{Q}] = [Q]T^{-1}$. Velocity and acceleration have dimensions $[\bm{\dot{x}}] = LT^{-1}$ and $[\bm{\ddot{x}}] = LT^{-2}$. Dimension is multiplicative - $[Q_1Q_2] = [Q_1][Q_2]$. For example, $[\bm{F}] = [m][\bm{\ddot{x}}] = MLT^{-2}$.
+		
+		%--------------------------------------------------------------------------------%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PREREQUISITES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%--------------------------------------------------------------------------------%
+		
+		
+		{\footnotesize \textbf{\underline{Prerequisites}}}
+		
+		
+		
+		\begin{thm}[Stokes' Theorem]{thm:stokes}{ }
+			Let $\Sigma$ be a smooth oriented surface in $\mathbb{R}^3$ with boundary $\partial \Sigma \equiv \Gamma$. If a vec field $\bm{F}(x, y, z)$ is defined and has cont. first order partial \\
+			derivs in a region containing $\Sigma$, then $\iint_\Sigma (\nabla \times \bm{F}) \cdot \text{ d}\Sigma = \oint_{\partial \Sigma} \bm{F} \cdot \text{ d}\Gamma$, or:
+			$\iint_\Sigma\left(\left(\frac{\partial F_z}{\partial y} \text{ dy} \text{ dz}\right) + \left(\frac{\partial F_x}{\partial z} - \frac{\partial F_z}{\partial x}\right) \text{ dz} \text{ dx} + \left(\frac{\partial  F_y}{\partial  x} - \frac{\partial  F_x}{\partial y}\right) \text{ dx} \text{ dy} \right) = \oint_{\partial \Sigma} \left(F_x \text{ dx} + F_y \text{ dy} + F_z \text{ dz}\right)$
+			
+		\end{thm}
+		
+		
+		\begin{rem}[Solving A Differential Equation]{rem:solvediffeq}{ }
+			\includegraphics[scale=0.13, angle=90]{diffeqsolve}
+			
+		\end{rem}
+		
+		
+		\begin{rem}[Random Stuff]{rem:random}{ }
+			\begin{itemize}
+				\item $\nabla \cdot (\nabla \times \bm{F}) = \bm{0}$\\
+				\item Gradient Thm: For $C$ a curve from $P \to Q$, $\int_C \nabla \bm{F} \cdot \text{ ds} = \bm{F}(Q) - \bm{F}(P)$
+				\item $\int \frac{ \text{ dx}}{\sqrt{a^2 - x^2}} = \arcsin(\frac{x}{a}) + C$ and $\int \frac{ \text{ dx}}{\sqrt{a^2 + x^2}} = \frac{1}{a} \arctan(\frac{x}{a}) + C$
+				\item $\nabla \times \left\langle f, g, h\right\rangle = \left\langle \frac{\partial h}{\partial y} - \frac{\partial g}{\partial z}, \frac{\partial f}{\partial z} - \frac{\partial h}{\partial x}, \frac{\partial g}{\partial x} - \frac{\partial f}{\partial y}\right\rangle$
+				\item $\nabla(\left|\bm{x}\right|) = \frac{\bm{x}}{\left|\bm{x}\right|}, \nabla \left(\frac{k}{\left|x\right|}\right) = \frac{-k\bm{x}}{\left|x\right|^3}$.
+			\end{itemize}
 			
 		\end{rem}
 		
@@ -38,9 +68,8 @@
 			\begin{itemize}
 				\item An \textbf{event} is some $(t, \bm{a})\in \mathbb{R} \times \mathbb{R}^3$ labelling a fixed $t$ in time and $\bm{a}$ in space.
 				\item Two events $(t_0, \bm{a}), (t_1, \bm{b})$ are \textbf{simultaneous} iff $t_0 = t_1$. The distance between simultaneous events is the norm $\left|\bm{a} - \bm{b}\right|$
-				\item The building blocks of our systems are \textbf{particles}, objects whose position in the universe are given at any time by one event
+				\item A \textbf{particle} is an object whose position in the universe is given at any time by one event
 				\item A \textbf{worldline} is a particle's trajectory through the universe. It is a graph $\bm{x} : \mathbb{R} \to \mathbb{R}^3, t \mapsto\bm{x}(t)$ of form $(t, \bm{x}(t))\in \mathbb{R} \times \mathbb{R}^3$.
-				\item \textbf{Velocity} and \textbf{acceleration} are $\bm{v} := \bm{\dot{x}}$ and $\bm{\dot{v}} := \bm{\ddot{x}}$ both w.r.t. $t$
 				\item The \textbf{configuration space} of a \textbf{many-body system of $n$ particles} is the location of each particle in space, so is $\mathbb{R}^3 \times \mathbb{R}^3 \times \dots \times \mathbb{R}^3 = \mathbb{R}^{3n} = \mathbb{R}^N$.
 				\item For the worldline of the $a^{th}$ particle denoted $\bm{x}_a(t): \mathbb{R} \to \mathbb{R}^3$, the collection of the worldlines defines a curve $\bm{x}(t) = (\bm{x}_1(t), \bm{x}_2(t), ..., \bm{x}_n(t)): \mathbb{R} \to \mathbb{R}^N$ in the configuration space.
 			\end{itemize}
@@ -48,34 +77,23 @@
 		\end{dfn}
 		
 		
-		\begin{dfn}[Newton's Principle of Determinacy]{dfn:newtdetermprinc}{ }
-			The motion of any mechanical system is uniquely determined by its initial state, the set of all of its constituent positions and velocities at a given instant in time. 
+		\begin{dfn}[Newton's Equation]{dfn:newteqn}{ }
+			The PoD implies the equation $\bm{\ddot{x}}(t) = \bm{\Phi}(\bm{x}, \bm{\dot{x}}, t)$, $\bm{\Phi}: \mathbb{R}^N \times \mathbb{R}^N \times \mathbb{R} \to \mathbb{R}^N$. For $\bm{v} : \mathbb{R} \to \mathbb{R}^N$, the system $\binom{\bm{\dot{x}}(t)}{\bm{v}(t)} = \binom{\bm{v(t)}}{\bm{\Phi}(\bm{x}, \bm{\dot{x}}, t)}$ has the same soln space.
 			
 		\end{dfn}
 		
 		
-		\begin{mdfn}[Newton's Equation]{dfn:newtoneq}{ }
-			\textbf{Newton's Equation} is the second-order ODE $\bm{\ddot{x}}(t) = \bm{\Phi}(\bm{x}, \bm{\dot{x}}, t)$ for $\bm{\Phi} : \mathbb{R}^n \times \mathbb{R}^N \times \mathbb{R}$. It is the mathematical embodiment of Newton's principle because the constants of integration in a general solution to the ODE are fixed by the initial state.\\
-			As a system of first-order ODEs: Let $\bm{v} : \mathbb{R} \to \mathbb{R}^N$, then the system $\binom{\bm{\dot{x}}(t)}{\bm{\dot{v}}(t)} = \binom{\bm{v}(t)}{\bm{\Phi}(\bm{x}, \bm{v}, t)}$ has the same solution space.
-			
-		\end{mdfn}
-		
-		
-		\begin{mthm}[Newton's Laws Of Motion]{mthm:newtlaws}{ }
+		\begin{mthm}[Newton's Laws]{thm:newtslaws}{ }
 			\begin{enumerate}[label=(\arabic*)]
-				\item A particle (or system of particles) is \textbf{freely-moving} if $\bm{\Phi}(\bm{x}, \bm{\dot{x}}, t) = 0$
-				\begin{itemize}
-					\item A freely moving system moves on a straight worldline at constant $\bm{v}$
-				\end{itemize}
-				\item A \textbf{force} is a map $\bm{F} : \mathbb{R}^3 \to \mathbb{R}$ affecting a particle's $\bm{v}$. For a particle of inertial mass $m$, N's E in a force field is $\bm{F}(\bm{x}) = m \bm{\ddot{x}}$ or $\bm{\Phi}(\bm{x}, \bm{\dot{x}}, t) = \frac{\bm{F}(\bm{x})}{m}$.
-				
+				\item A system of particles is \textbf{freely-moving} if $\bm{\Phi}(\bm{x}, \bm{\dot{x}}, t) = 0$. Such a system with initial state $\bm{x}(0) = \bm{x}_0, \bm{\dot{x}}(0) = \bm{v}_0$ is solved by $\bm{x}(t) = \bm{x}_0 + t\bm{v}_0$.
+				\item A force is a map $\bm{F} : \mathbb{R}^3 \to \mathbb{R}^3$ affecting a particle's velocity. For a particle of inertial mass $m$, $\bm{\Phi}$ is a force field is $\bm{F}(\bm{x}) = m \bm{\ddot{x}}$. A point $\bm{x}\in \mathbb{R}^3$ with $\bm{F}(\bm{x}) = 0$ is an \textbf{equilibrium point} of $\bm{F}$.
 			\end{enumerate}
 			
 		\end{mthm}
 		
 		
-		\begin{dfn}[Affine Space]{dfn:affnspc}{ }
-			
+		\begin{dfn}[Affine Transformation]{dfn:affntrans}{ }
+			\textbf{Affine} transformations preserve collinearity and ratios of distance
 			
 		\end{dfn}
 		
@@ -90,7 +108,26 @@
 				\end{psmallmatrix*}$ where $\bm{s, v}\in \mathbb{R}^3, s\in \mathbb{R},$ and $R: \mathbb{R}^3 \to \mathbb{R}^3$ is an orthogonal transformation.
 			\end{itemize}
 			
+			\includegraphics[scale=0.28]{galiltrans}
+			
 		\end{dfn}
+		
+		
+		\begin{thm}[Galilean Relativity]{thm:galirel}{ }
+			The laws of motion (Newton's Eq.) are invariant under Galilean transformations - translation, fixed $\bm{\dot{x}}$ motion, and rotation of spatial axes.
+			
+		\end{thm}
+		
+		
+		
+		%--------------------------------------------------------------------------------%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%--------------------------------------------------------------------------------%
+		
+		
+		{\footnotesize \textbf{\underline{Prerequisites}}}
+		
+		
 		
 		
 		
