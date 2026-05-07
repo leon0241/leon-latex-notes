@@ -36,6 +36,7 @@
 				\item $\vec{0}$ is understood to be the linear combination of no vectors.
 				\item $A$ (an operator/mat/etc) is \textbf{nilpotent} with \textbf{degree $k$} if $A^k = 0$, $k\in \mathbb{N}$.
 				\item For a set $X$ and $f: X \to X$, $Y \subseteq X$ is \textbf{stable under $f$} if $f(Y) \subseteq Y$.
+				\item $\alpha_1\vec{v}_1 + \dots + \alpha_n \vec{v}_n$, $n\in \mathbb{N}$ is a \textbf{linear combination} of $\vec{v}_1, \dots, \vec{v}_n$.
 			\end{itemize}
 			
 		\end{dfn}
@@ -66,11 +67,11 @@
 		
 		
 	%----------------------------------------------------------------------------------%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CHAPTER 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ABSTRACTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%----------------------------------------------------------------------------------%
 	
 	
-	{\footnotesize \textbf{\underline{Vector Spaces}}}
+	{\footnotesize \textbf{\underline{Abstracting Away}}}
 		
 		
 		\begin{dfn}[Systems Of Linear Equations]{dfn:sysoflineqs}{ }
@@ -106,57 +107,375 @@
 		\end{dfn}
 		
 		
-		\begin{mdfn}[Fields And Vector Spaces]{mdfn:fieldsnvecs}{ }
-			\sbsadapt{
-				A \textbf{field} $F$ is a set with functions $+ : F\times F \to F ; (\lambda, \mu) \mapsto \lambda + \mu$ and $\cdot : F \times F \to F; (\lambda, \mu) \mapsto \lambda\mu$ s.t. $(F, +)$ and $(F\backslash\{0\}, \cdot)$ are abelian groups with respective identities $0_F, 1_F$, and $\lambda(\mu + \nu) = \lambda \mu + \lambda\nu \in F$.
+		\begin{mdfn}[Rings and Fields]{mdfn:fields-and-rings}{A}
+			
+		{
+				\def\columnseprulecolor{\color{black}}
+			\setlength{\columnseprule}{0.5pt}
+			\begin{multicols}{2}
+				\vspace*{-3ex}
+				A \textbf{ring} is a set $R$ equipped with operations $+, \cdot$ such that:
+				\begin{enumerate}[leftmargin=*]
+					\setlength\itemsep{0em}
+					\item $(R, +)$ is an abelian group, $\id = 0_R$
+					\item $(R, \cdot)$ is a \textbf{monoid} (has closure, associativity, identity $=1_R$)
+					\item \textbf{Distributivity:}: For all $a, b, c\in F$:
+					\begin{align*}
+						a \cdot (b + c) &= (a \cdot b) + (a \cdot c)) \\
+						(a + b) \cdot c &= (a \cdot c) + (b \cdot c)
+					\end{align*}
+				\end{enumerate}
+				\columnbreak
+				\vspace*{-3ex}
+				A \textbf{field} is an extension of a ring where $\cdot$ has identity on $R\backslash\{0\}$:
+				\begin{enumerate}[leftmargin=*]
+					\setlength\itemsep{0em}
+					\item $(F, +)$ is an abelian group $F^{+}$, with identity $0_{F}$
+					\item $(F\backslash \{0_{F}\}, \cdot)$ is an abelian group $F^{\times}$, with identity $1_{F}$
+					\item \textbf{Distributivity}: For all $a, b, c\in F$:
+					\[a(b + c) = ab + ac \in F\]
+				\end{enumerate}
+			\end{multicols}
+		}
+			\vspace*{-5ex}
+			For both rings and fields:
+			\vspace*{-5ex}
+			\begin{multicols*}{2}
+			\begin{itemize}
+				\item $(-a)b = -(ab) = a(-b)$
+				\item $(-a)(-b) = ab$
+				\item $0a = 0 = a0$
+				\item $0$, $1$ distinct (except in zero ring)
+			\end{itemize}
+			\end{multicols*}
+			
+			\vspace{-5ex}
+			
+			\textbf{Ring Specific Lemmas and Definitions}:
+			\begin{enumerate}
 				
-				\begin{itemize}
-					\item $0 \vec{v} = \vec{0}; (-1)\vec{v} = -\vec{v}$
-					\item $\forall \lambda \in F$, $\lambda \vec{0} = \vec{0}$
-					\item If $\lambda \vec{v} = 0, \lambda = 0$ or $\vec{v} = \vec{0}$
+				\setlength\itemsep{0em}
+				\item The \textbf{null ring} or \textbf{zero ring} is defined as a ring where $R$ is a single element - i.e. $\{0\}$ where $0 + 0 = 0$ and $0 \times 0 = 0$
+				\item A \textbf{commutative ring} is one where $a \cdot b = b \cdot a$ for all $a,b\in R$
+				
+				\vspace{-4.5ex}
+				
+				\item\begin{multicols}{2}
+					\begin{itemize}[leftmargin=*]
+						\item $(-a)(b) = -(ab) = a(-b)$
+						\item $(-a)(-b) = ab$
+						\item $m(a + b) = ma + mb$
+						\item $(m + n)a = ma + na$
+						\item $m(na) = (mn)a$
+						\item $m(ab) = (ma)b = a(mb)$
+						\item $(ma)(nb) = (mn)(ab)$
+					\end{itemize}
+				\end{multicols}
+				
+				\vspace*{-5ex}
+				
+				\item The integers mod $m$ (or $\mathbb{Z}/m\mathbb{Z}$) is a ring made up of congruence classes.
+				\item A field is a n-z comring less $\{0\}$, with multiplicative inverses
+				\item For $m \in \mathbb{N}$, $\mathbb{Z}/m\mathbb{Z}$ is a field iff $m$ is prime
+			\end{enumerate}
+		\end{mdfn}
+		
+		
+		\begin{mdfn}[Modules and Vector Spaces]{dfn:modules-and-vector-spaces}{B}
+			
+		{
+			\setlength{\columnseprule}{0.5pt}
+			\begin{multicols}{2}
+					A \textbf{left module $M$ over a ring $R$} (or an \textbf{$R$-module}) is a pair: an abelian group $M = (M, \dot{+})$ and a mapping $R \times M \to M : (r, a)\mapsto ra$ s.t. $\forall r, s\in R$ and $a,b\in M$:
+				
+				
+				\columnbreak
+				A \textbf{vector space $V$ over a field} $F$ is an extension of a module but over a field instead, and using vectors: $V = (V, \dot{+})$. $F \times V \to V : (\lambda, \vec{v})\mapsto \lambda \vec{v}$ s.t. $\forall \lambda, \mu\in F$ and $\vec{v},\vec{w}\in v$:
+			\end{multicols}
+		}
+			
+			\vspace*{-10ex}
+			
+			\begin{multicols}{3}
+				\begin{flushright}
+					$r(a \dot{+} b) = (ra) \dot{+} (rb)$
 					
-				\end{itemize}
-			}
-			{
-				A \textbf{vector space $V$ over $F$} is an abelian group $(V, \dotplus )$ paired with a mapping $F \times V \to V ; (\lambda, \vec{v} ) \mapsto \lambda\vec{v}$ such that $\forall \!\! \lambda, \mu \in F$ and $\vec{v}, \vec{w} \in V$:
-				\begin{align*}
-					\lambda(\vec{v} + \vec{w}) &= (\lambda\vec{v}) + (\lambda\vec{w})\\
-					(\lambda + \mu)\vec{v} &= (\lambda\vec{v}) + (\mu \vec{v})\\
-					\lambda(\mu \vec{v}) &= (\lambda \mu) \vec{v}\\
-					1_F \vec{v} &= \vec{v}
-				\end{align*}
-			}
+					$(r + s)a = (ra) \dot{+} (sa)$
+					
+					$r (sa) = (rs) a$
+					
+					$1_{R}a = a$
+				\end{flushright}
+				
+				
+				\columnbreak
+				\begin{center}
+					\textbf{Distributivity 1}
+					
+					\textbf{Distributivity 2}
+					
+					\textbf{Associativity}
+					
+					\textbf{Identity}
+				\end{center}
+				
+				\columnbreak
+				
+				$\lambda(\vec{v} \dot{+} \vec{w}) = \lambda\vec{v} \dot{+} \lambda \vec{w}$
+				
+				$(\lambda + \mu)\vec{v} = \lambda \vec{v} \dot{+} \mu \vec{v}$
+				
+				$\lambda (\mu \vec{v}) = (\lambda \mu) \vec{v}$
+				
+				$1\vec{v} = \vec{v}$
+			\end{multicols}
+			
+			\vspace*{-7ex}
 			
 			
+			and they satisfy the following lemmas (for both):
+			
+			\begin{enumerate}
+				\setlength\itemsep{0em}
+				\item $0_{R} a = 0_{M}$ for all $a\in M$ \quad or \quad $0 \vec{v} = \vec{0}$ for all $\vec{v} \in V$
+				\item $r 0_{M} = 0_{M}$ for all $r\in R$ \quad or \quad $\lambda \vec{0} = \vec{0}$ for all $\lambda\in F$
+				\item $(-r)a = r(-a) = -(ra)$ $\forall \; r\in R$, $a\in M$ or $(-1)\vec{v} = -\vec{v}$ $\forall \; \vec{v}\in V$
+			\end{enumerate}
+			
+			\textbf{Vector Space Lemmas and Definitions}
 			\begin{itemize}
 				\item For $X$ a set and $V$ an $F-$VS, the set Maps$(X, V)$ of mappings $X \to V$ is an $F-$VS (define $(f+g)(x) = f(x) + g(x)$ and $(\lambda f)(x) = \lambda (f(x))$).
 				\item Given $F-$VSs $V_1, \dots, V_n$, $V_1 \times \dots \times V_n$ is an $F-$VS if we define addition/mult by scalars componentwise. We denote this VS by $V_1 \oplus \dots \oplus V_n$ and name it the \textbf{external direct sum}. $F^n = F \oplus \dots \oplus F$ $n$ times.
-				\item Two VsubSs $V_1, V_2$ of a VS $V$ are \textbf{complementary} if addition defines a bijection: $V_1 \times V_2 \tilde{\to} V$ %TO-DO - More detail
-				\item A nice example of an infinite-dim VS is the space of all sequences (ie working over $\mathbb{R}$, real seqs). A nice endomorphism with this VS is 'shifting' all the indices of the seq.
+				\item Two VsubSs $V_1, V_2$ of a VS $V$ are \textbf{complementary} if addition defines a bijection: $V_1 \times V_2 \tilde{\to} V$
+				\item An example of an $\infty-\dim$ VS is the space of all infinite sequences of $a_n\in F$. A nice endo. with this VS is 'shifting' all the indices of the seq.\\
+				\item Other ex.s are the spaces of all cont./cont. on an interval funcs/polynoms
 				\item For a set $X$, the set Maps$(X, F)$ equipped with pointwise addition and scalar multiplication is an F-VS. 
-				
 			\end{itemize}
+		\end{mdfn}
+		
+		
+		\begin{mdfn}[Sub-things]{dfn:subthings}{C}
+			
+			A sub-thing is a smaller but self-contained version of a thing
+		{
+			\setlength{\columnseprule}{0.5pt}
+			\begin{multicols}{3}
+				
+				\vspace*{-6ex}
+				
+				\textbf{Vector Subspace}: A subset $U$ of a VS $V$. Needs $\forall\vec{u}, \vec{v}\in U,\,\lambda\in F$:
+				\begin{enumerate}
+					\item $\vec{0}\in U$
+					\item $\vec{u} + \vec{v} \in U$
+					\item $\lambda \vec{u}\in U$
+				\end{enumerate}
+				\columnbreak    
+				
+				\vspace*{-7ex}
+				
+				\textbf{Subring} A subset $R'$ of a ring $R$ under the same operations as $R$. Needs $\forall a, b\in R'$:
+				\begin{enumerate}
+					\item $R'$ has a multiplicative identity
+					\item $a - b \in R'$
+					\item $a \cdot b\in R'$
+				\end{enumerate}
+				
+				\columnbreak
+				
+				\vspace*{-7ex}
+				
+				\textbf{Submodule}: A subset $M'$ of an $R-$mod $M$ under the same operations as $M$. Need $\forall a, b\in M',\,r\in R$:
+				\begin{enumerate}
+					\item $0_{M}\in M'$
+					\item $a - b \in M'$
+					\item $ra\in M'$
+				\end{enumerate}
+			\end{multicols}
+			\setlength{\columnseprule}{0pt}
+		}
+			
+			\vspace*{-5ex}
+			
+			The intersection of subspaces/rings/modules is a subspace/ring/module
+			
+			\textbf{Subspace Lemmas and Definitions}
+			\begin{itemize}
+				\item The solution set of a linsys of eqns seen earlier is a vector space
+				\item A subset is a \textbf{hyperplane} of a VS if it is a proper VsubS (a VsubS $\ne$ V) and together with one other $\vec{v}$ generates the whole VS.
+				\item The image of a VsubS under a linear mapping is again a VsubS, and the preimage of a VsubS under a linear mapping is again a VsubS.
+			\end{itemize}
+			
+			\textbf{Subring Lemmas and Definitions}
+			\begin{itemize}
+				\item If $R'$ a subring of $R$; $f(R')$ is a subring of $S$ .
+				\item $\im(f)$ is a subring of $S$.
+				\item Let $f(1_R) = 1_S$. Then if $x$ is a unit in $R$, $f(x)$ is a unit in $S$ and $(f(x))^{-1} = f(x^{-1})$. In this case $f$ restricts to a group homomorphism $\left.f\right|_{R^\times} : R^\times \to S^\times$.
+			\end{itemize}
+			
+			\textbf{Submodule Lemmas and Definitions}
+				\begin{itemize}
+					\item $\ker f$ is a submodule of $M$ and $\im f$ is a submodule of $N$.
+				\end{itemize}
+				
+				Let $R$ be a ring, $M$ an $R-$module, and $T \subseteq M$. Then the \textbf{submodule of $M$ generated by $T$} is the set $_R \left\langle T\right\rangle = \{r_1t_1 + \dots + r_mt_m: t_1, \dots, t_m \in T, r_1, \dots, r_m \in R\}$ together with the zero element if $T = \emptyset$.
+				\begin{itemize}
+					\item M is \textbf{finitely generated} if it is generated by a finite set
+					\item M is called \textbf{cyclic} if it is generated by a singleton
+					\item $_R \left\langle T\right\rangle$ is the smallest submodule of $M$ containing $T$, for $T \subseteq M$.
+					\item If $M_1, M_2$ are submods of $M$, $M_1 + M_2 := \{a + b : a \in M_1, b \in M_2\}$ is too.
+				\end{itemize}
 			
 		\end{mdfn}
 		
 		
-		\begin{dfn}[Vector Subspaces]{dfn:vecsubspc}{ }
-			Let $U$ be a subset of a VS $V$. 
-			$U$ is a \textbf{vector subspace} if $\vec{0} \in U$ and $\forall \vec{u}, \vec{v} \in U, \lambda \in F$: $\vec{u} + \vec{v}$ and $\lambda \vec{u} \in U$.
-			\begin{itemize}
-				\item The solution set of a linsys of eqns seen earlier is a vector space
-				\item $\alpha_1\vec{v}_1 + \dots + \alpha_n \vec{v}_n$, $n\in \mathbb{N}$ is a \textbf{linear combination} of $\vec{v}_1, \dots, \vec{v}_n$.
-				\item A subset is a \textbf{hyperplane} of a VS if it is a proper VsubS (a VsubS $\ne$ V) and together with one other $\vec{v}$ generates the whole VS.
-				\item The intersection of two VSs is itself a VS
+		\begin{mdfn}[Homo no homo]{dfn:homomorphisms}{D}
+			
+			Everything has its own homomorphism and they are all the same thing
+			
+			
+			
+		{
+			\setlength{\columnseprule}{0.5pt}
+			\begin{multicols}{3}
+				
+				\vspace*{-7ex}
+				
+				\textbf{Linear Mapping}: Hom. on a VS. Needs $\forall\vec{u}, \vec{v}\in U,\,\lambda\in F$
+				\begin{itemize}[leftmargin=*]
+					\item $f(\hspace{-1pt}\vec{v}_{1} \hspace{-2pt} + \hspace{-1pt} \vec{v}_{2}\hspace{-1pt}) \hspace{-2pt}=\hspace{-2pt} f(\hspace{-1pt}\vec{v}_{1}\hspace{-1pt})\hspace{-1pt} +\hspace{-1pt} f(\hspace{-1pt}\vec{v}_{2}\hspace{-1pt})$
+					\item $f(\lambda \vec{v}_{1}) = \lambda f(\vec{v}_{1})$
+				\end{itemize}
+				
+				\columnbreak    
+				
+				\vspace*{-7ex}
+				
+				\textbf{Ring Hom.}: Hom. on a ring. Needs $\forall x, y\in R$
+				\begin{itemize}[leftmargin=*]
+					\item $f (x + y) = f(x) + f(y)$
+					\item $f(xy) = f(x)f(y)$
+				\end{itemize}
+				
+				\columnbreak
+				
+				\vspace*{-7ex}
+				
+				\textbf{$R$-Hom}: Hom. on an $R-$mod. Needs $\forall a, b\in M,\,r\in R$
+				\begin{itemize}[leftmargin=*]
+					\item $f(a + b) = f(a) + f(b)$
+					\item $f(ra) = rf(a)$
+				\end{itemize}
+			\end{multicols}
+		}
+			\vspace*{-7ex}
+			
+			\noindent\rule{\textwidth}{0.2pt}
+			
+			
+			\begin{itemize}[leftmargin=*]
+				\setlength\itemsep{0em}
+				\item A bijective homomorphism is called a \textbf{isomorphism}
+				\item Two objects with an iso. are called \textbf{isomorphic}, written $A \cong B$
+				\item A homomorphism $V\to V$ is called an \textbf{endomorphism} of $V$
+				\item An isomorphism $V\to V$ is called an \textbf{automorphism} of $V$
+				\item The composition of two hom.s is a hom. in all cases
+				\item The inverse of an iso. is an iso. in all cases
 			\end{itemize}
 			
-		\end{dfn}
+			\vspace*{-2ex}
+			
+			\noindent\rule{\textwidth}{0.2pt}
+			
+			\textbf{Image and Kernel}
+			
+			The image and kernel of a mapping $f : M \to N$ are:
+			
+			\begin{itemize}
+			\setlength\itemsep{0em}
+			\item \textbf{Image}: $\im f = \{f(a) : a\in M\}\subseteq N$
+			\item \textbf{Kernel}: $\ker f = \{a\in M : f(a) = 0_{N}\} \subseteq M$
+			\end{itemize}
+			Any hom. is injective if and only if it has kernel $0/\vec{0}/$etc
+			
+		\end{mdfn}
+		
+			
+		\begin{mthm}[Properties of Linear Mappings]{thm:linmapprops}{ }
+			Let $V, W$ be $F-$VSs and $B \subset V$ be a basis.
+		
+			\begin{itemize}
+				\item The set of all hom.s $V \to W$ is Hom$_F(V, W) =$Hom$(V, W) \subseteq$Maps$(V, W)$, and is itself a VS
+				\item The \textbf{dual space} of $V$ is $V^* = \Hom(V, F)$
+				\item The auto.s of a $V$ form a subgroup of its permutation group, the \textbf{general linear} or \textbf{automorphism} group $GL(V) =$Aut$(V) \subseteq Maps^\times(V, V).$
+				\item The image and preimage of a VS under a linear mapping are VSs.
+				\item A hom. can be restricted to a bijec Hom$_F(V, W) \tilde{\to}$Maps$(B, W)$, $f \mapsto \left.f\right|_B$, ie a hom. determines/is determined by the values it takes on a basis.
+				\item Every injective hom. $f: V \hookrightarrow W$ has a \textbf{left inverse} $g$ s.t. $g \circ f =\id_V$
+				\item Every surjective hom. $f: V \twoheadrightarrow W$ has a \textbf{right inverse} $g$ s.t. $f \circ g =\id_W$
+				\item For $n \ge 0 \in \mathbb{Z}$, a VS $V$ over $F$ is isomorphic to $F^n$ iff $\dim V = n$.
+				\item A point sent to itself by a hom. is a \textbf{fixed point} of the mapping. Given a mapping $f: X \to X$, the set of fixed points is $X^f = \{x \in X : f(x) = x\}$.
+				\item Given VS $V$, VsubSs $V_1, \dots, V_n$, and linmaps $f_i: V_i \to V$; $f: V_1 \oplus \dots \oplus V_n \to V$, $f(v1, \dots, v_n) = f_1(v_1) + \dots + f_n(v_n)$ is an isomorphism. We then write $V = V_1 \oplus V_2$ and say $V$ is the \textbf{internal direct sum} of $V_1, V_2$.
+			\end{itemize}
+			
+		\end{mthm}
+			
+			
+			\begin{mthm}[Properties of Ring Hom.s]{mthm:ringhomprops}{ }
+				Let $R$ and $S$ be rings and $f : R \to S$ a ring hom. Then $\forall x,y\in R$ and $m\in \mathbb{Z}$ ($0_{R}, 0_{S}$ are the zeros of $R, S$):
+			
+			\vspace*{-5ex}
+			
+			\begin{multicols}{2}
+				\begin{itemize}
+					\item $f(0_{R}) = 0_{S}$
+					\item $f(-x) = -f(x)$
+					\item $f(x - y)$ = f(x) - f(y)
+					\item $f(mx) = mf(x)$
+					\item $f(x^{n}) = (f(x))^{n}$ for all $x\in R$ and $n\in \mathbb{N}$
+					\item For $x\in R$, $n\in \mathbb{N}$, $f(x^n) = (f(x))^n$
+				\end{itemize}
+			\end{multicols}
+			
+			\vspace*{-5ex}
+			
+			\begin{itemize}
+				\item The \textbf{zero ring homomorphism} is $f: R \to S$; $r \mapsto 0$.
+				\item $f(1_R)$ is not necessarily equal to $1_S$.
+				\item If $S$ has no zero-divs then either $f$ is the zero hom., or $f(1_R) = 1_S$.
+			\end{itemize}
+			
+			\end{mthm}
+		
+		
+		
+	%----------------------------------------------------------------------------------%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CHAPTER 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%----------------------------------------------------------------------------------%
+		
+		
+		{\footnotesize \textbf{\underline{Vector Spaces}}}
+		
 		
 		
 		\begin{dfn}[The Free Vector Space]{dfn:freevs}{ }
 		The \textbf{free vector space on $X$}, $F \left\langle X\right\rangle \subseteq$Maps$(X, F)$, is the VsubS of all mappings which send almost all $x \in X$ to zero.
 		
 		\end{dfn}
+		
+		
+		\begin{thm}[2x2 Matrix Inverse Formula]{thm:nmatinvform}{ }
+			For a 2x2 matrix $A = \begin{psmallmatrix*}
+				a&b\\
+				c&d
+			\end{psmallmatrix*}
+			$
+			the inverse $A^{-1} = \frac{1}{\det A} \begin{psmallmatrix*}
+				d&-b\\
+				-c&a
+			\end{psmallmatrix*}
+			$
+			Use this at your own risk - no idea where it holds beyond $\mathbb{R}$ :))
+			
+		\end{thm}
 		
 		
 		\begin{dfn}[Span and Generating Sets]{dfn:genersetsnspan}{ }
@@ -238,49 +557,6 @@
 		\end{dfn}
 		
 		
-		\begin{mdfn-s}[Linear Mappings: Homo/Iso/Endo/Automorphisms]{dfn:linmaps}{ }
-			Let $V, W$ be $F-$VSs, $B \subset V$ be a basis. A mapping $f: V \to W$ is \textbf{(F-)linear} or a \textbf{homomorphism of $F$-VSs} if $\forall \; \vec{v}_1, \vec{v}_2 \in V$ and $\lambda \in F$:\\
-			$f(\vec{v}_1 + \vec{v}_2) = f(v_1) + f(v_2)$ and $f(\lambda \vec{v}_1) = \lambda f(\vec{v}_1)$.
-			\begin{itemize}
-				\item An \textbf{isomorphism} is a bijective linear mapping. Isomorphisms are invertible, and the inverse mapping is also an isomorphism
-				\item An \textbf{endomorphism} is a homomorphism from a VS to itself
-				\item An \textbf{automorphism} is an isomorphism from a VS to itself. 
-			\end{itemize}
-			
-		\end{mdfn-s}
-		
-		
-		\begin{mthm}[Properties Of Morphisms]{thm:morphprops}{ }
-			Let $V, W$ be $F-$VSs, $B \subset V$ be a basis,
-			\begin{itemize}
-				\item The set of all hom.s $V \to W$ is Hom$_F(V, W) =$Hom$(V, W) \subseteq$Maps$(V, W)$, and is itself a VS
-				\item %TO-DO: The \textbf{dual space}
-				\item The auto.s of a $V$ form a subgroup of its permutation group, the \textbf{general linear} or \textbf{automorphism} group $GL(V) =$Aut$(V) \subseteq Maps^\times(V, V).$
-				\item If $f: V \to W$ and $g: U \to V$ are hom.s, $(f \circ g) : U \to W$ is a hom.
-				\item The image and preimage of a VS under a linear mapping are VSs.
-				\item A hom. can be restricted to a bijec Hom$_F(V, W) \tilde{\to}$Maps$(B, W)$, $f \mapsto \left.f\right|_B$, ie a hom. determines/is determined by the values it takes on a basis.
-				\item Every injective hom. $f: V \hookrightarrow W$ has a \textbf{left inverse} $g$ s.t. $g \circ f =\id_V$
-				\item Every surjective hom. $f: V \twoheadrightarrow W$ has a \textbf{right inverse} $g$ s.t. $f \circ g =\id_W$
-				\item For $n \ge 0 \in \mathbb{Z}$, a VS $V$ over $F$ is isomorphic to $F^n$ iff $\dim V = n$.
-				\item A point sent to itself by a hom. is a \textbf{fixed point} of the mapping. Given a mapping $f: X \to X$, the set of fixed points is $X^f = \{x \in X : f(x) = x\}$.
-				\item Given VS $V$, VsubSs $V_1, \dots, V_n$, and linmaps $f_i: V_i \to V$; $f: V_1 \oplus \dots \oplus V_n \to V$, $f(v1, \dots, v_n) = f_1(v_1) + \dots + f_n(v_n)$ is an isomorphism. We then write $V = V_1 \oplus V_2$ and say $V$ is the \textbf{internal direct sum} of $V_1, V_2$.
-			\end{itemize}
-			
-		\end{mthm}
-		
-		
-		\begin{dfn}[Image and Kernel]{dfn:imnkern}{ }
-			Let $V, W$ be VSs and $f: V \to W$ be a hom.\\
-			The \textbf{image} of $f$, $\im(f) = F(V) \subseteq W$, is a VsubS of $W$.\\
-			The \textbf{kernel} of $f$, $\ker (f) := f^{-1}(\vec{0}) = \{\vec{v} \in V : f(\vec{v}) = \vec{0}\}$, is a VsubS of $V$.
-			\begin{itemize}
-				\item A linear mapping $f$ is injective iff its kernel is $\vec{0}$.
-				\item The image of a VsubS under a linear mapping is again a VsubS, and the preimage of a VsubS under a linear mapping is again a VsubS.
-			\end{itemize}
-			
-		\end{dfn}
-		
-		
 		
 		\begin{mthm}[Rank-Nullity Theorem]{mthm:ranknull}{ }
 			Let $V, W$ be VSs and $f: V \to W$ a linear mapping. \\
@@ -310,8 +586,45 @@
 			\item For $A \in \Mat(n, \mathbb{C})$, $\exp(A) := \sum_{k = 0}^{\infty} \frac{1}{k!} A^k$. For commutative $A, B$, $\exp(A + B) = \exp(A) \exp(B)$
 		\end{itemize}
 		
+		\end{dfn}
 		
-		\end{dfn}\begin{thm}[Linking Linear Mappings And Matrices]{thm:repmat}{ }
+		
+		\begin{thm}[Properties Of Matrices]{thm:matprops}{ }
+		\begin{itemize}
+			\item If $A, A' \in\Mat(n\times m; F)$, $B, B' \in \Mat(m \times \ell; F)$, $C \in\Mat(\ell \times k; F)$, then:
+			\begin{enumerate}[label=(\roman*)]
+				\item $(A + A')B = AB + A'B$
+				\item $A(B + B') = AB + AB'$
+				\item $(AB)C = A(BC)$
+			\end{enumerate}
+			\item A square $A$ is \textbf{invertible} if $\exists A^{-1}$ of same size s.t $AA^{-1} = A^{-1}A = I$
+			\item An \textbf{elementary} matrix is one which differs from $I$ in at most one entry
+			\item Every $M\in\Mat(n, F)$ can be written as a product of elementary matrices
+			\item A matrix whose only non-zero entries lie on the diagonal, with first ones along the diagonal then zeroes, is in \textbf{Smith Normal Form}. 
+			\item For each $A \in \Mat(n \times m; F)$, $\exists$ invertible $P, Q$ s.t. $PAQ$ is in SNF.
+			\item The \textbf{rank} of a matrix $A$ is the dimension of the subspace of $F^n$ generated by the columns or rows of $A$ (the $\dim$ of each are always equal).\\
+			\item A is of \textbf{full rank} if the rank is equal to the number of rows or columns
+			\item rk$(A + B) \le$rk$A +$rk$B$, and rk$(AB) \le \min($rk$A,$rk$B)$.
+			\item For $R$ a comring, $A, B \in \Mat(n; R)$:
+			\begin{itemize}[labelindent=2ex]
+				\item $\det(AB) = \det(A) \det(B)$
+				\item $\det(A^\text{T}) = \det(A)$\\
+				\item $A$ is invertible iff $\det(A)$ is a unit in $R$, ie $\det(A) \in R^\times$
+			\end{itemize}
+			\item For F a field, $A, B\in \Mat(n, F)$:
+			\begin{itemize}[labelindent=2ex]
+				\item $\det(A) \ne 0$ iff $A$ is invertible
+				\item If $A$ is invertible then $\det(A^{-1}) = \det(A)^{-1}$ 
+				\item $\det(A^{-1}BA) = \det(B)$ (the $\det$ is independent of the choice of basis)
+			\end{itemize}
+			\item When performing Gaussian Elimination, row addition does not change the determinant, and row swaps change the sign only
+		\end{itemize}
+		
+		
+		\end{thm}
+		
+		
+		\begin{thm}[Linking Linear Mappings And Matrices]{thm:repmat}{ }
 		Let $F$ be a field and $m, n \in \mathbb{N}$. There is a bijection $M$ between the space of hom.s $F^m \to F^n$ and Mat$(n \times m; F)$ which maps $f \mapsto [f]$. $M(f) := [f]$ is the \textbf{representing matrix} of $f$, whose columns are the images under $f$ of the standard basis elements of $F^m$, ie $[f] = (f(\vec{e}_1)|\dots|f(\vec{e}_m))$.
 		
 		\end{thm}
@@ -328,30 +641,6 @@
 		
 		\begin{dfn}[The General Linear Group]{dfn:glgroup}{ }
 			The set of invertible $n\times n$ matrices in a field $F$ form a group under matrix multiplication, called the \textbf{General Linear group of $(n\times n)$ matrices} and written GL$(n; F) :=\Mat(n; F)^\times$
-			
-		\end{dfn}
-		
-		
-		
-		
-		\begin{dfn}[Properties Of Matrices]{dfn:matprops}{ }
-			\begin{itemize}
-				\item If $A, A' \in\Mat(n\times m; F)$, $B, B' \in \Mat(m \times \ell; F)$, $C \in\Mat(\ell \times k; F)$, then:
-				\begin{enumerate}[label=(\roman*)]
-					\item $(A + A')B = AB + A'B$
-					\item $A(B + B') = AB + AB'$
-					\item $(AB)C = A(BC)$
-				\end{enumerate}
-				\item A square $A$ is \textbf{invertible} if $\exists A^{-1}$ of same size s.t $AA^{-1} = A^{-1}A = I$
-				\item An \textbf{elementary} matrix is one which differs from $I$ in at most one entry
-				\item Every $M\in\Mat(n, F)$ can be written as a product of elementary matrices
-				\item A matrix whose only non-zero entries lie on the diagonal, with first ones along the diagonal then zeroes, is in \textbf{Smith Normal Form}. 
-				\item For each $A \in \Mat(n \times m; F)$, $\exists$ invertible $P, Q$ s.t. $PAQ$ is in SNF.
-				\item The \textbf{rank} of a matrix $A$ is the dimension of the subspace of $F^n$ generated by the columns or rows of $A$ (the $\dim$ of each are always equal).\\
-				\item A is of \textbf{full rank} if the rank is equal to the number of rows or columns
-				\item rk$(A + B) \le$rk$A +$rk$B$, and rk$(AB) \le \min($rk$A,$rk$B)$.
-			\end{itemize}
-			
 			
 		\end{dfn}
 		
@@ -389,37 +678,24 @@
 	{\footnotesize \textbf{\underline{Rings And Modules}}}
 		
 		
-		\begin{mdfn}[A Ring]{mdfn:ring}{ }
-			A \textbf{ring} is a set $R$ equipped with two operations $+, \cdot$ such that:\\
-			\begin{enumerate}[label=(\roman*)]
-				\item $(R, +)$ is an abelian group
-				\item $(R, \cdot)$ is a monoid (satisfies associativity and identity)
-				\item $a \cdot (b + c) = (a \cdot b) + (a\cdot c)$ and $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$ (distributivity).
-			\end{enumerate}
-			The element $1 \in R$ is uniquely defined as the identity of $(R, \cdot)$.
-			\begin{itemize}
-				\item A ring in which $\cdot$ is commutative is a \textbf{commutative ring}.
-				\item The \textbf{null/zero ring} is the ring where $R$ is a single element set.
-				\item The integers mod $m$ (or $\mathbb{Z}/m\mathbb{Z}$) is a ring made up of congruence classes.
-				\item A field is a n-z commutative ring $F$ where every n-z $a \in F$ has inverse $a^{-1} \in F$, ie $a \cdot a^{-1} = a^{-1} \cdot a = 1$
-				\item For $m \in \mathbb{N}$, $\mathbb{Z}/m\mathbb{Z}$ is a field iff $m$ is prime
-				\item For $a, b \in R$, $0a = 0 = a0$; $(-a)b = -(ab) = a(-b)$; and $(-a)(-b) = ab$.
-				\item For $m \in \mathbb{Z}$, the \textbf{$m$-th multiple ma of $a \in$ abelian $R$} is $ma := a+\dots+a$ m times if $m>0$, $0a = 0$. If $m < 0$, $(-m)(a) = -(ma)$.
-				\item For $m, n \in \mathbb{Z}$, $a, b \in R$: $m(a+b) = ma + mb$; $(m + n)a = ma + na$; $m(na) = (mn)a$; and $m(ab) = (ma)b = a(mb)$.
-			\end{itemize}
-			
-		\end{mdfn}
-		
-		
 		\begin{mdfn}[Units\text{,} Zero-Divisors\text{,} Integral Domains]{mdfn:unitsnzerodivsnintdoms}{ }
-			Let $R$ be a ring, and $a \in R$.$a$ is a \textbf{unit} if it is invertible in $R$, ie there exists $\exists a^{-1} \in R$ s.t. $aa^{-1} = a^{-1}a = 1$. \\
+			Let $R$ be a ring, and $a \in R$.$a$ is a \textbf{unit} if it is invertible in $R$, ie there exists $\exists a^{-1} \in R$ s.t. $aa^{-1} = a^{-1}a = 1$.
+			\begin{itemize}
+				\item The set of units of a ring, $R^\times$, form a group under multiplication.
+			\end{itemize}
 			A n-z $a$ is a \textbf{zero-divisor} if $\exists$ n-z $b \in R$ s.t. either $ab = 0$ or $ba=0$.\\
 			An \textbf{integral domain} is a n-z commutative ring with no zero-divisors.
 			\begin{itemize}
-				\item The set of units of a ring, $R^\times$, form a group under multiplication.
-				\item For $m \in \mathbb{N}$, $\mathbb{Z}/m\mathbb{Z}$ is an integral domain iff $m$ is prime
 				\item Every finite integral domain is a field
-				\item Let $a, b, c \in R$, an int-dom. If $ab = ac$ and $a \ne 0$, then $b = c$.
+				\item Let $a, b, c \in R$, an int-dom. Then:
+				\vspace*{-5ex}
+				\begin{multicols*}{2}
+				\begin{itemize}
+					\item $ab = ac$ and $a \ne 0$, then $b = c$
+					\item $ab = 0 \Rightarrow a = 0 or b=0$
+					\item $a \ne 0$ and $b \ne 0 \Rightarrow ab \ne 0$.
+				\end{itemize}
+				\end{multicols*}
 			\end{itemize}
 			
 		\end{mdfn}
@@ -451,22 +727,6 @@
 		\end{dfn}
 		
 		
-		\begin{mdfn}[Ring Homomorphisms]{mdfn:ringhomos}{ }
-			Let $R, S$ be rings. $f:R \to S$ is a \textbf{ring homomorphism} if $\forall \; x, y \in R$:
-			\[f(x + y) = f(x) + f(y) \text{ and }f(xy) = f(x)f(y)\]
-			\begin{itemize}
-				\item For $x\in R$, $n\in \mathbb{N}$, $f(x^n) = (f(x))^n$
-				\item The \textbf{zero ring homomorphism} is $f: R \to S$; $r \mapsto 0$.
-				\item \textbf{Isomorphisms} etc are akin to linear mappings
-				\item $f(1_R)$ is not necessarily equal to $1_S$.
-				\item If $S$ has no zero-divs then either $f$ is the zero hom., or $f(1_R) = 1_S$.
-				\item The composition of hom.s is a hom. and the inverse of an iso. is an iso.
-				\item If $f: R \to S$ a ring hom., then $\forall x, y \in R$ and $m \in \mathbb{Z}$: $f(0_R) = 0_S$; $f(-x) = -f(x)$; $f(x-y) = f(x) - f(y)$; $f(mx) = mf(x)$.
-			\end{itemize}
-			
-		\end{mdfn}
-		
-		
 		\begin{mdfn}[Ideals]{mdfn:ideals}{ }
 			A subset $I$ of a ring $R$ is an \textbf{ideal}, written $I \trianglelefteq R$, if:
 			\begin{enumerate}[label=(\arabic*)]
@@ -481,6 +741,9 @@
 		\begin{thm}[Properties Of Ideals]{thm:idealprops}{ }
 			
 			\begin{itemize}
+				\item $\ker f$ is an ideal of $R$.
+				\item The intersection of any collection of ideals is an ideal
+				\item For $I, J$ ideals of $R$; $I + J := \{a + b : a \in I, b \in J\}$ is an ideal
 				\item For $R$ a comring and $T \subset R$, the \textbf{ideal of $R$ generated by $T$} is the set $_R \left\langle T\right\rangle = \{r_1t_1 + \dots + r_mt_m: t_1, \dots, t_m \in T, r_1, \dots, r_m \in R\}$ together with $0_R$ if $T = \emptyset$.
 					\begin{itemize}
 						\item If $T$ is finite can write $_R \left\langle t_1, \dots, t_n\right\rangle$.
@@ -492,39 +755,6 @@
 			\end{itemize}
 			
 		\end{thm}
-		
-		
-		\begin{dfn}[The Kernel Of A Ring Homomorphisms]{dfn:ringker}{ }
-			Let $R, S$ be rings with zero elements $0_R, 0_S$ and $f: R \to S$ be a ring hom. Then the \textbf{kernel} of $f$ is $\ker f = \left\{r \in R : f(r) = 0_S\right\}$.
-			\begin{itemize}
-				\item $\ker f$ is an ideal of $R$.
-				\item $f$ is injective iff $\ker f = \{0\}$.
-				\item The intersection of any collection of ideals is an ideal
-				\item For $I, J$ ideals of $R$; $I + J := \{a + b : a \in I, b \in J\}$ is an ideal
-			\end{itemize}
-			
-		\end{dfn}
-		
-		
-		\begin{dfn}[Subrings]{dfn:subrings}{ }
-			Let $R$ be a ring. A subset $R'$ of $R$ is a \textbf{subring} of $R$\\
-			if $R'$ is a ring under the operations $+/\cdot$ defined for $R$.\\
-			\textbf{Test For A Subring:} A subset $R'$ of a ring $R$ is a subring if and only if:
-			\begin{enumerate}[label=(\roman*)]
-				\item $R'$ has a multiplicative identity ($1_{R'}$ is not necessarily equal to $1_R$!)
-				\item $R'$ is closed under subtraction ($a, b \in R \implies a-b \in R$)
-				\item $R'$ is closed under multiplication
-			\end{enumerate}
-			\begin{itemize}
-				\item The intersection of two subrings of $R$ is not necessarily a subring of $R$.\\
-				\item Let $R, S$ be rings and $f: R \to S$ a ring homomorphism. Then:
-				\begin{itemize}
-					\item If $R'$ a subring of $R$; $f(R')$ is a subring of $S$. $\im(f)$ is a subring of $S$.
-					\item Let $f(1_R) = 1_S$. Then if $x$ is a unit in $R$, $f(x)$ is a unit in $S$ and $(f(x))^{-1} = f(x^{-1})$. In this case $f$ restricts to a group homomorphism $\left.f\right|_{R^\times} : R^\times \to S^\times$.
-				\end{itemize}
-			\end{itemize}
-			
-		\end{dfn}
 		
 		
 		\begin{dfn}[Equivalence and Equivalence Relations]{dfn:equiv}{ }
@@ -622,65 +852,6 @@
 		\end{mthm}
 		
 		
-		
-		\begin{dfn}[Modules]{dfn:modules}{ }
-			A \textbf{(left) module $M$ over a ring $R$} or an \textbf{$R$-module} is a pair consisting of an abelian group $M = (M, \dotplus)$ and a mapping $R \times M \to M; (r, a) \mapsto ra$ such that for all $r, s \in R$ and $a, b \in M$ the following hold:
-			\vspace*{-5ex}
-			\begin{multicols}{2}
-				\begin{itemize}
-					\item $r(a \dotplus b) = (ra) \dotplus (rb)$
-					\item $(r + s)a = (ra) \dotplus (sa)$
-				\end{itemize}
-				\columnbreak
-				\begin{itemize}
-					\item $r(sa) = (rs)a$
-					\item $1_Ra = a$
-				\end{itemize}
-			\end{multicols}
-			\vspace{-4ex}
-			Let $R$ be a ring and $M$ an $R-$module. Then for all $r \in R, a \in M$: $0_R a = 0_M$; $r0_M = 0_M$; $(-r)a = r(-a) = -(ra)$
-			
-		\end{dfn}
-		
-		
-		\begin{dfn}[Module Homomorphisms/Kernel/Image/etc]{dfn:modulestuff}{ }
-			Let $R$ be a ring and $M, N$ be $R-$modules.\\
-			A mapping $f: M \to N$ is an \textbf{($R$-)homomorphism} if for all $a, b \in M$ and $r \in R$: $f(a+b) = f(a) + f(b)$, and $f(ra) = rf(a)$.\\
-			The \textbf{kernel} of $f$ is $\ker f = \{a \in M : f(a) = 0_N\} \subseteq M$ and the \textbf{image} of $f$ is $\im f = \{f(a) : a \in M\} \subseteq N$.\\
-			If $f$ is a bijection then it is an \textbf{($R$-module) isomorphism} with $M \cong N$.
-			\begin{itemize}
-				\item The composition of two R-hom.s is an R-hom.
-			\end{itemize}
-			
-		\end{dfn}
-		
-		
-		\begin{dfn}[Submodules]{dfn:submods}{ }
-			A $\ne \emptyset$ subset $M'$ of an $R-$module $M$ is a \textbf{submodule} if $M'$ is an $R-$module w.r.t. the operations of the $R-$module $M$ restricted to $M'$.\\
-			Test For A Submodule: Let $R$ be a ring and $M$ be an $R-$module. $M' \subseteq M$ is a submodule iff:
-			\begin{align*}
-				(1) \; 0_M \in M' \quad (2) \; &a, b \in M' \implies a-b \in M' \\
-				(3) \; r \in R \text{ and } &a \in M' \implies ra \in M'
-			\end{align*}
-			Let $R$ be a ring, $M, N$ be $R-$modules, $f : M \to N$ be an $R-$hom.. Then:
-			\begin{itemize}
-				\item $\ker f$ is a submodule of $M$ and $\im f$ is a submodule of $N$.
-				\item $f$ is injective if and only if $\ker f = {0_M}$
-			\end{itemize}
-			
-			Let $R$ be a ring, $M$ an $R-$module, and $T \subseteq M$. Then the \textbf{submodule of $M$ generated by $T$} is the set $_R \left\langle T\right\rangle = \{r_1t_1 + \dots + r_mt_m: t_1, \dots, t_m \in T, r_1, \dots, r_m \in R\}$ together with the zero element if $T = \emptyset$.
-			Submodules have several properties akin to subspaces/ideals:
-			\begin{itemize}
-				\item M is \textbf{finitely generated} if it is generated by a finite set
-				\item M is called \textbf{cyclic} if it is generated by a singleton
-				\item $_R \left\langle T\right\rangle$ is the smallest submodule of $M$ containing $T$, for $T \subseteq M$.
-				\item The intersection of any collection of submodules of $M$ is a submodule of $M$
-				\item If $M_1, M_2$ are submods of $M$, $M_1 + M_2 := \{a + b : a \in M_1, b \in M_2\}$ is too.
-			\end{itemize}
-			
-		\end{dfn}
-		
-		
 		\begin{dfn}[Factor Modules]{dfn:facmods}{ }
 			Let $R$ be a ring, $M$ an $R-$module, and $N$ a submodule of $M$. \\
 			For $a \in M$, the \textbf{coset of $a$ w.r.t. $N$ in $M$} is : $a + N = \{a+b : b \in N\}$.
@@ -775,25 +946,6 @@
 		\end{mdfn}
 		
 		
-		\begin{thm}[Calculations With The Determinant]{thm:detcal;cs}{ }
-			\begin{itemize}
-				\item For $R$ a comring, $A, B \in \Mat(n; R)$:
-					\begin{itemize}[labelindent=2ex]
-						\item $\det(AB) = \det(A) \det(B)$
-						\item $\det(A^\text{T}) = \det(A)$
-					\end{itemize}
-				\item For F a field, $A, B\in \Mat(n, F)$:
-					\begin{itemize}[labelindent=2ex]
-						\item $\det(A) \ne 0$ iff $A$ is invertible
-						\item If $A$ is invertible then $\det(A^{-1}) = \det(A)^{-1}$ 
-						\item $\det(A^{-1}BA) = \det(B)$ (the $\det$ is independent of the choice of basis)
-					\end{itemize}
-				\item When performing Gaussian Elimination, row addition does not change the determinant, and row swaps change the sign only
-			\end{itemize}
-			
-		\end{thm}
-		
-		
 		\begin{dfn}[Bi/Multilinear Forms]{dfn:bilmultilforms}{ }
 			Let $U, V, W$ be $F-$VSs. A \textbf{bilinear form on $U \times V$ with values in $W$} is a mapping $H: U\times V \to W$ linear in both entries. Ie, $\forall \; u_1, u_2 \in U, \; v_1, v_2 \in V$:\\
 			\vspace*{-5ex}
@@ -824,10 +976,7 @@
 		
 		
 		\begin{thm}[Cramer's Rule and Jacobi]{thm:cramernjacob}{ }
-			Cramer: For $R$ be a comring, $A \in \Mat(n; R)$; $A \cdot $adj$A = (\det(A)) I_n$
-			\begin{itemize}
-				\item $A$ is invertible iff $\det(A)$ is a unit in $R$, ie $\det(A) \in R^\times$
-			\end{itemize}
+			Cramer: Let $R$ be a comring, $A \in \Mat(n; R)$. Then $A \cdot $adj$A = (\det(A)) I_n$
 			Jacobi: For $A = (a_{ij})$, $a_{ij} = a_{ij}(t)$ funcs of $t$; $\frac{d}{dt}\det(A) = $tr adj$A \frac{dA}{dt}$
 			
 		\end{thm}
