@@ -1,0 +1,333 @@
+\documentclass[landscape, 8pt]{extarticle}
+
+\usepackage{../../preamble}
+\usepackage[separate]{../../rss/thmboxes_v5}
+
+\DeclareMathOperator{\wt}{wt}
+\DeclareMathOperator{\dd}{d}
+
+
+\begin{document}
+	
+	%\fontsize{4pt}{5pt} \selectfont %Smallest legible font size when printing with UoE Main Library printers, however some resolution issues 	for extremely small charactes such as subscripts inside fractions. Only use if you *really* need the extra space
+	\fontsize{5pt}{6pt} \selectfont
+	
+	%Reduce horizontal padding in 'tabular' environment, make rows taller for legibility
+	\setlength\tabcolsep{4.5pt}
+	\setlength\extrarowheight{2pt}
+	
+	\setlength{\abovedisplayskip}{0pt}
+	\setlength{\belowdisplayskip}{0pt}
+	\setlength{\abovedisplayshortskip}{0pt}
+	\setlength{\belowdisplayshortskip}{0pt}
+	
+	\begin{multicols*}{4}
+		\raggedcolumns 
+		%Original template by Leon, modified by Louis
+		\vspace{-5pt}
+		\subsection*{INT Exam 2025/26 - }
+		\vspace{-5pt}
+		
+		
+	%----------------------------------------------------------------------------------%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INTRO TO THE INTRO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%----------------------------------------------------------------------------------%
+		
+		
+	{\footnotesize \textbf{\underline{Basics}}}
+	
+	
+	
+		\begin{dfn}[Random Definitions]{dfn:rand}{ }
+			\begin{itemize}
+				\item In this course we only use binary codes, ie $F = F_2$, the two-element field
+				\item For $a, b\in \mathbb{Z}$, $a$ \textbf{divides} $b$, or $a|b$, if $\exists c\in \mathbb{Z}$ s.t. $b = ac$
+				\item $a, b\in \mathbb{Z}$ are \textbf{relatively prime} or \textbf{coprime} if $\gcd(a, b) = 1$
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{thm}[Random Theorems]{thm:rand}{ }
+			\begin{itemize}
+				\item \textbf{Well-Ordering Principle:} Every non-empty set of positive integers contains a least element
+			\end{itemize}
+			
+		\end{thm}
+		
+		
+		\begin{dfn}[Primitive Pythagorean Triples]{dfn:ppts}{ }
+			A \textbf{Pythagorean Triple} is a set of numbers $(a, b, c) \in \mathbb{N}$ such that $a^2 + b^2 = c^2$. Note if $(a, b, c)$ is a PT, so is $(da, db, dc)$.\\
+			A \textbf{Primitive Pythagorean Triple} is a PT such that $a, b, c$ have no common factor. Such $a, b, c$ have one of $a, b$ odd and the other even.\\
+			\textit{Square of an odd is odd, square of an even is even. If both even then $a, b, c$ divisible by 2. If both odd work through the eqn with $a = 2k + 1, b = 2n + 1$ to see all divisible by $4$.}\\
+			Indeed, every PPT with $(a, b, c)$ with $a$ odd has, for $s \ge t \ge 1$ odd coprime integers, $a = st, b = \frac{s^t - t^t}{2}, c = \frac{s^2 + t^2}{2}$.
+			
+		\end{dfn}
+		
+		
+		\begin{thm}[The Division Algorithm]{thm:divalg}{ }
+			Let $a, b\in \mathbb{Z}$ with $b > 0$. Then $\exists$ unique $q, r\in \mathbb{Z}$ s.t. $a = qb + r$ and $0 \le r < b$. $q$ is the \textbf{quotient} and $r$ is the \textbf{remainder}.
+			
+		\end{thm}
+		
+		
+		\begin{lma}[B\'ezout's Lemma]{lma:bzoot}{ }
+			Let $a, b$ be nonzero integers with gcd $(a, b)$. Then $\exists \; s, t\in \mathbb{Z}$ s.t. $as + bt = (a, b)$. Moreover any common divisor of $a$ and $b$ divides $(a, b)$.
+			
+		\end{lma}
+		
+		
+		\begin{thm}[Fermat's Last Theorem]{thm:fermslast}{ }
+			For $n, x, y, z\in \mathbb{Z}$, and $n > 2$, there are no solutions to the equation $x^n + y^n = z^n$.
+			
+		\end{thm}
+		
+		
+		\begin{thm}[The Extended Euclidean Algorithm]{thm:exteuclidalg}{ }
+			Let $a, b\in \mathbb{Z}$ be s.t. $a \ge b > 0$. Then $\gcd(a, b)$ can be found by:\\
+			\begin{enumerate}[label=(\arabic*)]
+				\item By the Division Algorithm $\exists$ unique $q_1, r_1$ s.t. $a = q_1b + r_1$, with $0 \le r_1 < b$
+				\item Assuming $r_1 > 0$, we apply the Division Algorithm to $b, r_1$ for $b = q_2 r_1 + r_2$.
+				\item Repeat \textit{ad infinitum}, the last non-zero remainder is  $\gcd(a, b)$
+			\end{enumerate}
+			
+		\end{thm}
+		
+		
+		\begin{xmp}[Finding GCD By Euclidean Algorithm]{xmp:gcdbyeuclidalg}{ }
+			Find $\gcd(112, 27)$.\\
+			$112 = 4(27) + 4 \quad 27 = 6(4) + 3 \quad 4 = 1(3) + 1 \quad 3 = 3(1) + 0$\\
+			So $\gcd(112, 27) = 1$ and $112, 27$ are coprime
+			
+		\end{xmp}
+		
+		
+		\begin{dfn}[Congruence]{dfn:cong}{ }
+			$a$ is \textbf{congruent} to $b \mod{n}$, or $a \cong b \mod{n}$ means $n|(a-b)$, or $\exists q\in \mathbb{Z}$ s.t. $a = nq + b$.\\
+			For $a, b, c, d, n\in \mathbb{Z}$ with $n > 0$, $a \cong b \mod{n}$, $c \cong d \mod{n}$:
+			\begin{itemize}
+				\item $a + c \cong b + d \mod{n}$
+				\item $a - c \cong b - d \mod{n}$
+				\item $ac \cong bd \mod{n}$
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[System Of Residues]{dfn:ressys}{ }
+			A \textbf{complete system of residues modulo $n$} is a set $I \subseteq \mathbb{Z}$ s.t. every $k\in \mathbb{Z}$ is congruent $\mod{n}$ to exactly one $i\in I$
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[The Ring $\mathbb{Z} / n \mathbb{Z}$ or $\mathbb{Z}_n$]{dfn:integerring}{ }
+			The elements of $\mathbb{Z}_n$ are congruence classes $\mod{n}$, ie $\mathbb{Z}_n = \{\overline{0}, \overline{1}, ..., \overline{n-1}\}$. We define the ring addition/multiplication by, for $0\le a, b < n$:
+			\begin{itemize}
+				\item $\overline{a} + \overline{b} = \overline{c}$ iff $a+b = c \mod{n}$
+				\item $\overline{a} - \overline{b} = \overline{c}$ iff $a-b = c \mod{n}$
+				\item \item $\overline{a} \cdot\overline{b} = \overline{c}$ iff $a \cdot b = c \mod{n}$
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{thm}[Wilson's Theorem]{thm:wilson}{ }
+			If $p$ is prime then $(p-1)! \cong -1 \mod{p}$
+			
+		\end{thm}
+		
+		
+		\begin{mthm}[The Chinese Remainder Theorem]{thm:crt}{ }
+			Let $m_1, m_2, \dots, m_k\in \mathbb{N}$ be pairwise coprime. Then given $a_1, a_2, \dots, a_k\in \mathbb{Z}$, the system of congruences
+			\begin{align*}
+				x \cong& a_1 \mod{m_1}\\
+				x \cong& a_2 \mod{m_2}\\
+				\vdots& \\
+				x \cong& a_k \mod{m_k}
+			\end{align*}
+			has a solution which is unique $\mod{N}$, where $N = m_1 \cdot m_2 \cdot \dots \cdot m_k$. The proof is constructive:
+			\begin{proof}
+				Let $N_i = n/m_i$ be the product of all $m_j$ with $j\ne i$. Since $m_i$ is coprime to $m_j$ for $i\ne j$, we must have $\gcd(N_i, m_i) = 1$. \\
+				Then since $N_i$ and $m_i$ are coprime, $N_i$ must have an inverse $\mod{m_i}$, ie $\exists x_i\in \mathbb{Z}$ s.t. $N_i x_i \cong 1 \mod{m_i}$ (to find $x_i$ use the Euclidean algorithm to find numbers s.t. $N_i x_i  m_i y_i = 1$).\\
+				Then consider the product $a_i N_i x_i$, which is s.t. $a_i N_i x_i \cong 0 \mod{m_j}$ for $i \ne j$, and $a_i N_i x_i \cong a_i \mod{m_i}$.\\
+				Thus the sum $x = \sum_{i=1}^{k}a_i N_i x_i$ precisely satisfies $x \cong a_i \mod{m_i}$ for all $i$.
+			\end{proof}
+			
+		\end{mthm}
+		
+		
+		\begin{xmp}[Applying The CRT]{xmp:crtapp}{ }
+			Solve the system of congruences
+			\begin{align*}
+				x \cong& 1 \mod{2}\\
+				x \cong& 3 \mod{5}\\
+				x \cong& 4 \mod{7}
+			\end{align*}
+		We have $N = 2 \cdot 5 \cdot 7 = 70$, $N_1 = 5 \cdot 7 = 35, N_2 = 2 \cdot 7 = 14, N_3 = 2 \cdot 5 = 10$. Calculate by Euclidean Algorithm or inspection for:
+		\begin{align*}
+			35 \cdot 1 \cong& 1 \mod{2}\\
+			14 \cdot 4 \cong& 1 \mod{5}\\
+			10 \cdot 5 \cong& 1 \mod{7}
+		\end{align*}
+		so we have $x_1 = 1, x_2 = 4, x_3 = 5$. Thus $x \cong (1 \cdot 35 \cdot 1) + (3 \cdot 14 \cdot 4) + (4\cdot 10 \cdot 5) \cong 403 \cong 53 \mod{70}$. 
+			
+		\end{xmp}
+		
+		
+		\begin{thm}[Applying The CRT For Non-Coprime $m_i\, m_j$]{thm:extcrt}{ }
+			Key fact - if $m, n$ are coprime integers, and $a\in \mathbb{Z}$, the congruence $x \cong a \mod{m \cdot n}$ has the same integer solutions as the system
+			\begin{align*}
+				x \cong& a \mod{m}\\
+				x \cong& a \mod{n}
+			\end{align*}
+			Thus knowing $x \mod{N}$ is equivalent to knowing $x$ modulo each of the primes in the prime decomposition of $N$, and to solve such systems we can simply decompose it to a larger system where all $m_i$ are coprime.
+			
+		\end{thm}
+		
+		
+	%----------------------------------------------------------------------------------%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CODING STUFF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%----------------------------------------------------------------------------------%
+		
+		
+		{\footnotesize \textbf{\underline{Binary Codes}}}
+		
+		
+		
+		\begin{mdfn}[Binary Codes]{dfn:bincods}{ }
+			A \textbf{binary word} is a sequence of $1$s and $0$s, with the \textbf{word length} the total number of digits in the word.	A \textbf{binary code} is a set of binary words.
+			\begin{itemize}
+				\item Binary words which are elements of a binary code are \textbf{codewords} We can ascribe meaning to codewords (eg $(1, 1, 1) =$ `yes' and $(0, 0, 1) =$ `no').
+				\item A code is a \textbf{block code} if all words have the same length.
+				\item A code $C$ is \textbf{linear} iff the sum of any $y, z\in C$ is also in $C$.
+				\item A \textbf{repetition code of length $n$} is obtained by repeating $n-1$ times the first single symbol. Example of length $3: \{(1, 1, 1), (0, 0, 0)\}$.
+				\item A binary linear code has exactly $2^k$ elements.
+				\item Binary linear codes can be considered as linear spaces over $\mathbb{F} = \{0, 1\}$.
+				\item $x \cdot y := \sum_{i=1}^{n}x_i y_i$. $(\cdot)$ is a symmetric bilinear form on $\mathbb{F}_2^n$.
+				\item $x$ and $y$ are \textbf{orthogonal} if $x \cdot y = 0$.
+				\item A \textbf{parity check bit} is a bit appended to a codeword to make the sum of the digits even. All codewords with parity check bits are of form $(x_1, \dots, x_{n-1}, \sum_{i=1}^{n-1}x_i)$
+			\end{itemize}
+			
+		\end{mdfn}
+		
+		
+		\begin{dfn}[Neighbourhood Of A Word]{dfn:neighb}{ }
+			For a binary word $x = (x_1, \dots, x_n)$, with all $x_i\in \{0, 1\}$ and $r \ge 0$, the \textbf{neighbourhood of $x$ with radius $r$} is the set $N_r(x) = \{y = (y_1, \dots, y_n) : y_1, \dots, y_n\in \{0, 1\}, \dd(x, y) \le r\}$.
+			\begin{itemize}
+				\item Note that $x\in N_r(x)$
+				\item $\left|N_r(x)\right| = \binom{n}{0} + \binom{n}{1} + \dotsc + \binom{n}{r}$ 
+			\end{itemize}
+		
+		\end{dfn}
+		
+		
+		\begin{dfn}[The Parameters Of A Linear Code]{dfn:lincodeparams}{ }
+			A triple $(n, k, d)$ gives the three params of a linear code - $n$, the length of codewords in the code; $k$, the dimension of the code $\dim_F C$, and $\dd$ the minimal distance of the code.
+			\begin{itemize}
+				\item $k$ is equal to the number of linearly independent codewords in the code
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[Hamming Distance]{dfn:hamdist}{ }
+			For $C$ a code over $F_2$, $x = (x_1, x_2, \dots, x_n), y = (y_1, y_2, \dots, y_n)\in C$; the \textbf{Hamming distance $\dd$ on $C$} is $d(x, y) := \left|\{i\in \{1, \dots, n\} : x_i \ne y_i\}\right|$
+			\begin{itemize}
+				\item For $x\in C$, the \textbf{weight of $x$} is $\wt(x) := \dd(x, 0) = \left|\{i\in \{1, \dots, n\} : x_i \ne 0\}\right|$
+				\item The \textbf{minimal distance} of $C$ is $\dd(C) := \min\{d(x, y) : x, y\in C, x \ne y\}$, intuitively the smallest distance between any two codewords in the code.
+				\item For $C$ a linear code, the minimal distance is equal to the minimum weight among non-zero codewords in the code.
+				\item For binary words $x, y, z$ of length $n$; $\dd(x, y) + \dd(y,z) \ge \dd(x, z)$
+			\end{itemize}
+			 
+		\end{dfn}
+		
+		
+		\begin{dfn}[Decision Rules]{dfn:decruls}{ }
+			For $C \subseteq F^n$ a code, a \textbf{decision rule} for $C$ is a function $\sigma: F^n \to C$ which assigns to each $z\in F^n$ a codeword $c\in C$.
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[Bit-Error]{dfn:biterror}{ }
+			A \textbf{bit-error} is a mistake in transmission of a codeword $z$ in a code $C$, where one digit of $z$ is flipped (either from $0$ to $1$, or from $1$ to $0$).
+			
+		\end{dfn}
+		
+		
+		\begin{thm}[Minimal Distance Rule]{thm:mdrule}{ }
+			For $C$ a code, the \textbf{minimal distance rule} states that given a codeword $z\in C$ received through a noisy channel, the receiver should choose $\sigma(z)$ to be the codeword $c\in C$ such that $\dd(z, c)$ is minimised.\\
+			If a sender uses a code $C$ with minimum distance $\dd > 2r$ and the receiver uses the MD rule, provided no more than $r$ bit-errors are made in transmitting any codeword, the MD rule will map every received codeword to the correct transmitted one.
+			
+		\end{thm}5
+		
+		
+		\begin{dfn}[A Generator Matrix Of A Code]{dfn:codegenmats}{ }
+			Let $C$ be a linear code with params $(n, k, d)$. Since $C$ has $\dim _F C = k$ we can find codewords $c_1, \dots, c_k$ which form a basis of $C$. Then the $k \times n$ matrix with rows $c_1, ..\dots, c_k$ is a \textbf{generator matrix} of $C$
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[The Dual Code]{dfn:dualcode}{ }
+			For $C$ a code with params $(n, k, d)$, the \textbf{dual code} $C^\perp = \{x = (x_1, \dots, x_n): x1, \dots, x_n\in \mathbb{F}_2, x\cdot c = 0 \; \forall \; c\in C\}$ is the orthogonal complement of $C$.
+			\begin{itemize}
+				\item $\dim_F C^\perp = n-k$ since $\dim_F C = k$.
+				\item A code is \textbf{self-dual} if $C = C^\perp$, for example $C = \{(0, 0), (1, 1)\}$.
+				\item $(C^\perp)^\perp) = C$.
+				\item $\dim  C + \dim C^\perp = n$.
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[Parity Check Matrices]{dfn:parchckmats}{ }
+			For $C$ a code with params $(n, k, d)$, a generator matrix $H$ for $C^\perp$ (a matrix whose rows form a basis of $C^\perp$) is a \textbf{parity check matrix for $C$}.
+			\begin{itemize}
+				\item $H$ is a $(n-k) \times n$ matrix
+				\item $c$ is a codeword in $C$ iff $Hc^T = 0$ iff $cH^T = 0$.
+				\item $C$ has minimal distance $d$ iff $H$ has $d$ lin-dep cols and does not have $d-1$ lin-dep cols
+			\end{itemize} 
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[Perfect Codes]{dfn:percod}{ }
+			Let $C$ be a binary code of length $n$ and minimal distance $d = 2r + 1$ for integer $r \ge 0$. Then $C$ is a \textbf{perfect code} iff $\left|C\right| \left(\binom{n}{0} + \binom{n}{1} + \dotsc + \binom{n}{r}\right) = 2^n$
+			\begin{itemize}
+				\item Equivalent def - if each binary codeword $c\in C$ of length $n$ is in exactly one neighbourhood $N_r(c)$
+				\item Equivalent def - if $d \ge 1$, $C$ is a perfect code iff $\exists r$ s.t. each binary word of length $n$ is in exactly one neighbourhood $N_r(c)$ where $c$ is a codeword in $C$.
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+	%----------------------------------------------------------------------------------%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% EULER & RINGS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%----------------------------------------------------------------------------------%
+	
+	
+	{\footnotesize \textbf{\underline{Euler \& Rings}}}
+		
+		
+		
+		\begin{mdfn}[Euler's Function]{mdfn:eulerfunc}{ }
+			For $n>1$ Euler function $\phi(n)$ is defined to be the number of natural numbers not exceeding $n$ which are coprime with $n$, and $\phi(1) := 1$.
+			
+		\end{mdfn}
+		
+		
+		\begin{mthm}[Euler's Theorem]{thm:eulerthm}{ }
+			For $n\in \mathbb{N}$ s.t. $n > 1$, and $a$ any number s.t. $a$ and $n$ are coprime. Then $a^{\phi(n)} - 1 \cong 0 \mod{n}$
+			
+		\end{mthm}
+		
+		
+		
+		
+		
+		
+		
+		
+	\end{multicols*}
+	
+	
+\end{document}

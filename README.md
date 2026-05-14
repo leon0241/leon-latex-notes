@@ -20,6 +20,7 @@ LaTeX lecture notes and exam notes for a variety of courses in UoE CompSci and M
 <details>
     <summary>Other Level 10s</summary>
     <ul>
+        <li> <b> Introdution To Number Theory </b> - <a href='exam-sheets/INT/PDF/INTExamNotes.pdf'>click here! </a>
         <li> <b> Classical Mechanics For Mathematicians </b> - <a href='exam-sheets/CMM/PDF/ClaudialMechanics.pdf'>click here!</a> <i>(Not Louis' original content, just a condensed version of another sheet)</i> </li>
 </details>
 
