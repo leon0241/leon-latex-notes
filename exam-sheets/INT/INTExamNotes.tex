@@ -25,7 +25,7 @@
 		\raggedcolumns 
 		%Original template by Leon, modified by Louis
 		\vspace{-5pt}
-		\subsection*{INT Exam 2025/26 - }
+		\subsection*{INT Exam 2025/26 - I Got One More In Me}
 		\vspace{-5pt}
 		
 		
@@ -40,7 +40,8 @@
 	
 		\begin{dfn}[Random Definitions]{dfn:rand}{ }
 			\begin{itemize}
-				\item In this course we only use binary codes, ie $F = F_2$, the two-element field
+				\item $\mathbb{N}$ = $\mathbb{N}_0$, ie $\mathbb{N} = \{n\in \mathbb{Z} : n \ge 0\}$
+				\item In this course we only use binary codes, ie $F = \mathbb{F}_2$, the two-element field
 				\item For $a, b\in \mathbb{Z}$, $a$ \textbf{divides} $b$, or $a|b$, if $\exists c\in \mathbb{Z}$ s.t. $b = ac$
 				\item $a, b\in \mathbb{Z}$ are \textbf{relatively prime} or \textbf{coprime} if $\gcd(a, b) = 1$
 			\end{itemize}
@@ -50,7 +51,7 @@
 		
 		\begin{thm}[Random Theorems]{thm:rand}{ }
 			\begin{itemize}
-				\item \textbf{Well-Ordering Principle:} Every non-empty set of positive integers contains a least element
+				\item \textbf{Well-Ordering:} All sets of positive ints $\ne \emptyset$ contain a least element
 			\end{itemize}
 			
 		\end{thm}
@@ -72,22 +73,22 @@
 		
 		
 		\begin{lma}[B\'ezout's Lemma]{lma:bzoot}{ }
-			Let $a, b$ be nonzero integers with gcd $(a, b)$. Then $\exists \; s, t\in \mathbb{Z}$ s.t. $as + bt = (a, b)$. Moreover any common divisor of $a$ and $b$ divides $(a, b)$.
+			Let $a, b$ be nonzero integers with $\gcd(a, b) = d$. Then $\exists \; s, t\in \mathbb{Z}$ s.t. $as + bt = d$. Moreover any common divisor of $a$ and $b$ divides $d$.
 			
 		\end{lma}
 		
 		
 		\begin{thm}[Fermat's Last Theorem]{thm:fermslast}{ }
-			For $n, x, y, z\in \mathbb{Z}$, and $n > 2$, there are no solutions to the equation $x^n + y^n = z^n$.
+			For $n, x, y, z\in \mathbb{Z}$, and $n > 2$, there are no integer solutions to $x^n + y^n = z^n$.
 			
 		\end{thm}
 		
 		
 		\begin{thm}[The Extended Euclidean Algorithm]{thm:exteuclidalg}{ }
-			Let $a, b\in \mathbb{Z}$ be s.t. $a \ge b > 0$. Then $\gcd(a, b)$ can be found by:\\
+			Let $a, b\in \mathbb{Z}$ be s.t. $a \ge b > 0$. Then $\gcd(a, b)$ can be found as follows:\\
 			\begin{enumerate}[label=(\arabic*)]
-				\item By the Division Algorithm $\exists$ unique $q_1, r_1$ s.t. $a = q_1b + r_1$, with $0 \le r_1 < b$
-				\item Assuming $r_1 > 0$, we apply the Division Algorithm to $b, r_1$ for $b = q_2 r_1 + r_2$.
+				\item By Division Algorithm $\exists$ unique $q_1, r_1$ s.t. $a = q_1b + r_1$ with $0 \le r_1 < b$
+				\item If $r_1 > 0$, apply the Division Algorithm to $b, r_1$ for $b = q_2 r_1 + r_2$.
 				\item Repeat \textit{ad infinitum}, the last non-zero remainder is  $\gcd(a, b)$
 			\end{enumerate}
 			
@@ -103,36 +104,28 @@
 		
 		
 		\begin{dfn}[Congruence]{dfn:cong}{ }
-			$a$ is \textbf{congruent} to $b \mod{n}$, or $a \cong b \mod{n}$ means $n|(a-b)$, or $\exists q\in \mathbb{Z}$ s.t. $a = nq + b$.\\
-			For $a, b, c, d, n\in \mathbb{Z}$ with $n > 0$, $a \cong b \mod{n}$, $c \cong d \mod{n}$:
-			\begin{itemize}
-				\item $a + c \cong b + d \mod{n}$
-				\item $a - c \cong b - d \mod{n}$
-				\item $ac \cong bd \mod{n}$
-			\end{itemize}
+			$a$ is \textbf{congruent} to $b \bmod{n}$, written $a \equiv b \bmod{n}$, if $n|(a-b)$, ie $\exists q\in \mathbb{Z}$ s.t. $a = nq + b$.
+			For $a, b, c, d, n\in \mathbb{Z}$ with $n > 0$, $a \equiv b \bmod{n}$, $c \equiv d \bmod{n}$:
+			\vspace*{-5ex}
+			\begin{multicols*}{2}
+				\begin{itemize}
+					\item $a + c \equiv b + d \bmod{n}$
+					\item $a - c \equiv b - d \bmod{n}$
+					\item $ac \equiv bd \bmod{n}$
+				\end{itemize}
+			\end{multicols*}
 			
 		\end{dfn}
 		
 		
 		\begin{dfn}[System Of Residues]{dfn:ressys}{ }
-			A \textbf{complete system of residues modulo $n$} is a set $I \subseteq \mathbb{Z}$ s.t. every $k\in \mathbb{Z}$ is congruent $\mod{n}$ to exactly one $i\in I$
-			
-		\end{dfn}
-		
-		
-		\begin{dfn}[The Ring $\mathbb{Z} / n \mathbb{Z}$ or $\mathbb{Z}_n$]{dfn:integerring}{ }
-			The elements of $\mathbb{Z}_n$ are congruence classes $\mod{n}$, ie $\mathbb{Z}_n = \{\overline{0}, \overline{1}, ..., \overline{n-1}\}$. We define the ring addition/multiplication by, for $0\le a, b < n$:
-			\begin{itemize}
-				\item $\overline{a} + \overline{b} = \overline{c}$ iff $a+b = c \mod{n}$
-				\item $\overline{a} - \overline{b} = \overline{c}$ iff $a-b = c \mod{n}$
-				\item \item $\overline{a} \cdot\overline{b} = \overline{c}$ iff $a \cdot b = c \mod{n}$
-			\end{itemize}
+			A \textbf{complete system of residues modulo $n$} is a set $I \subseteq \mathbb{Z}$ s.t. every $k\in \mathbb{Z}$ is congruent $\bmod{n}$ to exactly one $i\in I$
 			
 		\end{dfn}
 		
 		
 		\begin{thm}[Wilson's Theorem]{thm:wilson}{ }
-			If $p$ is prime then $(p-1)! \cong -1 \mod{p}$
+			If $p$ is prime then $(p-1)! \equiv -1 \bmod{p}$
 			
 		\end{thm}
 		
@@ -140,17 +133,18 @@
 		\begin{mthm}[The Chinese Remainder Theorem]{thm:crt}{ }
 			Let $m_1, m_2, \dots, m_k\in \mathbb{N}$ be pairwise coprime. Then given $a_1, a_2, \dots, a_k\in \mathbb{Z}$, the system of congruences
 			\begin{align*}
-				x \cong& a_1 \mod{m_1}\\
-				x \cong& a_2 \mod{m_2}\\
+				x \equiv& a_1 \bmod{m_1}\\
+				x \equiv& a_2 \bmod{m_2}\\
 				\vdots& \\
-				x \cong& a_k \mod{m_k}
+				x \equiv& a_k \bmod{m_k}
 			\end{align*}
-			has a solution which is unique $\mod{N}$, where $N = m_1 \cdot m_2 \cdot \dots \cdot m_k$. The proof is constructive:
+			has a unique soln $\bmod{N}$ ($N = m_1 \cdot m_2 \cdot \dots \cdot m_k$). Constructive proof:
+			\vspace*{-3ex}
 			\begin{proof}
 				Let $N_i = n/m_i$ be the product of all $m_j$ with $j\ne i$. Since $m_i$ is coprime to $m_j$ for $i\ne j$, we must have $\gcd(N_i, m_i) = 1$. \\
-				Then since $N_i$ and $m_i$ are coprime, $N_i$ must have an inverse $\mod{m_i}$, ie $\exists x_i\in \mathbb{Z}$ s.t. $N_i x_i \cong 1 \mod{m_i}$ (to find $x_i$ use the Euclidean algorithm to find numbers s.t. $N_i x_i  m_i y_i = 1$).\\
-				Then consider the product $a_i N_i x_i$, which is s.t. $a_i N_i x_i \cong 0 \mod{m_j}$ for $i \ne j$, and $a_i N_i x_i \cong a_i \mod{m_i}$.\\
-				Thus the sum $x = \sum_{i=1}^{k}a_i N_i x_i$ precisely satisfies $x \cong a_i \mod{m_i}$ for all $i$.
+				Then since $N_i$ and $m_i$ are coprime, $N_i$ must have an inverse $\bmod{m_i}$, ie $\exists x_i\in \mathbb{Z}$ s.t. $N_i x_i \equiv 1 \bmod{m_i}$ (to find $x_i$ use the Euclidean algorithm to find numbers s.t. $N_i x_i  m_i y_i = 1$).\\
+				Then consider the product $a_i N_i x_i$, which is s.t. $a_i N_i x_i \equiv 0 \bmod{m_j}$ for $i \ne j$, and $a_i N_i x_i \equiv a_i \bmod{m_i}$.\\
+				Thus $x = \sum_{i=1}^{k}a_i N_i x_i$ precisely satisfies $x \equiv a_i \bmod{m_i}$ for all $i$.
 			\end{proof}
 			
 		\end{mthm}
@@ -159,145 +153,30 @@
 		\begin{xmp}[Applying The CRT]{xmp:crtapp}{ }
 			Solve the system of congruences
 			\begin{align*}
-				x \cong& 1 \mod{2}\\
-				x \cong& 3 \mod{5}\\
-				x \cong& 4 \mod{7}
+				x \equiv& 1 \bmod{2}\\
+				x \equiv& 3 \bmod{5}\\
+				x \equiv& 4 \bmod{7}
 			\end{align*}
 		We have $N = 2 \cdot 5 \cdot 7 = 70$, $N_1 = 5 \cdot 7 = 35, N_2 = 2 \cdot 7 = 14, N_3 = 2 \cdot 5 = 10$. Calculate by Euclidean Algorithm or inspection for:
 		\begin{align*}
-			35 \cdot 1 \cong& 1 \mod{2}\\
-			14 \cdot 4 \cong& 1 \mod{5}\\
-			10 \cdot 5 \cong& 1 \mod{7}
+			35 \cdot 1 \equiv& 1 \bmod{2}\\
+			14 \cdot 4 \equiv& 1 \bmod{5}\\
+			10 \cdot 5 \equiv& 1 \bmod{7}
 		\end{align*}
-		so we have $x_1 = 1, x_2 = 4, x_3 = 5$. Thus $x \cong (1 \cdot 35 \cdot 1) + (3 \cdot 14 \cdot 4) + (4\cdot 10 \cdot 5) \cong 403 \cong 53 \mod{70}$. 
+		so we have $x_1 = 1, x_2 = 4, x_3 = 5$. Thus $x \equiv (1 \cdot 35 \cdot 1) + (3 \cdot 14 \cdot 4) + (4\cdot 10 \cdot 5) \equiv 403 \equiv 53 \bmod{70}$. 
 			
 		\end{xmp}
 		
 		
 		\begin{thm}[Applying The CRT For Non-Coprime $m_i\, m_j$]{thm:extcrt}{ }
-			Key fact - if $m, n$ are coprime integers, and $a\in \mathbb{Z}$, the congruence $x \cong a \mod{m \cdot n}$ has the same integer solutions as the system
+			Key fact - if $m, n$ are coprime integers, and $a\in \mathbb{Z}$, the congruence $x \equiv a \bmod{m \cdot n}$ has the same integer solutions as the system
 			\begin{align*}
-				x \cong& a \mod{m}\\
-				x \cong& a \mod{n}
+				x \equiv& a \bmod{m}\\
+				x \equiv& a \bmod{n}
 			\end{align*}
-			Thus knowing $x \mod{N}$ is equivalent to knowing $x$ modulo each of the primes in the prime decomposition of $N$, and to solve such systems we can simply decompose it to a larger system where all $m_i$ are coprime.
+			Thus knowing $x \bmod{N}$ is equivalent to knowing $x$ modulo each of the primes in the prime decomposition of $N$, and to solve such systems we can simply decompose it to a larger system where all $m_i$ are coprime.
 			
 		\end{thm}
-		
-		
-	%----------------------------------------------------------------------------------%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CODING STUFF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%----------------------------------------------------------------------------------%
-		
-		
-		{\footnotesize \textbf{\underline{Binary Codes}}}
-		
-		
-		
-		\begin{mdfn}[Binary Codes]{dfn:bincods}{ }
-			A \textbf{binary word} is a sequence of $1$s and $0$s, with the \textbf{word length} the total number of digits in the word.	A \textbf{binary code} is a set of binary words.
-			\begin{itemize}
-				\item Binary words which are elements of a binary code are \textbf{codewords} We can ascribe meaning to codewords (eg $(1, 1, 1) =$ `yes' and $(0, 0, 1) =$ `no').
-				\item A code is a \textbf{block code} if all words have the same length.
-				\item A code $C$ is \textbf{linear} iff the sum of any $y, z\in C$ is also in $C$.
-				\item A \textbf{repetition code of length $n$} is obtained by repeating $n-1$ times the first single symbol. Example of length $3: \{(1, 1, 1), (0, 0, 0)\}$.
-				\item A binary linear code has exactly $2^k$ elements.
-				\item Binary linear codes can be considered as linear spaces over $\mathbb{F} = \{0, 1\}$.
-				\item $x \cdot y := \sum_{i=1}^{n}x_i y_i$. $(\cdot)$ is a symmetric bilinear form on $\mathbb{F}_2^n$.
-				\item $x$ and $y$ are \textbf{orthogonal} if $x \cdot y = 0$.
-				\item A \textbf{parity check bit} is a bit appended to a codeword to make the sum of the digits even. All codewords with parity check bits are of form $(x_1, \dots, x_{n-1}, \sum_{i=1}^{n-1}x_i)$
-			\end{itemize}
-			
-		\end{mdfn}
-		
-		
-		\begin{dfn}[Neighbourhood Of A Word]{dfn:neighb}{ }
-			For a binary word $x = (x_1, \dots, x_n)$, with all $x_i\in \{0, 1\}$ and $r \ge 0$, the \textbf{neighbourhood of $x$ with radius $r$} is the set $N_r(x) = \{y = (y_1, \dots, y_n) : y_1, \dots, y_n\in \{0, 1\}, \dd(x, y) \le r\}$.
-			\begin{itemize}
-				\item Note that $x\in N_r(x)$
-				\item $\left|N_r(x)\right| = \binom{n}{0} + \binom{n}{1} + \dotsc + \binom{n}{r}$ 
-			\end{itemize}
-		
-		\end{dfn}
-		
-		
-		\begin{dfn}[The Parameters Of A Linear Code]{dfn:lincodeparams}{ }
-			A triple $(n, k, d)$ gives the three params of a linear code - $n$, the length of codewords in the code; $k$, the dimension of the code $\dim_F C$, and $\dd$ the minimal distance of the code.
-			\begin{itemize}
-				\item $k$ is equal to the number of linearly independent codewords in the code
-			\end{itemize}
-			
-		\end{dfn}
-		
-		
-		\begin{dfn}[Hamming Distance]{dfn:hamdist}{ }
-			For $C$ a code over $F_2$, $x = (x_1, x_2, \dots, x_n), y = (y_1, y_2, \dots, y_n)\in C$; the \textbf{Hamming distance $\dd$ on $C$} is $d(x, y) := \left|\{i\in \{1, \dots, n\} : x_i \ne y_i\}\right|$
-			\begin{itemize}
-				\item For $x\in C$, the \textbf{weight of $x$} is $\wt(x) := \dd(x, 0) = \left|\{i\in \{1, \dots, n\} : x_i \ne 0\}\right|$
-				\item The \textbf{minimal distance} of $C$ is $\dd(C) := \min\{d(x, y) : x, y\in C, x \ne y\}$, intuitively the smallest distance between any two codewords in the code.
-				\item For $C$ a linear code, the minimal distance is equal to the minimum weight among non-zero codewords in the code.
-				\item For binary words $x, y, z$ of length $n$; $\dd(x, y) + \dd(y,z) \ge \dd(x, z)$
-			\end{itemize}
-			 
-		\end{dfn}
-		
-		
-		\begin{dfn}[Decision Rules]{dfn:decruls}{ }
-			For $C \subseteq F^n$ a code, a \textbf{decision rule} for $C$ is a function $\sigma: F^n \to C$ which assigns to each $z\in F^n$ a codeword $c\in C$.
-			
-		\end{dfn}
-		
-		
-		\begin{dfn}[Bit-Error]{dfn:biterror}{ }
-			A \textbf{bit-error} is a mistake in transmission of a codeword $z$ in a code $C$, where one digit of $z$ is flipped (either from $0$ to $1$, or from $1$ to $0$).
-			
-		\end{dfn}
-		
-		
-		\begin{thm}[Minimal Distance Rule]{thm:mdrule}{ }
-			For $C$ a code, the \textbf{minimal distance rule} states that given a codeword $z\in C$ received through a noisy channel, the receiver should choose $\sigma(z)$ to be the codeword $c\in C$ such that $\dd(z, c)$ is minimised.\\
-			If a sender uses a code $C$ with minimum distance $\dd > 2r$ and the receiver uses the MD rule, provided no more than $r$ bit-errors are made in transmitting any codeword, the MD rule will map every received codeword to the correct transmitted one.
-			
-		\end{thm}5
-		
-		
-		\begin{dfn}[A Generator Matrix Of A Code]{dfn:codegenmats}{ }
-			Let $C$ be a linear code with params $(n, k, d)$. Since $C$ has $\dim _F C = k$ we can find codewords $c_1, \dots, c_k$ which form a basis of $C$. Then the $k \times n$ matrix with rows $c_1, ..\dots, c_k$ is a \textbf{generator matrix} of $C$
-			
-		\end{dfn}
-		
-		
-		\begin{dfn}[The Dual Code]{dfn:dualcode}{ }
-			For $C$ a code with params $(n, k, d)$, the \textbf{dual code} $C^\perp = \{x = (x_1, \dots, x_n): x1, \dots, x_n\in \mathbb{F}_2, x\cdot c = 0 \; \forall \; c\in C\}$ is the orthogonal complement of $C$.
-			\begin{itemize}
-				\item $\dim_F C^\perp = n-k$ since $\dim_F C = k$.
-				\item A code is \textbf{self-dual} if $C = C^\perp$, for example $C = \{(0, 0), (1, 1)\}$.
-				\item $(C^\perp)^\perp) = C$.
-				\item $\dim  C + \dim C^\perp = n$.
-			\end{itemize}
-			
-		\end{dfn}
-		
-		
-		\begin{dfn}[Parity Check Matrices]{dfn:parchckmats}{ }
-			For $C$ a code with params $(n, k, d)$, a generator matrix $H$ for $C^\perp$ (a matrix whose rows form a basis of $C^\perp$) is a \textbf{parity check matrix for $C$}.
-			\begin{itemize}
-				\item $H$ is a $(n-k) \times n$ matrix
-				\item $c$ is a codeword in $C$ iff $Hc^T = 0$ iff $cH^T = 0$.
-				\item $C$ has minimal distance $d$ iff $H$ has $d$ lin-dep cols and does not have $d-1$ lin-dep cols
-			\end{itemize} 
-			
-		\end{dfn}
-		
-		
-		\begin{dfn}[Perfect Codes]{dfn:percod}{ }
-			Let $C$ be a binary code of length $n$ and minimal distance $d = 2r + 1$ for integer $r \ge 0$. Then $C$ is a \textbf{perfect code} iff $\left|C\right| \left(\binom{n}{0} + \binom{n}{1} + \dotsc + \binom{n}{r}\right) = 2^n$
-			\begin{itemize}
-				\item Equivalent def - if each binary codeword $c\in C$ of length $n$ is in exactly one neighbourhood $N_r(c)$
-				\item Equivalent def - if $d \ge 1$, $C$ is a perfect code iff $\exists r$ s.t. each binary word of length $n$ is in exactly one neighbourhood $N_r(c)$ where $c$ is a codeword in $C$.
-			\end{itemize}
-			
-		\end{dfn}
 		
 		
 	%----------------------------------------------------------------------------------%
@@ -310,15 +189,301 @@
 		
 		
 		\begin{mdfn}[Euler's Function]{mdfn:eulerfunc}{ }
-			For $n>1$ Euler function $\phi(n)$ is defined to be the number of natural numbers not exceeding $n$ which are coprime with $n$, and $\phi(1) := 1$.
+			For $n>1$, the \textbf{Euler function} $\phi(n)$ is defined to be the number of natural numbers not exceeding $n$ which are coprime with $n$. $\phi(1) := 1$.
 			
 		\end{mdfn}
 		
 		
 		\begin{mthm}[Euler's Theorem]{thm:eulerthm}{ }
-			For $n\in \mathbb{N}$ s.t. $n > 1$, and $a$ any number s.t. $a$ and $n$ are coprime. Then $a^{\phi(n)} - 1 \cong 0 \mod{n}$
+			For $n\in \mathbb{N}$ s.t. $n > 1$, and $a\in \mathbb{Z}$ s.t. $a, n$ coprime, then $a^{\phi(n)} - 1 \equiv 0 \bmod{n}$
+			\begin{itemize}
+				\item \textbf{Fermat's Little Thm:} If $p$ prime and $x, p$ coprime; $x^{p-1} \equiv 1 \bmod{p}$
+				\begin{itemize}
+					\item If $p$ prime and $x, p$ coprime; $x^p \equiv x \bmod{p}$
+				\end{itemize}
+			\end{itemize}
 			
 		\end{mthm}
+		
+		
+		\begin{dfn}[Carmichael Numbers]{dfn:carmnums}{ }
+			$n\in \mathbb{Z}$ is a \textbf{Carmichael number} if $a^{n-1} \equiv 1 \bmod{n}$ for all $a$ coprime to $n$
+			\begin{itemize}
+				\item If $n$ is s.t. $a^{n-1} = 1 \bmod{n}$ for all $0 < a < n$, then $n$ is prime
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{mdfn}[Rings (Different Axioms To HAlg!)]{dfn:rngs}{ }
+			A \textbf{ring} is a set $R$ equipped with $+, \cdot : R\times R \to R$ s.t. for all $a, b, c\in R$:
+			\begin{itemize}
+				\item $(R, +)$ is an abelian group
+				\item Associativity of $\cdot$: $(a \cdot b) \cdot c = a \cdot (b \cdot c)$
+				\item Distributivity: $a\cdot(b+c) = a\cdot b + a \cdot c$; and $(a+b)\cdot c = a \cdot c + b\cdot c$
+			\end{itemize}
+			Variants of rings, with the above axioms true:
+			\begin{itemize}
+				\item Commutative ring: $a \cdot b = b \cdot a$
+				\item Unital ring: $\exists 1_R\in R$ s.t. $1_R \cdot a = a \cdot 1_R = a \; \forall \; a\in R$
+				\item Integral domain: Ring with no zero-divisors ($x, y\in R$ s.t. $x, y \ne 0, x \cdot y = 0$)
+			\end{itemize}
+			
+		\end{mdfn}
+		
+		
+		\begin{dfn}[The Ring $\mathbb{Z} / n \mathbb{Z}$ or $\mathbb{Z}_n$]{dfn:integerring}{ }
+			The elements of $\mathbb{Z}_n$ are congruence classes $\bmod{n}$, ie $\mathbb{Z}_n = \{\overline{0}, \overline{1}, ..., \overline{n-1}\}$. We define the ring addition/multiplication by, for $0\le a, b < n$:
+			\begin{itemize}
+				\item $\overline{a} + \overline{b} = \overline{c}$ iff $a+b = c \bmod{n}$
+				\item $\overline{a} - \overline{b} = \overline{c}$ iff $a-b = c \bmod{n}$
+				\item $\overline{a} \cdot\overline{b} = \overline{c}$ iff $a \cdot b = c \bmod{n}$
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[Primitive Roots]{dfn:primroots}{ }
+			For prime $p>0$, $i\in \mathbb{Z}$ is a \textbf{primitive root modulo $p$} iff $i, i^2, \dots, i^{p-1}$ are pairwise distinct $\bmod{p}$. Ie, $i^{m} \ne 1 \bmod{p}$ for $0 < m < p-1$ \\
+			Equivalent definitions: $i\in \mathbb{Z}$ is a primitive root modulo $p$ iff:
+			\begin{itemize}
+				\item $p \nmid (i^j -1)$ for any $0 < j < p-1$ and $p | i^{p-1} - 1$.
+				\item For every $m\in\mathbb{Z}$ not divisible by $p$, $\exists \alpha\in \mathbb{N}$ s.t. $m \equiv i^{\alpha} \bmod{p}$.
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{thm}[Primitive Root Theorem]{thm:primrootthm}{ }
+			For every prime $p > 0$ there exists a primitive root modulo $p$.
+			\begin{itemize}
+				\item Let $x\in \mathbb{Z}$, $n\in \mathbb{N}$, and $\alpha, \beta\in \mathbb{N}, \alpha, \beta > 0$. Suppose $x^\alpha \equiv 1 \bmod{n}$ and $x^\beta \equiv 1 \bmod{n}$. Then $x^{\gcd(\alpha, \beta)} \equiv 1 \bmod{n}$
+			\end{itemize}
+			
+		\end{thm}
+		
+		
+		\begin{mdfn}[The Legendre Symbol]{dfn:legsymb}{ }
+			Let $p>0$ be prime and $a\in \mathbb{Z}$ s.t. $a$ is not divisible by $p$. The \textbf{Legendre symbol of $a$ modulo $p$}, denoted $(\frac{a}{p})$, is equal to $1$ if $a = r^2 \bmod{p}$ for $r\in \mathbb{Z}$, and equal to $-1$ otherwise.\\
+			If $(\frac{a}{p}) = 1$ then $a$ is a \textbf{quadratic residue modulo $p$}.
+			
+		\end{mdfn}
+		
+		
+		\begin{thm}[Legendre Symbol Theorems]{thm:legsymbthms}{ }
+			\begin{itemize}
+				\item Let $p$ be an odd prime. Then $(\frac{a}{p}) \equiv a^{(p-1)/2} \bmod{p}$
+				\item $(\frac{a}{p})(\frac{b}{p}) = (\frac{ab}{p})$
+				\item $(\frac{a}{p}) = (\frac{a-p}{p})$ and moreover if $a \equiv b \bmod{p}$ then $(\frac{a}{p}) = (\frac{b}{p})$
+				\item If $p, q >0$ are distinct odd primes, and $p\equiv 1 \bmod{4}$ or $q \equiv 1 \bmod{4}$ then $(\frac{p}{q}) = (\frac{q}{p})$
+				\item If $p, q >0$ are distinct odd primes, and $p \equiv 3 \bmod{4}$ and $q \equiv 3 \bmod{4}$, then $(\frac{p}{q}) = -(\frac{q}{p})$ 
+			\end{itemize}
+			
+		\end{thm}
+		
+		
+		\begin{lma}[The Gauss Lemma]{lma:gauss}{ }
+			Let $p$ be an odd prime and $a\in \mathbb{Z}$ not divisible by $p$. Consider $S := \{a, 2\cdot a, 3\cdot a, \dots, \frac{p-1}{2}\cdot a\}$. Let $S'$ be the set of remainders of elements of $S$ when divided by $p$, with each remainder in the interval $(-\frac{p}{2}, \frac{p}{2})$. Let $n$ be the number of elements in $S'$ smaller than $0$. \\
+			Then $(\frac{a}{p}) = (-1)^n$
+			\begin{itemize}
+				\item For prime $p > 2$, $(\frac{2}{p}) = (-1)^{(p^2-1)/8}$
+			\end{itemize}
+		
+		\end{lma}
+		
+		
+		\begin{mdfn}[Gaussian Integers]{dfn:gaussints}{ }
+			The \textbf{Gaussian integers} are the elements of $\mathbb{Z}[i] := \{a + ib : a, b\in \mathbb{Z}\}$. $\mathbb{Z}[i]$ is closed under $+/\cdot/-$ thus is a ring.
+			\begin{itemize}
+				\item For $w, z\in \mathbb{Z}[i]$, $\left|z\right| = \left|a + bi\right| = \sqrt{a^2 + b^2}$ and $\left|z \cdot w\right| = \left|z\right| \cdot \left|w\right|$
+				\item $z\in \mathbb{Z}[i]$ is a \textbf{unit} if $\exists z' = a' + ib'\in \mathbb{Z}[i]$ s.t. $z \cdot  z' = 1$. For all units $z\in \mathbb{Z}[i], \left|z\right| = 1$ and $z\in \{\pm 1, \pm i\}$
+				\item For $z, z'\in \mathbb{Z}[i]$, $z \ne 0$, we say $z$ \textbf{divides} $z'$, written $z | z'$, iff $z' = z \cdot w$ for some $w\in \mathbb{Z}[i]$ 
+				\item Let $z\in \mathbb{Z}[i]$ be non-zero and not a unit. $z$ is an \textbf{irreducible Gaussian integer} if whenever $z = u\cdot v$ for $u, v\in \mathbb{Z}[i]$, either $u$ or $v$ is a unit.
+				\item Let $z\in \mathbb{Z}[i]$ be non-zero and not a unit. $z$ is a \textbf{prime Gaussian integer} if whenever $z|(u \cdot v)$ for $u, v\in \mathbb{Z}[i]$, $z|u$ or $z|v$.
+				\item $z\in \mathbb{Z}[i]$ is prime if and only if it is irreducible
+			\end{itemize}
+			
+		\end{mdfn}
+		
+		
+		\begin{thm}[Division Algorithm For Gaussian Integers]{thm:divalggaussints}{ }
+			Let $z, w\in \mathbb{Z}[i]$ with $w \ne 0$. Then $\exists q, r\in \mathbb{Z}[i]$ with $z = qw +r$ and $\left|r\right| < \left|w\right|$.
+			
+		\end{thm}
+		
+		
+		\begin{dfn}[GCD For Gaussian Integers]{dfn:gcdgaussints}{ }
+			Let $a, b\in \mathbb{Z}[i]$ not both zero. A \textbf{greatest common divisor $d$} of $a$ and $b$ is a Gaussian integer which divides both of them, and any other divisor of $a$ and $b$ divides $d$.
+			
+		\end{dfn}
+		
+		
+		\begin{lma}[B\'ezout Lemma For Gaussian Integers]{lma:bzootgaussints}{ }
+			Let $a, b\in \mathbb{Z}[i]$ not both zero. Then $d$, the greatest common divisor of $a$ and $b$, exists, and so do $s, t\in \mathbb{Z}[i]$ s.t. $as + bt = d$.
+			
+		\end{lma}
+		
+		
+		\begin{thm}[Writing Integers As A Sum Of Two Squares]{thm:intsassumoftwosquares}{ }
+			Let $p \equiv 1 \bmod{4}$ be a prime. Then $p=a^2 += b^2$ for some $a, b\in \mathbb{Z}$.
+			\begin{itemize}
+				\item If prime $p \equiv -1 \equiv 3 \bmod{4}$, then $p$ is a prime Gaussian integer and $\nexists a, b\in \mathbb{Z}$ s.t. $p = a^2++b^2$
+			\end{itemize}
+			Let $1 < n$, $n\in \mathbb{N}$. Suppose $n = 2^c p_1^{a_1}\dotsc p_k^{a_k}q_1^{d_1} \dotsc q_t^{d_t}$ is the prime factorisation of $n$ into positive primes, with each $p_i = 1 \bmod{4}$ and each $q_i = 3\bmod{4}$ where $c, k , t \ge 0, \in \mathbb{Z}$ and $a_1, \dots, a_k, d_1, \dots, d_t >0\in \mathbb{Z}$. Then $\exists a, b\in \mathbb{Z}$ with $n = a^2 + b^2$ iff each $d_i$ is even.
+			
+		\end{thm}
+		
+		
+		\begin{dfn}[Associate Integral Domain Elements]{dfn:associates}{ }
+			Let $R$ be an integral domain and $a, b\in R$. We say \textbf{$a$ is an associate of $b$} if $a = bu$ for $u$ a unit in $R$.
+			\begin{itemize}
+				\item If $a$ is an associate of $b$, $b$ is an associate of $a$.
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{thm}[The FTA For Gaussian Integers]{thm:ftaforgaussints}{ }
+			Let $a\in \mathbb{Z}[i]$ be nonzero. Then either $a$ is a unit or $a$ may be expressed as a product of finitely many primes. Moreover, if $a = p_1 \dotsc p_k = q_1 \dotsc q_t$ where all $p_i, q_j$ are prime Gaussian integers then the $p_i$ and $q_j$ can be paired such that paired primes are associates.
+			
+		\end{thm}
+		
+		
+		%----------------------------------------------------------------------------------%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CODING STUFF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%----------------------------------------------------------------------------------%
+		
+		
+		{\footnotesize \textbf{\underline{Binary Codes}}}
+		
+		
+		
+		\begin{mdfn}[Linear Binary Codes]{dfn:bincods}{ }
+		A \textbf{binary word} is a sequence of $1$s and $0$s. The \textbf{word length} is the number of digits in the word. A \textbf{binary code} is a set of binary words. A code $C$ is \textbf{linear} iff for all $y, z\in C$, $x+y\in C$.
+		\begin{itemize}
+			\item Binary words which are elements of a binary code are \textbf{codewords} We can ascribe meaning to codewords (eg $(1, 1, 1) =$ `yes' and $(0, 0, 1) =$ `no').
+			\item A code is a \textbf{block code} if all words have the same length.
+			\item A \textbf{repetition code of length $n$} is obtained by repeating $n-1$ times the first single symbol. Example of length $3: \{(1, 1, 1), (0, 0, 0)\}$.
+			\item A binary linear code has exactly $2^k$ elements.
+			\item Binary linear codes can be considered as linear spaces over $\mathbb{F} = \{0, 1\}$.
+			\item $x \cdot y := \sum_{i=1}^{n}x_i y_i$. $(\cdot)$ is a symmetric bilinear form on $\mathbb{F}_2^n$.
+			\item $x$ and $y$ are \textbf{orthogonal} if $x \cdot y = 0$.
+			\item A \textbf{parity check bit} is a bit appended to a codeword to make the sum of the digits even. All binary codewords with such bits are of form $(x_1, \dots, x_{n-1}, \sum_{i=1}^{n-1}x_i)$
+		\end{itemize}
+		
+		\end{mdfn}
+		
+		
+		\begin{dfn}[The Parameters Of A Linear Code]{dfn:lincodeparams}{ }
+		A triple $(n, k, d)$ gives the three params of a linear code - $n$, the length of codewords in the code; $k$, the dimension of the code $\dim_F C$, and $\dd$ the minimal distance of the code.
+		\begin{itemize}
+			\item $k$ is equal to the number of linearly independent codewords in the code
+			\item There are no linear binary codes with params $(n, k, d)$ where $n < k+d-1$
+		\end{itemize}
+		
+		\end{dfn}
+		
+		
+		\begin{dfn}[Neighbourhood Of A Word]{dfn:neighb}{ }
+		For a binary word $x = (x_1, \dots, x_n)$, with all $x_i\in \{0, 1\}$ and $r \ge 0$, the \textbf{neighbourhood of $x$ with radius $r$} is the set $N_r(x) = \{y = (y_1, \dots, y_n) : y_1, \dots, y_n\in \{0, 1\}, \dd(x, y) \le r\}$.
+		\begin{itemize}
+			\item Note that $x\in N_r(x)$ and $\left|N_r(x)\right| = \binom{n}{0} + \binom{n}{1} + \dotsc + \binom{n}{r}$ 
+		\end{itemize}
+		
+		\end{dfn}
+		
+		
+		\begin{dfn}[Hamming Distance]{dfn:hamdist}{ }
+		For $C$ a code over $F_2$, $x = (x_1, x_2, \dots, x_n), y = (y_1, y_2, \dots, y_n)\in C$; the \textbf{Hamming distance $\dd$ on $C$} is $d(x, y) := \left|\{i\in \{1, \dots, n\} : x_i \ne y_i\}\right|$
+		\begin{itemize}
+			\item For $c\in C$, the \textbf{weight of $c$} is $\wt(c) := \dd(c, 0) = \left|\{i\in \{1, \dots, n\} : c_i \ne 0\}\right|$
+			\begin{itemize}
+				\item For $c, f$ binary codes of the same length, $\wt(c + f) = \wt(c) + \wt(f) - 2\wt(cf)$
+			\end{itemize}
+			\item The \textbf{minimal distance} of $C$ is $\dd(C) := \min\{d(x, y) : x, y\in C, x \ne y\}$, intuitively the smallest distance between any two codewords in the code.
+			\item For $C$ a linear code, the minimal distance is equal to the minimum weight among non-zero codewords in the code.
+			\item For binary words $x, y, z$ of length $n$; $\dd(x, y) + \dd(y,z) \ge \dd(x, z)$
+		\end{itemize}
+		
+		\end{dfn}
+		
+		
+		\begin{dfn}[Decision Rules]{dfn:decruls}{ }
+		For $C \subseteq F^n$ a code, a \textbf{decision rule} for $C$ is a function $\sigma: F^n \to C$ which assigns to each $z\in F^n$ a codeword $c\in C$.
+		
+		\end{dfn}
+		
+		
+		\begin{dfn}[Bit-Error]{dfn:biterror}{ }
+		A \textbf{bit-error} is a mistake in transmission of a codeword $z$ in a code $C$, where one digit of $z$ is flipped (either from $0$ to $1$, or from $1$ to $0$).
+		\begin{itemize}
+			\item A code is $r-$error-correcting if it has minimal distance $\dd \ge 2r+1$.
+		\end{itemize}
+		
+		\end{dfn}
+		
+		
+		\begin{thm}[Minimal Distance Rule]{thm:mdrule}{ }
+		For $C$ a code, the \textbf{minimal distance rule} states that given a codeword $z\in C$ received through a noisy channel, the receiver should choose $\sigma(z)$ to be the codeword $c\in C$ such that $\dd(z, c)$ is minimised.\\
+		If a sender uses a code $C$ with minimum distance $\dd > 2r$ and the receiver uses the MD rule, provided no more than $r$ bit-errors are made in transmitting any codeword, the MD rule will map every received codeword to the correct transmitted one.
+		
+		\end{thm}
+		
+		
+		\begin{dfn}[A Generator Matrix Of A Code]{dfn:codegenmats}{ }
+		Let $C$ be a linear code with params $(n, k, d)$. Since $C$ has $\dim _F C = k$ we can find codewords $c_1, \dots, c_k$ which form a basis of $C$. Then the $k \times n$ matrix with rows $c_1, ..\dots, c_k$ is a \textbf{generator matrix} of $C$
+		
+		\end{dfn}
+		
+		
+		\begin{dfn}[The Dual Code]{dfn:dualcode}{ }
+		For $C$ a code with params $(n, k, d)$, the \textbf{dual code} $C^\perp = \{x = (x_1, \dots, x_n): x1, \dots, x_n\in \mathbb{F}_2, x\cdot c = 0 \; \forall \; c\in C\}$ is the orthogonal complement of $C$.
+		\begin{itemize}
+			\item $\dim_F C^\perp = n-k$ since $\dim_F C = k$.
+			\item A code is \textbf{self-dual} if $C = C^\perp$, for example $C = \{(0, 0), (1, 1)\}$.
+			\item $(C^\perp)^\perp) = C$.
+			\item $\dim  C + \dim C^\perp = n$.
+		\end{itemize}
+		
+		\end{dfn}
+		
+		
+		\begin{dfn}[Parity Check Matrices]{dfn:parchckmats}{ }
+		For $C$ a code with params $(n, k, d)$, a generator matrix $H$ for $C^\perp$ (a matrix whose rows form a basis of $C^\perp$) is a \textbf{parity check matrix for $C$}.
+		\begin{itemize}
+			\item $H$ is a $(n-k) \times n$ matrix
+			\item $c$ is a codeword in $C$ iff $Hc^T = 0$ iff $cH^T = 0$.
+			\item $C$ has minimal distance $d$ if and only if $H$ has $d$ lin-dep cols and does not have $d-1$ lin-dep cols
+		\end{itemize} 
+		
+		\end{dfn}
+		
+		
+		\begin{dfn}[Perfect Codes]{dfn:percod}{ }
+			For $C$ a binary code of length $n$, minimal distance $d = 2r + 1$ for $r \ge 0\in \mathbb{Z}$.\\
+			$C$ is a \textbf{perfect code} iff $\left|C\right| \left(\binom{n}{0} + \binom{n}{1} + \dotsc + \binom{n}{r}\right) = 2^n$, or equivalently if each $c\in C$ of length $n$ is in exactly one neighbourhood $N_r(c)$
+		
+		\end{dfn}
+		
+		
+		\begin{thm}[Adjusting Code Parameters]{thm:adjustcodeparams}{ }
+			Let $C$ be a linear binary code with parameters $(n, k, d)$
+			\begin{itemize}
+				\item If $k>1$; $\exists$ a lin-bin code with params $(n-1, k', d')$;  $k' \ge k-1, d' \ge d$.
+				\item If $d$ is odd, $\exists$ a lin-bin code with params $(n, k', d')$; $k' \ge k-1, d' > d$.
+				\item If $d>1$, there is a lin-bin code with params $(n, k, d-1)$
+			\end{itemize}
+			
+		\end{thm}
+		
+		
+		\begin{thm}[More Code Param Theorems]{thm:morecodeparams}{ }
+			\begin{itemize}
+				\item Let $r, d\in \mathbb{Z}$ s.t. $r \ge 0, d \ge 2r+1$, and $n\in \mathbb{N}$. Then there are no codes $C$ of length $n$ s.t. $2^n < 2^k \left(\binom{n}{0} + \dots + \binom{n}{r}\right)$
+				\item Gilbert-Varshamov: Let $r, n\in \mathbb{N}, r \ge 0$. Then $\exists$ a binary code $C$ of length $n$ with minimal distance $d \ge 2r+1$ s.t. $\left|C\right|\left(\binom{n}{0} + \dots + \binom{n}{2r}\right) \ge 2^n$.
+			\end{itemize}
+			
+		\end{thm}
 		
 		
 		
