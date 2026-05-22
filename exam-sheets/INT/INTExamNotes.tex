@@ -61,13 +61,17 @@
 			A \textbf{Pythagorean Triple} is a set of numbers $(a, b, c) \in \mathbb{N}$ such that $a^2 + b^2 = c^2$. Note if $(a, b, c)$ is a PT, so is $(da, db, dc)$.\\
 			A \textbf{Primitive Pythagorean Triple} is a PT such that $a, b, c$ have no common factor. Such $a, b, c$ have one of $a, b$ odd and the other even.\\
 			\textit{Square of an odd is odd, square of an even is even. If both even then $a, b, c$ divisible by 2. If both odd work through the eqn with $a = 2k + 1, b = 2n + 1$ to see all divisible by $4$.}\\
-			Indeed, every PPT with $(a, b, c)$ with $a$ odd has, for $s \ge t \ge 1$ odd coprime integers, $a = st, b = \frac{s^t - t^t}{2}, c = \frac{s^2 + t^2}{2}$.
+			Indeed, every PPT with $(a, b, c)$ with $a$ odd has, for $s \ge t \ge 1$ odd coprime integers, $a = st, b = \frac{s^2 - t^2}{2}, c = \frac{s^2 + t^2}{2}$.
 			
 		\end{dfn}
 		
 		
 		\begin{thm}[The Division Algorithm]{thm:divalg}{ }
 			Let $a, b\in \mathbb{Z}$ with $b > 0$. Then $\exists$ unique $q, r\in \mathbb{Z}$ s.t. $a = qb + r$ and $0 \le r < b$. $q$ is the \textbf{quotient} and $r$ is the \textbf{remainder}.
+			\begin{itemize}
+				\item If $ax + by = c$ then $\gcd(a, b) = d$ divides $c$ since $d|a$ and $d|b$
+				\item \textbf{Euclid's Lemma:} If $a, b, p\in \mathbb{Z}$, $p$ prime, and $p|ab$; then $p|a$ or $p|b$.
+			\end{itemize}
 			
 		\end{thm}
 		
@@ -89,6 +93,7 @@
 			\begin{enumerate}[label=(\arabic*)]
 				\item By Division Algorithm $\exists$ unique $q_1, r_1$ s.t. $a = q_1b + r_1$ with $0 \le r_1 < b$
 				\item If $r_1 > 0$, apply the Division Algorithm to $b, r_1$ for $b = q_2 r_1 + r_2$.
+				\item If $r_2 > 0$, apply the DA to $r_1, r_2$ for $r_1 = q_3r_2 + r_3$
 				\item Repeat \textit{ad infinitum}, the last non-zero remainder is  $\gcd(a, b)$
 			\end{enumerate}
 			
@@ -131,7 +136,8 @@
 		
 		
 		\begin{mthm}[The Chinese Remainder Theorem]{thm:crt}{ }
-			Let $m_1, m_2, \dots, m_k\in \mathbb{N}$ be pairwise coprime. Then given $a_1, a_2, \dots, a_k\in \mathbb{Z}$, the system of congruences
+			Let $m_1, m_2, \dots, m_k\in \mathbb{N}$ be \textbf{pairwise coprime}. \\
+			Then given $a_1, a_2, \dots, a_k\in \mathbb{Z}$, the system of congruences
 			\begin{align*}
 				x \equiv& a_1 \bmod{m_1}\\
 				x \equiv& a_2 \bmod{m_2}\\
@@ -179,179 +185,64 @@
 		\end{thm}
 		
 		
-	%----------------------------------------------------------------------------------%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% EULER & RINGS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%----------------------------------------------------------------------------------%
-	
-	
-	{\footnotesize \textbf{\underline{Euler \& Rings}}}
-		
-		
-		
-		\begin{mdfn}[Euler's Function]{mdfn:eulerfunc}{ }
-			For $n>1$, the \textbf{Euler function} $\phi(n)$ is defined to be the number of natural numbers not exceeding $n$ which are coprime with $n$. $\phi(1) := 1$.
+		\begin{xmp}[Is It A Quadratic Residue?]{xmp:isitaquadres}{ }
+			Is $7$ a quadratic residue modulo $53$?\\
+			Calculate $(\frac{7}{53})$. By Rules 4 and 3, $(\frac{7}{53}) = (\frac{53}{7}) = (\frac{4}{7})$. By Rule 2 $(\frac{4}{7}) = (\frac{2}{7})^2 = 1$. Thus $7$ is a quadratic residue modulo $53$.
 			
-		\end{mdfn}
+		\end{xmp}
 		
 		
-		\begin{mthm}[Euler's Theorem]{thm:eulerthm}{ }
-			For $n\in \mathbb{N}$ s.t. $n > 1$, and $a\in \mathbb{Z}$ s.t. $a, n$ coprime, then $a^{\phi(n)} - 1 \equiv 0 \bmod{n}$
-			\begin{itemize}
-				\item \textbf{Fermat's Little Thm:} If $p$ prime and $x, p$ coprime; $x^{p-1} \equiv 1 \bmod{p}$
-				\begin{itemize}
-					\item If $p$ prime and $x, p$ coprime; $x^p \equiv x \bmod{p}$
-				\end{itemize}
-			\end{itemize}
+		\begin{xmp}[Is It A Quadratic Residue? (weird)]{xmp:weirdisitaquadres}{ }
+			Let $p$ be prime and suppose $p = 17k + 1$ for some $k > 0\in \mathbb{Z}$. Is $17$ a quadratic residue modulo $p$?\\
+			$17$ is a QR modulo $p$ iff $(\frac{17}{p}) = (\frac{17}{17k + 1}) = 1$. To apply Rule 4: note $17 \equiv 1 \bmod{4}$; since $k > 0, p > 17$ so $p, 17$ are distinct; and $p, 17$ are odd as $2$ is the only odd prime and $p > 2$. Thus $(\frac{17}{17k + 1}) = (\frac{17k + 1}{17}) = (\frac{17k + 1 - 17k}{17}) = (\frac{1}{17}) = 1$. So $17$ is a quadratic residue modulo $p$.
+		
+		\end{xmp}
+		
+		
+		\begin{xmp-s}[Using Quadratic Residue To Prove Non-Divisibility]{xmp:nondivisbyqr}{ }
+			Show there does not exist $x\in \mathbb{Z}$ s.t. $x^{2022} + 9$ is divisible by $43$.\\
+			Prove by contradiction: assume such $x$ exists. Then $x^{2022} + 9 \equiv 0 \bmod{43}$ so $-9 \equiv (x^{1011})^2 \bmod{43}$, thus $-9$ is a quadratic residue modulo $43$. Now consider $(\frac{-9}{43})$. By Rule 2 $(\frac{-9}{43}) = (\frac{-1}{43})(\frac{3}{43})^2$.\\
+			By Rule 1 $(\frac{-1}{43}) \equiv (-1)^{42/2} \equiv (-1)^21 \equiv -1 \bmod{43}$. By Rule 5 $(\frac{3}{43}) = - (\frac{43}{3}) = -(\frac{1}{3}) = -1$. Thus $(\frac{-9}{43}) = -1 \cdot -1 \cdot -1 = -1$ and $-9$ is not a quadratic residue modulo $43$, so we have a contradiction. Thus no such $x$ exists.
+		
+		\end{xmp-s}
+		
+		
+		\begin{xmp}[Random Congruence Thing]{xmp:congruenceidk}{ }
+			Alice finds all integer solutions $x\in \{0, 1, \dots, 2025\}$ to $x^2 \equiv 1 \bmod{77}$.\\
+			Mike finds all integer solutions $x\in \{0, 1, \dots, 2025\}$ to $x^{10} \equiv 1 \bmod{77}$.\\
+			Spencer finds all integer solutions $x\in \{0, 1, \dots, 2025\}$ to $x^{70} \equiv 1 \bmod{77}$.\\
+			Given that all their solutions are correct, which of the following are true?:\\
+			\vspace*{-5ex}
+			\begin{multicols}{2}
+				\begin{enumerate}[label=\arabic*]
+					\item A \& M find exactly the same solns
+					\item A \& S find exactly the same solns
+					\item S finds more solns than A
+					\item A finds more solns than M
+					\item M finds more solns than A
+					\item M \& S find exactly the same solns
+					\item A finds no solns
+				\end{enumerate}
+			\end{multicols}
+			\vspace*{-5ex}
+			First note all solutions found are coprime with $77$. Alice finds $x$ s.t. both $7$ and $11$ divide $x^2 - 1$. Mike finds $x$ s.t. both $7$ and $11$ divide $x^{10}-1$. By Fermat's Little Theorem $11|x^{10}-1$ as $x$ is coprime to $11$. Also by Fermat's Little Theorem $7|x^6 -1$. Thus Mike finds all $x$ s.t. $7|x^{\gcd(10, 6)}-1 = x^2-1$. Thus Mike finds more solns than Alice since by the CRT there exist $x$ s.t. $x^2 \equiv 1 \bmod{7}$ and $x^2 \not\equiv 1 \bmod{11}$. Spencer finds $x$ s.t. $7$ and $11$ divide $x^{70} -1$. Note $11$ always divides $x^{70}-1$ for $x$ not divisible by $11$. Again by Fermat's Little Theorem $7|x^6 -1$ for $x$ not divisible by $7$, so these $x$ satisfy $7|x^{\gcd(6, 70)} -1 = x^2 -1$ thus Mike and Spencer find the same solutions. So options $3, 5, 6$ are correct.
 			
-		\end{mthm}
+		\end{xmp}
 		
 		
-		\begin{dfn}[Carmichael Numbers]{dfn:carmnums}{ }
-			$n\in \mathbb{Z}$ is a \textbf{Carmichael number} if $a^{n-1} \equiv 1 \bmod{n}$ for all $a$ coprime to $n$
-			\begin{itemize}
-				\item If $n$ is s.t. $a^{n-1} = 1 \bmod{n}$ for all $0 < a < n$, then $n$ is prime
-			\end{itemize}
+		\begin{xmp}[Random Prime Congruence Modulo $5$ Thing]{xmp:primecongruencemod5idk}{ }
+			Let $n \in \mathbb{N}$, and $p>5$ be prime. Suppose $p|n^2 -5$. Show that $p$ must be congruent to either $1$ or $4$ modulo $5$.\\
+			Observe that $5|(n^2 - 5)$, so $5$ is a quadratic residue modulo $p$, so $(\frac{5}{p}) = 1$. Suppose for a contradiction that either $p=5k+2$ or $p=5k+3$ for some integer $k \ge 0$. By Rule 4, $(\frac{5}{p}) = (\frac{p}{5})$. If $p = 5k+2$ then $(\frac{p}{5}) = (\frac{2}{5}) = -1$; and if $p = 5k+3$ then $(\frac{p}{5}) = \frac{3}{5} = -1$; so in either case we have a contradiction.\\
+			\textit{This answer seems completely terrible but it was a given past paper solution $\smiley$}
 			
-		\end{dfn}
+		\end{xmp}
 		
-		
-		\begin{mdfn}[Rings (Different Axioms To HAlg!)]{dfn:rngs}{ }
-			A \textbf{ring} is a set $R$ equipped with $+, \cdot : R\times R \to R$ s.t. for all $a, b, c\in R$:
-			\begin{itemize}
-				\item $(R, +)$ is an abelian group
-				\item Associativity of $\cdot$: $(a \cdot b) \cdot c = a \cdot (b \cdot c)$
-				\item Distributivity: $a\cdot(b+c) = a\cdot b + a \cdot c$; and $(a+b)\cdot c = a \cdot c + b\cdot c$
-			\end{itemize}
-			Variants of rings, with the above axioms true:
-			\begin{itemize}
-				\item Commutative ring: $a \cdot b = b \cdot a$
-				\item Unital ring: $\exists 1_R\in R$ s.t. $1_R \cdot a = a \cdot 1_R = a \; \forall \; a\in R$
-				\item Integral domain: Ring with no zero-divisors ($x, y\in R$ s.t. $x, y \ne 0, x \cdot y = 0$)
-			\end{itemize}
-			
-		\end{mdfn}
-		
-		
-		\begin{dfn}[The Ring $\mathbb{Z} / n \mathbb{Z}$ or $\mathbb{Z}_n$]{dfn:integerring}{ }
-			The elements of $\mathbb{Z}_n$ are congruence classes $\bmod{n}$, ie $\mathbb{Z}_n = \{\overline{0}, \overline{1}, ..., \overline{n-1}\}$. We define the ring addition/multiplication by, for $0\le a, b < n$:
-			\begin{itemize}
-				\item $\overline{a} + \overline{b} = \overline{c}$ iff $a+b = c \bmod{n}$
-				\item $\overline{a} - \overline{b} = \overline{c}$ iff $a-b = c \bmod{n}$
-				\item $\overline{a} \cdot\overline{b} = \overline{c}$ iff $a \cdot b = c \bmod{n}$
-			\end{itemize}
-			
-		\end{dfn}
-		
-		
-		\begin{dfn}[Primitive Roots]{dfn:primroots}{ }
-			For prime $p>0$, $i\in \mathbb{Z}$ is a \textbf{primitive root modulo $p$} iff $i, i^2, \dots, i^{p-1}$ are pairwise distinct $\bmod{p}$. Ie, $i^{m} \ne 1 \bmod{p}$ for $0 < m < p-1$ \\
-			Equivalent definitions: $i\in \mathbb{Z}$ is a primitive root modulo $p$ iff:
-			\begin{itemize}
-				\item $p \nmid (i^j -1)$ for any $0 < j < p-1$ and $p | i^{p-1} - 1$.
-				\item For every $m\in\mathbb{Z}$ not divisible by $p$, $\exists \alpha\in \mathbb{N}$ s.t. $m \equiv i^{\alpha} \bmod{p}$.
-			\end{itemize}
-			
-		\end{dfn}
-		
-		
-		\begin{thm}[Primitive Root Theorem]{thm:primrootthm}{ }
-			For every prime $p > 0$ there exists a primitive root modulo $p$.
-			\begin{itemize}
-				\item Let $x\in \mathbb{Z}$, $n\in \mathbb{N}$, and $\alpha, \beta\in \mathbb{N}, \alpha, \beta > 0$. Suppose $x^\alpha \equiv 1 \bmod{n}$ and $x^\beta \equiv 1 \bmod{n}$. Then $x^{\gcd(\alpha, \beta)} \equiv 1 \bmod{n}$
-			\end{itemize}
-			
-		\end{thm}
-		
-		
-		\begin{mdfn}[The Legendre Symbol]{dfn:legsymb}{ }
-			Let $p>0$ be prime and $a\in \mathbb{Z}$ s.t. $a$ is not divisible by $p$. The \textbf{Legendre symbol of $a$ modulo $p$}, denoted $(\frac{a}{p})$, is equal to $1$ if $a = r^2 \bmod{p}$ for $r\in \mathbb{Z}$, and equal to $-1$ otherwise.\\
-			If $(\frac{a}{p}) = 1$ then $a$ is a \textbf{quadratic residue modulo $p$}.
-			
-		\end{mdfn}
-		
-		
-		\begin{thm}[Legendre Symbol Theorems]{thm:legsymbthms}{ }
-			\begin{itemize}
-				\item Let $p$ be an odd prime. Then $(\frac{a}{p}) \equiv a^{(p-1)/2} \bmod{p}$
-				\item $(\frac{a}{p})(\frac{b}{p}) = (\frac{ab}{p})$
-				\item $(\frac{a}{p}) = (\frac{a-p}{p})$ and moreover if $a \equiv b \bmod{p}$ then $(\frac{a}{p}) = (\frac{b}{p})$
-				\item If $p, q >0$ are distinct odd primes, and $p\equiv 1 \bmod{4}$ or $q \equiv 1 \bmod{4}$ then $(\frac{p}{q}) = (\frac{q}{p})$
-				\item If $p, q >0$ are distinct odd primes, and $p \equiv 3 \bmod{4}$ and $q \equiv 3 \bmod{4}$, then $(\frac{p}{q}) = -(\frac{q}{p})$ 
-			\end{itemize}
-			
-		\end{thm}
-		
-		
-		\begin{lma}[The Gauss Lemma]{lma:gauss}{ }
-			Let $p$ be an odd prime and $a\in \mathbb{Z}$ not divisible by $p$. Consider $S := \{a, 2\cdot a, 3\cdot a, \dots, \frac{p-1}{2}\cdot a\}$. Let $S'$ be the set of remainders of elements of $S$ when divided by $p$, with each remainder in the interval $(-\frac{p}{2}, \frac{p}{2})$. Let $n$ be the number of elements in $S'$ smaller than $0$. \\
-			Then $(\frac{a}{p}) = (-1)^n$
-			\begin{itemize}
-				\item For prime $p > 2$, $(\frac{2}{p}) = (-1)^{(p^2-1)/8}$
-			\end{itemize}
-		
-		\end{lma}
-		
-		
-		\begin{mdfn}[Gaussian Integers]{dfn:gaussints}{ }
-			The \textbf{Gaussian integers} are the elements of $\mathbb{Z}[i] := \{a + ib : a, b\in \mathbb{Z}\}$. $\mathbb{Z}[i]$ is closed under $+/\cdot/-$ thus is a ring.
-			\begin{itemize}
-				\item For $w, z\in \mathbb{Z}[i]$, $\left|z\right| = \left|a + bi\right| = \sqrt{a^2 + b^2}$ and $\left|z \cdot w\right| = \left|z\right| \cdot \left|w\right|$
-				\item $z\in \mathbb{Z}[i]$ is a \textbf{unit} if $\exists z' = a' + ib'\in \mathbb{Z}[i]$ s.t. $z \cdot  z' = 1$. For all units $z\in \mathbb{Z}[i], \left|z\right| = 1$ and $z\in \{\pm 1, \pm i\}$
-				\item For $z, z'\in \mathbb{Z}[i]$, $z \ne 0$, we say $z$ \textbf{divides} $z'$, written $z | z'$, iff $z' = z \cdot w$ for some $w\in \mathbb{Z}[i]$ 
-				\item Let $z\in \mathbb{Z}[i]$ be non-zero and not a unit. $z$ is an \textbf{irreducible Gaussian integer} if whenever $z = u\cdot v$ for $u, v\in \mathbb{Z}[i]$, either $u$ or $v$ is a unit.
-				\item Let $z\in \mathbb{Z}[i]$ be non-zero and not a unit. $z$ is a \textbf{prime Gaussian integer} if whenever $z|(u \cdot v)$ for $u, v\in \mathbb{Z}[i]$, $z|u$ or $z|v$.
-				\item $z\in \mathbb{Z}[i]$ is prime if and only if it is irreducible
-			\end{itemize}
-			
-		\end{mdfn}
-		
-		
-		\begin{thm}[Division Algorithm For Gaussian Integers]{thm:divalggaussints}{ }
-			Let $z, w\in \mathbb{Z}[i]$ with $w \ne 0$. Then $\exists q, r\in \mathbb{Z}[i]$ with $z = qw +r$ and $\left|r\right| < \left|w\right|$.
-			
-		\end{thm}
-		
-		
-		\begin{dfn}[GCD For Gaussian Integers]{dfn:gcdgaussints}{ }
-			Let $a, b\in \mathbb{Z}[i]$ not both zero. A \textbf{greatest common divisor $d$} of $a$ and $b$ is a Gaussian integer which divides both of them, and any other divisor of $a$ and $b$ divides $d$.
-			
-		\end{dfn}
-		
-		
-		\begin{lma}[B\'ezout Lemma For Gaussian Integers]{lma:bzootgaussints}{ }
-			Let $a, b\in \mathbb{Z}[i]$ not both zero. Then $d$, the greatest common divisor of $a$ and $b$, exists, and so do $s, t\in \mathbb{Z}[i]$ s.t. $as + bt = d$.
-			
-		\end{lma}
-		
-		
-		\begin{thm}[Writing Integers As A Sum Of Two Squares]{thm:intsassumoftwosquares}{ }
-			Let $p \equiv 1 \bmod{4}$ be a prime. Then $p=a^2 += b^2$ for some $a, b\in \mathbb{Z}$.
-			\begin{itemize}
-				\item If prime $p \equiv -1 \equiv 3 \bmod{4}$, then $p$ is a prime Gaussian integer and $\nexists a, b\in \mathbb{Z}$ s.t. $p = a^2++b^2$
-			\end{itemize}
-			Let $1 < n$, $n\in \mathbb{N}$. Suppose $n = 2^c p_1^{a_1}\dotsc p_k^{a_k}q_1^{d_1} \dotsc q_t^{d_t}$ is the prime factorisation of $n$ into positive primes, with each $p_i = 1 \bmod{4}$ and each $q_i = 3\bmod{4}$ where $c, k , t \ge 0, \in \mathbb{Z}$ and $a_1, \dots, a_k, d_1, \dots, d_t >0\in \mathbb{Z}$. Then $\exists a, b\in \mathbb{Z}$ with $n = a^2 + b^2$ iff each $d_i$ is even.
-			
-		\end{thm}
-		
-		
-		\begin{dfn}[Associate Integral Domain Elements]{dfn:associates}{ }
-			Let $R$ be an integral domain and $a, b\in R$. We say \textbf{$a$ is an associate of $b$} if $a = bu$ for $u$ a unit in $R$.
-			\begin{itemize}
-				\item If $a$ is an associate of $b$, $b$ is an associate of $a$.
-			\end{itemize}
-			
-		\end{dfn}
-		
-		
-		\begin{thm}[The FTA For Gaussian Integers]{thm:ftaforgaussints}{ }
-			Let $a\in \mathbb{Z}[i]$ be nonzero. Then either $a$ is a unit or $a$ may be expressed as a product of finitely many primes. Moreover, if $a = p_1 \dotsc p_k = q_1 \dotsc q_t$ where all $p_i, q_j$ are prime Gaussian integers then the $p_i$ and $q_j$ can be paired such that paired primes are associates.
-			
-		\end{thm}
 		
 		
 		%----------------------------------------------------------------------------------%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CODING STUFF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%----------------------------------------------------------------------------------%
+		\columnbreak
 		
 		
 		{\footnotesize \textbf{\underline{Binary Codes}}}
@@ -460,31 +351,391 @@
 		
 		
 		\begin{dfn}[Perfect Codes]{dfn:percod}{ }
-			For $C$ a binary code of length $n$, minimal distance $d = 2r + 1$ for $r \ge 0\in \mathbb{Z}$.\\
-			$C$ is a \textbf{perfect code} iff $\left|C\right| \left(\binom{n}{0} + \binom{n}{1} + \dotsc + \binom{n}{r}\right) = 2^n$, or equivalently if each $c\in C$ of length $n$ is in exactly one neighbourhood $N_r(c)$
+		For $C$ a binary code of length $n$, minimal distance $d = 2r + 1$ for $r \ge 0\in \mathbb{Z}$.\\
+		$C$ is a \textbf{perfect code} iff $\left|C\right| \left(\binom{n}{0} + \binom{n}{1} + \dotsc + \binom{n}{r}\right) = 2^n$, or equivalently if each $c\in C$ of length $n$ is in exactly one neighbourhood $N_r(c)$
 		
 		\end{dfn}
 		
 		
 		\begin{thm}[Adjusting Code Parameters]{thm:adjustcodeparams}{ }
-			Let $C$ be a linear binary code with parameters $(n, k, d)$
-			\begin{itemize}
-				\item If $k>1$; $\exists$ a lin-bin code with params $(n-1, k', d')$;  $k' \ge k-1, d' \ge d$.
-				\item If $d$ is odd, $\exists$ a lin-bin code with params $(n, k', d')$; $k' \ge k-1, d' > d$.
-				\item If $d>1$, there is a lin-bin code with params $(n, k, d-1)$
-			\end{itemize}
-			
+		Let $C$ be a linear binary code with parameters $(n, k, d)$
+		\begin{itemize}
+			\item If $k>1$; $\exists$ a lin-bin code with params $(n-1, k', d')$;  $k' \ge k-1, d' \ge d$.
+			\item If $d$ is odd, $\exists$ a lin-bin code with params $(n, k', d')$; $k' \ge k-1, d' > d$.
+			\item If $d>1$, there is a lin-bin code with params $(n, k, d-1)$
+		\end{itemize}
+		
 		\end{thm}
 		
 		
 		\begin{thm}[More Code Param Theorems]{thm:morecodeparams}{ }
+		\begin{itemize}
+			\item Let $r, d\in \mathbb{Z}$ s.t. $r \ge 0, d \ge 2r+1$, and $n\in \mathbb{N}$. Then there are no codes $C$ of length $n$ s.t. $2^n < 2^k \left(\binom{n}{0} + \dots + \binom{n}{r}\right)$
+			\item Gilbert-Varshamov: Let $r, n\in \mathbb{N}, r \ge 0$. Then $\exists$ a binary code $C$ of length $n$ with minimal distance $d \ge 2r+1$ s.t. $\left|C\right|\left(\binom{n}{0} + \dots + \binom{n}{2r}\right) \ge 2^n$.
+		\end{itemize}
+		
+		\end{thm}
+		
+		
+		\begin{xmp}[Maximum Cardinality Of A Code]{xmp:maxcardinality}{ }
+		What is the maximal number of elements in a linear binary 1-error correcting code $C$ of length $6$?\\
+		$C$ is 1-error correcting so $d \ge 2+1 = 3$. If $d=3$ it is odd so there exists a code with parameters $(6, k' \ge k-1, d' > 3)$. Given such a code, since $k > 1$ there exists a code with parameters $(6-1, k' \ge k-2, d' \ge 4)$. Since $d' \ge 4$ any non-zero codewords in this code must have weight at least $4$, but then their minimal distance would be at most $2$ since $n=5$. Thus the dimension of this code, $k'$, is at most $1$. Since $1 \ge k-2$, $k \le 3$. Thus $C$ has parameters $(6, k \le 3, d \ge 3)$. Observe that $k=3$ is possible with $C = \left\langle 111100, 110011, 101010\right\rangle$. Thus the maximum cardinality is $2^3 = 8$ since $\left|C\right| = 2^k$.
+		
+		\end{xmp}
+		
+		
+		\begin{xmp}[Possible Parameters]{xmp:possibleparams}{ }
+		Does there exist a linear binary code with parameters $(10, 5, 6)$?\\
+		No: Since $k>1$, by repeated theorem application there would exist some code with parameters $(10-3, k' \ge 5-3, d' \ge 6) = (7, k' \ge 2, d' \ge 6)$. However, in such a code, every non-zero word has weight at least $6$, but any two non-zero codewords have distance at most $2$, so $k$ cannot be larger than $1$.
+		
+		\end{xmp}
+		
+		
+		\begin{xmp}[Possible Parameters Again]{xmp:possibleparamsagain}{ }
+		Is there a linear binary code $C$ with parameters $(9, 4, 5)$?
+		Suppose such a $C$ exists. Then take the subcode $C'$ of words in $C$ with even weight, by lecture results $C'$ is lin-bin with parameters $(9, 3, d' \ge 6)$. By lecture result (taking all codes with first digit $0$) there then exists a code $E$ with parameters $(8, 2, d \ge 6)$. Let $e_1, e_2\in E$ be linearly independent. By lecture result, $\wt(e_1), \wt(e_2) \ge d \ge 6$, then they both have at least $6$ digits equal to $1$. Then their distance is at most $4$, and $E$ cannot have minimal distance $d \ge 6$. Thus no such $C$ may exist. 
+		
+		\end{xmp}
+		
+		
+		\begin{xmp-s}[Forming Generator Matrix From Parity Check Matrix]{xmp:genmatfromparcheckmat}{ }
+		Write a generator matrix for a linear binary code $C$ which has the following parity check matrix:
+		$
+		\begin{psmallmatrix*}
+			1&1&1&1&1&1&1\\
+			1&1&1&1&0&0&0\\
+			1&1&0&0&1&1&0\\
+			1&0&1&0&1&0&1
+		\end{psmallmatrix*}
+		$
+		and show that every codeword in $C$ has even weight.\\
+		Let $x = (x_1, \dots, x_7)$ be a binary word with $x_i\in\{0, 1\}$. By lecture result, $x\in C$ iff $Hx^T = 0$, that is $x \cdot  1111111 = x\cdot 1111000 = x\cdot 1100110 = x\cdot 1010101 = 0$. Since $H$ has $7$ columns and $4$ rows, we know $C$ has parameters $(7, 3, d)$. \\
+		By inspection, $\{1111000, 0110011, 0011110\}$ is a set of $3$ lin-ind codewords satisfying our dot product requirements, and thus form a basis for $C$. Thus a generator matrix for $C$ is 
+		$ G= 
+		\begin{psmallmatrix*}
+			1&1&1&1&0&0&0\\
+			0&1&1&0&0&1&1\\
+			0&0&1&1&1&1&0
+		\end{psmallmatrix*}
+		$.
+		Also by lecture results, a codeword which is a sum of codewords with even weight has even weight, and since all rows of $G$ have even weight and all codewords in $C$ may be formed by a sum of these rows, all codewords in $C$ have even weight.
+		
+		\end{xmp-s}
+		
+		
+		\begin{xmp}[Bounding Minimal Distance Above]{xmp:upbndmindist}{ }
+		Let $C$ be a linear code with parameters $(n, k, d)$ and suppose $n>2^{n-k} + 1$. Show that $d <3$.\\
+		Note the parity-check matrix has columns of length $n-k$, so there are at most $2^{n-k}$ distinct columns with entries $0$ or $1$. Thus two columns of the parity check matrix must be equal. Let $w$ be a word s.t. $w_i = w_j = 1$ and all other $w_k = 0$. Then $wH^T = $column $i +$ column $j = 0$, thus $w\in C$. Since the code is linear, the minimal distance of $C$ equals the minimal weight of a non-zero codeword, so $d$ is at most $2$ as $\wt(w) = 2$.
+		
+		\end{xmp}
+		
+		
+		\begin{xmp}[Checking A Code Is Linear]{xmp:checkcodelinearity}{ }
+		Is $C = \{(x, y, z)\in \mathbb{F}_2^3 : x^2 + y^2 = z^2\}$ linear? How many codewords does $C$ have? Is $D = \{(x, y, z)\in \mathbb{F}_2^3:xyz = 0\}$ linear?\\
+		Note that in $\mathbb{F}_2 = \{0, 1\}$, we have $x^2 = x, y^2 = y, z^2 = z$, so the condition on $C$ reduces to $x + y = z$, and clearly it is linear (easy proof, check $x + w$ componentwise for $x, w\in C$). Since there are exactly two choices for $x$ and $y$, and $z$ is determined by $x$ and $y$, $C$ has exactly $2^2 = 4$ elements.\\
+		$D$ is not linear as both $100$ and $011$ are codewords in $D$ but their sum $111$ is not.
+		
+		\end{xmp}
+		
+		
+		\begin{xmp}[Code Existence From Generator Matrix\text{,} Weight]{xmp:codeexistence}{ }
+		Is there a linear binary code $C$ whose generator matrix has $7$ columns and $3$ rows, and such that all non-zero $c\in C$ have $\wt(c) > 4$?\\
+		We must prove there exists $C$ with parameters $(7, 3, n+5)$ for $n \ge 0$. Take $E \subseteq C$, the subset of $C$ with codewords of even weight. By lecture theory, $E$ is a linear subspace of $C$, so $E$ is linear. Observe that for $e\in E$, $\wt(e)$ is even so the minimal distance of $E$ is even, and thus is $6 + 2j$ for some $j \ge 0$. Then again by lecture theory, $\dim E \ge 3-1 = 2$. Thus $E$ contains two linearly independent codewords each of weight at least $6$. The distance between these codewords is at most $2$, so we have a contradiction, and so no such $C$ exists.
+		
+		\end{xmp}
+		
+		
+	%----------------------------------------------------------------------------------%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% EULER & RINGS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%----------------------------------------------------------------------------------%
+	\columnbreak
+	
+	
+	{\footnotesize \textbf{\underline{Euler \& Rings}}}
+		
+		
+		
+		\begin{mdfn}[Euler's Function]{mdfn:eulerfunc}{ }
+			For $n>1$, the \textbf{Euler function} $\phi(n)$ is defined to be the number of natural numbers not exceeding $n$ which are coprime with $n$. $\phi(1) := 1$.
 			\begin{itemize}
-				\item Let $r, d\in \mathbb{Z}$ s.t. $r \ge 0, d \ge 2r+1$, and $n\in \mathbb{N}$. Then there are no codes $C$ of length $n$ s.t. $2^n < 2^k \left(\binom{n}{0} + \dots + \binom{n}{r}\right)$
-				\item Gilbert-Varshamov: Let $r, n\in \mathbb{N}, r \ge 0$. Then $\exists$ a binary code $C$ of length $n$ with minimal distance $d \ge 2r+1$ s.t. $\left|C\right|\left(\binom{n}{0} + \dots + \binom{n}{2r}\right) \ge 2^n$.
+				\item If $p$ is prime, $\phi(p) = p-1$
+				\item For $p$ prime, $\phi(p^n) = (p-1)p^{n-1} = p^n - p^{n-1} = p^n(1-1/p)$
+				\item If $p_1, \dots, p_j$ are distinct primes dividing $m$; $\phi(m) = m(1-\frac{1}{p_1}) \cdots (1-\frac{1}{p_j})$
+				\item If $m, n$ are coprime then $\phi(m \cdot n) = \phi(m) \cdot \phi(n)$
+				\item In general $\phi(mn) = \phi(m)\phi(n) \cdot d/\phi(d)$ where $d = \gcd(m, n)$ (not given in notes but used in past paper solns {\footnotesize \smiley})
+				\item Note that $\phi(n^2)$ is not necessarily equal to $(\phi(n))^2$
+				\item For $n \ge 3$, $\phi(n)$ is even (not a course result! use for checking only)
+			\end{itemize}
+			
+		\end{mdfn}
+		
+		
+		\begin{mthm}[Euler's Theorem]{thm:eulerthm}{ }
+			For $n\in \mathbb{N}$ s.t. $n > 1$, and $a\in \mathbb{Z}$ s.t. $a, n$ coprime, then $a^{\phi(n)} - 1 \equiv 0 \bmod{n}$
+			\begin{itemize}
+				\item \textbf{Fermat's Little Thm:} If $p$ prime and $x, p$ coprime; $x^{p-1} \equiv 1 \bmod{p}$
+				\begin{itemize}
+					\item If $p$ prime and $x, p$ coprime; $x^p \equiv x \bmod{p}$
+				\end{itemize}
+			\end{itemize}
+			
+		\end{mthm}
+		
+		
+		\begin{dfn}[Carmichael Numbers]{dfn:carmnums}{ }
+			$n\in \mathbb{Z}$ is a \textbf{Carmichael number} if $a^{n-1} \equiv 1 \bmod{n}$ for all $a$ coprime to $n$
+			\begin{itemize}
+				\item If $n$ is s.t. $a^{n-1} = 1 \bmod{n}$ for all $0 < a < n$, then $n$ is prime
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{mdfn}[Rings (Different Axioms To HAlg!)]{dfn:rngs}{ }
+			A \textbf{ring} is a set $R$ equipped with $+, \cdot : R\times R \to R$ s.t. for all $a, b, c\in R$:
+			\begin{itemize}
+				\item $(R, +)$ is an abelian group
+				\item Associativity of $\cdot$: $(a \cdot b) \cdot c = a \cdot (b \cdot c)$
+				\item Distributivity: $a\cdot(b+c) = a\cdot b + a \cdot c$; and $(a+b)\cdot c = a \cdot c + b\cdot c$
+			\end{itemize}
+			Variants of rings, with the above axioms true:
+			\begin{itemize}
+				\item Commutative ring: $a \cdot b = b \cdot a$
+				\item Unital ring: $\exists 1_R\in R$ s.t. $1_R \cdot a = a \cdot 1_R = a \; \forall \; a\in R$
+				\item Integral domain: Ring with no zero-divisors ($x, y\in R$ s.t. $x, y \ne 0, x \cdot y = 0$)
+			\end{itemize}
+			
+		\end{mdfn}
+		
+		
+		\begin{dfn}[The Ring $\mathbb{Z} / n \mathbb{Z}$ or $\mathbb{Z}_n$]{dfn:integerring}{ }
+			The elements of $\mathbb{Z}_n$ are congruence classes $\bmod{n}$, ie $\mathbb{Z}_n = \{\overline{0}, \overline{1}, ..., \overline{n-1}\}$. We define the ring addition/multiplication by, for $0\le a, b < n$:
+			\begin{itemize}
+				\item $\overline{a} + \overline{b} = \overline{c}$ iff $a+b = c \bmod{n}$
+				\item $\overline{a} - \overline{b} = \overline{c}$ iff $a-b = c \bmod{n}$
+				\item $\overline{a} \cdot\overline{b} = \overline{c}$ iff $a \cdot b = c \bmod{n}$
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{dfn}[Primitive Roots]{dfn:primroots}{ }
+			For prime $p>0$, $i\in \mathbb{Z}$ is a \textbf{primitive root modulo $p$} iff $i, i^2, \dots, i^{p-1}$ are pairwise distinct $\bmod{p}$. Ie, $i^{m} \ne 1 \bmod{p}$ for $0 < m < p-1$ \\
+			Equivalent definitions: $i\in \mathbb{Z}$ is a primitive root modulo $p$ iff:
+			\begin{itemize}
+				\item $p \nmid (i^j -1)$ for any $0 < j < p-1$ and $p | i^{p-1} - 1$.
+				\item For every $m\in\mathbb{Z}$ not divisible by $p$, $\exists \alpha\in \mathbb{N}$ s.t. $m \equiv i^{\alpha} \bmod{p}$.
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{thm}[Primitive Root Theorem]{thm:primrootthm}{ }
+			For every prime $p > 0$ there exists a primitive root modulo $p$.
+			\begin{itemize}
+				\item Let $x\in \mathbb{Z}$, $n\in \mathbb{N}$, and $\alpha, \beta\in \mathbb{N}, \alpha, \beta > 0$. Suppose $x^\alpha \equiv 1 \bmod{n}$ and $x^\beta \equiv 1 \bmod{n}$. Then $x^{\gcd(\alpha, \beta)} \equiv 1 \bmod{n}$
 			\end{itemize}
 			
 		\end{thm}
 		
+		
+		\begin{mdfn}[The Legendre Symbol]{dfn:legsymb}{ }
+			Let $p>0$ be prime and $a\in \mathbb{Z}$ s.t. $a$ is not divisible by $p$. The \textbf{Legendre symbol of $a$ modulo $p$}, denoted $(\frac{a}{p})$, is equal to $1$ if $a = r^2 \bmod{p}$ for $r\in \mathbb{Z}$, and equal to $-1$ otherwise.\\
+			If $(\frac{a}{p}) = 1$ then $a$ is a \textbf{quadratic residue modulo $p$}.
+			
+		\end{mdfn}
+		
+		
+		\begin{thm}[Legendre Symbol Theorems]{thm:legsymbthms}{ }
+			\begin{itemize}
+				\item \textbf{Rule 1:} Let $p$ be an odd prime. Then $(\frac{a}{p}) \equiv a^{(p-1)/2} \bmod{p}$
+				\item \textbf{Rule 2:} $(\frac{ab}{p}) = (\frac{a}{p})(\frac{b}{p})$
+				\item \textbf{Rule 3:} $(\frac{a}{p}) = (\frac{a-p}{p})$ and moreover if $a \equiv b \bmod{p}$ then $(\frac{a}{p}) = (\frac{b}{p})$
+				\item Let $p, q > 0$ be distinct odd primes. Then:
+				\begin{itemize}
+					\item \textbf{Rule 4:} If $p\equiv 1 \bmod{4}$ or $q \equiv 1 \bmod{4}$ then $(\frac{p}{q}) = (\frac{q}{p})$
+					\item \textbf{Rule 5:} If $p \equiv 3 \bmod{4}$ and $q \equiv 3 \bmod{4}$, then $(\frac{p}{q}) = -(\frac{q}{p})$ 
+				\end{itemize}
+			\end{itemize}
+			
+		\end{thm}
+		
+		
+		\begin{lma}[The Gauss Lemma]{lma:gauss}{ }
+			Let $p$ be an odd prime and $a\in \mathbb{Z}$ not divisible by $p$. Consider $S := \{a, 2\cdot a, 3\cdot a, \dots, \frac{p-1}{2}\cdot a\}$. Let $S'$ be the set of remainders of elements of $S$ when divided by $p$, with each remainder in the interval $(-\frac{p}{2}, \frac{p}{2})$. Let $n$ be the number of elements in $S'$ smaller than $0$. \\
+			Then $(\frac{a}{p}) = (-1)^n$
+			\begin{itemize}
+				\item For prime $p > 2$, $(\frac{2}{p}) = (-1)^{(p^2-1)/8}$
+			\end{itemize}
+		
+		\end{lma}
+		
+		
+		\begin{xmp}[Applying The Gauss Lemma]{xmp:applygausslem}{ }
+			Show whether $2$ is a quadratic residue modulo $13$ and whether $3$ is a quadratic residue module $13$ using the Gauss Lemma.\\
+			First whether $(\frac{2}{13}) = 1$: As in the Gauss Lemma, denote $S = \{2, 2\cdot 2, 3\cdot 2, 4\cdot 2, 5\cdot 2, 6\cdot 2\} = \{2, 4, 6, 8, 10, 12\}$. As in the proof of the Gauss Lemma, $S' = \{2, 4, 6, -5, -3, -1\}$. There are $3$ negative numbers in this set, so since $3$ is odd, $2$ is not a quadratic residue module $13$.\\
+			Now $(\frac{3}{13})$. Again as in the GL, $S = \{3, 2\cdot 3, 3\cdot 3, 4\cdot 3, 5\cdot 3, 6\cdot 3\} = \{3, 6, 9, 12, 15, 18\}$ and $S' = \{3, 6, -4, -1, 2, 5\}$. There are $2$ negative numbers in this set, so since $2$ is even, $3$ is a quadratic residue modulo $13$.
+			
+			
+			
+			 $S = \{3, 2\cdot 3, 3\cdot 3, 4\cdot 3, 5\cdot 3, 6\cdot 3\} $
+			
+		\end{xmp}
+		
+		
+		\begin{xmp}[Euler Function Equations]{xmp:eulerfunceqns}{ }
+			Is there $m\in \mathbb{N}$ s.t. for all $n > m$, $n\in \mathbb{N}$, we have $\phi(n) + \phi(2n) = \phi(3n)$?\\
+			No: Let $n$ be arbitrarily large, not divisible by $2$, and divisible by $3$. Then $\phi(2n) = \phi(2)\cdot \phi(n) = \phi(n)$, and $\phi(3n) = 3\phi(n)$. Therefore $\phi(n) + \phi(2n) = 2\phi(n) \ne 3\phi(n) = \phi(3n)$.
+			
+		\end{xmp}
+		
+		
+		\begin{xmp}[Expression For $\phi(n)$ Given Form Of $n$]{xmp:dontevenaskman}{ }
+			Let $n>2$ be an integer s.t. $n = 4k+1$ for some $k\in \mathbb{Z}$. Show that either $\phi(n))$ is divisible by $4$ or $n = p^m$ for some prime $p$ and $m\in \mathbb{Z}$.\\
+			Since $n= 4k+1$, $n$ is odd. If $n$ has only one prime divisor $p$, then $n = p^m$ for $m\in \mathbb{Z}$ and our statement holds. If $n$ has two or more distinct prime divisors, then $n = \prod_{j=1}^{k}p_j^{\alpha_j}$ and $\phi(n) = \prod_{i=1}^{k}p_j^{\alpha_j -1}(p_j -1)$. Since each $(p_j-1)$ term is even, and $k \ge 2$, their product is divisible by $4$, thus $\phi(n)$ is divisible by $4$ as required.
+			
+		\end{xmp}
+		
+		
+		\begin{xmp}[Lecture 10 Example]{xmp:findingallnwithphinequaltotwo}{ }
+			Let $n > 1\in \mathbb{Z}$. Find all $n$ s.t. $\phi(n) = 2$.\\
+			$n$ has some prime decomposition $n = p_1^{\alpha_1} \cdots p_m^{\alpha_m}$ where all $p_i > 1$ and are pairwise distinct. By course formula $\phi(n) = (p_1^{\alpha_1} - p_1^{\alpha_1-1}) \cdots (p_m^{\alpha_m} - p_m^{\alpha_m - 1})$. Note that for all $i\in{1, \dots, m}$, $(p_i-1)|\phi(n)$, thus to satisfy our condition, $p_i - 1$ is equal to $1$ or $2$, so $p_i\in\{2, 3\}$.\\
+			If $n$ has exactly one prime divisor, ie $n = p_1^{\alpha_1}$, then $\phi(n) = p_1^{\alpha_1-1}(p_1 - 1)$, then if $p_1 = 2$, $n=4$; and if $p_1 = 3$, $n=3$.\\
+			Now assume $n$ has more than one prime divisor. Since all $p_i\in\{2, 3\}$, $n = 2^{\alpha_1}\cdot 3^{\alpha_2}$, and $\phi(n) = 2^{\alpha_1 -1}(2-1) \cdot 3^{\alpha_2 -1}(3-1)$. Then $\alpha_1 -1 = 0$ and $\alpha_2 -1 = 0$, so $n=6$.    
+			
+		\end{xmp}
+		
+		
+	
+	%----------------------------------------------------------------------------------%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% GAUSSIAN INTEGERS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%----------------------------------------------------------------------------------%
+	\columnbreak
+	
+		
+		{\footnotesize \textbf{\underline{Gaussian Integers}}}
+		
+		
+		\begin{mdfn}[Gaussian Integers]{dfn:gaussints}{ }
+			The \textbf{Gaussian integers} are the elements of $\mathbb{Z}[i] := \{a + ib : a, b\in \mathbb{Z}\}$. $\mathbb{Z}[i]$ is closed under $+/\cdot/-$ thus is a ring.
+			\begin{itemize}
+				\item For $w, z\in \mathbb{Z}[i]$, $\left|z\right| = \left|a + bi\right| = \sqrt{a^2 + b^2}$ and $\left|z \cdot w\right| = \left|z\right| \cdot \left|w\right|$
+				\item $z\in \mathbb{Z}[i]$ is a \textbf{unit} if $\exists z' = a' + ib'\in \mathbb{Z}[i]$ s.t. $z \cdot  z' = 1$. For all units $z\in \mathbb{Z}[i], \left|z\right| = 1$ and $z\in \{\pm 1, \pm i\}$
+				\item For $z, z'\in \mathbb{Z}[i]$, $z \ne 0$, we say $z$ \textbf{divides} $z'$, written $z | z'$, iff $z' = z \cdot w$ for some $w\in \mathbb{Z}[i]$ 
+				\item Let $z\in \mathbb{Z}[i]$ be non-zero and not a unit. $z$ is an \textbf{irreducible Gaussian integer} if whenever $z = u\cdot v$ for $u, v\in \mathbb{Z}[i]$, either $u$ or $v$ is a unit.
+				\item Let $z\in \mathbb{Z}[i]$ be non-zero and not a unit. $z$ is a \textbf{prime Gaussian integer} if whenever $z|(u \cdot v)$ for $u, v\in \mathbb{Z}[i]$, $z|u$ or $z|v$.
+				\item $z\in \mathbb{Z}[i]$ is prime if and only if it is irreducible
+			\end{itemize}
+			
+		\end{mdfn}
+		
+		
+		\begin{thm}[Division Algorithm For Gaussian Integers]{thm:divalggaussints}{ }
+			Let $z, w\in \mathbb{Z}[i]$ with $w \ne 0$. Then $\exists q, r\in \mathbb{Z}[i]$ with $z = qw +r$ and $\left|r\right| < \left|w\right|$.
+			
+		\end{thm}
+		
+		
+		\begin{dfn}[GCD For Gaussian Integers]{dfn:gcdgaussints}{ }
+			Let $a, b\in \mathbb{Z}[i]$ not both zero. A \textbf{greatest common divisor $d$} of $a$ and $b$ is a Gaussian integer which divides both of them, and any other divisor of $a$ and $b$ divides $d$.
+			
+		\end{dfn}
+		
+		
+		\begin{lma}[B\'ezout Lemma For Gaussian Integers]{lma:bzootgaussints}{ }
+			Let $a, b\in \mathbb{Z}[i]$ not both zero. Then $d$, the greatest common divisor of $a$ and $b$, exists, and so do $s, t\in \mathbb{Z}[i]$ s.t. $as + bt = d$.
+			
+		\end{lma}
+		
+		
+		\begin{thm}[Writing Integers As A Sum Of Two Squares]{thm:intsassumoftwosquares}{ }
+			Let $p \equiv 1 \bmod{4}$ be a prime. Then $p=a^2 + b^2$ for some $a, b\in \mathbb{Z}$.
+			\begin{itemize}
+				\item If prime $p \equiv -1 \equiv 3 \bmod{4}$, then $p$ is a prime Gaussian integer and $\nexists a, b\in \mathbb{Z}$ s.t. $p = a^2++b^2$
+			\end{itemize}
+			Let $1 < n$, $n\in \mathbb{N}$. Suppose $n = 2^c p_1^{a_1}\dotsc p_k^{a_k}q_1^{d_1} \dotsc q_t^{d_t}$ is the prime factorisation of $n$ into positive primes, with each $p_i = 1 \bmod{4}$ and each $q_i = 3\bmod{4}$ where $c, k , t \ge 0, \in \mathbb{Z}$ and $a_1, \dots, a_k, d_1, \dots, d_t >0\in \mathbb{Z}$. Then $\exists a, b\in \mathbb{Z}$ with $n = a^2 + b^2$ iff each $d_i$ is even.
+			
+		\end{thm}
+		
+		
+		\begin{dfn}[Associate Integral Domain Elements]{dfn:associates}{ }
+			Let $R$ be an integral domain and $a, b\in R$. We say \textbf{$a$ is an associate of $b$} if $a = bu$ for $u$ a unit in $R$.
+			\begin{itemize}
+				\item If $a$ is an associate of $b$, $b$ is an associate of $a$.
+			\end{itemize}
+			
+		\end{dfn}
+		
+		
+		\begin{thm}[The FTA For Gaussian Integers]{thm:ftaforgaussints}{ }
+			Let $a\in \mathbb{Z}[i]$ be nonzero. Then either $a$ is a unit or $a$ may be expressed as a product of finitely many primes. Moreover, if $a = p_1 \dotsc p_k = q_1 \dotsc q_t$ where all $p_i, q_j$ are prime Gaussian integers then the $p_i$ and $q_j$ can be paired such that paired primes are associates.
+			
+		\end{thm}
+		
+		
+		\begin{xmp}[Checking Irreducibility]{xmp:irreduciblecheck}{ }
+			Is $z = 4 + i$ an irreducible Gaussian integer?\\
+			Yes: $z$ is non-zero and not a unit (since $\left|z\right|\ne 1$). To prove it is irreducible we must show that, if $u, v\in \mathbb{Z}[i]$ and $z = u\cdot v$, then $u$ is a unit or $v$ is a unit. Let $z = uv$, then $\left|z\right|^2 = \left|4+i\right|^2 = 17 = \left|uv\right|^2 = \left|u\right|^2 \left|v\right|^2$. Since $17$ is prime and $\left|u\right|^2, \left|v\right|^2 \ge 0$, this implies that either $\left|u\right|^2 = 1$ or $\left|v\right|^2 = 1$, ie that either $u$ or $v$ has absolute value $1$ and is thus a unit.
+			
+		\end{xmp}
+		
+		
+		\begin{xmp}[Equality Of Prime Components]{xmp:primecompequality}{ }
+			Let $p$ be prime and $x, y, z, w\in \mathbb{N}$ s.t. $x^2 + y^2 = p = z^2 + w^2$. Suppose $x \ne z$. Does it follow that $x = w$?\\
+			Observe that $(x + iy)(x-iy) = p = (z+iw)(z-iw)$. Note $x+iy$ cannot be a unit as then $x-iy$ would also be a unit and so the modulus of their product would be $1$, which is not prime. Thus neither $x+iy$ or $x-iy$ are units, by the same logic neither are $z +iw$ and $z-iw$, so $p$ is not a prime GI (as it is the product of two non-units). By the FTA for Gaussian integers we can write $p$ as $q_1\cdots q_n$ where each $q_i$ is a prime GI, since $p$ is not a prime GI, $n>1$. Since each $q_i$ is not a unit, $\left|q_i\right|^2 \ne 1$ for all $i$, and note that $\left|q_i\right|^2$ divides $p^2 = \left|p\right|^2$, so $i=2$ (dunno how this step works, Agata gave no detail {\footnotesize $\frownie$}).\\
+			Now $(x+iy)(x-iy) = q_1\cdot q_2$, so $q_1$ divides $x+iy$ or $x-iy$, and $x+iy$ is an associate to either $q_1$ or $q_2$. Similarly $w+iz$ is an associate to either $q_1$ or $q_2$ are associates. Therefore, $x+iy$ is an associate to either $z+iw$ or $z-iw$, and it follows that $x+iy\in \{z+ -iw, -z+-iw, w+-iz, -w+-iz\}$. By assumption $x\ne z$ so $x+iy \ne z+-iw$. Since all of $x, y, z, w$ are natural and hence non-negative, $x+iy \ne -z + -iw$ and $x+iy \ne -w+-iz$, so $x+iy = w+iz$ and $x=w$ as required.
+			 
+		\end{xmp}
+		
+		
+		\begin{xmp}[Random Gaussian Integer Existence Question]{xmp:gaussianintsexist}{ }
+			Is it true that for all $n > 0\in \mathbb{Z}$, there exists $z_n, w_n$ s.t. $(1+3i)^nw_n = (2-i)z_n -n$?\\
+			Note that $1+3i = (1+i)(2+i); 2-i; 1+i; 2+i$ are all pairwise coprime GIs. Thus $(1+3i)^n$ and $(2-i)^n$ are coprime GIs, as any common divisor of them can be written as a product of prime GIs and a unit. By the B\'ezout Lemma there exist GIs $p_n, q_n$ s.t. $(1+3i)^np_n + (2-1)^nq_n = 1$, so we may take $w_n = -p_n\cdot n$ and $z)n = q_n \cdot n$, thus such $z_n, w_n$ always exist.
+			
+		\end{xmp}
+		
+		
+		\begin{xmp}[Sum Of Squared Integers]{xmp:sumofsqrdints}{ }
+			Does there exist $a, b\in \mathbb{Z}$ s.t. $a^2 +b^2 = 77$?\\
+			Note $77 = 7^1 \cdot 11^1$. Since $7$ and $11$ are prime GIs, appear with odd powers in $77$, and are congruent to $3$ modulo $4$, by lecture theory no such $a, b$ exist.
+			
+		\end{xmp}
+		
+		
+		\begin{xmp}[Sum Of Squared Gaussian Integers]{xmp:sumofsqrdgaussints}{ }
+			Does there exist $w, z\in \mathbb{Z}[i]$ s.t. $w^2 + z^2 = 61$?\\
+			Yes: Observe $w^2 + z^2 = (w+zi)(w-zi)$. Thus if we can choose $w, z$ s.t. $w+zi = 61$ and $w-zi = 1$ we will satisfy our equation. Rearrange to see that $2w = (w+iz)+(w-iz) = 61 + 1 = 62$ so $w = 62/2 = 31$; and $2iz = (w+iz) - (w-iz) = 61-1 = 60$ so $z = 60/2i = -30i$ satisfy our equations.
+			
+		\end{xmp}
+		
+		
+		\begin{xmp-s}[Showing An Integer Is Not A Sum Of Squared GIs]{xmp:intnotsumofsqrdgis}{ }
+			Show that $q\in \mathbb{Z}$ of the form $q = 4k + 3$ for some $k\in \mathbb{Z}$ is not a sum of two squares of integers.\\
+			Note that for all $x\in \mathbb{Z}$, $x^2 \equiv 1 \bmod{4}$ or $x^2 \equiv 0 \bmod{4}$. Thus $x^2 + y^2$ has remainder $0, 1, \text{ or } 2$ modulo 4, so cannot be congruent to $3 \bmod{4}$, but $q$ is! Thus no such $x, y$ exist.
+			
+		\end{xmp-s}
+		
+		
+		\begin{xmp-s}[A Prime Integer Of Form $4k+1$ Is Not A Prime GI]{xmp:primeintnotprimegaussint}{ }
+			Let $p > 2$ be a prime number of form $4k+1$ for some $k\in \mathbb{Z}$. Show that $p$ is not a prime GI.\\
+			A GI is prime iff it is irreducible, so we prove $p$ is not irreducible. By lecture theorem we know since $p = 4k+1$ for some $k\in \mathbb{Z}$, that $p = x^2 + y^2$ for some $x, y\in \mathbb{Z}$. Since $p$ is prime, $x, y \ne 0$. Note also that $p = (x+iy)(x-iy)$, so it suffices to show that neither $x+iy$ or $x-iy$ is a unit. Suppose one of them was a unit. Then $\exists v\in \mathbb{Z}[i], v = a+bi$, s.t. either $(x+iy)v = 1$ or $(x-iy)v = 1$. Then either $\left|x+iy\right|\left|v\right| = 1$ or $\left|x-iy\right|\left|v\right|=1$, in either case implying that $\sqrt{x^2 + y^2} \cdot  \sqrt{a^2 +b^2} = 1$. However, since $x, y \ne 0$, $x^2 + y^2 > 1$ and since $a, b\in \mathbb{Z}$, $\left|v\right| \ge 1$, thus we have a contradiction.
+			
+		\end{xmp-s}
+		
+		
+		\begin{xmp}[A Prime Integer Of Form $4k+3$ Is A Prime GI]{xmp:primeintisprimegi}{ }
+			Let $p>2$ be a prime number of form $4k+3$ for some $k\in \mathbb{Z}$. Show that $p$ is a prime GI.\\
+			A GI is prime iff it is irreducible, so we prove $p$ is irreducible. Suppose for contradiction $p = (x+iy)(a+ib)$ for some $x, y, a, b\in \mathbb{Z}$ s.t. neither of $x+iy$ and $a+ib$ are units. Then $\left|p\right| = \left|x+iy\right|\left|a+ib\right|$, and $\left|p\right|^2 = p^2 = (x^2 + y^2)(a^2 + b^2)$. By the second example before this one, $p \ne x^2 + y^2$ and $p \ne a^2 + b^2$. Thus it cannot be true that $\left|x+iy\right|^2 = 1$ or that $\left|a+ib\right|^2 = 1$, therefore neither of $x+iy$ and $a+ib$ have modulus $1$ and thus neither can be a unit. Thus $p$ is an irreducible GI and therefore a prime GI.
+		
+		\end{xmp}
+		
+		
+		\begin{xmp-s}[Prime Integer $q \equiv 3 \bmod{4}$ With $q|(x^2 + y^2)$ Divides $x$ And $y$]{xmp:weirdassprimedivisonthing}{ }
+			Let $q\equiv 3 \bmod{4}$ be prime and suppose that $q|(x^2 + y^2)$ for some $x, y\in \mathbb{Z}$. Prove that $q|x$ and $q|y$.\\
+			By the previous example $q$ is a prime and irreducible GI. Since $x^2 + y^2 = (x+iy)(x-iy)$, $q|(x+iy)(x-iy)$ so $q$ divides one of $x+iy$ and $x-iy$.\\
+			If $q|(x+iy)$ then $q(a+ib) = (x+iy)$ for some $a+ib\in \mathbb{Z}[i]$, thus $qa = x$ and $qb = y$, ie $q$ divides $x$ and $y$. Similarly if $q|(x-iy)$ then $q(a+ib) = (x-iy)$ for some $a+ib\in \mathbb{Z}[i]$, so $qa = x$ and $q (-b)=y$, ie $q$ divides $x$ and $y$.
+			
+		\end{xmp-s}
 		
 		
 		
